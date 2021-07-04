@@ -10,7 +10,7 @@ Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
 - change papyrus.skyrimSpecialEdition.installPath in settings.json to your compile folder
 - in server folder rename server-settings.example.json to server-settings.json and configure your server
 - copy Dawnguard.esm, Dragonborn.esm, HearthFires.esm, Skyrim.esm, Update.esm from skyrim folder to server data folder
-- unzip the scripts.zip to the server/data/scripts folder
+- in server folder unzip the scripts.zip to the server/data/scripts folder
 - run `npm install` to install required dependencies
 
 ## Server configuration
