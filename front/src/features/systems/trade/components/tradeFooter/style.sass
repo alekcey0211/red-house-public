@@ -1,0 +1,77 @@
+// Variables
+$font--futurapt-cm: 'Futura-pt CM'
+$font--futurapt-cb: 'Futura-pt CB'
+
+$color--border: rgba(128, 128, 128, .5)
+  
+.trade__footer
+  padding: 20px
+
+  border-top: 2px solid $color--border
+
+  .trade__actions
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    .action
+      display: flex
+      flex-direction: row
+      align-items: center
+
+      cursor: pointer
+
+      font-family: $font--futurapt-cb
+      font-size: 22px
+      line-height: 1
+
+      margin-right: 30px
+
+      color: #7B7B7B
+
+      transition: color .3s
+
+      &.active
+        color: #fff
+
+        &:hover
+          color: #B2B2B2
+
+          .button__inner
+            color: #B2B2B2
+
+        .button__inner
+          color: #fff
+
+      &:last-child
+        margin-right: 0
+
+      &__button
+        width: 30px
+        height: 30px
+
+        margin-right: 5px
+        padding: 2px
+
+        border-radius: 5px
+
+        background-color: #000
+
+        .button__inner
+          display: flex
+          align-items: center
+          justify-content: center
+
+          width: 100%
+          height: 100%
+
+          font-family: $font--futurapt-cm
+          font-size: 22px
+          line-height: 1
+
+          border: 2px solid $color--border
+          border-radius: 5px
+
+          color: #777777
+
+          transition: color .3s

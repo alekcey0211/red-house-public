@@ -1,0 +1,61 @@
+#interactionMenu
+  position: relative
+  z-index: 10
+
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+
+  width: calc(250px + (2 * 210px))
+
+  font-family: 'Din-pro'
+  font-size: 16px
+
+  .group
+    display: flex
+    flex-direction: column
+
+    .hide
+      opacity: 0
+
+  .button
+    position: relative
+    z-index: 10
+
+    width: 210px
+    height: 50px
+
+    margin-bottom: 15px
+    padding: 3px
+
+    background-color: rgba(#000, .8)
+
+    &:not(&--disabled)
+      &:hover
+        .button__inner
+          background-color: rgba(128, 128, 128, .5)
+
+    &--disabled
+      .button__inner
+        color: rgba(128, 128, 128, .5)
+
+    &__inner
+      display: flex
+      align-items: center
+      justify-content: center
+
+      width: 100%
+      height: 100%
+      
+      border: 2px solid rgba(128, 128, 128, .5)
+      
+      line-height: 1
+      
+      color: #fff
+
+      cursor: pointer
+
+      transition: background-color .3s
+        
+
+      

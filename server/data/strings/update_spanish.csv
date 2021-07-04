@@ -1,0 +1,945 @@
+Index,Text
+1,Cabra
+2,Invoca de forma permanente a un atronach de la escarcha.
+3,Invoca a un atronach de la tormenta durante <dur> segundos donde apunte el lanzador.
+4,[...]
+5,Invoca un atronach de la escarcha durante <dur> segundos donde apunte el lanzador.
+6,Invoca de forma permanente a un atronach de las llamas.
+7,Invoca un atronach de las llamas durante <dur> segundos donde apunte el lanzador.
+8,Conjurar esclavo de la escarcha
+9,Conjurar atronach de las llamas
+10,Conjurar atronach de la tormenta
+11,Conjurar atronach de la escarcha
+12,Conjurar esclavo de las llamas
+13,Invoca de forma permanente a un atronach de la tormenta.
+14,Conjurar esclavo de la tormenta
+15,"KINECT, lista de comandos"
+17,"KINECT, uso de los gritos"
+20,El seguidor está demasiado lejos para intercambiar cosas con él.
+21,Kinect no se ha podido iniciar. Asegúrate de que Kinect esté conectado y actualizado. Se han desactivado los comandos de voz.
+22,Kinect no está calibrado. Se han desactivado los comandos de voz. Usa el Configurador de Kinect para calibrar el sonido de Kinect.
+23,Silla de montar
+24,Guardia
+25,Carnicero
+26,Conocimiento antiguo
+27,Efecto de Blanco Vial
+29,Habilidades legendarias
+30,¿Seguro que quieres convertir esta habilidad en legendaria?
+31,"Al convertir una habilidad en legendaria, esta pasa a valer 15 otra vez y se te devuelven sus ventajas. ¿Seguro que quieres hacerlo? "
+32,"Cuando una habilidad llega a 100, puedes convertirla en una habilidad legendaria. La habilidad vuelve a valer 15 y todas las ventajas se convierten en puntos. Convertir una habilidad en legendaria te permite subir de nivel a tu personaje casi indefinidamente."
+33,No se pueden cargar los controles. Se usarán los predeterminados.
+35,No se pueden cargar los ajustes. Se usarán los predeterminados.
+36,Mando desconectado.
+37,Conecta un mando para continuar.
+38,Contenido explícito
+39,Discriminación religiosa
+40,Este mod no puede instalarse porque depende de archivos que no se encuentran presentes.
+41,"¿Denunciar mod por contenido explícito, por ser ofensivo en general o por violaciones del Código de conducta o las Condiciones del servicio?"
+42,Difamación
+43,Modded
+44,Este mod no puede activarse y debería borrarse.
+45,¿Por qué violación de las Condiciones del servicio se está denunciando este mod?
+46,Hay mods cargados. Nota: los logros quedan desactivados. ¿Quieres seguir cargando esta partida guardada?
+47,El mod seleccionado o la orden de carga han cambiado. Se volverán a cargar tus archivos de datos.
+48,"¿Seguro que quieres borrar este mod? Si este mod no está registrado en Bethesda.net, no podrás recuperarlo."
+49,Otro
+50,Spam
+51,Hay descargas en curso. ¿Seguro que quieres salir?
+52,¿Quieres eliminar este mod?
+53,¿Seguro que quieres eliminar todos los mods descargados?
+54,Lenguaje soez
+55,Resultados para '%s'
+56,Acoso
+57,Suplantación de usuario
+58,Discriminación racial
+59,Uso de información privada
+60,Hay mods cargados. Nota: los trofeos quedan desactivados. ¿Quieres seguir cargando esta partida guardada?
+62,Mods
+63,¿Comenzar una partida nueva? Los mods están cargados actualmente. Aviso: los logros están desactivados.
+64,¿Comenzar una partida nueva? Los mods están cargados actualmente. Aviso: los logros están desactivados.
+70,Todas las habilidades mejoran un <10>% más rápido durante <8> horas.
+71,Todas las habilidades mejoran un <15>% más rápido durante <8> horas.
+72,Castillo Severo
+73,Todas las habilidades mejoran un <5>% más rápido durante <8> horas.
+74,Saciar hambre: grande
+75,Saciar hambre: pequeña
+76,[SURV=Reduce <mag> points of Cold.]
+77,Curar frío
+78,[SURV=Reduce <2> points of Hunger.]
+79,[SURV=Reduce <6> points of Hunger.]
+80,Saciar hambre: muy pequeña
+81,[SURV=Reduce <60> points of Hunger.]
+82,[SURV=Warmth is increased by <mag> points for <dur> seconds.]
+83,Reforzar calor
+84,Saciar hambre: mediana
+85,[SURV=Reduce <80> points of Hunger.]
+87,Hogar de la Brisa
+88,Mansión de Vista Lacustre
+89,Mansión de Heljarchen
+97,Te mueves más sigilosamente.
+99,Espérame en la ciudad...
+100,Espera aquí.
+104,Mascota sigilosa
+106,Espérame en casa...
+107,Salón de Vlindrel
+108,Mascota silenciada
+110,¡Ven conmigo!
+113,Botas de los Cuchillas
+115,Hjerim
+117,Lucero del Alba
+119,Aptitudes de mascota
+121,Markarth
+122,Quédate aquí. Este es tu nuevo hogar.
+123,Necesito que lleves algo...
+127,Ventalia
+129,Riften
+130,Mansión Ventera
+131,Soledad
+132,Hibernalia
+133,Villa Melosa
+134,Carrera Blanca
+136,Mansión Espira Orgullosa
+137,Mansión Severin
+138,Falkreath
+139,¡Ven conmigo!
+143,Celda del club de creación
+144,Celda del club de creación
+145,Celda del club de creación
+146,Celda del club de creación
+147,Celda del club de creación
+148,Quick Test Cell
+149,Celda del club de creación
+150,Celda del club de creación
+151,Celda del club de creación
+152,Perro
+153,Quick Test Cell
+154,Puerta
+155,Celda del club de creación
+156,Perro
+157,Celda del club de creación
+158,Quick Test Cell
+159,Celda del club de creación
+160,Quick Test Cell
+161,Quick Test Cell
+162,Entrada
+163,Cosechar
+164,Tallo de fuego
+165,Tallo de fuego
+166,Escama de podredumbre
+167,Cosechar
+168,Tocón vaciado
+169,Escama de podredumbre
+170,Gancho de espina
+171,Cosechar
+172,Gancho de espina
+173,Cosechar
+174,Cosechar
+175,Fauces aullantes
+176,Fauces aullantes
+672,[SURV=No recibe daño al nadar en agua helada.]
+678,Resistencia al agua helada
+776,Brazales de piel
+778,Habla con el jarl de Carrera Blanca
+936,Armadura de hierro bandeado
+1114,Devuélvele el busto del Zorro Gris a Delvin
+1271,Daga de ébano
+1398,Yelmo de placas de dragón
+1412,Consigue acceder a Hjerim
+1560,Sombrero bueno
+1648,Reducto de Bosque Profundo
+1850,Cuenca del Dragón
+2147,¿Sí?
+2544,Bastón de Magnus
+2604,Aédromo de Mzulft
+2775,Diálogo genérico
+2826,Reúnete con Karliah en El jarro ajado
+3308,Aprende la palabra de poder de Einarth
+3342,Lucero del Alba
+3392,Embajada de Thalmor
+3412,¿Tienes una tarea para mí?
+3647,Guanteletes de Renegado
+3710,Morvunskar
+3915,Khajiita
+3943,Cripta del Páramo Gélido
+4001,¿Puedes entrenarme para usar mejor la armadura pesada?
+4003,Roca de la Cuenca
+4107,Armadura penitus oculatus
+4261,Pantalones raídos
+4295,Entrega el objeto (<Alias=QuestItem>) a <Alias.ShortName=QuestGiver>
+4324,Manto de llamas de J'zargo
+4333,Botas de escamas de dragón
+4364,Regenerar magia
+4440,Puedo encargarme.
+4475,Me gustaría invertir en tu negocio.
+4483,Invocación de tormenta
+4658,Villa Melosa
+4686,¿Sí?
+4703,Garganta de Peña Partida
+4922,Herrería
+4964,Elfo oscuro
+5035,Tronco
+5232,Guanteletes de placas de dragón
+5245,Escápate de la embajada de Thalmor
+5255,Llévale la maqueta del barco a Delvin
+5306,Bretón
+5334,Guanteletes de falmer
+5351,Conjunto
+5437,Habla con Karliah
+5498,El camino de la Voz
+5562,Recupera el pomo de la Cuchilla de Mehrunes
+5605,Refugio de Redoran
+5697,Desviar flechas
+5753,¿Sí?
+5966,¿Qué quieres que haga?
+6231,Recupera los fragmentos del filo de la Cuchilla de Mehrunes
+6283,Dedos largos
+6577,Desmembramiento
+6651,Intimida a <Alias=Brute> en <Alias=BruteTown>
+6809,Alto elfo
+6913,Capucha de maestre del gremio
+6981,Explosión acuática
+7140,Tabernero
+7220,Lleva la Luz de Meridia por el templo
+7254,Botas de oficial capa de la tormenta
+7305,Encuentra a Karliah
+7484,Botas de maestre del gremio
+7531,Tambor de Rjorn
+7557,Derrota al espíritu del lobo
+7558,Pon en el fuego la cabeza de la bruja
+7559,Habla con Kodlak
+7564,Ve a la tumba de Ysgramor con el Círculo
+7565,Reúnete con el Círculo
+7566,Dale el último fragmento a Eorlund
+7568,Recupera el fragmento de Kodlak
+7571,Asiste al funeral de Kodlak
+7582,Habla con Saadia
+7584,Lleva a Saadia a los establos de Carrera Blanca
+7586,Ve a ver a Saadia
+7589,Mata a Kematu
+7590,Mata a Kematu o convence a Saadia de que se reúna con él
+7596,Mata a Kematu
+7598,Entra en el escondite de los alik'r
+7599,Hoja de ébano
+7602,Encuentra una manera de entrar en el escondite de los alik'r
+7610,Habla con el prisionero de los alik'r
+7612,Informa a los alik'r de dónde se encuentra Saadia
+7614,Habla con Saadia
+7616,Encuentra a la guardia roja
+7849,Guanteletes de escamas de dragón
+7988,DB07AstridCiceroDeadYesChoice
+8138,El jarro ajado (cisterna)
+8422,Skyrim
+8564,Ve a ver a Brynjolf
+8577,(Opcional) Destroza la preciada urna enana de Bersi
+8579,Cóbrale la deuda a Bersi Mano de Miel
+8585,Cóbrale la deuda a Keerava
+8589,Encuentra a Brynjolf en El jarro ajado
+8598,Habla con <Alias=AuthorityFigure>
+8600,Coge al asesino
+8605,Patrulla el barrio de la Piedra por la noche
+8609,Habla con <Alias=AuthorityFigure>
+8611,Investiga Hjerim con Viola
+8614,Reúnete con Viola en las afueras de Hjerim
+8615,Sigue las pistas que hay por Hjerim
+8617,Busca pistas
+8623,Habla con Helgird
+8624,Examina la escena del delito
+8625,Habla con <Alias=AuthorityFigure>
+8626,Informa a la guardia
+8629,Interroga a los testigos
+8630,Consigue que Jorleif te ayude
+8711,Ve a ver a Brynjolf
+8712,Ve a ver a Maven Espino Negro
+8720,Ve a ver a Sabjorn
+8725,Envenena la cuba de la destilería Amielada
+8727,Envenena el nido
+8729,Habla con Sabjorn
+8760,"El ""bautizo"" del aguamiel"
+8797,Recupera los diarios de Arondil (<Global=FFRiften21JFound>/<Global=FFRiften21JTotal>)
+8803,Entra en el santuario del Velo de la Nieve
+8810,Reúnete con Mercer Frey junto al sagrario del Velo de la Nieve
+8822,Habla con Karliah
+8825,Habla con Enthir
+8831,Ve a ver a Enthir
+8832,Copia lo que hay escrito en la piedra de Calcelmo
+8835,Consigue la guía para traducir falmer de Calcelmo
+8838,Consigue acceder al museo de Calcelmo
+8843,Habla con Enthir
+8859,Habla con Brynjolf
+8864,(Opcional) Habla de Vald con Vex
+8866,(Opcional) Dale al mecanismo para bajar la rampa
+8871,Sigue a Karliah
+8885,La persecución
+8906,Wabbajack
+9098,Hazte con la Cuchilla de Mehrunes
+9103,Habla con Mehrunes Dagon
+9104,Mata a Silo
+9106,Reúnete con Silo en la capilla de Mehrunes Dagon
+9117,Lleva los fragmentos del filo a Silo
+9121,Habla con Silo en su casa
+9128,Fragmentos del pasado
+9178,Ve a ver a <Alias.ShortName=QuestGiver>
+9197,Mano de obra contratada
+9201,Ve a ver a <Alias.ShortName=QuestGiver>
+9294,Ve a ver a Falk Barba de Fuego
+9297,Recupera los restos de Potema
+9299,Túnica del emperador
+9300,Derrota a Potema
+9392,¡Tráeme ese libro!
+9405,Túnica del Colegio
+9430,Mata a los cazadores
+9431,Habla con Hircine
+9434,Despelleja a Sinding
+9435,Mata a Sinding
+9436,Únete a la cacería
+9438,Mata a la gran bestia
+9461,Emboscada nocturna
+9514,Se ha añadido nuevo contenido adicional. Tendrás que reiniciar el sistema para poder usarlo. Se perderán todos los avances que no hayas guardado.
+9518,Sala de Geirmund
+9638,Cerveza
+9678,Consuelo del amante
+9740,Registra Morvunskar en busca de Sam y del bastón
+9741,Dirígete a Morvunskar
+9742,"Devuélvele la alianza a Ysolda, en Carrera Blanca"
+9751,"Habla con Ysolda, en Carrera Blanca"
+9762,Indaga acerca de Sam y el bastón en Paraje de Rorik
+9764,Pide disculpas a la sacerdotisa de Dibella
+9765,Ayuda a limpiar el templo de Dibella
+9768,Encuentra a Sam Guevenne
+9798,Inheritance
+9805,Quick Test Cell
+9861,Habla con Arngeir para seguir entrenándote
+9866,"Demuestra tu grito de ""Torbellino arrollador"""
+9867,Aprende la palabra de poder de Borri
+9872,"Demuestra tu grito de ""Fuerza implacable"" (<Global=MQ105TargetsHit>/<Global=MQ105TargetsTotal>)"
+9874,Habla con Arngeir
+9878,"Demuestra tu grito de ""Fuerza implacable"""
+9881,Habla con los Barbas Grises
+9893,Elfo oscuro
+10035,Descubre cómo derrotar a Alduin
+10159,Despejar cielos
+10237,"Steal, Thugs hunt player"
+10241,Habla con Delphine
+10242,Examina la cámara de tortura
+10246,Busca información sobre el retorno de los dragones
+10249,(Opcional) Recupera tus cosas
+10250,Crea una distracción y aléjate del grupo
+10256,Entrega el equipo a Malborn
+10258,Reúnete con Malborn en Soledad
+10260,Reúnete con Delphine en Cauce Boscoso
+10270,Inmunidad diplomática
+10272,Master WI quest
+10277,Habla con Esbern
+10280,Busca a Esbern en las madrigueras de la Ratonera
+10661,Generic dialogue
+10709,Desarmar de un golpe
+10958,Reforzar herrería
+11098,Lee la nota de Madanach
+11099,Examina el cuerpo de Madanach
+11100,Mata a Madanach
+11106,Mata a Grisvar el Cenizo
+11111,Ve a ver a Madanach
+11113,Habla con Madanach
+11123,Nadie escapa de la mina de Cidhna
+11293,Bersi Mano de Miel
+11305,Interroga a Odahviing
+11308,Pide a Odahviing que vaya a Cuenca del Dragón
+11316,Prepara una trampa para Odahviing
+11317,Aprende el grito para llamar a Odahviing
+11319,Habla con Esbern
+11325,Habla con Arngeir
+11328,Habla con Paarthurnax
+11361,Negocia una tregua
+11375,Habla con Ulfric Capa de la Tormenta
+11376,Habla con el general Tulio
+11379,Habla con Arngeir
+11384,Estación sin fin
+11549,Habla con los héroes de Sovngarde
+11551,Consigue acceder al Salón del Valor
+11552,Sovngarde
+11578,Armadura de Ruiseñor
+11690,Lleva el escudo a Aela
+11692,Entrénate con Vilkas
+11696,Habla con Kodlak Melena Blanca
+11707,Llévale el Ojo del falmer a Delvin
+11713,Llévale el cubo rompecabezas dwemer a Delvin
+11715,Llévale el mapa de rutas del Imperio Oriental a Delvin
+11720,Llévale la jarra de la destilería Amielada a Delvin
+11721,Llévale la estatua de la abeja reina a Delvin
+11731,La letanía del latrocinio
+11740,Habla con el conducto de Boethiah
+11748,Mata al jarl de Soledad
+11752,Mata a los demás adoradores
+11756,Encuentra el culto de Boethiah
+11758,Encuentra la capilla de Boethiah
+11771,La llamada de Boethiah
+11772,Recupera la Quebrantadora del amanecer
+11773,Acaba con Malkoran
+11791,Al alba
+11882,Ve a ver a Quinto Navale
+11886,Encuentra polvo de colmillo de mamut
+11889,Obtén la nieve que no se funde
+12023,Cerveza argoniana
+12150,Respuestas difíciles
+12443,Sombra
+12468,Vuelve a Jorrvaskr
+12469,Recupera el fragmento
+12470,Habla con <Alias=Observer>
+12472,Habla con Skjor
+12483,Muestra de honor
+12485,Sigue a <Alias=Questgiver>
+12488,Hermandad
+12490,Vuelve a Jorrvaskr
+12492,(Opcional) Acaba con la Mano de Plata
+12494,Recupera los fragmentos de Wuuthrad
+12499,Venganza pura
+12640,Lleva azúcar lunar a Ri'saad
+12851,Criminal huido
+12982,Entrega la gema de alma a Arniel
+12986,Calienta el convector
+12991,La empresa de Arniel
+13108,Despeja la cueva Cráneo de Lobo
+13109,Pregunta a Falk Barba de Fuego sobre la cueva Cráneo de Lobo
+13277,Ve a ver a Vex
+13279,Recupera la Corona de Barenziah
+13284,Habla con Vex
+13286,Recupera las Piedras de Barenziah (<Global=TGCrownGemsFound>/<Global=TGCrownGemsTotal>)
+13288,Conviértete en un miembro de pleno del gremio de ladrones
+13375,Sombrero
+13522,Recompensa: dragón
+13541,Encounter Combat Dialogue
+13680,Capucha del gremio de ladrones
+13785,Cobra la recompensa de <Alias=Steward>
+13787,Mata al líder bandido de <Alias=BountyLocation>
+13789,Recompensa: jefe bandido
+13790,"Sí, Cicerón ha muerto."
+13884,Tengo mis razones.
+14010,Salón de Jorrvaskr
+14017,Mata al líder de <Alias=BountyLocation>
+14019,Recompensa: perjuro
+14020,Cobra la recompensa de <Alias=Steward>
+14022,Mata al gigante de <Alias=BountyLocation>
+14026,Recompensa: gigante
+14124,Cobra la recompensa de <Alias=Steward>
+14233,Yelmo de cristal
+14271,Pergamino: esclavo de la escarcha
+14333,Lleva una escama y un hueso de dragón a Esbern
+14654,Habla con Enthir
+14660,Solicitud de Onmund
+14802,Busca un objeto (<Alias=QuestItem>) dentro de <Alias=Dungeon>
+14835,Entra en el túmulo de Yngvild
+14836,Jugando con los muertos
+14861,Guantes del gremio de ladrones
+14922,No quede piedra sin remover
+14994,Thalmor contra jugador
+15007,Yelmo de oficial capa de la tormenta
+15010,Cazarrecompensas contra Jugador
+15250,Manipulador de perista del gremio de ladrones
+15252,Ve a ver a Tonilia
+15259,Misión de perista de caravana del gremio de ladrones
+15279,Encuentra el laúd de Finn
+15286,Devuelve la flauta de Pantea
+15288,Flauta de Pantea
+15291,Encuentra el Tambor de Rjorn
+15292,Torre Blanca y Dorada
+15374,Lleva el ídolo a la Forja Interior
+15383,Ídolos de Hircine
+15707,Gruta del Hombre Hinchado
+15742,Raza de dragón
+15792,Botas de cristal
+15911,Habla con el conducto de Boethiah
+15978,Ira del antepasado
+16068,Sobre ese mensaje del general...
+16093,Reparar el Vial
+16359,Daño sangrante
+16470,Guantes de Ruiseñor
+16810,Despejar cielos
+16828,Soledad
+16853,Entrega los restos de Potema a Styrr
+17141,Oghma Infinium
+17213,Cofre
+17337,Siéntate
+17476,Cueva hedionda
+17602,La piedra del Corcel
+17743,Poción de Esbern
+17769,Yelmo daédrico
+17862,Torres de Locura de Japhet
+17928,Grito: un guardia da el alto
+17943,Recibe una lectura de Olava la Débil
+18069,Botas con vuelta de acero
+18082,Sagrario del Confín Meridional
+18091,Habla con Brynjolf
+18148,Velvet LeChance
+18221,Dale la espada de Vilkas a Eorlund
+18668,¿Sí?
+18815,Soporte para armas izquierdo
+18850,Botas del gremio de ladrones
+19101,Me rindo. Llévame a la cárcel.
+19488,Carrera Blanca
+19870,Daño sangrante
+20047,Capa raída
+20127,Yelmo de escamas de dragón
+20164,Laúd de Finn
+20387,Imperial
+20498,Túnica raída
+20551,Mathies
+20751,Supera a Borkul la Bestia
+21023,Locura de Japhet
+21093,Cueva Cráneo de Lobo
+21106,La mente de un demente
+21492,¿Quién es Avento?
+21582,Ve a ver a Madanach
+21691,Mata al dragón de <Alias=BountyLocation>
+21713,"Vamos, puedes contarme la verdad. (Persuadir)"
+22147,Inicia la cacería
+22342,Pisotón gigante
+22404,Ternera aliñada
+22607,Doncella sensual
+22761,Sigue a Madanach
+22762,Acerca de ese mensaje del jarl...
+22776,Sobre ese mensaje del general...
+22777,Tengo un mensaje importante del general Tulio.
+22800,Háblame de Maven Espino Negro.
+22914,Yelmo de los Cuchillas
+23177,Tengo los materiales que me pediste.
+23212,Despídete de <Alias=Victim>
+23228,He recuperado tu flauta.
+23277,Vestido nupcial
+23338,Brazales de oficial capa de la tormenta
+23547,Capucha del gremio de ladrones
+23721,Pregunta a un prisionero sobre Madanach
+23786,Entonces tengo un mensaje importante para ti.
+23818,Regenerar salud
+24067,Capucha de Ruiseñor
+24117,Conjurar atronach de las llamas
+24251,Botas
+24336,Una rata arrinconada
+24365,Louis Letrush contra matón
+24491,Entrega el bastón a Enthir
+24553,Mansión Espira Orgullosa
+24781,Jorrvaskr
+25000,Villa Melosa
+25260,Hola.
+25310,Locura de Japhet
+25474,Embajada de Thalmor (cuarteles)
+25768,Cuesta del Risco
+25774,Recupera la empuñadura de la Cuchilla de Mehrunes
+26078,(Opcional) Consigue la llave del museo de Calcelmo
+26138,Hogar de la Brisa
+26257,Me alegro de que estés tan contento.
+26493,Armadura de acero
+26633,Armadura de falmer
+26689,Descubre pruebas sobre el paradero de Mercer
+26722,Invocación de tormenta
+26746,Encuentra a la cabra Gleda
+26797,Rescata a <Alias=Victim> de <Alias=Lair>
+26895,Lleva la piedra del pomo a Silo
+27102,Dead Treasure Hunter with instructions
+27125,Casa comunal de Largashbur
+27564,¿Sí?
+27833,"Lleva a la cabra Gleda con Ennis, en Paraje de Rorik"
+28299,Bastión de Helgen
+28304,Effects\FXEmptyObject.nif
+28344,Thieves Guild Radiant Shell
+28503,Armadura imperial tachonada
+28630,Senna
+29000,Yelmo imperial
+29207,Habla con Sinding
+29371,Imperial
+29557,"¿En relación con qué, mi señora?"
+29758,"Quien calla, otorga"
+29844,Stros M'Kai Rum
+30131,Encuentra la alianza en la arboleda de Bruma Embrujada
+30184,Cofre
+30324,Ver contenido adicional disponible
+30685,Argoniano
+30792,La Ratonera
+30920,Sangre y hielo
+30949,Manto de llamas
+31160,Grito desalentador
+31277,(Opcional) Roba la estatua de Dibella de Haelga
+31348,Habla con Mallo Maccio
+31440,Dale los fragmentos de Wuuthrad a Eorlund
+31607,Grito desalentador
+31807,Sustituye la Luz
+31816,¿Sí?
+31960,Habla con Calcelmo
+32211,Habla con Brynjolf
+32609,Daño sangrante
+32638,Armadura de placas de dragón
+32762,Conjurar atronach de la tormenta
+32836,Elfo del bosque
+33267,Armadura de escamas de dragón
+33409,Cóbrale la deuda a Haelga
+33751,Lleva la Luz de Meridia al monte Kilkreath
+33867,Brazales penitus oculatus
+33952,A las armas
+33955,Habla con Styrr
+34349,Infíltrate en la casa de Mercer
+34395,Ysolda
+34402,Encuentra el bastón
+34531,Será un honor aceptar.
+34884,Vino de Alto
+34886,Reforzar magia
+34966,Karliah
+34969,"Anda, toma y dime la verdad. (<BribeCost> de oro)"
+35220,Catacumbas de Kilkreath
+35235,Habla con Mallo Maccio
+35315,Botas buenas
+35328,Debilidad a la luz del sol
+35329,Guanteletes de acero nórdico
+35485,Lleva la empuñadura a Silo
+35527,Armadura daédrica
+35681,Asiste a la ceremonia de cata
+35753,Guardia rojo
+36144,Harmugstahl
+36263,Templo de la Visita Nocturna
+36328,Guanteletes orcos
+36369,"Pensándolo bien, quizá invierta en otra ocasión."
+36411,Coge la alianza
+36512,Vergüenza de Haemar
+36722,Louis Letrush
+36753,Bodega de Sombra Errática
+37042,Cripta abandonada
+37056,Lo haré.
+37065,Daño sangrante
+37449,Una noche inolvidable
+37453,Armadura de los Cuchillas
+37481,DialogueRiftenGoodbyes
+37903,(Opcional) Utiliza a Talen-Jei para llegar hasta Keerava
+37922,A ver qué puedes hacer con esto. (<Global=InvestAmount> de oro)
+38050,"Espera, ¿quieres que haga esto sin ayuda?"
+38089,Botas de piel
+38458,Alto elfo
+38528,Botas forradas de piel
+38539,Encuentra el bastón para Enthir
+38595,¿Y ahora que ha regresado Potema?
+38602,Falk me ha enviado a hablar contigo acerca de Potema.
+38707,Armadura de oficial capa de la tormenta
+38897,Tengo este obsequio para ti.
+38900,Me han dicho que podías ver mi futuro.
+38915,¿Alguna cosa más?
+38927,Guardia rojo
+39293,Ve a ver a Vekel.
+39619,Encuentra la Luz de Meridia
+40020,Hjerim
+40394,Escapa de la mina de Cidhna
+40407,Vino de Alto
+40503,Cripta de Folgunthur
+41021,Desmembramiento
+41053,Distrito inferior de Bthardamz
+41061,El hombre de la falsa alarma
+41137,Botas de Ruiseñor
+41185,Coloca la gema de alma deformada en un convector
+41208,Mata sigilosamente a cuantos haya en <Alias=Dungeon>
+41292,Sobre ese mensaje de Ulfric...
+41436,Escolta a <Alias=Victim> hasta su casa (<Alias=VictimHome>)
+41778,¿Quién es Avento?
+41783,Reforzar salud
+41795,¿Quién es Avento?
+41891,Cabeza
+41951,Mata al criminal huido
+42133,Armadura de maestre del gremio
+42165,Armadura del gremio de ladrones
+42313,Atuendo de minero
+42691,WhiterunOlavaReadingTopic1
+42733,Averigua quién es la silenciosa compañera de Sabjorn
+42753,Cueva de Tolvald
+42754,Asolador de acantilados
+42870,Caverna de Pico Pineda
+43551,Botas de falmer
+43720,Palacio de los reyes
+44114,Recupera la Cota de ébano y póntela
+44480,Botas penitus oculatus
+44502,Palacio de los reyes: piso superior
+44852,Nórdico
+44887,Quiero que me entrenes en alquimia.
+44932,El despertar de la Reina Loba
+45037,Conjurar atronach de la escarcha
+45671,Escucha la historia de Braig
+45865,Pergamino: esclavo de la tormenta
+46143,Vino
+46272,Habla con Sinding
+46375,Lisbet
+46457,Desmembramiento
+46547,Túnica del Colegio con manto
+46581,Botas daédricas
+46662,Despejar cielos
+46980,Orco
+47147,Coge un corazón de Renegado
+47493,Armadura de cristal
+47497,Hoja del sacrificio
+47720,Gracias.
+48119,¿Puedo hacer algo para ayudar a Riften?
+48120,Consigue la ayuda de los Barbas Grises para negociar una tregua
+48203,Ventalia
+48802,Mata a Kematu o habla con él
+48846,A cargo del negocio
+48912,Invocar fantasma
+48999,Capucha de mago
+49030,Derrota y atrapa a Odahviing
+49322,Brandy cirodílico
+49460,Pureza
+49545,Paralizar
+49758,Sigue a Farkas hasta tus aposentos
+50340,Talen-Jei
+50349,Bretón
+50362,Escudo de falmer
+50844,Guantes del gremio de ladrones
+50859,"Para utilizar el contenido adicional asociado a este perfil, tendrás que reiniciar el sistema."
+51203,Argoniano
+51360,Habla con Kodlak
+51379,Se ha alcanzado el número máximo de partidas guardadas. Borra las antiguas para poder crear una nueva.
+51439,Ruinas glaciales de Alftand
+51868,Aguamiel de la destilería Amielada
+51912,¿Sí?
+52072,He matado a <Alias=DeadFriend> para ganar tu favor.
+52182,Encuentra la copia de <Alias=Book>
+52372,Armadura del gremio de ladrones
+52625,¿Sí?
+52709,El juego debe reiniciarse ahora porque se ha eliminado el contenido adicional.
+52900,Cobra la recompensa de <Alias=Steward>
+52927,Habla con <Alias=Victim>
+52966,Habla con Malborn
+53049,Botas orcas
+53186,Recupera la gema de alma
+53276,Jugador
+53427,Lobo de foso
+53489,Escudo de los Cuchillas
+53748,Riften
+53820,Habla con Mehrunes Dagon
+54076,Tocado de Renegado
+54087,Reforzar alquimia
+54101,Yelmo orco
+54413,"Revenge, Hired Thugs"
+54463,Habla con <Alias=Questgiver>
+54489,Respiro del Muerto
+54508,Informa a los alik'r de dónde se encuentra Saadia
+54948,Investigación sobre dragones
+55012,Elfo del bosque
+55108,Invocación de tormenta
+55234,¿Quién es Avento?
+55410,Entrega el laúd de Finn a Inge
+55557,Armadura dorada élfica
+55690,Nórdico
+55730,Entrega el amuleto a Onmund
+55757,Animacultorio de Alftand
+55821,Daño sangrante
+55833,Túnica de arpillera
+55850,Lleva el libro a Urag gro-Shub
+55876,Atuendo de minero
+55941,Yelmo penitus oculatus
+56165,Aposentos del jarl de Cuenca del Dragón
+56304,Efecto del Bastón de Magnus
+56487,El jarl Ulfric Capa de la Tormenta me ha pedido que te entregue esta hacha.
+56526,Cofre
+56645,Mzulft
+56698,Reúnete con Delphine en los establos
+56929,Botas raídas
+57027,Guanteletes de los Cuchillas
+57087,¿Sí?
+57259,Armadura orca
+57290,Yelmo de acero
+57314,Cubrepiés
+57373,Daño sangrante
+57395,Soporte para armas derecho
+57406,Vuelve a forjar la Cuchilla de Mehrunes
+57427,Vino
+57509,Ennis
+57684,Armadura de piel
+58024,Habla con Falk Barba de Fuego
+58453,Hacha del verdugo
+58524,Cueva del Nonato
+58592,Zapatos de piel
+58712,Templo de las Cataratas Lúgubres
+58825,Yelmo de piel
+58867,Daño sangrante
+58964,Palacio de los reyes: piso superior
+59026,Laberintia
+59030,Daño sangrante
+59076,Embajada de Thalmor (solario de Elenwen)
+59111,Conjunto
+59199,Ropas buenas
+59302,Llamada de lo salvaje
+59531,Adentrarse en la mazmorra (jarl: cuevas)
+59594,La gloria de los muertos
+59746,Vino especiado
+59810,Aguamiel nórdica
+59869,Bodega
+59871,Guantes de maestre del gremio
+59958,Salón de la Conquista
+59961,Catacumbas de Valthume
+60063,Balmora azul
+60090,Sepulcro del Crepúsculo
+60095,Salón de la Tolerancia
+60113,Daño sangrante
+60142,Vald
+60383,El caído
+60506,Daño sangrante
+60524,La piedra del Corcel
+60539,Regenerar aguante
+60580,Guanteletes daédricos
+60605,Locura de Japhet
+60664,Pergamino: esclavo de las llamas
+60734,El jarro ajado
+60778,Salón de Vlindrel
+60790,Reforzar aguante
+61135,Efecto del Bastón de Magnus
+61204,Entrega el Tambor de Rjorn a Giraud
+61361,Khajiita
+61605,Eres muy joven para ser un herrero.
+61627,Reflejos rápidos
+61866,Guanteletes de piel
+62133,Botas del gremio de ladrones
+62181,Orco
+62471,"Lleva la gema poco común a Vex, en el gremio de ladrones"
+62729,Thieves Guild Dialogue
+62764,Armadura de Renegado
+62943,Potenciadores de habilidad
+63087,Habla con Maven Espino Negro
+63193,Habla con Quinto Navale
+63210,He comprado Villa Melosa.
+63280,En tiempos de necesidad
+63349,Grito desalentador
+63387,Volunruud
+63400,Encuentra la flauta de Pantea
+63732,Túnica de archimago
+63957,Yelmo de falmer
+63999,Investigación sobre dragones
+64225,Botas de placas de dragón
+64235,¿Sí?
+64292,Poción de Esbern
+64374,Daño sangrante
+64420,Habla con Arngeir
+64448,Lleva a alguien a la capilla para que quede atrapado ahí y mátalo
+64513,Misión de rescate
+64534,Botas de Renegado
+64610,Ganzúa
+64682,Busca la guarida de Esbern en la Ratonera
+64936,Ventalia
+65380,Recupera el ídolo de Hircine
+65482,Entra en la cámara funeraria
+65531,DCETAttack
+65538,Markarth
+65706,Prendas elegantes de Ropajes Radiantes
+65805,Devuélvele Wuuthrad a Ysgramor
+65868,Guanteletes de los dioses antiguos
+65984,Louis
+66019,Yelmo de los dioses antiguos
+66070,Armadura de los dioses antiguos
+66322,Botas de los dioses antiguos
+66491,Dragón
+66713,Hoja de ébano
+66818,Debilidad a la luz del sol
+67089,Canibalismo
+67212,Debilidad a la luz del sol
+67228,Cobra la recompensa de <Alias=Jarl>
+67311,Vino de Jessica
+67546,Armadura de acero
+67630,Debilidad a la luz del sol
+67821,Cobra la recompensa de <Alias=Jarl>
+68317,Alimentar
+68396,Cobra la recompensa de <Alias=Jarl>
+68458,Botas con espinillera de acero
+68526,Cobra la recompensa de <Alias=Jarl>
+68551,Yelmo de acero con cuernos
+68556,Guanteletes imperiales de acero
+68889,Ropas buenas
+68920,Movimiento
+68922,Movimiento
+69128,Limpiar el desastre de ese asesino. (<Global=HDWindhelmKiller> de oro)
+69207,Bien descansado
+69266,Guantes de Ruiseñor
+69311,Capucha de Ruiseñor
+69393,Botas de Ruiseñor
+69429,Botas de Ruiseñor
+69432,Guantes de Ruiseñor
+69490,Descansado
+69499,Capucha de Ruiseñor
+69517,Armadura de Ruiseñor
+69537,Yelmo de cristal de resurgimiento
+69546,Armadura de Ruiseñor
+69642,Sigue a Vilkas
+70133,El vial blanco (lleno)
+70186,El vial blanco (lleno)
+70255,El vial blanco (lleno)
+70271,<Alias=Animal> te está esperando
+70272,<Alias=Follower> te está esperando
+70359,El vial blanco (lleno)
+70368,El vial blanco (lleno)
+70386,El vial blanco (lleno)
+70463,Prisión de Falkreath
+70672,Grilletes de prisionero
+70682,Sangre de serpiente
+70722,Raza de dragón
+70763,Armadura de piel
+70812,Armadura de piel
+70821,Restablecer salud
+70959,Asesino de la Hermandad Oscura enviado para matar al personaje
+70974,Pisotón gigante
+70987,Armadura de piel
+70996,Restaurar aguante
+71086,Túnica negra con capucha
+71091,Túnica de monje con capucha
+71100,Túnica de mago con capucha
+71212,Túnica de mago con capucha
+71222,Derribo del maestro guerrero
+71261,Túnica negra de mago con capucha
+71301,Mensajero entregando un mensaje importante
+71480,Conjunto
+71508,Túnica de nigromante con capucha
+71716,Coloca la gema de alma deformada en el último convector
+71717,Coloca la gema de alma deformada en otro convector
+72274,Efecto del Bastón de Magnus
+72395,Conjunto
+72482,Túnica thalmor con capucha
+72508,Túnica marrón con capucha
+72510,Capucha de mago
+72538,Bien descansado
+72549,Túnica del Colegio con manto
+72698,Descansado
+72704,"Están aquellos que creen que, cuando descienda la noche sobre Skyrim, los hombres lobo se abalanzarán sobre los desprevenidos..."
+72710,Túnica del Colegio
+72748,Aquellos con la sangre del hombre lobo nunca pueden ganar bonificaciones de descanso al dormir.
+72803,Túnica verde con capucha
+72922,Túnica del Colegio con manto
+72940,Consuelo del amante
+72970,Capucha de mago
+72992,Túnica roja con capucha
+72993,Túnica gris con capucha
+74035,Botas élficas de aguante sublime
+74102,"Durante <dur> segundos, los rivales al alcance de cuerpo a cuerpo reciben <8> puntos de daño por fuego cada segundo. Los objetivos ardiendo recibirán daño adicional."
+74142,"Durante <dur> segundos, los oponentes que se acerquen demasiado recibirán <8> puntos por segundo de daño por fuego."
+74188,Aumenta tu salud en <mag> puntos.
+74261,La magia se regenera <mag>% más rápido.
+74290,El aguante se regenera un <mag>% más rápido.
+74300,La salud se regenera un <mag>% más rápido.
+74382,Las armas y armaduras se pueden mejorar un <mag>%.
+74383,+<mag> a la capacidad de carga sin penalización de movimiento por armadura.
+74417,Restaura <mag> puntos de salud por segundo durante <dur> segundos.
+74426,Magia + <mag> puntos.
+74437,Las pociones creadas son un <mag> % más poderosas.
+74449,Aumenta tu aguante en <mag> puntos.
+74466,Botas del Colegio
+74467,Grilletes de prisionero
+74469,Te concede la ventaja Infusión de dragón.
+74549,Restaura <mag> puntos de aguante por segundo durante <dur> segundos.
+74570,Le absorbe al objetivo <mag> puntos de salud por segundo.
+74574,Botas del Colegio
+74577,"Durante <dur> segundos, los rivales al alcance de cuerpo a cuerpo reciben <mag> puntos de daño por fuego por segundo. Los objetivos ardiendo recibirán daño adicional."
+74579,Una ráfaga de Wabbajack con un efecto impredecible. 
+74620,El menú de personaje no está disponible.
+74650,Le absorbe al objetivo <mag> puntos de magia por segundo.
+74933,MaterialWaterPuddle
+74959,MaterialWaterPuddle
+75018,MaterialWaterPuddle
+75191,Grilletes de prisionero
+75200,Túnica de archimago
+75206,Invoca a un dremora durante <dur> segundos.
+75218,Invocar dremora
+75354,Conocimiento antiguo
+75374,Invoca una tormenta durante <dur> segundos con relámpagos que atacan tanto a amigos como a enemigos.
+75377,Invoca una tormenta durante <dur> segundos con relámpagos que atacan tanto a amigos como a enemigos.
+75378,Invoca una tormenta durante <dur> segundos con relámpagos que atacan tanto a amigos como a enemigos.
+75416,Esprint
+75456,He comprado Villa Melosa.

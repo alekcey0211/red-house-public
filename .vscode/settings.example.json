@@ -1,0 +1,13 @@
+{
+  "editor.tabSize": 2,
+  "prettier.useTabs": true,
+  "prettier.singleQuote": true,
+  "files.exclude": {
+    "package-lock.json": true,
+    "skymp5-functions-lib-hive/*": true,
+    "server/data/scripts/*": true
+  },
+  "papyrus.skyrimSpecialEdition.installPath": "c:\\Games\\skymp-workspace\\compiler",
+  "papyrus.skyrim.enabled": false,
+  "papyrus.fallout4.enabled": false
+}

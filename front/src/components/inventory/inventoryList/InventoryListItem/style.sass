@@ -1,0 +1,109 @@
+// Variables
+$color--background: rgba(0, 0, 0, .8)
+$color--border: rgba(128, 128, 128, .5)
+  
+.inventory__item
+  cursor: pointer
+
+  position: relative
+
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  font-size: 20px
+
+  padding-bottom: 12.5px
+
+  transition: color .3s
+
+  &:hover
+    color: #7F7F7F
+
+    .dropdown
+      opacity: 1
+
+  &:last-child
+    padding-bottom: 0px
+
+  .item__icon
+    display: flex
+    align-items: center
+    justify-content: center
+
+    margin-right: 10px
+
+    .icon
+      width: 25px
+      height: 25px
+
+  .item__additional
+    display: flex
+    align-items: center
+    justify-content: center
+
+    margin-left: 6px
+
+    .icon
+      width: 15px
+      height: 15px
+
+  .dropdown
+    position: absolute
+    left: 120px
+    bottom: 0
+    z-index: 9999
+
+    pointer-events: none
+
+    transform: translateY(100%)
+
+    width: 225px
+
+    font-size: 16px
+    text-align: center
+
+    padding: 3px
+
+    background-color: $color--background
+    color: #979797
+
+    opacity: 0
+
+    transition: opacity .5s
+
+    &__inner
+      display: flex
+      flex-direction: column
+      align-items: center
+
+      padding: 20px 15px
+
+      border: 2px solid $color--border
+
+      .value
+        color: #fff
+
+      .dropdown__title
+        font-size: 20px
+
+        color: #fff
+
+      .dropdown__divider
+        height: 1px
+        width: 100%
+
+        margin: 6px 0
+
+        background-color: $color--border
+
+      .dropdown__info
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+
+        width: 100%
+
+      .dropdown__additional
+        margin-top: 5px

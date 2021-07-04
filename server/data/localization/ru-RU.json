@@ -1,0 +1,30 @@
+{
+	"Unknown command": "Неизвестная команда",
+	"smiled": "улыбается",
+	"count online players": "Кол-во игроков в онлайне",
+	"Recipe not found": "Такого рецепта не существует",
+	"Too far away": "Слишком далеко",
+	"cooking": "Кулинария",
+	"I have no firewood": "У меня нет дров",
+	"It seems to me that the fire has weakened": "Мне кажется, что огонь ослаб",
+	"It seems to me that the fire is out": "Мне кажется, что огонь потух",
+	"Congratulations on your purchase of a home!": "Поздравляем, вы приобрели дом!",
+	"You need ": "Вам понадобится ",
+	" gold for this.": " золотых для этого.",
+	"The house is closed.": "Дом закрыт.",
+	"Home": "Дом",
+
+	"Buy Ore": "Купить руду",
+
+	"Iron Ore": "Железная",
+	"Corundum Ore": "Корундовая",
+	"Ebony Ore": "Эбонитовая",
+	"Gold Ore": "Золотая",
+	"Malachite Ore": "Малохитовая",
+	"Moonstone Ore": "Лунная",
+	"Orichalkum Ore": "Орихалковая",
+	"Quicksilver Ore": "Ртутная",
+	"Silver Ore": "Серебряная",
+
+	"Welcome to - ": "Добро пожаловать в "
+}

@@ -1,0 +1,945 @@
+Index,Text
+1,Koza
+2,Przywołuje atronacha lodu na stałe.
+3,"Przywołuje na <dur> s atronacha burzy w miejscu, które wskazuje czarodziej."
+4,[...]
+5,"Przywołuje na <dur> s atronacha lodu w miejscu, które wskazuje czarodziej."
+6,Przywołuje atronacha ognia na stałe.
+7,"Przywołuje na <dur> s atronacha ognia w miejscu, które wskazuje czarodziej."
+8,Przywołanie żywiołaka lodu
+9,Przywołanie atronacha ognia
+10,Przywołanie atronacha burzy
+11,Przywołanie atronacha lodu
+12,Przywołanie żywiołaka ognia
+13,Przywołuje atronacha burzy na stałe.
+14,Przywołanie żywiołaka burzy
+15,"KINECT, lista poleceń"
+17,"KINECT, polecenia głosowe"
+20,Twój towarzysz znajduje się zbyt daleko i nie możesz z nim handlować. 
+21,"Nie udało się uruchomić Kinect. Sprawdź, czy twój Kinect jest podłączony i uaktualniony. Polecenia Kinect zostały wyłączone. "
+22,"Twój Kinect nie został skalibrowany. Polecenia głosowe zostały wyłączone. Użyj tunera Kinect, żeby skalibrować dźwięk Kinect. "
+23,Siodło
+24,Skoczek
+25,Rzeźnik
+26,Prastara wiedza
+27,Efekt Białej Ampułki
+29,Umiejętności legendarne
+30,Czy na pewno chcesz zmienić umiejętność w legendarną?
+31,Zmiana umiejętności w legendarną spowoduje modyfikację jej wartości do 15 oraz usunięcie jej cech. Kontynuować?
+32,Umiejętność możesz zmienić w legendarną kiedy jej wartość osiągnie 100. Efektem modyfikacji będzie redukcja tej wartości do 15 oraz zamiana wszystkich cech na punkty cech. Umiejętności legendarne pozwalają na zdobycie niemalże nieskończonej liczby poziomów.
+33,Nie udało się załadować ustawień sterowania. Zostaną użyte domyślne.
+35,Nie udało się załadować ustawień. Zostaną użyte domyślne.
+36,Kontroler jest odłączony.
+37,"Proszę podłączyć kontroler, aby kontynuować."
+38,Zawartość tylko dla dorosłych
+39,Dyskryminacja na tle religijnym
+40,"Tego moda nie można zainstalować, ponieważ wymaga on plików, których nie posiadasz."
+41,"Zaraportować tego moda za zawartość dla dorosłych, ogólną obraźliwość lub naruszenie zasad postępowania/warunków świadczenia usług?"
+42,Oczernianie
+43,Modded
+44,"Nie można aktywować tego moda, proszę go usunąć."
+45,Jakie warunki świadczenia usług narusza ten mod?
+46,Mody są obecnie wczytane. Uwaga: Osiągnięcia będą wyłączone. Chcesz kontynuować wczytywanie tego zapisu?
+47,Kolejność wyboru/wczytywania modów uległa zmianie. Gra przeładuje teraz twoje pliki danych.
+48,"Na pewno chcesz usunąć ten mod? Jeśli nie jest on zarejestrowany na Bethesda.net, nie będzie można go odzyskać."
+49,Inne
+50,Spam
+51,Pobieranie jest cały czas w toku. Na pewno chcesz wyjść?
+52,Czy chcesz usunąć ten mod?
+53,Czy na pewno chcesz usunąć wszystkie pobrane mody?
+54,Wulgarność
+55,Wyniki: '%s'
+56,Nękanie
+57,Podszywanie się pod użytkownika
+58,Dyskryminacja na tle rasowym
+59,Wykorzystywanie danych prywatnych
+60,Mody są obecnie wczytane. Uwaga: Trofea będą wyłączone. Chcesz kontynuować wczytywanie tego zapisu?
+62,Mody
+63,Rozpocząć nową grę? Mody są obecnie wczytane. Uwaga: Osiągnięcia będą wyłączone.
+64,Rozpocząć nową grę? Mody są obecnie wczytane. Uwaga: Osiągnięcia będą wyłączone.
+70,Wszystkie umiejętności wzrastają o <10>% szybciej przez <8> godz.
+71,Wszystkie umiejętności wzrastają o <15>% szybciej przez <8> godz.
+72,Zamek Dour
+73,Wszystkie umiejętności wzrastają o <5>% szybciej przez <8> godz.
+74,Duże zaspokojenie głodu
+75,Małe zaspokojenie głodu
+76,[SURV=Zmniejsza zimno o <mag> pkt.]
+77,Przywrócenie zimna
+78,[SURV=Zmniejsza głód o <2> pkt.]
+79,[SURV=Zmniejsza głód o <6> pkt.]
+80,Bardzo małe zaspokojenie głodu
+81,[SURV=Zmniejsza głód o <60> pkt.]
+82,[SURV=Zwiększa ciepło o <mag> pkt. przez <dur> s.]
+83,Premia do ciepła
+84,Średnie zaspokojenie głodu
+85,[SURV=Zmniejsza głód o <80> pkt.]
+87,Wietrzny Domek
+88,Dwór nad Jeziorem
+89,Dom Heljarchen
+97,Poruszasz się ciszej.
+99,Zaczekaj na mnie w mieście...
+100,Zaczekaj tu.
+104,Skryty zwierz
+106,Poczekaj na mnie w domu...
+107,Dwór Vlindrel
+108,Cichy zwierz
+110,Chodź ze mną!
+113,Buty Ostrzy
+115,Hjerim
+117,Gwiazda Zaranna
+119,Zdolności zwierzęcia
+121,Markart
+122,Zostań tutaj. Od teraz to twój dom.
+123,Musisz coś ponieść...
+127,Wichrowy Tron
+129,Pęknina
+130,Posiadłość Windstad
+131,Samotnia
+132,Zimowa Twierdza
+133,Miodowe Zbocze
+134,Biała Grań
+136,Posiadłość Dumna Wieżyca
+137,Posiadłość Severinów
+138,Falkret
+139,Chodź ze mną!
+143,Creation Club Cell
+144,Creation Club Cell
+145,Creation Club Cell
+146,Creation Club Cell
+147,Creation Club Cell
+148,Quick Test Cell
+149,Creation Club Cell
+150,Creation Club Cell
+151,Creation Club Cell
+152,Pies
+153,Quick Test Cell
+154,Drzwi
+155,Creation Club Cell
+156,Pies
+157,Creation Club Cell
+158,Quick Test Cell
+159,Creation Club Cell
+160,Quick Test Cell
+161,Quick Test Cell
+162,Wejście
+163,Zbierz
+164,Płomienna łodyga
+165,Płomienna łodyga
+166,Łuska gnilna
+167,Zbierz
+168,Wydrążony pniak
+169,Łuska gnilna
+170,Hak z cierniami
+171,Zbierz
+172,Hak z cierniami
+173,Zbierz
+174,Zbierz
+175,Wyjąca paszcza
+176,Wyjąca paszcza
+672,[SURV=Umożliwia pływanie w lodowatej wodzie.]
+678,Odporność na lodowatą wodę
+776,Futrzane karwasze
+778,Pomów z jarlem Białej Grani
+936,Żelazna okuta zbroja
+1114,Zanieś popiersie Szarego Lisa do Delvina
+1271,Ebonowy sztylet
+1398,Smoczy płytowy hełm
+1412,Dostań się do Hjerim
+1560,Porządne nakrycie głowy
+1648,Reduta Kniei
+1850,Smocza Przystan 
+2147,Tak?
+2544,Laska Magnusa
+2604,Aedrom w Mzulft
+2775,Ogólna rozmowa
+2826,Spotkaj się z Karliah w Wyszczerbionej Bani
+3308,Naucz się Słowa Mocy od Einartha
+3342,Gwiazda Zaranna
+3392,Ambasada Thalmoru
+3412,Masz dla mnie zadanie?
+3647,Rękawice Renegatów
+3710,Morvunskar
+3915,Khajiit
+3943,Oszroniona Krypta
+4001,"Możesz mi pokazać, jak lepiej korzystać z ciężkich pancerzy?"
+4003,Skała Wartkiego Nurtu
+4107,Zbroja Penitus Oculatus
+4261,Poszarpane spodnie
+4295,<Alias.ShortName=QuestGiver> ma otrzymać przedmiot <Alias=QuestItem>
+4324,Płaszcz Płomieni J'zargo
+4333,Smocze łuskowe buty
+4364,Regeneracja magii
+4440,Zrobię to.
+4475,Chcę zainwestować w twój biznes.
+4483,Wezwanie Burzy
+4658,Miodowe Zbocze
+4686,Tak?
+4703,Rozpadlina Rozdartej Skały
+4922,Kowalstwo
+4964,Mroczny elf
+5035,Tułów
+5232,Smocze płytowe rękawice
+5245,Ucieknij z ambasady Thalmoru
+5255,Zanieś model okrętu do Delvina
+5306,Breton
+5334,Falmerskie rękawice
+5351,Pełen zestaw
+5437,Pomów z Karliah
+5498,Droga Głosu
+5562,Odzyskaj głowicę Brzytwy Mehrunesa
+5605,Ostoja Redoranów
+5697,Odbijanie strzał 
+5753,Tak?
+5966,Co mam zrobić?
+6231,Odzyskaj odłamki ostrza Brzytwy Mehrunesa
+6283,Zwinne palce
+6577,Rozczłonkowanie
+6651,Osoba o imieniu <Alias=Brute> z miasta zwanego <Alias=BruteTown> ma zostać zastraszona
+6809,Elf wysokiego rodu
+6913,Kaptur Mistrza Gildii
+6981,Wodny wybuch
+7140,Karczmarz
+7220,Poprowadź światło Meridii przez świątynię 
+7254,Buty oficera Gromowładnych
+7305,Odszukaj Karliah
+7484,Buty Mistrza Gildii
+7531,Bęben Rjorna
+7557,Pokonaj wilczego ducha
+7558,Wrzuć głowę wiedźmy do ognia
+7559,Pomów z Kodlakiem
+7564,Idź wraz z Kręgiem do grobowca Ysgramora
+7565,Spotkaj się z Kręgiem
+7566,Oddaj Eorlundowi ostatni fragment
+7568,Odzyskaj fragment należący do Kodlaka
+7571,Idź na pogrzeb Kodlaka
+7582,Pomów z Saadią 
+7584,Zaprowadź Saadię do stajni w Białej Grani
+7586,Wróć do Saadii
+7589,Zabij Kematu
+7590,"Zabij Kematu ALBO przekonaj Saadię, by z nim porozmawiała"
+7596,Zabij Kematu
+7598,Wejdź do kryjówki Alik'rów
+7599,Ebonowe Ostrze
+7602,Znajdź sposób na wejście do kryjówki Alik'rów
+7610,Pomów z więźniem Alik'rem
+7612,"Poinformuj Alik'rów, gdzie przebywa Saadia"
+7614,Pomów z Saadią 
+7616,Odszukaj kobietę redgardzkiego pochodzenia 
+7849,Smocze łuskowe rękawice
+7988,DB07AstridCiceroDeadYesChoice
+8138,Wyszczerbiona Bania - zbiornik
+8422,Skyrim
+8564,Wróć do Brynjolfa
+8577,(Opcjonalnie) Rozbij bezcenną krasnoludzką urnę Bersiego
+8579,Odbierz dług od Bersiego Miodowej-Ręki
+8585,Odbierz dług od Keeravy
+8589,Odszukaj Brynjolfa w Wyszczerbionej Bani
+8598,Porozmawiaj z osobą o imieniu <Alias=AuthorityFigure>
+8600,Schwytaj mordercę 
+8605,Patroluj nocą ulice Kamiennej Dzielnicy
+8609,Porozmawiaj z osobą o imieniu <Alias=AuthorityFigure>
+8611,Z pomocą Violi przeszukaj Hjerim
+8614,Spotkaj się z Violą nieopodal Hjerim
+8615,Idź tropem znalezionym w Hjerim
+8617,Poszukaj śladów
+8623,Porozmawiaj z Helgird
+8624,Zbadaj miejsce zbrodni
+8625,Porozmawiaj z osobą o imieniu <Alias=AuthorityFigure>
+8626,Zgłoś się do straży
+8629,Przesłuchaj świadków
+8630,Uzyskaj wsparcie od Jorleifa
+8711,Wróć do Brynjolfa
+8712,Wróć do Maven Czarnej-Róży
+8720,Wróć do Sabjorna
+8725,Wlej truciznę do kadzi z czerwoniakiem
+8727,Zatruj gniazdo
+8729,Porozmawiaj z Sabjornem
+8760,Na pomoc uciśnionym
+8797,Odzyskaj dzienniki Arondila (<Global=FFRiften21JFound>/<Global=FFRiften21JTotal>)
+8803,Wejdź do Sanktuarium Śnieżnego Woalu
+8810,Spotkaj się z Mercerem Freyem pod Sanktuarium Śnieżnego Woalu
+8822,Pomów z Karliah
+8825,Porozmawiaj z Enthirem
+8831,Wróć do Enthira
+8832,Skopiuj wyryte w kamieniu zapiski Calcelma
+8835,Zdobądź podręcznik Calcelma poświęcony tłumaczeniu języka Falmerów
+8838,Dostań się do muzeum Calcelma
+8843,Pomów z Enthirem
+8859,Pomów z Brynjolfem
+8864,(Opcjonalnie) Porozmawiaj z Vex na temat Valda
+8866,"(Opcjonalnie) Strzel w mechanizm, by opuścić rampę "
+8871,Podążaj za Karliah
+8885,Pościg
+8906,Łabadżak
+9098,Weź Brzytwę Mehrunesa
+9103,Pomów z Mehrunesem Dagonem
+9104,Zgładź Silusa
+9106,Spotkaj się z Silusem przy świątyni Mehrunesa Dagona
+9117,Zanieś odłamki ostrza Silusowi
+9121,Porozmawiaj z Silusem w jego domu
+9128,Fragmenty przeszłości
+9178,"Wracaj do miejsca, w którym przebywa <Alias.ShortName=Questgiver>"
+9197,Osiłek do wynajęcia
+9201,"Wracaj do miejsca, w którym przebywa <Alias.ShortName=Questgiver>"
+9294,Wróć do Falka Ogniobrodego
+9297,Zbierz szczątki Potemy
+9299,Szata cesarza
+9300,Pokonaj Potemę 
+9392,Przynieś mi tę księgę!
+9405,Szata uniwersytecka
+9430,Zabij myśliwych
+9431,Pomów z Hircynem
+9434,Obedrzyj Sindinga ze skóry
+9435,Zabij Sindinga
+9436,Przyłącz się do polowania
+9438,Zabij wielką bestię 
+9461,Księżycowa choroba
+9514,"Pojawiły się nowe dodatki. Aby korzystać z tej zawartości, musisz ponownie uruchomić grę. Utracisz wszystkie niezapisane postępy gry."
+9518,Komnata Geirmunda
+9638,Piwo
+9678,Błogość Kochanka
+9740,Poszukaj Sama i kostura w Morvunskar
+9741,Udaj się do Morvunskar
+9742,Zwróć obrączkę ślubną Ysoldzie z Białej Grani
+9751,Porozmawiaj na temat kostura z Ysoldą z Białej Grani
+9762,Popytaj w Rorikstead o Sama i kostur
+9764,Przeproś kapłanki Dibelli
+9765,Pomóż posprzątać w świątyni Dibelli
+9768,Odszukaj Sama Guevenne
+9798,Dziedzictwo
+9805,Quick Test Cell
+9861,Pomów z Arngeirem na temat dalszego szkolenia
+9866,"Pokaż, jak posługujesz się Krzykiem „Trąba Powietrzna”"
+9867,Niech Borri nauczy cię Słowa Mocy
+9872,Zademonstruj swój Krzyk „Nieugięta Siła” (<Global=MQ105TargetsHit>/<Global=MQ105TargetsTotal>)
+9874,Porozmawiaj z Arngeirem
+9878,Zademonstruj swój Krzyk „Nieugięta Siła”
+9881,Porozmawiaj z Siwobrodymi
+9893,Mroczny elf
+10035,"Dowiedz się, jak pokonać Alduina"
+10159,Czyste Niebiosa
+10237,"Kradzież, rabusie polują na gracza"
+10241,Pomów z Delphine
+10242,przeszukaj salę tortur
+10246,Poszukaj informacji na temat powrotu smoków
+10249,(Opcjonalnie) Odzyskaj swój ekwipunek
+10250,Odwróć uwagę i wymknij się z przyjęcia
+10256,Przekaż Malbornowi wyposażenie
+10258,Spotkaj się z Malbornem w Samotni
+10260,Spotkaj się z Delphine w Rzecznej Puszczy
+10270,List żelazny
+10272,Zadanie Mistrza WI
+10277,Pomów z Esbernem
+10280,Odszukaj Esberna w Labiryncie Szczurzych Nor
+10661,Ogólna rozmowa
+10709,Rozbrojenie tarczą 
+10958,Premia do kowalstwa
+11098,Przeczytaj notatki Madanacha
+11099,Przeszukaj ciało Madanacha
+11100,Zabij Madanacha
+11106,Zabij Grisvara Pechowca
+11111,Wróć do Madanacha
+11113,Porozmawiaj z Madanachem
+11123,Nikt nie ucieknie z kopalni Cidhna
+11293,Bersi Miodowa-Ręka
+11305,Przesłuchaj Odahviinga
+11308,Wezwij Odahviinga do Smoczej Przystani
+11316,Zastaw pułapkę na Odahviinga
+11317,"Naucz się Krzyku, dzięki któremu wezwiesz Odahviinga"
+11319,Pomów z Esbernem
+11325,Pomów z Arngeirem
+11328,Pomów z Paarthurnaxem
+11361,Negocjuj rozejm
+11375,Porozmawiaj z Ulfrikiem Gromowładnym
+11376,Porozmawiaj z generałem Tulliusem
+11379,Pomów z Arngeirem
+11384,Niekończąca się pora roku
+11549,Porozmawiaj z bohaterami Sovngardu
+11551,Uzyskaj dostęp do Komnaty Męstwa
+11552,Sovngard
+11578,Zbroja Słowika
+11690,Oddaj Aeli jej tarczę 
+11692,Trenuj z Vilkasem
+11696,Pomów z Kodlakiem Białowłosym
+11707,Zanieś Oko Falmera do Delvina
+11713,Zanieś dwemerską kostkę-układankę do Delvina
+11715,Zanieś mapę szlaków Kompanii Wschodniocesarskiej do Delvina
+11720,Zanieś karafkę czerwoniaka do Delvina
+11721,Zanieś posążek królowej pszczół do Delvina
+11731,Złodziejska litania
+11740,Pomów z łącznikiem Boethiah
+11748,Zabij jarla Samotni
+11752,Zabij pozostałych wyznawców
+11756,Odszukaj kult Boethiah
+11758,Odszukaj Sanktuarium Boethiah
+11771,Zew Boethiah
+11772,Odzyskaj Przedświt
+11773,Pokonaj Malkorana
+11791,Przedświt
+11882,Wróć do Quintusa Navale
+11886,Znajdź nieco startego kła mamuta
+11889,Zdobądź Nietopniejący Śnieg
+12023,Argoniańskie piwo
+12150,Trudne odpowiedzi
+12443,Cienisty
+12468,Wróć do Jorrvaskr
+12469,Odzyskaj fragment Wuuthrada
+12470,<Alias=Observer> musi z tobą porozmawiać 
+12472,Porozmawiaj ze Skjorem
+12483,Próba honoru
+12485,Niech <Alias=Questgiver> cię poprowadzi
+12488,Bractwo
+12490,Wróć do Jorrvaskr
+12492,(Opcjonalnie) Zgładź wszystkich członków Srebrnej Ręki
+12494,Zbierz fragmenty Wuuthrada
+12499,Zaplanowany odwet
+12640,Dostarcz księżycowy cukier do rąk Ri'saada
+12851,Zbiegły przestępca
+12982,Oddaj klejnot duszy Arnielowi
+12986,Podgrzej konwektor
+12991,Wysiłki Arniela
+13108,Oczyść jaskinię Wilczy Czerep
+13109,Wypytaj Falka Ogniobrodego o jaskinię Wilczy Czerep
+13277,Wróć do Vex
+13279,Odzyskaj Koronę Barenziah
+13284,Pomów z Vex
+13286,Zbierz Kamienie Barenziah (<Global=TGCrownGemsFound>/<Global=TGCrownGemsTotal>)
+13288,Zostań pełnoprawnym członkiem Gildii Złodziei
+13375,Nakrycie głowy
+13522,Nagroda: smok
+13541,Opcje dialogowe walki
+13680,Kaptur Gildii Złodziei
+13785,<Alias=Steward> ma dla ciebie nagrodę 
+13787,Zabij przywódcę bandytów znajdującego się w okolicy miejsca o nazwie <Alias=BountyLocation>
+13789,Nagroda: szef bandytów
+13790,"Tak, Cycero nie żyje."
+13884,Mam swoje powody.
+14010,Kwatery mieszkalne w Jorrvaskr
+14017,Zabij przywódcę miejsca o nazwie <Alias=BountyLocation>
+14019,Nagroda: Renegat
+14020,<Alias=Steward> ma dla ciebie nagrodę 
+14022,Zabij giganta przebywającego w miejscu znanym jako <Alias=BountyLocation>
+14026,Nagroda: gigant
+14124,<Alias=Steward> ma dla ciebie nagrodę 
+14233,Szklany hełm
+14271,Zwój Sługi Mrozu
+14333,Przynieś Esbernowi smoczą łuskę i smoczą kość 
+14654,Pomów z Enthirem
+14660,Prośba Onmunda
+14802,"<Alias=Dungeon> to miejsce, w którym znajduje się <Alias=QuestItem>"
+14835,Wejdź do Kurhanu Yngvild
+14836,Igranie z umarłymi
+14861,Rękawiczki Gildii Złodziei
+14922,Poruszyć niebo i Skyrim
+14994,Thalmorczycy kontra gracz
+15007,Hełm oficera Gromowładnych
+15010,Łowcy nagród kontra gracz
+15250,Kontroler pasera Gildii Złodziei
+15252,Wróć do Tonilii
+15259,Zadanie dla pasera Gildii Złodziei
+15279,Odszukaj lutnię Finna
+15286,Oddaj flet Pantei
+15288,Flet Pantei
+15291,Odszukaj bęben Rjorna
+15292,Biało-złota wieża
+15374,Zabierz totem do Podziemnej Kuźni
+15383,Totemy Hircyna
+15707,Grota Pasibrzucha
+15742,Smocza rasa
+15792,Szklane buty
+15911,Pomów z łącznikiem Boethiah
+15978,Gniew Przodka
+16068,A propos tej wiadomości od generała...
+16093,Naprawa Ampułki
+16359,Osłabienie krwawienia
+16470,Rękawiczki Słowika
+16810,Czyste Niebiosa
+16828,Samotnia
+16853,Oddaj Styrrowi szczątki Potemy
+17141,Oghma Infinium
+17213,Skrzynia
+17337,Zajmij miejsce
+17476,Cuchnąca jaskinia
+17602,Kamień Rumaka
+17743,Mikstura Esberna
+17769,Daedryczny hełm
+17862,Wieże Wybryku Jafeta
+17928,Krzyk - strażnik mówi 'stać'
+17943,Zdobądź wskazówkę od Niedołężnej Olavy
+18069,Stalowe buty z mankietami
+18082,Sanktuarium Południowej Granicy
+18091,Pomów z Brynjolfem
+18148,Aksamitna namiętność
+18221,Przekaż Eorlundowi miecz Vilkasa
+18668,Tak?
+18815,Lewy stojak na broń 
+18850,Buty Gildii Złodziei
+19101,Poddaję się. Weźcie mnie do więzienia.
+19488,Biała Grań 
+19870,Osłabienie krwawienia
+20047,Poszarpana czapka
+20127,Smoczy łuskowy hełm
+20164,Lutnia Finna
+20387,Cesarski
+20498,Poszarpana szata
+20551,Mathies
+20751,Przedostań się przez wrota strzeżone przez Borkula Straszliwego 
+21023,Wybryk Jafeta
+21093,Jaskinia Wilczy Czerep
+21106,Umysł szaleńca
+21492,Kim jest Aventus?
+21582,Wróć do Madanacha
+21691,"Zabij smoka, który zagnieździł się w miejscu znanym jako <Alias=BountyLocation>"
+21713,"No dalej, zrzuć z siebie ten ciężar. (Perswazja)"
+22147,Rozpocznij łowy
+22342,Tupnięcie giganta
+22404,Przyprawiona wołowina
+22607,Zmysłowa niewiasta
+22761,Idź za Madanachem
+22762,A propos tej wiadomości od jarla...
+22776,A propos tej wiadomości od generała...
+22777,Mam ważną wiadomość od generała Tulliusa.
+22800,Opowiedz mi o Maven Czarnej-Róży.
+22914,Hełm Ostrzy
+23177,"Mam materiały, których potrzebujesz."
+23212,Zostaw osobę o imieniu <Alias=Victim>
+23228,Udało mi się odzyskać twój flet.
+23277,Suknia ślubna
+23338,Karwasze oficera Gromowładnych
+23547,Kaptur Gildii Złodziei
+23721,Zapytaj więźnia o Madanacha
+23786,Mam dla ciebie ważną wiadomość.
+23818,Regeneracja zdrowia
+24067,Kaptur Słowika
+24117,Przywołanie Atronacha Ognia
+24251,Buty
+24336,Szczur zapędzony w kąt
+24365,Louis Letrush kontra rabuś
+24491,Zanieś kostur Enthirowi
+24553,Posiadłość Dumna Wieżyca
+24781,Jorrvaskr
+25000,Miodowe Zbocze
+25260,Witaj.
+25310,Wybryk Jafeta
+25474,"Ambasada Thalmoru, koszary"
+25768,Zdradliwy Stok
+25774,Odzyskaj rękojeść Brzytwy Mehrunesa
+26078,(Opcjonalnie) Zdobądź klucz do muzeum Calcelma
+26138,Wietrzny Domek
+26257,"Cieszę się, że się cieszysz."
+26493,Stalowa zbroja
+26633,Falmerska zbroja
+26689,"Dowiedz się, gdzie przebywa Mercer"
+26722,Wezwanie Burzy
+26746,Odszukaj kozę imieniem Gleda
+26797,Uratuj osobę o imieniu <Alias=Victim> z miejsca <Alias=Lair>
+26895,Zanieś głowicę Silusowi
+27102,Martwy łowca skarbów z instrukcjami
+27125,Długi dom Largashbur
+27564,Tak?
+27833,Przyprowadź kozę imieniem Gleda do Ennisa z Rorikstead
+28299,Gród Helgen
+28304,Effects\FXEmptyObject.nif
+28344,Świecąca łuska Gildii Złodziei
+28503,Ćwiekowana cesarska zbroja
+28630,Senna
+29000,Cesarski hełm
+29207,Pomów z Sindingiem
+29371,Cesarski
+29557,"Odnośnie czego, milady?"
+29758,Bez słów
+29844,Rum Stros M'Kai
+30131,Znajdź obrączkę ślubną w Gaju Wiedźm
+30184,Kufer
+30324,Pokaż dostępne dodatki
+30685,Argonianin
+30792,Szczurze Nory
+30920,Krew na lodzie
+30949,Płaszcz Płomieni
+31160,Przerażający Krzyk
+31277,(Opcjonalnie) Ukradnij Heldze posążek Dibelli
+31348,Pomów z Mallusem Macciusem
+31440,Przekaż Eorlundowi fragmenty Wuuthrada
+31607,Przerażający Krzyk
+31807,Zamocuj latarnię 
+31816,Tak?
+31960,Porozmawiaj z Calcelmem
+32211,Pomów z Brynjolfem
+32609,Osłabienie krwawienia
+32638,Smocza płytowa zbroja
+32762,Przywołanie Atronacha Burzy
+32836,Leśny elf
+33267,Smocza łuskowa zbroja
+33409,Odbierz dług od Helgi
+33751,Zanieś latarnię Meridii na górę Kilkret
+33867,Karwasze Penitus Oculatus
+33952,Do broni
+33955,Porozmawiaj ze Styrrem
+34349,Dostań się do domu Mercera
+34395,Ysolda
+34402,Odszukaj kostur
+34531,To będzie dla mnie zaszczyt.
+34884,Wino z Alto
+34886,Premia do magii
+34966,Karliah
+34969,Masz. A teraz powiedz mi prawdę. (<BribeCost> szt. złota)
+35220,Katakumby Kilkret
+35235,Pomów z Mallusem Macciusem
+35315,Porządne buty
+35328,Podatność na światło słoneczne
+35329,Stalowe norskie rękawice
+35485,Zanieś rękojeść Silusowi
+35527,Daedryczna zbroja
+35681,Weź udział w degustacji trunku
+35753,Redgard
+36144,Harmugstahl
+36263,Świątynia Nocnego Zewu
+36328,Orkowe rękawice
+36369,Właściwie to może zainwestuję innym razem.
+36411,Zabierz obrączkę ślubną 
+36512,Hańba Haemaru
+36722,Louis Letrush
+36753,Cienista piwnica
+37042,Opuszczona krypta
+37056,Biorę.
+37065,Osłabienie krwawienia
+37449,Pamiętna noc
+37453,Zbroja Ostrzy
+37481,DialogueRiftenGoodbyes
+37903,"(Opcjonalnie) Wykorzystaj Talen-Jeia, by dotrzeć do Keeravy"
+37922,"Zobaczmy, co możesz zrobić z tym. (<Global=InvestAmount> sztuk złota)"
+38050,"Zaraz, mam tam iść i zrobić to w pojedynkę?"
+38089,Futrzane buty
+38458,Wysoki elf
+38528,Buty lamowane futrem
+38539,Znajdź kostur dla Enthira
+38595,A teraz powróciła?
+38602,"Falk wysłał mnie do ciebie, by porozmawiać o Potemie."
+38707,Zbroja oficera Gromowładnych
+38897,Mam dla ciebie ten znak.
+38900,Podobno potrafisz spojrzeć w przyszłość.
+38915,Coś jeszcze?
+38927,Redgard
+39293,Wróć do Vekela
+39619,Odszukaj latarnię Meridii
+40020,Hjerim
+40394,Wydostań się z kopalni Cidhna
+40407,Wino z Alto
+40503,Krypta Folgunthur
+41021,Rozczłonkowanie
+41053,Uboższa dzielnica Bthardamz
+41061,"Człowiek, który wywołał wilka z lasu"
+41137,Buty Słowika
+41185,Umieść wypaczony klejnot duszy w konwektorze
+41208,Po cichu wymorduj wszystkich w miejscu <Alias=Dungeon>
+41292,A propos tej wiadomości od Ulfrica...
+41436,Zaprowadź osobę o imieniu <Alias=Victim> z powrotem do miejsca <Alias=VictimHome>
+41778,Kim jest Aventus?
+41783,Premia do zdrowia
+41795,Kim jest Aventus?
+41891,Głowa
+41951,Zabij zbiegłego przestępcę 
+42133,Zbroja Mistrza Gildii
+42165,Zbroja Gildii Złodziei
+42313,Ubiór górnika
+42691,WhiterunOlavaReadingTopic1
+42733,Zidentyfikuj cichego wspólnika Sabjorna
+42753,Jaskinia Tolvalda
+42754,Skrzekacz
+42870,Sosnowa Grota
+43551,Falmerskie buty
+43720,Pałac Królów
+44114,Odzyskaj i wdziej Ebonową Kolczugę 
+44480,Buty Penitus Oculatus
+44502,Pałac Królów - górny poziom
+44852,Nord
+44887,Chcę się podszkolić w alchemii.
+44932,Zbudzona Wilcza Królowa
+45037,Przywołanie Atronacha Mrozu
+45671,Wysłuchaj historii Braiga
+45865,Zwój Sługi Burzy
+46143,Wino
+46272,Porozmawiaj z Sindingiem
+46375,Lisbet
+46457,Rozczłonkowanie
+46547,Szata uniwersytecka z peleryną
+46581,Daedryczne buty
+46662,Czyste Niebiosa
+46980,Ork
+47147,Weź serce renegata
+47493,Szklana zbroja
+47497,Ostrze ofiarne
+47720,Dziękuję.
+48119,Mogę jeszcze w czymś pomóc Pękninie?
+48120,Pozyskaj pomoc Siwobrodych w przygotowaniach do negocjacji rozejmowych
+48203,Wichrowy Tron
+48802,Zabij Kematu albo porozmawiaj z nim
+48846,Biznesowe podejście
+48912,Przyzwanie ducha
+48999,Kaptur maga
+49030,Pokonaj i schwytaj Odahviinga
+49322,Cyrodiilska Brandy
+49460,Destylacja
+49545,Paraliż 
+49758,Idź za Farkasem na kwaterę 
+50340,Talen-Jei
+50349,Breton
+50362,Falmerska tarcza
+50844,Rękawiczki Gildii Złodziei
+50859,"Aby używać dodatków powiązanych z tym profilem, musisz ponownie uruchomić grę."
+51203,Argonianin
+51360,Pomów z Kodlakiem
+51379,"Osiągnięto limit zapisów. Skasuj starsze zapisy, żeby móc tworzyć kolejne."
+51439,Lodowe ruiny Alftandu
+51868,Miód Czerwoniak
+51912,Tak?
+52072,"<Alias=DeadFriend> nie żyje, ponieważ pragnę zyskać twoją przychylność."
+52182,Odszukaj egzemplarz księgi zatytułowanej <Alias=Book>
+52372,Zbroja Gildii Złodziei
+52625,Tak?
+52709,"Gra musi uruchomić się ponownie, ponieważ usunięto materiał dodatku."
+52900,Niech <Alias=Steward> wypłaci ci nagrodę 
+52927,Porozmawiaj z osobą o imieniu <Alias=Victim>
+52966,Porozmawiaj z Malbornem
+53049,Orkowe buty
+53186,Zabierz klejnot duszy
+53276,Hazardzista
+53427,Wilk z areny
+53489,Tarcza Ostrzy
+53748,Peknina
+53820,Pomów z Mehrunesem Dagonem
+54076,Nakrycie głowy Renegatów
+54087,Premia do alchemii
+54101,Orkowy hełm
+54413,"Zemsta, najemni rabusie"
+54463,Porozmawiaj z osobą o imieniu <Alias=Questgiver>
+54489,Wytchnienie Umrzyków
+54508,"Poinformuj Alik'rów, gdzie przebywa Saadia"
+54948,Badania nad smokami
+55012,Leśny elf
+55108,Wezwanie Burzy
+55234,Kim jest Aventus?
+55410,Daj Inge lutnię Finna
+55557,Elfia złocona zbroja
+55690,Nord
+55730,Zanieś amulet Onmundowi
+55757,Animunkulatorium Alftandu
+55821,Osłabienie krwawienia
+55833,Szorstka tunika
+55850,Zanieś księgę Uragowi gro-Shubowi
+55876,Ubiór górnika
+55941,Hełm Penitus Oculatus
+56165,Kwatera jarla Smoczej Przystani
+56304,Efekt Laski Magnusa
+56487,Jarl Ulfric Gromowładny poprosił mnie o dostarczenie tobie tego topora.
+56526,Skrzynia
+56645,Mzulft
+56698,Spotkaj się z Delphine przy stajniach
+56929,Poszarpane buty
+57027,Rękawice Ostrzy
+57087,Tak?
+57259,Orkowa zbroja
+57290,Stalowy hełm
+57314,Onuce
+57373,Osłabienie krwawienia
+57395,Prawy stojak na broń 
+57406,Przekuj Brzytwę Mehrunesa
+57427,Wino
+57509,Ennis
+57684,Futrzana zbroja
+58024,Porozmawiaj z Falkiem Ogniobrodym
+58453,Topór kata
+58524,Jaskinia Poronień
+58592,Futrzane trzewiki
+58712,Swiatynia w Czarnyglazie
+58825,Futrzany hełm
+58867,Osłabienie krwawienia
+58964,Pałac Królów - górny poziom
+59026,Labiryntian
+59030,Osłabienie krwawienia
+59076,"Ambasada Thalmoru, salon Elenwen"
+59111,Pełen zestaw
+59199,Porządny ubiór
+59302,Zew dziczy
+59531,Badanie podziemi (Jarl - jaskinie)
+59594,Chwała poległym
+59746,Przyprawione wino
+59810,Norski miód
+59869,Piwnica
+59871,Rękawiczki Mistrza Gildii
+59958,Komnata Osiągnięć 
+59961,Katakumby w Valthume
+60063,Niebieska Balmora
+60090,Grobowiec Zmierzchu
+60095,Komnata Spokoju
+60113,Osłabienie krwawienia
+60142,Vald
+60383,Upadły
+60506,Osłabienie krwawienia
+60524,Kamień Rumaka
+60539,Regeneracja kondycji
+60580,Daedryczne rękawice
+60605,Wybryk Jafeta
+60664,Zwój Sługi Płomieni
+60734,Wyszczerbiona Bania
+60778,Dwór Vlindrel
+60790,Premia do kondycji
+61135,Efekt Laski Magnusa
+61204,Oddaj bęben Rjorna Giraudowi
+61361,Khajiit
+61605,Młodo wyglądasz jak na kowala.
+61627,Szybki refleks
+61866,Futrzane rękawice
+62133,Buty Gildii Złodziei
+62181,Ork
+62471,Udaj się do Gildii Złodziei i pokaż niezwykły klejnot Vex
+62729,Gildia Złodziei: scena rozmowy
+62764,Zbroja Renegatów
+62943,Premia do umiejętności
+63087,Porozmawiaj z Maven Czarną-Różą 
+63193,Pomów z Quintusem Navale
+63210,Miodowe Zbocze należy teraz do mnie.
+63280,Pomoc w potrzebie
+63349,Przerażający Krzyk
+63387,Volunruud
+63400,Znajdź flet Pantei
+63732,Szata arcymaga
+63957,Falmerski hełm
+63999,Badania nad smokami
+64225,Smocze płytowe buty
+64235,Tak?
+64292,Mikstura Esberna
+64374,Osłabienie krwawienia
+64420,Pomów z Arngeirem
+64448,"Przyprowadź osobę, która zostanie uwięziona w świątyni, po czym zabij ją "
+64513,Wyprawa ratunkowa
+64534,Buty Renegatów
+64610,Wytrych
+64682,Zbadaj Szczurze Nory w poszukiwaniu kryjówki Esberna
+64936,Wichrowy Tron
+65380,Odzyskaj totem Hircyna
+65482,Dostań się do komnaty pogrzebowej
+65531,DCETAttack
+65538,Markart
+65706,Lśniąca Szata - szykowny strój
+65805,Zwróć Wuuthrad Ysgramorowi
+65868,Rękawice Starych Bóstw
+65984,Louis
+66019,Hełm Starych Bóstw
+66070,Zbroja Starych Bóstw
+66322,Buty Starych Bóstw
+66491,Smok
+66713,Ebonowe Ostrze
+66818,Podatność na światło słoneczne
+67089,Kanibalizm
+67212,Podatność na światło słoneczne
+67228,"<Alias=Jarl> ma dla ciebie nagrodę, odbierz ją "
+67311,Wino Jessiki
+67546,Stalowa zbroja
+67630,Podatność na światło słoneczne
+67821,Niech <Alias=Jarl> wypłaci ci nagrodę 
+68317,Pożyw się
+68396,"<Alias=Jarl> ma dla ciebie nagrodę, odbierz ją "
+68458,Stalowe wysokie buty
+68526,"<Alias=Jarl> ma dla ciebie nagrodę, odbierz ją "
+68551,Stalowy rogaty hełm
+68556,Stalowe cesarskie rękawice
+68889,Porządny ubiór
+68920,Ruch
+68922,Ruch
+69128,Posprzątaj bajzel tego mordercy. (<Global=HDWindhelmKiller> sztuk złota)
+69207,Postać dobrze wypoczęta
+69266,Rękawiczki Słowika
+69311,Kaptur Słowika
+69393,Buty Słowika
+69429,Buty Słowika
+69432,Rękawiczki Słowika
+69490,Postać wypoczęta
+69499,Kaptur Słowika
+69517,Zbroja Słowika
+69537,Szklany helm odrodzenia
+69546,Zbroja Słowika
+69642,Idź za Vilkasem
+70133,Biała Ampułka (pełna)
+70186,Biała Ampułka (pełna)
+70255,Biała Ampułka (pełna)
+70271,<Alias=Animal> na ciebie czeka
+70272,<Alias=Follower> na ciebie czeka
+70359,Biała Ampułka (pełna)
+70368,Biała Ampułka (pełna)
+70386,Biała Ampułka (pełna)
+70463,Więzienie w Falkret
+70672,Kajdany więźnia
+70682,Wężowa krew
+70722,Smocza rasa
+70763,Futrzana zbroja
+70812,Futrzana zbroja
+70821,Przywracanie zdrowia
+70959,"Zabójca Mrocznego Bractwa wysłany, by zabić postać gracza"
+70974,Tupnięcie giganta
+70987,Futrzana zbroja
+70996,Przywrócenie kondycji
+71086,Czarna szata z kapturem
+71091,Szata mnicha z kapturem
+71100,Szata maga z kapturem
+71212,Szata maga z kapturem
+71222,Mistrz wojny - obalenie
+71261,Szata czarnego maga z kapturem
+71301,Kurier dostarczający ważną wiadomość 
+71480,Pełen zestaw
+71508,Szata nekromanty z kapturem
+71716,Umieść wypaczony klejnot duszy w ostatnim konwektorze
+71717,Umieść wypaczony klejnot duszy w innym konwektorze
+72274,Efekt Laski Magnusa
+72395,Pełen zestaw
+72482,Thalmorska szata z kapturem
+72508,Brązowa szata z kapturem
+72510,Kaptur maga
+72538,Postać dobrze wypoczęta
+72549,Szata uniwersytecka z peleryną
+72698,Postać wypoczęta
+72704,"Niektórzy uważają, że gdy noc pochłania Skyrim, wilkołaki rzucają się na nieostrożnych..."
+72710,Szata uniwersytecka
+72748,"Osoby, w których żyłach płynie krew wilkołaka, nie otrzymują premii do wypoczęcia ze snu."
+72803,Zielona szata z kapturem
+72922,Szata uniwersytecka z peleryną
+72940,Błogość Kochanka
+72970,Kaptur maga
+72992,Czerwona szata z kapturem
+72993,Szara szata z kapturem
+74035,Elfie buty wybitnej kondycji
+74102,Przez <dur> s zadaje celom w zasięgu broni do walki wręcz <8> pkt. obrażeń od ognia na sekundę. Płonące cele otrzymują dodatkowe obrażenia.
+74142,Na <dur> s zanadto zbliżający się przeciwnicy będą ponosić <8> pkt. obrażeń od ognia na sekundę.
+74188,Zwiększa zdrowie o <mag> pkt.
+74261,Regeneracja magii przyśpieszona o <mag>%.
+74290,Regeneracja kondycji przyśpieszona o <mag>%.
+74300,Regeneracja zdrowa przyśpieszona o <mag>%.
+74382,Możesz ulepszać broń i pancerze o <mag>% lepiej.
+74383,"+<mag> do udźwigu, a pancerz nie utrudnia poruszania się."
+74417,Przywraca <mag> pkt. zdrowia na sekundę przez <dur> s.
+74426,Zwiększa magię o <mag> pkt.
+74437,Tworzone mikstury są o <mag>% potężniejsze.
+74449,Zwiększa kondycję o <mag> pkt.
+74466,Buty uniwersyteckie
+74467,Kajdany więźnia
+74469,Daje ci cechę smoczy napar.
+74549,Przywraca <mag> pkt. kondycji na sekundę przez <dur> s.
+74570,Wchłania <mag> pkt. zdrowia celu na sekundę.
+74574,Buty uniwersyteckie
+74577,Zadaje celom w zasięgu broni do walki wręcz <mag> pkt. obrażeń od ognia na sekundę. Płonące cele odnoszą dodatkowe obrażenia.
+74579,"Strzał z Łabadżaka, efekt nie do przewidzenia. "
+74620,Menu postaci niedostępne.
+74650,Wchłania <mag> pkt. magii celu na sekundę.
+74933,MaterialWaterPuddle
+74959,MaterialWaterPuddle
+75018,MaterialWaterPuddle
+75191,Kajdany więźnia
+75200,Szata arcymaga
+75206,Przywołuje na <dur> s dremorę.
+75218,Przywołanie dremory
+75354,Prastara wiedza
+75374,"Przywołuje na <dur> s burzę z piorunami, które uderzają zarówno w sojuszników, jak i we wrogów."
+75377,"Przywołuje na <dur> s burzę z piorunami, które uderzają zarówno w sojuszników, jak i we wrogów."
+75378,"Przywołuje na <dur> s burzę z piorunami, które uderzają zarówno w sojuszników, jak i we wrogów."
+75416,Sprint
+75456,Miodowe Zbocze należy teraz do mnie.

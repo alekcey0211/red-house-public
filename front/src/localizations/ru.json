@@ -1,0 +1,13 @@
+{
+  "currentLanguage": "Русский",
+  "testData": "тестовые данные",
+  "interface": {
+    "settings": {
+      "animations": "Анимации",
+      "settings": "Настройки",
+      "character": "Персонаж",
+      "skills": "Дерево навыков",
+      "language": "Язык"
+    }
+  }
+}

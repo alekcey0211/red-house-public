@@ -1,0 +1,70 @@
+## Description
+
+Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
+
+## Installation
+
+- install [Papyrus lang for VS Code](https://marketplace.visualstudio.com/items?itemName=joelday.papyrus-lang-vscode)
+- in folder .vscode rename tasks.example.json to tasks.json (replace if exists)
+- in folder .vscode rename settings.example.json to settings.json (replace if exists)
+- change papyrus.skyrimSpecialEdition.installPath in settings.json to your compile folder
+- in server folder rename server-settings.example.json to server-settings.json and configure your server
+- copy Dawnguard.esm, Dragonborn.esm, HearthFires.esm, Skyrim.esm, Update.esm from skyrim folder to server data folder
+- unzip the scripts.zip to the server/data/scripts folder
+- run `npm install` to install required dependencies
+
+## Server configuration
+
+See documentation about server-settings [skymp5-docs](https://github.com/skyrim-multiplayer/skymp/blob/main/skymp5-docs)
+
+But our server has a couple of its own settings [link](docs/server-configuration.md)
+
+## Server options
+
+In our project we have new options for server server-options.json
+
+Documentation about server-options [link](docs/server-options.md)
+
+## Front documentation
+
+See our documentation for front [link](https://www.notion.so/SKYMP-FRONTEND-f7eed0904d1240ad95166b574f7f33b5)
+
+## Running the server
+
+```bash
+$ npm run server:start
+```
+
+## Running the ts script compilation
+
+```bash
+$ npm run functions:serve
+```
+
+## Running the papyrus script compilation
+
+```bash
+npm run compile
+```
+
+or combination ctrl + shit + B
+
+## Parse all esp files to find localization
+
+```bash
+npm run parse:all
+```
+
+## Running the client compilation
+
+```bash
+npm run client:watch
+```
+
+## Running the front compilation
+
+```bash
+npm run front:build
+```
+
+All commands see in package.json

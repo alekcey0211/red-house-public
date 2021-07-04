@@ -1,0 +1,43 @@
+#hintPanel
+  position: absolute
+  z-index: 2
+
+  top: 50%
+  right: 30px
+
+  color: #fff
+
+  display: flex
+  flex-direction: column
+
+  font-family: 'Din-pro'
+  font-size: 16px
+
+  transform: translateY(-50%)
+
+  .row
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    &:not(:last-child)
+      margin-bottom: 10px
+
+    .key
+      display: flex
+      align-items: center
+      justify-content: center
+
+      line-height: 1
+      text-transform: uppercase
+
+      width: 35px
+      height: 27px
+
+      margin-right: 10px
+
+      background-color: rgba(0, 0, 0, .65)
+
+    .action
+      text-align: left
+

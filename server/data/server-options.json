@@ -1,0 +1,71 @@
+{
+	"serverName": "My server",
+	"EnableDebug": true,
+
+	"CookingDuration": 5,
+	"CookingActivationDistance": 55,
+
+	"SpawnTimeToRespawn": 1,
+	"spawnTimeToRespawnNPC": 10,
+	"spawnTimeById": ["0x23a9c:-1", "0x23a99:-1"],
+
+	"SatietyDefaultValue": 95,
+	"SatietyDelay": 120,
+	"SatietyReduceValue": -1,
+
+	"HitDamageMod": -5,
+	"HitStaminaReduce": 5,
+	"isPowerAttackMult": 2,
+	"isBashAttackMult": 0.5,
+	"isPowerAttackStaminaReduce": 25,
+
+	"keybindingBrowserSetVisible": 65,
+	"keybindingBrowserSetFocused": 64,
+	"keybindingShowChat": 28,
+	"keybindingShowMenu": 51,
+	"keybindingShowAnimList": 22,
+	"keybindingShowPerkTree": 24,
+	"keybindingAcceptTrade": 21,
+	"keybindingRejectTrade": 49,
+
+	"command1": "/additem 0x12eb7",
+	"command2": "",
+	"command3": "",
+	"command4": "",
+	"command5": "",
+	"command6": "",
+	"command7": "",
+	"command8": "",
+	"command9": "",
+	"command0": "",
+
+	"AVhealrate": 0,
+	"AVhealratemult": 0,
+	"AVhealthdrain": 0,
+
+	"StartUpItemsAdd": [
+		"0xf4314;10",
+		"0x34cdf;30",
+		"0x64b3f;30",
+		"0x64b41;30",
+		"0x669a5;30",
+		"0x65c9f;30",
+		"0x64b42;30",
+		"0x34d22;30",
+		"0x45c28;30",
+		"0x65c9b;5",
+		"0x65c99;10",
+		"0x64b40;30",
+		"0x65c9e;30",
+		"0xf2011;30",
+		"0x12eb7;1",
+		"0x3eadd;50",
+		"0x3eade;50",
+		"0x13981;1",
+		"0x12e46;1",
+		"0x12e49;1",
+		"0x12e4b;1",
+		"0x12e4d;1",
+		"0xf;10000"
+	]
+}

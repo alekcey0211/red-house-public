@@ -1,0 +1,19 @@
+.inventory__tabs > .tab
+  display: flex
+  align-items: center
+  justify-content: center
+
+  cursor: pointer
+
+  color: rgba(255, 255, 255, .15)
+
+  transition: color .3s
+
+  &.available
+    color: #858281
+
+  &:not(.available)
+    cursor: default
+
+  &.active
+    color: #fff

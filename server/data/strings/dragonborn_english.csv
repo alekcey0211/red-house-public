@@ -1,0 +1,5282 @@
+Index,Text
+1,Tel Mithryn
+3,Ashfallow Citadel
+4,Fire
+5,Fort Frostmoth
+6,Gyldenhul Barrow
+7,Vahlok's Tomb
+8,Beast Stone
+9,Benkongerike
+10,Fort Frostmoth
+11,Temple of Miraak
+12,Hrodulf's House
+13,Raven Rock
+14,Tosses a Jumping Poison spider on the ground that will launch itself at nearby enemies and explode if it lands near them.
+15,Fort Frostmoth
+16,
+17,Castle Karstaag Ruins
+18,Castle Karstaag Caverns
+19,Fahlbtharz
+20,Kagrumez
+21,Earth Stone
+22,Water Stone
+23,Giant
+24,Exploding Spider
+25,Hrodulf's House
+26,Jumping Poisonous Spider
+27,Nchardak
+28,Horker Island
+29,Apocrypha
+30,Apocrypha
+31,Highpoint Tower
+32,Bujold's Retreat
+33,Tel Mithryn
+34,Apocrypha
+36,Vahlok's Tomb
+37,White Ridge Barrow
+39,Apocrypha
+40,Raven Rock Mine
+41,Temple of Miraak
+42,Water Stone
+43,Benkongerike
+44,Kolbjorn Barrow
+48,Altar of Thrond
+49,Jumping Flame Spider
+50,Apocrypha
+52,Kolbjorn Barrow
+53,Wind Stone
+54,White Ridge Barrow
+55,Frostmoon Crag
+56,Abandoned Lodge
+57,Wind Stone
+58,Broken Tusk Mine
+59,Haknir's Shoal
+60,Horker Island
+61,Northshore Landing
+62,Tosses a Jumping Fire spider on the ground that will launch itself at nearby enemies and explode if it lands near them.
+63,Ashfallow Citadel
+64,Wreck of the Strident Squall
+65,Bloodskal Barrow
+66,Fahlbtharz
+68,Strident Squall
+69,Kolbjorn Barrow
+70,White Ridge Barrow
+71,You know what you have to do.
+72,Raven Rock
+73,Flame Spider
+74,Fire
+75,Kagrumez
+76,Spider Poison
+77,Skaal Village
+78,Poison
+79,Nchardak
+80,Moesring Pass
+81,Frossel
+82,Brodir Grove
+83,Castle Karstaag Ruins
+84,Imbued Spider
+85,Frostmoon Crag
+86,Skaal Village
+87,Altar of Thrond
+88,Gyldenhul Barrow
+89,Brodir Grove
+90,Thirsk
+91,
+92,Lurker
+93,Kagrumez
+94,Frossel
+95,Fire Hazard
+96,Gyldenhul Barrow
+97,Sun Stone
+99,Poison Hazard
+100,Frossel
+101,Temple of Miraak
+102,Bujold's Retreat
+103,Raven Rock Mine
+104,Jumping Flame Spider
+105,Earth Stone
+106,Thirsk Mead Hall
+107,Moesring Pass
+108,Jumping Poison Spider
+109,Apocrypha
+110,Apocrypha
+111,Fire
+112,Frostbite Spider
+113,Vahlok's Tomb
+114,Haknir's Shoal
+115,Beast Stone
+116,Fahlbtharz
+117,Solstheim
+118,Broken Tusk Mine
+119,Sun Stone
+120,Northshore Landing
+123,Zombie by Spider
+124,Flame Cloaked Spider
+125,Solstheim
+127,Control Pedestal
+128,Thirsk Mead Hall
+131,Fire Spider Flame Trail
+132,Ulves
+133,Chance to paralyze the target for <dur> seconds.
+134,Flame Spider Abilities
+135,Ash Shell
+137,Nchardak Aqueduct
+138,Handle
+139,Exploding Spider
+141,Damaged Albino Spider Pod
+142,Conjure Ash Guardian
+144,Nchardak Great Chamber
+146,Ash Shell
+150,Black Book: Epistolary Acumen
+151,A Mysterious Note
+153,"Creates an Ash Guardian that guards that location until destroyed. Consumes a heart stone from your inventory, without which it will be hostile."
+155,Creatures and people that this spider attaches to will fight for you for 30 seconds.
+156,Tosses a dead spider on the ground which explodes when an enemy gets too close.
+158,Drovas Relvi
+159,DLC2Ralis
+160,NPC Ward Absorb
+161,Frea
+162,Elynea Mothren
+164,Imbuing Chamber
+165,Neloth Services
+167,Uses the nearby Cruxis point to flings the caster into the air.
+169,Jumping Flame Spider
+170,Ashen Grass Pod
+171,Ash Rune
+172,Storn
+173,Albino Spider Pod
+174,Storn Crag-Strider
+175,NPC Necromage
+176,Opponents in melee range have a chance to be flung away.
+177,Whirlwind Cloak Damage
+178,Neloth
+179,Fury
+181,Frenzy Rune
+182,Tel Mithryn Kitchen
+183,Ash Guardian Faction
+184,Waterwalking
+185,Drovas
+186,Spell Tome: Frenzy Rune
+189,Elynea
+190,Frenzy Rune
+191,Targets that fail to resist are immobilized in hardened ash for <dur> seconds.
+192,Riekling Spear
+194,NPC Mage Armor
+195,Tel Mithryn Faction
+202,Benkongerike
+203,Talvas Fathryon
+204,Glacial Cave
+205,"For <dur> seconds, opponents in melee range have a chance of being flung away."
+207,Creatures and people up to level <mag> will attack anything nearby for <dur> seconds.
+208,Whirlwind Cloak Damage
+209,Talvas Services
+211,NPC Mage Armor
+212,Zombie by Spider
+215,NPC Summoner
+216,Fling
+217,Whirlwind Cloak
+219,Staff Enchanting Mult
+222,NPC Augmented Frost
+223,Exploding Spider
+224,Ash Guardian
+225,Glacial Cave
+227,NPCAugmented Shock
+229,Paralyze 100%
+234,NPC Recovery
+235,Spell Tome: Whirlwind Cloak
+237,Raise Zombie
+238,Control Cube
+239,Whirlwind Cloak
+240,Mind Control Spider
+241,Init quest
+242,The Path of Knowledge
+243,Talvas
+244,NPC Mage Armor
+245,Enchanter
+246,Skyrim
+247,Solstheim
+249,"Cast on a nearby surface, it explodes when enemies are nearby, immobilizing them in hardened ash for <dur> seconds. "
+250,Heart Stone
+252,Thirsk Mead Hall
+254,Spider Visuals Fire
+255,Nchardak Workshop
+258,Tel Mithryn Apothecary
+259,Frea
+260,Elynea Services
+261,Black Book: Untold Legends
+262,Tel Mithryn Steward's House
+264,Riekling Spear
+265,Spider Experiment Notes
+267,Albino Spider
+268,Staff Enchanter
+269,Chest
+270,Ildari Sarothril
+271,Frenzy
+272,Whirlwind Damage
+273,Tel Mithryn
+274,Exploding Poison Spider
+275,Spiky Grass
+276,Ralis
+277,A fiery explosion for <mag> points of damage in a 15 foot radius. Targets on fire take extra damage.
+278,Hoarfrost
+279,Harvest
+283,Chest
+284,Imbuing Switch
+285,Spell Tome: Ash Shell
+286,Apocrypha
+287,Spiky Grass
+289,NPC Recovery
+290,Ralis Sedarys
+291,Spell Tome: Ash Rune
+292,A Mysterious Note
+293,Whirlwind Cloak
+295,A Mysterious Note
+296,Exploding Spider Faction
+298,Albino Spider
+299,Fling
+301,Whirlwind Cloak
+302,Trama Root
+303,Black Book: Waking Dreams
+304,Varona
+305,Cube Storage Chest
+307,Varona Nelas
+308,Targets up to level <20> that fail to resist are frenzied for <30> seconds.
+310,Exploding Spider Faction
+311,Creatures and people will attack enemies nearby for 10 seconds.
+312,Ash Rune
+313,Chest
+314,Trama Root
+315,Ulves Romoran
+316,Ash Shell
+317,Aphia Velothi
+319,Krosulhah
+320,Severin Manor
+321,Hrothmund's Barrow
+323,Highpoint Tower
+324,Gol
+325,H4
+326,Veleth
+329,Varona went to Raven Rock on an errand.
+331,Raven Rock Ebony Anvil Faction
+334,Know anyone that might take the job?
+337,Ienth Farmhouse Key
+339,Milore
+341,Ienth Farm
+342,Captain Veleth
+343,Tilisu
+344,Glover Mallory's House Key
+345,Tilisu Severin
+348,Raven Rock
+349,Retching Netch Key
+350,The Journal of Ralis Sedarys - Volume 20
+351,Tame Dragon controller
+352,Raven Rock Severin Manor Faction
+353,Vendil & Tilisu Shared Faction
+354,Raven Rock Temple Key
+355,Harvest
+359,Bend Will
+360,Earth
+361,Mind
+362,Hrothmund's Barrow
+363,Glover Mallory
+364,Temple
+366,Dov
+367,Dravynea
+370,Crescius Caerellius
+371,Morvayn Manor Key
+373,Fly Grab
+374,Raven Rock Crescius Caerellius's House Faction
+378,You seem awfully eager.
+380,Dreyla
+381,Aphia
+383,Alor House Key
+387,BoarRiekling
+388,Trama Root
+389,The Journal of Ralis Sedarys - Volume 23
+390,Raven Rock Temple Faction
+391,Fethis
+392,Dravynea the Stoneweaver
+393,Scathecraw
+394,I found Varona dead on the road to Raven Rock.
+395,Report back to Neloth
+396,Shaman's Hut
+397,Garyn
+398,Find a new steward
+399,Tell Neloth that Varona is dead
+401,Find Varona
+402,Garyn Ienth
+403,Raven Rock Ienth Farm Faction
+405,Caerellius House Key
+406,Geldis Sadri
+409,Vendil
+410,Lleril Morvayn
+415,The Bulwark
+416,The Journal of Ralis Sedarys - Volume 22
+417,A New Debt
+418,Riekling Hut
+419,Varona is dead.
+420,Elder Othreloth
+421,Pile of Gold
+425,Morvayn Manor
+427,Dreyla Alor
+430,Do you want to be the new steward of Tel Mithryn?
+432,Fling Stone Trigger
+433,Galdrus
+435,Bend Will
+439,Milore Ienth
+441,Adril Arano
+443,I've found you a new steward.
+444,Severin Manor Key
+446,Galdrus Hlervu
+447,Caerellius House
+449,Bend Will
+453,Geldis
+457,Lleril
+459,Dragon
+460,Abandoned Lodge
+461,Test Guardian
+462,Mounted Riekling
+463,Black Book: Epistolary Acumen
+468,Tame Dragon
+471,Pile of Gold
+473,Glover
+474,Have you seen Varona?
+476,The Journal of Ralis Sedarys - Volume 21
+478,Othreloth
+479,Black Book: Untold Legends
+484,Highpoint Tower
+485,What do you have for sale?
+488,Fethis Alor
+489,Raven Rock Retching Netch Faction
+491,Scathecraw
+492,Crescius
+494,Raven Rock Bulwark Faction
+495,Reluctant Steward
+500,Cindiri
+502,Vendil Severin
+503,Mirri
+504,Mirri Severin
+505,"No, I haven't seen Varona."
+506,Gjalund
+507,Crescius & Aphia Shared Faction
+508,Adril
+509,Gjalund Salt-Sage
+510,Raven Rock Morvayn Manor Faction
+511,Alor House
+512,Dragon
+514,Bend To Will Effect - Stagger
+515,The Retching Netch
+517,Hrothmund's Barrow
+519,Adril and Cindiri Arano's Shared Faction
+521,Cindiri Arano
+522,Glover Mallory's House
+523,Morvayn Manor Chambers
+524,Scathecraw
+525,Fethis and Dreyla Alor's Shared Faction
+526,The Journal of Ralis Sedarys - Volume 19
+527,Potion of Vigorous Well-being
+528,Detect Ash Source
+530,Old Attius Farm
+532,Elmus
+534,to Plant the Taproot
+540,A new passage to what?
+542,Imperial Bracers
+546,Cyclone
+547,Detect Ash Source
+548,Raven Rock Guard Faction
+550,Edla's House Key
+556,Imperial Armor
+557,5 Gold
+562,Raven Rock Ienth Farm Scene 02
+570,Slitter
+575,Talk to Mogrul
+578,25 Gold
+582,10 Gold
+584,Do Nothing
+585,Test Your Luck
+587,You need to add gold
+589,Finna
+590,Raven Rock Crescius's House Scene 01
+594,Castle Karstaag Courtyard
+599,Abandoned Building
+603,Crescius's House
+604,Ienth Farm
+605,Thirsk Mead Hall Dialogue
+606,Temple Location
+608,Glover Mallory's House
+609,Alor House
+611,The Retching Netch
+612,The Bulwark Barracks
+614,Blessing Of The Fox
+615,The Bulwark Jail
+616,Saering's Watch
+619,Head
+620,Spine1
+621,Karstaag's Throne
+622,Learn Word of Power
+623,I've destroyed the Ash Guardian.
+628,Flame Cloaked Spider
+629,Plant the taproot
+630,"Actually, I'll come back later."
+633,Oslaf's House Key
+636,"Use the ""Bend Will"" Shout to tame Sahrotaar"
+641,Wait for Storn to read the book
+643,At the Summit of Apocrypha
+644,"Read ""Waking Dreams"""
+645,Talk to Storn
+647,What can you tell me about the Harstrad headwaters?
+649,The Gardener of Men
+650,It was in Ildari Sarothril's grave.
+652,Champion's Cudgel
+653,Creep Cluster
+656,Riekling Chief
+657,Approach Thirsk Mead Hall
+660,This heart stone is the source of the attacks.
+662,Skaal Village Dialogue
+663,Talk to Storn
+665,Defeat the Lurker
+666,Benkongerike Great Hall
+667,Talk to Storn
+668,Talk to Storn Crag-Strider
+669,Raven Rock Any Location Scene 06
+670,Oslaf
+671,Raven Rock Any Location Scene 12
+677,Pay or kill Mogrul
+680,Pay Mogrul
+686,Morwen
+688,Raven Rock Dialogue
+690,Rirns
+691,Return to Captain Veleth
+692,Kill General Falx Carius
+697,Speak to Captain Veleth
+698,Fanari Strong-Voice
+699,Exploding Flame Spider
+700,Bralsa
+701,Kill the ash spawn attacking Captain Veleth
+710,Albino Spider
+712,Kill Ildari
+717,Talk to Neloth
+718,Raven Rock Morvayn Manor Scene 04
+724,Talk to Neloth
+726,Old Friends
+727,Raven Rock Morvayn Manor Scene 02
+730,Find the source of the attacks
+731,Baldor
+732,Castle Karstaag Caverns
+733,Raven Rock Morvayn Manor Scene 05
+734,Draugr
+736,Raven Rock Morvayn Manor Scene 06
+737,Harvest
+739,ScribSkin
+743,Raven Rock Temple Scene 02
+746,Raven Rock Any Location Scene 11
+747,Raven Rock Swing & Scoop Scene 02
+748,Blessing Of The Fox
+753,Exploding Flame Spider
+754,Nikulas
+755,Greathall
+758,Except now he expects me to pay him.
+759,Baldor's House Key
+761,Raven Rock Crescius's House Scene 02
+762,Raven Rock Severin Manor Scene 01
+763,Raven Rock Severin Manor Scene 02
+766,Skaal Village Oslaf's House Faction
+768,Raven Rock Any Location Scene 15
+769,Raven Rock Netch Scene 01
+771,Raven Rock Netch Scene 02
+776,Raven Rock Netch Scene 04
+777,Bujold the Intrepid
+778,Raven Rock Netch Scene 05
+782,Raven Rock Netch Scene 06
+785,Raven Rock Netch Scene 07
+788,Explore Vahlok's Tomb
+791,Talk to Tharstan
+793,Travel to Vahlok's Tomb
+796,Read the Black Book
+797,Harvest
+800,Morwen's House Key
+804,Creep Cluster
+805,Raven Rock Any Location Scene 01
+806,Raven Rock Any Location Scene 02
+808,Raven Rock Any Location Scene 03
+812,Raven Rock Any Location Scene 05
+813,Accompany Frea to Skaal Village
+815,Raven Rock Temple Scene 03
+816,Skaal Village Oslaf's House Faction
+817,Raven Rock Any Location Scene 09
+819,Raven Rock Any Location Scene 10
+821,Raven Rock Beggar Scenes
+830,Retaking Thirsk
+831,Severin Manor
+833,Deor's House Key
+834,Talk to Talvas
+840,Finna
+841,From the Ashes
+844,Aren't you coming to Highpoint Tower?
+845,Talk to Elynea
+846,Soak the taproots
+847,Why don't you do this? Why me?
+854,Tosses a dead spider on the ground which explodes when an enemy gets too close.
+856,What's the problem?
+858,Raven Rock Any Location Scene 07
+860,Master Neloth? What did he do?
+865,Do you owe Mogrul money?
+868,Temple of Miraak Sanctum
+876,Fanari
+877,Baldor Iron-Shaper's House
+878,DLC2TT2NelothStartTopic
+893,Someone is attacking you?
+898,Deor Woodcutter's House
+901,Raven Rock Beggar Faction
+903,Headwaters
+906,Morvayn Manor
+908,Break-It Downer
+916,I hear you know where to find Black Books.
+919,Oslaf
+922,Talvas summoned an Ash Guardian outside.
+923,Did you know about the Ash Guardian outside?
+926,What went wrong with the Ash Guardian spell?
+930,The Dwemer? What do they have to do with this?
+934,Morwen
+937,What do you need to fix the tower?
+940,Caster is invisible for <dur> seconds. Activating an object or attacking will break the spell.
+941,Why don't you just pay him?
+945,Spell Tome: Conjure Ash Guardian
+947,Creates an Ash Guardian that guards that location until destroyed. Consumes a heart stone from your inventory.
+949,Where can I get taproot?
+952,Arcane Converter - Input
+953,"Learn the hidden knowledge of ""Epistolary Acumen"""
+957,I have some right here. Take it.
+958,Talk to Elynea
+959,I have the three soaked taproots.
+970,Elynea said you needed these taproots.
+971,Detection Target
+976,Imperial Boots
+980,Baldor Iron-Shaper
+981,Rirns Llervu
+984,The soaked taproot is planted.
+990,Karstaag
+992,I have to know what Miraak knows if I want to stop him.
+997,Skaal Greathall Key
+999,Nikulas
+1002,Who are you?
+1005,Staff Maker Faction
+1006,What's going on here?
+1010,That sounds like fun.
+1013,I don't think I can help you right now.
+1019,Aeta
+1021,Edla's House
+1023,Halbarn Iron-Fur
+1036,Get three taproots (<global=DLC2TTF2TaprootsAcquired>/3)
+1040,Bloodscythe
+1041,Loose Rubble
+1049,Miraak
+1050,Detect Ash Source
+1071,Wulf Wild-Blood
+1073,Ildari is dead.
+1076,I'd like to book passage to Solstheim.
+1081,Defeat Miraak
+1087,Raven Rock Morvayn Manor Scene 01
+1088,Deor Woodcutter
+1092,Yrsa
+1094,Invisibility
+1095,Potion of Ultimate Well-being
+1097,Coin Slot
+1103,I can destroy it for you.
+1104,Adventurer
+1105,Situation? What kind of situation?
+1111,"Use the ""Bend Will"" Shout on the Wind Stone"
+1123,Destroy the Ash Guardian
+1124,Flame Cloaked Spider
+1133,Whale Breath
+1137,March of the Dead
+1138,Raven Rock Guard Dialogue
+1144,I found a Black Book. I need to find more.
+1149,Benkongerike Key
+1152,Raven Rock Morvayn Manor Scene 03
+1153,How close do I have to be?
+1155,And if I don't pay you?
+1159,Wulf Wild-Blood's House
+1160,Raven Rock Temple Scene 01
+1166,Arcane Converter - Output
+1169,Cyclone
+1172,Edla
+1178,Gyldenhul Barrow Key
+1179,Potion of Plentiful Well-being
+1188,There wasn't a body in the grave. Just the heart stone.
+1189,Raven Rock Any Location Scene 04
+1192,Does the guild know anyone here that might?
+1200,Hilund
+1208,Potion of Well-being
+1209,Kill the Rieklings (<Global=DLC2MH01RieklingsKilled>/<Global=DLC2MH01RieklingsTotal>)
+1211,Tharstan
+1220,Skaal Village Oslaf's House Faction
+1227,Heart Stone
+1230,Reaver Lord
+1235,Ash Guardian
+1237,Lost Legacy
+1239,Oslaf's House
+1243,The Fate of the Skaal
+1255,Where are we headed?
+1258,Detect Ash Source
+1264,"I'm so sorry! Here, take the money."
+1265,Healing a House
+1266,Saering's Watch
+1270,Halbarn
+1277,Skaal Village Oslaf's House Faction
+1278,Aeta
+1281,Slow
+1282,Raven Rock Severin Manor Scene 03
+1285,Neloth's Ring of Tracking
+1301,Trama Root
+1307,Imperial Helmet
+1308,About that money Drovas owes you...
+1309,Skaal Village Oslaf's House Faction
+1311,Slow
+1312,Tosses a Flame Cloaked spider on the ground that will cause fire damage to enemies that get too close.
+1315,Morwen's House
+1318,Wulf
+1320,Haknir Death-Brand
+1321,Hay Pile
+1328,Harvest
+1329,Raven Rock Swing & Scoop Scene 01
+1347,Potion of Minor Well-being
+1348,Deor
+1359,"Unlock your ""Bend Will"" Shout"
+1360,Skaal Village Citizen Faction
+1361,Soaked Taproot
+1365,Bralsa Drel
+1366,Cyclone
+1375,Edla
+1376,Raven Rock Netch Scene 03
+1379,Hay Pile
+1380,Wulf's House Key
+1382,Yrsa
+1386,Mogrul
+1388,Skaal Village Oslaf's House Faction
+1389,Redoran Guard
+1391,Detect Ash Source
+1392,Blessing Of The Fox Invisibility
+1393,Abandoned Building
+1397,Or I could just kill you now.
+1406,Raven Rock Any Location Scene 08
+1410,Please be patient. I'll get you your money.
+1413,General Falx Carius
+1415,Haknir Death-Brand
+1416,Blessing Of The Hunt
+1421,A cyclone that does <mag> points of damage per second and flings victims into the air.
+1429,Kuvar
+1430,Skaal Village Deor Woodcutter's House Faction
+1431,Payout
+1439,How do you know you are under attack?
+1444,How does the ring work?
+1445,I suppose you want me to kill them.
+1447,Fires a Spectral Arrow at the target doing <mag> points of damage and staggering the target.
+1449,Potion of Extreme Well-being
+1450,Join the assault on Thirsk Mead Hall
+1452,"Sorry, I don't have any."
+1464,Experiment? What did you do to her?
+1466,Miraak
+1468,Mine
+1473,Here you go. (<Global=DLC2CostToSail> gold)
+1476,Moth Juice
+1480,I'm not sure the dragons are about you.
+1481,Tharstan
+1505,Ash Hopper
+1512,
+1513,Horker Youngling
+1514,Draugr
+1520,Bloodskal Enchantment
+1526,Lost Knowledge
+1529,Lurker Slime
+1530,Torso
+1531,Head
+1532,Neloth's Health Boost
+1533,Saddle
+1534,Ash Spawn Skirmisher
+1535,I have the black book.
+1538,Can I help with your research?
+1543,Ash Spawn Sample
+1545,Reach the Temple of Miraak
+1546,Bristleback Cave
+1547,MudCrab
+1548,Search for information about Miraak
+1550,Bloodskal Strike
+1551,Slow
+1553,Dragonborn
+1556,Tel Mithryn Apothecary Key
+1558,Ash Spawn Abilities
+1559,Slow
+1564,Riekling Hunter
+1565,Lurker
+1566,Ash Spawn
+1568,Your spell made me weaker once I got wet!
+1570,FishmanGoo
+1577,Ash Ghoul Ambush Cell Location
+1578,Talk to Neloth
+1580,I'm looking for someone named Miraak.
+1581,Slow
+1584,Lurker Guardian
+1594,Bloodskal Blade
+1597,What were those things?
+1598,Mine
+1609,Travel to Solstheim
+1611,Experimental Subject
+1612,Betty Netch
+1618,A Mysterious Note
+1620,Bloodskal Firing Weapon
+1630,The Bulwark Jail
+1635,Lurker Sentinel
+1640,Retrieve the Black Book
+1642,What kind of experiment do you want to do on me?
+1644,Telvanni Research
+1647,Spriggan
+1649,
+1656,Have you found any other black books?
+1659,You said you can show me my true power.
+1661,"Relax, everyone is safe."
+1662,Door
+1663,Damage Health
+1673,Scrib
+1674,Azra's Staffs
+1677,Riekling Spear
+1679,How do we get the book out of its case?
+1680,Bloodskal Strike
+1681,Tel Mithryn Kitchen Key
+1684,Burnt Spriggan
+1685,Lurker Vindicator
+1686,Ash Spawn Immolator
+1688,Slime
+1689,Health is permanently lowered <mag> points after swimming or being in the rain.
+1693,Who was Azra Nightwielder?
+1701,No thanks. That sounds like a bad idea.
+1707,Storn sent me to find you.
+1709,I'd be glad to help.
+1711,Bloodskal Blade
+1716,Heart Stone Deposit
+1717,Slime
+1720,Nordic Carved Helmet
+1723,Bonemold Gauntlets
+1724,Dragon Aspect
+1725,Impossible? Why?
+1726,Neloth's <mag> point health boost.
+1727,Nordic Carved Armor
+1728,Remove Tree
+1729,Speak
+1730,I don't need your help. I'll learn Miraak's secrets on my own.
+1731,Cloaking Flame Spider
+1732,Poison Rune
+1735,Who's missing?
+1736,Stalhrim Warhammer
+1739,What do you want me to do?
+1740,"He wants the ""secrets of the Skaal"" in exchange for teaching me the third Word."
+1741,Dragon Aspect
+1742,I talked to Hermaeus Mora.
+1744,Did you come here from Morrowind?
+1746,Stalhrim Greatsword
+1751,Targets that fail to resist take <mag> points of poison damage per second for <dur> seconds.
+1760,Summons an Ash Spawn for <dur> seconds wherever the caster is pointing.
+1762,Poison Spider
+1764,Abandoned Lodge
+1771,Azra's <BaseName>
+1772,"Yes, I'll lend a hand."
+1773,Cultist Robes
+1774,Nordic Carved Boots
+1777,HMDaedra
+1778,Reaver Highwayman
+1783,He must have been someone important.
+1784,I'm not really sure. I saw Miraak on a dragon.
+1785,Rage Of The Ancients
+1787,Companion's Insight
+1790,The swords true power can only be unlocked by the Thuum of the Dohvakiin. Rage Of Ancients Active: <Global=dlc2DBDragonWeapons>
+1791,Jumping Shock Spider
+1794,Receive an additional <mag> Health and Stamina while Bow Of The Stag Prince is equipped.
+1795,Unrelenting Force Strong
+1796,Skaal Village Greathall
+1798,Ancarion
+1799,Recipe - Poison Cloaked Spider
+1800,Ahzidal's Ring of Necromancy
+1801,Who are you?
+1803,Fortify Health
+1804,Blood Ritual
+1805,This Miraak tried to have me killed.
+1806,I examined the Briarheart warrior.
+1807,Recipe - Jumping Flame Spider
+1808,Skaal Villager's Outfit
+1812,"For <dur> seconds, opponents in melee range take <mag> points fire damage per second. Targets on fire take extra damage."
+1813,Chitin Heavy Helmet
+1819,Bound Dagger
+1820,Secret of Arcana
+1825,Increase Stat
+1827,Stalhrim Helmet
+1829,Bound Dagger
+1831,Chitin Helmet
+1832,Where can I find a Briarheart warrior?
+1833,Skaal Village Wulf Wildblood's House
+1835,Why do you think the attacks are from the Attius Farm?
+1836,Standing Stone - Tree
+1839,Declaration of War
+1840,Meet Bujold at Hrothmund's Barrow
+1844,Dragon Aspect
+1846,Poisonous Cloaked Spider
+1847,Find the main burial chamber
+1851,Stalhrim War Axe
+1852,Bonemold Boots
+1854,Ahzidal's Boots of Waterwalking
+1856,Ashland
+1859,Oil Spider
+1860,+<mag>% resistance to fire and frost for <dur> seconds.
+1861,What do Briarhearts have to do with Heart Stones?
+1865,Dunmer Outfit
+1866,Cancel
+1867,"What are the ""secrets of the Skaal""?"
+1869,Scholar's Insight
+1872,Are you hurt badly? Do you need healing?
+1873,Cancel
+1875,Fire/Frost Resist
+1880,Spawn Ash
+1882,A New Source of Stalhrim
+1883,Blessing Of The Stag
+1885,How is Drovas working out?
+1887,Lover's Insight
+1888,I can't let you lead Thirsk.
+1889,Telvanni Robes
+1890,The book was right where you said it would be.
+1891,Stalhrim Battleaxe
+1895,Secret of Arcana
+1896,Opponents in melee range take <mag> points poison damage per second.
+1900,Rage Of The Ancients
+1902,Reaver Thug
+1903,Merilar Rendas
+1907,Spells cost no Magicka for <dur> seconds.
+1908,Dragon Aspect
+1909,What's next?
+1910,Skaal Village Deor's House
+1911,Rage Of The Ancients
+1912,Strength
+1914,Reaver Highwayman
+1916,Nordic Carved Gauntlets
+1917,"All spells cost <75>% less to cast for <dur> seconds. Single use, then must be reacquired at the Tree Stone."
+1918,Heart Stones
+1919,Beast Form
+1922,What do you want of me?
+1923,Mul
+1924,Armor
+1926,Waterwalking
+1930,D3v
+1933,Reaver Outlaw
+1934,Can I help with your research?
+1936,Stalhrim Source Map
+1938,Netch Jelly
+1939,I could lend you a hand... for a price.
+1940,I discovered this note on one of the ash spawn.
+1941,Secret of Strength
+1943,Cancel
+1948,Stalhrim Sword
+1949,Ask Deor about Baldor's disappearance
+1951,Buy Perk
+1952,"Summons a Werebear for <dur> seconds wherever the caster is pointing. Single use, then must be reacquired at the Beast Stone."
+1953,"Spells, no magicka"
+1955,Why don't you go on ahead.
+1956,Cancel
+1957,Netch Poison
+1958,Reaver Thug
+1959,Shout1b
+1960,Poison Cloaked Spider
+1961,"Power attacks do <25>% more damage, +<mag> damage resistance for <dur> seconds."
+1962,Werebear Form
+1964,Nordic Dagger
+1965,Cancel
+1966,Buy Perk
+1968,I'd be glad to lend you a hand.
+1969,Seeker Aspirant
+1970,Cancel
+1975,Cancel
+1977,Chitin Heavy Armor
+1979,Causes <mag> points of poison damage for <dur> seconds.
+1980,Flames
+1981,Buy Perk
+1984,Mirrak's Robes
+1986,Reaver
+1989,Cancel
+1990,Examine a Briarheart warrior
+1991,Buy Perk
+1992,Poison Rune
+1993,What are you going to do now?
+1996,The Temple of Miraak
+2000,Cancel
+2001,Spell Tome: Bound Dagger
+2002,Lover's Insight
+2004,Buy Health
+2007,"Tell me what you want, my lord, and I will bring it to you."
+2010,Cancel
+2015,Buy Stamina
+2016,Recipe - Jumping Poison Spider
+2017,You take half damage for <dur> seconds from all physical attacks and most magical attacks.
+2018,That was a little more than I expected.
+2019,Buy Magicka
+2020,Chitin Armor
+2021,Conjure Ash Spawn
+2025,Tel Mithryn Kitchen
+2026,Buy Perk Point
+2028,Nordic Mace
+2029,Talk to Neloth
+2032,Companion's Insight
+2033,"No heart stones, ash guardian is uncontrolled"
+2034,Attius Farm Location
+2036,Extraction Perk
+2037,Chain
+2042,Tosses a Poison Cloaked spider on the ground that will Poison enemies that get too close.
+2043,Help Neloth with his research
+2045,I'm not interested.
+2047,Bujold the Unworthy
+2048,Recipe - Flame Cloaked Spider 2x
+2050,Tel Mithryn Tower
+2051,You were saying something about heart stones?
+2053,Search for Baldor Iron-Shaper
+2054,Cancel
+2055,"Caster ignores <80>% of all physical damage for <dur> seconds. Single use, then must be reacquired at the Earth Stone."
+2056,How often do they attack?
+2057,Tel Mithryn Steward
+2060,Skaal Village Baldor Iron-shaper's House
+2061,Recipe Books
+2062,Skaal Village Morwen's House
+2063,Ahzidal's Helm of Vision
+2064,Blessing Of The Stag Prince
+2065,Skaal Village Edla's House
+2066,Ashland
+2068,Ashland
+2070,POI 5
+2071,Torso
+2074,Apocrypha
+2076,Where were they headed?
+2078,Ahzidal's Gauntlets of Warding
+2079,Briarheart Harvest
+2082,Extract Ash
+2083,Reaver Marauder
+2085,Damage Resistance
+2086,Dragon Aspect - Head
+2087,Standing Stone - Earth
+2089,That was easy.
+2091,Q4
+2094,"Power attacks, no stamina"
+2095,No damage
+2096,Ash Hopper Jelly
+2097,What's going on here?
+2104,Perk Activator
+2105,Ash Spawn
+2107,Chitin Heavy Gauntlets
+2108,Stalhrim Light Helmet
+2109,Talk to Frea
+2111,Approach Miraak
+2112,Read the Black Book
+2113,How were Rieklings able to overpower you?
+2116,Blackout
+2117,Explore the Temple
+2118,Spider Visuals Poison
+2119,Defeat Miraak
+2120,Talk to Frea
+2121,I think I'll pass for now.
+2123,Find Frea
+2124,Omen of Warding
+2126,Search the Attius Farm for clues
+2133,Talk to Tharstan
+2134,"What are these ""ash spawn?"""
+2136,Flame Cloak
+2137,Defeat Bujold
+2138,Commune with Hrothmund's Spirit
+2139,Speak to Bujold
+2140,Neloth's Memory Spell
+2143,Neloth's Health Spell
+2147,Talk to Neloth
+2150,Talk to Neloth
+2152,Recipe - Mind Control Spider
+2154,Get the staff
+2155,Hrothmund
+2156,Retrieve the Stalhrim Source Map
+2158,Raven Rock Quest Monitor
+2159,"What do you want of me, my lord?"
+2160,Nordic Greatsword
+2161,Recipe - Exploding Flame Spider 2x
+2171,Briarheart Necropsy
+2173,What do you want of me this time?
+2175,Get a Heart Stone
+2177,Talk to Baldor Iron-Shaper
+2178,Talk to Baldor Iron-Shaper
+2179,Tel Mithryn Apothecary
+2182,So what's your price for the final Word of Power?
+2185,+<mag> damage resistance for <dur> seconds.
+2188,"Yes, and I've brought you the map to the Stalhrim source."
+2195,Experimental Subject
+2196,Talk to Neloth
+2199,Get the Wind and Sand book
+2201,Ghost Giant
+2203,Wind and Sand
+2204,Hello.
+2209,Krag's Journal
+2210,Restore the steam supply to the Dwemer reading room
+2214,How are you feeling about that?
+2217,Stalhrim? What's that?
+2218,What brings you out here?
+2223,Remove Water
+2226,Old Salty
+2229,Where can I find this Ancarion?
+2231,Buy Perk
+2232,I talked to Hermaeus Mora.
+2234,head
+2236,Nordic War Axe
+2238,Temple Priest Robes
+2244,Reaver Plunderer
+2245,Talk to Neloth
+2249,What do you need?
+2250,Poison Spider Abilities
+2251,Talk to Neloth
+2253,"Yes, I came here to learn Miraak's secrets."
+2256,Stalhrim Light Armor
+2257,"Somehow, reading this book took me to where he was."
+2259,Bandit
+2261,Riekling
+2262,Skill book points
+2264,Secret of Protection
+2275,Rage Of The Ancients
+2279,Frost Giant
+2281,Cancel
+2283,Dragon Aspect - Arms
+2284,"Amethyst Claw, Left Half"
+2285,Fahlbtharz Grand Hall
+2286,I have a heart stone.
+2288,Reaver Outlaw
+2289,Are you still having issues with the ash spawn?
+2291,Stalhrim Mace
+2294,Reaver Plunderer
+2296,Dragon Sword Effect
+2297,I found myself in another place.
+2305,Reaver Marauder
+2309,I don't know yet what he wanted. I left Apocrypha before I found out.
+2311,Who are you?
+2312,Conjure Ash Spawn
+2313,Werewolf
+2314,Watch for side effects
+2315,What is this building?
+2320,Recipe - Jumping Poison Spider 2x
+2326,Ash Shell
+2329,It's done.
+2330,You suspect there's a motivation to their attacks?
+2331,Waters of Life
+2336,"I will do as you command, my lord."
+2340,I learned the second Word of the Bend Will Shout.
+2342,Find the source of Miraak's power
+2343,Root of Power
+2344,I'd be honored.
+2345,Do 10% more damage and get 10% better prices from people of the opposite sex.
+2346,Giant Fishman Weapon
+2347,Remove Wind
+2348,Chitin Heavy Boots
+2350,Stalhrim Light Bracers
+2352,Buy Perk
+2353,Standing Stones - Tree
+2360,Recipe - Exploding Poison Spider 2x
+2362,Your what?
+2364,Bound Dagger
+2368,Conjure Werebear
+2369,Wall of Flames
+2374,Secret of Protection
+2376,Sun Flare
+2378,Did anything unusual happen around the time of his disappearance?
+2380,What if you had one extra warrior?
+2382,Dragon Aspect - Arms
+2385,You'll go against Hrothmund's wishes?
+2386,Reaver Highwayman
+2388,Very well. Where do I begin?
+2392,Is there a problem?
+2395,Food bonus
+2398,Can I help with your research?
+2400,Poison Damage
+2401,I suppose so.
+2403,Recipe - Poison Cloaked Spider 2x
+2404,That sounds a little too risky.
+2410,I think you owe me for that spell.
+2414,Skaal Village Oslaf's House
+2418,Door
+2419,Nordic Battleaxe
+2422, Zahkrii Do Dovahkiin
+2424,Recipe - Jumping Flame Spider 2x
+2426,"Your attacks, shouts, and destruction spells do no damage to your followers when in combat."
+2428,Buy Perk
+2429,I have the ash sample.
+2430,Wielder receives an increasingly powerful blessing for every 20 animals killed by the bow. <Global=dlc2MerchAnimalsKilled> animals killed.
+2431,Shout2
+2433,Talk to Neloth
+2434,Bound Dagger
+2435,Chitin Boots
+2436,Scholar's Insight
+2437,Stag Prince Increment Effect
+2438,Frost Troll
+2439,Reaver Outlaw
+2440,What if the Skaal refuse to give up their secrets?
+2443,Hermaeus Mora
+2444,Creates a magic dagger for <dur> seconds. Sheathe it to dispel.
+2445,No Falling Damage
+2447,I hope you know what you're doing. (Give book)
+2448,HMDaedra
+2450,Bones of the Earth
+2451,Mystic Dagger
+2452,Wind and Sand
+2456,I've got Azra's staff.
+2457,Stalhrim Gauntlets
+2458,Remove Fire
+2459,"Time between shouts is reduced <mag>%.
+"
+2460,Bonemold Armor
+2461,Recipe - Flame Cloaked Spider
+2463,Skaal Village Shaman's Hut
+2464,Neloth's Memory Spell
+2467,Targets that fail to resist are coated in solidified as for <dur> seconds.
+2471,Telvanni? What are the Telvanni?
+2473,Boar Tusk
+2474,Bones of the Earth
+2476,Reaver Thug
+2477,"Target moves in complete silence for <dur> seconds, with a side effect of shrinking the target."
+2478,Secret of Strength
+2479,Release the book from the Dwemer contraption
+2481,Poison Cloak
+2482,Bloodskal Barrow
+2483,Stalhrim Light Boots
+2484,Remove Earth
+2486,Harvest Briarheart
+2487,Chitin Bracers
+2488,"I won't serve you, monster. I just want to defeat Miraak."
+2489,Ralis Knockback Effect
+2490,Stalhrim Armor
+2491,Ahzidal's Armor of Retribution
+2492,Hermaeus Mora
+2493,What about them?
+2494,"Amethyst Claw, Right Half"
+2495,Altris' Blood Ritual
+2497,Save them from what?
+2499,Buy Perk
+2500,Reaver Marauder
+2502,Recipe - Exploding Flame Spider
+2503,Riekling
+2505,Ahzidal's Ring of Arcana
+2507,Lover's Insight
+2508,Wyrm
+2510,Collect ash from an ash spawn
+2511,Cancel
+2512,Poison
+2513,A gout of fire that does <mag> points per second. Targets on fire take extra damage.
+2514,I will talk to the Skaal and bring you their secrets.
+2516,Netch Leather
+2517,Nordic Warhammer
+2518,Mora's Boon
+2519,Reading Skill Books gives you an extra Skill Point.
+2524,I'll keep this quiet.
+2526,Majni
+2529,What is a heart stone?
+2530,Conjure Werebear
+2531,Shout Timer
+2534,Fahlbtharz Boilery
+2536,Recipe - Exploding Poison Spider
+2537,How did that bring you to this old farm?
+2539,Travel to Nchardak with Neloth
+2540,Burnt Spriggan Wood
+2545,Servos Rendas
+2546,Reaver Plunderer
+2547,Silence
+2549,North Wind
+2554,Jumping Frost Spider
+2555,Neloth's Health Spell
+2559,Where are you going?
+2562,Poison
+2563,Summoned Ash Guardian Faction
+2565,Stalhrim Boots
+2566,Ashfallow Citadel
+2568,Can I help with your research?
+2570,Nordic Sword
+2572,Ash Extractor
+2575,Seems like a waste of time to me.
+2576,Can I help with your research?
+2578,Ancarion
+2579,Bonemold Helmet
+2580,Poison
+2584,Take on the form of the bear.
+2585,Glass Bow of the Stag Prince
+2587,"Don't worry, I was just leaving."
+2589,What did you learn from the Briarheart?
+2592,Ash Creep Cluster
+2595,You take no falling damage for <dur> seconds.
+2597,Stalhrim Dagger
+2599,Power attacks cost no Stamina for <dur> seconds.
+2603,Ulen Ancestral Tomb
+2607,Black Book: Filament and Filigree
+2609,Bilgemuck is an animal of some kind? And you want it back?
+2610,Mora's Boon
+2611,How did Vilur get caught?
+2612,Recover evidence from Severin Manor
+2618,Regenerate Stamina
+2619,Cancel
+2621,Why haven't you acted on the information?
+2624,Adril Arano said you might be able to help me.
+2626,So go search their house.
+2630,Discover the identity of the tomb's visitor
+2631,Akar
+2632,I've found a hagraven claw.
+2633,I've have some vampire dust.
+2638,Mora's Agony
+2641,Why haven't you told Adril about this?
+2643,I have a briarheart.
+2644,I have some void salts.
+2645,Summon Dremora Merchant
+2646,Black Book: Filament and Filigree
+2652,You sound paranoid.
+2655,Rakel
+2656,Regenerate Magicka
+2658,Do you need any help?
+2659,"Of course, Master Neloth. As you command."
+2661,Seeker of Shadows
+2662,Writhing Effect
+2664,Lover's Insight
+2670,Water Stone
+2671,Are you saying you want my help?
+2672,Fire Wyrm
+2673,Chest
+2677,"Cast on a nearby surface, it explodes for and freezes the target in place for <dur> seconds."
+2679,I have some things to sell.
+2680,Ice Wraiths Fighting Bandits
+2684,Chest
+2689,You feel an attack on the councilor is imminent.
+2691,What is this place?
+2692,Bring a daedra heart to Elynea
+2694,Apocrypha
+2696,Black Book: The Sallow Regent
+2697,Beast Form
+2698,Hay Pile
+2699,Earth Stone
+2700,Vilur did this alone?
+2701,Are you one of Neloth's apprentices?
+2704,I've decided to help you protect Councilor Morvayn.
+2707,Apocrypha
+2711,Why don't you just make your own tea?
+2713,What happened to House Hlaalu as a result?
+2714,Black Book: The Winds of Change
+2716,CreatureDialogueScribx
+2718,"Sprayed on the ground, it creates a wall of frost that does <50> points of frost damage per second."
+2720,Unlimited Stamina
+2721,Accept
+2722,You're lying. You're from House Hlaalu!
+2731,Can you tell me more about the Severin family?
+2734,Cancel
+2735,Accept
+2736,Cancel
+2739,I'll let you get to it then.
+2741,Cancel
+2743,Black Book: The Winds of Change
+2745,What kind of a person should I look for?
+2747,Thanks for the tip.
+2748,Cancel
+2749,Severin Family Safe
+2750,Accept
+2753,Hunter and Dog in the Wilderness
+2757,Stop Rune
+2758,Accept
+2760,Secret of Protection
+2761,I presume that was their downfall.
+2762,Apocrypha
+2763,Scholar's Insight
+2764,Tell me why you're really here.
+2765,What is going on here?
+2767,Apocrypha
+2768,Sun Stone
+2771,Apocrypha
+2773,Drunken Master
+2779,Secret of Arcana
+2780,Nothing unusual about them at all?
+2781,Dremora Prices
+2782,Report back to Adril Arano
+2783,Stamina regenerates <mag>% faster.
+2784,Wait inside Ulen Ancestral Tomb
+2787,Accept
+2788,Served Cold
+2789,Who else lives here?
+2791,How can I help?
+2793,Cancel
+2794,Writhing Wall
+2796,Bring some void salts to Elynea
+2797,Unrelenting Force - Fus Ro Da
+2799,Tree Stone
+2800,I'd prefer not to get involved.
+2802,Stop Rune
+2804,Bring some vampire dust to Elynea
+2806,I suspect Tilisu Severin is the culprit.
+2808,What are you doing here?
+2809,Why do Dunmer leave ash yams in their tombs?
+2813,Hunting and Gathering
+2814,Hunters chasing
+2815,Animals attacking bandit
+2821,End the threat to Councilor Morvayn
+2823,Where do I begin?
+2825,"I'm sorry, this is all just too strange for me."
+2827,Black Book: The Hidden Twilight
+2830,How do I get them to do that?
+2840,Why did Councilor Morvayn execute an Ulen?
+2843,He ordered the execution. It's on his head... not yours.
+2852,Apocrypha
+2858,He's in danger of being killed? How?
+2861,You can't just order me around.
+2865,Black Book: The Hidden Twilight
+2866,Bring a briarheart to Elynea
+2867,What does it mean to be a member of your house?
+2868,Wind Stone
+2877,Black Market
+2881,Severin Safe Key
+2894,Secret of Strength
+2898,Dragonborn Force
+2913,Dremora Merchant
+2914,Why would the Ulens want him dead?
+2916,Your concern seems justified.
+2918,"You mentioned your ""sources?"""
+2919,Speak to Geldis Sadri
+2926,What will you do?
+2928,"Well, good luck with that."
+2932,Bardic Knowledge
+2938,Writhing Wall Slow Effect
+2940,AudioTemplateAshHopper
+2943,Magicka regenerates <mag>% faster.
+2946,I've got a giant's toe.
+2949,You aren't an Ulen.
+2950,Black Market
+2952,Fort Frostmoth Key
+2955,Beast Stone
+2956,Mora's Grasp
+2957,Seeker
+2958,Unrelenting Force Strong
+2959,Spectral Dragon
+2960,The Ulen Matter
+2962,Summons a Dremora merchant for <dur> seconds.
+2965,Dragonborn Flame
+2966,You have a better idea?
+2967,Unlimited Magicka
+2968,I did what had to be done.
+2969,Dragonborn Frost
+2970,Chest
+2971,Hjordis
+2972,Accept
+2974,How did you learn to talk?
+2975,Secret Servant
+2978,Dremora Holding Cell
+2980,I've got a daedra heart.
+2985,Summon Spectral Dragon
+2986,Black Book: The Sallow Regent
+2990,Why don't you ask them to investigate?
+2991,What can you tell me about House Hlaalu?
+2992,Return to Adril Arano
+2993,Bring a giant's toe to Elynea
+2995,Companion's Insight
+2997,Bend Will 01
+3000,I saw her in the Ulen tomb.
+3003,What if they try to stop me?
+3005,A benefit? How?
+3007,Bring a hagraven's claw to Elynea
+3008,He's no longer a threat.
+3013,Seeker of Sorcery
+3014,I found what you wanted.
+3015,Hello.
+3016,Speak to Adril Arano
+3017,Seeker of Might
+3018,You think he's mistaken?
+3020,"Hey, I'm not your servant."
+3022,Yes
+3023,Firebolt
+3025,Loyal
+3026, (Optional) Read Gratian Caerellius's Journal
+3027,HMDaedra fx
+3028,Power Attacks/Damage Resistance
+3029,Flame Cloak
+3030,You were right all along. (Give journal)
+3033,Yes
+3035,Tome
+3037,Glover wants his Ancient Nordic Pickaxe back.
+3038,Tosses a Jumping Shock spider on the ground that will launch itself at enemies and explode if it lands near them.
+3042,Yes.
+3043,Return to Crescius Caerellius
+3044,Tell me anything you can.
+3048,Then where's his great-grandfather?
+3050,Scrib Poison
+3063,Why are you telling me all of this?
+3067,Where are you from originally?
+3068,Read
+3069,Is magic involved?
+3074,Yes
+3078,Note from Mogrul
+3089,Resonance Gem
+3090,Perhaps you should return to Morrowind.
+3091,Exploding Frost Spider
+3092,What can I do to help the Skaal?
+3093,Lift Down
+3094,A cyclone that does <mag> points of damage per second and may fling victims into the air.
+3100,Distintegrate
+3101,Busy doing what?
+3102,It doesn't belong to you.
+3104,Ancient Nordic Pickaxe
+3107,No
+3113,No
+3115,Flames
+3119,Spider Visuals Frost
+3121,No
+3126,"I admit, this does sound suspicious."
+3128,Kagrumez Resonance Gem
+3131,Ildari's Sarcophagus
+3133,Slow down here. I don't want to hurt you.
+3135,Yes
+3139,Ash Yam
+3140,What does it mean if we're both Dragonborn?
+3141,I'm guessing you don't agree with Crescius's story.
+3153,How long have you been studying the Skaal?
+3155,You're right. I want to be the new chief.
+3162,Raven Rock Holding Cell
+3164,Now I get it.
+3165,Battle Fury
+3167,Ash Gout
+3169,Where is everyone?
+3174,Talk to the Chief
+3175,Why have such elite soldiers on this island?
+3176,Immolation
+3177,Is Master Neloth a good teacher?
+3181,"Power attacks do <25>% more damage, +<mag> damage resistance for <dur> seconds. Ancient Dragonborn are summoned if health falls below <50>%."
+3182,CreatureDialogueFishman
+3183,Boar
+3184,Exchange
+3185,But you said Redoran leads the Council.
+3190,Calm Dragon
+3192,Have you always served as a ferryman?
+3193,Lift Up
+3195,Why?
+3196,How did you meet Crescius?
+3197,Where did you learn your alchemy skills?
+3199,Emperor Parasol Moss
+3200,A cyclone that does <mag> points of damage per second and may fling victims into the air.
+3201,What kinds of game do you hunt?
+3202,Miraak Steals a Dragon Soul
+3205,You're a priest at the Temple?
+3210,Dragonrend Effect - Prevent Flying
+3212,Why didn't he move somewhere else to find work?
+3213,Is he somewhere else on Solstheim?
+3214,Tosses a dead spider on the ground which explodes when an enemy gets too close.
+3218,Unarmed Damge
+3223,Burnt Spriggan abilities
+3226,Council? You mean there's no Jarl?
+3228,The Nords are dead.
+3230,Frost Spider Abilities
+3233,I'm here about the Stalhrim map.
+3234,No
+3235,Bring 10 Scathecraw to the Chief
+3236,Miraak has absorbed the dragon soul!
+3239,Resonance Gem
+3244,It sounds like quite a sight.
+3245,Your inn has an unusual name.
+3246,Who was your great-grandfather?
+3248,Dukaan
+3251,"What exactly is ""ash-grown food?"""
+3252,Are sales that bad out here?
+3256,What exactly do you sell here?
+3257,Tosses a Shock Cloaked spider on the ground that will apply Shock Damage to enemies that get too close.
+3258,Ahzidal
+3260,Who do you trade with?
+3263,Emperor Parasol Moss
+3264,Inspire
+3265,You worry much on your husband's behalf.
+3266,Dremora Shop Location
+3267,Yes
+3271,Ash breath
+3272,Doesn't sound unusual.
+3273,Can you train me in Conjuration?
+3275,"What exactly are the ""Reclamations?"""
+3281,Herma-Mora
+3283,Immune to Bend Will shout
+3284,Doesn't sound that impressive.
+3285,Deathbrand Ferocity
+3289,"What is this ""redgrass""?"
+3291,Zahkriisos
+3297,Frost Cloaked Spider
+3299,Drains <mag> points from Carry Weight.
+3301,Jumping Frost Spider
+3311,Yes
+3312,That's not enough. I need to stop Miraak now.
+3315,Sh1n
+3317,What sort of a secret would be hidden here?
+3322,The Final Descent
+3325,I brought back your animal.
+3343,Shock Cloaked Spider
+3347,Damage Carry Weight
+3348,I don't know about this...
+3355,Who or what is the All-Maker?
+3357,Hermaeus Mora
+3358,Creatures and people up to level <mag> won't fight for <dur> seconds.
+3359,Which is it? Yes or no?
+3366,Who taught you that?
+3367,The smith said he'd teach me how to make Stalhrim weapons.
+3374,Thirsk Mead Hall Dialogue
+3375,Do you know him or not?
+3376,Ice Form
+3381,Spell Tome: Poison Rune
+3384,Fast
+3386,POI 13
+3388,Sahrotaar
+3391,This is where you met?
+3392,Ash Hopper abilities
+3394,What do we need to do now?
+3397,Resonance Gem
+3403,The blacksmith won't talk. You're wasting your time (Persuade)
+3407,No
+3410,How did you end up in Raven Rock?
+3413,How did your mother die?
+3418,"What did you do in Skyrim, before you came back here?"
+3422,Can you tell me anything about him?
+3425,Calm Dragon
+3426,Are there any other Imperials in Raven Rock?
+3428,Kill the Nords (<Global=DLC2MH02NordsKilled>/<Global=DLC2MH02NordsTotal>)
+3430,What's an Ancient Nordic Pickaxe?
+3431,No
+3433,What does that mean?
+3435,Why did you leave Morthal?
+3442,Tosses a Jumping Frost spider on the ground that will launch itself at nearby enemies and explode if it lands near them.
+3444,Read
+3445,Unarmed Damge
+3450,"Tell me more about your people, the Skaal."
+3455,Bend Will Follower Faction
+3456,Are you friends with Councilor Morvayn?
+3460,I've returned.
+3463,Exploding Frost Spider
+3468,"Tell me more about this book, then."
+3472,Torso
+3474,Puzzle Controller
+3475,What's the matter?
+3476,Frost Breath
+3478,Ash Hopper
+3480,Miraak did claim to be Dragonborn.
+3481,Battle Fury
+3487,Yes
+3488,Escape Bloodskal Barrow
+3489,Equipped weapon of all allies swing faster for <dur> seconds.
+3491,Deathbrand Haul
+3492,Netch
+3494,Ash Yam
+3496,Calm All
+3500,Ongoing poison damage of <mag> points per second.
+3502,Can't you just get the guard to find Crescius?
+3505,Ancient Chest
+3506,Let me think about this.
+3507,Calm
+3508,Retrieve Gratian Caerellius's Journal
+3510,Bound Sword
+3511,Emperor Parasol Moss
+3512,You want me to do something else?
+3516,I am indeed Dragonborn.
+3520,Where did you get all these items?
+3522,No
+3523,You have friends at the East Empire Company?
+3524,I have your Ancient Nordic Pickaxe.
+3526,Miraak
+3529,Exchange
+3530,How did you become the leader of the village?
+3532,"I read a book in Miraak's temple, and went somewhere. Miraak was there."
+3534,Ash Hopper
+3538,Miraak
+3539,Deathbrand Gauntlets
+3540,Read
+3542,Gratian's Letter
+3546,Poison Spider
+3553,Join the assault
+3555,Matching Set
+3557,Why all the fuss over a simple pickaxe?
+3560,This is hardly proof of anything.
+3562,You're not one of the Skaal?
+3563,An Axe to Find
+3567,Sujamma
+3571,I saw a dragon once.
+3573,Shock Cloaked Spider
+3574,Tosses a Frost Cloaked spider on the ground that will apply Ice Damage to enemies that get too close.
+3576,Firebolt
+3577,Exchange
+3578,Bilgemuck
+3580,You must owe him quite a bit.
+3582,No
+3584,No
+3590,Yes
+3593,How did he die?
+3595,Resonance Gem
+3596,Resonance Gem
+3598,I need to trade some things with you.
+3599,Target is paralyzed for <dur> seconds.
+3600,Who are the Redoran Guard?
+3603,Is he someone here in Raven Rock?
+3608,I'm just exploring.
+3609,Perhaps I could help.
+3616,Flames
+3617,Your people are free.
+3619,Fire Damage
+3620,Try to remember.
+3621,Firebolt
+3625,I brought your Scathecraw.
+3629,Let's go!
+3633,Okay.
+3634,"Leave this island now, or your life is forfeit. (Intimidate)"
+3636,Yes
+3638,Netch
+3641,What's your proof?
+3642,Lower Carry Weight
+3650,Frost Cloaked Spider
+3654,Secret Servant
+3655,What's the unusual armor you're wearing?
+3656,Poison
+3658,Ridiculous? Why?
+3660,Frost Cloaked Spider
+3662,Battle Fury
+3664,Any idea of where to start?
+3667,I assume it's rare.
+3669,No
+3674,"Yes, otherwise he'll teach me nothing. You can trust me. (Persuade)"
+3675,Dremora Butler
+3676,You want me to kill people?
+3681,Fire Storm 10
+3682,Cyclone
+3685,Matching Set
+3686,Tosses a dead spider on the ground which explodes when an enemy gets too close.
+3687,Cyclone
+3690,Ven
+3692,Unleash
+3693,Exploding Shock Spider
+3695,Can't you make them stop?
+3697,Nos
+3699,Valor
+3700,V6
+3702,"What is ""oneness with the land?"""
+3716,Yes
+3717,Exchange
+3718,Fire Damage 10
+3720,Yes
+3722,East Empire Company?
+3725,Summon Dremora Butler
+3729,No
+3730,No
+3736,Return Ancient Nordic Pickaxe to Glover Mallory
+3737,Yes
+3739,Strike
+3740,No
+3741,Yes
+3744,No
+3746,Yes
+3747,No
+3748,No
+3749,Yes
+3750,Yes
+3752,Good luck with that.
+3753,Resonance Gem
+3758,I'd like you to carry some things.
+3763,Ash Hopper FX
+3764,Jumping Shock Spider
+3768,Cyclone
+3770,What else does a First Hunter do?
+3772,Can you tell me anything about him?
+3776,Where have you heard his name? Please try and think.
+3779,Wizard
+3781,Pirate Captain
+3784,Yes
+3788,Miraak
+3790,.
+3799,Tell Glover Mallory lie about the Ancient Nordic Pickaxe
+3803,So you do need my help.
+3804,G1r
+3806,It looks like an ash spawn attack.
+3807,Exploding Frost Spider
+3808,"You want Stalhrim weapons, and I think I can help you get them."
+3810,Varona is dead. I found her body on the road.
+3815,Seeker Remains
+3817,Jumping Frost Spider
+3818,Hello.
+3825,Do you rule all of Solstheim?
+3829,Paralyze
+3837,WE Template
+3838,NetchSkin
+3840,Sarcophagus
+3846,Read
+3848,Exchange
+3852,Do you work with Neloth?
+3854,The false Tribunal?
+3861,Smithing
+3865,Search
+3868,Unarmed Damge
+3871,"After all that, why?"
+3872,Gift of flight
+3878,"Power attacks do <25>% more damage, +<mag> damage resistance for <dur> seconds."
+3879,What can you tell me about Ildari Sarothril?
+3882,Deathbrand Breath
+3886,I still think you're crazy.
+3887,Read
+3888,Cyclone
+3892,Cyclone03
+3894,Ash Breath
+3897,Ash Gout
+3899,Exchange
+3902,Bend Will 02
+3904,Bend Will
+3906,The key is to the locked section?
+3909,Who's your husband?
+3913,What wisdom can you share about hunting?
+3919,AudioTemplate Lurker
+3921,Cyclone
+3922,Bristleback
+3929,Flames
+3930,What did the letter say?
+3935,Sounds rather complicated.
+3936,Dragon Aspect - Arms
+3939,Exploding Frost Spider
+3940,What is House Redoran?
+3946,Lower Carry Weight
+3948,Defeat the Chief
+3957,Read
+3958,"Fine, you keep it."
+3980,Gratian's Journal
+3985,How has Raven Rock needed your help?
+3986,Black Heart Blight
+3989,Become Ethereal
+3990,Mid
+3993,What does this all mean?
+3994,Gratian Caerellius
+3997,Emperor Parasol Moss
+4000,Cyclone
+4011,Speak to the Chief
+4014,Yes
+4016,Millius
+4017,No.
+4020,Why are you so suspicious of visitors?
+4021,Do you know someone called Miraak?
+4028,You haven't told him how you feel?
+4041,Raven Rock the only settlement on the island?
+4054,Wind
+4057,Return Bilgemuck to Thirsk
+4059,Raven Rock Mine Key
+4066,Is stalhrim a type of ore?
+4072,Give Bilgemuck some meat
+4074,It's dangerous here for an old man.
+4077,No
+4080,Battle Fury
+4081,What does that mean?
+4082,How do the Dunmer bury their dead?
+4085,How long have you been a sea captain?
+4086,Safe
+4089,No
+4094,Has security been an issue?
+4095,Resonance Gem
+4100,Exchange
+4104,Deathbrand Endurance
+4110,Flin
+4111,Skull
+4113,Summons a Dremora butler for <dur> seconds to carry your excess items.
+4114,Read
+4119,What did the netch do?
+4121,Retrieve the Ancient Nordic Pickaxe
+4122,The Chief of Thirsk Hall
+4128,Petty distractions?
+4131,Raven Rock Tomb Key
+4139,Castle Karstaag Key
+4146,Raven Rock Milore Services Faction
+4147,"For <dur> seconds, opponents in melee range take <8> points frost damage and Stamina damage per second."
+4151,You need to know the truth. She was rejected by Hrothmund.
+4152,They'll show up eventually I suppose.
+4165,Why can't you use the tomb?
+4169,What did he want?
+4176,Tell me about your dream.
+4182,Dukaan's Fury
+4183,Chest
+4187,I found the Emberbrand Wine stash.
+4189,Snowclad Ruins
+4193,Still buying East Empire Pendants?
+4194,"Let her back in, or you answer to me! (Intimidate)"
+4205,Raven Rock Geldis Services Faction
+4207,Recipe for Distraction
+4211,Report the stash of Emberbrand Wine to Captain Veleth
+4214,Raven Rock Temple Scene 04
+4215,Chest
+4219,Shein
+4223,Ahzidal's Rage
+4226,Is there anything you can tell me?
+4231,Matze
+4234,Bloodskal Barrow
+4243,What are these people doing?
+4249,Locate the hidden stash of Emberbrand Wine in Raven Rock
+4251,The Black Books have something to do with Hermaeus Mora?
+4254,She attacked me and I had to defend myself.
+4260,Who is Hermaeus Mora?
+4266,I don't know what happened to her. (Lie)
+4274,You're selling quite a few exotic ingredients.
+4278,I'll keep out of your way.
+4287,Raven Rock Any Location Scene 01
+4288,Brand-Shei's Strongbox Key
+4291,It's All In The Taste
+4292,Temple Ancestral Tomb
+4293,I could gather some for you.
+4297,Deathbrand Boots
+4301,Do you sell any special mining gear?
+4304,Frost Cloak
+4308,What sort of dream?
+4310,Keyhole
+4315,Fetch the Netch
+4329,What are these Black Books? Where do they come from?
+4331,Sadri's Sujamma
+4334,I could track the stash down for you.
+4341,I could talk to him for you.
+4342,Convince Geldis Sadri to admit Bralsa Drel to the inn
+4344,"Well, good luck with that."
+4349,Chest
+4362,It'll turn up sooner or later.
+4365,All Dragonborn Keys
+4366,Tell Bralsa Drel she's welcome at the Retching Netch
+4368,Barrel
+4378,Raven Rock Glover Services Faction
+4385,I'll sell you some of mine. (Give East Empire Pendants)
+4387,"Absorb <mag> health, magicka, and stamina for <dur> seconds."
+4388,Bring the netch jelly to Milore Ienth
+4389,Health/Magicka Damage
+4390,What's an East Empire Pendant?
+4391,You're welcome at the Retching Netch anytime.
+4392,Is it difficult commanding the Redoran Guard?
+4399,Clean Sweep
+4416,Let me think about this.
+4425,I'll cleanse the tomb for you.
+4431,Tell Elder Othreloth that the Tomb has been cleansed
+4435,Consider it done.
+4440,Chest
+4442,We're going to fight his ghost?
+4443,Maybe this will change your mind. (<BribeCost> gold)
+4448,CreatureDialogueNetch
+4450,Sounds risky.
+4451,I have some netch jelly right here. (Give 5 netch jelly)
+4456,"Is he someone you know, or not?"
+4458,Why did you ban Bralsa Drel from your inn?
+4460,Tell Geldis Sadri you've distributed his liquor samples
+4468,What's going to happen in there?
+4471,Snowclad Ruins
+4472,Temple Location
+4474,Zahkriisos' Ire
+4476,The Temple's tomb has been cleansed.
+4478,CreatureDialogueFishman
+4479,Retrieve netch jelly for Milore Ienth  (<Global=DLC2RRF02JellyCount>/<Global=DLC2RRF02JellyTotal>)
+4481,Raven Rock Fethis Services Faction
+4483,Distribute Sadri's Sujamma  (<Global=DLC2RRF04DrinkCount>/<Global=DLC2RRF04DrinkTotal>)
+4486,Locate the East Empire Pendants for Fethis Alor in Raven Rock
+4490,Pain in the Necklace
+4491,Feeding the Addiction
+4492,Raven Rock Any Location Scene 13
+4493,Tell me whatever you can.
+4495,Raven Rock Any Location Scene 16
+4511,Seeker Drain
+4514,Why should I pity you?
+4518,Dukaan
+4540,So what's the specialty of the house?
+4551,Black Book
+4554,She has a right to do what she pleases. (Persuade)
+4558,Just tell me where the book is and I'll go get it.
+4564,East Empire Company Strongbox
+4565,It was an honor to stand with her.
+4571,Have you tried to stop this?
+4573,I'm all out of Sadri's Sujamma.
+4575,I'm back.
+4578,Geldis Sadri wants you to try his new drink.
+4590,Any idea where I can begin?
+4594,East Empire Pendant
+4598,Raven Rock Elder Othreloth Preaching Scene
+4601,What is this place?
+4603,I could help spread the word.
+4604,Deathbrand Armor
+4606,Chest
+4620,Raven Rock Any Location Scene 14
+4621,I've given out the Sadri's Sujamma as requested.
+4624,Used to? What happened?
+4628,HMDaedra fx
+4630,Knowledge Drain
+4632,Sorry to hear that.
+4637,What do the Black Books have to do with Hermaeus Mora?
+4639,Absorb Health
+4645,Karstaag's Resistances
+4647,What are the Ancestral Tombs?
+4667,Clear the Temple's tomb of ash spawn
+4669,I have that netch jelly for you.
+4670,Hrothmund said the next Thirsk chief is a long way off.
+4673,Ahzidal
+4674,It's not that simple. Bujold was rejected by Hrothmund.
+4676,Deathbrand Helm
+4677,I'm ready.
+4689,Karstaag's Skull
+4691,Where can you find them?
+4692,Why do we need these cubes?
+4697,Raven Rock Garyn Services Faction
+4699,Virtuous Nordic Bow
+4700,Stalhrim Helmet of Eminent Restoration
+4701,Stalhrim War Axe of Harvesting
+4704,Nordic Mace of Fire
+4705,Dragonborn Flame
+4707,Chitin Bracers of Eminent Archery
+4708,Chitin Helmet of Eminent Magicka
+4710,Nordic Helmet of Eminent Restoration
+4711,Stalhrim Armor of Eminent Restoration
+4713,"Ildari's Journal, vol. III"
+4717,Stalhrim Armor of Extreme Conjuring
+4718,Nordic Armor of Major Health
+4720,Stalhrim Gauntlets of Eminent Smithing
+4721,Netch abilities
+4724,Electrified
+4726,Stalhrim Dagger of Extreme Chaos
+4728,Nordic Warhammer of Reaping
+4729,Nordic Boots of Fire Abatement
+4731,Stalhrim Warhammer of Dread
+4733,Cancel
+4734,You should pay me what you can. (Persuade)
+4735,Nordic Greatsword of Diminishing
+4736,So what's this treasure you were after?
+4738,Summons Karstaag to fight for you for <dur> seconds.
+4742,Heart Stone Deposit
+4743,Chitin Boots of Major Sneaking
+4744,Summons Karstaag to fight for you for <dur> seconds.
+4745,Nordic Shield of Shock Suppression
+4746,Stalhrim Boots of Dwindling Frost
+4747,Nordic Warhammer of Banishing
+4749,Ahzidal's Retribution
+4750,Nordic Greatsword of Despair
+4751,Nordic Armor of Major Destruction
+4753,Chitin Shield of Waning Magic
+4754,Bonemold Gauntlets of Minor Wielding
+4756,Stalhrim War Axe of Debilitation
+4757,Chitin Bracers of Major Smithing
+4758,Hallowed Stalhrim Greatsword
+4759,Nordic Arrow
+4761,Nordic Greatsword of Torpor
+4762,Stalhrim Gauntlets of Major Alchemy
+4764,"Cast on the ground, it creates an area of lightning that does <50> points of shock damage per second."
+4765,Chitin Boots of Waning Frost
+4766,Stalhrim Bow of Damnation
+4767,Stalhrim Gauntlets of Eminent Sure Grip
+4768,Chitin Boots of Dwindling Shock
+4770,Nordic Shield of Fire Suppression
+4771,Bonemold Gauntlets of Alteration
+4772,Bonemold Helmet of Major Illusion
+4773,Stalhrim Battleaxe of Ultimate Chaos
+4774,"As a matter of fact, I do. (5000 gold)"
+4775,Stalhrim Sword of Devouring
+4777,Conjure Ice Wraith
+4778,Nordic Sword of Freezing
+4779,Chitin Armor of Destruction
+4780,Stalhrim Helmet of Peerless Alteration
+4781,Nordic Warhammer of Scorching
+4784,Chitin Boots of Frost Suppression
+4785,Stalhrim Sword of Damnation
+4786,Bonemold Gauntlets of Minor Deft Hands
+4787,Droops
+4789,Shall we do some business?
+4792,Stalhrim Sword of Harvesting
+4793,Stomp
+4794,Nordic Sword of Lightning
+4796,Stalhrim Gauntlets of Major Archery
+4797,Slain by the Morag Tong.
+4798,Damphall Mine
+4799,Chitin Armor of Eminent Conjuring
+4800,Chitin Boots of Major Stamina
+4801,Bonemold Boots of Dwindling Shock
+4802,Nordic Mace of Stunning
+4803,Will you ever go back to Hrothmund and try again?
+4804,Chitin Armor of Illusion
+4805,Nordic War Axe of Lightning
+4807,Temple of Miraak Key
+4808,Recipe - Exploding Shock Spider 2x
+4809,Nordic Sword of Immobilizing
+4810,Where were you when the Dragon Broke
+4812,Chitin Armor of Major Conjuring
+4814,Stalhrim Armor of Peerless Alteration
+4816,Benkum
+4817,Bonemold Armor of the Squire
+4818,Reverent Nordic Sword
+4819,Nordic Sword of Binding
+4820,Bonemold Boots of Waning Shock
+4821,Nordic Dagger of Freezing
+4823,Spectral Dragon
+4824,Stalhrim Greatsword of Stunning
+4825,Nordic Gauntlets of Major Alchemy
+4827,Stalhrim Battleaxe of the Sorcerer
+4828,Absorb Magicka
+4830,Nordic Mace of Despair
+4832,DLC2 Warehouse Ambushes
+4833,Nordic Armor of Major Illusion
+4835,Stalhrim Helmet of Extreme Alchemy
+4836,Virtuous Stalhrim Battleaxe
+4838,Your Unrelenting Force shout does more damage and using all three words may disintegrate enemies.
+4839,Stalhrim Helmet of Eminent Magicka
+4840,Werebear
+4843,Why is he exploring the mine?
+4847,Fake Protection
+4849,Stalhrim Battleaxe of Blizzards
+4850,Stalhrim Armor of Revival
+4851,Nordic Armor of Extreme Illusion
+4852,Read
+4853,Stalhrim Boots of Fire Abatement
+4854,Stalhrim Helmet of Extreme Restoration
+4855,What do you mean?
+4858,Stalhrim Bow of Expelling
+4859,Ash Guardian
+4860,Nordic Mace of Binding
+4861,Ash Spawn began to appear on Solstheim after the massive eruptions of Red Mountain early in the Fourth Era covered the southern part of the island in ash. Their exact origins are unknown.
+4863,Journal of a Madman
+4864,Nordic Helmet of Major Archery
+4865,Chitin Helmet of Waterbreathing
+4869,Stalhrim Warhammer of Nullifying
+4870,Hallowed Nordic Warhammer
+4871,Hay Pile
+4872,Stalhrim Gauntlets of Extreme Wielding
+4873,Bonemold Boots of Resist Fire
+4874,Stalhrim War Axe of Freezing
+4875,Chitin Helmet of Eminent Alteration
+4876,Stalhrim Bow of Animus
+4877,Bonemold Helmet of Major Magicka
+4880,Nordic Sword of Despair
+4881,Chitin Helmet of Archery
+4882,Bonemold Helmet of Minor Alchemy
+4885,Stalhrim Mace of Lethargy
+4886,Stalhrim Dagger of Evoking
+4887,Seeker Drain
+4888,Blizzard
+4891,Chitin Boots of Dwindling Flames
+4894,Stalhrim Mace of Debilitation
+4895,Chitin Armor of Alteration
+4896,Increases your Enchanting skill by <mag> points.
+4898,Stalhrim Gauntlets of Extreme Smithing
+4901,Stalhrim Bow of Winter
+4902,Stalhrim Battleaxe of Winnowing
+4903,Paralyze
+4904,Stalhrim Dagger of Lightning
+4908,Bonemold Gauntlets of Major Smithing
+4910,Spawns a spider that secretes a flammable oil when it feels threatened.
+4911,Conjure Ice Wraith
+4913,Chitin Helmet of Major Conjuring
+4914,Stalhrim Warhammer of the Sorcerer
+4915,Chitin Helmet of Major Restoration
+4916,Stalhrim Dagger of Stunning
+4918,Chitin Boots of Dwindling Frost
+4919,Stalhrim Boots of Major Sneaking
+4921,Chitin Bracers of Archery
+4924,Bonemold Gauntlets of Major Alchemy
+4925,"When hit, this reanimated creature will explode for <50> frost damage."
+4926,Chitin Helmet of Eminent Alteration
+4927,Accept
+4928,Chitin Armor of Eminent Health
+4931,Stalhrim Gauntlets of Eminent Wielding
+4932,Stalhrim War Axe of Nullifying
+4934,Scribbles of a Madman
+4935,Chitin Armor of the Eminent Knight
+4936,Nordic Sword of the Blaze
+4938,Bonemold Gauntlets of Wielding
+4940,Nordic Boots of Eminent Stamina
+4941,Fenzy Rune - Master of the Mind
+4942,Read
+4943,Stalhrim Armor of Extreme Health
+4944,Chitin Boots of Hauling
+4945,Nordic Dagger of Stunning
+4946,Nordic Dagger of Lethargy
+4947,What was left of him.
+4948,Seeker Abilities
+4949,I found this letter.
+4952,Nordic War Axe of Harrowing
+4954,Chitin Helmet of Major Alchemy
+4956,Nordic Greatsword of Depleting
+4958,"You wanted to speak to me, councilor?"
+4959,Hallowed Stalhrim Sword
+4960,Nordic Dagger of Scorching
+4961,Chitin Armor of Alteration
+4962,Stalhrim Helmet of Extreme Alteration
+4963,I've defeated the Draugr and located the missing miners. They're dead.
+4964,I know that name... I found this near an old shrine. (Give journal.)
+4967,To
+4969,Tosses a dead spider on the ground which explodes when an enemy gets too close.
+4971,Miraak Teleport
+4973,Stalhrim Armor of Extreme Destruction
+4974,Nordic Shield
+4975,Nordic War Axe of Dread
+4978,Nordic War Axe of Lethargy
+4982,Shock Touch
+4983,Nordic Dagger of Reaping
+4985,Nordic Greatsword of Animus
+4990,Chitin Shield of Frost Suppression
+4992,Summon Karstaag
+4993,Miraak Teleport
+4994,Stalhrim Sword of Nullifying
+4996,Stalhrim Dagger of Dread
+4997,Bonemold Gauntlets of Minor Alchemy
+4998,Karstaag's Skull
+5000,Nordic Bow of Banishing
+5002,Alright then. Where did you learn these secrets?
+5003,Stalhrim Greatsword of the Sorcerer
+5004,Chitin Helmet of Major Alteration
+5006,Stalhrim Greatsword of Immobilizing
+5008,Nordic Greatsword of Scorching
+5011,Stalhrim Armor of Major Health
+5012,Nordic Helmet of Eminent Alchemy
+5014,Bonemold Gauntlets of Minor Sure Grip
+5015,Chitin Helmet of Major Alchemy
+5016,Horksbane
+5017,Could you repeat that inscription?
+5018,The Doors of the Spirit
+5021,Nordic Gauntlets of Eminent Archery
+5022,Chitin Bracers of Major Lockpicking
+5023,Stalhrim Boots of Brawn
+5024,Stalhrim Helmet of Eminent Magicka
+5026,Bonemold Shield of Resist Shock
+5028,Holy Stalhrim Battleaxe
+5029,Where do you get your raw materials?
+5030,Stalhrim Boots of Shock Suppression
+5032,Nordic Gauntlets of Eminent Alchemy
+5033,Virtuous Stalhrim Greatsword
+5035,Torso
+5038,Stalhrim Mace of Animus
+5040,Bonemold Shield of Minor Blocking
+5041,Stalhrim Bow of Nullifying
+5042,Bonemold Boots of Waning Fire
+5043,Chitin Boots of Shock Suppression
+5045,Stalhrim Helmet of Major Archery
+5046,Chitin Armor of Eminent Conjuring
+5049,Mine
+5050,Teleports MIrrak to the player..
+5051,Chitin Armor of Major Alteration
+5053,Nordic Mace of Debilitation
+5055,Stalhrim Dagger of Depleting
+5058,Stalhrim Armor of Extreme Illusion
+5060,Stalhrim Greatsword of Debilitation
+5061,Mireli
+5062,Stalhrim Battleaxe of Lightning
+5063,Did he say what it was about?
+5064,Give the note to Captain Veleth
+5065,Bard Holding Cell
+5066,Nordic Bow of Stunning
+5067,Bonemold Shield of Resist Frost
+5068,Recipe - Exploding Shock Spider
+5073,Summons Karstaag to fight for you for <dur> seconds.
+5074,Reverent Nordic Dagger
+5078,Stalhrim Dagger of Subsuming
+5081,Black Book: The Hidden Twilight
+5082,Summon Karstaag
+5083,Nerevar at Red Mountain
+5084,Stalhrim Helmet of Extreme Magicka
+5086,Accept
+5089,Stalhrim Armor of Major Illusion
+5090,Bonemold Helmet of Major Alchemy
+5092,Nordic Mace of Freezing
+5093,Stalhrim Bow of Storms
+5095,Accept
+5096,Frost Cloak
+5098,Stalhrim War Axe of Immobilizing
+5099,Locate Ralis
+5102,Stalhrim Shield of Fire Abatement
+5103,All Dragonborn Scrolls
+5104,Stalhrim Battleaxe of Banishing
+5105,You want... 5000 septims?
+5107,Bonemold Boots of Lifting
+5108,Bonemold Shield of Waning Magic
+5109,Frost Cloak
+5111,How are you getting along here?
+5113,"The Poison Song, Book VII"
+5116,Ash Guardian
+5119,Nordic War Axe of Reaping
+5120,Nordic Warhammer of Enervating
+5121,Stalhrim Dagger of Nullifying
+5124,Nordic Battleaxe of Garnering
+5126,"For <dur> seconds, opponents in melee range take <15> points frost damage and Stamina damage per second."
+5127,Netch Calf
+5128,Chitin Helmet of Illusion
+5129,Stalhrim Battleaxe of Winter
+5132,Vendil Ulen's Chest
+5133,Tell me more about Thirsk.
+5134,Chitin Boots of Waning Shock
+5135,Nordic Warhammer of Diminishing
+5140,Chitin Shield of Shock Suppression
+5144,Stalhrim War Axe of Winnowing
+5145,Nordic Warhammer of Fear
+5146,Skaal Shaman
+5150,Chitin Boots of Eminent Sneaking
+5151,Freeze
+5152,Nordic War Axe of Malediction
+5153,Nordic Armor of Eminent Destruction
+5154,Stalhrim Shield of Dwindling Fire
+5155,Stalhrim Greatsword of Thunderbolts
+5156,Stalhrim War Axe of Storms
+5157,Have you known Bujold a while?
+5159,"A blast of flame that sets the target on fire, doing <mag> damage per second for <15> seconds."
+5160,Nordic Greatsword of Immobilizing
+5161,Chitin Armor of Health
+5162,Stalhrim Armor of Eminent Alteration
+5168,Nordic Boots of Fire Suppression
+5169,Bonemold Helmet of Major Destruction
+5170,Stalhrim War Axe of Dread
+5172,Nordic Greatsword of Malediction
+5175,Nordic Warhammer of Ice
+5176,Stalhrim Armor of Extreme Health
+5177,Stalhrim Sword of Thunderbolts
+5180,Reverent Nordic War Axe
+5181,Whoa. Not so close.
+5185,Bonemold Boots of Waning Frost
+5187,Stalhrim Mace of Stunning
+5188,Read
+5189,Stalhrim War Axe of Annihilating
+5190,Nordic Battleaxe of Dread
+5191,Nordic Sword of Depleting
+5192,Nordic Gauntlets of Eminent Wielding
+5195,Bonemold Gauntlets of Minor Conjuring
+5197,Stalhrim Boots of Eminent Stamina
+5201,Absorb Stamina
+5204,Stalhrim Helmet of Eminent Alchemy
+5208,Stalhrim Boots of Dwindling Shock
+5210,Stalhrim Bow of Depleting
+5211,Chitin Armor of Major Illusion
+5216,Nordic Mace of Animus
+5218,Bonemold Boots of Minor Sneaking
+5219,Speak to Ralis
+5220,Chitin Bracers of Major Alchemy
+5221,Stalhrim Sword of Dread
+5222,Bonemold Gauntlets of Major Deft Hands
+5227,Stalhrim Armor of Extreme Illusion
+5228,.
+5229,Nordic Dagger of Consuming
+5231,Nordic Bow of Dread
+5232,Stalhrim Warhammer of Damnation
+5233,"Ildari's Journal, vol. I"
+5235,Chitin Bracers of Major Sure Grip
+5236,Bardic Knowledge
+5237,Flame Cloaked Spider
+5238,Nordic Boots of Frost Abatement
+5239,Nordic Sword of Torpor
+5240,Stalhrim Battleaxe of Lethargy
+5241,Hrodulf's Journal
+5245,High Seeker
+5246,Mine
+5247,Chitin Boots of Eminent Stamina
+5248,Stalhrim Warhammer of Debilitation
+5252,Nordic Sword of Shocks
+5253,Oil Spider
+5254,Nordic Battleaxe of the Blaze
+5255,Mine
+5257,The True Noble's Code
+5258,Nordic Armor of Eminent Conjuring
+5260,Nordic War Axe of Freezing
+5261,Stalhrim Armor of Major Conjuring
+5262,Find a way deeper into the Barrow
+5264,Stalhrim Gauntlets of Major Smithing
+5266,Fund the excavation of Kolbjorn Barrow (1000 gold)
+5267,Ildari's Journal
+5268,Stalhrim Sword of Immobilizing
+5269,Why not hire some of the miners out of Raven Rock?
+5271,Stalhrim Boots of the Mammoth
+5272,Stalhrim Battleaxe of Animus
+5273,Chitin Armor of Conjuring
+5274,Stalhrim Dagger of Blizzards
+5276,Stalhrim Sword of Malediction
+5277,Confessions of a Dunmer Skooma Eater
+5278,Bonemold Boots of Strength
+5281,Chitin Armor of the Major Knight
+5282,Nordic Warhammer of Devouring
+5283,"While charging, releases two Spectral Dragons from the player.  Releases an additional Spectral Dragon for every 5 Dragon Souls. "
+5285,All Dragonborn Misc Items
+5288,Stalhrim Shield of Dwindling Shock
+5290,Nordic Mace of Harvesting
+5292,Chitin Bracers of Eminent Alchemy
+5293,Nordic Battleaxe of Freezing
+5294,Stalhrim Bow of Thunderbolts
+5295,Nordic Sword of Evoking
+5296,Nordic War Axe of Thunderbolts
+5297,Oil Spider
+5298,Stalhrim Greatsword of Malediction
+5306,Nordic Sword of Dread
+5307,Stalhrim Warhammer of Thunderbolts
+5308,Bonemold Gauntlets of Major Wielding
+5309,Stalhrim Armor of Remedy
+5310,Stalhrim Mace of Devouring
+5315,Stalhrim Dagger of the Sorcerer
+5317,Stalhrim Mace of Damnation
+5318,Opponents in melee range take <mag> points frost damage per second.
+5321,Nordic Helmet of Major Magicka
+5324,Glowing Spider
+5326,Lord Tusk
+5329,Nordic Gauntlets of Extreme Smithing
+5331,Stalhrim Armor of Extreme Restoration
+5332,Look for Wulf's brother Torkild
+5334,Nordic Shield of Eminent Blocking
+5336,Sapphire Geode
+5338,Stalhrim Battleaxe of Dread
+5340,Stalhrim Armor of Regeneration
+5341,Nordic Boots of Frost Suppression
+5346,Nordic Gauntlets of Eminent Smithing
+5347,Chitin Boots of Stamina
+5348,Chest
+5353,Centurion Dynamo Core required
+5355,Stalhrim Sword of Garnering
+5356,Nordic Armor of Eminent Alteration
+5357,Shock Damage
+5358,Stalhrim Helmet of Peerless Conjuring
+5359,Stalhrim Armor of Peerless Health
+5360,Stalhrim War Axe of Garnering
+5364,Chitin Boots of Hauling
+5366,Nordic Warhammer of Leeching
+5367,I have a letter from your brother. (Give letter)
+5368,Nordic War Axe of Despair
+5372,Stalhrim Mace of Ultimate Chaos
+5373,Nordic Shield of Magic Abatement
+5374,Stalhrim Greatsword of Exhaustion
+5376,Stalhrim Mace of Evoking
+5377,Frost
+5379,Stalhrim War Axe of the Vampire
+5381,Chitin Shield of Waning Frost
+5384,Mine
+5385,All Dragonborn Ingredients
+5386,Trap
+5387,Nordic Warhammer of Binding
+5390,I've got some money. Are you looking for a partner?
+5391,Nordic Sword of Harvesting
+5393,Nordic Mace of the Blaze
+5394,Nordic Greatsword of Enervating
+5397,Etched Tablet
+5399,Nordic Warhammer of Evoking
+5402,Nordic Greatsword of Shocks
+5404,Kolbjorn Guard
+5406,Nordic Armor of Extreme Restoration
+5407,Nordic Battleaxe of Depleting
+5408,Nordic Boots of Shock Suppression
+5409,Stalhrim War Axe of Damnation
+5410,The Five Far Stars
+5411,Stalhrim Bow of Immobilizing
+5413,Hallowed Nordic Battleaxe
+5414,Nordic Sword of Fire
+5415,Stalhrim Dagger of Ultimate Chaos
+5416,Spawns a spider that can be used to haul items.  Only one can be spawned at once.
+5417,Chitin Bracers of Major Wielding
+5418,Stalhrim Dagger of Malediction
+5419,Stalhrim Source
+5420,Nordic Bow of Freezing
+5421,Tempered Sphere
+5424,Holy Stalhrim Warhammer
+5425,Virtuous Stalhrim Dagger
+5427,Nordic Mace of Devouring
+5428,Nordic Dagger of Garnering
+5429,Nordic Mace of Lightning
+5430,Stalhrim Boots of Frost Abatement
+5431,Nordic Dagger of Banishing
+5433,Nordic Mace of Banishing
+5436,Nordic Gauntlets of Extreme Archery
+5438,Amethyst Geode
+5440,Nordic Greatsword of Binding
+5441,Stalhrim Shield
+5442,Chitin Helmet of Eminent Archery
+5444,Mine
+5445,All Dragonborn Armor
+5447,Nordic War Axe of Debilitation
+5448,Chitin Boots of Dwindling Frost
+5449,Summon Karstaag
+5451,"Cast on the ground, it creates an area of fire that does <50> points of fire damage per second."
+5452,Nordic Battleaxe of Thunderbolts
+5453,Hallowed Nordic Mace
+5455,Chitin Helmet of Eminent Alchemy
+5457,Nordic Bow of Shocks
+5459,Stalhrim Gauntlets of Peerless Alchemy
+5460,Damphall Mine
+5461,Nordic Helmet of Major Conjuring
+5462,Whiterun Jail Key
+5463,Stalhrim Arrow
+5464,Nordic Armor of Eminent Health
+5465,Nordic Dagger of Fire
+5467,Virtuous Nordic Dagger
+5468,NetchCalfSkin
+5470,Could you repeat that inscription?
+5471,The Anticipations
+5474,Stalhrim Warhammer of Enervating
+5475,One-handed and two-handed weapon damage is <mag>% lower.
+5477,He lives in a giant mushroom?
+5480,Stalhrim Warhammer of Blizzards
+5482,Chitin Boots of Eminent Stamina
+5486,All the Draugr are dead.
+5488,Stalhrim Enchanting
+5490,Stalhrim Sword of Ultimate Chaos
+5493,Stalhrim Boots of Eminent Sneaking
+5496,Stalhrim Mace of Exhaustion
+5499,Pack Spider
+5500,I found a way past the dead end.
+5502,Stalhrim Armor of Eminent Destruction
+5503,Chitin Helmet of Major Destruction
+5505,Stalhrim Dagger of Storms
+5510,Return to Kolbjorn Barrow
+5511,Nordic Mace of Enervating
+5514,Cancel
+5517,Stalhrim Helmet of Peerless Restoration
+5518,Stalhrim Mace of Harvesting
+5519,Shock Barrier
+5520,Nordic Dagger of Animus
+5521,Nordic Bow of Fear
+5524,Fund the next phase of the excavation (3000 gold)
+5526,Nordic Battleaxe of Harvesting
+5527,Nordic Gauntlets of Extreme Sure Grip
+5529,Nordic Dagger of Fear
+5530,Thunderbolt
+5535,Bradyn
+5536,Stalhrim Dagger of Winter
+5537,Stalhrim Warhammer of Extreme Chaos
+5539,Chitin Armor of Eminent Illusion
+5540,Stalhrim Dagger of Garnering
+5542,Nordic Helmet of Eminent Conjuring
+5544,Hallowed Nordic Dagger
+5546,Stalhrim Gauntlets of Peerless Sure Grip
+5549,Nordic Battleaxe of Binding
+5550,Stalhrim Boots of Fire Suppression
+5552,Stalhrim Helmet of Extreme Illusion
+5554,Chitin Bracers of Eminent Archery
+5555,Stalhrim Armor of Recuperation
+5556,Steamed
+5557,Stalhrim Gauntlets of Extreme Sure Grip
+5558,Stalhrim Boots of Eminent Stamina
+5559,Stalhrim Greatsword of Lethargy
+5560,Stalhrim Bow
+5561,Can you tell me anything about him?
+5562,Black Book: The Winds of Change
+5564,Nordic War Axe of Depleting
+5565,Nordic Helmet of Extreme Archery
+5566,What happened to your brother?
+5567,Bonemold Boots of Dwindling Flames
+5568,Mine
+5570,Ring of the Moon
+5573,Chitin Bracers of Major Deft Hands
+5574,Stalhrim Mace of Petrifying
+5578,Stalhrim Armor of Eminent Restoration
+5579,Torkild's Letter to Wulf
+5582,Stalhrim Armor of the Eminent Knight
+5584,Nordic Battleaxe of Animus
+5585,Stalhrim Boots of Frost Suppression
+5586,The bandits won't be a problem anymore.
+5587,Kolbjorn Guard
+5589,Bonemold Gauntlets of Smithing
+5591,Chitin Bracers of Sure Grip
+5594,Read
+5595,Accept
+5597,Stalhrim Dagger of the Vampire
+5598,Ahzidal's Necromancy
+5599,Nordic Mace of Blizzards
+5604,Nordic Dagger of Diminishing
+5606,Bonemold Gauntlets of Deft Hands
+5607,Bonemold Gauntlets of Lockpicking
+5608,Stalhrim Battleaxe of High Chaos
+5609,Nordic Warhammer of Lethargy
+5610,Stalhrim Dagger of Terror
+5611,Nordic Bow of Thunderbolts
+5613,Stalhrim Bow of Freezing
+5614,Varieties of Faith in the Empire
+5619,Stalhrim Helmet of Eminent Illusion
+5622,Hay Pile
+5623,I'll head there immediately.
+5625,Enemies who strike you with a melee attack have a small chance of being paralyzed.
+5627,A spike of ice that does <mag> points of frost damage to Health and Stamina and slows the target for <15> seconds.
+5628,Nordic Bow of Fire
+5629,Nordic Dagger of the Blaze
+5631,Slow down there. What are you going on about?
+5632,Stalhrim Greatsword of Harvesting
+5633,Nordic Warhammer of Consuming
+5634,Stalhrim Warhammer of Storms
+5636,Stalhrim Boots of Fire Suppression
+5637,All Dragonborn Potions
+5639,Search General Carius's remains
+5640,Storm Flow
+5641,Your Frost Breath Shout encases foes in ice for <15> seconds.
+5642,Chitin Armor of Eminent Alteration
+5644,Aggro Cloak DMG
+5646,Nordic War Axe of Shocks
+5647,Nordic Mace of Torpor
+5648,Saden
+5649,Chitin Helmet of Alteration
+5653,Can you tell me anything about him?
+5655,Ignite
+5656,Chitin Helmet of Major Archery
+5657,Nordic Mace of Ice
+5658,Nordic Bow
+5659,Read
+5660,Ice Wraith FX Ability
+5661,Recipe - Pack Spider
+5662,Stalhrim Dagger of Harvesting
+5665,Nordic Greatsword of Reaping
+5667,Summon Karstaag
+5668,Stalhrim Bow of Dread
+5671,Stalhrim Mace of Malediction
+5675,Returns Miraak.
+5676,Here. (2000 gold)
+5677,What were you arguing with Crescius about?
+5682,Chitin Boots of Dwindling Flames
+5683,Miner
+5684,Stalhrim Gauntlets of Eminent Wielding
+5686,Nordic Battleaxe of Diminishing
+5687,Fake Protection
+5690,Stalhrim Gauntlets of Eminent Smithing
+5692,Nordic Mace of Reaping
+5693,Dragonborn Flame
+5694,Stalhrim Sword of Enervating
+5697,Chitin Shield of Waning Fire
+5698,Clear the Draugr from Kolbjorn Barrow
+5701,Stalhrim Battleaxe of Storms
+5702,Lurkers are thought to be native to the murky waters of Hermaeus Mora's realm of Apocrypha.
+5704,Chitin Armor of Destruction
+5706,Nordic Shield of Shock Abatement
+5707,Chitin Bracers of Eminent Sure Grip
+5711,Chitin Armor of the Knight
+5713,Nordic Armor of the Major Knight
+5714,Ash Spray
+5715,Nordic Battleaxe of Ice
+5716,Karstaag
+5717,Chitin Helmet of Destruction
+5718,Stalhrim Greatsword of Animus
+5721,The House of Troubles
+5722,Just tell me if you know him.
+5729,Aren't you his apprentice? He must have taught you his secrets...
+5731,Frost Strike
+5733,Stalhrim Greatsword of Terror
+5734,Fly Grab
+5735,Exploding Flame Spider
+5736,Karstaag's Frost Cloak
+5738,Stalhrim Warhammer of Lightning
+5740,Stalhrim Gauntlets of Major Sure Grip
+5741,Nordic Boots of Shock Abatement
+5743,Virtuous Stalhrim Warhammer
+5749,Chitin Shield of Blocking
+5750,Nordic Bow of Despair
+5752,Nordic Warhammer of Winnowing
+5755,I have some information about Fort Frostmoth.
+5756,Stalhrim War Axe of Evoking
+5757,Miner
+5758,Recipe - Jumping Shock Spider 2x
+5759,Nordic Sword of Winnowing
+5760,DragonStormBodyArtHolder
+5762,Morag Tong Assassin
+5763,Nordic Shield of Magic Suppression
+5765,Chitin Helmet of Destruction
+5768,Stalhrim Sword of Lightning
+5769,Nordic Battleaxe of Fear
+5770,Recipe - Exploding Frost Spider 2x
+5771,Hallowed Stalhrim War Axe
+5772,Recipe - Shock Cloaked Spider 2x
+5774,Miner
+5776,Mine
+5777,Nordic Warhammer of Depleting
+5778,Stalhrim Boots of the Ox
+5779,Nordic Mace of Expelling
+5781,Stalhrim War Axe of Expelling
+5782,Nordic Greatsword of Banishing
+5783,Stalhrim Sword of Lethargy
+5784,Nordic Mace of Harrowing
+5785,Stalhrim Helmet of Replenishing
+5786,Stalhrim Armor of Peerless Illusion
+5787,Nordic Gauntlets of Major Smithing
+5789,Bardic Knowledge
+5790,Stalhrim Boots of Shock Abatement
+5791,Hallowed Nordic War Axe
+5792,I'm back!
+5794,Nordic Shield of Extreme Blocking
+5795,Albino Spider Egg
+5797,Nordic Warhammer of the Blaze
+5804,Nordic Dagger of Enervating
+5806,Nordic Sword of Diminishing
+5807,Nordic Battleaxe of Despair
+5809,Nordic Sword of Garnering
+5810,Oh?
+5811,Nordic Greatsword of Stunning
+5812,Fire Barrier
+5816,Nordic Warhammer of Animus
+5817,Did you need something from me?
+5819,Bonemold Shield of Waning Fire
+5823,Ahzidal's Genius
+5824,Stalhrim Dagger of Petrifying
+5827,Are you the one who makes the mead?
+5830,Morag Tong Boots
+5832,Nordic War Axe of Fire
+5833,Flame Cloaked Spider
+5834,Stalhrim Shield of Shock Suppression
+5835,Are you a warrior?
+5836,Stalhrim Helmet of Eminent Restoration
+5840,Nordic Sword of Scorching
+5841,Spider Fire
+5842,Nordic Boots of Muffling
+5844,Stalhrim Shield of Frost Suppression
+5845,Nordic War Axe of the Blaze
+5846,Stalhrim Battleaxe of Thunderbolts
+5849,Treasure Room Key
+5851,Stalhrim Boots of Warmth
+5852,Stalhrim Warhammer of Immobilizing
+5853,Stalhrim Warhammer of Winter
+5854,Chitin Helmet of Eminent Illusion
+5856,Stalhrim Dagger of Despair
+5857,Stalhrim Greatsword of Blizzards
+5859,Summons an Ice Wraith for <dur> seconds wherever the caster is pointing.
+5860,Mine
+5864,Bonemold Boots of Major Sneaking
+5865,Nordic Gauntlets of Extreme Alchemy
+5867,Chitin Boots of Waning Fire
+5868,Nordic Boots of Dwindling Shock
+5869,Target takes <mag> points of Fire damage per second to Health.
+5872,Stalhrim Gauntlets of Extreme Archery
+5873,Stalhrim Shield of Fire Suppression
+5874,Apocrypha Tome
+5877,Stalhrim Mace of Depleting
+5878,.
+5879,Chitin Helmet of Eminent Destruction
+5882,What's in your head?
+5884,Nordic War Axe of Fear
+5885,Unearthed
+5886,Nordic Warhammer of Malediction
+5888,Nordic Sword of Reaping
+5889,Stalhrim Mace of Extreme Chaos
+5891,Stalhrim Armor of Renewal
+5893,Holy Stalhrim Bow
+5894,Bonemold Shield of Dwindling Shock
+5896,Stalhrim Armor of Extreme Alteration
+5897,Nordic Warhammer of Immobilizing
+5898,Nordic Greatsword of Blizzards
+5899,Accept
+5902,Stalhrim Mace of Lightning
+5903,Chitin Armor of Eminent Health
+5905,Cancel
+5907,Chitin Helmet of Major Illusion
+5908,Nordic Dagger of Expelling
+5913,Accept
+5914,Nordic Warhammer of Blizzards
+5916,Do you have any insights to share about this puzzle?
+5919,Bonemold Helmet of Magicka
+5920,Chitin Shield of Dwindling Shock
+5921,Cancel
+5925,"Rieklings may be small in stature, but they attack in swarms and can be fearsome in melee combat. They are even known to tame and ride boars into battle."
+5926,Cancel
+5927,Accept
+5929,Recipe - Shock Cloaked Spider
+5931,Holy Stalhrim War Axe
+5932,Accept
+5933,I found the missing miners. Both dead.
+5934,Stalhrim Boots of Shock Abatement
+5936,Cancel
+5937,Accept
+5938,Damphall Mine
+5940,Nordic Sword of Blizzards
+5942,How about you take half? (Intimidate)
+5944,Stalhrim Helmet of Extreme Archery
+5945,Nordic Bow of Binding
+5946,AudioTemplateMammoth
+5948,Shock Spider Abilities
+5949,Stalhrim Sword of Debilitation
+5950,Cancel
+5952,Stalhrim Helmet of Peerless Archery
+5953,Nordic War Axe of Ice
+5954,Werebears
+5955,Stalhrim Dagger of High Chaos
+5956,Accept
+5957,Cancel
+5958,Accept
+5959,Stalhrim Gauntlets of Eminent Archery
+5962,Reverent Nordic Battleaxe
+5964,Targets that fail to resist are paralyzed for <dur> seconds.
+5965,Frost Flow
+5967,Stalhrim Warhammer of Garnering
+5971,Head
+5977,Summon Karstaag
+5981,Bonemold Shield of Dwindling Magic
+5982,Ahzidal's Retribution
+5984,Stalhrim Helmet of Eminent Illusion
+5985,Bonemold Helmet of Minor Alteration
+5988,Chitin Helmet of Alteration
+5989,Raven Rock Rumors
+5993,Karstaag's Summons
+5994,Stalhrim Helmet of Extreme Illusion
+5995,Nordic Battleaxe of Scorching
+5996,Stalhrim War Axe of Ultimate Chaos
+5997,Stalhrim War Axe of Exhaustion
+5998,Stalhrim Warhammer of Devouring
+5999,The Steel Smithing perk allows you to forge Bonemold armor. Elven Smithing allows you to forge Chitin armor. Advanced Armors allows you to forge Nordic armor and weapons. Ebony Smithing allows you to forge Stalhrim armor and weapons.
+6000,Stalhrim Greatsword of Extreme Chaos
+6001,Frost enchantments are more potent when placed on Stalhrim weapons or armor.
+6002,Bonemold armor is a type of Dunmer armor crafted out of bone and resins.
+6004,Are you sure Gratian's death wasn't an accident?
+6006,Stalhrim Dagger of Expelling
+6008,Stalhrim Helmet of Extreme Conjuring
+6010,Seekers are servants of Hermaeus Mora. They are rarely seen outside his Oblivion realm of Apocrypha.
+6012,Stalhrim Warhammer of Lethargy
+6013,Bonemold Shield of Waning Frost
+6014,Miraak's Staff
+6015,Bonemold Helmet of Alteration
+6018,Confront Ralis
+6019,Of course. (1000 gold)
+6020,Defeat Ahzidal
+6021,Stalhrim Armor of Eminent Alteration
+6026,Speak to Ralis
+6027,Frost Cloak Freeze
+6029,Return to Kolbjorn Barrow
+6030,Nordic Boots of Brawn
+6031,Nordic Gauntlets of Major Wielding
+6032,Speak to Ralis
+6033,I can't let you go unpunished.
+6035,Clear the Draugr from Kolbjorn Barrow
+6036,Holy Stalhrim Mace
+6037,I just got out of there as fast as I could.
+6038,Nordic Battleaxe of Shocks
+6040,Clear the Draugr from Kolbjorn Barrow
+6042,Stalhrim Dagger of Freezing
+6043,Nordic Warhammer of Despair
+6046,Filial Bonds
+6048,Bonemold Helmet of Minor Conjuration
+6049,Stalhrim Sword of Extreme Chaos
+6052,"Targets take <mag> points of frost damage for <dur> seconds, plus Stamina damage."
+6055,Stalhrim Helmet of Extreme Magicka
+6059,Nordic War Axe of Animus
+6060,"The Poison Song, Book IV"
+6063,Kill Ralis
+6069,Nordic Greatsword of Thunderbolts
+6070,Dragon Storm
+6072,Knowledge Drain
+6073,Stalhrim Helmet of Extreme Destruction
+6074,Stalhrim Dagger of Winnowing
+6075,Stalhrim Armor of Rejuvenation
+6077,Nordic Battleaxe of Consuming
+6082,Searing Embers
+6086,Nordic Dagger of Harvesting
+6089,Glowing Spider Abilities
+6090,Chitin Armor of Restoration
+6091,Chitin Helmet of Magicka
+6092,Nordic Mace of Dread
+6096,Nordic Shield of Frost Suppression
+6097,Stalhrim Bow of Enervating
+6098,Bring the note to a guard in Raven Rock
+6099,Read the note
+6100,Nordic Sword of Leeching
+6101,Chitin Armor of Eminent Alteration
+6102,Give the note to Captain Veleth
+6104,I'm still working on it.
+6108,Lives of the Saints
+6110,Stalhrim Mace of the Sorcerer
+6111,Stalhrim Greatsword of Winnowing
+6112,Follow Adril Arano
+6113,Stalhrim Armor of Mending
+6117,Stalhrim Battleaxe of Exhaustion
+6122,Storm Atronach
+6123,Stalhrim Helmet of Major Alteration
+6124,Stalhrim Sword of Despair
+6126,Nordic Helmet of Extreme Conjuring
+6129,Stalhrim Mace of Leeching
+6130,Defeat Vahlok
+6131,Chitin Helmet of Alchemy
+6141,Bonemold Shield of Waning Shock
+6144,Nordic Greatsword of Devouring
+6145,How do you feel about Bujold?
+6146,Nordic Dagger of Devouring
+6147,Speak to Ralis Sedarys at Kolbjorn Barrow
+6148,Bonemold Armor of the Major Squire
+6149,Kolbjorn Barrow Misc Objectives
+6150,Nordic Bow of Ice
+6151,Stalhrim Warhammer of Subsuming
+6152,Chitin Bracers of Eminent Alchemy
+6154,Kolbjorn Barrow Phase 1 Tracking
+6155,Kolbjorn Barrow Phase 2 Tracking
+6156,You don't agree with Crescius?
+6158,Black Book
+6159,Nordic Dagger of Binding
+6160,Stalhrim Gauntlets of Eminent Lockpicking
+6161,Nordic Mace of Depleting
+6166,Morag Tong Competition
+6170,Stalhrim Helmet of Major Alchemy
+6173,Stalhrim Sword of Winter
+6176,Return to Kolbjorn Barrow
+6177,Warrior
+6179,Who was Crescius's great-grandfather?
+6184,Reverent Nordic Bow
+6188,Stalhrim Bow of Debilitation
+6189,Kolbjorn Barrow Phase 1 Tracking
+6191,Chitin Bracers of Eminent Smithing
+6199,Virtuous Nordic Warhammer
+6200,Aggro Cloak
+6204,Stalhrim Helmet of Major Destruction
+6209,Nordic Battleaxe of Harrowing
+6210,Torso
+6211,Stalhrim Battleaxe of Nullifying
+6212,Chitin Armor of the Squire
+6214,Stalhrim Helmet of Resurgence
+6224,Stalhrim Armor of Eminent Illusion
+6234,Stalhrim Shield of Magic Abatement
+6236,Stalhrim Gauntlets of Extreme Archery
+6237,Could you repeat that inscription?
+6239,Nordic Bow of Lethargy
+6241,Where can I find a heart stone?
+6242,It's not my problem.
+6243,Nordic Boots of Extreme Stamina
+6244,Accept
+6246,Nordic Greatsword of Fear
+6247,Stalhrim Greatsword of Depleting
+6251,Nordic Boots of the Ox
+6261,Amethyst Geode
+6263,Nordic Armor of the Eminent Knight
+6266,Bonemold Gauntlets of Alchemy
+6267,Nordic Dagger of Lightning
+6268,Bonemold Armor of Minor Health
+6270,Chitin Bracers of Eminent Smithing
+6279,Stalhrim Dagger of Enervating
+6280,Demoralize
+6281,Stalhrim Boots of Frost Abatement
+6282,Did I overhear that someone is missing?
+6287,Nordic War Axe of Harvesting
+6288,Ring of Instinct
+6291,Stalhrim Gauntlets of Extreme Sure Grip
+6293,Where did you find this Black Book?
+6296,Stalhrim Greatsword of Storms
+6298,Stalhrim Bow of Blizzards
+6301,Bonemold Helmet of Conjuration
+6303,Magical Instruments
+6306,Bonemold Gauntlets of Major Archery
+6309,Ash Guardian
+6310,What now?
+6314,Jumping Frost Spider
+6315,Nordic Mace of Scorching
+6316,Stalhrim Helmet of Major Illusion
+6317,Stalhrim Bow of Malediction
+6318,Shock Cloaked Spider
+6319,I found evidence proving the Severins's guilt.
+6325,Chitin Helmet of Major Alteration
+6327,Nordic Bow of Blizzards
+6330,Haven't I done enough?
+6332,Key to Abandoned Lodge
+6333,Nordic Mace of Garnering
+6336,"The Poison Song, Book II"
+6337,Chitin Bracers of Alchemy
+6339,Chitin Helmet of Eminent Conjuring
+6343,Stalhrim Sword of Exhaustion
+6345,Nordic Battleaxe of Expelling
+6346,"Thank you, councilor."
+6350,Nordic Mace of Leeching
+6351,Recipe - Jumping Frost Spider
+6354,Nordic Battleaxe of Immobilizing
+6357,Chitin Armor of the Major Squire
+6359,Ahzidal's Arcana
+6360,Servos' Journal
+6374,Stalhrim Gauntlets of Extreme Wielding
+6377,What's in it for me?
+6378,Stalhrim Helmet of Extreme Alchemy
+6380,Stalhrim Gauntlets of Peerless Wielding
+6382,Fountain of Knowledge
+6383,Ahzidal's Retribution
+6389,Frost Strike
+6390,Chitin Boots of Stamina
+6392,Stalhrim Armor of Eminent Destruction
+6393,"When your Fire Breath Shout kills an enemy, a fire wyrm emerges from their corpse to fight for you for 60 seconds."
+6399,Stalhrim Battleaxe of Subsuming
+6400,Stalhrim Battleaxe of Devouring
+6401,Stalhrim Helmet of Peerless Alchemy
+6403,Bonemold Helmet of Illusion
+6405,Chest
+6407,Stalhrim Armor of Eminent Conjuring
+6408,Stalhrim Gauntlets of Extreme Deft Hands
+6409,Bonemold Gauntlets of Major Sure Grip
+6411,Nordic Sword of Lethargy
+6413,Stalhrim Bow of Lethargy
+6419,How much?
+6424,Chitin Armor of the Eminent Squire
+6426,Hallowed Stalhrim Bow
+6430,Stalhrim Helmet of Major Restoration
+6433,Virtuous Nordic War Axe
+6439,Stalhrim Battleaxe of Extreme Chaos
+6441,Nordic Helmet of Eminent Illusion
+6442,Chitin Bracers of Wielding
+6443,Hay Pile
+6444,Ash Guardian
+6446,Take
+6447,Stalhrim War Axe of Blizzards
+6454,Stalhrim Armor of Rejuvenation
+6455,Locate
+6458,Black Book: The Sallow Regent
+6459,Nordic Greatsword of Harrowing
+6461,Are you one of the warriors from Thirsk?
+6464,Chitin Helmet of Major Destruction
+6469,Stalhrim Battleaxe of Damnation
+6473,Stalhrim Helmet of Eminent Conjuring
+6474,Chitin Bracers of Major Alchemy
+6480,Fund the next phase of the excavation (2000 gold)
+6483,Nordic Armor of Eminent Illusion
+6491,Ancient Dragonborn
+6492,What happened to him?
+6494,Spider Fire
+6495,Do you have any insights to share about this puzzle?
+6499,Is this the map you're referring to?
+6500,Stalhrim Greatsword of Evoking
+6504,Nordic Bow of Lightning
+6507,Stalhrim Battleaxe of Stunning
+6508,Chitin Bracers of Major Archery
+6509,Black Book: Epistolary Acumen
+6511,Chitin Armor of Major Restoration
+6514,Nordic Battleaxe of Evoking
+6515,Chitin Boots of Flame Suppression
+6516,Nordic War Axe of Devouring
+6521,Ildari? What can you tell me about her?
+6522,Stalhrim Armor of Extreme Conjuring
+6526,What did she do with the prisoners?
+6529,Where will you go now?
+6530,People seem pretty tense around here.
+6531,Bonemold Boots of Resist Shock
+6533,Reduced Weapon Damage
+6534,Bonemold Shield of Resist Magic
+6536,"The Poison Song, Book V"
+6538,Mireli's Letter to Mother
+6539,Glowing Spider
+6540,Stalhrim Warhammer of Banishing
+6542,Nordic Battleaxe of Debilitation
+6544,Hay Pile
+6548,Stalhrim Battleaxe of Enervating
+6551,Glacial Cave
+6553,Nordic Warhammer of Freezing
+6554,DLC2 WarehouseSpiders
+6557,Ummm... Are you alright?
+6558,Nordic Bow of Diminishing
+6559,Stalhrim Helmet of Eminent Destruction
+6561,"Bone, Part II"
+6563,You're Ralis? I found your camp outside Kolbjorn Barrow.
+6564,Secrets? What kind of secrets?
+6566,Jumping Flame Spider
+6568,Chitin Bracers of Smithing
+6569,I can see this is going nowhere. Good luck with all that.
+6570,Chitin Armor of Major Destruction
+6571,Nordic Sword of Thunderbolts
+6574,Stalhrim Greatsword of Banishing
+6575,Madman
+6579,Chitin Boots of Muffling
+6580,Virtuous Stalhrim Bow
+6583,Morag Tong Faction
+6585,Nordic Shield of Dwindling Shock
+6590,Would I be able to collect a bounty?
+6594,Nordic Battleaxe of Leeching
+6596,Stalhrim Greatsword of Garnering
+6598,Is there a bounty on her then?
+6602,Chitin Bracers of Archery
+6603,Tempered Sphere
+6604,Chitin Armor of Major Conjuring
+6606,Freeze
+6608,What are you going to do now?
+6609,Ebony Warrior
+6610,Stalhrim Mace of the Vampire
+6612,Stalhrim Armor of Invigoration
+6613,Nordic Gauntlets of Major Sure Grip
+6614,Speak to Councilor Morvayn
+6615,Stalhrim Armor of Peerless Restoration
+6617,"I need the ""secrets of the Skaal"" in order to defeat Miraak."
+6619,Nordic Helmet of Extreme Destruction
+6620,"Do you plan to stick around here, then?"
+6621,Bull Netch
+6624,You were able to get the forge working again?
+6626,Chitin Boots of Waning Frost
+6629,Chitin Bracers of Major Archery
+6630,Chitin Helmet of Archery
+6631,Ash Guardian FX
+6632,Virtuous Nordic Greatsword
+6634,Stalhrim Helmet of Eminent Conjuring
+6635,Stalhrim Greatsword of Damnation
+6636,How much mead is left?
+6639,Stalhrim Battleaxe of Annihilating
+6640,I heard you were starting an expedition?
+6642,Stalhrim Bow of Extreme Chaos
+6643,What's the matter with you?
+6645,Aggro Cloak
+6646,An infestation of what?
+6647,Bonemold Boots of Sneaking
+6650,Nordic Sword of Banishing
+6651,Recipe - Oil Spider
+6657,"You can tell me. Come on, what's the harm? (Persuade)"
+6658,Nordic Mace of Winnowing
+6660,Bonemold Armor of Major Health
+6661,"Cast on the ground, it creates an area of frost that does <50> points of frost damage per second."
+6662,Here's a little gold for your tale. (<BribeCost> gold)
+6663,Chitin Shield
+6664,You're short on gold? Maybe this will help a bit. Now talk. (<BribeCost> gold)
+6666,Stalhrim War Axe of Subsuming
+6673,Stalhrim War Axe of Enervating
+6675,Not yet...
+6677,Stalhrim Dagger of Exhaustion
+6679,Stalhrim Helmet of Eminent Archery
+6681,Stalhrim Boots of Muffling
+6683,Bonemold Gauntlets of Minor Lockpicking
+6684,Stormfang
+6686,Nordic Sword of Expelling
+6687,Stalhrim Dagger of Leeching
+6688,I suppose I could lend a hand.
+6693,Cyclone02
+6694,Nordic Boots of Dwindling Frost
+6695,Hallowed Stalhrim Warhammer
+6696,I've dealt with the Draugr and found a way past the dead end.
+6698,Stalhrim Gauntlets of Extreme Smithing
+6699,Magical Instruments AB
+6700,Stalhrim Mace of Despair
+6701,Stalhrim Sword of Petrifying
+6703,Stalhrim Mace of Annihilating
+6707,Chitin Helmet of Major Illusion
+6708,Stalhrim Gauntlets of Peerless Smithing
+6711,Stalhrim Greatsword of Leeching
+6712,Nordic Boots of Strength
+6713,"No, not yet."
+6716,Nordic War Axe of Diminishing
+6717,I can't afford it right now.
+6719,Pack Spider
+6720,Bonemold Helmet of Minor Magicka
+6721,Stalhrim Sword of Banishing
+6722,Cyclone
+6723,Chitin Helmet of Major Restoration
+6726,What is it this time?
+6730,Nordic Helmet of Eminent Magicka
+6733,Stalhrim Mace of Expelling
+6734,What's a werebear?
+6735,I've dealt with the Draugr.
+6736,Here. This had better be worth it. (3000 gold)
+6738,Stalhrim Boots of Major Stamina
+6739,"No, not yet."
+6743,Bonemold Gauntlets of Minor Destruction
+6744,Stalhrim Helmet of Recharging
+6745,Nordic War Axe of Scorching
+6747,Do you still need my help?
+6748,Nordic Greatsword of Dread
+6750,It looks like at least some of the miners survived this time.
+6752,Chitin Armor of Major Alteration
+6755,Nordic Warhammer of Stunning
+6759,Stalhrim Sword of Animus
+6762,Nordic Sword of Consuming
+6763,EbonyWarrior Class
+6764,Stalhrim Warhammer of Terror
+6765,Chitin Bracers of Eminent Sure Grip
+6766,Virtuous Stalhrim Sword
+6767,"No, no I don't."
+6768,Recipe - Jumping Shock Spider
+6770,What's going on here?
+6772,Shock Touch
+6775,Nordic Sword of Stunning
+6776,Did you... kill the miners?
+6779,Fire Flow
+6781,I believe you. Just... don't come back here.
+6785,Nordic Warhammer of Thunderbolts
+6786,Chitin Helmet of Eminent Destruction
+6787,Ruby Geode
+6788,Chitin Helmet of Major Archery
+6791,Nordic War Axe of Banishing
+6795,Stalhrim Armor of Extreme Restoration
+6798,Nordic Greatsword of Garnering
+6799,I don't think they'll give up willingly.
+6803,Nordic Mace of Fear
+6809,Stalhrim Warhammer of Harvesting
+6813,Nordic Helmet of Eminent Archery
+6814,Bonemold Gauntlets of Conjuring
+6815,Chitin Bracers of Eminent Deft Hands
+6816,Cancel
+6822,Reverent Nordic Mace
+6823,Nordic Greatsword of Lightning
+6825,Stalhrim Shield of Dwindling Magic
+6826,Stalhrim Mace of Winter
+6828,Nordic War Axe of Enervating
+6830,You're here by yourself?
+6831,Nordic Sword of Ice
+6833,Blizzard
+6834,What is the Tree Stone?
+6835,Mine
+6841,Stalhrim Boots of Grounding
+6842,Stalhrim Mace of Terror
+6847,Miner
+6849,"Of course, the village to the north."
+6855,Nordic Warhammer of Harrowing
+6856,Nordic Warhammer of Dread
+6857,How long have you been down here?
+6858,Stalhrim Gauntlets of Major Wielding
+6859,Stalhrim Helmet of Eminent Destruction
+6860,Opponents in melee range take <mag> points shock damage per second.
+6862,Stalhrim Boots of the Firewalker
+6868,Stalhrim Bow of Terror
+6869,Hallowed Nordic Bow
+6871,Morag Tong Bracers
+6873,Bonemold Gauntlets of Minor Archery
+6878,Stalhrim Greatsword of Nullifying
+6879,Read
+6885,Recipe - Frost Cloaked Spider
+6887,Do you have any insights to share about this puzzle?
+6888,I killed General Carius.
+6895,Slow
+6896,Yes. Let me show you.
+6897,I think I've solved your ash spawn problems.
+6899,Stalhrim Warhammer of Freezing
+6900,Stalhrim Mace of Freezing
+6901,Poisonous Cloaked Spider
+6903,A blast of cold that does <mag> points of damage per second to Health and Stamina.
+6908,Nordic Armor of Major Conjuring
+6910,Hallowed Stalhrim Battleaxe
+6911,Nordic Armor of Major Restoration
+6912,Stalhrim Dagger of Thunderbolts
+6913,Nordic Bow of Enervating
+6915,Chitin Helmet of Eminent Conjuring
+6916,Black Book: Filament and Filigree
+6917,Virtuous Nordic Sword
+6918,"The Poison Song, Book I"
+6920,Stalhrim Arrow
+6922,Stalhrim Boots of Muffling
+6927,Chitin Bracers of Sure Grip
+6931,Stalhrim Boots of the Ox
+6932,Hallowed Nordic Sword
+6934,Bonemold Armor of the Minor Squire
+6935,Nordic Helmet of Major Destruction
+6938,Stalhrim Boots of Shock Suppression
+6939,Chitin Shield of Dwindling Fire
+6940,Chitin Armor of Major Health
+6947,Oil Spider
+6949,Ahzidal's Retribution
+6950,Nordic Warhammer of Harvesting
+6951,Chitin Boots of Flame Suppression
+6957,Stalhrim Helmet of Extreme Archery
+6962,Stalhrim Greatsword of Annihilating
+6970,Stalhrim Boots of Peerless Stamina
+6971,Chitin Helmet of Major Magicka
+6972,Stalhrim Warhammer of Depleting
+6973,Miraak
+6974,Stalhrim Armor of the Noble Knight
+6977,Stalhrim Warhammer of Stunning
+6981,Chitin Boots of Frost Suppression
+6983,Nordic Bow of Animus
+6984,Bonemold Helmet of Alchemy
+6985,Stalhrim Dagger of Devouring
+6987,Why would someone want to kidnap Baldor?
+6988,Stalhrim Battleaxe of Petrifying
+6991,Stalhrim Armor of Extreme Alteration
+6996,Nordic Boots of Dwindling Flames
+6998,Steam Hazard
+7000,Mine
+7003,I understand. I'll talk to Storn.
+7004,Stalhrim Armor of Eminent Illusion
+7005,Stalhrim Helmet of Eminent Alteration
+7006,Fund the next phase of the excavation (5000 gold)
+7007,Visit the Kolbjorn Barrow Excavation
+7008,Stalhrim Battleaxe of the Vampire
+7010,What do you need?
+7012,What happened?
+7013,What is Thirsk?
+7014,Nordic Helmet of Extreme Restoration
+7015,Nordic Shield of Major Blocking
+7020,Stalhrim War Axe of Thunderbolts
+7022,Nordic Greatsword of Evoking
+7023,Return to Wulf
+7024,What is the Skaal?
+7027,Ahzidal's Necromancy
+7029,Have you been exiled?
+7030,Cancel
+7032,Bonemold Gauntlets of Archery
+7036,Recipe - Frost Cloaked Spider 2x
+7037,Recipe - Exploding Frost Spider
+7041,Do you have any idea where he might have gone?
+7044,He had become a werebear.
+7048,Chitin Armor of Major Restoration
+7049,Hard to be sure. He put up a strong fight.
+7050,Stalhrim Greatsword of Dread
+7051,Stalhrim Mace of High Chaos
+7053,Glowing Spider
+7054,Why do I need this Word of Power to defeat Miraak?
+7055,Chitin Helmet of Eminent Restoration
+7057,Vendil Ulen's Chest Key
+7060,Nordic Dagger of Dread
+7068,Nordic Helmet of Eminent Destruction
+7069,Mogrul Faction
+7070,Bonemold Helmet of Minor Destruction
+7071,Stalhrim Sword of Depleting
+7072,Stalhrim Warhammer of Malediction
+7073,Stalhrim Battleaxe of Expelling
+7078,Summon Karstaag
+7079,Bonemold Helmet of Minor Illusion
+7081,Emerald Geode
+7085,Stalhrim Mace of Nullifying
+7086,Nchunak's Fire and Faith
+7087,Zahkriisos
+7090,Nordic Battleaxe of Enervating
+7091,Nordic War Axe of Stunning
+7092,Chitin Bracers of Wielding
+7094,Chitin Boots of Strength
+7095,Reverent Nordic Warhammer
+7096,Chitin Armor of Eminent Restoration
+7099,Chitin Boots of Sneaking
+7101,Chitin Bracers of Major Wielding
+7103,Chitin Bracers of Eminent Wielding
+7104,Ice Wraith
+7105,Who's her husband?
+7107,Jumping Shock Spider
+7108,Stalhrim Gauntlets of Extreme Alchemy
+7109,Stalhrim Armor of Mending
+7111,Chitin Armor of Eminent Destruction
+7112,Stalhrim Greatsword of Subsuming
+7114,Seeker Drain
+7115,Search for the missing miners
+7116,Nordic Mace of Thunderbolts
+7118,Mine
+7120,Chitin Helmet of Eminent Alchemy
+7121,Ash Guardian abilities
+7122,Nordic Arrow
+7123,Bye.
+7125,Jumping Poisonous Spider
+7126,Stalhrim Mace of Storms
+7127,Chitin Armor of Major Destruction
+7128,Nordic Warhammer of Torpor
+7129,Nordic Warhammer of Lightning
+7130,Stalhrim Gauntlets of Peerless Archery
+7131,Nordic Dagger of Depleting
+7133,Acid
+7134,Pack Spider
+7135,Stalhrim Shield of Eminent Blocking
+7136,Ruby Geode
+7137,Nordic Bow of the Blaze
+7138,Summon Karstaag
+7139,Shock
+7140,Aggro DMG Effect
+7143,Stalhrim Mace of Enervating
+7144,Pack Spider
+7146,Nordic Dagger of Torpor
+7147,Nordic Dagger of Shocks
+7148,Stalhrim Boots of Fire Abatement
+7150,Frost Cloaked Spider
+7151,Stalhrim Warhammer of Exhaustion
+7152,East Empire Company Amulet
+7153,Black Book: Epistolary Acumen
+7154,Nordic Armor of the Noble Knight
+7155,Chitin Helmet of Illusion
+7156,What did the letters say?
+7157,Chitin Shield of Waning Shock
+7160,Miner
+7161,Stalhrim Dagger of Banishing
+7163,Stalhrim Armor of Regeneration
+7164,Chitin Armor of Conjuring
+7165,Stalhrim War Axe of Malediction
+7167,Dragon Breath
+7172,Ignite
+7173,Nordic Helmet of Major Restoration
+7174,Bonemold Shield of Resist Fire
+7176,Stalhrim Helmet of Major Conjuring
+7181,Stalhrim Warhammer of Winnowing
+7183,Stalhrim Battleaxe of Freezing
+7184,Ruby Geode
+7185,Hallowed Nordic Greatsword
+7186,Frost Cloak Freeze
+7189,Nordic Dagger of Evoking
+7190,Stalhrim Greatsword of Petrifying
+7191,Stalhrim Sword of Storms
+7192,Shock Cloak
+7193,Nordic Greatsword of the Blaze
+7195,Karstaag's Will
+7197,Virtuous Stalhrim War Axe
+7198,Stalhrim Shield of Dwindling Frost
+7202,Nordic Greatsword of Consuming
+7203,Bonemold Helmet of Major Conjuration
+7204,Chitin Boots of Shock Suppression
+7205,Read
+7207,All Dragonborn Weapons
+7208,Nordic War Axe of Binding
+7209,Black Book: Waking Dreams
+7210,Sapphire Geode
+7211,Nordic Dagger of Ice
+7212,Stalhrim Bow of Annihilating
+7213,Chitin Helmet of Major Magicka
+7214,Chitin Boots of Waning Fire
+7215,Tosses a Jumping Fire spider on the ground that will launch itself at nearby enemies and explode if it lands near them.
+7216,Chitin Shield of Eminent Blocking
+7218,Cancel
+7220,Nordic Greatsword of Expelling
+7222,Nordic Gauntlets of Major Archery
+7224,Nordic Bow of Expelling
+7225,Nordic Shield of Dwindling Fire
+7226,Glowing Spider
+7227,Stalhrim Mace of Dread
+7228,Nordic War Axe of Winnowing
+7229,Nordic Gauntlets of Eminent Sure Grip
+7230,Dragonborn Force
+7231,Chitin Helmet of Eminent Archery
+7232,Nordic Bow of Torpor
+7233,Ring of the Hunt
+7234,Nordic Shield of Dwindling Magic
+7235,Nordic Helmet of Eminent Alteration
+7237,Stalhrim Armor of Major Restoration
+7238,Chitin Bracers of Lockpicking
+7239,Captain Veleth sent me.
+7240,Nordic Sword of Harrowing
+7242,Nordic Gauntlets of Extreme Wielding
+7243,Chitin Bracers of Eminent Wielding
+7244,Stalhrim Sword of High Chaos
+7246,Stalhrim Boots of Strength
+7247,Spawns a glowing spider that will follow you around.  Only one can be spawned at a time.
+7248,Stalhrim War Axe of Stunning
+7249,Stalhrim Armor of the Noble Knight
+7250,Liesl
+7252,Morag Tong Armor
+7253,Nordic Greatsword of Lethargy
+7254,Stalhrim Battleaxe of Malediction
+7255,Stalhrim Warhammer of Petrifying
+7257,Find the Black Book in <Alias=Dungeon>
+7259,Mine
+7261,Stalhrim Armor of the Major Squire
+7262,Stalhrim Boots of Extreme Stamina
+7263,Saden's Journal
+7264,Jumping Flame Spider
+7268,Nordic Battleaxe of Torpor
+7269,Stalhrim Armor of Eminent Health
+7270,Bonemold Boots of Resist Frost
+7272,Nordic Armor of Major Alteration
+7273,Nordic Armor of Extreme Destruction
+7274,Stalhrim Bow of Despair
+7276,Chitin Helmet of Eminent Magicka
+7277,Dragonborn Force
+7278,IceWraith fx abilities
+7281,Nordic Bow of Debilitation
+7282,Stalhrim Bow of Banishing
+7283,Chitin Armor of Major Health
+7284,Stalhrim Warhammer of Expelling
+7288,Ahzidal's Warding
+7289,Stalhrim Armor of Eminent Conjuring
+7290,"Are you going to be able to lead this place, still?"
+7292,Nordic Helmet of Major Illusion
+7293,Stalhrim Warhammer of the Vampire
+7294,Nordic Dagger of Harrowing
+7295,Stalhrim War Axe of Lethargy
+7296,Stalhrim War Axe of Animus
+7297,I've dealt with the Draugr.
+7298,Stalhrim War Axe of Winter
+7299,Stalhrim Helmet of Peerless Illusion
+7300,Bonemold Gauntlets of Major Destruction
+7302,Stalhrim Helmet of Extreme Conjuring
+7303,Chitin Armor of Restoration
+7304,Nordic Greatsword of Freezing
+7305,Chitin Armor of Eminent Restoration
+7307,Chitin Shield of Flame Suppression
+7308,Holy Stalhrim Greatsword
+7309,Stalhrim War Axe of Devouring
+7311,Tosses a Flame Cloaked spider on the ground that will cause fire damage to enemies that get too close.
+7312,Electrified Water Hazard
+7313,Hjalfar
+7314,Chitin Armor of Health
+7315,He'll no longer send ash spawn to Raven Rock.
+7316,Bonemold Gauntlets of Major Alteration
+7318,Stalhrim Sword of Subsuming
+7319,Virtuous Nordic Battleaxe
+7320,Bonemold Gauntlets of Sure Grip
+7321,All Dragonborn Books
+7322,Dynamo Actuator
+7323,Stalhrim Battleaxe of Evoking
+7324,Stalhrim Helmet of Waterbreathing
+7325,Stalhrim Boots of Brawn
+7326,Stalhrim Sword of Leeching
+7329,Sapphire Geode
+7330,Miraak Teleport Return
+7334,"No, I don't."
+7335,Witchlight
+7336,Stalhrim Shield of Extreme Blocking
+7337,Chitin Helmet of Major Conjuring
+7340,Stalhrim Armor of Major Alteration
+7342,Stalhrim Boots of Frost Suppression
+7344,Stalhrim Mace of Winnowing
+7345,"The Poison Song, Book III"
+7349,Merilar's Journal
+7350,Stalhrim Helmet of Replenishing
+7352,Stalhrim Greatsword of Despair
+7355,Stalhrim Armor of Major Destruction
+7356,Stalhrim Sword of Stunning
+7357,Chitin Helmet of Magicka
+7359,Morag Tong Assassin
+7360,Stalhrim Armor of the Peerless Knight
+7362,Chitin Bracers of Eminent Lockpicking
+7366,Stalhrim Armor of Peerless Destruction
+7367,Holy Stalhrim Dagger
+7368,Nordic Shield of Dwindling Frost
+7369,Stalhrim Helmet of Peerless Destruction
+7370,Stalhrim Warhammer of Despair
+7371,Frostbite Spider
+7372,Chitin Shield of Dwindling Magic
+7373,Nordic Helmet of Extreme Alteration
+7374,Stalhrim Bow of Exhaustion
+7375,Bonemold Shield of Dwindling Frost
+7377,Miraak Teleport Return
+7380,Control Switch
+7386,Bonemold Boots of Dwindling Frost
+7387,Nordic War Axe of Garnering
+7388,Read
+7389,Stalhrim Greatsword of High Chaos
+7391,Chitin Bracers of Alchemy
+7392,Stagger Push
+7395,Nordic Armor of Extreme Conjuring
+7396,Nordic Helmet of Waterbreathing
+7398,Nordic Armor of Eminent Restoration
+7399,Nordic Helmet of Extreme Magicka
+7400,Nordic Armor of Extreme Health
+7401,Dragonborn Frost
+7402,Chitin Helmet of Alchemy
+7410,All Dragonborn Ammo
+7411,Writ of Execution: <alias=player>
+7413,Bonemold Armor of Health
+7414,Stalhrim Boots of Extreme Stamina
+7416,Chitin Boots of Dwindling Shock
+7418,Bonemold Shield
+7419,Niyya
+7420,Chitin Shield of Magic Suppression
+7421,Stalhrim Greatsword of Expelling
+7425,Stalhrim Greatsword of Enervating
+7427,Nordic Warhammer of Debilitation
+7429,A cyclone that does <mag> points of damage per second and may fling victims into the air.
+7430,Stalhrim Gauntlets of Eminent Alchemy
+7432,Nordic Dagger of Winnowing
+7434,Stalhrim Helmet of Eminent Alchemy
+7435,Nordic War Axe of Expelling
+7436,Nordic Dagger of Malediction
+7437,Chitin Helmet of Restoration
+7439,Stalhrim Helmet of Extreme Magicka
+7440,Bring the evidence to Adril Arano
+7441,Unenchanted Restoration Staff
+7443,Nordic Armor of Extreme Alteration
+7444,Nordic Greatsword of Harvesting
+7446,The Axe Man
+7447,Nordic Battleaxe of Stunning
+7454,Spider Visuals Shock
+7456,Chitin Helmet of Restoration
+7457,Nordic Warhammer of Garnering
+7458,Recipe - Jumping Frost Spider 2x
+7459,Chest
+7460,All Dragonborn Spell Tomes
+7461,Black Book Reward 3 Exclude
+7462,Chest
+7464,Stalhrim Mace of Blizzards
+7465,Stalhrim War Axe of Extreme Chaos
+7466,Stalhrim Battleaxe of Despair
+7467,Stalhrim Battleaxe of Terror
+7468,Chitin Helmet of Conjuring
+7469,Stalhrim Battleaxe of Harvesting
+7470,Stalhrim Battleaxe of Garnering
+7472,Chitin Bracers of Smithing
+7473,Ice Wraith
+7475,Bonemold Shield of Major Blocking
+7477,Stalhrim Shield of Major Blocking
+7478,Stalhrim Battleaxe of Debilitation
+7479,Stalhrim Warhammer of Annihilating
+7480,Words of the Wind
+7481,Read
+7482,Nordic Dagger of Blizzards
+7483,Stalhrim Bow of Stunning
+7484,Halbarn Services
+7486,Chitin Helmet of Eminent Illusion
+7488,Lurker FX
+7489,Nordic Mace of Shocks
+7491,Recipe - Glowing Spider
+7496,Stalhrim Dagger of Annihilating
+7497,Cancel
+7498,Stalhrim Dagger of Animus
+7499,Stalhrim Dagger of Debilitation
+7500,Stalhrim Dagger of Lethargy
+7502,Chitin Boots of Strength
+7504,Stalhrim Greatsword of the Vampire
+7505,Bonemold Boots of Hauling
+7506,Sell Stalhrim Armor and Weapons to Ancarion
+7508,Chitin Armor of Eminent Destruction
+7509,Stalhrim Greatsword of Lightning
+7510,Nordic Bow of Malediction
+7511,Stalhrim Helmet of Extreme Destruction
+7513,Chitin Bracers of Major Smithing
+7514,Stalhrim War Axe of Despair
+7515,Reverent Nordic Greatsword
+7516,Stalhrim Shield of Shock Abatement
+7517,Dragon Storm
+7518,Stalhrim Helmet of Eminent Alteration
+7519,Stalhrim War Axe of Banishing
+7521,Stalhrim Helmet of Waterbreathing
+7522,Bonemold Gauntlets of Minor Alteration
+7523,Stalhrim War Axe of Petrifying
+7524,Nordic Helmet of Extreme Alchemy
+7525,Stalhrim Greatsword of Ultimate Chaos
+7526,Nordic Shield of Frost Abatement
+7527,Stalhrim Battleaxe of Leeching
+7528,Nordic Dagger of Thunderbolts
+7531,He's no longer commanding the ash spawn.
+7532,Nordic Boots of Major Stamina
+7533,Bonemold Gauntlets of Minor Smithing
+7535,Stalhrim Mace of Thunderbolts
+7536,Kolbjorn Guard
+7538,Nordic Mace of Consuming
+7539,Nordic Battleaxe of Fire
+7541,Miner
+7542,Dragonborn Frost
+7543,Stalhrim Bow of Petrifying
+7544,Hello.
+7545,Stalhrim Sword of Evoking
+7546,Stalhrim Sword of the Sorcerer
+7547,Stalhrim Mace of Immobilizing
+7550,Stalhrim Mace of Subsuming
+7552,Stalhrim Warhammer of Evoking
+7553,Stalhrim Sword of Blizzards
+7554,Stalhrim Helmet of Resurgence
+7555,Stalhrim Shield of Frost Abatement
+7556,Stalhrim Armor of Eminent Health
+7557,Black Book: Untold Legends
+7558,Stalhrim War Axe of Leeching
+7560,Cyclone
+7561,Stalhrim War Axe of Depleting
+7563,Stalhrim Helmet of Eminent Archery
+7564,Hrodulf's House
+7565,Stalhrim Dagger of Immobilizing
+7566,Chest
+7567,Stalhrim War Axe of High Chaos
+7569,Stalhrim War Axe of Terror
+7570,Stalhrim Sword of Annihilating
+7571,Stalhrim Gauntlets of Eminent Alchemy
+7572,Nordic Sword of Debilitation
+7573,Stalhrim War Axe of Lightning
+7574,Virtuous Stalhrim Mace
+7575,Dragons Breath
+7577,Stalhrim Warhammer of Leeching
+7578,Stalhrim Helmet of Extreme Alteration
+7579,Ahzidal's Genius
+7580,Stalhrim Gauntlets of Major Lockpicking
+7581,Nordic Bow of Scorching
+7582,Stalhrim Bow of High Chaos
+7583,Palevius Lex
+7584,Lurker Abilitites
+7585,Stalhrim Warhammer of High Chaos
+7586,Nordic Warhammer of Expelling
+7587,Stalhrim Warhammer of Ultimate Chaos
+7590,Stalhrim Greatsword of Winter
+7591,Miner
+7592,Nordic War Axe of Evoking
+7593,Stalhrim Helmet of Extreme Restoration
+7595,Stalhrim Shield of Magic Suppression
+7596,Emerald Geode
+7597,Nordic Battleaxe of Winnowing
+7600,Nordic Bow of Depleting
+7601,Stalhrim Gauntlets of Major Deft Hands
+7602,Stalhrim Bow of Lightning
+7603,Nordic Battleaxe of Blizzards
+7604,Stalhrim War Axe of the Sorcerer
+7605,Stalhrim Greatsword of Freezing
+7606,Nordic Battleaxe of Lightning
+7607,Nordic Sword of Animus
+7608,Nordic Battleaxe of Malediction
+7609,Stalhrim Sword of Expelling
+7610,Nordic Battleaxe of Lethargy
+7612,Chitin Bracers of Major Sure Grip
+7616,Chitin Shield of Dwindling Frost
+7617,Chitin Boots of Waning Shock
+7618,Nordic Battleaxe of Banishing
+7619,Ring of Bloodlust
+7620,Morag Tong Hood
+7621,Stalhrim Bow of Ultimate Chaos
+7622,Stalhrim Helmet of Recovery
+7624,Nordic Dagger of Leeching
+7626,Spare me the walk. Just tell me. (Persuade)
+7627,Stalhrim Battleaxe of Depleting
+7629,Stalhrim Mace of Banishing
+7630,Stalhrim Gauntlets of Extreme Lockpicking
+7631,Stalhrim Gauntlets of Eminent Deft Hands
+7632,Stalhrim Gauntlets of Eminent Archery
+7633,Stalhrim Armor of Extreme Destruction
+7634,Hallowed Stalhrim Dagger
+7637,Nordic Dagger of Immobilizing
+7638,Nordic Sword of Malediction
+7639,What happened?
+7640,Nordic Helmet of Extreme Illusion
+7641,Nordic Dagger of Debilitation
+7642,Holy Stalhrim Sword
+7643,Stalhrim Gauntlets of Eminent Sure Grip
+7644,Spider Visuals Glowing
+7645,Nordic Greatsword of Leeching
+7646,Club Pound
+7647,Chitin Boots of Brawn
+7650,Nordic Greatsword of Fire
+7651,Nordic Mace of Evoking
+7652,Nordic Greatsword of Ice
+7653,Stalhrim Mace of Garnering
+7654,Nordic War Axe of Leeching
+7656,Nordic Battleaxe of Reaping
+7658,Nordic Greatsword of Debilitation
+7659,Bonemold Shield of Blocking
+7661,Bonemold Gauntlets of Major Lockpicking
+7663,Power of Apocrypha
+7664,Chitin Helmet of Eminent Restoration
+7665,Nordic Mace of Diminishing
+7667,Nordic Mace of Immobilizing
+7668,Kolbjorn Guard
+7669,Nordic Greatsword of Winnowing
+7670,Magic Resistance
+7671,Virtuous Nordic Mace
+7672,Nordic Sword of Devouring
+7673,Emerald Geode
+7675,Bonemold Helmet of Destruction
+7678,Nordic Sword of Enervating
+7679,Hallowed Stalhrim Mace
+7680,Stalhrim Battleaxe of Immobilizing
+7681,Nordic War Axe of Consuming
+7682,Nordic Battleaxe of Devouring
+7683,Nordic Helmet of Major Alchemy
+7685,Changed Ones
+7686,Stalhrim Gauntlets of Extreme Alchemy
+7687,Frost Barrier
+7688,Knowledge Drain
+7690,Nordic War Axe of Immobilizing
+7691,Stalhrim Boots of Extreme Sneaking
+7693,Nordic War Axe of Torpor
+7695,Nordic Dagger of Despair
+7696,Nordic Mace of Lethargy
+7697,Nordic Warhammer of Fire
+7698,Chitin Boots of Brawn
+7699,Stalhrim Sword of Winnowing
+7700,Bonemold Helmet of Major Alteration
+7701,Stalhrim Armor of the Eminent Knight
+7702,Nordic Warhammer of Shocks
+7704,Mine
+7706,Netch
+7707,"Ildari's Journal, vol. II"
+7709,Stalhrim Warhammer of Animus
+7710,Miner
+7711,Seeker
+7712,Stalhrim Armor of Invigoration
+7715,Nordic Helmet of Major Alteration
+7716,Nordic Bow of Immobilizing
+7718,Stalhrim Boots of Dwindling Flames
+7719,Stalhrim Sword of the Vampire
+7720,Castor the Puzzlemaker's Corpse
+7721,Stalhrim Sword of Terror
+7722,Chitin Helmet of Conjuring
+7723,Amethyst Geode
+7724,Corrupted Shade
+7727,What's going on?
+7729,Merilar's Cage Door Key
+7730,"Bone, Part I"
+7732,Stalhrim Sword of Freezing
+7733,Electrified Water Hazard
+7736,Chitin Bracers of Deft Hands
+7737,Letter to Imperial City
+7738,Nordic Shield of Fire Abatement
+7739,Nordic War Axe of Blizzards
+7742,Stalhrim Armor of Peerless Conjuring
+7743,Nordic Sword of Fear
+7745,Bonemold Gauntlets of Major Conjuring
+7747,Stalhrim Dagger of Damnation
+7752,Ahzidal's Necromancy
+7753,Solstheim
+7754,Solstheim Mudcrab
+7757,Chitin Boots of Major Stamina
+7759,Nordic Mace of Malediction
+7761,Bonemold Gauntlets of Destruction
+7762,Bonemold Shield of Dwindling Flames
+7763,Chitin Shield of Major Blocking
+7764,"The Poison Song, Book VI"
+7765,Stalhrim Helmet of Major Magicka
+7766,Letter
+7767,Yes. (<Global=DLC2CostToSail> gold)
+7769,"He's dead, but I at least found the formula."
+7770,Horker King
+7771,What do you know about Miraak?
+7773,Satchel
+7774,Blackguard's Armor
+7775,
+7780,Riekling (Melee 1)
+7784,WaterDamageShallow
+7787,<mag> points of damage for <dur> seconds.
+7788,What if she's right and I don't find anything?
+7789,Blackguard's Boots
+7790,Ash Spawn 3
+7793,Glover's Guild Key
+7797,What did you make of that stone structure everyone was building?
+7798,Seeker 2 (Mirror)
+7800,Dwarven Sphere
+7801,Fire Death
+7807,Esmond
+7808,Chest
+7809,Bonemold Formula
+7810,Chest
+7812,WaterDamage
+7814,Battle Fury
+7816,Spawns the Selected NPC
+7817,Summons spectral instruments that play for you for <dur> seconds.
+7828,Hulking Draugr
+7829,Bristleback
+7830,A daedra?
+7831,Chapter III
+7834,I need passage to Solstheim.
+7836,Benthic Lurker Faction
+7840,Boiler Control Pedestal
+7843,Door
+7845,Not now.
+7848,Mudcrab Boss (Old Salty)
+7850,Glover's Letter
+7851,Bjornolfr
+7852,Frost Giant
+7853,Blackguard's Hood
+7855,And your parents?
+7858,Why sail there at all then?
+7859,Riekling (Missile 1)
+7860,Chapter IV
+7863,Stalhrim Greatsword of Devouring
+7866,Blackguard's Nimble Fingers
+7868,Raven Rock Netch Scene 07
+7870,Benthic Lurker
+7876,Bring the Bonemold Formula to Glover Mallory
+7877,Spectral Dragon
+7879,Seeker 2
+7882,And you've been alone ever since?
+7884,Draugr
+7886,Why do I need to learn a Word of Power?
+7888,And the Skaal don't mind being studied?
+7891,Raven Rock Arrival Scene
+7901,Bjornolfr
+7904,Esmond Tyne
+7905,Riekling (Boar)
+7908,Where's Esmond Tyne now?
+7909,Battle Fury
+7910,Seeker 3 (Mirror)
+7914,Seeker 3
+7916,Seeker 1 (Mirror)
+7917,Summons a Spectral Dragon for <dur> seconds.
+7918,Chapter V
+7919,Seeker 1
+7920,"He stole something from you, right?"
+7925,Chapter II
+7930,Kruziikrel
+7931,Relonikiv
+7932,Bloodstained Letter
+7933,Werebear
+7934,Ash Spawn 1
+7935,Stalhrim
+7936,Dwarven Ballista Test
+7937,Ash Spawn 2
+7940,Thaekyd
+7941,Torso
+7946,Miraak Cultist 2
+7947,Miraak Cultist 1
+7952,Spawns the Selected NPC
+7954,I'll get that formula back for you.
+7956,Centurion Boss
+7957,Boar
+7958,Centurion Fight 3
+7959,Dwarven Sphere 2
+7960,Dwarven Sphere 1
+7961,Then it dried up.
+7962,Raven Rock Netch Scene 07
+7964,Albino Poison
+7965,Blackguard's Sly of Hand
+7968,Mudcrab
+7969,Horker Youngling
+7973,Blackguard's Voice
+7974,Spawns the Selected NPC
+7976,How much will it cost me?
+7981,Why were you arguing with Aphia?
+7982,Ash Guardian
+7991,"What do you mean, 'free your people from control?'"
+7993,Spawns the Selected NPC
+7997,Wraith
+7998,Spawns the Selected NPC
+7999,Chest
+8001,Head
+8002,Torso
+8003,Fire Death
+8004,Head
+8005,Spawns the Selected NPC
+8006,Tenticle explosion
+8008,Miraak's Gloves
+8009,Chest
+8012,Lurker Spray
+8021,Chest
+8023,Blackguard's Hidden Pockets
+8026,DragonBreathBodyArtHolder
+8035,Recover the Bonemold Formula for Glover Mallory
+8037,Paid in Full
+8046,Raven Rock Netch Scene 07
+8053,The Thieves Guild has a problem out here?
+8054,Riekling (Chief)
+8055,Solstheim?
+8057,Acid Spit
+8059,Scrye
+8063,Conjure Spectral Dragon
+8066,What did you do?
+8067,I'm back.
+8070,Nothing at all?
+8072,Chitin Plate
+8076,Chapter I
+8077,Chest
+8082,He's well.
+8083,Miraak's Robes
+8084,Conjure Spectral Dragon
+8089,Blackguard's Gloves
+8090,Spriggan (Burnt)
+8091,Chest
+8092,Leveled Cultist
+8093,WaterDamageSwimming
+8094,Chest
+8095,Battle Fury
+8098,I noticed the shadowmark by your door.
+8099,Spawns the Selected NPC
+8107,Acid
+8111,Tell me about your family.
+8115,Chest
+8129,Blacksmith Forge
+8134,Why did your mother leave the village?
+8137,Riekling (Missile 2)
+8138,Who is building that shrine?
+8141,Vahlok the Jailer
+8143,Ash Guardian
+8144,Netch (Cow)
+8145,Frost Damage
+8148,Netch (Calf)
+8149,Apothecary's Satchel
+8151,Tell me about the shrine outside of town.
+8152,Netch (Bull)
+8155,Riekling (Missile 3)
+8160,"No, what is it?"
+8161,You mentioned that you lost something?
+8162,Lusty Argonian Maid Folio
+8164,Fortify Stamina Rate
+8165,Chaos Damage
+8166,Nordic Battleaxe of Extreme Chaos
+8167,Hay Pile
+8168,Riekling (Melee 2)
+8170,Target Lock
+8171,Why do you think this Neloth can help me find Black Books?
+8175,Switch Targets
+8176,Winterhold College
+8179,Who taught you to talk?
+8180,How do you know?
+8183,Chest
+8188,Nordic Greatsword of High Chaos
+8192,You caught me. I'll pay off my bounty. (<CrimeGold> gold)
+8199,Why aren't you affected like everyone else?
+8201,Fortify Speech
+8206,Investigate Thirsk Mead Hall and the exiled Nords
+8212,Locate Cindiri's Folio from the wreck of the Strident Squall
+8213,First Edition
+8217,Skaal Village Dialogue
+8218,What do you know about these Black Books?
+8219,DLC2 Generic Services Dialogue
+8223,Nordic War Axe of Chaos
+8224,This should not be visible
+8225,I'll see if I can find the book for you.
+8227,How do you survive out here?
+8236,Constant Fx for Ash Spawn.
+8240,What were you saying before?
+8247,Door
+8249,Chaos Damage
+8250,Nordic War Axe of Extreme Chaos
+8252,What'll you give me for these?
+8258,What do you need?
+8259,Serpentine Dragon
+8263,What is your role among the Skaal?
+8264,Nordic Mace of High Chaos
+8267,Enough about this.
+8269,Bardic Knowledge
+8271,Dragon
+8274,Chest
+8279,She wants this placed at her mother's grave.
+8281,"Come on, boy, I've got something for you..."
+8283,Thirsk Rumors
+8289,She's not exactly young anymore.
+8290,You're making a mistake...
+8291,Nordic Dagger of Chaos
+8297,"50% chance for each element of fire, frost and shock to do <mag> points of damage."
+8300,Combat dialogue for dragons allied to Miraak
+8303,I've cleansed the other four Stones.
+8304,Runil agreed to your request.
+8313,Nordic Mace of Extreme Chaos
+8315,Chest
+8321,Can you train me in Enchanting?
+8333,I'd rather die than go to prison!
+8334,Hay Pile
+8336,Nordic War Axe of High Chaos
+8338,Chaos Damage
+8341,A sting that does <mag> points of shock damage to Health and half that to Magicka.
+8342,How long has the farm been abandoned?
+8353,Chest
+8357,Nordic Bow of Chaos
+8358,Why is there a shrine being built by the water?
+8364,Ashspawn Body FX
+8367,Where are you taking me?
+8369,Chest
+8374,"You can trust me. I saved your life, remember? (Persuade)"
+8376,Why are they so rare?
+8379,
+8382,What were they used for?
+8387,"Actually, I already have it. (Give Folio)"
+8388,Hello
+8396,Nordic Greatsword of Chaos
+8402,"Come on, boy, I've got something for you..."
+8407,We make a good team. Why not join me for a while?
+8409,Deathbrand Treasure Map
+8414,Miraak's faction - just for him
+8422,Skyrim
+8428,I'll make it worth your while. (<bribecost> gold)
+8430,Any chance I could talk you into overlooking this? (Persuade)
+8434,How about I pay you some gold and you look the other way? (<BribeCost> gold)
+8440,Nordic Dagger of High Chaos
+8441,Nordic Warhammer of High Chaos
+8443,Return the Folio to Cindiri Arano in Raven Rock
+8446,Bera's Necklace
+8448,Nordic Sword of High Chaos
+8450,Chest
+8451,Shock Damage
+8452,I'm with the Guild. How about you look the other way? (<BribeCost> gold)
+8461,Nordic Battleaxe of Chaos
+8464,Nordic Mace of Chaos
+8469,Skaal Village Dialogue
+8471,Soul Stealer Arrow
+8473,What is the city of Blacklight?
+8476,About Silt Striders...
+8479,Nordic Sword of Chaos
+8494,Apothecary's Satchel
+8498,What are you doing here?
+8501,"Follow me, I need your help."
+8504,What happened when I Shouted at the Wind Stone?
+8510,Chaos Damage
+8515,What's being built outside of town?
+8516,Other Stones?
+8523,Can you tell me about the shrine outside of town?
+8524,Who are you?
+8532,What do you have for sale?
+8534,What do you have for sale?
+8536,I submit. Take me to jail.
+8537,I don't have time for this. Do you?
+8541,Apothecary's Satchel
+8545,"Sorry, can't help you with that."
+8550,Was it aboard a ship?
+8551,Fire Damage
+8554,"Come with me, tribe-kin."
+8557,Chaos Damage
+8558,Revus Sarvani
+8561,What do you have for sale?
+8562,I've found your missing Folio.
+8564,Chest
+8565,Vessel
+8566,Dragon Race
+8567,Ash Spawn Body Effect
+8575,Hay Pile
+8576,Morwen of Skaal Village sent me to ask a favor of you.
+8577,Nordic Greatsword of Extreme Chaos
+8579,Pod
+8580,Nordic Warhammer of Chaos
+8581,Nordic Battleaxe of High Chaos
+8582,Riekling (Melee 3)
+8583,Ashspawn Spell
+8584,Nordic Bow of High Chaos
+8586,Nordic Sword of Extreme Chaos
+8587,Nordic Bow of Extreme Chaos
+8601,Chest
+8605,allied apocrypha creatures
+8606,Dragon Race
+8607,Nordic Dagger of Extreme Chaos
+8610,Strong Box
+8611,
+8613,Dwarven Black Bow of Fate
+8616,Nordic Warhammer of Extreme Chaos
+8620,Maximian's Knapsack
+8621,A Letter to Selina III
+8622,Meet the Ebony Warrior at the Last Vigil
+8623,Fire Stream
+8624,A Letter to Selina IV
+8625,Lightning Storm
+8626,Cultist
+8632,Cultist
+8633,A Letter to Selina I
+8635,Conjure Seeker
+8637,Reflect Attack
+8639,Arch Cultist
+8642,It has? What do you mean?
+8644,Conjure Seeker
+8645,Cultist
+8646,Stagger Push
+8647,Last Vigil
+8650,Summons a High Seeker for <dur> seconds wherever the caster is pointing.
+8653,Cultist
+8654,High Seeker
+8656,Lightning Storm
+8662,Apocrypha
+8663,Enemy power attacks will stagger the attacker.
+8664,Frea Combat Style
+8666,Cultist
+8667,Talk to the Ebony Warrior
+8669,Ascendant Cultist
+8673,Summons a Seeker for <dur> seconds wherever the caster is pointing.
+8674,A Letter to Selina II
+8675,Stagger
+8676,Dragon Riding
+8677,Ash Spawn War Axe
+8681,Conjure High Seeker
+8684,Frost Stream
+8687,Cultist
+8688,Cultist Adept
+8690,Maximian Axius
+8691,Conjure Seeker
+8692,"Target takes <mag> points of shock damage per second to Health, and half that to Magicka."
+8693,Dragon Riding
+8694,The Ebony Warrior
+8695,Master Cultist
+8696,Fire Stream
+8699,Sparks
+8704,Conjure Ancients
+8705,Kagrumez Resonance Gem
+8706,Miraak's Sparks
+8707,"Targets are frozen between Oblivion and Tamriel for <dur> seconds, and immune to all damage."
+8708,Kagrumez Resonance Gem
+8710,Mora's Agony
+8718,Ash Spawn Battle Axe
+8719,ConjureAncientsBodyArtHolder
+8721,Skaal Village Citizen Faction
+8722,Summons Dragonborn from the past to fight by the caster's side for a limited time.  Each additional 5 souls summons another warrior.
+8726,Between
+8727,Summon Ancients
+8728,Kagrumez Resonance Gem
+8729,Fortify Magicka
+8730,Mora's Agony
+8731,Why do the Ulens have a tomb in Raven Rock?
+8732,Target takes <mag> points of damage per second to Health and Magicka.
+8733,Mora's Agony
+8735,Falas Selvayn
+8740,Scrawled Note
+8741,Lurker
+8745,Why do the Dunmer hate the Empire?
+8749,Meet up with the Redoran Guard
+8752,But you told me House Hlaalu was disliked.
+8754,Take Bera's Necklace to Runil in Falkreath
+8755,Ice Wraith
+8756,Skaal Village Dialogue
+8757,The Kagrumez Gauntlet
+8767,How did the Dunmer survive this at all?
+8769,Kagrumez Resonance Gem
+8772,Return to Morwen in Skaal Village
+8781,Mora's Grasp
+8785,Mora's Agony
+8797,What are you doing here?
+8799,You should follow me.
+8823,Black Book
+8825,Black Book: The Sallow Regent
+8828,Black Book: Untold Legends
+8839,Fire Wyrm Attack
+8844,Black Book: Filament and Filigree
+8846,Investigate the shrine
+8848,Learn the Black Book's hidden knowledge
+8853,Learn the Black Book's hidden knowledge
+8857,Learn the Black Book's hidden knowledge
+8865,Black Book: The Winds of Change
+8873,Learn the Black Book's hidden knowledge
+8883,Steadfast Dwarven Sphere
+8897,Crescius lost your Ancient Nordic Pickaxe.
+8900,You need something?
+8905,Read
+8906,Learn the Black Book's hidden knowledge
+8933,Black Book
+8939,You seem friendly.
+8950,You don't like it on Solstheim?
+8951,Emberbrand Wine
+8971,Black Book: The Hidden Twilight
+8973,Why not return to Morrowind?
+8979,I don't need some bucket of scrap metal following me around...
+8988,Steadfast Dwarven Spider
+8993,Werebear
+8994,Werebear
+8997,Does <mag> points of damage to health.
+8999,Flame Spider
+9001,Poison
+9002,Spider Fire
+9004,Spider Fire
+9005,Flame
+9006,Shock
+9008,Reading one of Hermaeus Mora's Black Books may transport you into his realm. Read it again to escape.
+9011,Spider Poison
+9012,"Apocrypha is the realm of Hermaeus Mora, the Daedric Prince of Fate and Knowledge. Many who come here seeking forbidden knowledge remain forever."
+9018,Flame
+9020,Word Chest
+9021,Shock
+9023,Frost
+9024,Poison
+9029,Conjure Werebear
+9033,Vahlok the Jailor
+9035,Does <mag> points of Frost Damage.
+9036,Does <mag> points of Fire Damage.
+9037,Frost
+9038,Does <mag> points of Shock Damage.
+9047,Ash Pile
+9051,Why is a shrine being built near town?
+9052,Reaver
+9053,Why build a shrine outside of town?
+9055,Attack Target
+9057,Speak to Crescius Caerellius
+9058,Why build a shrine outside of town?
+9061,Why are you building a shrine near town?
+9062,Shock Spider Resist
+9063,DLC2 Warehouse Ambushes
+9065,Bristleback Cave
+9066,Flame Spider Resist
+9067,Bristleback Cave
+9071,Can you tell me more about the shrine near town?
+9072,Can you tell me more about the shrine near town?
+9075,Frost Spider Resist
+9081,Can you tell me more about the shrine outside of town?
+9084,Search
+9089,Tell me about the shrine outside of town.
+9091,Chest
+9095,Why build a shrine outside of town?
+9100,Reaver Lord
+9104,Mine
+9109,Cultists' Orders
+9114,Chapter VIII
+9116,Hand-written Note
+9117,Dwarven Ballista Master
+9120,"The world is dangerous, and you're not ready for it. (Intimidate)"
+9121,Chapter VI
+9123,Chapter VII
+9126,Cloaking Flame Spider
+9130,Chapter IX
+9132,Find out who sent the Cultists
+9135,Your mother tells me that you want to leave the village.
+9137,Cloaking Flame Spider
+9142,I have business to discuss with your leader.
+9144,Convince Nikulas to stay in Skaal Village
+9146,Search the <Alias=Actor1>
+9148,Cultists vs Player
+9149,Slay the Seeker in Bloodskal Barrow
+9150,The Final Descent Priest
+9152,The Final Decent Mine Tracker
+9156,Raven Rock Mine Change Location
+9162,Why would the Thalmor abduct you?
+9163,Ulyn's Journal
+9164,Cloaking Flame Spider
+9168,You will pay for your crimes against the Skaal. Prepare to die!
+9174,Take this. Just give your mother some more time. (<bribecost> gold)
+9176,Speak to Edla
+9178,Stalhrim Deposit
+9186,Cloaking Flame Spider
+9190,"I do understand. In fact, I'm willing to help you get started."
+9192,You'd abandon your mother when she needs you most? (Persuade)
+9193,DLC2 Warehouse Ambushes
+9204,Ulyn
+9210,Dwarven Ballista Guardian
+9215,Who's your son?
+9216,I could talk to him.
+9217,Dwarven Ballista
+9220,Broken Tusk Mine
+9222,Tel Mithryn Kitchen Key
+9225,Tel Mithryn Apothecary Key
+9226,"I helped a man in need, that's all."
+9229,Tel Mithryn Steward's Key
+9231,Do you think this place has any connection with the Skaal?
+9234,What have you learned about this place?
+9236,AudioTemplateAshGhoul
+9251,"Let me guess, you need me to do something dangerous."
+9254,Why all the traps and puzzles?
+9255,Where did you hear the name?
+9257,Ash and embers cause <mag> points of damage.
+9258,Grate
+9280,Wait for a message from Ralis
+9306,Dented Iron Shield
+9309,Ballista Bolt
+9326,"When close enough, identifies the source of the ash spawn attacks on Tel Mithryn."
+9382,Dwarven Ballista
+9393,Ahzidal's Descent
+9406,Wait for a message from Ralis
+9432,Fire breath
+9435,Wait for a message from Ralis
+9437,Wait for a message from Ralis
+9464,Stagger Attack
+9488,Dwarven Ballista
+9500,Stagger
+9551,Dwarven Ballista
+9556,Bring blood to Septimus
+9561,Harvest Dark Elf blood
+9562,Harvest Wood Elf blood
+9565,Give the Lexicon to Septimus
+9570,Transcribe the Lexicon
+9575,LetterStorage
+9586,Torkild (WB01)
+9593,A Note
+9604,The Argonians invaded Morrowind?
+9605,Examine Torkild
+9608,Spell Tome: Conjure Seeker
+9614,Trap Linker
+9615,How long have you been First Hunter?
+9617,Bloodskal Strike
+9618,What do your titles mean?
+9619,Bloodskal Strike
+9626,CreatureDialogueAshGhoul
+9632,Are you all right?
+9633,Torkild? Your brother is looking for you.
+9636,Gatekeeper
+9649,Torkild
+9651,Conjure Seeker
+9654,Seeker of Shadows
+9655,Raven Rock Any Location Scene 01
+9660,Seeker of Sorcery
+9666,Mora's Grasp
+9667,All spells cost <10>% less magicka. Enchantments are <10>% more powerful.
+9669,Seeker of Might
+9670,Increases Stamina Regeneration by <50>%.
+9671,Raven Rock Any Location Scene 01
+9674,Tenticle explosion
+9675,Raven Rock Any Location Scene 01
+9676,Raven Rock Any Location Scene 01
+9678,Seeker of Shadows
+9679,Combat skills are all <10>% more effective.
+9680,Seeker of Might
+9682,Summons a field of writhing tentacles that lasts <30> seconds and poisons foes who enter it.
+9687,Embers and heated ash cause <mag> points per second.
+9688,Seeker of Sorcery
+9689,"Target is frozen between Oblivion and Tamriel for <dur> seconds, and immune to all damage."
+9690,Miraak Fake Shout
+9691,Stealth skills are all  <10>% more effective.
+9693,Chapter I
+9694,Ice Wraith
+9696,Chapter I Footnote
+9697,Conjure Ice Wraith
+9698,Mounted Riekling
+9699,Conjure Ice Wraith
+9700,Chest
+9701,Summons an Ice Wraith for <dur> seconds wherever the caster is pointing.
+9708,Raven Rock Jail Key
+9717,Marked for Death - Krii
+9720,I don't know what you're talking about.
+9731,Bed
+9735,Where do you get your goods?
+9738,Ramshackle Trading Post
+9739,Fortify Health
+9741,Read Cultists' Orders
+9742,The Greybeards seem to think so...
+9749,Cleanse the Sun Stone
+9754,You appear to be in dire straits. What happened?
+9770,How are things now that the mines are open again?
+9772,Cleansing the Stones
+9781,AudioTemplateSeeker
+9785,Hello.
+9789,"Yes, I am Dragonborn."
+9793,The Greybeards seem to think so...
+9795,Bed
+9805,Quick Test Cell
+9821,Hello.
+9824,"Yes, I am Dragonborn."
+9825,Cleanse the Earth Stone
+9826,(Walk away)
+9828,...
+9830,Usha
+9836,Nchardak Reading Room
+9844,Fortify Stamina
+9846,Why don't you destroy it?
+9861,Shady Merchant's Dialogue
+9869,Depends. Who's asking?
+9870,Letter to Usha
+9875,Follow me.
+9882,...
+9884,It's your mess. You clean it up.
+9886,Cleanse the Beast Stone
+9898,(Walk away)
+9914,Bed
+9916,Cleanse the Water Stone
+9917,Bed
+9918,Who are you?
+9919,Ramshackle Trading Post
+9930,Cultist Faction
+9933,How did the Ash Guardian get loose?
+9938,Here. Have a gold piece. (1 gold)
+9942,Disintegrate
+9943,Conjure Ash Guardian
+9946,Elmus Services
+9948,False Summon Ash Guardian
+9949,Dremora
+9955,Absorb
+9968,Why do you think your brother became a werebear?
+9973,Whirlwind Sprint
+9976,Telvanni Shoes
+9977,Are you practicing a spell?
+9980,Find Resonance Gems across Solstheim to complete the Kagrumez trials
+9982,Chest
+9983,Etched Tablet
+9985,Raleth Eldri
+9986,Ballista penetrated armor
+9990,
+9991,Absorb Health
+9998,"50% chance for each attribute to absorb <mag> points of Health, Stamina and/or Magicka."
+10007,Strange Vessel
+10010,Absorb Magicka
+10014,Ashfire Mead
+10029,Absorb Stamina
+10030,Raleth
+10031,
+10041,Frostmoon Hunt
+10044,What do you have to trade?
+10047,Frostmoon Hunt
+10054,Have you ever thought about moving to a city?
+10058,Frostmoon Bloodlust
+10059,Are there other werewolves on Solstheim?
+10065,"Are you part of this pack, too?"
+10069,Frostmoon Hunt
+10070,Frostmoon Howl
+10071,Do you live out here?
+10072,Frostmoon Instinct
+10075,Do you have anything to trade?
+10076,Frostmoon Predator
+10077,Frostmoon Howl
+10081,Slows time for <dur> seconds.
+10082,Frostmoon Instinct
+10084,Frostmoon Instinct
+10090,Frostmoon Bloodlust
+10092,Who are you?
+10094,Frostmoon Bloodlust
+10096,"While in Beast Form, your attacks do <50>% more damage, but you also take <50>% more damage."
+10101,Frostmoon Howl
+10105,Increases the duration of your Howls by <25>%.
+10109,"While in Beast Form, your health regenerates."
+10116,"When you enter Beast Form, the world around you seems to slow for <20> seconds."
+10117,Frostmoon Predator
+10118,Frostmoon Instinct
+10119,You hunt? What do you hunt?
+10120,Are you all werewolves?
+10121,Acid
+10128,Herma-Mora? Why do you call him that?
+10132,Acid
+10135,"I spoke to Hermaeus Mora. He asked for the ""secrets of the Skaal."""
+10155,Are you ready to trade your secrets to Hermaeus Mora?
+10158,I'll restore the remaining Stones if that will help.
+10165,You mean you'll give him what he wants?
+10170,Acid
+10174,Ebony Warrior's Camp
+10180,Who is Hermaeus Mora?
+10187,I've dealt with Hermaeus Mora before. I've read the Oghma Infinium.
+10189,Why would Hermaeus Mora want your secrets?
+10202,Are you ready to trade your secrets to Hermaeus Mora?
+10205,He said it's the only way he'll teach me the final Word of Miraak's Shout.
+10217,Did you grow this tower?
+10219,Frost Breath
+10225,Fire Ball
+10230,You must be almost as powerful as Savros Aren of Winterhold.
+10234,Fire Breath
+10236,"How do I know I can trust you, demon?"
+10239,Morvayn Ancestral Tomb
+10240,Deathbrand
+10243,I've heard of the House Telvanni of Morrowind.
+10247,Letter from Ralis Sedarys 4
+10251,Letter from Ralis Sedarys
+10252,Serpentine Dragon
+10255,Frost Breath
+10256,Letter from Ralis Sedarys 2
+10261,Ice Storm
+10265,Chest
+10267,Beast Form
+10268,Take on the form of the wolf.
+10269,Hvitkald Peak
+10270,"As the Archmage of Winterhold, you and I should share our secrets."
+10271,What do we do now?
+10274,Dragon vs Player
+10275,Search for the treasure of Haknir Death-Brand
+10277,Fire Breath
+10281,Ice Storm
+10285,Visit the hunters at Frostmoon Crag
+10286,Deathbrand
+10291,What do you do for Master Neloth?
+10299,Letter from Ralis Sedarys 3
+10300,Serpentine Dragon
+10303,Fire Ball
+10308,Serpentine Dragon
+10311,You must be a very powerful wizard.
+10314,Dwarven Bolt
+10315,Morgrul Attack
+10317,Bench
+10318,Dunmer Shoes
+10325,Chair
+10326,Augmented Shock
+10328,Sparks
+10329,Frost
+10331,Zahkriisos' Ire
+10333,Poison Cloak
+10335,Chair
+10338,Flames
+10339,Forget it.
+10340,Maybe you should let him go.
+10341,Dunmer Outfit
+10344,Lightning that does <mag> points of shock damage to Health and Magicka per second.
+10345,Augmented Flames
+10346,Nikulas has agreed to stay.
+10348,Ahzidal's Warding
+10349,Soulrender
+10353,Flame Target Visuals
+10356,Altar of Thrond Cave
+10357,"For <dur> seconds, opponents in melee range take <mag> points fire damage per second. Targets on fire take extra damage."
+10358,Isobel
+10359,Poison
+10360,Hoarfrost
+10362,Ahzidal's Vision
+10365,Shock
+10366,Throne
+10367,A blast of cold that does <mag> points of damage per second to Health and Stamina.
+10370,Bed
+10373,Flames
+10374,Dunmer Outfit
+10375,Opponents in melee range take <mag> points shock damage per second.
+10376,Frost spells do <25>% more damage.
+10378,Opponents in melee range take <mag> points frost damage per second.
+10379,Mogrul's Orders
+10384,Augmented Frost
+10385,Chair
+10389,Dunmer Outfit
+10390,Dunmer Outfit
+10391,Reach Miraak's Temple
+10392,A gout of fire that does <mag> points per second. Targets on fire take extra damage.
+10394,Fire spells do <25>% more damage.
+10397,Sacrifice
+10398,Shock spells do <25>% more damage.
+10399,Hello.
+10400,Opponents in melee range take <mag> points poison damage per second.
+10402,Records memories of your experiences for Neloth.
+10404,Bed
+10406,I need you to come with me.
+10407,Dukaan's Fury
+10408,Hrothmund's Spirit
+10410,Mogrul's Thug
+10416,"One of the most dangerous Steam Animunculi is the Dwarven Ballista, which fires a bolt that can penetrate even the thickest armor."
+10418,"Your Wards are <25>% less effective, but absorb <50>% of the magicka from incoming spells."
+10422,Ahzidal's Rage
+10423,Fallaise
+10426,Ice Form
+10435,Chair
+10437,"Your Conjuration and Rune spells cost <25>% more, but can be cast at greater range."
+10438,Memory Recorder
+10439,Hoarfrost
+10440,Ongoing poison damage of <mag> points per second.
+10448,Dunmer Outfit
+10449,Frost Cloak
+10450,Ahzidal's Warding
+10451,Shock Cloak
+10458,Ettiene
+10461,Poison
+10468,Frostbite
+10470,Ahzidal's Vision
+10473,Treasure Hunter
+10476,Northern Maiden Faction
+10477,Cultist Gloves
+10478,Treasure Hunter
+10479,Pirate Mage
+10482,Raleth Eldri's Notes on Kagrumez
+10483,Lygrleid
+10487,Gold Necklace
+10490,Torn Note
+10491,Keyhole
+10496,That's right.
+10500,Yes. You may have noticed he's trying to return to Solstheim.
+10502,Bonemold Pauldron Armor
+10503,Sogrlaf
+10506,Fine Boots
+10507,Telvanni Robes
+10511,General Carius' Armor
+10513,Keyhole
+10515,Boots
+10519,WaterDamage
+10525,Pirate
+10526,"Tell me of your people, the Skaal."
+10527,Lygrleid
+10528,What do you know about Miraak?
+10531,"Well, this is your lucky day. (Give formula)"
+10532,Do you need help with your research?
+10537,Cultist Boots
+10538,Cultist Robes
+10541,Miraak
+10543,I hear you know where to find Black Books.
+10544,Telvanni? What are the Telvanni?
+10546,DLC2ExpSpiderQuesDetectFriendDie
+10548,Cultist Mask
+10549,Fine Clothes
+10550,Hermaeus Mora
+10551,Hrodulf's Madness
+10552,What is this place?
+10554,Sogrlaf
+10555,Black Robes
+10559,Add Apo Water Damage
+10561,Bonemold Guard Armor
+10566,Elemental Fury
+10567,Haknir's Crew
+10568,Haknir's Crew
+10569,Soulrender
+10570,Deathbrand Gauntlets
+10571,Haknir's Crew
+10573,Deathbrand Boots
+10574,Haknir's Crew
+10575,Haknir's Crew
+10576,Haknir's Crew
+10579,Haknir's Crew
+10580,Haknir Death-Brand
+10582,Garuk Windrime
+10584,Learn more about the buried treasure
+10585,Haknir's Crew
+10586,Haknir's Crew
+10587,Haknir's Crew
+10588,Soulrender
+10589,Haknir's Crew
+10591,Explore Gyldenhul Barrow
+10593,Haknir's Crew
+10595,Thalin Ebonhand
+10596,Defeat Haknir Death-Brand
+10597,Haknir's Crew
+10599,Improve Sneak
+10601,Haknir's Crew
+10602,Bloodscythe
+10603,Haknir's Crew
+10604,Mine
+10605,Deathbrand Helm
+10606,Deathbrand Armor
+10607,Soulrender
+10608,Haknir's Crew
+10609,Bloodscythe
+10611,Use the Deathbrand Treasure Map to find the treasure
+10613,Bloodscythe
+10614,Bloodscythe Armor Reduction
+10616,Soulrender
+10618,Reaver Lord
+10619,Haknir's Crew
+10620,Soulrender Dispel
+10621,Bloodscythe
+10622,Stalhrim Deposit
+10623,Haknir's Crew
+10625,Haknir's Crew
+10626,Haknir's Crew
+10627,Haknir's Crew
+10628,Haknir's Crew
+10629,Haknir's Crew
+10631,Haknir's Crew
+10633,Harvest
+10634,Pearl Oyster
+10635,Wood Chopping Block
+10636,Apocrypha
+10637,Pearl Oyster
+10638,Whirlwind Sprint
+10639,Harvest
+10641,Heart Stone Deposit
+10642,Hrodulf
+10645,BoarRiekling
+10655,Storn didn't die for nothing. Miraak will never threaten Solstheim again.
+10658,Very well. (0 gold)
+10660,Miraak is behind what's happening to your people.
+10668,Death Fx for Ash Spawn.
+10671,Hrodulf
+10672,Why won't the book you have here help me?
+10679,Do you know where I can find another Black Book?
+10683,DLC2 Hireling Quest
+10685,So you know where to find this Black Book? The one connected with Miraak?
+10687,Hermaeus Mora wouldn't have helped me without Storn's sacrifice.
+10688,BoarRiekling
+10701,BoarRiekling
+10703,I know.
+10704,BoarRiekling
+10707,Consider yourself hired. (<global=hirelinggold> gold)
+10710,BoarRiekling
+10716,BoarRiekling
+10718,Spellsword
+10719,Isn't Miraak your ally? Why help me defeat him?
+10723,Ash Spawn Death Effect
+10729,Heart Stone Deposit
+10731,Mine
+10733,I've seen Miraak.
+10735,BoarRiekling
+10741,I killed Miraak. But Hermaeus Mora is still out there.
+10742,Ashspawn Death FX
+10750,It's over. Miraak is dead.
+10756,Mine
+10759,"Hermaeus Mora killed Storn, remember. Not Miraak."
+10760,I couldn't have defeated Miraak without Storn's help.
+10761,Teldryn Sero
+10769,You have a Black Book?
+10776,Waterwalking
+10777,Bring <Global=DLC2ThirskHilundSpearCount> Riekling Spears to Hilund
+10779,Harvest
+10780,Yes. Let me show you.
+10785,Door
+10788,Bookshelf
+10789,Fahlbtharz Corridor
+10791,Wait here.
+10799,Bring <Global=DLC2ThirskHalbarnStalhrimCount> Stalhrim Ore and <Global=DLC2ThirskHalbarnEbonyCount> Ebony Ingots to Halbarn
+10810,Horker meat
+10814,Red Glow
+10821,Dragon Aspect
+10823,Werebear
+10827,Location for things that need a location
+10829,No. Never mind.
+10830,Rieklings to the Rescue
+10835,Elmus Favor Quest
+10839,Follow me.
+10842,Elmus Favor Quest
+10843,I don't need your advice.
+10849,Halbarn Favor Quest
+10856,I've brought the materials you wanted. (Give stalhrim and ebony.)
+10857,Harvest
+10863,Don't you want to know what happened with Miraak?
+10865,How is the hunting going?
+10867,I've got a lot of Riekling spears. I hope it's enough. (Give spears.)
+10870,Hilund Favor Quest
+10876,Is there anything that would make being down here more bearable?
+10877,How is the mead?
+10883,What are you looking for?
+10892,Breath of Nchuak
+10893,I found some Ashfire Mead. (Give mead.)
+10895,I've got some juniper berries. (Give berries.)
+10903,You don't need to worry about me.
+10905,Sirkjorg
+10910,Bring Elmus some Ashfire Mead from Thirsk Mead Hall
+10922,Steam breath
+10927,Is there anything else?
+10933,Bring Elmus some Juniper Berries
+10937,You don't seem very grateful.
+10942,It's time for us to part ways.
+10949,"No, nothing interesting. I just killed Miraak and saved Solstheim."
+10951,Potion of Waterwalking
+10954,Keyhole
+10960,Horker
+10962,Herkja
+10968,Visage of Mzund
+10970,"Sure, what is it?"
+10973,Are you getting back to work?
+10982,I need you to do something.
+10983,Walk on the surface of water for <dur> seconds.
+10984,Bloodskal Red Glow
+10986,I need to trade some things with you.
+10993,Dragon Priest
+10994,Dragon Priest abilities
+10998,Skaal Coat
+10999,Skaal Gloves
+11002,Skaal Boots
+11004,Raven Rock is purely a Dunmer settlement?
+11005,Acolyte Dragon Priest FX
+11011,Skaal Hat
+11015,Sounds fun. I'll join your hunt.
+11026,Miraak's Sword
+11031,I'd like to learn the Ash Guardian spell.
+11036,"Sooner or later, death comes for us all."
+11039,Hello.
+11040,I'm looking for Miraak. Do you know him?
+11043,But what? What is it?
+11044,Absorb Stamina
+11048,Just looking for work.
+11049,Wall Of Storms
+11053,How did you end up on Solstheim?
+11058,I'll just take the staff.
+11073,Why did you work for him then?
+11074,What happened to the mine?
+11075,"That could still happen, couldn't it?"
+11081,What's a heart stone?
+11087,Until?
+11093,Coldcinder Cave
+11095,Frostmoon Invitation
+11096,Arguing about Haknir
+11098,Wall of Storms
+11099,Netch Hunting Party
+11105,None of your business.
+11106,AudioTemplateMammoth
+11107,Are you sure you're ready to be Shaman of the Skaal?
+11112,Tentacle Explosion
+11114,Hello.
+11116,A Netch?
+11121,What happened?
+11123,Think you'll win the fight?
+11126,What's a heart stone?
+11128,Good luck.
+11133,Bye.
+11146,Pirate
+11150,You know who Miraak is?
+11158,"No, not yet."
+11160,Ancient Nordic Pickaxe
+11163,Miraak's Robes
+11166,Frossel Bandit
+11169,Then why stay here? Why not live somewhere safer?
+11170,Absorb <mag> points of stamina.
+11172,Where is your mother?
+11174,I've got it. Don't cast Ash Guardian without a heart stone.
+11175,"Sprayed on the ground, it creates a wall of lightning that does <50> points of shock damage per second."
+11181,Hello.
+11182,"For a shaman, you fight pretty well. Who trained you?"
+11190,Word Chest
+11193,Absorb Stamina
+11194,Miraak's Robes
+11197,Miraak
+11205,Miraak's Robes
+11206,Evul Seloth
+11207,Tolenos
+11209,Can I dig for ebony in Raven Rock Mine?
+11210,Sahrotaar
+11211,Naris
+11213,Meden
+11214,Tentacle Word Burn
+11215,Miraak
+11216,Naris Mavani
+11217,Benthic Scream
+11218,Meden Maren
+11219,Tentacle Explosion
+11220,Tolenos Omoren
+11221,Fus
+11222,Skein of Magnus
+11223,Tenticle explosion
+11224,Force
+11226,Evul
+11234,Ice Wraith abilities
+11239,Tentacle Damage
+11240,Explosion Damage
+11243,Miraak's Robes
+11244,Miraak
+11247,Scream For Mora
+11248,Skein of Magnus
+11249,Miraak Mask Shout
+11250,Skein of Magnus
+11251,Conjuration Perks
+11255,Destruction Perks
+11256,Miraak's Staff
+11258,Miraak's Staff
+11259,TelMithryn Teleport
+11261,Yes
+11263,Yes
+11264,Yes
+11267,I think this belongs to you. (Give Glover's Letter)
+11269,Spriggan
+11272,Absorb Stamina
+11273,Yes
+11274,Yes
+11277,One-Handed Perks
+11280,Heavy Armor Perks
+11281,Smithing Perks
+11284,No
+11286,No
+11288,No
+11292,Telmithryn Teleport
+11294,What happened?
+11295,You think someone is out to get you?
+11296,Skaal Amulet
+11297,No
+11299,No
+11301,Lightning Storm
+11303,"Target takes <mag> points of shock damage per second to Health, and half that to Magicka."
+11304,No
+11312,Yes
+11313,Are you the captain of the Northern Maiden?
+11315,No
+11316,Enchanting Perks
+11317,Block Perks
+11320,No
+11323,Mora's Agony
+11324,Yes
+11328,Teleports MIrrak to the player..
+11330,Yes
+11331,Yes
+11332,Miraak's Sword
+11333,Solstheim? Where's that?
+11334,No
+11338,No
+11340,Yes
+11343,Yes
+11346,Yes
+11347,Yes
+11349,Exquisite Sapphire
+11350,Yes
+11359,Mora's Agony
+11360,You owe me. Those cultists you brought here tried to kill me. (Persuade)
+11361,No
+11362,Miraak
+11363,Yes
+11364,Two-Handed Perks
+11365,No
+11366,Yes
+11368,What can you tell me about Morrowind?
+11370,Illusion Perks
+11371,Yes
+11372,"Yes, you are. You're taking me to Solstheim."
+11373,Yes
+11375,Bloodskal Barrow
+11376,Miraak's Sword
+11377,Alteration Perks
+11379,Knapsack
+11383,Miraak
+11384,No
+11385,Restoration Perks
+11386,No
+11389,Tenticle explosion
+11390,"How can you not know how you got here? You sailed here, right?"
+11391,Headwaters of Harstrad
+11392,No
+11396,What happened? Why won't you go back?
+11400,Archery Perks
+11401,Burnt Spriggan
+11402,Absorb Stamina
+11404,Sneak Perks
+11405,Light Armor Perks
+11407,I'll pay you double your usual rate. (Give <Global=DLC2CostToSailx2> gold)
+11408,Alchemy Perks
+11410,Miraak
+11411,Lockpicking Perks
+11412,I'll be back.
+11413,No
+11417,Harstrad Cave
+11419,Shrine of Boethiah
+11420,No
+11421,Pickpocket Perks
+11422,No
+11423,Speech Perks
+11424,Headwaters of Harstrad
+11427,Lightning Storm
+11429,People are trying to kill me. I'm not taking no for an answer. (Intimidate)
+11430,Miraak's Staff
+11431,Mora's Agony
+11432,I was attacked by some cultists who came here on your ship.
+11436,Absorb Stamina
+11442,You want... 5000 septims?
+11450,Clear
+11453,Mora's Agony
+11454,Delving Pincers
+11456,Clear
+11458,Clear
+11462,Clear
+11466,Visit the werewolves at Frostmoon Crag
+11473,Mora's Agony
+11474,Second Letter from EEC
+11477,I found this heart stone with the ring.
+11478,Float Up
+11480,"Remove ""Delving Pincers"""
+11483,Third Letter from EEC
+11484,"Remove ""Prying Orbs"""
+11486,Where is Master Neloth?
+11488,Ash Spawn
+11490,Boneless Limbs
+11491,Clear
+11493,On Apocrypha: Delving Pincers
+11495,Clear
+11497,Miraak's Staff
+11500,Do Nothing
+11501,Prying Orbs
+11503,Do Nothing
+11504,Clear
+11505,None
+11509,On Apocrypha: Gnashing Blades
+11510,"Remove ""Boneless Limbs"""
+11511,Do Nothing
+11513,Clear
+11519,I'd like passage back to Skyrim.
+11520,"Remove ""Gnashing Blades"""
+11521,Mount Moesring
+11522,Do Nothing
+11526,Apocrypha
+11527,You can't be serious.
+11528,Colcinder Cave
+11529,Each of Solstheim's sacred stones grants a power which can be used only once. Return to the stone to reacquire the power.
+11533,Clear
+11536,First Letter from EEC
+11548,On Apocrypha: Boneless Limbs
+11550,On Apocrypha: Prying Orbs
+11551,Take
+11567,Mortrag Peak
+11568,Gnashing Blades
+11570,He appeared mad. I had to kill him to defend myself.
+11571,Clear
+11574,Clear
+11576,Sprays writhing tentacles on the ground that stagger and poison foes that enter them.
+11577,Clear
+11579,Clear
+11580,Clear
+11581,Did she ever return here?
+11582,Pedestal
+11583,Have the dragons made life more difficult for the Skaal?
+11590,Ahzidal's Armor of Retribution
+11607,Frykte Peak
+11608,Chest
+11611,Clear
+11613,Clear
+11617,Clear
+11620,Who are you? What are you doing here?
+11625,Where did you live before you were here?
+11635,Why did you take over Thirsk?
+11636,Deep Folk Crossing
+11642,What are you doing here?
+11644,Posted Notice
+11648,"Skaal Village, near the eastern coast of Solstheim, is home to an ancient offshoot tribe of Nords known as the Skaal."
+11649,Shrine of Mephala
+11651,Urn
+11652,Bard Holding Cell
+11653,"Once I've got Stalhrim, how do I forge it into something useful?"
+11654,Benthic Scream Removed
+11656,Float Down
+11657,Strange flora native to Morrowind have sprouted up in the ash that blankets the southern reaches of Solstheim.
+11658,The ashfall from Red Mountain has driven much of Solstheim's native wildlife into the northern half of the island.
+11659,"The ancient Nords of Solstheim sealed their tombs with Stalhrim, a form of enchanted ice as hard as stone. The Skaal are the only ones who know the secret of crafting armor and weapons out of Stalhrim."
+11660,Tell me about forging Stalhlrim.
+11661,This should not be visible
+11663,Follow me. I need your help.
+11664,"""...the people of Solstheim, the heirs of the Guardian, must remain wary, lest the dark influence of Herma-Mora, or even the Traitor himself, return someday."" --excerpt from ""The Guardian and the Traitor"""
+11665,To Milore from Nilara
+11669,Knapsack
+11670,Dearest Dinya
+11673,Solstheim was part of Skyrim until the High King gave it to Morrowind in 4E 16 to serve as a refuge for the Dunmer after the events of the Red Year.
+11674,The Dunmer of Morrowind construct chitin armor out of the shells of native insects layered with resinous glues.
+11675,Adril's Survey Results
+11677,Door
+11678,"Rieklings have little culture of their own, but scavenge what relics they can from around Solstheim and form strange attachments to what they find."
+11679,Where can I obtain Stalhrim?
+11685,This should not be visible
+11686,Hawala faaaakara. Baaaa rakhee kaloo. Pooja kan faroo kee jaa. Goora! Goora! Goora! --Riekling Godspeak Song
+11687,Benthic Scream Equipped
+11688,"The master wizards of House Telvanni traditionally grow their homes from fungal spores, using secret methods known only to themselves."
+11691,This should not be visible
+11692,"The island of Solstheim is located to the north-east of Skyrim. The ""Northern Maiden"" out of Windhelm is known to occasionally take passengers back and forth."
+11694,House Redoran's Reply
+11696,Do Not Delete Me - needed for export to work
+11697,Some tales tell of ancient Nord heroes whose Voices were powerful enough to tame and ride dragons.
+11701,"Thirsk Mead Hall was founded by Hrothmund, who originally left the Skaal in order to live the lifestyle of ancient Nord warriors in the wilderness."
+11702,Door
+11703,"Raven Rock, Solstheim's main settlement, is firmly under the control of House Redoran, the most powerful of the Great Houses of Morrowind."
+11704,"Netch are often domesticated on the Morrowind mainland. Wild netch were first sighted on Solstheim several decades ago, perhaps drawn by the familiar flora that has grown up in the southern ashlands."
+11705,Shrine of Azura
+11708,Improved Bonemold Armor
+11709,Gnashing Blades
+11710,Improved Bonemold Shield
+11711,Improved Bonemold Boots
+11712,Take
+11713,Children of the All-Maker
+11714,Breath of Nchuak
+11715,Delving Pincers
+11716,Black Book: Waking Dreams
+11717,Take
+11718,Urn
+11719,Prying Orbs
+11721,Chest
+11722,Improved Bonemold Gauntlets
+11723,Boneless Limbs
+11724,"Although the East Empire Company originally founded Raven Rock, they turned the failing mining colony over to the dark elves at the beginning of the Fourth Era."
+11725,Most of Raven Rock's original structures were leveled when the Red Mountain erupted in 4E 5. The Dunmer have largely rebuilt the town over the past two hundred years.
+11726,Breath of Nchuak
+11727,Urn
+11728,Draws upon stamina to release a scorching blast of steam that deals <MAG> points of damage per second.
+11730,Karstaag's Throne
+11731,Door
+11732,"Raven Rock Mine, once one of the most abundant sources of ebony in Morrowind, was shut down in 4E 170. This lead to a mass exodus from the town, cutting the population in half."
+11733,Take
+11734,Chest
+11735,Thief Cache
+11736,Improved Bonemold Helmet
+11737,AudioTemplateBristleback
+11739,"History of Raven Rock, Vol. III"
+11740,Stamina reduction
+11741,The Guardian and the Traitor
+11742,Take
+11744,Read
+11747,"History of Raven Rock, Vol. II"
+11748,"History of Raven Rock, Vol. I"
+11749,Heals the caster <mag> points.
+11750,Lars Battle-Born
+11751,"Thirsk, A Revised History"
+11752,Mora's Curse
+11753,"The Red Year, Vol. II"
+11754,Clear
+11755,Mora's Curse
+11757,"""Untithed to any thane or hold, and self-governed, with free worship, with no compensation to Skyrim or the Empire except as writ in the Armistice of old wheresoever those might still apply, and henceforth let no Man or Mer say that the Sons and Daughters of Kyne are without mercy or honor."" -Skyrim's Offer of Solstheim to Morrowind, 4E 16"
+11758,Apocrypha
+11759,Temple Priest Hood
+11761,"The Red Year, Vol. I"
+11762,Eydis's Journal
+11763,AudioTemplateSprigganBurnt
+11766,Mora's Curse
+11767,The Reclamations
+11770,Temple Priest Boots
+11771,Deathbrand Instinct
+11772,Does <mag> damage over <dur> seconds. Additional opponents in melee range have a chance to be infected.
+11773,Mora's Curse
+11774,Eydis
+11775,Restore Health
+11776,"For <dur> seconds, opponents in melee range have a chance to be infected."
+11777,Miraak's Staff
+11779,Miraak's Sword
+11782,Fortify One-handed
+11785,Miraak's Sword
+11786,Safe
+11787,Miraak's Sword
+11788,Blessing of Boethiah
+11789,Miraak's Mask
+11790,Severin Manor Key
+11791,Miraak's Mask
+11793,Miraak's Mask
+11794,Blessing of Mephala
+11795,Miraak's Robes
+11797,One-handed weapons do <mag>% more damage.
+11798,Miraak's Robes
+11799,Miraak's Robes
+11800,Resist <mag>% of magic.
+11801,Miraak's Staff
+11802,Prices are <mag>% better.
+11803,Miraak's Mask
+11804,Miraak's Sword
+11805,Word Chest
+11807,Miraak's Robes
+11808,Float
+11809,Miraak's Staff
+11811,Miraak's Staff
+11812,Down
+11814,Fortify Barter
+11818,Blessing of Azura
+11819,Miraak's Mask
+11822,Bandit Archer
+11824,Critical Hit
+11829,Boar Meat
+11830,Up
+11831,Miraak's Staff
+11832,Ash Hopper Meat
+11833,Boar
+11834,Miraak's Robes
+11837,Miraak's Robes
+11838,Miraak's Staff
+11839,Down
+11840,Float
+11841,Float
+11843,Up
+11844,Float
+11845,Riekling Spear Thrower
+11846,Resist Magic
+11847,Miraak's Sword
+11848,Miraak's Mask
+11849,Miraak's Sword
+11852,Sacred Stones only confer powers once a day
+11853,Riekling Spear
+11855,AudioTemplateAshGuardian
+11856,Fish Barrel
+11857,Urn
+11858,Chest
+11859,Fortify Sneak
+11860,Barrel
+11861,Urn
+11862,Door
+11864,This should not be visible
+11865,White Ridge Sanctum
+11866,Shoes
+11869,Child's Clothes
+11870,Atronach
+11871,Riekling Warrior
+11872,Felsaad Tern
+11873,Miraak
+11874,Arrow Defense
+11875,Horker and Ash Yam Stew
+11876,Seeker Drain
+11877,Seeker Drain
+11878,Tentacle Word Burn
+11879,WaterDamageShaders
+11881,Raven Rock Mine
+11882,Bloodskal Barrow
+11883,Door
+11884,Felsaad Tern Feathers
+11885,Miraak
+11886,Riekling Scout
+11887,Lurker Abilities
+11888,Nord
+11889,SprintFX Spell
+11890,Firewood
+11891,Blacksmith Forge
+11892,Elemental Fury
+11893,Skeleton
+11894,Lurker Stagger Area Attack
+11895,Cooked Boar Meat
+11896,Elemental Fury
+11897,Elemental Fury
+11898,Atronach
+11899,Equipped weapon of all allies swing faster for <dur> seconds.
+11900,Tenticle explosion
+11901,DLC2MiraakSprintFX
+11902,Battle Fury
+11903,Battle Fury
+11904,Where is Ildari?
+11905,Door
+11906,Giant Stomp
+11907,Equipped weapon of all allies swing faster for <dur> seconds.
+11908,Equipped weapon of all allies swing faster for <dur> seconds.
+11909,Stagger Attack
+11910,Battle Fury
+11911,Equipped weapon of all allies swing faster for <dur> seconds.
+11912,Battle Fury
+11913,Giant Stomp
+11914,Stagger
+11915,Riekling Charger
+11916,Riekling Courser
+11917,Flame Cloak
+11918,Hay Pile
+11919,Hay Pile
+11920,Riekling Abilities
+11921,Set WaterDamage Global
+11923,Riekling Rider
+11924,Ash Hopper Leg
+11927,I'd like training in Restoration magic.
+11928,Blizzard
+11929,Harvest Orc blood
+11930,"Targets take <mag> points of frost damage for <dur> seconds. Single use, then must be reacquired at the Wind Stone."
+11931,A <mag> point fiery explosion centered on the caster. Does more damage to closer targets.
+11932,Blizzard
+11933,Mora's Agony
+11934,Mayhem
+11937,Discerning the Transmundane
+11938,Blizzard
+11939,Take the Oghma Infinium
+11940,Mayhem
+11941,Lightning Storm
+11942,Tentacle Word Burn
+11943,Werebear
+11944,Fire Storm 40
+11945,A cyclone that does <mag> points of damage per second and may fling victims into the air.
+11946,Harvest Falmer blood
+11949,FireStorm
+11953,Targets take <mag> points of frost damage for <dur> seconds.
+11954,Investigate Kolbjorn Barrow
+11955,Dragon Riding
+11956,Rally Secondary
+11957,Chest
+11958,Cyclone
+11959,Creatures and people up to level <mag> will attack anyone nearby for <dur> seconds.
+11960,Werebear
+11962,Staff Enchanter Key
+11963,Werebear
+11964,Cyclone03
+11965,Check Water
+11966,Miraak's Boots
+11968,Knowledge Drain
+11969,Werebear
+11971,Werebear
+11972,Revus
+11973,Bound Dagger FX
+11974,Tenticle explosion
+11975,Bound DaggerFX
+11977,Miraak's Robes
+11978,Check Water
+11979,Tenticle explosion
+11980,Neloth's Health Spell
+11981,Fortify Health
+11982,Giant Stomp
+11983,DLC2RR01 Veleth Ally Faction
+11987,Fire Wyrm Flames
+11988,Font of Magicka
+11990,CreatureDialogueSeeker
+11991,Font of Magicka
+11992,Conjure Ash Guardian
+11993,Font of Stamina
+11994,Restore Stamina
+11996,Restore Magicka
+11997,Werebear Abilities
+11998,Font of Stamina
+11999,Blank Effect
+12000,Candlelight
+12001,AudioTemplateRieklingQuiet
+12002,AudioTemplateRiekling
+12003,Rip Heart Out
+12004,Lightning Storm
+12005,Lightning Storm
+12006,"Target takes <mag> points of shock damage per second to Health, and half that to Magicka."
+12007,Reduce Damage
+12008,Reduce Damage
+12011,Restore Health Area
+12013,"A <mag> point fiery explosion centered on the caster. Does more damage to closer targets. Single use, then must be reacquired at the Sun Stone."
+12015,Fire Storm 100
+12016,MQ02 Effect
+12017,"Heals everyone close to the caster <mag> points. Single use, then must be reacquired at the Water Stone."
+12019,Ash Guardian
+12020,EtherealFX Spell
+12021,Skaal Village Oslaf's House Faction
+12022,Conjure Ash Guardian
+12023,Whirlwind Cloak
+12024,Summons an Ash Guardian for <dur> seconds wherever the caster is pointing.
+12025,MiraakFakeEthereal
+12026,Adds <mag>% to the dragon breath and spell absorption of Miraak's robes.
+12027,Frost Stream
+12028,Bladesman
+12031,Absorb Spells
+12033,Head
+12034,Bullseye
+12035,Absorb Spells
+12036,Absorb Spells
+12037,Fire Damage
+12038,Hack and Slash
+12039,Flame Explosion
+12040,Absorb Spells
+12042,Absorb <mag>% of the magicka from dragon breath and spells.  Chance on hit to spawn a tentacle explosion.
+12043,Ash Guardian Attack
+12044,AudioTemplateWerebear
+12046,Deep Wounds
+12048,Skullcrusher
+12049,Absorb Spells
+12051,Hack and Slash
+12052,Skullcrusher
+12053,Bladesman
+12055,Deep Wounds
+12057,Limbsplitter
+12058,Bone Breaker
+12061,Burns the target for <mag> points. Targets on fire take extra damage.
+12062,Skullcrusher
+12064,Hack and Slash
+12066,Deep Wounds
+12067,Torso
+12069,Fly Grab
+12072,Spell Tome: Conjure Ash Spawn
+12073,Your dragon cannot fast travel right now.
+12074,You cannot cast that type of spell while riding a dragon.
+12075,Your dragon cannot land at this time.
+12076,Cancelling your request to land.
+12077,Your dragon is searching for a place to land.
+12410,Unenchanted Alteration Staff
+12501,Use Ward while <Alias=Student> attacks you.
+12503,Magic Student
+12638,Flames
+13557,Warmaster
+13938,Unenchanted Conjuration Staff
+14120,Fight! Fight!
+14414,Frost Breath
+14766,Find the source of power in <Alias=Dungeon>
+14767,Shout - learn about word wall
+15481,Unrelenting Force - Fus Ro
+15742,Dragon Race
+16397,Ulfric doesn't care about outsiders?
+17141,Oghma Infinium
+17949,Can you train me to better use Two-Handed weapons?
+18070,Can you train me to better use Heavy Armor?
+18191,I'll do it.
+18612,It's time for us to part ways.
+19150,Harvest High Elf blood
+19180,Fire Breath
+25096,"Interested in me, are you?"
+26040,Ask Urag about the insane book
+28567,I've got better things to do.
+28758,Find Septimus Signus
+29830,No. Never mind.
+30076,Avoidance Exterior
+30124,Who are you?
+30254,Frost breath
+31190,What if I took care of these bandits?
+31811,Bone Breaker
+32744,Fire Breath
+34139,Fire breath
+34746,(Invisible Continues Linked to Self)
+35609,Follow me. I need your help.
+39706,<Alias=Dungeon> is free of bandits.
+41021,Limbsplitter
+41891,Head
+43428,What have you got for sale?
+44217,Bone Breaker
+44760,Unenchanted Illusion Staff
+44887,I'd like training in Alchemy.
+45352,You're on. (Brawl - 100 gold)
+45649,That's too bad.
+46457,Limbsplitter
+48203,Windhelm
+50983,Editor Smoke Test Cell
+51684,Bladesman
+51830,"I am not your champion, monster."
+52749,I need you to do something.
+53956,Unrelenting Force - Fus
+54223,Frost Breath
+55073,Fire Breath
+55628,Septimus Signus's Outpost
+55918,"Best warrior in Morthal, huh?"
+57352,Dravynea the Stoneweaver
+58577,Unenchanted Forsworn Staff
+59439,Unrelenting Force - Fus Ro Da
+62384,Unenchanted Destruction Staff
+63098,Wait here.
+64506,Fire breath
+64936,Windhelm
+64966,Dragon Race
+65606,Dravynea
+66135,Bandit Highwayman
+66478,Cabbage Soup
+69392,Thief Cache
+70524,Return to Septimus
+70722,Dragon Race
+70745,Fortify Magicka Rate
+70884,Fortify Magicka Rate
+74565,A gout of fire that does <mag> points per second. Targets on fire take extra damage.
+75207,Summon Unbound Dremora

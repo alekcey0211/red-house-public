@@ -1,0 +1,41 @@
+.horizontal-select
+  position: relative
+
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
+  width: 100px
+
+  font-size: 16px
+  font-weight: 400
+
+  .select__value
+    position: absolute
+    top: 50%
+    left: 50%
+
+    transform: translate(-50%, -50%)
+
+  .select__arrow
+    display: flex
+    align-items: center
+    justify-content: flex-start
+
+    width: 50%
+    height: 20px
+
+    color: rgba(#C4C4C4, .8)
+
+    cursor: pointer
+
+    &:hover
+      color: #fff
+
+    &.arrow--right
+      transform: rotate(180deg)
+
+    svg
+      width: 8px
+      height: 13px

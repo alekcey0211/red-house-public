@@ -1,0 +1,142 @@
+{
+	"riverwood": {
+		"pos": [22106.24609375, -44752.68359375, -140.59170532226562],
+		"angle": [16.124189376831055, 0, 47.822021484375],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"test": {
+		"pos": [18425.634765625, -44791.6015625, -103.90460205078125],
+		"angle": [25.651182174682617, 0, 279.1852722167969],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"default": {
+		"pos": [22658.994140625, -8696.9833984375, -3594.1884765625],
+		"angle": [-1.8415262699127197, 0, 267.6894836425781],
+		"worldOrCellDesc": "1a26f:Skyrim.esm"
+	},
+	"testMine": {
+		"pos": [1851.2154541015625, -352.8770446777344, -34.162654876708984],
+		"angle": [30.487077713012695, 0, 0.9351274371147156],
+		"worldOrCellDesc": "1b147:Skyrim.esm"
+	},
+	"whiterun": {
+		"pos": [20304.830078125, -7426.55615234375, -3648.8466796875],
+		"angle": [2.7412893772125244, 0, 93.9642562866211],
+		"worldOrCellDesc": "1a26f:Skyrim.esm"
+	},
+	"windhelm": {
+		"pos": [135018.796875, 35375.03125, -12467.0361328125],
+		"angle": [1.99736487865448, 0, 352.8083190917969],
+		"worldOrCellDesc": "1691d:Skyrim.esm"
+	},
+	"winterhold": {
+		"pos": [109053.1484375, 103696.65625, -9019.5810546875],
+		"angle": [1.1451971530914307, 0, 43.86578369140625],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"markart": {
+		"pos": [-173920.25, 5351.1328125, -3391.070556640625],
+		"angle": [-13.575972557067871, 0, 274.4254455566406],
+		"worldOrCellDesc": "16d71:Skyrim.esm"
+	},
+	"solitude": {
+		"pos": [-68444.9453125, 97592.859375, -12731.177734375],
+		"angle": [-0.643219530582428, 0, 89.28564453125],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"dawnstar": {
+		"pos": [28416.49, 105812.5, -13874.06],
+		"angle": [26.14, 0, 148.85],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"riften": {
+		"pos": [172456.875, -96491.71875, 11127.9794921875],
+		"angle": [9.874471664428711, 0, 151.36392211914062],
+		"worldOrCellDesc": "16bb4:Skyrim.esm"
+	},
+	"folkrit": {
+		"pos": [-30337.591796875, -86236.6875, -3115.80908203125],
+		"angle": [12.370864868164062, 0, 206.8677520751953],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"morthal": {
+		"pos": [-39467.20703125, 68710.109375, -13663.3623046875],
+		"angle": [11.438591957092285, 0, 150.40599060058594],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"honning": {
+		"pos": [30979, -17044, -4397],
+		"angle": [5, 0, 160],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"empty": {
+		"pos": [0, 0, 0],
+		"angle": [0, 0, 0],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"0TM_TestHall": {
+		"pos": [2026.963623046875, 2407.8154296875, 640.0],
+		"angle": [0, 0, 0],
+		"worldOrCellDesc": "5900:TakiMoysha_Debug.esp"
+	},
+	"solstheim": {
+		"pos": [84421.617188, 41212.726562, 623.496399],
+		"angle": [0, 0, 0],
+		"worldOrCellDesc": "800:Dragonborn.esm"
+	},
+	"RavenRock": {
+		"pos": [30883.740234, 35049.726562, 402.040039],
+		"angle": [0, 0, 0],
+		"worldOrCellDesc": "800:Dragonborn.esm"
+	},
+	"1dung": {
+		"pos": [4.1892, 458.4785, 470.1931],
+		"angle": [0, 0, 180],
+		"worldOrCellDesc": "000D62:MCnine_dungeon.esp"
+	},
+	"windhelm-spawn": {
+		"pos": [141366.28, 34405.68, -13949.29],
+		"angle": [15.34, -0.00, 313.77],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"whiterun-spawn": {
+		"pos": [17781.29, -11943.67, -4732.76],
+		"angle": [0.91, -0.00, 331.95],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"winterhold-spawn": {
+		"pos": [110433.45, 100757.08, -9029.02],
+		"angle": [12.76, -0.00, 240.39],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"markart-spawn": {
+		"pos": [-167820.58, 5212.92, -4098.43],
+		"angle": [20.69, -0.00, 294.04],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"solitude-spawn": {
+		"pos": [-64588.45, 95502.04, -13888.00],
+		"angle": [15.87, -0.00, 237.56],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"dawnstar-spawn": {
+		"pos": [28416.49, 105812.50, -13874.06],
+		"angle": [26.14, -0.00, 148.85],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"riften-spawn": {
+		"pos": [173082.05, -91206.06, 11114.74],
+		"angle": [24.00, -0.00, 67.54],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"folkrit-spawn": {
+		"pos": [-26958.85, -84991.06, -3144.76],
+		"angle": [3.76, -0.00, 266.80],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	},
+	"morthal-spawn": {
+		"pos": [-39056.86, 71119.71, -13882.63],
+		"angle": [20.42, -0.00, 191.56],
+		"worldOrCellDesc": "3c:Skyrim.esm"
+	}
+}

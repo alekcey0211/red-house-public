@@ -1,0 +1,13 @@
+{
+  "currentLanguage": "English",
+  "testData": "test data",
+  "interface": {
+    "settings": {
+      "animations": "Animations",
+      "settings": "Settings",
+      "character": "Character",
+      "skills": "Skills",
+      "language": "Language"
+    }
+  }
+}

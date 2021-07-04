@@ -1,0 +1,13 @@
+{
+  "currentLanguage": "Українська",
+  "testData": "тестові дані",
+  "interface": {
+    "settings": {
+      "animations": "Анімації",
+      "settings": "Налаштування",
+      "character": "Персонаж",
+      "skills": "Дерево навичок",
+      "language": "Мова"
+    }
+  }
+}

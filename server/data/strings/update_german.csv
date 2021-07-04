@@ -1,0 +1,945 @@
+Index,Text
+1,Ziege
+2,Beschwört einen permanenten Frost-Atronachen.
+3,"Beschwört einen Sturm-Atronachen für <dur> Sekunden an der Stelle, auf die der Zaubernde zeigt."
+4,[...]
+5,"Beschwört einen Frost-Atronachen für <dur> Sekunden an der Stelle, auf die der Zaubernde zeigt."
+6,Beschwört einen permanenten Feuer-Atronachen.
+7,"Beschwört einen Feuer-Atronachen für <dur> Sekunden an der Stelle, auf die der Zaubernde zeigt."
+8,Frostdiener beschwören
+9,Feuer-Atronach beschwören
+10,Sturm-Atronachen beschwören
+11,Frost-Atronachen beschwören
+12,Flammendiener beschwören
+13,Beschwört einen permanenten Sturm-Atronachen.
+14,Sturmdiener beschwören
+15,"KINECT, Befehlsliste"
+17,"KINECT, Schreie einsetzen"
+20,Dein Begleiter ist zu weit entfernt zum Tauschen.
+21,"Die Initialisierung von Kinect ist fehlgeschlagen. Bitte vergewissern Sie sich, dass Ihr Kinect verbunden und aktualisiert ist. Die Kinect-Sprachsteuerung wurde deaktiviert."
+22,"Ihr Kinect ist nicht kalibriert. Die Sprachsteuerung wurde deaktiviert. Bitte benutzen Sie den Kinect Tuner, um die Spracherkennung Ihres Kinect zu kalibrieren."
+23,Sattel
+24,Türsteher
+25,Schlächter
+26,Altes Wissen
+27,Effekt: Weißes Fläschchen
+29,Legendäre Fertigkeiten
+30,Möchtest du diese Fertigkeit wirklich legendär werden lassen?
+31,"Lässt du eine Fertigkeit legendär werden, wird sie auf 15 zurückgesetzt und du erhältst darauf verwendete Talentpunkte zurück. Möchtest du das wirklich? "
+32,"Sobald eine Fertigkeit den Wert 100 erreicht hat, kannst du sie legendär werden lassen. Dadurch wird sie auf 15 zurückgesetzt und du erhältst darauf verwendete Talentpunkte zurück. Legendäre Fertigkeiten ermöglichen es deinem Charakter, sich nahezu unbegrenzt zu verbessern."
+33,Benutzerdefinierte Steuerung konnte nicht geladen werden. Standardeinstellungen werden verwendet.
+35,Einstellungen konnten nicht geladen werden. Standardeinstellungen werden verwendet.
+36,Controller wurde entfernt.
+37,Zum Fortfahren bitte Controller anschließen.
+38,Nicht jugendfreie Inhalte
+39,Diskriminierung nach Religion
+40,"Diese Mod kann nicht installiert werden, da nicht alle nötigen Dateien installiert sind."
+41,"Mod wegen nicht jugendfreien Inhalten, allgemeinem Missbrauch oder Verletzung der Verhaltensregeln/Nutzungsbedingungen melden?"
+42,Beleidigungen
+43,Modded
+44,Diese Mod lässt sich nicht aktivieren und sollte gelöscht werden.
+45,Welche Art von Verletzung der Dienstleistungsbedingungen liegt bei dieser Mod vor?
+46,Mods werden geladen. Hinweis: Erfolge sind deaktiviert. Diesen Spielstand laden?
+47,Die Mod-Auswahl/Ladereihenfolge hat sich geändert. Das Spiel lädt jetzt deine Daten neu.
+48,"Möchtest du diese Mod wirklich löschen? Falls sie nicht auf Bethesda.net registriert ist, ist keine Wiederherstellung möglich."
+49,Anderes
+50,Spam
+51,Die Downloads sind noch nicht abgeschlossen. Wirklich verlassen?
+52,Soll diese Mod gelöscht werden?
+53,Wirklich alle heruntergeladenen Mods löschen?
+54,Obszönitäten
+55,Ergebnisse für '%s'
+56,Belästigung
+57,Imitation eines Nutzers
+58,Diskriminierung nach Herkunft
+59,Benutzung privater Informationen
+60,Mods werden geladen. Hinweis: Trophäen sind deaktiviert. Diesen Spielstand laden?
+62,Mods
+63,Ein neues Spiel starten? Mods werden geladen. Hinweis: Erfolge sind deaktiviert.
+64,Ein neues Spiel starten? Mods werden geladen. Hinweis: Erfolge sind deaktiviert.
+70,Alle Fertigkeiten verbessern sich <8> Stunden lang <10> Prozent schneller.
+71,Alle Fertigkeiten verbessern sich <8> Stunden lang <15> Prozent schneller.
+72,Schloss Elend
+73,Alle Fertigkeiten verbessern sich <8> Stunden lang <5> Prozent schneller.
+74,Hunger stillen (groß)
+75,Hunger stillen (klein)
+76,[SURV=Verringert Kälte um <mag>.]
+77,Kälte wiederherstellen
+78,[SURV=Verringert Hunger um <2>.]
+79,[SURV=Verringert Hunger um <6>.]
+80,Hunger stillen (sehr klein)
+81,[SURV=Verringert Hunger um <60>.]
+82,[SURV=Wärme wird für <dur> Sekunden um <mag> Punkte erhöht.]
+83,Wärme verstärken
+84,Hunger stillen (mittel)
+85,[SURV=Verringert Hunger um <80>.]
+87,Brisenheim
+88,Haus Seeblick
+89,Haus Heljarchen
+97,Ermöglicht leisere Fortbewegung.
+99,Warte in der Stadt auf mich.
+100,Wartet hier.
+104,Schleich-Haustier
+106,Warte zu Hause auf mich.
+107,Haus Vlindrel
+108,Lautlosigkeit-Haustier
+110,Komm mit mir!
+113,Klingenstiefel
+115,Hjerim
+117,Dämmerstern
+119,Haustierfähigkeiten
+121,Markarth
+122,Bleib hier. Dies ist dein neues Zuhause.
+123,Du musst etwas für mich tragen.
+127,Windhelm
+129,Rifton
+130,Haus Windstad
+131,Einsamkeit
+132,Winterfeste
+133,Honigheim
+134,Weißlauf
+136,Gut Stolzspitze
+137,Severin-Anwesen
+138,Falkenring
+139,Komm mit mir!
+143,Creation Club Cell
+144,Creation Club Cell
+145,Creation Club Cell
+146,Creation Club Cell
+147,Creation Club Cell
+148,Quick Test Cell
+149,Creation Club Cell
+150,Creation Club Cell
+151,Creation Club Cell
+152,Hund
+153,Quick Test Cell
+154,Tür
+155,Creation Club Cell
+156,Hund
+157,Creation Club Cell
+158,Quick Test Cell
+159,Creation Club Cell
+160,Quick Test Cell
+161,Quick Test Cell
+162,Eingang
+163,Sammeln
+164,Flammenstängel
+165,Flammenstängel
+166,Schuppenfäule
+167,Sammeln
+168,Ausgehöhlter Stumpf
+169,Schuppenfäule
+170,Dornenhaken
+171,Sammeln
+172,Dornenhaken
+173,Sammeln
+174,Sammeln
+175,Schreiender Schlund
+176,Schreiender Schlund
+672,"[SURV=Schwimme in eiskaltem Wasser, ohne Schaden zu erleiden.]"
+678,Eisigem Wasser widerstehen
+776,Fellarmschienen
+778,Sprich mit dem Jarl von Weißlauf.
+936,Bebänderte Eisenrüstung
+1114,Bringe die Büste des Grauen Fuchses zu Delvin.
+1271,Ebenerzdolch
+1398,Drachenplattenhelm
+1412,Verschaffe dir Zutritt zu Hjerim.
+1560,Feiner Hut
+1648,Tiefenwaldschanze
+1850,Drachenfeste
+2147,Ja?
+2544,Stab des Magnus
+2604,Mzulft: Aedrom
+2775,Generic dialogue
+2826,Triff Karliah in der Zersplitterten Flasche.
+3308,Lerne das Wort der Macht von Einarth.
+3342,Dämmerstern
+3392,Thalmorische Botschaft
+3412,Habt Ihr eine Aufgabe für mich?
+3647,Abgeschworenenpanzerhandschuhe
+3710,Morvunskar
+3915,Khajiit
+3943,Frosthauchkrypta
+4001,"Könnt Ihr mir beibringen, mich in schwerer Rüstung besser zu bewegen?"
+4003,Wasserwindfelsen
+4107,Penitus-Oculatus-Rüstung
+4261,Zerschlissene Hose
+4295,"Bringe ""<Alias=QuestItem>"" zu <Alias.ShortName=QuestGiver>."
+4324,J'zargos Flammenmantel
+4333,Drachenschuppenstiefel
+4364,Magicka regenerieren
+4440,Das kann ich machen.
+4475,Ich möchte in Euer Geschäft investieren.
+4483,Sturmruf
+4658,Honigheim
+4686,Ja?
+4703,Spaltsteinschlucht
+4922,Schmiedekunst
+4964,Dunkelelf
+5035,Oberkörper
+5232,Drachenplattenpanzerhandschuhe
+5245,Entkomme aus der Botschaft der Thalmor.
+5255,Bringe das Schiffsmodell zu Delvin.
+5306,Bretone
+5334,Falmerpanzerhandschuhe
+5351,Passende Garnitur
+5437,Sprich mit Karliah.
+5498,Der Weg der Stimme
+5562,Bringe den Knauf von Mehrunes' Klinge in deinen Besitz.
+5605,Redorans Zuflucht
+5697,Pfeile abwehren
+5753,Ja?
+5966,Was soll ich tun?
+6231,Bringe die Bruchstücke der Klinge von Mehrunes' Klinge in deinen Besitz.
+6283,Fingerfertigkeit
+6577,Amputator
+6651,Schüchtere <Alias=Brute> in <Alias=BruteTown> ein.
+6809,Hochelf
+6913,Gildenmeisterkapuze
+6981,Water Explosion
+7140,Wirt
+7220,Geleite Meridias Licht durch den Tempel.
+7254,Sturmmanteloffizierstiefel
+7305,Finde Karliah.
+7484,Gildenmeister-Stiefel
+7531,Rjorns Trommel
+7557,Bezwinge den Wolfsgeist.
+7558,Wirf den Hexenkopf ins Feuer.
+7559,Sprich mit Kodlak.
+7564,Begib dich mit dem Zirkel zu Ysgramors Grab.
+7565,Triff den Zirkel.
+7566,Gib Eorlund das letzte Fragment.
+7568,Bringe Kodlaks Fragment in deinen Besitz.
+7571,Nimm an Kodlaks Begräbnis teil.
+7582,Sprich mit Saadia.
+7584,Bringe Saadia zu den Ställen von Weißlauf.
+7586,Kehre zu Saadia zurück.
+7589,Töte Kematu.
+7590,"Töte Kematu ODER überrede Saadia, sich mit Kematu zu treffen."
+7596,Töte Kematu.
+7598,Dringe in das Versteck der Alik'r ein.
+7599,Ebenerzklinge
+7602,Finde einen Weg in das Versteck der Alik'r.
+7610,Sprich mit dem Gefangenen der Alik'r.
+7612,Berichte den Alik'r von Saadias Aufenthaltsort.
+7614,Sprich mit Saadia.
+7616,Finde die Rothwardonin.
+7849,Drachenschuppenpanzerhandschuhe
+7988,DB07AstridCiceroDeadYesChoice
+8138,Die Zersplitterte Flasche: Zisterne
+8422,Himmelsrand
+8564,Kehre zu Brynjolf zurück.
+8577,Optional: Zerstöre Bersis kostbare Zwergenurne.
+8579,Treibe die Schulden von Bersi Honig-Hand ein.
+8585,Treibe Keeravas Schulden ein.
+8589,Finde Brynjolf in der Zersplitterten Flasche.
+8598,Sprich mit <Alias=AuthorityFigure>.
+8600,Finde den Mörder.
+8605,Patrouilliere nachts die Straßen des Steinviertels.
+8609,Sprich mit <Alias=AuthorityFigure>.
+8611,Erkunde Hjerim mit Viola.
+8614,Triff Viola vor Hjerim.
+8615,Gehe den Hinweisen aus Hjerim nach.
+8617,Suche nach Hinweisen.
+8623,Sprich mit Helgird.
+8624,Untersuche den Tatort.
+8625,Sprich mit <Alias=AuthorityFigure>.
+8626,Melde dich bei der Wache.
+8629,Befrage die Zeugen.
+8630,Sichere dir die Unterstützung Jorleifs.
+8711,Kehre zu Brynjolf zurück.
+8712,Kehre zu Maven Schwarz-Dorn zurück.
+8720,Kehre zu Sabjorn zurück.
+8725,Vergifte den Kessel mit Honigbräu.
+8727,Vergifte das Nest.
+8729,Sprich mit Sabjorn.
+8760,Geistiges Gift
+8797,Bringe Arondils Tagebuch in deinen Besitz (<Global=FFRiften21JFound>/<Global=FFRiften21JTotal>).
+8803,Betritt die Schneeschleierzuflucht.
+8810,Triff Mercer Frey vor der Schneeschleierzuflucht.
+8822,Sprich mit Karliah.
+8825,Sprich mit Enthir.
+8831,Kehre zu Enthir zurück.
+8832,Kopiere die Inschriften auf Calcelmos Stein.
+8835,Bringe Calcelmos Übersetzungshandbuch für Falmer in deinen Besitz.
+8838,Verschaffe dir Zutritt zu Calcelmos Museum.
+8843,Sprich mit Enthir.
+8859,Sprich mit Brynjolf.
+8864,Optional: Unterhalte dich mit Vex über Vald.
+8866,"Optional: Schieß auf den Mechanismus, um die Rampe zu senken."
+8871,Folge Karliah.
+8885,Die Verfolgung 
+8906,Wabbajack
+9098,Fordere Mehrunes' Klinge ein.
+9103,Sprich mit Mehrunes Dagon.
+9104,Töte Silus.
+9106,Triff Silus beim Schrein von Mehrunes Dagon.
+9117,Bringe die Bruchstücke der Klinge zu Silus.
+9121,Sprich mit Silus in dessen Haus.
+9128,Bruchstücke der Vergangenheit
+9178,Kehre zu <Alias.ShortName=QuestGiver> zurück.
+9197,Ein bezahlter Schläger
+9201,Kehre zu <Alias.ShortName=QuestGiver> zurück.
+9294,Kehre zu Falk Feuerbart zurück.
+9297,Bringe Potemas Überreste an dich.
+9299,Kaiserrobe
+9300,Bezwinge Potema.
+9392,Buch gesucht
+9405,Akademierobe
+9430,Töte die Jäger.
+9431,Sprich mit Hircine.
+9434,Häute Sinding.
+9435,Töte Sinding.
+9436,Schließ dich der Jagd an.
+9438,Töte die große Bestie.
+9461,Schicksalstreffen im Mondschein
+9514,"Neue Add-ons wurden hinzugefügt. Es ist ein Neustart erforderlich, um den Inhalt zu nutzen. Dein ungespeicherter Fortschritt geht verloren."
+9518,Geirmunds Halle
+9638,Bier
+9678,Trost der Liebenden
+9740,Suche in Morvunskar nach Sam und dem Stab.
+9741,Begib dich nach Morvunskar.
+9742,Bringe den Ehering zurück zu Ysolda in Weißlauf.
+9751,Sprich mit Ysolda in Weißlauf über den Stab.
+9762,Frage in Rorikstatt nach Sam und dem Stab.
+9764,Entschuldige dich bei den Dibella-Priesterinnen.
+9765,Hilf beim Aufräumen des Tempels von Dibella.
+9768,Finde Sam Guevenne.
+9798,Inheritance
+9805,Quick Test Cell
+9861,Rede mit Arngeir über deine weitere Ausbildung.
+9866,"Demonstriere deinen Schrei ""Wirbelwind-Sprint""."
+9867,Lerne das Wort der Macht von Borri.
+9872,"Demonstriere deinen Schrei ""Unerbittliche Macht"" (<Global=MQ105TargetsHit>/<Global=MQ105TargetsTotal>)."
+9874,Sprich mit Arngeir.
+9878,"Demonstriere deinen Schrei ""Unerbittliche Macht""."
+9881,Sprich mit den Graubärten.
+9893,Dunkelelf
+10035,"Finde heraus, wie man Alduin besiegt."
+10159,Wolkenlose Himmel
+10237,"Steal, Thugs hunt player"
+10241,Sprich mit Delphine.
+10242,Durchsuche die Folterkammer.
+10246,Suche nach Informationen über die Rückkehr der Drachen.
+10249,Optional: Beschaffe dir deine Ausrüstung zurück.
+10250,Lenke die anderen Gäste ab und entferne dich von der Feier.
+10256,Gib Malborn die Ausrüstung.
+10258,Triff Malborn in Einsamkeit.
+10260,Triff Delphine in Flusswald.
+10270,Diplomatische Immunität
+10272,Master WI quest
+10277,Sprich mit Esbern.
+10280,Finde Esbern in der Wohnkaserne im Rattenweg.
+10661,Generic dialogue
+10709,Entwaffnender Gegenangriff
+10958,Schmiedekunst verstärken
+11098,Lies Madanachs Notiz.
+11099,Durchsuche Madanachs Leichnam.
+11100,Töte Madanach.
+11106,Töte Grisvar den Unglücklichen.
+11111,Kehre zu Madanach zurück.
+11113,Sprich mit Madanach.
+11123,Keiner entkommt der Cidhna-Mine
+11293,Bersi Honig-Hand
+11305,Verhöre Odahviing.
+11308,Rufe Odahviing zur Drachenfeste.
+11316,Stelle Odahviing eine Falle.
+11317,"Erlerne den Schrei, mit dem man Odahviing rufen kann."
+11319,Sprich mit Esbern.
+11325,Sprich mit Arngeir.
+11328,Sprich mit Paarthurnax.
+11361,Handle einen Waffenstillstand aus.
+11375,Sprich mit Ulfric Sturmmantel.
+11376,Sprich mit General Tullius.
+11379,Sprich mit Arngeir.
+11384,Eine unendliche Geschichte
+11549,Sprich mit den Helden von Sovngarde.
+11551,"Erlange die Erlaubnis, die Halle der Tapferkeit zu betreten."
+11552,Sovngarde
+11578,Nachtigallrüstung
+11690,Bringe Aela ihren Schild.
+11692,Übe mit Vilkas.
+11696,Sprich mit Kodlak Weißmähne.
+11707,Bringe das Auge der Falmer zu Delvin.
+11713,Bringe den Dwemerrätselwürfel zu Delvin.
+11715,Bringe die Seekarte der Ost-Kaiserlichen Handelsgesellschaft zu Delvin.
+11720,Bringe die Honigbräu-Karaffe zu Delvin.
+11721,Bringe die Statue der Bienenkönigin zu Delvin.
+11731,Ein Diebstahlskatalog
+11740,Sprich mit Boethias Medium
+11748,Ermorde den Jarl von Einsamkeit.
+11752,Töte die anderen Kultisten.
+11756,Finde den Boethiah-Kult.
+11758,Finde den Schrein von Boethiah.
+11771,Boethiahs Ruf
+11772,Bringe Dämmerbrecher in deinen Besitz.
+11773,Töte Malkoran.
+11791,Im Morgengrauen
+11882,Kehre zu Quintus Navale zurück.
+11886,Finde etwas Pulver aus einem Mammutstoßzahn.
+11889,Beschaffe den nicht schmelzenden Schnee.
+12023,Argonisches Bier
+12150,Harte Antworten
+12443,Schattenmähne
+12468,Kehre nach Jorrvaskr zurück.
+12469,Bringe das Fragment in deinen Besitz.
+12470,Sprich mit <Alias=Observer>.
+12472,Sprich mit Skjor.
+12483,Die Aufnahmeprüfung
+12485,Folge <Alias=Questgiver>.
+12488,Bruderschaft
+12490,Kehre nach Jorrvaskr zurück.
+12492,Optional: Vernichte die Silberne Hand.
+12494,Bringe die Fragmente von Wuuthrad in deinen Besitz.
+12499,Eine gerechte Rache
+12640,Bringe Ri'saad Mondzucker.
+12851,Verbrecherjagd
+12982,Bringe den Seelenstein zu Arniel.
+12986,Heize den Konvektor an.
+12991,Arniels Aufgabe
+13108,Säubere die Wolfsschädelhöhle.
+13109,Frage Falk Feuerbart nach der Wolfsschädelhöhle.
+13277,Kehre zu Vex zurück.
+13279,Bringe die Krone von Barenziah in deinen Besitz.
+13284,Sprich mit Vex.
+13286,Bringe die Steine von Barenziah in deinen Besitz (<Global=TGCrownGemsFound>/<Global=TGCrownGemsTotal>).
+13288,Werde ein vollwertiges Mitglied der Diebesgilde.
+13375,Hut
+13522,Kopfgeld: Drache
+13541,Encounter Combat Dialogue
+13680,Diebesgildenkapuze
+13785,Lass dir von <Alias=Steward> das Kopfgeld geben.
+13787,"Töte den Banditenanführer in ""<Alias=BountyLocation>""."
+13789,Kopfgeld: Banditenanführer
+13790,"Ja, Cicero ist tot."
+13884,Meine Gründe gehen Euch nichts an.
+14010,Jorrvaskr: Wohnquartiere
+14017,"Töte den Anführer von ""<Alias=BountyLocation>""."
+14019,Kopfgeld: Abgeschworener
+14020,Lass dir von <Alias=Steward> das Kopfgeld geben.
+14022,"Töte den Riesen in ""<Alias=BountyLocation>""."
+14026,Kopfgeld: Riese
+14124,Lass dir von <Alias=Steward> das Kopfgeld geben.
+14233,Vulkanglashelm
+14271,Rolle des Frostdieners
+14333,Bringe Esbern eine Drachenschuppe und einen Drachenknochen.
+14654,Sprich mit Enthir.
+14660,Onmunds Bitte
+14802,"Finde ""<Alias=QuestItem>"" in ""<Alias=Dungeon>""."
+14835,Betritt das Hügelgrab von Yngvild.
+14836,Spiel mit dem Tod
+14861,Diebesgildenhandschuhe
+14922,Keinen Zacken aus der Krone brechen
+14994,Thalmor geg. Spieler
+15007,Sturmmanteloffizierhelm
+15010,Bounty hunters vs Player
+15250,Thieves Guild Fence Handler
+15252,Kehre zu Tonilia zurück.
+15259,Thieves Guild Caravan Fence Quest
+15279,Finde Finns Laute.
+15286,Bringe Panteas Flöte zurück.
+15288,Panteas Flöte
+15291,Finde Rjorns Trommel.
+15292,Weißgoldener Turm
+15374,Bringe das Totem in die Tiefenschmiede.
+15383,Die Totems von Hircine
+15707,Dickbauchgrotte
+15742,Drachen
+15792,Vulkanglasstiefel
+15911,Sprich mit Boethias Medium
+15978,Zorn der Ahnen
+16068,Was diese Nachricht des Generals angeht ...
+16093,Das zerbrochene Fläschchen
+16359,Blutungsschaden
+16470,Nachtigallhandschuhe
+16810,Wolkenlose Himmel
+16828,Einsamkeit
+16853,Übergib Potemas Überreste Styrr.
+17141,Oghma Infinium
+17213,Truhe
+17337,Nimm Platz.
+17476,Dunsthöhle
+17602,Der Schlachtrossstein
+17743,Esberns Zaubertrank
+17769,Daedrischer Helm
+17862,Türme von Japhets Torheit
+17928,Shout - Guard says stop
+17943,Lass dir von Olava der Schwachen die Zukunft vorhersagen.
+18069,Stahlstulpenstiefel
+18082,Südrandheiligtum
+18091,Sprich mit Brynjolf.
+18148,Samtweicher LeChance
+18221,Gib Eorlund Vilkas' Schwert.
+18668,Ja?
+18815,Linker Waffenständer
+18850,Diebesgildenstiefel
+19101,Ich ergebe mich. Bringt mich ins Gefängnis.
+19488,Weißlauf
+19870,Blutungsschaden
+20047,Schäbige Haube
+20127,Drachenschuppenhelm
+20164,Finns Laute
+20387,Kaiserlicher
+20498,Schäbige Robe
+20551,Mathies
+20751,Überwinde Borkul die Bestie.
+21023,Japhets Torheit
+21093,Wolfsschädelhöhle
+21106,Der Geist eines Wahnsinnigen
+21492,Wer ist Aventus?
+21582,Kehre zu Madanach zurück.
+21691,"Töte den Drachen in ""<Alias=BountyLocation>""."
+21713,"Na los, redet Euch die Wahrheit von der Seele. (Überreden)"
+22147,Beginne die Jagd.
+22342,Giant Stomp
+22404,Gewürzter Braten
+22607,Heißblütige Maid
+22761,Folge Madanach.
+22762,Was diese Nachricht des Jarl angeht ...
+22776,Was diese Nachricht des Generals angeht ...
+22777,Ich habe eine wichtige Nachricht von General Tullius.
+22800,Erzählt mir etwas über Maven Schwarz-Dorn.
+22914,Helm der Klingen
+23177,"Ich habe das Material, das Ihr haben wolltet."
+23212,Verabschiede dich von <Alias=Victim>.
+23228,Ich habe Eure Flöte gefunden.
+23277,Hochzeitskleid
+23338,Sturmmanteloffizierarmschienen
+23547,Diebesgildenkapuze
+23721,Frage einen Gefangenen nach Madanach.
+23786,Ich habe eine wichtige Nachricht für Euch.
+23818,Gesundheit regenerieren
+24067,Nachtigallkapuze
+24117,Feuer-Atronach beschwören
+24251,Stiefel
+24336,Eine Ratte in der Klemme
+24365,Louis Letrush gegen Raufbold
+24491,Bringe den Stab zu Enthir.
+24553,Gut Stolzspitze
+24781,Jorrvaskr
+25000,Honigheim
+25260,Hallo.
+25310,Japhets Torheit
+25474,Thalmorische Botschaft: Unterkünfte
+25768,Felsenmoorhang
+25774,Bringe das Heft von Mehrunes' Klinge in deinen Besitz.
+26078,Optional: Beschaffe den Schlüssel zu Calcelmos Museum.
+26138,Brisenheim
+26257,"Freut mich, dass Ihr so glücklich seid."
+26493,Stahlkettenpanzerhemd
+26633,Falmerrüstung
+26689,Finde Hinweise auf Mercers Aufenthaltsort.
+26722,Sturmruf
+26746,Finde Gleda die Ziege.
+26797,"Befreie <Alias=Victim> aus ""<Alias=Lair>""."
+26895,Bringe den Knauf zu Silus.
+27102,Dead Treasure Hunter with instructions
+27125,Largashburs Langhaus
+27564,Ja?
+27833,Bringe Gleda die Ziege zurück zu Ennis in Rorikstatt.
+28299,Festung Helgen
+28304,Effects\FXEmptyObject.nif
+28344,Thieves Guild Radiant Shell
+28503,Beschlagene Kaiserliche Rüstung
+28630,Senna
+29000,Kaiserlicher Helm
+29207,Sprich mit Sinding.
+29371,Kaiserlicher
+29557,"Worum geht es, meine Herrin?"
+29758,Vielsagendes Schweigen
+29844,Stros M'Kais Rum
+30131,Finde den Ehering im Hexennebelhain.
+30184,Truhe
+30324,Verfügbare Add-ons ansehen
+30685,Argonier
+30792,Rattenweg
+30920,Blut auf dem Eis
+30949,Flammenmantel
+31160,Schrei des Unbehagens
+31277,Optional: Stiehl Haelgas Dibella-Statue.
+31348,Sprich mit Mallus Maccius.
+31440,Gib Eorlund die Fragmente von Wuuthrad.
+31607,Schrei des Unbehagens
+31807,Tausche den Stern aus.
+31816,Ja?
+31960,Sprich mit Calcelmo.
+32211,Sprich mit Brynjolf.
+32609,Blutungsschaden
+32638,Drachenplattenrüstung
+32762,Sturm-Atronachen beschwören
+32836,Waldelf
+33267,Drachenschuppenbrustpanzer
+33409,Treibe Haelgas Schulden ein.
+33751,Bringe Meridias Stern zum Berg Kilkreath.
+33867,Penitus-Oculatus-Armschienen
+33952,Zu den Waffen
+33955,Sprich mit Styrr.
+34349,Brich in Mercers Haus ein.
+34395,Ysolda
+34402,Finde den Stab.
+34531,"Es wäre mir eine Ehre, ihn anzunehmen."
+34884,Alto-Wein
+34886,Magicka verstärken
+34966,Karliah
+34969,"Hier, nun sagt mir die Wahrheit. (<BribeCost> Goldstücke)"
+35220,Tempel von Kilkreath: Katakomben
+35235,Sprich mit Mallus Maccius.
+35315,Feine Stiefel
+35328,Anfälligkeit für Sonnenlicht
+35329,Nordstahlpanzerhandschuhe
+35485,Bringe das Heft zu Silus.
+35527,Daedrische Rüstung
+35681,Nimm an der Verkostung teil.
+35753,Rothwardone
+36144,Harmugstahl
+36263,Tempel des Nachtrufers
+36328,Orkische Panzerhandschuhe
+36369,"Wenn ich's mir recht überlege, werde ich wohl lieber ein andermal investieren."
+36411,Nimm dir den Ehering.
+36512,Haemars Schande
+36722,Louis Letrush
+36753,Schattenstollen: Keller
+37042,Verlorene Krypta
+37056,Ich nehme es.
+37065,Blutungsschaden
+37449,Eine denkwürdige Nacht
+37453,Klingenrüstung
+37481,DialogueRiftenGoodbyes
+37903,"Optional: Benutze Talen-Jei, um an Keerava heranzukommen."
+37922,"Mal sehen, was Ihr damit anfangen könnt. (<Global=InvestAmount> Goldstücke)"
+38050,"Moment, ich soll das allein erledigen?"
+38089,Fellstiefel
+38458,Hochelf
+38528,Fellbesetzte Stiefel
+38539,Finde den Stab für Enthir.
+38595,"Und jetzt, da Potema zurückgekehrt ist?"
+38602,"Falk hat mich geschickt, um mit Euch über Potema zu sprechen."
+38707,Sturmmanteloffizierbrustpanzer
+38897,Ich habe dieses Zeichen für Euch.
+38900,"Ich habe gehört, dass Ihr mir die Zukunft voraussagen könnt."
+38915,Gibt es sonst noch etwas?
+38927,Rothwardone
+39293,Kehre zu Vekel zurück.
+39619,Finde Meridias Stern.
+40020,Hjerim
+40394,Flieh aus der Cidhna-Mine.
+40407,Alto-Wein
+40503,Folgunthur: Krypta
+41021,Amputator
+41053,Bthardamz: Untergeschoss
+41061,Die Wolfsschädelhöhle
+41137,Nachtigallstiefel
+41185,Lege den verzerrten Seelenstein in einen Konvektor.
+41208,"Töte jeden in ""<Alias=Dungeon>"" möglichst lautlos."
+41292,Was diese Nachricht von Ulfric angeht ...
+41436,Eskortiere <Alias=Victim> zurück nach <Alias=VictimHome>.
+41778,Wer ist Aventus?
+41783,Gesundheit verstärken
+41795,Wer ist Aventus?
+41891,Kopf
+41951,Töte den entflohenen Verbrecher.
+42133,Gildenmeister-Rüstung
+42165,Diebesgildenrüstung
+42313,Bergarbeiterkleidung
+42691,WhiterunOlavaReadingTopic1
+42733,"Finde heraus, wer Sabjorns stiller Teilhaber ist."
+42753,Tolvalds Höhle
+42754,Klippenläufer
+42870,Kieferspitzenhöhle
+43551,Falmerstiefel
+43720,Palast der Könige
+44114,Bringe den Ebenerzbrustharnisch in deinen Besitz und lege ihn an.
+44480,Penitus-Oculatus-Stiefel
+44502,Palast der Könige: Obergeschoss
+44852,Nord
+44887,Ich möchte Alchemie trainieren.
+44932,Die Rückkehr der Wolfskönigin
+45037,Frost-Atronachen beschwören
+45671,Höre dir Braigs Geschichte an.
+45865,Rolle des Sturmdieners
+46143,Wein
+46272,Sprich mit Sinding.
+46375,Lisbet
+46457,Amputator
+46547,Ummantelte Akademierobe
+46581,Daedrische Stiefel
+46662,Wolkenlose Himmel
+46980,Ork
+47147,Nimm das Herz eines Abgeschworenen.
+47493,Vulkanglasrüstung
+47497,Klinge der Opferung
+47720,Ich danke Euch.
+48119,Kann ich Rifton irgendwie helfen?
+48120,Sichere dir den Beistand der Graubärte bei der Aushandlung des Waffenstillstandes zu.
+48203,Windhelm
+48802,Töte Kematu oder rede mit ihm.
+48846,Geschäftliche Angelegenheiten
+48912,Geist beschwören
+48999,Magierkapuze
+49030,Bezwinge Odahviing und nimm ihn gefangen.
+49322,Cyrodiilischer Brandy
+49460,Ein Reinheitsgebot
+49545,Lähmen
+49758,Folge Farkas zu deinem Quartier.
+50340,Talen-Jei
+50349,Bretone
+50362,Falmerschild
+50844,Diebesgildenhandschuhe
+50859,"Du musst das Spiel neu starten, um Add-ons mit diesem Profil nutzen zu können."
+51203,Argonier
+51360,Sprich mit Kodlak.
+51379,"Die maximale Zahl von gespeicherten Spielständen ist erreicht. Bitte lösche einen älteren Spielstand, um den aktuellen speichern zu können."
+51439,Alftand: Eisruinen
+51868,Honigbräu-Met
+51912,Ja?
+52072,"Ich habe <Alias=DeadFriend> umgebracht, um in Eurer Gunst zu stehen."
+52182,"Finde ein Exemplar von ""<Alias=Book>""."
+52372,Diebesgildenrüstung
+52625,Ja?
+52709,"Das Spiel muss neu gestartet werden, da Add-on-Inhalte entfernt wurden."
+52900,Lass dir von <Alias=Steward> das Kopfgeld geben.
+52927,Sprich mit <Alias=Victim>.
+52966,Sprich mit Malborn.
+53049,Orkische Stiefel
+53186,Beschaffe den Seelenstein.
+53276,Spieler
+53427,Banditenwolf
+53489,Schild der Klingen
+53748,Rifton
+53820,Sprich mit Mehrunes Dagon.
+54076,Abgeschworenenkopfschmuck
+54087,Alchemie verstärken
+54101,Orkischer Helm
+54413,"Revenge, Hired Thugs"
+54463,Sprich mit <Alias=Questgiver>.
+54489,Totmannsruh
+54508,Berichte den Alik'r von Saadias Aufenthaltsort.
+54948,Drachenforschung
+55012,Waldelf
+55108,Sturmruf
+55234,Wer ist Aventus?
+55410,Gib Inge Finns Laute.
+55557,Vergoldete Elfenrüstung
+55690,Nord
+55730,Bringe das Amulett zu Onmund.
+55757,Alftand: Animunculatorium
+55821,Blutungsschaden
+55833,Grobgewebte Tunika
+55850,Überbringe das Buch Urag gro-Shub.
+55876,Bergarbeiterkleidung
+55941,Penitus-Oculatus-Helm
+56165,Drachenfeste: Jarlgemächer
+56304,Staff of Magnus Effect
+56487,"Jarl Ulfric Sturmmantel hat mich gebeten, Euch diese Axt zu überbringen."
+56526,Truhe
+56645,Mzulft
+56698,Triff Delphine bei den Ställen.
+56929,Schäbige Stiefel
+57027,Klingenpanzerhandschuhe
+57087,Ja?
+57259,Orkische Rüstung
+57290,Stahlhelm
+57314,Fußlappen
+57373,Blutungsschaden
+57395,Rechter Waffenständer
+57406,Schmiede Mehrunes' Klinge neu.
+57427,Wein
+57509,Ennis
+57684,Fellrüstung
+58024,Sprich mit Falk Feuerbart.
+58453,Henkersbeil
+58524,Höhle der Totgeburt
+58592,Fellschuhe
+58712,Ödsturzhügelgrab: Tempel
+58825,Fellhelm
+58867,Blutungsschaden
+58964,Palast der Könige: Obergeschoss
+59026,Labyrinthion
+59030,Blutungsschaden
+59076,Thalmorische Botschaft: Elenwens Salon
+59111,Passende Garnitur
+59199,Feine Kleidung
+59302,Ruf der Wildnis
+59531,Dungeon Delving (Jarl - Caves)
+59594,Zu Ehren der Toten
+59746,Würzwein
+59810,Nord-Met
+59869,Keller
+59871,Gildenmeister-Handschuhe
+59958,Halle der Leistung
+59961,Valthume: Katakomben
+60063,Balmora Blau
+60090,Dämmergrab
+60095,Halle der Bekräftigung
+60113,Blutungsschaden
+60142,Vald
+60383,Der Gefallene
+60506,Blutungsschaden
+60524,Der Schlachtrossstein
+60539,Ausdauer regenerieren
+60580,Daedrische Panzerhandschuhe
+60605,Japhets Torheit
+60664,Rolle des Flammendieners
+60734,Die Zersplitterte Flasche
+60778,Haus Vlindrel
+60790,Ausdauer verstärken
+61135,Staff of Magnus Effect
+61204,Gib Giraud Rjorns Trommel.
+61361,Khajiit
+61605,Für einen Schmied seht Ihr sehr jung aus.
+61627,Schnelle Reflexe
+61866,Fellpanzerhandschuhe
+62133,Diebesgildenstiefel
+62181,Ork
+62471,Bringe den ungewöhnlichen Edelstein zu Vex in der Diebesgilde.
+62729,Thieves Guild Dialogue
+62764,Abgeschworenenrüstung
+62943,Fertigkeitsschub
+63087,Sprich mit Maven Schwarz-Dorn.
+63193,Sprich mit Quintus Navale.
+63210,Ich habe Honigheim gekauft.
+63280,In höchster Not
+63349,Schrei des Unbehagens
+63387,Volunruud
+63400,Finde Panteas Flöte.
+63732,Erzmagierrobe
+63957,Falmerhelm
+63999,Drachenforschung
+64225,Drachenplattenstiefel
+64235,Ja?
+64292,Esberns Zaubertrank
+64374,Blutungsschaden
+64420,Sprich mit Arngeir.
+64448,Locke jemanden in die Fänge des Schreins und ermorde ihn.
+64513,Rettungsmission
+64534,Abgeschworenenstiefel
+64610,Dietrich
+64682,Suche im Rattenweg nach Esberns Versteck.
+64936,Windhelm
+65380,Bringe das Totem von Hircine in deinen Besitz.
+65482,Dringe zur Grabkammer vor.
+65531,DCETAttack
+65538,Markarth
+65706,Feine Glänzende Gewänder
+65805,Bringe Wuuthrad zu Ysgramor.
+65868,Panzerhandschuhe der Alten Götter
+65984,Louis
+66019,Helm der Alten Götter
+66070,Rüstung der Alten Götter
+66322,Stiefel der Alten Götter
+66491,Drache
+66713,Ebenerzklinge
+66818,Anfälligkeit für Sonnenlicht
+67089,Kannibalismus
+67212,Anfälligkeit für Sonnenlicht
+67228,Lass dir von <Alias=Jarl> das Kopfgeld geben.
+67311,Jessicas Wein
+67546,Stahlkettenpanzerhemd
+67630,Anfälligkeit für Sonnenlicht
+67821,Lass dir von <Alias=Jarl> das Kopfgeld geben.
+68317,Nähren
+68396,Lass dir von <Alias=Jarl> das Kopfgeld geben.
+68458,Stahlschienenstiefel
+68526,Lass dir von <Alias=Jarl> das Kopfgeld geben.
+68551,Stahlhornhelm
+68556,Kaiserliche Stahlpanzerhandschuhe
+68889,Feine Kleidung
+68920,Bewegung
+68922,Bewegung
+69128,"Beseitigt die Sauerei, die der Mörder angerichtet hat. (<Global=HDWindhelmKiller> Goldstücke)"
+69207,Gut ausgeruht
+69266,Nachtigallhandschuhe
+69311,Nachtigallkapuze
+69393,Nachtigallstiefel
+69429,Nachtigallstiefel
+69432,Nachtigallhandschuhe
+69490,Ausgeruht
+69499,Nachtigallkapuze
+69517,Nachtigallrüstung
+69537,Vulkanglashelm des Wiedererwachens
+69546,Nachtigallrüstung
+69642,Folge Vilkas.
+70133,Das Weiße Fläschchen (voll)
+70186,Das Weiße Fläschchen (voll)
+70255,Das Weiße Fläschchen (voll)
+70271,<Alias=Animal> erwartet dich.
+70272,<Alias=Follower> erwartet dich.
+70359,Das Weiße Fläschchen (voll)
+70368,Das Weiße Fläschchen (voll)
+70386,Das Weiße Fläschchen (voll)
+70463,Falkenring: Gefängnis
+70672,Gefangenenfesseln
+70682,Schlangenblut
+70722,Drachen
+70763,Fellrüstung
+70812,Fellrüstung
+70821,Gesundheit wiederherstellen
+70959,Dark Brotherhood Assassin Sent to Kill the Player
+70974,Giant Stomp
+70987,Fellrüstung
+70996,Ausdauer wiederherstellen
+71086,Schwarze Kapuzenrobe
+71091,Mönchsrobe mit Kapuze
+71100,Magierkapuzenrobe
+71212,Magierkapuzenrobe
+71222,Warmaster Knockdown
+71261,Schwarze Magierkapuzenrobe
+71301,Courier Delivering an Important Message
+71480,Passende Garnitur
+71508,Totenbeschwörer-Kapuzenrobe
+71716,Lege den Seelenstein mit der veränderten Seele in einen letzten Konvektor.
+71717,Lege den verzerrten Seelenstein in einen anderen Konvektor.
+72274,Staff of Magnus Effect
+72395,Passende Garnitur
+72482,Thalmorrobe mit Kapuze
+72508,Braune Kapuzenrobe
+72510,Magierkapuze
+72538,Gut ausgeruht
+72549,Ummantelte Akademierobe
+72698,Ausgeruht
+72704,"Manche glauben, dass Werwölfe über die Arglosen herfallen, wenn die Nacht über Himmelsrand hereinbricht."
+72710,Akademierobe
+72748,"Jenen, durch deren Adern das Blut des Werwolfs fließt, bleiben jegliche Schlaf-Erholungsboni verwehrt."
+72803,Grüne Kapuzenrobe
+72922,Ummantelte Akademierobe
+72940,Trost der Liebenden
+72970,Magierkapuze
+72992,Rote Kapuzenrobe
+72993,Graue Kapuzenrobe
+74035,Elfenstiefel der Überragenden Ausdauer
+74102,Gegner in Nahkampfreichweite erleiden <dur> Sekunden lang 8 Punkte Feuerschaden pro Sekunde. Brennende Ziele erleiden zusätzlichen Schaden.
+74142,"Für <dur> Sekunden erleiden Gegner, die zu nahe kommen, 8 Punkte Feuerschaden pro Sekunde."
+74188,Steigert die Gesundheit um <mag> Punkte.
+74261,Magicka regeneriert sich <mag> Prozent schneller.
+74290,Ausdauer regeneriert sich <mag> Prozent schneller.
+74300,Gesundheit regeneriert sich <mag> Prozent schneller.
+74382,Waffen und Rüstungen können um <mag> Prozent verbessert werden.
+74383,Tragekapazität +<mag> und kein negativer Bewegungseffekt in Rüstung.
+74417,Regeneriert <dur> Sekunden lang <mag> Gesundheitspunkte pro Sekunde.
+74426,Steigert Magicka um <mag>.
+74437,Die Wirksamkeit gebrauter Tränke wird um <mag> Prozent gesteigert.
+74449,Steigert die Ausdauer um <mag> Punkte.
+74466,Akademiestiefel
+74467,Gefangenenfesseln
+74469,Verleiht dir das Talent Drachenschutz.
+74549,Regeneriert <dur> Sekunden lang <mag> Punkte Ausdauer pro Sekunde.
+74570,Absorbiert <mag> Gesundheitspunkte vom Ziel.
+74574,Akademiestiefel
+74577,<dur> Sekunden lang erleiden Gegner in Nahkampfreichweite <mag> Punkte Feuerschaden pro Sekunde. Brennende Ziele erleiden zusätzlichen Schaden.
+74579,Ein Energiestoß vom Wabbajack mit einer unvorhersehbaren Wirkung.
+74620,Das Charaktermenü ist nicht verfügbar.
+74650,Absorbiert <mag> Punkte Magicka pro Sekunde vom Ziel.
+74933,MaterialWaterPuddle
+74959,MaterialWaterPuddle
+75018,MaterialWaterPuddle
+75191,Gefangenenfesseln
+75200,Erzmagierrobe
+75206,Beschwört für <dur> Sekunden einen Dremora.
+75218,Dremora beschwören
+75354,Altes Wissen
+75374,"Ruft für <dur> Sekunden einen Sturm herbei, dessen Blitze sowohl auf Freund als auch Feind niedergehen."
+75377,"Ruft für <dur> Sekunden einen Sturm herbei, dessen Blitze sowohl auf Freund als auch Feind niedergehen."
+75378,"Ruft für <dur> Sekunden einen Sturm herbei, dessen Blitze sowohl auf Freund als auch Feind niedergehen."
+75416,Sprinten
+75456,Ich habe Honigheim gekauft.

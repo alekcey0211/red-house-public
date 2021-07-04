@@ -1,0 +1,61 @@
+*
+  margin: 0
+  padding: 0
+
+  box-sizing: border-box
+
+  user-select: none
+  outline: none
+
+  border: none
+
+  background: none
+
+  // Повышает производительность (изначально закомментировано)
+  // transition: none !important
+
+body
+  overflow: hidden
+
+.App
+  width: 100vw
+  height: 100vh
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  &.bg
+    background-image: url('./img/bg.jpg')
+    background-size: 100% 100%
+
+*::-webkit-scrollbar
+  width: 2px
+  
+  background: transparent
+
+*::-webkit-scrollbar-track
+  background: transparent
+
+*::-webkit-scrollbar-thumb
+  background: rgba(#808080, .6)
+
+@font-face
+  font-family: Din-pro
+  src: url('./fonts/din-pro.ttf')
+
+@font-face
+  font-family: Din-pro M
+  src: url('./fonts/din-pro-medium.ttf')
+
+@font-face
+  font-family: Din-pro CBI
+  src: url('./fonts/din-pro-condensed-bold-italic.ttf')
+
+@font-face
+  font-family: Futura-pt CM
+  src: url('./fonts/futura-pt-cond-medium.ttf')
+
+@font-face
+  font-family: Futura-pt CB
+  src: url('./fonts/futura-pt-cond-book.ttf')

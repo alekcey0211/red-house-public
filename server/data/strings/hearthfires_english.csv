@@ -1,0 +1,1513 @@
+Index,Text
+2,Remove all furniture from entryway and remodel it to match the main hall.
+5,"Greenhouse, Roof"
+6,Main Hall B
+7,Remodel Entryway - A
+14,"Kitchen, Doors"
+15,Goat Horns
+18,"Main Hall, Door"
+21,Potato Soup
+22,Addition - East Wing - Kitchen
+24,"Alchemy Laboratory, Floor"
+25,"Main Hall, Foundation"
+28,Stone Quarry
+29,"Enchanter's Tower, Roof"
+30,Mine
+32,"Main Hall, Foundation"
+40,"Trophy Room, Doors"
+46,"Enchanter's Tower, Floor"
+47,Addition - West Wing - Greenhouse
+50,Apple Dumpling
+51,"Storage Room, Wall Supports"
+52,Small House Layout
+53,"Main Hall, Wall Framing"
+56,"Alchemy Laboratory, Second Floor Walls"
+58,Addition - North Wing - Trophy Room
+59,Lakeview Manor
+62,"Alchemy Laboratory, Doors"
+66,Remodel House into Entryway
+68,"Main Hall, First Level Walls"
+69,Chest
+72,"Bedrooms, Wall Supports"
+78,"Main Hall, Second Level Walls"
+79,Dummy Object
+80,Lakeview Manor
+81,Lakeview Manor
+88,What did you need?
+95,I'm a bit short of money right now. (<Global=BYOHHPCost> gold)
+96,Butter
+97,"Main Hall, First Level Walls"
+104,Addition - North Wing - Alchemy Laboratory
+106,Wait for me at home...
+108,Addition - East Wing - Library
+111,"Trophy Room, Floor"
+112,Carriage. (<Global=BYOHHPCostCarriage> gold)
+114,Entryway - Remove Workbench
+119,I'll have to think about it.
+120,Main Hall - Style C
+121,Addition - West Wing - Enchanter's Tower
+122,Addition - West Wing - Enchanter's Tower
+125,"Storage Room, Foundation"
+126,"Main Hall, Door"
+127,"Trophy Room, Roof"
+130,"Greenhouse, Fireplace"
+133,"Main Hall, Second Level Walls"
+134,Clay
+135,"Greenhouse, Foundation"
+136,Quarried Stone
+137,"Bedrooms, Roof"
+140,Addition - North Wing - Alchemy Laboratory
+142,Cow. (<Global=BYOHHPCostCow> gold)
+144,Main Hall Layout C
+148,Main Hall - Remove Workbenches
+149,Visit your new property in <Alias=Hold> hold
+150,I'll take <Global=BYOHHPAmountLogs> logs (<Global=BYOHHPCostLogs> gold).
+151,Salmon Roe
+152,"Greenhouse, Floor"
+154,Addition - North Wing - Trophy Room
+157,"House, Roof Framing"
+165,Potato Bread
+168,Small House Layout
+170,"House, Wall Framing"
+171,Addition - North Wing - Storage Room
+176,Carpenter's Workbench
+177,I'll take it. (<Global=BYOHHPCost> gold)
+178,"Main Hall, Roof Framing"
+183,Addition - West Wing - Bedrooms
+184,Surilie Brothers Wine
+185,Sawn Log
+188,Never mind.
+191,"Main Hall, Wall Framing"
+194,Carpenter's Workbench
+195,"Main Hall, Floor"
+197,Dummy Object
+200,Addition - West Wing - Greenhouse
+202,Addition - North Wing - Storage Room
+204,"Main Hall, Second Floor Supports"
+213,Mudcrab Legs
+214,"Alchemy Laboratory, Second Floor Supports"
+220,Fireplace
+221,"Main Hall, Second Floor Supports"
+222,Main Hall - Stone
+225,"Main Hall, Foundation"
+226,"Main Hall, Roof"
+229,Addition - North Wing - Alchemy Laboratory
+231,Salmon Steak
+232,"Alchemy Laboratory, Roof"
+233,Main Hall C
+240,Addition - East Wing - Armory
+241,Can I just cut the lumber myself?
+247,Addition - North Wing - Storage Room
+250,Addition - West Wing - Bedrooms
+251,Single Bed
+252,I'd like to buy some lumber.
+255,"Main Hall, Roof Framing"
+258,"Enchanter's Tower, First Floor Walls"
+263,Is that land you mentioned still available?
+267,"Storage Room, Roof"
+268,Addition - West Wing - Bedrooms
+273,I got your letter about the land for sale. Is it still available?
+278,"Storage Room, Floor"
+279,I'd like to purchase a house.
+282,Chair
+284,Nails
+285,Lock
+288,Main Hall A
+290, Workbench
+291,I'd be honored to have you as my steward.
+292,Addition - West Wing - Greenhouse
+295,"Enchanter's Tower, Second Floor Walls"
+297,I'd like you to make some improvements to the house.
+298,"Main Hall, Second Level Walls"
+300,Jazbay Crostata
+307,A large addition in the Riften style.
+309,Lakeview Manor
+310,"Greenhouse, Roof Framing"
+311,Small House Layout
+312,"Trophy Room, Foundation"
+313,"House, Roof"
+315,Chair
+325,"Alchemy Laboratory, First Floor Walls"
+331,Main Hall Layout A
+336,Steamed Mudcrab Legs
+339,Argonian Bloodwine
+340,Sack of Flour
+341,Mine
+343,Snowberry Crostata
+344,Clam Chowder
+345,"Enchanter's Tower, Doors"
+346,Addition - East Wing - Library
+347,"Trophy Room, Wall Supports"
+351,Main Hall
+354,"Trophy Room, Walls"
+356,"Main Hall, Floor"
+357,"Storage Room, Doors"
+358,"Enchanter's Tower, Foundation"
+362,"Greenhouse, Doors"
+369,A large addition in the Whiterun style.
+371,"Library, Doors"
+374,Dummy Object
+380,"Bedrooms, Floor"
+381,"Armory, Doors"
+383,"Enchanter's Tower, Second Floor Supports"
+384,Dummy Object
+385,I need a steward for my house. Are you interested?
+386,"House, Walls"
+387,Oven
+389, Workbench
+391,"Main Hall, Roof Framing"
+394,Remodel Entryway - A
+397,"Main Hall, Floor"
+398,Letter from the Steward of <Alias=HoldCity>
+400,"House, Foundation"
+402,Main Hall - Workbenches
+403,Addition - East Wing - Kitchen
+404,"Bedrooms, Doors"
+409,Addition - West Wing - Enchanter's Tower
+411,"Greenhouse, Walls"
+413,Addition - East Wing - Library
+416,A large addition in the Solitude style.
+419,Juniper Berry Crostata
+422,Dummy Object
+423,"Main Hall, Door"
+425,"Trophy Room, Roof Framing"
+428,Main Hall Layout B
+429,"A tidy, one-room house."
+430,"Enchanter's Tower, Main Supports"
+431,"Alchemy Laboratory, Main Supports"
+432,Addition - North Wing - Trophy Room
+433,"Greenhouse, Wall Supports"
+437,Jug of Milk
+438,Addition - East Wing - Kitchen
+441,Entryway - Workbench
+444,"House, Door"
+445,"Main Hall, First Level Walls"
+446,Gunjar
+447,House - Workbench
+448,Hinge
+449,Addition - East Wing - Armory
+450,"Main Hall, Roof"
+452,"House, Floor"
+453,I'll have to think about it.
+454,"Storage Room, Walls"
+456,"Main Hall, Wall Framing"
+460,Clay Deposit
+464,"Bedrooms, Foundation"
+465,Single Bed
+466,"Main Hall, Second Floor Supports"
+467,"Main Hall, Roof"
+468,House - Remove Workbench
+470,Addition - East Wing - Armory
+473,"Alchemy Laboratory, Foundation"
+474,Iron Fittings
+475,"Bedrooms, Walls"
+482,Weapon Racks (3)
+494,Wheat
+497,Carpenter's Workbench
+505,Girl's Grey Dress
+512,Sure. I said it was.
+515,Armory. (<Global=BYOHHPCostArmory> gold)
+516,Carpenter's Workbench
+518,Display Case on Low Table
+519,Rayya
+534,Display Case and Small Wardrobe
+535,Addition - North Wing - Storage Room
+537,Small Shelf
+538,Display Case on Low Table
+540,"Alchemy Laboratory, First Floor Walls"
+541,Use the Drafting Table to begin building your house
+543,"Armory, Floor"
+544,Nord Mead (5)
+547,Grindstone
+570,Cupboard
+574,Lamp Stand
+578,Bedrooms - Workbench
+580,Sure. I said it was.
+582,No. Stop pestering me.
+583,Carpenter's Workbench
+590,Shrine of Talos
+591,Corner Shelf
+597,Room 2 Workbench
+598,Cellar
+604,End Table
+607,What's the hurry?
+614,Display Case
+620,"Time to go home, <Alias.ShortName=Child1>."
+624,"Alchemy Laboratory, Doors"
+628,"Library, Second Floor Supports"
+637,Room 7 Layout
+645,Room 1 Workbench Disable
+655,Trophy Room - Workbench
+659,Hawk's Egg
+667,Wall Sconce
+668,Mounted Horker Head
+680,"Bedrooms, Foundation"
+687,Adopted
+691,How's <Alias.ShortName=Child1> doing?
+693,"Library, Floor"
+695,Small Planter with Cupboard
+696,"Greenhouse, Wall Supports"
+697,Bookshelf
+698,Child's Clothes
+711,Namira's Rot
+713,Place a workbench in your house for crafting furniture.
+717,End Table
+726,Wall Sconces (2)
+728,Room 1B Workbench
+730,End Tables (2)
+731,Kitchen - Remove Workbench
+732,Tall Bookshelf
+736,Archery Targets (2)
+744,Enchanting Table
+752,Dragon Bridge.
+754,Satchel
+755,Dragon Skull
+769,Carpenter's Workbench
+771,Room 6 Workbench Enable
+777,Room 5 Layout
+778,"Trophy Base, Large"
+779,End Table
+787,Place a workbench in the Kitchen.
+789,Room 7 Workbench
+803,Fish Barrel
+807,I got your letter about the land for sale. Is it still available?
+809,Room 10 Workbench
+811,"Where are your parents, kid?"
+813,"Storage Room, Wall Supports"
+816,"I've got something for you, <Alias.ShortName=Child2>."
+821,Washbasin on Stand
+827,Round Table and Chairs
+834,"Sure, whatever you want. 1000 gold?"
+840,Trophy Room - Remove Workbench
+843,"Actually, maybe this isn't the best time..."
+853,"It's time for bed, <Alias.ShortName=Child2>."
+879,WEAPON RACKS
+886,Juniper
+893,Safe (5)
+906,Wall Shelves (4)
+912,Table with Display Cases
+914,"Alchemy Laboratory, Second Floor Supports"
+916,Weapon Plaque
+918,Mounted Bear Head
+919,How do you like the farm?
+930,"Time to go home, <Alias.ShortName=Child1>."
+933,"Trophy Room, Roof"
+938,Display Case and Cupboard
+942,Why are you begging?
+948,"I've got something for you, <Alias.ShortName=Child2>."
+953,Swamp Fungal Pod
+955,Room 12 Workbench
+961,"Trophy Base, Large"
+967,"Yes, I've got a house in Falkreath."
+972,"Trophy Room, Foundation"
+975,Addition - North Wing - Storage Room
+984,Sorry? For what?
+997,Room 11 Workbench Disable
+998,Addition - West Wing - Bedrooms
+1002,"Time to go home, <Alias.ShortName=Child2>."
+1005,Weapon Plaque
+1014,Windstad Manor
+1029,Letter from Jarl <Alias=Jarl>
+1030,What was your story again?
+1034,Mounted Elk Antlers
+1035,I'm a Thief.
+1036,Slaughterfish
+1037,How are the kids?
+1041,Wardrobe
+1044,"Kitchen, Roof"
+1053,"Alchemy Laboratory, Roof"
+1057,"Bedrooms, Doors"
+1062,Visit your new property in <Alias=Hold> hold
+1067,"Time to go home, <Alias.ShortName=Child1>."
+1082,Deathbell
+1083,Thistle
+1084,Karthwasten.
+1096,"I've got something for you, <Alias.ShortName=Child1>."
+1108,Lamp Stand
+1111,"Sorry, no, I've changed my mind."
+1117,How's <Alias.ShortName=Child1> doing?
+1121,Planter
+1125,I'll take it. (<Global=BYOHHPCost> gold)
+1127,"Urchin, met"
+1128,Chest
+1136,Remove the workbench from the Kitchen.
+1145,No problem. Here's 500 gold.
+1147,Square Table
+1149,"Proudspire Manor, my house in Solitude."
+1150,Mudcrab
+1152,Barrels
+1153,Glowing Mushroom
+1155,"Vlindrel Hall, my house in Markarth."
+1160,Alchemy laboratory. (<Global=HDMarkarthAlchemy> gold)
+1178,How's <Alias.ShortName=Child1> doing?
+1179,Display Case and Cupboard
+1181,Small Planter with Cupboard
+1191,"Windstad Manor, my house in Hjaalmarch."
+1195,AETHERIUM
+1199,Dwarven Sphere
+1203,Do you know where I can buy materials like glass or straw?
+1214,Small Planter with Cupboard
+1218,How are the kids?
+1226,Barrels
+1227,How's <Alias.ShortName=Child1> doing?
+1229,Room 8 Workbench
+1240,Garden
+1241,I'll have to think about it.
+1248,Room 5
+1254,At my house in Markarth.
+1257,Shrine of Akatosh
+1259,Vix
+1262,Hello.
+1264,Alesan
+1265,Add a tower ready to be turned into a comfortable library.
+1268,Room 7 Workbench
+1270,Children's bedroom. (<Global=HDMarkarthChildRoom> gold)
+1271,Use the Carpenter's Workbench to build the foundation of your house
+1282,"Storage Room, Foundation"
+1291,How's <Alias.ShortName=Child1> doing?
+1292,Never mind.
+1300,"Greenhouse, Roof Framing"
+1305,Alchemy Laboratory - Workbench
+1307,Tall Shelf
+1310,Low Table
+1311,A stone platform suitable for placing shrines to the Divines of your choice.
+1320,<Alias.ShortName=Child1>...
+1326,BITS
+1327,Room 11 Workbench
+1333,"It's time for bed, <Alias.ShortName=Child1>."
+1336,Animal Pen
+1347,"Trophy Room, Roof Framing"
+1349,Place a workbench in the Library.
+1356,Let's play a game.
+1360,<Alias=Home> Furnishings
+1364,At my house in Hjaalmarch.
+1369,BUILDING MATERIALS
+1371,"Enchanter's Tower, Second Floor Supports"
+1378,Shrine of Stendarr
+1379,Remove the workbench from the Trophy Room.
+1380,Lumber. (<Global=BYOHHPAmountLogs> for <Global=BYOHHPCostLogs> gold)
+1385,I'm a bit short of money right now. (<Global=BYOHHPCost> gold)
+1391,"Bedrooms, Floor"
+1397,Bear
+1400,Bench
+1408,Potato
+1415,Windhelm.
+1417,At my house in Falkreath.
+1419,"Adoptable, not met"
+1424,Wall Sconces (2)
+1434,"Time to go home, <Alias.ShortName=Child1>."
+1440,Cellar - Workbench
+1441,"No, I don't."
+1442,Giant Lichen
+1445,"Actually, let's just stay here."
+1449,"Add a kitchen that can be fitted out with cooking stations, food containers and the like."
+1450,What is it?
+1451,Addition - East Wing - Library
+1462,Round Table and Chairs
+1483,Mother's Love
+1485,"Time to go home, <Alias.ShortName=Child2>."
+1486,Nirnroot
+1489,Room 5 Workbench
+1496,Brazier
+1507,How's <Alias.ShortName=Child1> doing?
+1508,Shor's Stone.
+1509,How's <Alias.ShortName=Child1> doing?
+1516,Wall Shelves (3)
+1517,"I've got something for you, <Alias.ShortName=Child1>."
+1520,"Wardrobe, Small"
+1536,Add a greenhouse with customizable planters.
+1540,Chest
+1543,"Alchemy Laboratory, Main Supports"
+1553,At my house in the Pale.
+1554,Wardrobe
+1555,Mounted Elk Head
+1572,"Armory, Wall Supports"
+1578,Small Trophy Base
+1580,A Grand Soul gem filled with a Grand Soul is required to build the Arcane Enchanter.
+1581,Boy's Blue Tunic
+1584,Is that land you mentioned still available?
+1592,Small Planter with Cupboard
+1597,Hagraven
+1601,How are the kids?
+1608,Could I adopt one of your children?
+1618,Mounted Mudcrab
+1619,"Kitchen, Roof"
+1622,Room 11 Workbench
+1627,Addition - North Wing - Alchemy Laboratory
+1630,Trap Door
+1633,Mine
+1637,Use the Carpenter's Workbench to build the foundation of your house
+1641,Grindstone
+1643,We could live in my house in Hjaalmarch.
+1653,Windstad Manor
+1658,BYOHRelationshipAdoptableOrphanable_Confirm
+1661,Low Table
+1681,Shrine of Mara
+1682,Not right now.
+1683,Old Hroldan.
+1686,Girl's Green Dress
+1694,Thane of Falkreath
+1697,I'd like you to buy some building materials for me.
+1703,"Library, Second Floor Supports"
+1704,Isn't it past your bedtime?
+1706,How are the kids?
+1707,Weapon Racks (4)
+1720,"Kitchen, Foundation"
+1724,Add a storage area which can be equipped with a variety of containers and weapon racks. Includes an exterior porch.
+1735,How are the kids?
+1739,I need a ride.
+1747,Tall Wardrobe
+1760,Dawnstar.
+1762,Girl's Yellow Dress
+1767,"Bedrooms, Wall Supports"
+1769,"Armory, Foundation"
+1773,Room 4 Workbench
+1774,Let's play a game.
+1777,Room 2 Workbench
+1781,Cupboard
+1790,Wooden Sword
+1794,Remove the workbench from the Alchemy Laboratory.
+1808,Room 10 Layout
+1814,Room 8 Workbench
+1820,How about my house in Falkreath?
+1824,Storage Room. (<Global=BYOHHPCostStorageRm> gold)
+1835,Small Planter with Cupboard
+1838,"Armory, Foundation"
+1845,Replace my Enchanting Lab with a Child's Room. (<Global=HDRiftenChildRoom> gold)
+1862,How's <Alias.ShortName=Child1> doing?
+1865,"Orphanage, generic, no matron"
+1871,Corner Shelf
+1872,Room 3 Workbench Disable
+1881,I'm the Dragonborn.
+1886,Room 2 Workbench Disable
+1889,How's <Alias.ShortName=Child1> doing?
+1895,"Alchemy Laboratory, Floor"
+1901,Safe
+1904,Replace my Alchemy Lab with a Child's Room. (<Global=HDWhiterunChildRoom> gold)
+1909,"Lakeview Manor, my house in Falkreath."
+1914,Let's play a game.
+1920,Tall Shelf
+1930,Sofie
+1935,"Yes, I've got a house in the Pale."
+1943,Carpenter's Workbench
+1945,"Trophy Room, Floor"
+1957,"Trophy Base, Small"
+1979,Safe
+1981,Place a workbench in the Armory.
+1992,"Go play outside, <Alias.ShortName=Child2>."
+1999,Chest
+2016,Stonehills.
+2028,Clay Deposit
+2038,Library - Workbench
+2046,How are the kids?
+2047,Cabbage
+2048,"Greenhouse, Floor"
+2050,Whiterun.
+2064,Trap Door
+2083,Room 1B Workbench Enable
+2088,Carrot
+2089,Shrine of Zenithar
+2093,Room 6 Workbench Disable
+2094,Room 3 Layout
+2095,Low Table
+2103,Boy's Grey Tunic
+2121,Alchemy Lab
+2127,How are the kids?
+2130,Horse
+2133,(<Global=BYOHHouseLogCount>)
+2134,I don't need anything else.
+2142,"Armory, Walls"
+2146,Tall Shelf with Display Case
+2154,Remove the workbench from the small house.
+2164,Cupboard
+2165,Mounted Horker Head
+2166,End Table
+2173,"Library, First Floor Walls"
+2176,"Storage Room, Floor"
+2177,Room 4 Workbench
+2181,Room 1B Workbench Disable
+2182,Spriggan
+2183,Safe
+2184,"Library, Roof Canopy"
+2190,How are the kids?
+2192,"I have a house, but not room for you."
+2193,Carpenter's Workbench
+2198,Mounted Mudcrab
+2202,Washbasin on Stand
+2203,Addition - West Wing - Bedrooms
+2205,Remove the workbench from the Greenhouse.
+2206,"Trophy Base, Small"
+2222,Replace my Alchemy Lab with a Child's Room. (<Global=HDMarkarthChildRoom> gold)
+2226,Boy's Red Tunic
+2227,Room 1 Workbench
+2229,Room4
+2230,Enchanter's Tower - Remove Workbench
+2236,"Adoptable, met"
+2237,"Yes, I've got a house in Whiterun."
+2248,Bookshelf
+2249,Room 10 Workbench Disable
+2251,Armor Mannequin
+2252,Let's play tag.
+2253,Imp Stool
+2258,How are the kids?
+2260,Shrine of Arkay
+2270,"Breezehome, my house in Whiterun."
+2278,Biter
+2279,Riverwood.
+2283,Arcane Enchanter
+2285,Room 11
+2294,Let's play hide-and-seek.
+2297,Not this time.
+2302,Cupboard
+2305,How are the kids?
+2311,Girl's Red Dress
+2312,Tundra Cotton
+2325,"Yes, I'm sure... son."
+2327,Child's Chest
+2328,Addition - East Wing - Armory
+2329,<Alias.ShortName=Child2>...
+2335,Trap Door
+2346,Wardrobe
+2347,What have you got for sale?
+2350,Shrine of Julianos
+2353,Enchanter's Tower. (<Global=BYOHHPCostEnchanting> gold)
+2361,Alchemy Laboratory - Remove Workbench
+2376,Room 11 Workbench Enable
+2378,"Go play outside, <Alias.ShortName=Child1>."
+2384,Consider Adoption
+2390,Child's Doll
+2393,"Library, Doors"
+2394,"Storage Room, Doors"
+2395,Addition - East Wing - Kitchen
+2397,"Bedrooms, Roof"
+2406,Add a tower ready to be fitted out as an alchemy laboratory.
+2409,"Library, Roof Canopy"
+2410,I'm an Assassin.
+2412,How are the kids?
+2419,"Library, Roof"
+2422,Lavender
+2423,"Armory, Roof"
+2430,Mead Barrels (2)
+2433,Room 9 Workbench Disable
+2434,"Yes, I've got a house in Hjaalmarch."
+2445,Frostbite Spider
+2446,"Sorry, not right now."
+2447,"Go do your chores, <Alias.ShortName=Child2>."
+2454,"Chandelier, Large"
+2469,Tanning Rack
+2472,Large Planter
+2476,Addition - West Wing - Enchanter's Tower
+2481,Library - Remove Workbench
+2493,Runa
+2499,Mora Tapinella
+2502,Place a workbench in the Enchanter's Tower.
+2507,Engar
+2511,Girl's Blue Dress
+2515,Room 3
+2522,Room 6 Workbench
+2524,Main Hall - Stone
+2531,"I could adopt you, if you want."
+2533,Brazier
+2534,"Hjerim, my house in Windhelm."
+2539,"Heljarchen Hall, my house in the Pale."
+2540,"Out of my way, kid."
+2549,Library. (<Global=BYOHHPCostLibrary> gold)
+2551,Who are you? Where are your parents?
+2552,Safe
+2553,Barrels
+2555,Use the Carpenter's Workbench to build the foundation of your house
+2564,I'm Arch-Mage of the College of Winterhold.
+2568,How's <Alias.ShortName=Child1> doing?
+2583,Cow
+2587,Trap Door
+2595,Lucia
+2596,I... hadn't thought of that.
+2608,Firepit
+2611,"Kitchen, Wall Supports"
+2616,Visit your new property in <Alias=Hold> hold
+2617,Who are you? Where are your parents?
+2618,"Go do your chores, <Alias.ShortName=Child1>."
+2619,Place a workbench in the Cellar.
+2620,"Trophy Base, Small"
+2623,Add a residential wing with master bedroom and childrens' bedroom. Includes an exterior porch.
+2628,Wall Shelf
+2635,Use the Drafting Table to begin building your house
+2636,Coffin
+2637,"Go play outside, <Alias.ShortName=Child2>."
+2650,"Yes, I'm sure... daughter."
+2655,Weapon Plaque
+2656,Skeleton
+2657,Child's Clothes
+2660,Winterhold.
+2668,"Storage Room, Walls"
+2675,"Time to go home, <Alias.ShortName=Child2>."
+2680,How are the kids?
+2690,Addition - East Wing - Library
+2698,Addition - North Wing - Trophy Room
+2699,"Go play outside, <Alias.ShortName=Child1>."
+2701,How's <Alias.ShortName=Child1> doing?
+2705,Room 2 Workbench Enable
+2710,EXTERIOR
+2719,Room 1 Workbench Enable
+2731,Chicken Dumpling
+2733,Mounted Wolf Head
+2746,Kitchen. (<Global=BYOHHPCostKitchen> gold)
+2750,"Kitchen, Walls"
+2755,White Cap
+2758,Enchanting Table
+2760,Addition - East Wing - Kitchen
+2763,"Bedrooms, Walls"
+2764,Boy's Green Tunic
+2766,Barrels
+2771,"Enchanter's Tower, Roof"
+2773,"Library, Foundation"
+2774,Tell me about yourself.
+2775,End Table
+2782,Creep Cluster
+2786,Let's play a game.
+2794,Bookshelf
+2798,Room 9
+2799,Room 3 Workbench
+2803,Addition - East Wing - Library
+2806,"Orphanage, generic"
+2821,"Armory, Roof"
+2825,"Time to go home, <Alias.ShortName=Child1>."
+2826,"Yes, I'm sure... son."
+2830,Mounted Goat Head
+2842,Here's 10 gold.
+2847,"Kitchen, Fireplace"
+2848,"You can adopt up to two children, if you own a home with room for them to stay in."
+2852,Speak with Constance Michel about Adoption
+2853,Wardrobe
+2856,Hanging Rack
+2862,At my house in Solitude.
+2864,Trap Door
+2865,How are the kids?
+2866,How are the kids?
+2868,Fill Bottles from
+2873,Swap my Child's Room with an Enchanting Lab. (<Global=HDRiftenEnchanting> gold)
+2882,Snow Bear
+2897,Riften.
+2898,How's <Alias.ShortName=Child1> doing?
+2901,Father's Love
+2907,Well... all right.
+2908,Hanging Rack
+2910,"Kitchen, Doors"
+2911,Knapsack
+2916,"Library, Second Floor Walls"
+2918,Arcane Enchanter Recipe
+2925,Room 10 Workbench
+2930,How's <Alias.ShortName=Child1> doing?
+2933,Greenhouse. (<Global=BYOHHPCostGreenhouse> gold)
+2935,Red Mountain Flower
+2938,Tall Shelf
+2939,Who are you? Where are your parents?
+2944,Draugr
+2948,Clay. (<Global=BYOHHPAmountClay> for <Global=BYOHHPCostClay> gold)
+2950,Low Table
+2953,Sure. What do you have?
+2954,"Go do your chores, <Alias.ShortName=Child1>."
+2955,Chest
+2963,I'm a Mercenary.
+2977,"Enchanter's Tower, Main Supports"
+2985,Blue Mountain Flower
+2986,Mounted Slaughterfish
+2988,"Lakeview Manor, my house in Falkreath."
+2989,"Go do your chores, <Alias.ShortName=Child2>."
+2990,Desk
+3000,How's <Alias.ShortName=Child1> doing?
+3005,"I've got something for you, <Alias.ShortName=Child1>."
+3008,Addition - West Wing - Greenhouse
+3009,Replace my Child's Room with an Alchemy Lab. (<Global=HDWhiterunAlchemy> gold)
+3012,Room 8 Layout
+3015,How are the kids?
+3016,"Honeyside, my house in Riften."
+3022,Remove the workbench from the Armory.
+3036,"Kitchen, Foundation"
+3040,Smelter
+3042,Blaise
+3051,Cupboard
+3057,Mead Barrel
+3059,How's <Alias.ShortName=Child1> doing?
+3064,Tanning Rack
+3065,Addition - North Wing - Trophy Room
+3067,Do nothing
+3077,Shrine Base
+3087,Gourds
+3089,Children's bedroom. (<Global=HDSolitudeChildRoom> gold)
+3095,Tell me about yourself.
+3099,How's <Alias.ShortName=Child1> doing?
+3104,"Friends of the Jarls in Falkreath, Hjaalmarch and the Pale may buy land in those holds and build their own home on it."
+3112,"Greenhouse, Doors"
+3115,Rorikstead.
+3116,Here's 10 gold.
+3117,Table with Benches
+3121,Horker
+3123,Leek
+3124,Lavender Dumpling
+3131,"Trophy Room, Doors"
+3145,How are the kids?
+3147,Large Planter
+3150,How's <Alias.ShortName=Child1> doing?
+3151,Chicken. (<Global=BYOHHPCostChicken> gold)
+3152,"Go play outside, <Alias.ShortName=Child1>."
+3158,Wall Sconces (2)
+3161,Planter
+3171,What's the matter?
+3173,"Alchemy Laboratory, Foundation"
+3178,Display Case and Small Wardrobe
+3181,Room 12 Workbench
+3189,Bedroom. (<Global=BYOHHPCostBedroom> gold)
+3190,<Alias=Player>.
+3192,"Kitchen, Floor"
+3196,Small Planter with Cupboard
+3203,Strong Box
+3204,Mounted Wolf Head
+3205,Large Trophy Base
+3215,Chest
+3222,Chair
+3227,Markus
+3228,RelationshipAdoption_FGReceiveGiftTopic
+3229,"Library, Floor"
+3234,Children's bedroom. (<Global=HDWhiterunChildRoom> gold)
+3239,Clear planter
+3250,"I've got something for you, <Alias.ShortName=Child2>."
+3255,"Heljarchen Hall, my house in the Pale."
+3285,Gregor
+3286,Kitchen - Workbench
+3287,Windstad Manor
+3292,Armory - Remove Workbench
+3295,"Yes, I've got a house in Markarth."
+3305,Remove the workbench from the Cellar.
+3306,Parent's Touch
+3320,Add a cellar beneath the Main Hall.
+3322,Tall Bookshelf
+3342,Dawnstar
+3348,How are the kids?
+3350,"Orphanage, standard, no matron"
+3357,Dresser
+3361,Blacksmith's Forge
+3363,Whiterun
+3364,Dining Table and Chairs
+3367,Riften
+3368,Markarth
+3374,Room 3 Workbench
+3375,Solitude
+3377,Anga's Mill
+3397,"Enchanter's Tower, Roof Canopy"
+3401,Mounted Bear Head
+3402,Apiary
+3413,FURNITURE
+3420,Weapon Racks (4)
+3430,At my house in Whiterun.
+3435,Buy lumber for building your house
+3438,Remove the workbench from the Storage Room.
+3439,How are the kids?
+3446,"Enchanter's Tower, Doors"
+3449,Trap Door
+3450,Horse
+3451,"Visit Breezehome, your new house"
+3461,Use the Drafting Table to begin building your house
+3473,Room 6 Workbench
+3475,"Kitchen, Roof Framing"
+3485,Boy's Yellow Tunic
+3493,"It's time for bed, <Alias.ShortName=Child1>."
+3497,Cellar
+3498,Room 6 Layout
+3507,I have a house in the Pale.
+3514,"Library, First Floor Walls"
+3519,"Add a trophy room that can be equipped with display cases, animal trophies, and weapon racks."
+3521,"Library, Foundation"
+3525,Children's bedroom. (<Global=HDWindhelmChildRoom> gold)
+3526,<Alias.ShortName=Child1>...
+3527,Room 1B Workbench
+3529,CONTAINERS
+3530,Room 7
+3538,"Time to go home, <Alias.ShortName=Child2>."
+3543,Barrels
+3547,Tall Bookshelf
+3549,Main Hall - Style C
+3550,Chair
+3553,Windstad Manor
+3554,Stable
+3559,"Enchanter's Tower, Second Floor Walls"
+3564,Room 5 Workbench Disable
+3568,Dresser
+3569,"It's time for bed, <Alias.ShortName=Child1>."
+3572,Sure. I said it was.
+3573,"Enchanter's Tower, First Floor Walls"
+3582,Weapon Racks (5)
+3584,"It's time for bed, <Alias.ShortName=Child2>."
+3587,How's <Alias.ShortName=Child1> doing?
+3591,Hanging Rack
+3598,I need to trade some things with you.
+3603,Round Table
+3604,"Armory, Walls"
+3606,"Yes, I've got a big house in Solitude."
+3607,Addition - West Wing - Enchanter's Tower
+3608,"Kitchen, Floor"
+3621,Father's Love
+3627,Weapon Racks (2)
+3630,Drafting Table
+3631,"It's time for bed, <Alias.ShortName=Child1>."
+3635,Carpenter's Workbench
+3650,Francois
+3660,Purple Mountain Flower
+3673,Dragon's Tongue
+3674,Room 4 Layout
+3678,Hanging Rack
+3683,Harvest
+3691,SHELVES
+3692,Armory - Workbench
+3702,"Go play outside, <Alias.ShortName=Child2>."
+3707,"It's time for bed, <Alias.ShortName=Child1>."
+3719,Remodel House into Entryway
+3732,Shrine of Kynareth
+3738,I'm Harbinger of the Companions.
+3744,"Greenhouse, Roof"
+3746,Carpenter's Workbench
+3750,Bleeding Crown
+3754,Room 11 Layout
+3757,Sure.
+3760,Room 8 Workbench Disable
+3761,RelationshipAdoption000
+3764,Wall Shelves (2)
+3769,Bench
+3773,Bookshelf
+3776,At my house in Riften.
+3784,Falmer
+3789,Snowberry
+3791,Carpenter's Workbench
+3792,Cellar - Remove Workbench
+3793,Carpenter's Workbench
+3799,Place a workbench in the Bedrooms.
+3802,Chest
+3807,"It's time for bed, <Alias.ShortName=Child2>."
+3809,Wall Shelves (2)
+3816,Smelter
+3817,Mounted Slaughterfish
+3820,Glass
+3827,"Trophy Base, Large"
+3830,Addition - East Wing - Armory
+3832,Wall Sconces (2)
+3833,Kit
+3837,Shrine Base
+3844,Canis Root
+3847,Stone. (<Global=BYOHHPAmountStone> for <Global=BYOHHPCostStone> gold)
+3850,"Library, Main Supports"
+3855,Armorer Workbench
+3857,Carpenter's Workbench
+3858,Sabre Cat
+3860,Add a tower that can be turned into a fully-equipped enchanting laboratory.
+3864,Room 9 Workbench Enable
+3868,"Kitchen, Wall Supports"
+3870,Scaly Pholiota
+3879,How's <Alias.ShortName=Child1> doing?
+3881,Wall Shelves (2)
+3882,Wall Shelves (4)
+3884,"Greenhouse, Foundation"
+3889,"It's time for bed, <Alias.ShortName=Child2>."
+3893,Blisterwort
+3896,Room 4 Workbench Enable
+3898,Remove the workbench from the entryway.
+3908,Tall Wardrobe
+3909,What do I need to do?
+3912,"Alchemy Laboratory, Roof Canopy"
+3913,Remove the workbench from the Enchanter's Tower.
+3914,Add a room that can be equipped with smithing stations and weapon storage. Includes an exterior porch.
+3916,Not right now.
+3921,"Trophy Base, Small"
+3922,Room 7Workbench Enable
+3928,Place workbenches in the Main Hall for crafting furniture.
+3929,Remove the workbench from the Library.
+3933,"Library, Second Floor Walls"
+3937,"Orphanage, generic, not yet adoptable"
+3939,"I've got something for you, <Alias.ShortName=Child1>."
+3941,Fly Amanita
+3945,Bench
+3947,"Windstad Manor, my house in Hjaalmarch."
+3948,"I've got something for you, <Alias.ShortName=Child1>."
+3949,"It's time for bed, <Alias.ShortName=Child2>."
+3953,"I've got something for you, <Alias.ShortName=Child1>."
+3954,Addition - West Wing - Greenhouse
+3957,Room 4 Workbench Disable
+3959,"It's time for bed, <Alias.ShortName=Child1>."
+3970,Room 5 Workbench
+3972,"Library, Main Supports"
+3974,Ice Wolf
+3976,Bench
+3984,Greenhouse - Remove Workbench
+3988,How are the kids?
+4000,Room 3 Workbench Enable
+4001,"It's time for bed, <Alias.ShortName=Child2>."
+4003,Addition - North Wing - Trophy Room
+4005,"Armory, Wall Supports"
+4014,Remove the workbenches from the Main Hall.
+4019,Addition - West Wing - Enchanter's Tower
+4022,Nightshade
+4025,Markarth.
+4031,Addition - North Wing - Alchemy Laboratory
+4037,"Greenhouse, Walls"
+4040,Mounted Sabre Cat Head
+4041,Square Table and Chairs
+4045,Room 9 Workbench
+4047,Remove the workbench from the Bedrooms.
+4051,How's <Alias.ShortName=Child1> doing?
+4054,"Chest, Long"
+4060,Tall Bookshelf
+4061,Tall Bookshelf
+4063,"Yes, I've got a house in Riften."
+4068,Armor Mannequin with Cupboard
+4076,Bedrooms - Remove Workbench
+4077,"I've got something for you, <Alias.ShortName=Child2>."
+4079,"Alchemy Laboratory, Roof Canopy"
+4082,Mounted Goat Head
+4085,Oven
+4090,BYOHRelationshipAdoptableOrphanable_SharedInfos
+4092,Cellar
+4099,Well... all right.
+4105,Well... all right.
+4108,I'm an Adventurer.
+4112,Weapon Plaques (2)
+4115,"Library, Roof"
+4118,Room 8 Workbench Enable
+4125,Chest
+4132,Mounted Slaughterfish
+4134,Tall Wardrobe
+4142,Breezehome
+4144,Display Case and Shelf
+4146,Mother's Love
+4147,"It's time for bed, <Alias.ShortName=Child1>."
+4152,Greenhouse - Workbench
+4153,Enchanter's Tower - Workbench
+4161,Rayya
+4167,Place a workbench in the Trophy Room.
+4168,Mounted Snowy Sabre Cat Head
+4174,Carpenter's Workbench
+4175,Addition - East Wing - Kitchen
+4177,"Storage Room, Roof"
+4181,Armor Mannequin with Cupboard
+4183,Place a workbench in the Alchemy Laboratory.
+4191,Darkwater Crossing.
+4192,Chair
+4199,Safe
+4201,Frost Troll
+4204,HOUSE
+4207,How's <Alias.ShortName=Child1> doing?
+4209,Satchel
+4215,Room 10 Workbench Enable
+4229,"Yes, I'm sure... daughter."
+4233,Addition - West Wing - Greenhouse
+4235,Ivarstead.
+4236,"Orphanage, standard"
+4237,Child's Chest
+4238,Chest
+4239,"Enchanter's Tower, Roof Canopy"
+4247,Place a workbench in the entryway for crafting furniture.
+4248,Heartwood Mill
+4249,Square Table and Chairs
+4253,Here's... 5 gold.
+4267,Chest
+4275,Storage Room - Remove Workbench
+4279,Cupboard
+4281,Chaurus
+4285,Spiky Grass
+4291,Double Bed
+4295,Dwarven Spider
+4298,"Chandelier, Small"
+4302,"Trophy Room, Walls"
+4304,How are the kids?
+4309,"I've got something for you, <Alias.ShortName=Child2>."
+4310,Addition - East Wing - Armory
+4319,Armor Mannequin with Cupboard
+4320,Addition - West Wing - Bedrooms
+4322,"Alchemy Laboratory, Second Floor Walls"
+4323,Hjerim
+4325,I'd like you to buy furnishings for the house.
+4328,Room 7 Workbench Disable
+4342,Place a workbench in the Greenhouse.
+4346,Room 6
+4354,Room 5 Workbench Enable
+4357,Main Hall. (<Global=BYOHHPCostMainHall> gold)
+4365,Pincer
+4367,Straw
+4370,Entry Room. (<Global=BYOHHPCostEntryRoom> gold)
+4376,Addition - North Wing - Alchemy Laboratory
+4378,Armor Mannequin with Cupboard
+4381,Room 10
+4384,Wall Shelves (2)
+4387,Addition - North Wing - Storage Room
+4389,Blacksmith Anvil
+4393,Place a workbench in the Storage Room.
+4394,Falkreath.
+4398,Solitude.
+4400,Morthal.
+4401,"Yes, I've got a big house in Windhelm."
+4408,Room 9 Workbench
+4410,"It's time for bed, <Alias.ShortName=Child2>."
+4416,"I've got something for you, <Alias.ShortName=Child1>."
+4417,"I've got something for you, <Alias.ShortName=Child2>."
+4419,"I've got something for you, <Alias.ShortName=Child2>."
+4420,Chest
+4426,"Enchanter's Tower, Floor"
+4430,Go back to bed.
+4456,Storage Room - Workbench
+4470,Hawks' Nest
+4473,Room 8
+4476,Kynesgrove.
+4483,Main Hall
+4484,How's <Alias.ShortName=Child1> doing?
+4485,How's <Alias.ShortName=Child1> doing?
+4488,How are the kids?
+4489,How are the kids?
+4490,How are the kids?
+4493,Remodel House into Entryway
+4494,Horse. (<Global=HorseCost> gold)
+4499,"Chandelier, Small"
+4508,How's <Alias.ShortName=Child1> doing?
+4513,Safe (5)
+4517,Armorer Workbench
+4520,Room 12 Workbench Enable
+4521,"Armory, Doors"
+4522,"Armory, Floor"
+4525,Location for things that need a location
+4526,How are the kids?
+4533,"Time to go home, <Alias.ShortName=Child2>."
+4535,RelationshipAdoption_SharedInfos
+4539,"Wardrobe, Small"
+4541,"Enchanter's Tower, Foundation"
+4551,"Yes, I did."
+4555,Sofie's Flowers
+4562,Skeever
+4563,Cupboard
+4564,Cotton
+4567,Replace my Child's Room with an Alchemy Lab. (<Global=HDMarkarthAlchemy> gold)
+4571,Trophy Room. (<Global=BYOHHPCostTrophyRm> gold)
+4572,Alchemy. (<Global=BYOHHPCostAlchemy> gold)
+4574,Small House (<Global=BYOHHPCostEntryRoom> gold)
+4583,Night Tables (2)
+4601,I'd like to purchase a house.
+4602,"Trophy Room, Wall Supports"
+4615,<Alias.ShortName=Child2>...
+4624,"Kitchen, Roof Framing"
+4625,How about 100 gold?
+4627,I've purchased a home and furnished it. Can I adopt a child now?
+4634,"Sorry, I can't afford it right now."
+4637,Room 12 Workbench Disable
+4640,Horse
+4645,Troll
+4656,Large Planter
+4657,Chest
+4658,Sure. Here's 25 gold.
+4676,"I... hadn't thought of that. I own a house, but I don't have a room for them."
+4679,Jazbay
+4686,Archery Target
+4688,Low Table
+4699,BOBS
+4701,Fertile Soil
+4720,Room 1 Workbench
+4739,Chest
+4757,Weapon Racks (2)
+4762,Wolf
+4766,Chest
+4774,Valdimar
+4778,Room 9 Layout
+4779,Children's bedroom. (<Global=HDRiftenChildRoom> gold)
+4782,"Go do your chores, <Alias.ShortName=Child2>."
+4806,Armor Mannequin with Cupboard
+4809,Deer
+4811,Tall Shelf
+4813,Large Table with Chest
+4816,"Urchin, not met"
+4821,"Sure, whatever you want. 1000 gold?"
+4829,"Go do your chores, <Alias.ShortName=Child1>."
+4840,Mounted Elk Head
+4844,Dresser
+4882,Lakeview Manor Charter
+4896,Knud
+4917,Windstad Manor Charter
+4973,"Sure. When I don't need him, he can stay with you."
+4977,I'll take it. (<Global=BYOHHPCost> gold)
+5083,"You can find, make, or buy a variety of gifts for your children, including toys, clothing, and sweets."
+5087,I got your letter. I'm <Alias=Player>.
+5126,Heljarchen Hall
+5168,Where can I learn more about magic?
+5179,Gray Pine Goods
+5185,Heljarchen Hall Charter
+5192,Not right now.
+5233,A... mudcrab?
+5274,Small House (<Global=BYOHHPCostEntryRoom> gold)
+5298,"Heljarchen Hall, Cellar"
+5303,I'm a bit short of money right now. (<Global=BYOHHPCost> gold)
+5335,Falmer
+5343,No. Now get it out of here.
+5413,"Lakeview Manor, Cellar"
+5434,I got your letter. I'm <Alias=Player>.
+5448,"Windstad Manor, Cellar"
+5555,"Give me everything you're carrying, dog."
+5560,A rabbit?
+5621,It's time for us to move.
+5640,Apiary
+5650,<Alias.ShortName=Child1>...
+5661,<Alias.ShortName=Child1>...
+5716,Draugr
+5718,Where would I get that?
+5786,<Alias.ShortName=Child2>...
+5794,Heljarchen Hall
+5954,Frost Troll
+5973,Mill
+5974,Child's Practice Dummy
+6061,Addvar's House
+6106,I got your letter about the land for sale. Is it still available?
+6152,My house in Markarth would be perfect.
+6170,Do you have any work you need done?
+6188,A... skeever?
+6195,"Kitchen, Walls"
+6233,(<Global=BYOHHouseLogCount>)
+6245,Letter from Jarl <Alias=Jarl> of <Alias=HoldCity>
+6262,Speak to the Jarl of Falkreath
+6284,Heljarchen Hall
+6318,<Alias.ShortName=Child2>...
+6454,Is that land you mentioned still available?
+6462,I'd like to purchase a house.
+6663,<Alias.ShortName=Child1>...
+6692,<Alias.ShortName=Child2>...
+6700,"Honeyside, my house in Riften."
+6746,Heljarchen Hall
+6797,Absolutely not. No pets. Ever.
+6825,"If you would like to adopt an orphan from the Orphanage, speak to Constance Michel."
+6829,Small House (<Global=BYOHHPCostEntryRoom> gold)
+6869,The Beginner's Guide to Homesteading
+6892,All right. But you're responsible for him.
+6969,What would you like?
+7021,At my house in Windhelm.
+7054,No. No pets. Ever.
+7108,I'll have to think about it.
+7148,Your old place would suit us just fine.
+7241,Goat
+7287,A fox?
+7315,Here's your money. She'd better be safe. (Give <Global=BYOHHBA2Ransom> gold)
+7318,How about some instrumental music?
+7322,Not Allowed
+7323,"Cut it out, both of you."
+7324,Allowed (Aventus Only)
+7328,Come on. Let's go.
+7329,I don't have the money. Can't you just let him go?
+7333,Morthal
+7337,I don't need your services any more.
+7339,Honeyside
+7342,Drum.
+7343,Chest
+7344,Read the bandit's ransom note for <Alias=Spouse>
+7346,Rescue <Alias=Spouse> from <Alias=BanditDungeon>
+7351,Sonir
+7352,Katla's Farm
+7355,How about you just let her go and nobody has to get hurt? (Persuade)
+7356,Rochelle the Red
+7357,What did you do to my husband?
+7361,"Enough. <Alias.ShortName=Child2>, go to your room."
+7362,What did you do to my wife?
+7363,Coffin
+7365,"Enough. <Alias.ShortName=Child2>, go to your room."
+7366,"Enough. <Alias.ShortName=Child1>, go to your room."
+7367,"C'mon boy, come with me."
+7370,I'd like to make a request.
+7373,Wall Sconces (2)
+7376,Fish Hatchery
+7377,Can you take a break?
+7380,Child's Bed
+7381,I'd like you to play a different instrument.
+7383,Llewellyn the Nightingale
+7386,Lute.
+7388,Flute.
+7390,Bard. (<Global=BYOHHPCostBard> gold)
+7396,Oriella
+7398,I've changed my mind. I'd like you to stay.
+7400,Sorcerer
+7402,Ransom Note
+7404,I don't have the money. Can't you just let her go?
+7407,You're dead.
+7408,How about you just let him go and nobody has to get hurt? (Persuade)
+7412,What do you want?
+7413,Here's your money. He'd better be safe. (Give <Global=BYOHHBA2Ransom> gold)
+7414,Falkreath
+7416,Llewellyn
+7417,Fish Hatchery
+7421,Money's not going to do you much good after I've killed you.
+7422,Let's get out of here.
+7423,I've heard enough. You're dead.
+7426,"Enough. <Alias.ShortName=Child1>, go to your room."
+7427,Allowed (All)
+7428,Fish Hatchery
+7429,Child's Bed
+7430,Default
+7431,Log Pile
+7433,"No, never mind."
+7436,Not yet. I'll be back for you.
+7439,Square Table and Chairs
+7440,Square Table
+7441,Square Table
+7443,Garlic Bread
+7444,Braided Bread
+7445,Clay Deposit
+7446,Night Tables (2)
+7447,Mine
+7448,Mine
+7449,Tall Bookshelf
+7451,Clay Deposit
+7452,Mine
+7453,Clay Deposit
+7454,Bleeding Crown (3)
+7455,White Cap (2)
+7456,Canis Root (4)
+7457,Thistle Branch (3)
+7458,Mora Tapinella (3)
+7459,Potato (3)
+7460,Creep Cluster (5)
+7461,Shrine of Dibella
+7462,Scaly Pholiota (5)
+7463,Lavender (3)
+7464,Blisterwort (4)
+7465,Tundra Cotton (3)
+7466,Wheat (4)
+7467,Fly Amanita (4)
+7468,Gourd (3)
+7469,Carrots (4)
+7470,Blue Mountain Flower (3)
+7471,Red Mountain Flower (3)
+7472,Grass Pod (3)
+7473,Snowberries (4)
+7474,Mounted Elk Head
+7475,Nightshade (3)
+7476,Deathbell (3)
+7477,Leek (2)
+7478,Cabbage (2)
+7479,Imp Stool (4)
+7480,Giant Lichen (4)
+7481,Jazbay Grapes (3)
+7482,Glowing Mushroom (5)
+7483,Purple Mountain Flower (3)
+7484,Night Table
+7485,Juniper Berries (4)
+7486,Namira's Rot (3)
+7487,Dragon's Tongue (4)
+7488,Swamp Fungal Pod (3)
+7489,Door
+7490,Take butter from
+7491,Speak to the Steward of Falkreath about the land for sale
+7492,Speak to the Steward of Morthal about the land for sale
+7493,Speak to the Jarl of Dawnstar about the land for sale
+7494,Churn
+7495,Is that land you mentioned still available?
+7497,I got your letter about the land for sale. Is it still available?
+7499,Vampiric Blood Rested
+7500,Vampiric Blood Rested
+7505,Chest
+7508,Is that land you mentioned still available?
+7511,I got your letter about the land for sale. Is it still available?
+7514,Tundra Homestead.
+7519,"I... hadn't thought of that. I own a house, but I don't have a room for them."
+7522,"Yes, Tundra Homestead."
+7524,Tundra Homestead.
+7528,Tundra Homestead
+7532,We could live in Tundra Homestead.
+7533,At Tundra Homestead.
+7540,"Yes, Myrwatch."
+7541,Myrwatch.
+7542,At Myrwatch.
+7543,Myrwatch
+7544,Myrwatch.
+7545,We could live in Myrwatch.
+7546,We could live in Shadowfoot Sanctum.
+7547,At Shadowfoot Sanctum.
+7548,Shadowfoot Sanctum.
+7549,Shadowfoot Sanctum.
+7550,"Yes, Shadowfoot Sanctum."
+7551,Shadowfoot Sanctum
+7552,Dead Man's Dread
+7553,"Yes, Hendraheim."
+7554,We could live in Dead Man's Dread.
+7555,Dead Man's Dread.
+7556,At Hendraheim.
+7557,"Yes, Dead Man's Dread."
+7558,Dead Man's Dread.
+7559,At Dead Man's Dread.
+7560,Hendraheim
+7561,Hendraheim.
+7562,We could live in Hendraheim.
+7563,Hendraheim.
+8187,Frodnar
+8360,Samuel
+8422,Skyrim
+9690,Carriage system dialogue
+9700,"""Accidentally dropped this"""
+9875,Follow me.
+10291,Child's Clothes
+10497,Riverwood test scene
+11353,Jarl's Longhouse
+11997,I'd like to decorate my home.
+12005,Niranye Services
+12074,Hrefna
+12392,Return to <Alias.ShortName=QuestGiver>
+12880,Whiterun Braith Lars Scene 1
+12886,Whiterun Braith Lars Scene 3
+12942,DialogueDragonBridgeScene01
+13411,"Visit Hjerim, your new house"
+13418,"Visit Vlindrel Hall, your new house"
+13422,"Visit Proudspire Manor, your new house"
+13459,<Alias=PlayerIsIt> is it. Keep away from <Alias=PlayerIsIt.PronounObj>
+13460,"Tag, you're it!"
+13502,Goldenrock Mine
+13535,Quicksilver Mine
+13603,Riverwood Trader
+13667,<Alias=PlayerIsIt> is it. Hide from <Alias=PlayerIsIt.PronounObj>
+13673,Hide and Seek
+13675,Kid Games
+13749,Runa Fair-Shield
+13974,Thane of Hjaalmarch
+13977,Thane of the Pale
+13989,Return to <Alias.ShortName=QuestGiver>
+14141,"You're out in the middle of nowhere, aren't you?"
+15622,Bedroom furnishings. (<Global=HDRiftenBedroom> gold)
+15776,Bits and Pieces
+16443,Bedroom furnishings. (<Global=HDWindhelmBedroom> gold)
+16450,Armory. (<Global=HDWindhelmArmory> gold)
+16828,Solitude
+18527,Pactur
+18612,It's time for us to part ways.
+19046,Solitude Sawmill
+19069,Bedroom. (<Global=HDSolitudeBedroom> gold)
+19073,Living room. (<Global=HDSolitudeLiving> gold)
+19312,Gralnach
+19488,Whiterun
+21404,You're it! Tag someone.
+21652,Dorthe
+21670,Francois Beaufort
+21857,"Visit Honeyside, your new house"
+22422,Clinton Lylvieve
+23688,Pawned Prawn
+24553,Proudspire Manor
+24946,"Sure, tag sounds fun."
+25000,Honeyside
+26138,Breezehome
+26672,Living with you would be perfect.
+27568,Arnleif and Sons Trading Company
+28288,How about my house in Windhelm?
+28571,Skuli
+29264,I'd like to decorate my home.
+29603,I'd like to decorate my home.
+29739,I'd like us to move somewhere else.
+29741,"Proudspire Manor, my house in Solitude."
+29771,Let's live in my house in Solitude.
+29772,I have a house in Riften.
+29927,Daighre's House
+31822,I'd like to decorate my home.
+32496,Child's Clothes
+32716,Bedroom furnishings. (<Global=HDWhiterunBedroom> gold)
+33858,Having trouble?
+34665,Erith
+34746,(Invisible Continues Linked to Self)
+35342,Temple of Mara
+35392,"Hjerim, my house in Windhelm."
+35609,Follow me. I need your help.
+36058,Chest
+36069,Bench
+36557,RelationshipMarriagePostWeddingLoveInterestBlockingTopic
+36947,Eirid
+37481,DialogueRiftenGoodbyes
+37789,I've helped your people.
+37798,I've helped your people.
+37869,Half-Moon Mill
+38220,The White Hall
+38520,Garden. (<Global=HDRiftenGarden> gold)
+39043,Minette Vinius
+39152,You're it! Find someone.
+39736,Proudspire Manor
+40020,Hjerim
+40556,Candlehearth Hall
+40754,You need to stop bullying Lars Battle-Born.
+41408,You're awfully... mature for your age.
+42889,End Table
+43702,Lylvieve Family's House
+44420,Return to <Alias.ShortName=QuestGiver>
+44607,House of Clan Battle-Born
+44859,The Winking Skeever
+46265,Aventus Aretino
+46631,Floor decorations. (400 gold)
+47346,Braith
+48203,Windhelm
+48346,I've helped your people.
+49978,"Breezehome, my house in Whiterun."
+50026,Svari
+50038,Door
+50305,Belethor's General Goods
+50549,Birna's Oddments
+51543,Lemkil's Farmhouse
+51665,Do you have any more work?
+52050,How about hide-and-seek?
+52384,Hroar
+52749,I need you to do something.
+52824,Alvor and Sigrid's House
+53152,Old Hroldan Inn
+53691,I'd like to decorate my home.
+53745,Vlindrel Hall
+53748,Riften
+53773,We could live in my house in Whiterun.
+54655,Chest
+55309,DialogueGenericHello
+55454,"Actually, I can't stop to play games right now."
+56669,Chest
+57436,Sissel
+57872,"Vlindrel Hall, my house in Markarth."
+58303,Grain Mill
+58626,I'd like to decorate my home.
+58910,Amren's House
+59142,Hod and Gerdur's House
+59254,"Sure, tag sounds fun."
+60030,The Bannered Mare
+60061,Hello.
+60085,Britte
+60340,Honorhall Orphanage
+60623,Enchanting laboratory. (<Global=HDRiftenEnchanting> gold)
+60778,Vlindrel Hall
+60799,Katla's Farm
+61223,Sadri's Used Wares
+61820,Birna Services
+61921,Windpeak Inn
+62472,Whiterun Braith Lars Scene 2
+63098,Wait here.
+63521,I've killed the leader of <Alias=BanditCamp>.
+63857,Child's Clothes
+64313,Iron-Breaker Mine
+64879,Highmoon Hall
+64936,Windhelm
+64956,The Frozen Hearth
+65168,Clinton
+65272,Salmon Steak
+65312,Minette
+65538,Markarth
+65666,Trapdoor
+66208,Aventus
+66356,Apple Cabbage Stew
+66888,Windhelm Home Decorating Guide
+66890,Elsweyr Fondue
+66920,Venison Stew
+67036,Whiterun Home Decorating Guide
+67264,Markarth Home Decorating Guide
+67508,Solitude Home Decorating Guide
+67551,Visit your spouse's house
+67576,Beef Stew
+67639,Tomato Soup
+67852,Riften Home Decorating Guide
+68018,Cabbage Potato Soup
+68145,Horker Stew
+68148,Vegetable Soup
+68731,Alchemy laboratory. (<Global=HDWhiterunAlchemy> gold)
+72178,Salmon
+72296,Salmon
+72417,Harvest
+72759,Salmon
+72808,Harvest
+72814,Salmon
+72892,Catch
+72968,Catch

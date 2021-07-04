@@ -1,0 +1,1 @@
+bsab -f *.strings ../server/data -e ./

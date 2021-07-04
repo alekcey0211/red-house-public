@@ -1,0 +1,50 @@
+#infobar
+  position: absolute
+  top: 60%
+  left: 40px
+
+  display: flex
+  flex-direction: column-reverse
+
+  font-family: 'Futura-pt CB'
+  font-size: 30px
+  font-weight: 450
+  line-height: 31px
+
+  text-shadow: 0px 1px 5px rgba(#000, 0.5), 0px 1px 5px #000
+
+  color: #fff
+
+  .infobar__item
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    line-height: 1
+
+    min-height: 30px
+
+    opacity: 0
+
+    transform: translateY(-10px)
+
+    transition: opacity .5s ease-in, transform .5s ease-in
+
+    svg
+      width: 20px
+      height: 20px
+
+      margin-right: 10px
+
+    &:not(:first-child)
+      margin-bottom: 8px
+
+    &.show
+      opacity: 1
+
+      transform: translateY(0)
+
+    &.removing
+      opacity: 0
+
+      transform: translateY(10px)

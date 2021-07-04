@@ -1,0 +1,25 @@
+{
+	"name": "xelib",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"bin": "pkg .",
+		"index": "ts-node .",
+		"ref": "ts-node index-ref.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bin": {
+		"xelib-parser": "index-ref.js"
+	},
+	"devDependencies": {
+		"@types/xelib": "^0.6.0",
+		"typescript": "^4.2.4"
+	},
+	"dependencies": {
+		"@types/node": "^15.0.1",
+		"xelib": "github:z-edit/xelib"
+	}
+}

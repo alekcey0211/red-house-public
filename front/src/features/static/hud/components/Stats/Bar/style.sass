@@ -1,0 +1,71 @@
+// Variables
+$transition--fill: 1s
+    
+#stats > .bar
+    position: relative
+
+    display: flex
+    align-items: center
+
+    width: 130px
+    height: 9px
+
+    border-radius: 3px
+
+    padding-left: 3px
+    padding-right: 3px
+
+    background-color: rgba(0, 0, 0, .6)
+
+    transform: skew(-40deg)
+
+    .line
+        height: 5px
+
+        border-radius: 1px
+
+        transition: width $transition--fill ease
+
+        &.hunger
+            background-color: #4AA048
+            
+        &.thirst
+            background-color: #3F85D7
+
+    .info
+        position: absolute
+        left: -60px
+
+        display: flex
+        align-items: center
+
+        width: 60px
+        height: 20px
+        
+        transform: skew(40deg)
+
+        .icon
+            width: 18px
+            height: 18px
+
+            margin-right: 8px
+
+            background-position: 50%
+            background-repeat: no-repeat
+            
+            filter: drop-shadow(1px 1px 1px #000)
+
+            &.hunger
+                background-image: url('./assets/hunger.svg')
+
+            &.thirst
+                background-image: url('./assets/thirst.svg')
+
+        .value
+            color: #fff
+
+            font-family: Din-pro, sans-serif
+            font-size: 16px
+            font-weight: 600
+            
+            filter: drop-shadow(1px 1px 1px #000)

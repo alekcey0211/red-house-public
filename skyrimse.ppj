@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<PapyrusProject xmlns="PapyrusProject.xsd" 
+    Output="./server/data/scripts" 
+    Flags="TESV_Papyrus_Flags.flg" 
+    Game="sse"
+    Optimize="false"
+    Release="false" 
+    Final="false">
+    <Imports>
+        <Import>./scripts/GM</Import>
+        <Import>./scripts/Custom</Import>
+        <Import>./scripts/Custom/Profession</Import>
+        <Import>./scripts/Custom/FrontCommands</Import>
+        <Import>./scripts/Custom/Debug</Import>
+        <Import>./scripts/Custom/Test</Import>
+        <Import>./scripts/Custom/Systems</Import>
+        <Import>./scripts/Extension</Import>
+        <Import>./server/data/scripts/Source</Import>
+    </Imports>
+    <Folders>
+        <Folder>./scripts/GM</Folder>
+        <Folder>./scripts/Custom</Folder>
+        <Folder>./scripts/Extension</Folder>
+    </Folders>
+</PapyrusProject>

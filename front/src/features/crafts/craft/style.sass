@@ -1,0 +1,82 @@
+$font--futurapt-cm: 'Futura-pt CM'
+$font--futurapt-cb: 'Futura-pt CB'
+
+$color--background: rgba(0, 0, 0, .8)
+$color--border: rgba(128, 128, 128, .5)
+
+#cooking
+    display: flex
+    flex-direction: row
+
+    position: relative
+
+    font-family: $font--futurapt-cm
+    font-size: 20px
+
+    z-index: 2
+
+    .cooking__craft
+        color: #fff
+        background-color: $color--background
+
+        padding: 3px
+
+        width: 480px
+
+        .craft__inner
+            position: relative
+
+            display: flex
+            flex-direction: column
+
+            height: 100%
+
+            border: 2px solid $color--border
+
+            .craft__body
+                display: flex
+                flex-direction: column
+                align-items: center
+
+                padding: 35px
+
+                .craft__image
+                    display: flex
+                    justify-content: center
+
+                    img
+                        width: 200px
+
+                .craft__title
+                    font-size: 24px
+                    font-weight: 450
+
+                .craft__subtitle
+                    font-size: 24px
+                    font-weight: 400
+                    font-family: $font--futurapt-cb
+                    line-height: 25px
+
+                    text-align: center
+
+                    max-width: 300px
+
+                    color: #8D8D8D
+
+                .craft__info
+                    display: flex
+                    flex-direction: row
+                    align-items: center
+                    justify-content: space-between
+
+                    font-size: 24px
+                    font-weight: 400
+                    font-family: $font--futurapt-cb
+
+                    margin-top: 30px
+                    margin-bottom: 10px
+
+                    width: 100%
+
+                    .count
+                        color: #8D8D8D

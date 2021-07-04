@@ -1,0 +1,6 @@
+[
+	{
+		"key": "ctrl+shift+alt+b",
+		"command": "workbench.action.tasks.test"
+	}
+]

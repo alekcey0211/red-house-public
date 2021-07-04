@@ -1,0 +1,69 @@
+.select
+  position: relative
+
+  font-size: 16px
+  font-weight: 400
+  font-family: 'Din-pro M'
+
+  &__field
+    position: relative
+
+    line-height: 1
+
+    padding: 5px 30px 5px 10px
+    border: 1px solid #6A6A6A
+
+    cursor: pointer
+
+    white-space: nowrap
+
+    overflow: hidden
+    text-overflow: ellipsis
+
+    .icon
+      display: flex
+      align-items: center
+      justify-content: center 
+
+      position: absolute
+      top: 50%
+      right: 10px
+
+      transform: translateY(-50%)
+
+      svg
+        width: 10px
+        height: 10px
+
+        color: #9e9e9e
+
+        transition-duration: .3s
+        transition-property: transform
+
+  &__dropdown
+    position: absolute
+
+    width: 100%
+
+    background-color: rgba(#000, .8)
+
+    overflow-y: auto
+
+    max-height: 120px
+
+    .dropdown__item
+      display: flex
+      align-items: center
+      justify-content: center
+
+      height: 30px
+
+      cursor: pointer
+
+      &:hover
+        background-color: #2e2e2e
+
+  &--active
+    .icon
+      svg
+        transform: rotate(180deg)

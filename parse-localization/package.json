@@ -1,0 +1,15 @@
+{
+  "name": "parse-localization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "csvToJson.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv2json": "^2.0.2"
+  }
+}

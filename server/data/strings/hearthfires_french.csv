@@ -1,0 +1,1513 @@
+Index,Text
+2,Retirer tous les meubles de l'entrée et redessinez-la pour qu'elle s'accorde à la pièce principale.
+5,"Serre, toit"
+6,Pièce principale B
+7,Remanier l'entrée - A
+14,"Cuisine, portes"
+15,Cornes de chèvre
+18,"Pièce principale, porte"
+21,Soupe de pommes de terre
+22,Ajout - aile est - cuisine
+24,"Laboratoire d'alchimie, sol"
+25,"Pièce principale, fondations"
+28,Carrière de pierre
+29,"Tour de l'enchanteur, toit"
+30,Mine
+32,"Pièce principale, fondations"
+40,"Salle des trophées, portes"
+46,"Tour de l'enchanteur, sol"
+47,Ajout - aile ouest - serre
+50,Chausson aux pommes
+51,"Réserve, supports muraux"
+52,Plan de petite maison
+53,"Pièce principale, structure murale"
+56,"Laboratoire d'alchimie, murs de l'étage"
+58,Ajout - aile nord - salle des trophées
+59,Manoir du lac
+62,"Laboratoire d'alchimie, portes"
+66,Remaniez la maison à la façon de l'entrée
+68,"Pièce principale, murs du rez-de-chaussée"
+69,Coffre
+72,"Chambres, supports muraux"
+78,"Pièce principale, murs de l'étage"
+79,Dummy Object
+80,Manoir du lac
+81,Manoir du lac
+88,De quoi avez-vous besoin ?
+95,Je n'ai pas trop d'argent en ce moment. (<Global=BYOHHPCost> or)
+96,Beurre
+97,"Pièce principale, murs du rez-de-chaussée"
+104,Ajout - aile nord - laboratoire d'alchimie
+106,Wait for me at home...
+108,Ajout - aile est - bibliothèque
+111,"Salle des trophées, sol"
+112,Chariot. (<Global=BYOHHPCostCarriage> pièces d'or)
+114,Entrée - retirer l'établi
+119,Il faut que j'y réfléchisse.
+120,Pièce principale - style C
+121,Ajout - aile ouest - tour de l'enchanteur
+122,Ajout - aile ouest - tour de l'enchanteur
+125,"Réserve, fondations"
+126,"Pièce principale, porte"
+127,"Salle des trophées, toit"
+130,"Serre, foyer"
+133,"Pièce principale, murs de l'étage"
+134,Argile
+135,"Serre, fondations"
+136,Pierre extraite
+137,"Chambres, toit"
+140,Ajout - aile nord - laboratoire d'alchimie
+142,Vache. (<Global=BYOHHPCostCow> pièces d'or)
+144,Plan de la pièce principale C
+148,Pièce principale - retirer les établis
+149,Visitez votre nouvelle propriété à la châtellerie de <Alias=Hold>
+150,Je prendrai <Global=BYOHHPAmountLogs> bûches (<Global=BYOHHPCostLogs> pièces d'or).
+151,Oeufs de saumon
+152,"Serre, sol"
+154,Ajout - aile nord - salle des trophées
+157,"Maison, structure du toit"
+165,Pain aux pommes de terre
+168,Plan de petite maison
+170,"Maison, structure murale"
+171,Ajout - aile nord - réserve
+176,Établi du charpentier
+177,Je prends. (<Global=BYOHHPCost> pièces d'or)
+178,"Pièce principale, structure du toit"
+183,Ajout - aile ouest - chambres
+184,Vin des frères Surilie
+185,Tronc scié
+188,Laissez tomber.
+191,"Pièce principale, structure murale"
+194,Établi du charpentier
+195,"Pièce principale, sol"
+197,Dummy Object
+200,Ajout - aile ouest - serre
+202,Ajout - aile nord - réserve
+204,"Pièce principale, supports de l'étage"
+213,Pattes de vasard
+214,"Laboratoire d'alchimie, supports de l'étage"
+220,Foyer
+221,"Pièce principale, supports de l'étage"
+222,Pièce principale - pierre
+225,"Pièce principale, fondations"
+226,"Pièce principale, toit"
+229,Ajout - aile nord - laboratoire d'alchimie
+231,Filet de saumon
+232,"Laboratoire d'alchimie, toit"
+233,Pièce principale C
+240,Ajout - aile est - armurerie
+241,Est-ce que je peux couper le bois moi-même ?
+247,Ajout - aile nord - réserve
+250,Ajout - aile ouest - chambres
+251,Lit simple
+252,Je voudrais acheter du bois.
+255,"Pièce principale, structure du toit"
+258,"Tour de l'enchanteur, murs du rez-de-chaussée"
+263,Est-ce que le terrain dont vous avez parlé est toujours disponible ?
+267,"Réserve, toit"
+268,Ajout - aile ouest - chambres
+273,J'ai reçu votre lettre à propos du terrain à vendre. L'est-il encore ?
+278,"Réserve, sol"
+279,Je voudrais acheter une maison.
+282,Chaise
+284,Clous
+285,Serrure
+288,Pièce principale A
+290, Établi
+291,Ce serait un honneur pour moi de vous avoir comme chambellan.
+292,Ajout - aile ouest - serre
+295,"Tour de l'enchanteur, murs de l'étage"
+297,Je voudrais que vous amélioriez la maison.
+298,"Pièce principale, murs de l'étage"
+300,Tarte au jazbay
+307,Un grand ajout dans le style de Faillaise.
+309,Manoir du lac
+310,"Serre, structure du toit"
+311,Plan de petite maison
+312,"Salle des trophées, fondations"
+313,"Maison, toit"
+315,Chaise
+325,"Laboratoire d'alchimie, murs du rez-de-chaussée"
+331,Plan de la pièce principale A
+336,Pattes de vasard à la vapeur
+339,Vin de sang argonien
+340,Sac de farine
+341,Mine
+343,Tarte aux givreboises
+344,Soupe aux palourdes
+345,"Tour de l'enchanteur, portes"
+346,Ajout - aile est - bibliothèque
+347,"Salle des trophées, supports muraux"
+351,Pièce principale
+354,"Salle des trophées, murs"
+356,"Pièce principale, sol"
+357,"Réserve, portes"
+358,"Tour de l'enchanteur, fondations"
+362,"Serre, portes"
+369,Un grand ajout dans le style de Blancherive.
+371,"Bibliothèque, portes"
+374,Dummy Object
+380,"Chambres, sol"
+381,"Armurerie, portes"
+383,"Tour de l'enchanteur, supports de l'étage"
+384,Dummy Object
+385,Il me faut un chambellan pour ma maison. Ça vous intéresse ?
+386,"Maison, murs"
+387,Four
+389, Établi
+391,"Pièce principale, structure du toit"
+394,Remanier l'entrée - A
+397,"Pièce principale, sol"
+398,Lettre du chambellan de <Alias=HoldCity>
+400,"Maison, fondations"
+402,Pièce principale - établis
+403,Ajout - aile est - cuisine
+404,"Chambres, portes"
+409,Ajout - aile ouest - tour de l'enchanteur
+411,"Serre, murs"
+413,Ajout - aile est - bibliothèque
+416,Un grand ajout dans le style de Solitude.
+419,Tarte aux genièvres
+422,Dummy Object
+423,"Pièce principale, porte"
+425,"Salle des trophées, structure du toit"
+428,Plan de la pièce principale B
+429,Une maison à une pièce bien rangée
+430,"Tour de l'enchanteur, supports principaux"
+431,"Laboratoire d'alchimie, supports principaux"
+432,Ajout - aile nord - salle des trophées
+433,"Serre, supports muraux"
+437,Pot de lait
+438,Ajout - aile est - cuisine
+441,Entrée - établi
+444,"Maison, porte"
+445,"Pièce principale, murs du rez-de-chaussée"
+446,Gunjar
+447,Maison - établi
+448,Gond
+449,Ajout - aile est - armurerie
+450,"Pièce principale, toit"
+452,"Maison, sol"
+453,Il faut que j'y réfléchisse.
+454,"Réserve, murs"
+456,"Pièce principale, structure murale"
+460,Gisement d'argile
+464,"Chambres, fondations"
+465,Lit simple
+466,"Pièce principale, supports de l'étage"
+467,"Pièce principale, toit"
+468,Maison - retirer l'établi
+470,Ajout - aile est - armurerie
+473,"Laboratoire d'alchimie, fondations"
+474,Accessoires en acier
+475,"Chambres, murs"
+482,Râteliers d'armes (3)
+494,Blé
+497,Établi du charpentier
+505,Robe de fille grise
+512,Bien sûr. C'est ce que j'ai dit.
+515,Armurerie. (<Global=BYOHHPCostArmory> pièces d'or)
+516,Établi du charpentier
+518,Vitrine sur table basse
+519,Rayya
+534,Vitrine et petite armoire
+535,Ajout - aile nord - réserve
+537,Petite étagère
+538,Vitrine sur table basse
+540,"Laboratoire d'alchimie, murs du rez-de-chaussée"
+541,Utilisez la table de dessin pour commencer à construire votre maison
+543,"Armurerie, sol"
+544,Hydromel nordique (5)
+547,Meule
+570,Placard
+574,Pied de lampe
+578,Chambres - établi
+580,Bien sûr. C'est ce que j'ai dit.
+582,Non. Arrête de me harceler.
+583,Établi du charpentier
+590,Autel de Talos
+591,Étagère d'angle
+597,Établi pièce 2
+598,Cave
+604,Guéridon
+607,Qu'est-ce qui presse ?
+614,Vitrine
+620,"Il est temps de rentrer à la maison, <Alias.ShortName=Child1>."
+624,"Laboratoire d'alchimie, portes"
+628,"Bibliothèque, supports de l'étage"
+637,Plan de la pièce 7
+645,Établi pièce 1 désactiver
+655,Salle des trophées - établi
+659,Oeuf du faucon
+667,Bougeoir mural
+668,Tête de horqueur sur socle
+680,"Chambres, fondations"
+687,Adopté(e)
+691,Comment va <Alias.ShortName=Child1> ?
+693,"Bibliothèque, sol"
+695,Petit cache-pot avec placard
+696,"Serre, supports muraux"
+697,Bibliothèque
+698,Vêtements d'enfant
+711,Truffe de Namira
+713,Placez un établi dans votre maison pour fabriquer des meubles.
+717,Guéridon
+726,Bougeoirs muraux (2)
+728,Établi pièce 1B
+730,Guéridons (2)
+731,Cuisine - retirer l'établi
+732,Grande bibliothèque
+736,Cibles de tir à l'arc (2)
+744,Table d'enchantement
+752,Pondragon.
+754,Sacoche
+755,Crâne de dragon
+769,Établi du charpentier
+771,Établi pièce 6 activer
+777,Plan de la pièce 5
+778,"Socle de trophée, grand"
+779,Guéridon
+787,Placez un établi dans la cuisine.
+789,Établi pièce 7
+803,Tonneau à poissons
+807,J'ai reçu votre lettre à propos du terrain à vendre. Il est encore disponible ?
+809,Établi pièce 10
+811,"Où sont tes parents, mon enfant ?"
+813,"Réserve, supports muraux"
+816,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+821,Lavabo sur pied
+827,Table ronde et chaises
+834,"Bien sûr, tout ce que vous voulez. 1 000 pièces d'or ?"
+840,Salle des trophées - retirer l'établi
+843,"En fait, ce n'est peut-être pas le meilleur moment..."
+853,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+879,RÂTELIERS D'ARMES
+886,Genévrier
+893,Coffre (5)
+906,Étagères murales (4)
+912,Table avec vitrines
+914,"Laboratoire d'alchimie, supports de l'étage"
+916,Plaque d'arme
+918,Tête d'ours sur socle
+919,"Alors, Tu aimes la ferme ?"
+930,"Il est temps de rentrer à la maison, <Alias.ShortName=Child1>."
+933,"Salle des trophées, toit"
+938,Vitrine et placard
+942,Pourquoi est-ce que vous mendiez ?
+948,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+953,Mycène des marais
+955,Établi pièce 12
+961,"Socle de trophée, grand"
+967,"Oui, j'ai une maison à Épervine"
+972,"Salle des trophées, fondations"
+975,Ajout - aile nord - réserve
+984,Désolé ? Pourquoi ?
+997,Établi pièce 11 désactiver
+998,Ajout - aile ouest - chambres
+1002,"Il est temps de rentrer à la maison, <Alias.ShortName=Child2>."
+1005,Plaque d'arme
+1014,Manoir Bourduvent
+1029,Lettre du jarl <Alias=Jarl>
+1030,Vous pouvez me répéter votre histoire ?
+1034,Bois de cerf sur socle
+1035,Je suis un voleur.
+1036,Poisson carnassier
+1037,Comment vont les enfants ?
+1041,Armoire
+1044,"Cuisine, toit"
+1053,"Laboratoire d'alchimie, toit"
+1057,"Chambres, portes"
+1062,Visitez votre nouvelle propriété à la châtellerie de <Alias=Hold>
+1067,"Il est temps de rentrer à la maison, <Alias.ShortName=Child1>."
+1082,Grelot-de-la-mort
+1083,Chardon
+1084,Folpertuis
+1096,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+1108,Pied de lampe
+1111,"Non, désolé, j'ai changé d'avis."
+1117,Comment va <Alias.ShortName=Child1> ?
+1121,Cache-pot
+1125,Je prends. (<Global=BYOHHPCost> pièces d'or)
+1127,"Enfant des rues, rencontré"
+1128,Coffre
+1136,Retirez l'établi de la cuisine.
+1145,Aucun problème. Voici 500 pièces d'or.
+1147,Table carrée
+1149,"Le Manoir de Hauteflèche, ma maison de Solitude."
+1150,Vasard
+1152,Tonneaux
+1153,Champignon luisant
+1155,"La Gentilhommière de Vlindrel, ma maison de Markarth."
+1160,Laboratoire d'alchimie. (<Global=HDMarkarthAlchemy> pièces d'or)
+1178,Comment va <Alias.ShortName=Child1> ?
+1179,Vitrine et placard
+1181,Petit cache-pot avec placard
+1191,"Manoir Bourduvent, ma maison d'Hjaalmarche."
+1195,AETHÉRIUM
+1199,Sphère dwemer
+1203,Savez-vous où je peux acheter des matériaux comme le verre ou la paille ?
+1214,Petit cache-pot avec placard
+1218,Comment vont les enfants ?
+1226,Tonneaux
+1227,Comment va <Alias.ShortName=Child1> ?
+1229,Établi pièce 8
+1240,Jardin
+1241,Il faut que j'y réfléchisse.
+1248,Pièce 5
+1254,À ma maison de Markarth.
+1257,Autel d'Akatosh
+1259,Vix
+1262,Bonjour.
+1264,Alesan
+1265,Ajoutez une tour qui peut se transformer en bibliothèque confortable.
+1268,Établi pièce 7
+1270,Chambre d'enfants. (<Global=HDMarkarthChildRoom> pièces d'or)
+1271,Utilisez l'établi du charpentier pour bâtir les fondations de votre maison
+1282,"Réserve, fondations"
+1291,Comment va <Alias.ShortName=Child1> ?
+1292,Laissez tomber.
+1300,"Serre, structure du toit"
+1305,Laboratoire d'alchimie - établi
+1307,Grande étagère
+1310,Table basse
+1311,Une plateforme de pierre destinée à recevoir des autels dédiés aux Divins de votre choix.
+1320,<Alias.ShortName=Child1>...
+1326,TRUCS
+1327,Établi pièce 11
+1333,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+1336,Enclos pour animaux
+1347,"Salle des trophées, structure du toit"
+1349,Placez un établi dans la bibliothèque.
+1356,Jouons à un jeu.
+1360,<Alias=Home> Meubles
+1364,À ma maison de Hjaalmarche.
+1369,MATÉRIAUX DE CONSTRUCTION
+1371,"Tour de l'enchanteur, supports de l'étage"
+1378,Autel de Stendarr
+1379,Retirez l'établi de la salle des trophées.
+1380,Bois. (<Global=BYOHHPAmountLogs> pour <Global=BYOHHPCostLogs> pièces d'or)
+1385,Je n'ai pas trop d'argent en ce moment. (<Global=BYOHHPCost> or)
+1391,"Chambres, sol"
+1397,Ours
+1400,Banc
+1408,Pomme de terre
+1415,Vendeaume.
+1417,À ma maison d'Épervine.
+1419,"Adoptable, non rencontré"
+1424,Bougeoirs muraux (2)
+1434,"Il est temps de rentrer à la maison, <Alias.ShortName=Child1>."
+1440,Cave - établi
+1441,Non.
+1442,Lichen géant
+1445,"Bon, restons juste ici."
+1449,"Ajoutez une cuisine qui peut être équipée avec des postes de cuisine, des contenants pour nourriture et autres accessoires."
+1450,Qu'y a-t-il ?
+1451,Ajout - aile est - bibliothèque
+1462,Table ronde et chaises
+1483,Amour maternel
+1485,"Il est temps de rentrer à la maison, <Alias.ShortName=Child2>."
+1486,Nirnroot
+1489,Établi pièce 5
+1496,Brasier
+1507,Comment va <Alias.ShortName=Child1> ?
+1508,Pierre-de-Shor.
+1509,Comment va <Alias.ShortName=Child1> ?
+1516,Étagères murales (3)
+1517,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+1520,"Armoire, petite"
+1536,Ajoutez une serre avec des cache-pots personnalisables.
+1540,Coffre
+1543,"Laboratoire d'alchimie, supports principaux"
+1553,À ma maison dans le Clos.
+1554,Armoire
+1555,Tête de cerf sur socle
+1572,"Armurerie, supports muraux"
+1578,Socle de petit trophée
+1580,"Une gemme spirituelle magistrale, contenant une âme magistrale, est requise pour fabriquer l'autel d'enchantement."
+1581,Tunique bleue de garçon
+1584,Est-ce que le terrain dont vous avez parlé est toujours disponible ?
+1592,Petit cache-pot avec placard
+1597,Harfreuse
+1601,Comment vont les enfants ?
+1608,Est-ce que je pourrais adopter un de vos enfants ?
+1618,Vasard sur socle
+1619,"Cuisine, toit"
+1622,Établi pièce 11
+1627,Ajout - aile nord - laboratoire d'alchimie
+1630,Trappe
+1633,Mine
+1637,Utilisez l'établi du charpentier pour bâtir les fondations de votre maison
+1641,Meule
+1643,Nous pourrions nous installer dans ma maison de Hjaalmarche.
+1653,Manoir Bourduvent
+1658,BYOHRelationshipAdoptableOrphanable_Confirm
+1661,Table basse
+1681,Autel de Mara
+1682,Pas maintenant.
+1683,Vieil Hroldan.
+1686,Robe de fille verte
+1694,Thane d'Épervine
+1697,Je voudrais que vous achetiez des matériaux de construction pour moi.
+1703,"Bibliothèque, supports de l'étage"
+1704,Tu devrais être au lit depuis longtemps !
+1706,Comment vont les enfants ?
+1707,Râteliers d'armes (4)
+1720,"Cuisine, fondations"
+1724,Ajoutez une pièce de rangement qui peut être équipée avec divers contenants et râteliers d'armes. Inclut un porche extérieur.
+1735,Comment vont les enfants ?
+1739,J'ai besoin d'un transport.
+1747,Grande armoire
+1760,Aubétoile.
+1762,Robe de fille jaune
+1767,"Chambres, supports muraux"
+1769,"Armurerie, fondations"
+1773,Établi pièce 4
+1774,Jouons à un jeu.
+1777,Établi pièce 2
+1781,Placard
+1790,Épée en bois
+1794,Retirez l'établi du laboratoire alchimique.
+1808,Plan de la pièce 10
+1814,Établi pièce 8
+1820,Pourquoi pas ma maison d'Épervine ?
+1824,Réserve. (<Global=BYOHHPCostStorageRm> pièces d'or)
+1835,Petit cache-pot avec placard
+1838,"Armurerie, fondations"
+1845,Remplacer mon laboratoire d'enchantement par une chambre d'enfant. (<Global=HDWhiterunChildRoom> pièces d'or)
+1862,Comment va <Alias.ShortName=Child1> ?
+1865,"Orphelinat, générique, pas de gardienne"
+1871,Étagère d'angle
+1872,Établi pièce 3 désactiver
+1881,Je suis l'Enfant de dragon.
+1886,Établi pièce 2 désactiver
+1889,Comment va <Alias.ShortName=Child1> ?
+1895,"Laboratoire d'alchimie, sol"
+1901,Coffre
+1904,Remplacer mon laboratoire d'alchimie par une chambre d'enfant. (<Global=HDWhiterunChildRoom> pièces d'or)
+1909,"Manoir du lac, ma maison d'Épervine."
+1914,Jouons à un jeu.
+1920,Grande étagère
+1930,Sofie
+1935,"Oui, j'ai une maison dans le Clos."
+1943,Établi du charpentier
+1945,"Salle des trophées, sol"
+1957,"Socle de trophée, petit"
+1979,Coffre
+1981,Placez un établi dans l'armurerie.
+1992,"Va jouer dehors, <Alias.ShortName=Child2>."
+1999,Coffre
+2016,Tertral.
+2028,Gisement d'argile
+2038,Bibliothèque- établi
+2046,Comment vont les enfants ?
+2047,Chou
+2048,"Serre, sol"
+2050,Blancherive.
+2064,Trappe
+2083,Établi pièce 1B activer
+2088,Carotte
+2089,Autel de Zénithar
+2093,Établi pièce 6 désactiver
+2094,Plan de la pièce 3
+2095,Table basse
+2103,Tunique grise de garçon
+2121,Laboratoire alchimique
+2127,Comment vont les enfants ?
+2130,Cheval
+2133,(<Global=BYOHHouseLogCount>)
+2134,Je n'ai besoin de rien d'autre.
+2142,"Armurerie, murs"
+2146,Grande étagère avec vitrine
+2154,Retirez l'établi de la petite maison.
+2164,Placard
+2165,Tête de horqueur sur socle
+2166,Guéridon
+2173,"Bibliothèque, supports du rez-de-chaussée"
+2176,"Réserve, sol"
+2177,Établi pièce 4
+2181,Établi pièce 1B désactiver
+2182,Spriggan
+2183,Coffre
+2184,"Bibliothèque, auvent"
+2190,Comment vont les enfants ?
+2192,"J'ai une maison, mais il n'y a pas de place pour toi."
+2193,Établi du charpentier
+2198,Vasard sur socle
+2202,Lavabo sur pied
+2203,Ajout - aile ouest - chambres
+2205,Retirez l'établi de la serre.
+2206,"Socle de trophée, petit"
+2222,Remplacer mon laboratoire alchimique par une chambre d'enfant. (<Global=HDWhiterunChildRoom> pièces d'or)
+2226,Tunique rouge de garçon
+2227,Établi pièce 1
+2229,Pièce 4
+2230,Tour de l'enchanteur - retirer l'établi
+2236,"Adoptable, rencontré"
+2237,"Oui, j'ai une maison à Blancherive."
+2248,Bibliothèque
+2249,Établi pièce 10 désactiver
+2251,Mannequin pour armure
+2252,Jouons au loup.
+2253,Pied-de-lutin
+2258,Comment vont les enfants ?
+2260,Autel d'Arkay
+2270,"Douce Brise, ma maison de Blancherive."
+2278,Biter
+2279,Rivebois.
+2283,Autel d'enchantement
+2285,Pièce 11
+2294,Jouons à cache-cache
+2297,Pas cette fois.
+2302,Placard
+2305,Comment vont les enfants ?
+2311,Robe de fille rouge
+2312,Coton sauvage
+2325,"Oui, c'est certain... mon fils."
+2327,Coffre d'enfant
+2328,Ajout - aile est - armurerie
+2329,<Alias.ShortName=Child2>...
+2335,Trappe
+2346,Armoire
+2347,Qu'est-ce que vous avez à vendre ?
+2350,Autel de Julianos
+2353,Tour de l'enchanteur. (<Global=BYOHHPCostEnchanting> pièces d'or)
+2361,Laboratoire d'alchimie - retirer l'établi
+2376,Établi pièce 11 activer
+2378,"Va jouer dehors, <Alias.ShortName=Child1>."
+2384,Réfléchir à l'adoption
+2390,Poupée d'enfant
+2393,"Bibliothèque, portes"
+2394,"Réserve, portes"
+2395,Ajout - aile est - cuisine
+2397,"Chambres, toit"
+2406,Ajoutez une tour prête à être équipée en laboratoire alchimique.
+2409,"Bibliothèque, auvent"
+2410,Je suis un assassin.
+2412,Comment vont les enfants ?
+2419,"Bibliothèque, toit"
+2422,Lavande
+2423,"Armurerie, toit"
+2430,Fûts d'hydromel (2)
+2433,Établi pièce 9 désactiver
+2434,"Oui, j'ai une maison à Hjaalmarche."
+2445,Givrépeire
+2446,"Désolé, pas maintenant."
+2447,"Va faire tes corvées, <Alias.ShortName=Child2>."
+2454,"Chandelier, grand"
+2469,Chevalet de tannage
+2472,Grand cache-pot
+2476,Ajout - aile ouest - tour de l'enchanteur
+2481,Bibliothèque- retirer l'établi
+2493,Runa
+2499,Mora Tapinella
+2502,Placez un établi dans la tour de l'enchanteur.
+2507,Engar
+2511,Robe de fille bleue
+2515,Pièce 3
+2522,Établi pièce 6
+2524,Pièce principale - pierre
+2531,"Si tu veux, je pourrais t'adopter."
+2533,Brasier
+2534,"Hjerim, ma maison de Vendeaume."
+2539,"Manoir d'Heljarchen, ma maison du Clos."
+2540,Hors de ma vue.
+2549,Bibliothèque. (<Global=BYOHHPCostLibrary> pièces d'or)
+2551,Qui êtes-vous ? Où sont vos parents ?
+2552,Coffre
+2553,Tonneaux
+2555,Utilisez l'établi du charpentier pour bâtir les fondations de votre maison
+2564,Je suis l'archimage de l'Académie de Fortdhiver.
+2568,Comment va <Alias.ShortName=Child1> ?
+2583,Vache
+2587,Trappe
+2595,Lucia
+2596,Je... Je n'avais pas pensé à ça.
+2608,Âtre
+2611,"Cuisine, supports muraux"
+2616,Visitez votre nouvelle propriété à la châtellerie de <Alias=Hold>
+2617,Qui êtes-vous ? Où sont vos parents ?
+2618,"Va faire tes corvées, <Alias.ShortName=Child1>."
+2619,Placez un établi dans la cave.
+2620,"Socle de trophée, petit"
+2623,Ajoutez une aile résidentielle avec une chambre principale et une chambre d'enfants. Inclut un porche extérieur.
+2628,Étagère murale
+2635,Utilisez la table de dessin pour commencer à construire votre maison
+2636,Cercueil
+2637,"Va jouer dehors, <Alias.ShortName=Child2>."
+2650,"Oui, c'est certain... ma fille."
+2655,Plaque d'arme
+2656,Squelette
+2657,Vêtements d'enfant
+2660,Fortdhiver.
+2668,"Réserve, murs"
+2675,"Il est temps de rentrer à la maison, <Alias.ShortName=Child2>."
+2680,Comment vont les enfants ?
+2690,Ajout - aile est - bibliothèque
+2698,Ajout - aile nord - salle des trophées
+2699,"Va jouer dehors, <Alias.ShortName=Child1>."
+2701,Comment va <Alias.ShortName=Child1> ?
+2705,Établi pièce 2 activer
+2710,EXTÉRIEUR
+2719,Établi pièce 1 activer
+2731,Chausson au poulet
+2733,Tête de loup sur socle
+2746,Cuisine. (<Global=BYOHHPCostKitchen> pièces d'or)
+2750,"Cuisine, murs"
+2755,Chapeau-blanc
+2758,Table d'enchantement
+2760,Ajout - aile est - cuisine
+2763,"Chambres, murs"
+2764,Tunique verte de garçon
+2766,Tonneaux
+2771,"Tour de l'enchanteur, toit"
+2773,"Bibliothèque, fondations"
+2774,Parle-moi de toi.
+2775,Guéridon
+2782,Plantes grimpantes
+2786,Jouons à un jeu.
+2794,Bibliothèque
+2798,Pièce 9
+2799,Établi pièce 3
+2803,Ajout - aile est - bibliothèque
+2806,"Orphelinat, générique"
+2821,"Armurerie, toit"
+2825,"Il est temps de rentrer à la maison, <Alias.ShortName=Child1>."
+2826,"Oui, c'est certain... mon fils."
+2830,Tête de chèvre sur socle
+2842,Voici 10 pièces d'or.
+2847,"Cuisine, foyer"
+2848,"Vous pouvez adopter jusqu'à deux enfants, si vous possédez une demeure suffisamment grande pour les loger."
+2852,Parlez d'adoption avec Constance Michel
+2853,Armoire
+2856,Râtelier
+2862,À ma maison de Solitude.
+2864,Trappe
+2865,Comment vont les enfants ?
+2866,Comment vont les enfants ?
+2868,Remplir des bouteilles avec
+2873,Remplacer ma chambre d'enfant par un laboratoire d'enchantement. (<Global=HDRiftenEnchanting> pièces d'or)
+2882,Ours des neiges
+2897,Faillaise.
+2898,Comment va <Alias.ShortName=Child1> ?
+2901,Amour paternel
+2907,Bon... d'accord.
+2908,Râtelier
+2910,"Cuisine, portes"
+2911,Havresac
+2916,"Bibliothèque, murs de l'étage"
+2918,Recette d'autel d'enchantement
+2925,Établi pièce 10
+2930,Comment va <Alias.ShortName=Child1> ?
+2933,Serre. (<Global=BYOHHPCostGreenhouse> pièces d'or)
+2935,Lys des cimes rouge
+2938,Grande étagère
+2939,Qui êtes-vous ? Où sont vos parents ?
+2944,Draugr
+2948,Argile. (<Global=BYOHHPAmountClay> pour <Global=BYOHHPCostClay> pièces d'or)
+2950,Table basse
+2953,Bien sûr. Qu'avez-vous ?
+2954,"Va faire tes corvées, <Alias.ShortName=Child1>."
+2955,Coffre
+2963,Je suis un mercenaire.
+2977,"Tour de l'enchanteur, supports principaux"
+2985,Lys des cimes bleu
+2986,Poisson carnassier sur socle
+2988,"Manoir du lac, ma maison d'Épervine."
+2989,"Va faire tes corvées, <Alias.ShortName=Child2>."
+2990,Bureau
+3000,Comment va <Alias.ShortName=Child1> ?
+3005,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+3008,Ajout - aile ouest - serre
+3009,Remplacer ma chambre d'enfant par un laboratoire alchimique. (<Global=HDWhiterunAlchemy> pièces d'or)
+3012,Plan de la pièce 8
+3015,Comment vont les enfants ?
+3016,"Rucheline, ma maison de Faillaise."
+3022,Retirez l'établi de l'armurerie.
+3036,"Cuisine, fondations"
+3040,Fonderie
+3042,Blaise
+3051,Placard
+3057,Fût d'hydromel
+3059,Comment va <Alias.ShortName=Child1> ?
+3064,Chevalet de tannage
+3065,Ajout - aile nord - salle des trophées
+3067,Ne rien faire
+3077,Socle de l'autel
+3087,Gourdes
+3089,Chambre d'enfants. (<Global=HDSolitudeChildRoom> pièces d'or)
+3095,Parle-moi de toi.
+3099,Comment va <Alias.ShortName=Child1> ?
+3104,"Les amis des jarls d'Épervine, de Hjaalmarche et du Clos peuvent acheter des terres dans ces châtelleries et construire leur propre maison dessus."
+3112,"Serre, portes"
+3115,Rorikbourg.
+3116,Voici 10 pièces d'or.
+3117,Table avec bancs
+3121,Horqueur
+3123,Poireau
+3124,Chausson à la lavande
+3131,"Salle des trophées, portes"
+3145,Comment vont les enfants ?
+3147,Grand cache-pot
+3150,Comment va <Alias.ShortName=Child1> ?
+3151,Poulet. (<Global=BYOHHPCostChicken> pièces d'or)
+3152,"Va jouer dehors, <Alias.ShortName=Child1>."
+3158,Bougeoirs muraux (2)
+3161,Cache-pot
+3171,Qu'y a-t-il ?
+3173,"Laboratoire d'alchimie, fondations"
+3178,Vitrine et petite armoire
+3181,Établi pièce 12
+3189,Chambre. (<Global=BYOHHPCostBedroom> pièces d'or)
+3190,<Alias=Player>.
+3192,"Cuisine, sol"
+3196,Petit cache-pot avec placard
+3203,Coffre-fort
+3204,Tête de loup sur socle
+3205,Socle de grand trophée
+3215,Coffre
+3222,Chaise
+3227,Markus
+3228,RelationshipAdoption_FGReceiveGiftTopic
+3229,"Bibliothèque, sol"
+3234,Chambre d'enfants. (<Global=HDWhiterunChildRoom> pièces d'or)
+3239,Vider le cache-pot
+3250,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+3255,"Manoir d'Heljarchen, ma maison du Clos."
+3285,Grégor
+3286,Cuisine - établi
+3287,Manoir Bourduvent
+3292,Armurerie - retirer l'établi
+3295,"Oui, j'ai une maison à Markarth."
+3305,Retirez l'établi de la cave.
+3306,Giron maternel
+3320,Ajoutez une cave sous la grande salle.
+3322,Grande bibliothèque
+3342,Aubétoile
+3348,Comment vont les enfants ?
+3350,"Orphelinat, standard, pas de gardienne"
+3357,Commode
+3361,Forge
+3363,Blancherive
+3364,Chaises et table à manger
+3367,Faillaise
+3368,Markarth
+3374,Établi pièce 3
+3375,Solitude
+3377,Moulin d'Anga
+3397,"Tour de l'enchanteur, auvent"
+3401,Tête d'ours sur socle
+3402,Rucher
+3413,MEUBLES
+3420,Râteliers d'armes (4)
+3430,À ma maison de Blancherive.
+3435,Achetez du bois pour construire votre maison
+3438,Retirez l'établi de la réserve.
+3439,Comment vont les enfants ?
+3446,"Tour de l'enchanteur, portes"
+3449,Trappe
+3450,Cheval
+3451,"Visitez Douce Brise, votre nouvelle maison"
+3461,Utilisez la table de dessin pour commencer à construire votre maison
+3473,Établi pièce 6
+3475,"Cuisine, structure du toit"
+3485,Tunique jaune de garçon
+3493,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+3497,Cave
+3498,Plan de la pièce 6
+3507,J'ai une maison dans le Clos.
+3514,"Bibliothèque, supports du rez-de-chaussée"
+3519,"Ajoutez une salle des trophées qui peut être équipée avec des vitrines, des trophées animaliers et des râteliers d'armes."
+3521,"Bibliothèque, fondations"
+3525,Chambre d'enfants. (<Global=HDWindhelmChildRoom> pièces d'or
+3526,<Alias.ShortName=Child1>...
+3527,Établi pièce 1B
+3529,CONTENANTS
+3530,Pièce 7
+3538,"Il est temps de rentrer à la maison, <Alias.ShortName=Child2>."
+3543,Tonneaux
+3547,Grande bibliothèque
+3549,Pièce principale - style C
+3550,Chaise
+3553,Manoir Bourduvent
+3554,Écurie
+3559,"Tour de l'enchanteur, murs de l'étage"
+3564,Établi pièce 5 désactiver
+3568,Commode
+3569,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+3572,Bien sûr. C'est ce que j'ai dit.
+3573,"Tour de l'enchanteur, murs du rez-de-chaussée"
+3582,Râteliers d'armes (5)
+3584,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+3587,Comment va <Alias.ShortName=Child1> ?
+3591,Râtelier
+3598,Il faut que j'échange certaines choses avec vous.
+3603,Table ronde
+3604,"Armurerie, murs"
+3606,"Oui, j'ai une grande maison à Solitude."
+3607,Ajout - aile ouest - tour de l'enchanteur
+3608,"Cuisine, sol"
+3621,Amour paternel
+3627,Râteliers d'armes (2)
+3630,Table de dessin
+3631,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+3635,Établi du charpentier
+3650,François
+3660,Lys des cimes violet
+3673,Langue de dragon
+3674,Plan de la pièce 4
+3678,Râtelier
+3683,Récolter
+3691,ÉTAGÈRES
+3692,Armurerie - établi
+3702,"Va jouer dehors, <Alias.ShortName=Child2>."
+3707,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+3719,Remaniez la maison à la façon de l'entrée
+3732,Autel de Kynareth
+3738,Je suis le héraut des Compagnons.
+3744,"Serre, toit"
+3746,Établi du charpentier
+3750,Couronne sanglante
+3754,Plan de la pièce 11
+3757,Bien sûr.
+3760,Établi pièce 8 désactiver
+3761,RelationshipAdoption000
+3764,Étagères murales (2)
+3769,Banc
+3773,Bibliothèque
+3776,À ma maison de Faillaise.
+3784,Falmer
+3789,Givreboise
+3791,Établi du charpentier
+3792,Cave - retirer l'établi
+3793,Établi du charpentier
+3799,Placez un établi dans les chambres.
+3802,Coffre
+3807,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+3809,Étagères murales (2)
+3816,Fonderie
+3817,Poisson carnassier sur socle
+3820,Verre
+3827,"Socle de trophée, grand"
+3830,Ajout - aile est - armurerie
+3832,Bougeoirs muraux (2)
+3833,Kit
+3837,Socle de l'autel
+3844,Racine de canis
+3847,Pierre. (<Global=BYOHHPAmountStone> pour <Global=BYOHHPCostStone> pièces d'or)
+3850,"Bibliothèque, supports principaux"
+3855,Établi d'armurier
+3857,Établi du charpentier
+3858,Smilodon
+3860,Ajoutez une tour qui peut se transformer en laboratoire d'enchantement entièrement équipé.
+3864,Établi pièce 9 activer
+3868,"Cuisine, supports muraux"
+3870,Pholiote à écailles
+3879,Comment va <Alias.ShortName=Child1> ?
+3881,Étagères murales (2)
+3882,Étagères murales (4)
+3884,"Serre, fondations"
+3889,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+3893,Cloquerille
+3896,Établi pièce 4 activer
+3898,Retirez l'établi de l'entrée.
+3908,Grande armoire
+3909,Que dois-je faire ?
+3912,"Laboratoire alchimique, auvent"
+3913,Retirez l'établi de la tour de l'enchanteur.
+3914,Ajoutez une pièce qui peut être équipée de postes de forge et d'un endroit pour stocker les armes. Inclut un porche extérieur.
+3916,Pas maintenant.
+3921,"Socle de trophée, petit"
+3922,Établi pièce 7 activer
+3928,Placez des établis dans la grande salle pour fabriquer des meubles.
+3929,Retirez l'établi de la bibliothèque.
+3933,"Bibliothèque, murs de l'étage"
+3937,"Orphelinat, générique, pas encore adoptable"
+3939,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+3941,Amanite tue-mouches
+3945,Banc
+3947,"Manoir Bourduvent, ma maison d'Hjaalmarche."
+3948,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+3949,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+3953,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+3954,Ajout - aile ouest - serre
+3957,Établi pièce 4 désactiver
+3959,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+3970,Établi pièce 5
+3972,"Bibliothèque, supports principaux"
+3974,Loup des glaces
+3976,Banc
+3984,Serre - retirer l'établi
+3988,Comment vont les enfants ?
+4000,Établi pièce 3 activer
+4001,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+4003,Ajout - aile nord - salle des trophées
+4005,"Armurerie, supports muraux"
+4014,Retirez les établis de la grande salle.
+4019,Ajout - aile ouest - tour de l'enchanteur
+4022,Obscurcine
+4025,Markarth.
+4031,Ajout - aile nord - laboratoire d'alchimie
+4037,"Serre, murs"
+4040,Tête de smilodon sur socle
+4041,Chaises et table carrée
+4045,Établi pièce 9
+4047,Retirez l'établi des chambres.
+4051,Comment va <Alias.ShortName=Child1> ?
+4054,"Coffre, long"
+4060,Grande bibliothèque
+4061,Grande bibliothèque
+4063,"Oui, j'ai une maison à Faillaise."
+4068,Mannequin pour armure avec placard
+4076,Chambres - retirer l'établi
+4077,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+4079,"Laboratoire alchimique, auvent"
+4082,Tête de chèvre sur socle
+4085,Four
+4090,BYOHRelationshipAdoptableOrphanable_SharedInfos
+4092,Cave
+4099,Bon... d'accord.
+4105,Bon... d'accord.
+4108,Je suis un aventurier.
+4112,Plaques d'armes (2)
+4115,"Bibliothèque, toit"
+4118,Établi pièce 8 activer
+4125,Coffre
+4132,Poisson carnassier sur socle
+4134,Grande armoire
+4142,Douce Brise
+4144,Vitrine et étagère
+4146,Amour maternel
+4147,"C'est l'heure d'aller au lit, <Alias.ShortName=Child1>."
+4152,Serre - établi
+4153,Tour de l'enchanteur - établi
+4161,Rayya
+4167,Placez un établi dans la salle des trophées.
+4168,Tête de smilodon des neiges sur socle
+4174,Établi du charpentier
+4175,Ajout - aile est - cuisine
+4177,"Réserve, toit"
+4181,Mannequin pour armure avec placard
+4183,Placez un établi dans le laboratoire alchimique.
+4191,Gué du Sombreflot.
+4192,Chaise
+4199,Coffre-fort
+4201,Troll de glace
+4204,MAISON
+4207,Comment va <Alias.ShortName=Child1> ?
+4209,Sacoche
+4215,Établi pièce 10 activer
+4229,"Oui, c'est certain... ma fille."
+4233,Ajout - aile ouest - serre
+4235,Fort-Ivar
+4236,"Orphelinat, standard"
+4237,Coffre d'enfant
+4238,Coffre
+4239,"Tour de l'enchanteur, auvent"
+4247,Placez un établi dans l'entrée pour fabriquer des meubles.
+4248,Scierie de Coeur-Bois
+4249,Chaises et table carrée
+4253,Voici... 5 pièces d'or.
+4267,Coffre
+4275,Réserve - retirer l'établi
+4279,Placard
+4281,Chaurus
+4285,Herbe épineuse
+4291,Lit double
+4295,Araignée dwemer
+4298,"Chandelier, petit"
+4302,"Salle des trophées, murs"
+4304,Comment vont les enfants ?
+4309,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+4310,Ajout - aile est - armurerie
+4319,Mannequin pour armure avec placard
+4320,Ajout - aile ouest - chambres
+4322,"Laboratoire d'alchimie, murs de l'étage"
+4323,Hjerim
+4325,Je voudrais que vous achetiez des meubles pour la maison.
+4328,Établi pièce 7 désactiver
+4342,Placez un établi dans la serre.
+4346,Pièce 6
+4354,Établi pièce 5 activer
+4357,Grande salle. (<Global=BYOHHPCostMainHall> pièces d'or)
+4365,Pince
+4367,Paille
+4370,Entrée. (<Global=BYOHHPCostEntryRoom> pièces d'or)
+4376,Ajout - aile nord - laboratoire d'alchimie
+4378,Mannequin pour armure avec placard
+4381,Pièce 10
+4384,Étagères murales (2)
+4387,Ajout - aile nord - réserve
+4389,Enclume de forgeron
+4393,Placez un établi dans la réserve.
+4394,Épervine.
+4398,Solitude.
+4400,Morthal.
+4401,"Oui, j'ai une grande maison à Vendeaume."
+4408,Établi pièce 9
+4410,"C'est l'heure d'aller au lit, <Alias.ShortName=Child2>."
+4416,"J'ai quelque chose pour toi, <Alias.ShortName=Child1>."
+4417,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+4419,"J'ai quelque chose pour toi, <Alias.ShortName=Child2>."
+4420,Coffre
+4426,"Tour de l'enchanteur, sol"
+4430,Retourne te coucher.
+4456,Réserve - établi
+4470,Nid du faucon
+4473,Pièce 8
+4476,Bosquet de Kyne
+4483,Pièce principale
+4484,Comment va <Alias.ShortName=Child1> ?
+4485,Comment va <Alias.ShortName=Child1> ?
+4488,Comment vont les enfants ?
+4489,Comment vont les enfants ?
+4490,Comment vont les enfants ?
+4493,Remaniez la maison à la façon de l'entrée
+4494,Cheval. (<Global=HorseCost> pièces d'or)
+4499,"Chandelier, petit"
+4508,Comment va <Alias.ShortName=Child1> ?
+4513,Coffre (5)
+4517,Établi d'armurier
+4520,Établi pièce 12 activer
+4521,"Armurerie, portes"
+4522,"Armurerie, sol"
+4525,Location for things that need a location
+4526,Comment vont les enfants ?
+4533,"Il est temps de rentrer à la maison, <Alias.ShortName=Child2>."
+4535,RelationshipAdoption_SharedInfos
+4539,"Armoire, petite"
+4541,"Tour de l'enchanteur, fondations"
+4551,"Oui, en effet."
+4555,Fleurs de Sofie
+4562,Ragnard
+4563,Placard
+4564,Coton
+4567,Remplacer ma chambre d'enfant par un laboratoire alchimique. (<Global=HDWhiterunAlchemy> pièces d'or)
+4571,Salle des trophées. (<Global=BYOHHPCostTrophyRm> pièces d'or)
+4572,Laboratoire alchimique. (<Global=BYOHHPCostAlchemy> pièces d'or)
+4574,Petite maison. (<Global=BYOHHPCostEntryRoom> pièces d'or)
+4583,Tables de chevet (2)
+4601,Je voudrais acheter une maison.
+4602,"Salle des trophées, supports muraux"
+4615,<Alias.ShortName=Child2>...
+4624,"Cuisine, structure du toit"
+4625,Que diriez-vous de 100 pièces d'or ?
+4627,J'ai acheté une maison et je l'ai meublée. Puis-je adopter un enfant maintenant ?
+4634,"Désolé, je ne peux pas me le permettre pour l'instant."
+4637,Établi pièce 12 désactiver
+4640,Cheval
+4645,Troll
+4656,Grand cache-pot
+4657,Coffre
+4658,Bien sûr. Voici 25 pièces d'or.
+4676,"Je... Je n'avais pas pensé à ça. Je possède une maison, mais je n'ai pas de place pour eux."
+4679,Jazbay
+4686,Cible de tir à l'arc
+4688,Table basse
+4699,BIDULES
+4701,Terre fertile
+4720,Établi pièce 1
+4739,Coffre
+4757,Râteliers d'armes (2)
+4762,Loup
+4766,Coffre
+4774,Valdimar
+4778,Plan de la pièce 9
+4779,Chambre d'enfants. (<Global=HDRiftenChildRoom> pièces d'or)
+4782,"Va faire tes corvées, <Alias.ShortName=Child2>."
+4806,Mannequin pour armure avec placard
+4809,Chevreuil
+4811,Grande étagère
+4813,Grande table avec coffre
+4816,"Enfant des rues, non rencontré"
+4821,"Bien sûr, tout ce que vous voulez. 1 000 pièces d'or ?"
+4829,"Va faire tes corvées, <Alias.ShortName=Child1>."
+4840,Tête de cerf sur socle
+4844,Commode
+4882,Charte du Manoir du lac
+4896,Knud
+4917,Charte du Manoir Bourduvent
+4973,"Bien sûr. Si je n'en ai pas besoin, il peut rester avec vous."
+4977,Je prends. (<Global=BYOHHPCost> pièces d'or)
+5083,"Vous pouvez trouver, fabriquer ou acheter toute une variété de cadeaux pour vos enfants, comme des jouets, des vêtements et des sucreries."
+5087,J'ai eu votre lettre. Je m'appelle <Alias=Player>.
+5126,Manoir d'Heljarchen
+5168,Où puis-je en apprendre davantage sur la magie ?
+5179,Boutique Grispin
+5185,Charte du Manoir d'Heljarchen
+5192,Pas maintenant.
+5233,Un... vasard ?
+5274,Petite maison. (<Global=BYOHHPCostEntryRoom> pièces d'or)
+5298,"Manoir d'Heljarchen, cave"
+5303,Je n'ai pas trop d'argent en ce moment. (<Global=BYOHHPCost> or)
+5335,Falmer
+5343,"Non. Maintenant, sortez-moi ça d'ici."
+5413,"Manoir du lac, cave"
+5434,J'ai eu votre lettre. Je m'appelle <Alias=Player>.
+5448,"Manoir Bourduvent, cave"
+5555,"Donne-moi tout ce que tu as sur toi, chien."
+5560,Un lapin ?
+5621,Il est temps pour nous d'y aller.
+5640,Rucher
+5650,<Alias.ShortName=Child1>...
+5661,<Alias.ShortName=Child1>...
+5716,Draugr
+5718,Et où j'en trouverais ?
+5786,<Alias.ShortName=Child2>...
+5794,Manoir d'Heljarchen
+5954,Troll de glace
+5973,Scierie
+5974,Mannequin pour enfant
+6061,Maison d'Addvar
+6106,J'ai reçu votre lettre à propos du terrain à vendre. Il est encore disponible ?
+6152,Ma maison de Markarth serait parfaite.
+6170,Y a-t-il quelque chose que vous souhaitez que je fasse ?
+6188,Un... ragnard ?
+6195,"Cuisine, murs"
+6233,(<Global=BYOHHouseLogCount>)
+6245,Lettre du jarl <Alias=Jarl> de <Alias=HoldCity>
+6262,Adressez-vous au jarl d'Épervine
+6284,Manoir d'Heljarchen
+6318,<Alias.ShortName=Child2>...
+6454,Est-ce que le terrain dont vous avez parlé est toujours disponible ?
+6462,Je voudrais acheter une maison.
+6663,<Alias.ShortName=Child1>...
+6692,<Alias.ShortName=Child2>...
+6700,"Rucheline, ma maison de Faillaise."
+6746,Manoir d'Heljarchen
+6797,Absolument exclu. Pas d'animaux domestiques. Jamais.
+6825,"Si vous souhaitez adopter un enfant de l'Orphelinat, adressez-vous à Constance Michel."
+6829,Petite maison. (<Global=BYOHHPCostEntryRoom> pièces d'or)
+6869,Gérer une propriété - Guide du débutant
+6892,"Très bien, mais vous en êtes responsable."
+6969,Que voulez-vous ?
+7021,À ma maison de Vendeaume.
+7054,Non. Pas d'animaux domestiques. Jamais.
+7108,Il faut que j'y réfléchisse.
+7148,Votre ancienne maison serait parfaite pour nous.
+7241,Chèvre
+7287,Un renard ?
+7315,Voilà votre argent. J'espère pour vous qu'elle est en bonne santé. (Donnez <Global=BYOHHBA2Ransom> pièces d'or)
+7318,Que diriez-vous d'un peu de musique ?
+7322,Interdit
+7323,"Arrêtez, tous les deux."
+7324,Autorisé (Aventus uniquement)
+7328,"Bon, allons-y !"
+7329,Je n'ai pas l'argent. Pourquoi vous ne le laissez pas partir ?
+7333,Morthal
+7337,Je n'ai plus besoin de vos services.
+7339,Rucheline
+7342,Tambour.
+7343,Coffre
+7344,Lisez la demande de rançon du bandit pour <Alias=Spouse>
+7346,Sauvez <Alias=Spouse> à <Alias=BanditDungeon>
+7351,Sonir
+7352,Ferme de Katla
+7355,Et si vous la laissiez partir ? Personne n'aurait d'ennui... (Persuasion)
+7356,Rochelle la Rouge
+7357,Qu'avez-vous fait à mon mari ?
+7361,"Suffit ! <Alias.ShortName=Child1>, dans ta chambre."
+7362,Qu'avez-vous fait à ma femme ?
+7363,Cercueil
+7365,"Suffit ! <Alias.ShortName=Child1>, dans ta chambre."
+7366,"Suffit ! <Alias.ShortName=Child1>, dans ta chambre."
+7367,"Allez, viens avec moi, mon garçon."
+7370,J'aimerais demander quelque chose.
+7373,Bougeoirs muraux (2)
+7376,Alevinière
+7377,Pouvez-vous faire une pause ?
+7380,Lit d'enfant
+7381,J'aimerais que vous jouiez d'un autre instrument.
+7383,Llewellyn le Rossignol
+7386,Luth.
+7388,Flûte.
+7390,Barde. (<Global=BYOHHPCostBard> pièces d'or)
+7396,Oriella
+7398,J'ai changé d'avis. J'aimerais que vous restiez.
+7400,Sorcier
+7402,Demande de rançon
+7404,Je n'ai pas l'argent. Pourquoi vous ne la laissez pas partir ?
+7407,Vous êtes morte.
+7408,Et si vous le laissiez partir ? Personne n'aurait d'ennui... (Persuasion)
+7412,Que voulez-vous ?
+7413,Voilà votre argent. J'espère pour vous qu'il est en bonne santé. (Donnez <Global=BYOHHBA2Ransom> pièces d'or)
+7414,Épervine
+7416,Llewellyn
+7417,Alevinière
+7421,L'argent ne vous servira plus à grand-chose quand je vous aurai tuée.
+7422,Ne restons pas ici.
+7423,J'en ai assez entendu. Vous allez mourir.
+7426,"Suffit ! <Alias.ShortName=Child1>, dans ta chambre."
+7427,Autorisé (Tous)
+7428,Alevinière
+7429,Lit d'enfant
+7430,Par défaut
+7431,Tas de bois
+7433,"Non, laissez tomber."
+7436,Ce n'est pas terminé. Je reviendrai m'occuper de vous.
+7439,Chaises et table carrée
+7440,Table carrée
+7441,Table carrée
+7443,Pain à l'ail
+7444,Pain tressé
+7445,Gisement d'argile
+7446,Tables de chevet (2)
+7447,Mine
+7448,Mine
+7449,Grande bibliothèque
+7451,Gisement d'argile
+7452,Mine
+7453,Gisement d'argile
+7454,Couronnes sanglantes (3)
+7455,Chapeaux-blancs (2)
+7456,Racines de canis (4)
+7457,Tiges de chardon (3)
+7458,Mora Tapinella (3)
+7459,Pommes de terre (3)
+7460,Plantes grimpantes (5)
+7461,Autel de Dibella
+7462,Pholiotes à écailles (5)
+7463,Lavande (3)
+7464,Cloquerilles (4)
+7465,Coton sauvage (3)
+7466,Blé (4)
+7467,Amanites tue-mouches (4)
+7468,Gourdes (3)
+7469,Carottes (4)
+7470,Lys des cimes bleus (3)
+7471,Lys des cimes rouges (3)
+7472,Cosses (3)
+7473,Givreboises (4)
+7474,Tête de cerf sur socle
+7475,Obscurcines (3)
+7476,Grelots-de-la-mort (3)
+7477,Poireaux (2)
+7478,Choux (2)
+7479,Pieds-de-lutin (4)
+7480,Lichen géant (4)
+7481,Raisin jazbay (3)
+7482,Champignons luisants (5)
+7483,Lys des cimes violets (3)
+7484,Table de chevet
+7485,Genièvres (4)
+7486,Truffes de Namira (3)
+7487,Langues de dragon (4)
+7488,Mycènes des marais (3)
+7489,Porte
+7490,Prendre du beurre de
+7491,Demandez des renseignements sur le terrain à vendre au chambellan d'Épervine.
+7492,Demandez des renseignements sur le terrain à vendre au chambellan de Morthal.
+7493,Demandez des renseignements sur le terrain à vendre au jarl d'Aubétoile.
+7494,Baratte
+7495,Est-ce que le terrain dont vous avez parlé est toujours disponible ?
+7497,J'ai reçu votre lettre à propos du terrain à vendre. Il est encore disponible ?
+7499,Sang de vampire reposé
+7500,Sang de vampire reposé
+7505,Coffre
+7508,Est-ce que le terrain dont vous avez parlé est toujours disponible ?
+7511,J'ai reçu votre lettre à propos du terrain à vendre. L'est-il encore ?
+7514,Tundra Homestead.
+7519,"I... hadn't thought of that. I own a house, but I don't have a room for them."
+7522,"Yes, Tundra Homestead."
+7524,Tundra Homestead.
+7528,Tundra Homestead
+7532,We could live in Tundra Homestead.
+7533,At Tundra Homestead.
+7540,"Yes, Myrwatch."
+7541,Myrwatch.
+7542,At Myrwatch.
+7543,Myrwatch
+7544,Myrwatch.
+7545,We could live in Myrwatch.
+7546,We could live in Shadowfoot Sanctum.
+7547,At Shadowfoot Sanctum.
+7548,Shadowfoot Sanctum.
+7549,Shadowfoot Sanctum.
+7550,"Yes, Shadowfoot Sanctum."
+7551,Shadowfoot Sanctum
+7552,Dead Man's Dread
+7553,"Yes, Hendraheim."
+7554,We could live in Dead Man's Dread.
+7555,Dead Man's Dread.
+7556,At Hendraheim.
+7557,"Yes, Dead Man's Dread."
+7558,Dead Man's Dread.
+7559,At Dead Man's Dread.
+7560,Hendraheim
+7561,Hendraheim.
+7562,We could live in Hendraheim.
+7563,Hendraheim.
+8187,Frodnar
+8360,Samuel
+8422,Bordeciel
+9690,Carriage system dialogue
+9700,"""A fait tomber ceci par accident"""
+9875,Suivez-moi.
+10291,Vêtements d'enfant
+10497,Riverwood test scene
+11353,Longère du jarl
+11997,J'aimerais décorer ma maison.
+12005,Niranye Services
+12074,Hrefna
+12392,Retournez voir <Alias.ShortName=Questgiver>
+12880,Whiterun Braith Lars Scene 1
+12886,Whiterun Braith Lars Scene 3
+12942,DialogueDragonBridgeScene01
+13411,"Visitez Hjerim, votre nouvelle maison"
+13418,"Visitez la Gentilhommière de Vlindrel, votre nouvelle maison"
+13422,"Visitez le Manoir de Hauteflèche, votre nouvelle maison"
+13459,<Alias=PlayerIsIt> est le loup. Ne l'approchez pas.
+13460,"Touché, c'est vous le loup !"
+13502,Mine de Doroc
+13535,Mine Vif-argent
+13603,Marché de Rivebois
+13667,C'est <Alias=PlayerIsIt> le loup. Cachez vous !
+13673,Cache-cache
+13675,Jeux d'enfant
+13749,Runa Juste-Égide
+13974,Thane de Hjaalmarche
+13977,Thane du Clos
+13989,Retournez voir <Alias.ShortName=Questgiver>
+14141,"Vous êtes au milieu de nulle part, ici, non ?"
+15622,Mobilier de chambre. (<Global=HDRiftenBedroom> pièces d'or)
+15776,Bric-à-brac
+16443,Mobilier de chambre. (<Global=HDWindhelmBedroom> pièces d'or)
+16450,Armurerie. (<Global=HDWindhelmArmory> pièces d'or)
+16828,Solitude
+18527,Pactur
+18612,Il est temps que nous nous séparions.
+19046,Scierie de Solitude
+19069,Chambre. (<Global=HDSolitudeBedroom> pièces d'or)
+19073,Salon. (<Global=HDSolitudeLiving> pièces d'or)
+19312,Gralnach
+19488,Blancherive
+21404,Vous êtes le loup ! Touchez quelqu'un.
+21652,Dorthe
+21670,François Beaufort
+21857,"Visitez Rucheline, votre nouvelle maison"
+22422,Clinton Lylvieve
+23688,Pawned Prawn
+24553,Manoir de Hauteflèche
+24946,Bien sûr. J'adore jouer au loup.
+25000,Rucheline
+26138,Douce Brise
+26672,"Vivre avec vous, ce serait merveilleux."
+27568,Comptoir d'Arnleif et fils
+28288,Pourquoi pas ma maison de Vendeaume ?
+28571,Skuli
+29264,J'aimerais décorer ma maison.
+29603,J'aimerais décorer ma maison.
+29739,J'aimerais que nous allions habiter ailleurs.
+29741,"Le Manoir de Hauteflèche, ma maison de Solitude."
+29771,Installons-nous dans ma maison de Solitude.
+29772,J'ai une maison à Faillaise.
+29927,Maison de Daighre
+31822,J'aimerais décorer ma maison.
+32496,Vêtements d'enfant
+32716,Mobilier de chambre. (<Global=HDWhiterunBedroom> pièces d'or)
+33858,Vous avez des ennuis ?
+34665,Erith
+34746,(Invisible Continues Linked to Self)
+35342,Temple de Mara
+35392,"Hjerim, ma maison de Vendeaume."
+35609,"Suivez-moi, j'ai besoin de votre aide."
+36058,Coffre
+36069,Banc
+36557,RelationshipMarriagePostWeddingLoveInterestBlockingTopic
+36947,Eirid
+37481,DialogueRiftenGoodbyes
+37789,J'ai aidé les vôtres.
+37798,J'ai aidé les vôtres.
+37869,Scierie Mi-lune
+38220,Le Pavillon blanc
+38520,Jardin. (<Global=HDRiftenGarden> pièces d'or)
+39043,Minette Vinius
+39152,C'est vous le loup ! Trouvez quelqu'un.
+39736,Manoir de Hauteflèche
+40020,Hjerim
+40556,Auberge du Candelâtre
+40754,Vous devez arrêter de malmener Lars Guerrier-Né.
+41408,Tu as vraiment beaucoup de... maturité pour ton âge.
+42889,Guéridon
+43702,Maison des Lylvieve
+44420,Retournez voir <Alias.ShortName=Questgiver>
+44607,Maison du clan Guerrier-Né
+44859,Le Ragnard pervers
+46265,Aventus Aretino
+46631,Décorations de sol. (400 pièces d'or)
+47346,Braith
+48203,Vendeaume
+48346,J'ai aidé les vôtres.
+49978,"Douce Brise, ma maison de Blancherive."
+50026,Svari
+50038,Porte
+50305,Épicerie Belethor
+50549,Fins de série de Birna
+51543,Ferme de Lemkil
+51665,Vous n'avez rien d'autre à me confier ?
+52050,Une petite partie de cache-cache ?
+52384,Hroar
+52749,J'ai besoin que vous fassiez quelque chose.
+52824,Maison d'Alvor et Sigrid
+53152,Auberge du Vieux-Hroldan
+53691,J'aimerais décorer ma maison.
+53745,Gentilhommière de Vlindrel
+53748,Faillaise
+53773,Nous pourrions nous installer dans ma maison de Blancherive.
+54655,Coffre
+55309,DialogueGenericHello
+55454,"Non, j'ai autre chose à faire."
+56669,Coffre
+57436,Sissel
+57872,"La Gentilhommière de Vlindrel, ma maison de Markarth."
+58303,Moulin à grains
+58626,J'aimerais décorer ma maison.
+58910,Maison d'Amren
+59142,Maison d'Hod et Gerdur
+59254,Bien sûr. J'adore jouer au loup.
+60030,La Jument pavoisée
+60061,Bonjour.
+60085,Britte
+60340,Orphelinat Honorem
+60623,Laboratoire d'enchantement. (<Global=HDRiftenEnchanting> pièces d'or)
+60778,Gentilhommière de Vlindrel
+60799,Ferme de Katla
+61223,Les occasions de Sadri
+61820,Birna Services
+61921,Auberge Montvent
+62472,Whiterun Braith Lars Scene 2
+63098,Attendez ici.
+63521,J'ai tué le chef d'un camp de bandits... <Alias=BanditCamp>.
+63857,Vêtements d'enfant
+64313,Mine de Brise-fer
+64879,Salle Hautelune
+64936,Vendeaume
+64956,Le foyer gelé
+65168,Clinton
+65272,Filet de saumon
+65312,Minette
+65538,Markarth
+65666,Trappe
+66208,Aventus
+66356,Ragoût de chou
+66888,Guide du bel intérieur de Vendeaume
+66890,Fondue d'Elsweyr
+66920,Ragoût de venaison
+67036,Guide du bel intérieur de Blancherive
+67264,Guide du bel intérieur de Markarth
+67508,Guide du bel intérieur de Solitude
+67551,Visitez la maison de votre épouse
+67576,Ragoût de boeuf
+67639,Soupe de tomates
+67852,Guide du bel intérieur de Faillaise
+68018,Soupe aux choux et pommes de terre
+68145,Ragoût de horqueur
+68148,Soupe de légumes
+68731,Laboratoire d'alchimie. (<Global=HDWhiterunAlchemy> pièces d'or)
+72178,Saumon
+72296,Saumon
+72417,Récolter
+72759,Saumon
+72808,Récolter
+72814,Saumon
+72892,Attraper
+72968,Attraper
