@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "tsc --noEmit && parcel src/index.html --out-dir ui --no-cache",
-		"build": "tsc --noEmit && parcel build src/index.html --out-dir ui --no-source-maps --no-cache --public-url ./",
-		"build:server": "tsc --noEmit && parcel build src/index.html --out-dir ../server/data/ui --no-source-maps --no-cache --public-url ./",
+		"dev": "parcel src/index.html --out-dir ui --no-cache",
+		"build": "parcel build src/index.html --out-dir ui --no-source-maps --no-cache --public-url ./",
+		"build:server": "parcel build src/index.html --out-dir ../server/data/ui --no-source-maps --no-cache --public-url ./",
 		"ignore": "git rm -r --cached . && git add . && git commit -m \".gitignore is now working\""
 	},
 	"keywords": [],
@@ -17,10 +17,12 @@
 		"@babel/preset-react": "^7.12.13",
 		"@types/react": "^17.0.3",
 		"@types/react-dom": "^17.0.0",
+		"parcel-bundler": "^1.12.5",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"rimraf": "^3.0.2",
-		"sass": "^1.32.6"
+		"sass": "^1.32.6",
+		"tsc": "^2.0.3"
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.11.3",
@@ -28,7 +30,6 @@
 		"@types/node": "^14.14.34",
 		"@types/react-redux": "^7.1.16",
 		"components": "^0.1.0",
-		"parcel-bundler": "^1.12.4",
 		"react-animated-css": "^1.2.1",
 		"react-dnd": "^13.1.1",
 		"react-dnd-html5-backend": "^12.1.1",
