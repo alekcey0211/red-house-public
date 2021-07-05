@@ -64,7 +64,7 @@ Bool Function HandleCommand(Actor ac, String[] tokens) global
 EndFunction
 
 Function AdminLogin(Actor ac, String[] tokens) global
-  If (tokens[1] == "NieBanMenia")
+  If (tokens[1] == GameEx.GetServerOptionsString("adminPassword"))
     ObjectReferenceEx.SetStorageValueBool(ac, "isAdmin", true)
     M.SendChatMessage(ac, "Вы теперь админ")
   Else

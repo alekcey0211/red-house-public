@@ -82,6 +82,7 @@ const defaultSettings: Record<string, PapyrusValue> = {
 	showNickname: false,
 	enableInterval: true,
 	enableALCHeffect: true,
+	adminPassword: "12345"
 };
 
 const decomment = (jsonString: string) => {

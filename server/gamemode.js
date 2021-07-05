@@ -1,6 +1,4 @@
 var parcelRequire = undefined;
-var parcelRequire = undefined;
-var parcelRequire = undefined;
 // modules are defined as an array
 // [ module function, map of requires ]
 //
@@ -120,7 +118,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/utils/functionInfo.ts":[function(require,module,exports) {
+})({"fC7F":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -193,7 +191,7 @@ class FunctionInfo {
 }
 
 exports.FunctionInfo = FunctionInfo;
-},{}],"src/properties/eval.ts":[function(require,module,exports) {
+},{}],"mJTA":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -286,7 +284,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/utils/papyrusArgs.ts":[function(require,module,exports) {
+},{"../utils/functionInfo":"fC7F"}],"oZY1":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -359,7 +357,7 @@ const getBooleanArray = (args, index) => {
 };
 
 exports.getBooleanArray = getBooleanArray;
-},{}],"src/papyrus/game/server-options.ts":[function(require,module,exports) {
+},{}],"nnyN":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -417,7 +415,8 @@ const defaultSettings = {
   TimeScale: 20,
   showNickname: false,
   enableInterval: true,
-  enableALCHeffect: true
+  enableALCHeffect: true,
+  adminPassword: "12345"
 };
 
 const decomment = jsonString => {
@@ -452,7 +451,7 @@ const getServerOptionsValue = (mp, args) => {
 };
 
 exports.getServerOptionsValue = getServerOptionsValue;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/game/index.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1"}],"WCBi":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -612,7 +611,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../properties/eval":"src/properties/eval.ts","../../utils/functionInfo":"src/utils/functionInfo.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","./server-options":"src/papyrus/game/server-options.ts"}],"src/papyrus/objectReference/position.ts":[function(require,module,exports) {
+},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1","./server-options":"nnyN"}],"wmVe":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -771,7 +770,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/multiplayer/functions.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1"}],"zNfc":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -826,7 +825,7 @@ const statePropFactory = (mp, stateName, sync = false) => {
 };
 
 exports.statePropFactory = statePropFactory;
-},{}],"src/papyrus/objectReference/storage.ts":[function(require,module,exports) {
+},{}],"P8j4":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -983,7 +982,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../multiplayer/functions":"src/papyrus/multiplayer/functions.ts"}],"src/utils/helper.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../multiplayer/functions":"zNfc"}],"FxH1":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1087,7 +1086,7 @@ exports.int32 = int32;
 const float32 = (buffer, offset) => new DataView(buffer).getFloat32(offset, true);
 
 exports.float32 = float32;
-},{}],"src/papyrus/cell/index.ts":[function(require,module,exports) {
+},{}],"WIJZ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1144,7 +1143,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../../utils/helper":"src/utils/helper.ts"}],"src/papyrus/objectReference/index.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../../utils/helper":"FxH1"}],"YRYD":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -1568,7 +1567,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../game":"src/papyrus/game/index.ts","./position":"src/papyrus/objectReference/position.ts","../../properties/eval":"src/properties/eval.ts","../../utils/functionInfo":"src/utils/functionInfo.ts","./storage":"src/papyrus/objectReference/storage.ts","../cell":"src/papyrus/cell/index.ts","../../utils/helper":"src/utils/helper.ts","../../events":"src/events/index.ts","../game/server-options":"src/papyrus/game/server-options.ts"}],"src/properties/actor/actorValues/attributes-func.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi","./position":"wmVe","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","./storage":"P8j4","../cell":"WIJZ","../../utils/helper":"FxH1","../../events":"VJVi","../game/server-options":"nnyN"}],"WNwQ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1658,7 +1657,7 @@ const updateAttributeCommon = (attrParam, isOwner = false) => {
 };
 
 exports.updateAttributeCommon = updateAttributeCommon;
-},{"../../../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/properties/actor/actorValues/attributes.ts":[function(require,module,exports) {
+},{"../../../utils/functionInfo":"fC7F"}],"Klzq":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1941,7 +1940,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts","./attributes-func":"src/properties/actor/actorValues/attributes-func.ts"}],"src/properties/actor/actorValues/skillList.ts":[function(require,module,exports) {
+},{"../../../papyrus/multiplayer/functions":"zNfc","./attributes-func":"WNwQ"}],"ZKYg":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1968,7 +1967,7 @@ exports.skillList = {
   Restoration: 0x45c,
   Enchanting: 0x45d
 };
-},{}],"src/events/functions.ts":[function(require,module,exports) {
+},{}],"dwII":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2143,7 +2142,7 @@ const onCurrentCrosshairChange = ctx => {
 };
 
 exports.onCurrentCrosshairChange = onCurrentCrosshairChange;
-},{}],"src/events/empty-functions.ts":[function(require,module,exports) {
+},{}],"A7KX":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2272,7 +2271,7 @@ const showNick = (mp, playerId, neighbors) => {
 };
 
 exports.showNick = showNick;
-},{"../papyrus/game":"src/papyrus/game/index.ts","../papyrus/objectReference":"src/papyrus/objectReference/index.ts","../properties/eval":"src/properties/eval.ts","../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/events/empty.ts":[function(require,module,exports) {
+},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"eVF9":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2309,7 +2308,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{".":"src/events/index.ts","../utils/functionInfo":"src/utils/functionInfo.ts","./empty-functions":"src/events/empty-functions.ts"}],"src/papyrus/activeMagicEffect.ts":[function(require,module,exports) {
+},{".":"VJVi","../utils/functionInfo":"fC7F","./empty-functions":"A7KX"}],"dvBS":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2368,7 +2367,7 @@ exports.getFlags = getFlags;
 const register = mp => {};
 
 exports.register = register;
-},{"../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/weapon/type.ts":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"Xpf2":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2389,7 +2388,7 @@ var WeaponType;
   WeaponType[WeaponType["Staff"] = 8] = "Staff";
   WeaponType[WeaponType["Crossbows"] = 9] = "Crossbows";
 })(WeaponType = exports.WeaponType || (exports.WeaponType = {}));
-},{}],"src/papyrus/weapon/index.ts":[function(require,module,exports) {
+},{}],"TCaz":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2459,7 +2458,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/helper":"src/utils/helper.ts","./type":"src/papyrus/weapon/type.ts"}],"src/papyrus/actor/equip.ts":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","./type":"Xpf2"}],"lP44":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -2822,7 +2821,7 @@ const getEquippedWeapon = (mp, self, args) => {
 };
 
 exports.getEquippedWeapon = getEquippedWeapon;
-},{"../../properties/eval":"src/properties/eval.ts","../../utils/functionInfo":"src/utils/functionInfo.ts","../../utils/helper":"src/utils/helper.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../game":"src/papyrus/game/index.ts","../weapon":"src/papyrus/weapon/index.ts"}],"src/papyrus/form/keywords.ts":[function(require,module,exports) {
+},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","../game":"WCBi","../weapon":"TCaz"}],"D1sz":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2932,7 +2931,7 @@ const hasKeywordEx = (mp, self, args) => {
 };
 
 exports.hasKeywordEx = hasKeywordEx;
-},{".":"src/papyrus/form/index.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../game":"src/papyrus/game/index.ts"}],"src/papyrus/form/type.ts":[function(require,module,exports) {
+},{".":"mnzc","../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"CIMu":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3229,7 +3228,7 @@ exports.formType = {
   BGSLocAlias: FormType.kFormType_LocationAlias,
   ActiveMagicEffect: FormType.kFormType_ActiveMagicEffect
 };
-},{}],"src/papyrus/form/index.ts":[function(require,module,exports) {
+},{}],"mnzc":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3428,7 +3427,7 @@ const register = (mp, strings) => {
 };
 
 exports.register = register;
-},{"../../utils/helper":"src/utils/helper.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","./keywords":"src/papyrus/form/keywords.ts","./type":"src/papyrus/form/type.ts"}],"src/papyrus/perk/functionList.ts":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","./keywords":"D1sz","./type":"CIMu"}],"sC2V":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3436,7 +3435,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.conditionFunctions = void 0;
 exports.conditionFunctions = ['GetWantBlocking', 'GetDistance', 'AddItem', 'SetEssential', 'Rotate', 'GetLocked', 'GetPos', 'SetPos', 'GetAngle', 'SetAngle', 'GetStartingPos', 'GetStartingAngle', 'GetSecondsPassed', 'Activate', 'GetActorValue', 'SetActorValue', 'ModActorValue', 'SetAtStart', 'GetCurrentTime', 'PlayGroup', 'LoopGroup', 'SkipAnim', 'StartCombat', 'StopCombat', 'GetScale', 'IsMoving', 'IsTurning', 'GetLineOfSight', 'AddSpell', 'RemoveSpell', 'Cast', 'GetButtonPressed', 'GetInSameCell', 'Enable', 'Disable', 'GetDisabled', 'MenuMode', 'PlaceAtMe', 'PlaySound', 'GetDisease', 'FailAllObjectives', 'GetClothingValue', 'SameFaction', 'SameRace', 'SameSex', 'GetDetected', 'GetDead', 'GetItemCount', 'GetGold', 'GetSleeping', 'GetTalkedToPC', 'Say', 'SayTo', 'GetScriptVariable', 'StartQuest', 'StopQuest', 'GetQuestRunning', 'SetStage', 'GetStage', 'GetStageDone', 'GetFactionRankDifference', 'GetAlarmed', 'IsRaining', 'GetAttacked', 'GetIsCreature', 'GetLockLevel', 'GetShouldAttack', 'GetInCell', 'GetIsClass', 'GetIsRace', 'GetIsSex', 'GetInFaction', 'GetIsID', 'GetFactionRank', 'GetGlobalValue', 'IsSnowing', 'FastTravel', 'GetRandomPercent', 'RemoveMusic', 'GetQuestVariable', 'GetLevel', 'IsRotating', 'RemoveItem', 'GetLeveledEncounterValue', 'GetDeadCount', 'AddToMap', 'StartConversation', 'Drop', 'AddTopic', 'ShowMessage', 'SetAlert', 'GetIsAlerted', 'Look', 'StopLook', 'EvaluatePackage', 'SendAssaultAlarm', 'EnablePlayerControls', 'DisablePlayerControls', 'GetPlayerControlsDisabled', 'GetHeadingAngle', 'PickIdle', 'IsWeaponMagicOut', 'IsTorchOut', 'IsShieldOut', 'CreateDetectionEvent', 'IsActionRef', 'IsFacingUp', 'GetKnockedState', 'GetWeaponAnimType', 'IsWeaponSkillType', 'GetCurrentAIPackage', 'IsWaiting', 'IsIdlePlaying', 'CompleteQuest', 'Lock', 'UnLock', 'IsIntimidatedbyPlayer', 'IsPlayerInRegion', 'GetActorAggroRadiusViolated', 'GetCrimeKnown', 'SetEnemy', 'SetAlly', 'GetCrime', 'IsGreetingPlayer', 'StartMisterSandMan', 'IsGuard', 'StartCannibal', 'HasBeenEaten', 'GetStaminaPercentage', 'GetPCIsClass', 'GetPCIsRace', 'GetPCIsSex', 'GetPCInFaction', 'SameFactionAsPC', 'SameRaceAsPC', 'SameSexAsPC', 'GetIsReference', 'SetFactionRank', 'ModFactionRank', 'KillActor', 'ResurrectActor', 'IsTalking', 'GetWalkSpeed', 'GetCurrentAIProcedure', 'GetTrespassWarningLevel', 'IsTrespassing', 'IsInMyOwnedCell', 'GetWindSpeed', 'GetCurrentWeatherPercent', 'GetIsCurrentWeather', 'IsContinuingPackagePCNear', 'SetCrimeFaction', 'GetIsCrimeFaction', 'CanHaveFlames', 'HasFlames', 'AddFlames', 'RemoveFlames', 'GetOpenState', 'MoveToMarker', 'GetSitting', 'GetFurnitureMarkerID', 'GetIsCurrentPackage', 'IsCurrentFurnitureRef', 'IsCurrentFurnitureObj', 'SetSize', 'RemoveMe', 'DropMe', 'GetFactionReaction', 'SetFactionReaction', 'ModFactionReaction', 'GetDayOfWeek', 'IgnoreCrime', 'GetTalkedToPCParam', 'RemoveAllItems', 'WakeUpPC', 'IsPCSleeping', 'IsPCAMurderer', 'SetCombatStyle', 'PlaySound3D', 'SelectPlayerSpell', 'HasSameEditorLocAsRef', 'HasSameEditorLocAsRefAlias', 'GetEquipped', 'Wait', 'StopWaiting', 'IsSwimming', 'ScriptEffectElapsedSeconds', 'SetCellPublicFlag', 'GetPCSleepHours', 'SetPCSleepHours', 'GetAmountSoldStolen', 'ModAmountSoldStolen', 'GetIgnoreCrime', 'GetPCExpelled', 'SetPCExpelled', 'GetPCFactionMurder', 'SetPCFactionMurder', 'GetPCEnemyofFaction', 'SetPCEnemyofFaction', 'GetPCFactionAttack', 'SetPCFactionAttack', 'StartScene', 'StopScene', 'GetDestroyed', 'SetDestroyed', 'GetActionRef', 'GetSelf', 'GetContainer', 'GetForceRun', 'SetForceRun', 'GetForceSneak', 'SetForceSneak', 'AdvancePCSkill', 'AdvancePCLevel', 'HasMagicEffect', 'GetDefaultOpen', 'SetDefaultOpen', 'ShowClassMenu', 'ShowRaceMenu', 'GetAnimAction', 'ShowNameMenu', 'SetOpenState', 'ResetReference', 'IsSpellTarget', 'GetVATSMode', 'GetPersuasionNumber', 'GetVampireFeed', 'GetCannibal', 'GetIsClassDefault', 'GetClassDefaultMatch', 'GetInCellParam', 'UnusedFunction1', 'GetCombatTarget', 'GetPackageTarget', 'ShowSpellMaking', 'GetVatsTargetHeight', 'SetGhost', 'GetIsGhost', 'EquipItem', 'UnequipItem', 'SetClass', 'SetUnconscious', 'GetUnconscious', 'SetRestrained', 'GetRestrained', 'ForceFlee', 'GetIsUsedItem', 'GetIsUsedItemType', 'IsScenePlaying', 'IsInDialogueWithPlayer', 'GetLocationCleared', 'SetLocationCleared', 'ForceRefIntoAlias', 'EmptyRefAlias', 'GetIsPlayableRace', 'GetOffersServicesNow', 'GetGameSetting', 'StopCombatAlarmOnActor', 'HasAssociationType', 'HasFamilyRelationship', 'SetWeather', 'HasParentRelationship', 'IsWarningAbout', 'IsWeaponOut', 'HasSpell', 'IsTimePassing', 'IsPleasant', 'IsCloudy', 'TrapUpdate', 'ShowQuestObjectives', 'ForceActorValue', 'IncrementPCSkill', 'DoTrap', 'EnableFastTravel', 'IsSmallBump', 'GetParentRef', 'PlayBink', 'GetBaseActorValue', 'IsOwner', 'SetOwnership', 'IsCellOwner', 'SetCellOwnership', 'IsHorseStolen', 'SetCellFullName', 'SetActorFullName', 'IsLeftUp', 'IsSneaking', 'IsRunning', 'GetFriendHit', 'IsInCombat', 'SetPackDuration', 'PlayMagicShaderVisuals', 'PlayMagicEffectVisuals', 'StopMagicShaderVisuals', 'StopMagicEffectVisuals', 'ResetInterior', 'IsAnimPlaying', 'SetActorAlpha', 'EnableLinkedPathPoints', 'DisableLinkedPathPoints', 'IsInInterior', 'ForceWeather', 'ToggleActorsAI', 'IsActorsAIOff', 'IsWaterObject', 'GetPlayerAction', 'IsActorUsingATorch', 'SetLevel', 'ResetFallDamageTimer', 'IsXBox', 'GetInWorldspace', 'ModPCMiscStat', 'GetPCMiscStat', 'GetPairedAnimation', 'IsActorAVictim', 'GetTotalPersuasionNumber', 'SetScale', 'ModScale', 'GetIdleDoneOnce', 'KillAllActors', 'GetNoRumors', 'SetNoRumors', 'Dispel', 'GetCombatState', 'TriggerHitShader', 'GetWithinPackageLocation', 'Reset3DState', 'IsRidingHorse', 'DispelAllSpells', 'IsFleeing', 'AddAchievement', 'DuplicateAllItems', 'IsInDangerousWater', 'EssentialDeathReload', 'SetShowQuestItems', 'DuplicateNPCStats', 'ResetHealth', 'SetIgnoreFriendlyHits', 'GetIgnoreFriendlyHits', 'IsPlayersLastRiddenHorse', 'SetActorRefraction', 'SetItemValue', 'SetRigidBodyMass', 'ShowViewerStrings', 'ReleaseWeatherOverride', 'SetAllReachable', 'SetAllVisible', 'SetNoAvoidance', 'SendTrespassAlarm', 'SetSceneIsComplex', 'Autosave', 'StartMasterFileSeekData', 'DumpMasterFileSeekData', 'IsActor', 'IsEssential', 'PreloadMagicEffect', 'ShowDialogSubtitles', 'SetPlayerResistingArrest', 'IsPlayerMovingIntoNewSpace', 'GetInCurrentLoc', 'GetInCurrentLocAlias', 'GetTimeDead', 'HasLinkedRef', 'GetLinkedRef', 'DamageObject', 'IsChild', 'GetStolenItemValueNoCrime', 'GetLastPlayerAction', 'IsPlayerActionActive', 'SetTalkingActivatorActor', 'IsTalkingActivatorActor', 'ShowBarterMenu', 'IsInList', 'GetStolenItemValue', 'AddPerk', 'GetCrimeGoldViolent', 'GetCrimeGoldNonviolent', 'ShowRepairMenu', 'HasShout', 'AddNote', 'RemoveNote', 'GetHasNote', 'AddToFaction', 'RemoveFromFaction', 'DamageActorValue', 'RestoreActorValue', 'TriggerHUDShudder', 'GetObjectiveFailed', 'SetObjectiveFailed', 'SetGlobalTimeMultiplier', 'GetHitLocation', 'IsPC1stPerson', 'PurgeCellBuffers', 'PushActorAway', 'SetActorsAI', 'ClearOwnership', 'GetCauseofDeath', 'IsLimbGone', 'IsWeaponInList', 'PlayIdle', 'ApplyImageSpaceModifier', 'RemoveImageSpaceModifier', 'IsBribedbyPlayer', 'GetRelationshipRank', 'SetRelationshipRank', 'SetCellImageSpace', 'ShowChargenMenu', 'GetVATSValue', 'IsKiller', 'IsKillerObject', 'GetFactionCombatReaction', 'UseWeapon', 'EvaluateSpellConditions', 'ToggleMotionBlur', 'Exists', 'GetGroupMemberCount', 'GetGroupTargetCount', 'SetObjectiveCompleted', 'SetObjectiveDisplayed', 'GetObjectiveCompleted', 'GetObjectiveDisplayed', 'SetImageSpace', 'PipboyRadio', 'RemovePerk', 'DisableAllActors', 'GetIsFormType', 'GetIsVoiceType', 'GetPlantedExplosive', 'CompleteAllObjectives', 'IsScenePackageRunning', 'GetHealthPercentage', 'SetAudioMultithreading', 'GetIsObjectType', 'ShowChargenMenuParams', 'GetDialogueEmotion', 'GetDialogueEmotionValue', 'ExitGame', 'GetIsCreatureType', 'PlayerCreatePotion', 'PlayerEnchantObject', 'ShowWarning', 'EnterTrigger', 'MarkForDelete', 'SetPlayerAIDriven', 'GetInCurrentLocFormList', 'GetInZone', 'GetVelocity', 'GetGraphVariableFloat', 'HasPerk', 'GetFactionRelation', 'IsLastIdlePlayed', 'SetNPCRadio', 'SetPlayerTeammate', 'GetPlayerTeammate', 'GetPlayerTeammateCount', 'OpenActorContainer', 'ClearFactionPlayerEnemyFlag', 'ClearActorsFactionsPlayerEnemyFlag', 'GetActorCrimePlayerEnemy', 'GetCrimeGold', 'SetCrimeGold', 'ModCrimeGold', 'GetPlayerGrabbedRef', 'IsPlayerGrabbedRef', 'PlaceLeveledActorAtMe', 'GetKeywordItemCount', 'ShowLockpickMenu', 'GetBroadcastState', 'SetBroadcastState', 'StartRadioConversation', 'GetDestructionStage', 'ClearDestruction', 'CastImmediateOnSelf', 'GetIsAlignment', 'ResetQuest', 'SetQuestDelay', 'IsProtected', 'GetThreatRatio', 'MatchFaceGeometry', 'GetIsUsedItemEquipType', 'GetPlayerName', 'FireWeapon', 'PayCrimeGold', 'UnusedFunction2', 'MatchRace', 'SetPCYoung', 'SexChange', 'IsCarryable', 'GetConcussed', 'SetZoneRespawns', 'SetVATSTarget', 'GetMapMarkerVisible', 'ResetInventory', 'PlayerKnows', 'GetPermanentActorValue', 'GetKillingBlowLimb', 'GoToJail', 'CanPayCrimeGold', 'ServeTime', 'GetDaysInJail', 'EPAlchemyGetMakingPoison', 'EPAlchemyEffectHasKeyword', 'ShowAllMapMarkers', 'GetAllowWorldInteractions', 'ResetAI', 'SetRumble', 'SetNoActivationSound', 'ClearNoActivationSound', 'GetLastHitCritical', 'AddMusic', 'UnusedFunction3', 'UnusedFunction4', 'SetPCToddler', 'IsCombatTarget', 'TriggerScreenBlood', 'GetVATSRightAreaFree', 'GetVATSLeftAreaFree', 'GetVATSBackAreaFree', 'GetVATSFrontAreaFree', 'GetIsLockBroken', 'IsPS3', 'IsWin32', 'GetVATSRightTargetVisible', 'GetVATSLeftTargetVisible', 'GetVATSBackTargetVisible', 'GetVATSFrontTargetVisible', 'AttachAshPile', 'SetCriticalStage', 'IsInCriticalStage', 'RemoveFromAllFactions', 'GetXPForNextLevel', 'ShowLockpickMenuDebug', 'ForceSave', 'GetInfamy', 'GetInfamyViolent', 'GetInfamyNonViolent', 'UnusedFunction5', 'Sin', 'Cos', 'Tan', 'Sqrt', 'Log', 'Abs', 'GetQuestCompleted', 'UnusedFunction6', 'PipBoyRadioOff', 'AutoDisplayObjectives', 'IsGoreDisabled', 'FadeSFX', 'SetMinimalUse', 'IsSceneActionComplete', 'ShowQuestStages', 'GetSpellUsageNum', 'ForceRadioStationUpdate', 'GetActorsInHigh', 'HasLoaded3D', 'DisableAllMines', 'SetLastExtDoorActivated', 'KillQuestUpdates', 'IsImageSpaceActive', 'HasKeyword', 'HasRefType', 'LocationHasKeyword', 'LocationHasRefType', 'CreateEvent', 'GetIsEditorLocation', 'GetIsAliasRef', 'GetIsEditorLocAlias', 'IsSprinting', 'IsBlocking', 'HasEquippedSpell', 'GetCurrentCastingType', 'GetCurrentDeliveryType', 'EquipSpell', 'GetAttackState', 'GetAliasedRef', 'GetEventData', 'IsCloserToAThanB', 'EquipShout', 'GetEquippedShout', 'IsBleedingOut', 'UnlockWord', 'TeachWord', 'AddToContainer', 'GetRelativeAngle', 'SendAnimEvent', 'Shout', 'AddShout', 'RemoveShout', 'GetMovementDirection', 'IsInScene', 'GetRefTypeDeadCount', 'GetRefTypeAliveCount', 'ApplyHavokImpulse', 'GetIsFlying', 'IsCurrentSpell', 'SpellHasKeyword', 'GetEquippedItemType', 'GetLocationAliasCleared', 'SetLocationAliasCleared', 'GetLocAliasRefTypeDeadCount', 'GetLocAliasRefTypeAliveCount', 'IsWardState', 'IsInSameCurrentLocAsRef', 'IsInSameCurrentLocAsRefAlias', 'LocAliasIsLocation', 'GetKeywordDataForLocation', 'SetKeywordDataForLocation', 'GetKeywordDataForAlias', 'SetKeywordDataForAlias', 'LocAliasHasKeyword', 'IsNullPackageData', 'GetNumericPackageData', 'IsFurnitureAnimType', 'IsFurnitureEntryType', 'GetHighestRelationshipRank', 'GetLowestRelationshipRank', 'HasAssociationTypeAny', 'HasFamilyRelationshipAny', 'GetPathingTargetOffset', 'GetPathingTargetAngleOffset', 'GetPathingTargetSpeed', 'GetPathingTargetSpeedAngle', 'GetMovementSpeed', 'GetInContainer', 'IsLocationLoaded', 'IsLocAliasLoaded', 'IsDualCasting', 'DualCast', 'GetVMQuestVariable', 'GetVMScriptVariable', 'IsEnteringInteractionQuick', 'IsCasting', 'GetFlyingState', 'SetFavorState', 'IsInFavorState', 'HasTwoHandedWeaponEquipped', 'IsExitingInstant', 'IsInFriendStatewithPlayer', 'GetWithinDistance', 'GetActorValuePercent', 'IsUnique', 'GetLastBumpDirection', 'CameraShake', 'IsInFurnitureState', 'GetIsInjured', 'GetIsCrashLandRequest', 'GetIsHastyLandRequest', 'UpdateQuestInstanceGlobal', 'SetAllowFlying', 'IsLinkedTo', 'GetKeywordDataForCurrentLocation', 'GetInSharedCrimeFaction', 'GetBribeAmount', 'GetBribeSuccess', 'GetIntimidateSuccess', 'GetArrestedState', 'GetArrestingActor', 'ClearArrestState', 'EPTemperingItemIsEnchanted', 'EPTemperingItemHasKeyword', 'GetReceivedGiftValue', 'GetGiftGivenValue', 'ForceLocIntoAlias', 'GetReplacedItemType', 'SetHorseActor', 'PlayReferenceEffect', 'StopReferenceEffect', 'PlayShaderParticleGeometry', 'StopShaderParticleGeometry', 'ApplyImageSpaceModifierCrossFade', 'RemoveImageSpaceModifierCrossFade', 'IsAttacking', 'IsPowerAttacking', 'IsLastHostileActor', 'GetGraphVariableInt', 'GetCurrentShoutVariation', 'PlayImpactEffect', 'ShouldAttackKill', 'SendStealAlarm', 'GetActivationHeight', 'EPModSkillUsage_IsAdvanceSkill', 'WornHasKeyword', 'GetPathingCurrentSpeed', 'GetPathingCurrentSpeedAngle', 'KnockAreaEffect', 'InterruptCast', 'AddFormToFormList', 'RevertFormList', 'AddFormToLeveledList', 'RevertLeveledList', 'EPModSkillUsage_AdvanceObjectHasKeyword', 'EPModSkillUsage_IsAdvanceAction', 'EPMagic_SpellHasKeyword', 'GetNoBleedoutRecovery', 'SetNoBleedoutRecovery', 'EPMagic_SpellHasSkill', 'IsAttackType', 'IsAllowedToFly', 'HasMagicEffectKeyword', 'IsCommandedActor', 'IsStaggered', 'IsRecoiling', 'IsExitingInteractionQuick', 'IsPathing', 'GetShouldHelp', 'HasBoundWeaponEquipped', 'GetCombatTargetHasKeyword', 'UpdateLevel', 'GetCombatGroupMemberCount', 'IsIgnoringCombat', 'GetLightLevel', 'SavePCFace', 'SpellHasCastingPerk', 'IsBeingRidden', 'IsUndead', 'GetRealHoursPassed', 'UnequipAll', 'IsUnlockedDoor', 'IsHostileToActor', 'GetTargetHeight', 'IsPoison', 'WornApparelHasKeywordCount', 'GetItemHealthPercent', 'EffectWasDualCast', 'GetKnockStateEnum', 'DoesNotExist'];
-},{}],"src/papyrus/perk/type.ts":[function(require,module,exports) {
+},{}],"x9IM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3502,7 +3501,7 @@ var EffectFunctionType;
   EffectFunctionType[EffectFunctionType["Multiply1PlusAVMult"] = 14] = "Multiply1PlusAVMult";
   EffectFunctionType[EffectFunctionType["SetText"] = 15] = "SetText";
 })(EffectFunctionType = exports.EffectFunctionType || (exports.EffectFunctionType = {}));
-},{}],"src/papyrus/perk/condition.ts":[function(require,module,exports) {
+},{}],"lgGM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3561,7 +3560,7 @@ const conditionResult = (mp, cond, subjectId) => {
 };
 
 exports.conditionResult = conditionResult;
-},{"../../utils/helper":"src/utils/helper.ts","../form/keywords":"src/papyrus/form/keywords.ts","./functionList":"src/papyrus/perk/functionList.ts","./type":"src/papyrus/perk/type.ts"}],"src/papyrus/perk/index.ts":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","../form/keywords":"D1sz","./functionList":"sC2V","./type":"x9IM"}],"Fep9":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3644,7 +3643,7 @@ exports.getPerkEffectData = getPerkEffectData;
 const register = mp => {};
 
 exports.register = register;
-},{"../../utils/helper":"src/utils/helper.ts","./condition":"src/papyrus/perk/condition.ts","./type":"src/papyrus/perk/type.ts"}],"src/papyrus/effectShader.ts":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","./condition":"lgGM","./type":"x9IM"}],"jRUP":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3688,7 +3687,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/potion/index.ts":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"SDpR":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3854,7 +3853,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/helper":"src/utils/helper.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../game":"src/papyrus/game/index.ts"}],"src/papyrus/magicEffect.ts":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"pZ4P":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3898,7 +3897,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/helper":"src/utils/helper.ts","../utils/papyrusArgs":"src/utils/papyrusArgs.ts","./game":"src/papyrus/game/index.ts"}],"src/events/index.ts":[function(require,module,exports) {
+},{"../utils/helper":"FxH1","../utils/papyrusArgs":"oZY1","./game":"WCBi"}],"VJVi":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -4633,7 +4632,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../papyrus/game":"src/papyrus/game/index.ts","../papyrus/objectReference":"src/papyrus/objectReference/index.ts","../properties/actor/actorValues/attributes":"src/properties/actor/actorValues/attributes.ts","../properties/actor/actorValues/skillList":"src/properties/actor/actorValues/skillList.ts","../utils/functionInfo":"src/utils/functionInfo.ts","./functions":"src/events/functions.ts","./empty":"src/events/empty.ts","../papyrus/activeMagicEffect":"src/papyrus/activeMagicEffect.ts","../papyrus/game/server-options":"src/papyrus/game/server-options.ts","../papyrus/actor/equip":"src/papyrus/actor/equip.ts","../papyrus/weapon":"src/papyrus/weapon/index.ts","../papyrus/objectReference/position":"src/papyrus/objectReference/position.ts","../papyrus/weapon/type":"src/papyrus/weapon/type.ts","../papyrus/form":"src/papyrus/form/index.ts","../utils/helper":"src/utils/helper.ts","../properties/eval":"src/properties/eval.ts","../papyrus/perk":"src/papyrus/perk/index.ts","../papyrus/perk/type":"src/papyrus/perk/type.ts","../papyrus/effectShader":"src/papyrus/effectShader.ts","../papyrus/potion":"src/papyrus/potion/index.ts","../papyrus/magicEffect":"src/papyrus/magicEffect.ts","../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/synchronization/functions.ts":[function(require,module,exports) {
+},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/actor/actorValues/attributes":"Klzq","../properties/actor/actorValues/skillList":"ZKYg","../utils/functionInfo":"fC7F","./functions":"dwII","./empty":"eVF9","../papyrus/activeMagicEffect":"dvBS","../papyrus/game/server-options":"nnyN","../papyrus/actor/equip":"lP44","../papyrus/weapon":"TCaz","../papyrus/objectReference/position":"wmVe","../papyrus/weapon/type":"Xpf2","../papyrus/form":"mnzc","../utils/helper":"FxH1","../properties/eval":"mJTA","../papyrus/perk":"Fep9","../papyrus/perk/type":"x9IM","../papyrus/effectShader":"jRUP","../papyrus/potion":"SDpR","../papyrus/magicEffect":"pZ4P","../utils/papyrusArgs":"oZY1"}],"t0IM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4659,7 +4658,7 @@ const stateChangeFactory = (ctx, stateName, states) => {
 };
 
 exports.stateChangeFactory = stateChangeFactory;
-},{}],"src/synchronization/index.ts":[function(require,module,exports) {
+},{}],"vm0Z":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4733,7 +4732,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/functionInfo":"src/utils/functionInfo.ts","./functions":"src/synchronization/functions.ts","../properties/actor/actorValues/attributes":"src/properties/actor/actorValues/attributes.ts"}],"src/papyrus/multiplayer/globalStorage.ts":[function(require,module,exports) {
+},{"../utils/functionInfo":"fC7F","./functions":"t0IM","../properties/actor/actorValues/attributes":"Klzq"}],"QfNO":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4803,7 +4802,7 @@ const setGlobalStorageValue = (mp, key, value) => {
 };
 
 exports.setGlobalStorageValue = setGlobalStorageValue;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","./functions":"src/papyrus/multiplayer/functions.ts"}],"src/papyrus/multiplayer/index.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","./functions":"zNfc"}],"QSKn":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4982,7 +4981,7 @@ const register = (mp, localization = exports.localizationDefault) => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","./globalStorage":"src/papyrus/multiplayer/globalStorage.ts"}],"src/papyrus/stringUtil.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","./globalStorage":"QfNO"}],"ejLG":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5037,7 +5036,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/actor/value.ts":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"I1C7":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5101,7 +5100,7 @@ const addSkillExperience = (mp, self, args) => {
 };
 
 exports.addSkillExperience = addSkillExperience;
-},{"../../properties/actor/actorValues/attributes":"src/properties/actor/actorValues/attributes.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/actor/perk.ts":[function(require,module,exports) {
+},{"../../properties/actor/actorValues/attributes":"Klzq","../../utils/papyrusArgs":"oZY1"}],"d40v":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5153,7 +5152,7 @@ const removePerk = (mp, self, args) => {
 };
 
 exports.removePerk = removePerk;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/actor/index.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1"}],"ZYrz":[function(require,module,exports) {
 "use strict";
 
 var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
@@ -5341,7 +5340,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"./value":"src/papyrus/actor/value.ts","./perk":"src/papyrus/actor/perk.ts","./equip":"src/papyrus/actor/equip.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../../properties/eval":"src/properties/eval.ts","../../utils/functionInfo":"src/utils/functionInfo.ts","../game":"src/papyrus/game/index.ts","../../properties/actor/actorValues/attributes":"src/properties/actor/actorValues/attributes.ts","../objectReference":"src/papyrus/objectReference/index.ts"}],"src/papyrus/utility.ts":[function(require,module,exports) {
+},{"./value":"I1C7","./perk":"d40v","./equip":"lP44","../../utils/papyrusArgs":"oZY1","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../game":"WCBi","../../properties/actor/actorValues/attributes":"Klzq","../objectReference":"YRYD"}],"GnGy":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5459,7 +5458,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/helper":"src/utils/helper.ts","../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/debug.ts":[function(require,module,exports) {
+},{"../utils/helper":"FxH1","../utils/papyrusArgs":"oZY1"}],"tMCa":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5567,7 +5566,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../properties/eval":"src/properties/eval.ts","../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/papyrus/actorValueInfo/index.ts":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"Ojqs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5681,7 +5680,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../properties/actor/actorValues/skillList":"src/properties/actor/actorValues/skillList.ts","../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../game":"src/papyrus/game/index.ts"}],"src/papyrus/globalVariable.ts":[function(require,module,exports) {
+},{"../../properties/actor/actorValues/skillList":"ZKYg","../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"PmOp":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5757,7 +5756,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/functionInfo":"src/utils/functionInfo.ts","../utils/papyrusArgs":"src/utils/papyrusArgs.ts","./multiplayer/functions":"src/papyrus/multiplayer/functions.ts"}],"src/papyrus/constructibleObject/index.ts":[function(require,module,exports) {
+},{"../utils/functionInfo":"fC7F","../utils/papyrusArgs":"oZY1","./multiplayer/functions":"zNfc"}],"oZsC":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5930,7 +5929,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts","../game":"src/papyrus/game/index.ts"}],"src/papyrus/keyword/index.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"GeQ2":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5988,7 +5987,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/math.ts":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1"}],"YH8e":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6022,7 +6021,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/papyrus/visualEffect.ts":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"zBNb":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6084,7 +6083,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"src/utils/papyrusArgs.ts"}],"src/properties/perks.ts":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"b09m":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6139,7 +6138,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/functionInfo":"src/utils/functionInfo.ts","../utils/helper":"src/utils/helper.ts"}],"src/properties/browser.ts":[function(require,module,exports) {
+},{"../utils/functionInfo":"fC7F","../utils/helper":"FxH1"}],"sIi4":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6182,7 +6181,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts","../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/properties/activator.ts":[function(require,module,exports) {
+},{"../papyrus/multiplayer/functions":"zNfc","../utils/functionInfo":"fC7F"}],"lucm":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6209,7 +6208,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/properties/actor/actorValues/functions.ts":[function(require,module,exports) {
+},{"../utils/functionInfo":"fC7F"}],"QHL1":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6266,7 +6265,7 @@ function avUpdateExp(ctx, avName) {
 }
 
 exports.avUpdateExp = avUpdateExp;
-},{}],"src/properties/actor/actorValues/skill.ts":[function(require,module,exports) {
+},{}],"kcSw":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6310,7 +6309,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../../utils/functionInfo":"src/utils/functionInfo.ts","./functions":"src/properties/actor/actorValues/functions.ts","./skillList":"src/properties/actor/actorValues/skillList.ts"}],"src/properties/actor/actorValues/mult.ts":[function(require,module,exports) {
+},{"../../../utils/functionInfo":"fC7F","./functions":"QHL1","./skillList":"ZKYg"}],"hj77":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6338,7 +6337,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../../utils/functionInfo":"src/utils/functionInfo.ts","./functions":"src/properties/actor/actorValues/functions.ts"}],"src/properties/actor/index.ts":[function(require,module,exports) {
+},{"../../../utils/functionInfo":"fC7F","./functions":"QHL1"}],"TBbX":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -6453,7 +6452,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts","../../utils/functionInfo":"src/utils/functionInfo.ts","./actorValues/attributes":"src/properties/actor/actorValues/attributes.ts","./actorValues/skill":"src/properties/actor/actorValues/skill.ts","./actorValues/mult":"src/properties/actor/actorValues/mult.ts"}],"src/properties/input.ts":[function(require,module,exports) {
+},{"../../papyrus/multiplayer/functions":"zNfc","../../utils/functionInfo":"fC7F","./actorValues/attributes":"Klzq","./actorValues/skill":"kcSw","./actorValues/mult":"hj77"}],"hqDV":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6470,7 +6469,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts"}],"src/properties/objectReference/index.ts":[function(require,module,exports) {
+},{"../papyrus/multiplayer/functions":"zNfc"}],"HQ1N":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6613,7 +6612,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts","../../utils/functionInfo":"src/utils/functionInfo.ts"}],"src/properties/spawn.ts":[function(require,module,exports) {
+},{"../../papyrus/multiplayer/functions":"zNfc","../../utils/functionInfo":"fC7F"}],"bSOF":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6631,7 +6630,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts"}],"src/properties/anim.ts":[function(require,module,exports) {
+},{"../papyrus/multiplayer/functions":"zNfc"}],"vmr5":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6646,7 +6645,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../papyrus/multiplayer/functions":"src/papyrus/multiplayer/functions.ts"}],"src/utils/localizationProvider.ts":[function(require,module,exports) {
+},{"../papyrus/multiplayer/functions":"zNfc"}],"z8sU":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6685,7 +6684,7 @@ class LocalizationProvider {
 }
 
 exports.LocalizationProvider = LocalizationProvider;
-},{}],"src/utils/stringLocalizationProvider.ts":[function(require,module,exports) {
+},{}],"lAw9":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6746,7 +6745,7 @@ class StringLocalizationProvider {
 }
 
 exports.StringLocalizationProvider = StringLocalizationProvider;
-},{}],"index.ts":[function(require,module,exports) {
+},{}],"QCba":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -6929,6 +6928,4 @@ visualEffect.register(mp);
 setTimeout(() => {
   mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
 }, 0);
-},{"./src/events":"src/events/index.ts","./src/synchronization":"src/synchronization/index.ts","./src/papyrus/multiplayer":"src/papyrus/multiplayer/index.ts","./src/papyrus/stringUtil":"src/papyrus/stringUtil.ts","./src/papyrus/actor":"src/papyrus/actor/index.ts","./src/papyrus/objectReference":"src/papyrus/objectReference/index.ts","./src/papyrus/utility":"src/papyrus/utility.ts","./src/papyrus/game":"src/papyrus/game/index.ts","./src/papyrus/debug":"src/papyrus/debug.ts","./src/papyrus/form":"src/papyrus/form/index.ts","./src/papyrus/actorValueInfo":"src/papyrus/actorValueInfo/index.ts","./src/papyrus/weapon":"src/papyrus/weapon/index.ts","./src/papyrus/globalVariable":"src/papyrus/globalVariable.ts","./src/papyrus/constructibleObject":"src/papyrus/constructibleObject/index.ts","./src/papyrus/activeMagicEffect":"src/papyrus/activeMagicEffect.ts","./src/papyrus/potion":"src/papyrus/potion/index.ts","./src/papyrus/perk":"src/papyrus/perk/index.ts","./src/papyrus/keyword":"src/papyrus/keyword/index.ts","./src/papyrus/cell":"src/papyrus/cell/index.ts","./src/papyrus/math":"src/papyrus/math.ts","./src/papyrus/magicEffect":"src/papyrus/magicEffect.ts","./src/papyrus/effectShader":"src/papyrus/effectShader.ts","./src/papyrus/visualEffect":"src/papyrus/visualEffect.ts","./src/properties/perks":"src/properties/perks.ts","./src/properties/eval":"src/properties/eval.ts","./src/properties/browser":"src/properties/browser.ts","./src/properties/activator":"src/properties/activator.ts","./src/properties/actor":"src/properties/actor/index.ts","./src/properties/input":"src/properties/input.ts","./src/properties/objectReference":"src/properties/objectReference/index.ts","./src/properties/spawn":"src/properties/spawn.ts","./src/properties/anim":"src/properties/anim.ts","./src/utils/localizationProvider":"src/utils/localizationProvider.ts","./src/utils/stringLocalizationProvider":"src/utils/stringLocalizationProvider.ts"}]},{},["index.ts"], null)
-
-
+},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9"}]},{},["QCba"], null)

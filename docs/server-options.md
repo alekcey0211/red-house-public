@@ -192,3 +192,15 @@ Array of string that contains list of items in format id;count that add at start
 	// ...
 }
 ```
+
+## adminPassword
+
+A string setting that contains password for admin login
+
+```json
+{
+	// ...
+	"adminPassword": "12345",
+	// ...
+}
+```
