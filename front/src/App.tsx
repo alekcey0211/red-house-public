@@ -44,7 +44,6 @@ import InteractionMenu from "./features/systems/interactionMenu";
  */
 import SelectBox from "./features/utils/selectBox";
 import RequestPanel from "./features/utils/requestPanel";
-import StartGame from "./features/utils/startGame";
 
 /**
  * Дополнительное.
@@ -137,7 +136,6 @@ class App extends React.Component {
         {/* Утилиты */}
         <SelectBox />
         <RequestPanel />
-        <StartGame />
 
         {/* Тесты */}
         <TestHub/>

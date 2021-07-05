@@ -4,7 +4,6 @@ import React from 'react'
  * Тесты.
  */
 import craft from './tests/craft'
-import startGame from './tests/startGame'
 import callboard from './tests/callboard'
 import requestPanel from './tests/requestPanel'
 import animList from './tests/animList'
@@ -27,7 +26,6 @@ const TestHub = () => {
    */
   const tests = {
     craft,
-    startGame,
     callboard,
     requestPanel,
     animList,
