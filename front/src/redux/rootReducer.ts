@@ -12,13 +12,11 @@ import { hintPanelReducer } from "../features/static/hud/components/HintPanel/re
 import { interactionMenuReducer } from "../features/systems/interactionMenu/reducer";
 import { requestPanelReducer } from "../features/utils/requestPanel/reducer";
 import { craftReducer } from '../features/crafts/craft/reducer'
-import { startGameReducer } from '../features/utils/startGame/reducer'
 
 import { appReducer } from "../reducers/app";
 import { commandReducer } from "../reducers/command";
 
 export const rootReducer = combineReducers({
-  startGameReducer,
   craftReducer,
   hintPanelReducer,
   requestPanelReducer,
