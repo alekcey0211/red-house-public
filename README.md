@@ -7,7 +7,7 @@ Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
 - install [Papyrus lang for VS Code](https://marketplace.visualstudio.com/items?itemName=joelday.papyrus-lang-vscode)
 - in folder .vscode rename tasks.example.json to tasks.json (replace if exists)
 - in folder .vscode rename settings.example.json to settings.json (replace if exists)
-- change papyrus.skyrimSpecialEdition.installPath in settings.json to your compile folder
+- change papyrus.skyrimSpecialEdition.installPath in settings.json to absolute path for compiler folder
 - in server folder rename server-settings.example.json to server-settings.json and configure your server
 - copy Dawnguard.esm, Dragonborn.esm, HearthFires.esm, Skyrim.esm, Update.esm from skyrim folder to server data folder
 - in server folder unzip the scripts.zip to the server/data/scripts folder
