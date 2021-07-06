@@ -1,7 +1,7 @@
 {
 	"name": "server",
 	"version": "1.0.0",
-	"description": "Skyrim Multiplayer (SkyMP) - Lite Binary Distribution for Windows\r -------------------------------------------------------------------------------",
+	"description": "",
 	"main": "gamemode.js",
 	"scripts": {
 		"start": "node skymp5-server.js",

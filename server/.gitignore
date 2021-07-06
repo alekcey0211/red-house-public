@@ -1,5 +1,4 @@
 world.sqlite
-server-settings.json
 data/scripts/Source/*
 data/scripts/*.pex
 
@@ -17,7 +16,6 @@ skymp5-server-old.exe
 skymp5-server-src.exe
 skymp5-server-exe-src.js
 server.js
-dist_front
 world
 server-win.exe
 server-linux

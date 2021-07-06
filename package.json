@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"compile": "cd ./compiler/ && compile.bat",
-		"postinstall": "npm run functions:install && npm run server:install && npm run xelib:install && npm run parse:install && npm run front:install",
+		"postinstall": "npm run functions:install && npm run server:install && npm run xelib:install && npm run parse:install && npm run front:install && npm run client:install",
 		"server:start": "cd ./server && npm run start",
 		"server:start:exe": "cd ./server && npm run exe",
 		"server:start:clean": "npm run server:delete:world && npm run server:start",
@@ -25,6 +25,7 @@
 		"client:watch": "cd ./client && npm run watch",
 		"client:build": "cd ./client && npm run build",
 		"client:test": "cd ./client && npm run test",
+		"client:install": "cd ./client && npm i",
 		"parse:all": "npm run parse:unpack && npm run parse:csv && npm run parse:json",
 		"parse:unpack": "cd ./parse-localization/ && bsaUnpack.bat",
 		"parse:csv": "cd ./parse-localization/ && stringsToCsv.bat",
