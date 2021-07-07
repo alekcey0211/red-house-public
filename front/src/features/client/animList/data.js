@@ -249,22 +249,6 @@ export default {
       type: 'item'
     },
     {
-      code: '00Dance01Start',
-      codeType: 'idle',
-      name: 'Танец из мода (старт)',
-      parents: ['Музыка и танцы'],
-      marked: false,
-      type: 'item'
-    },
-    {
-      code: '00DanceStop',
-      codeType: 'idle',
-      name: 'Танец из мода (стоп)',
-      parents: ['Музыка и танцы'],
-      marked: false,
-      type: 'item'
-    },
-    {
       code: 'IdleCivilWarCheer',
       codeType: 'idle',
       name: 'Боевой клич',
