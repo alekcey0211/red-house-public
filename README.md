@@ -31,6 +31,7 @@ See our documentation for front [link](https://www.notion.so/SKYMP-FRONTEND-f7ee
 
 ## Installation for DEV
 
+- install lates stable node js version
 - install [Papyrus lang for VS Code](https://marketplace.visualstudio.com/items?itemName=joelday.papyrus-lang-vscode)
 - in folder .vscode rename tasks.example.json to tasks.json (replace if exists)
 - in folder .vscode rename settings.example.json to settings.json (replace if exists)
