@@ -13,9 +13,9 @@ if you only want to run the server without development, then you need to use the
 
 to start your server use `npm run server:start` in root folder in repo, or `npm start` in server folder
 
-## Server configuration
+## Server documentation
 
-See documentation about server-settings [skymp5-docs](https://github.com/skyrim-multiplayer/skymp/blob/main/skymp5-docs)
+See documentation about server-settings [skymp5-docs](https://github.com/skyrim-multiplayer/skymp/tree/main/docs)
 
 But our server has a couple of its own settings [link](docs/server-configuration.md)
 
