@@ -10,3 +10,8 @@ export enum WeaponType {
   Staff,
   Crossbows,
 }
+
+export enum WeaponLocation {
+	LeftHand,
+	RightHand
+}

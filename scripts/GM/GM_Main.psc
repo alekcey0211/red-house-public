@@ -16,10 +16,10 @@ Function _OnLoadGame(Actor ac) global
 EndFunction
 
 Bool Function _onActivate(ObjectReference target, ObjectReference caster) global
-    If (!RHF_Main._onActivate(target, caster))
-        Return False
+    if (RHF_Main._onActivate(target, caster) == false)
+        Return false
     EndIf
-    Return True
+    Return true
 EndFunction
 
 Function _onCellChange(Actor ac, Cell prevCell, Cell currentCell) global
@@ -42,8 +42,8 @@ Function _OnInput(Actor ac, Int[] keycodes) global
     RHF_Main._OnInput(ac, keycodes)
 EndFunction
 
-Function _onAnimationEvent(Actor ac, String current, String previous = "") global
-    RHF_Main._onAnimationEvent(ac, current, previous)
+Function _onAnimationEvent(Actor ac, String current, String previous = "", bool isAttack = false, bool isJump = false, bool isFall = false, bool isJumpLand = false, bool isChangeHp = false) global
+	RHF_Main._onAnimationEvent(ac, current, previous, isAttack, isJump, isFall, isJumpLand, isChangeHp)
 EndFunction
 
 Function _onEffectStart(ObjectReference caster, ObjectReference target, MagicEffect effect, Int mag) global

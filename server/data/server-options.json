@@ -39,10 +39,6 @@
 	"command9": "",
 	"command0": "",
 
-	"AVhealrate": 0,
-	"AVhealratemult": 0,
-	"AVhealthdrain": 0,
-
 	"StartUpItemsAdd": [
 		"0xf4314;10",
 		"0x34cdf;30",

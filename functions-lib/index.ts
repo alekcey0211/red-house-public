@@ -4,6 +4,13 @@ declare const mp: Mp;
 
 console.log('gamemode.js starts...');
 
+console.debug = (...data: any[]) => {
+	console.log('[DEBUG]', data);
+};
+console.error = (...data: any[]) => {
+	console.log('[ERROR]', data);
+};
+
 const register = mp.registerPapyrusFunction;
 mp.registerPapyrusFunction = (
 	callType: 'method' | 'global',
@@ -33,6 +40,26 @@ mp.registerPapyrusFunction = (
 		});
 	}
 };
+
+// import * as fs from 'fs';
+// import * as path from 'path';
+// mp.getServerSettings = (): Record<string, any> => {
+//   if (!mp.serverSettings) {
+//     const content = fs.readFileSync('server-settings.json', { encoding: 'utf-8' });
+//     mp.serverSettings = JSON.parse(content);
+//   }
+//   return mp.serverSettings as Record<string, any>;
+// };
+// mp.readDataDirectory = (): string[] => {
+//   const { dataDir } = mp.getServerSettings();
+//   return fs.readdirSync(dataDir);
+// };
+// mp.readDataFile = (filePath: string): string => {
+//   const { dataDir } = mp.getServerSettings();
+//   const readPath = path.join(dataDir, filePath);
+//   const content = fs.readFileSync(readPath, { encoding: 'utf-8' });
+//   return content;
+// };
 
 import * as events from './src/events';
 import * as synchronization from './src/synchronization';
@@ -71,11 +98,14 @@ import * as animProp from './src/properties/anim';
 
 import { LocalizationProvider } from './src/utils/localizationProvider';
 import { StringLocalizationProvider } from './src/utils/stringLocalizationProvider';
+import { actorValues, AttrAll, Attr } from './src/properties/actor/actorValues/attributes';
+import { ServerOptionProvider } from './src/papyrus/game/server-options';
 
 const config = mp.getServerSettings();
 const locale = config.locale;
 const data = config.dataDir;
 const isPapyrusHotReloadEnabled = config.isPapyrusHotReloadEnabled;
+const isServerOptionsHotReloadEnabled = config.isServerOptionsHotReloadEnabled;
 const stringsPath = config.stringsPath ?? 'strings';
 const gamemodePath = config.gamemodePath ?? 'gamemode.js';
 
@@ -90,6 +120,8 @@ const stringLocalizationProvider = new StringLocalizationProvider(
 	mp.readDataFile('localization/' + locale + '.json'),
 	locale
 );
+
+export const serverOptionProvider = new ServerOptionProvider(mp, isServerOptionsHotReloadEnabled);
 
 // TODO: clear?
 mp.clear();
@@ -114,7 +146,7 @@ actor.register(mp);
 actorValueInfo.register(mp);
 objectReference.register(mp);
 utility.register(mp);
-game.register(mp);
+game.register(mp, serverOptionProvider);
 debug.register(mp);
 weapon.register(mp);
 globalVariable.register(mp);
@@ -131,4 +163,19 @@ visualEffect.register(mp);
 
 setTimeout(() => {
 	mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
+
+	const formId = 0xff000000;
+	const sprintAttr: Attr = 'stamina';
+	const staminaReduce = 10;
+	// actorValues.set(formId, sprintAttr, 'base', 200);
+	// mp.set(formId, 'av_stamina', { "base": 200, "damage": 0 })
+
+	// mp.set(formId, 'av_stamina', '200')
+
+	// mp.set(formId, 'isSprinting', true)
+	// mp.set(formId, 'pos', [0, 0, 0])
+	// mp.set(0, 'pos', [0, 0, 0])
+	// mp.get(formId, 'av_stamina')
+
+	// console.log(actorValues.get(id, sprintAttr, 'base'));
 }, 0);

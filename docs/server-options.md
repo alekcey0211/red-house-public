@@ -167,20 +167,6 @@ A string setting that contains bind chat command to combination alt + key
 }
 ```
 
-## Heal regeneration
-
-A number setting that change heal regenaration rate, multiply and drain
-
-```json
-{
-	// ...
-	"AVhealrate": 0,
-	"AVhealratemult": 0,
-	"AVhealthdrain": 0
-	// ...
-}
-```
-
 ## StartUpItemsAdd
 
 Array of string that contains list of items in format id;count that add at startup

@@ -1,8 +1,7 @@
 import { getForm } from '../papyrus/game';
-import { getBaseObjectIdById } from '../papyrus/objectReference';
-import { actorValues } from '../properties/actor/actorValues/attributes';
-import { skillList } from '../properties/actor/actorValues/skillList';
-import { Mp, PapyrusObject } from '../types/mp';
+import { getRespawnTimeById } from '../papyrus/objectReference';
+import { actorValues, AttrAll } from '../properties/actor/actorValues/attributes';
+import { EspmLookupResult, Mp, PapyrusObject } from '../types/mp';
 import { FunctionInfo } from '../utils/functionInfo';
 import {
 	onAnimationEvent,
@@ -13,153 +12,99 @@ import {
 	onHit,
 	onInput,
 	onLoad,
+	onPrintConsole,
 	onUiMenuToggle,
 } from './functions';
 import * as empty from './empty';
 import { getFlags } from '../papyrus/activeMagicEffect';
-import { getServerOptions, getServerOptionsValue } from '../papyrus/game/server-options';
 import { getEquipment } from '../papyrus/actor/equip';
-import * as weapon from '../papyrus/weapon';
 import * as position from '../papyrus/objectReference/position';
 import { WeaponType } from '../papyrus/weapon/type';
-import { getSelfId, getWeight } from '../papyrus/form';
-import { float32, uint16, uint32 } from '../utils/helper';
+import { getSelfId } from '../papyrus/form';
+import { uint16, uint32 } from '../utils/helper';
 import { Ctx } from '../types/ctx';
 import { evalClient } from '../properties/eval';
 import { getPerkEffectData } from '../papyrus/perk';
 import { EffectFunctionType } from '../papyrus/perk/type';
-import * as effectShader from '../papyrus/effectShader';
-import * as potion from '../papyrus/potion';
-import * as magicEffect from '../papyrus/magicEffect';
-import { getObjectArray } from '../utils/papyrusArgs';
+import { serverOptionProvider } from '../..';
+import { ServerOption } from '../papyrus/game/server-options';
+import { Actor } from '../types/skyrimPlatform';
+import {
+	getRaceHealth,
+	getRaceHealthRate,
+	getRaceId,
+	getRaceMagicka,
+	getRaceMagickaRate,
+	getRaceStamina,
+	getRaceStaminaRate,
+	getRaceUnarmedDamage,
+} from '../papyrus/race';
+import { throwOutById } from '../papyrus/actor';
 
-const getAttrFromRace = (mp: Mp, pcFormId: number): [number, number, number] => {
-	const defaultReturn: [number, number, number] = [100, 100, 100];
-	try {
-		const selfId = mp.getIdFromDesc(mp.get(pcFormId, 'baseDesc'));
-		const rec = mp.lookupEspmRecordById(selfId).record;
-		if (!rec) return defaultReturn;
+const getAttrFromRace = (mp: Mp, pcFormId: number): Partial<Record<AttrAll, number>> => {
+	const defaultReturn: Partial<Record<AttrAll, number>> = {
+		health: 100,
+		healrate: 0,
+		magicka: 100,
+		magickarate: 0,
+		stamina: 100,
+		staminarate: 0,
+	};
 
-		const acbs = rec.fields.find((x) => x.type === 'ACBS')?.data;
-		const magickaOffset = acbs ? uint16(acbs.buffer, 4) : 0;
-		const staminaOffset = acbs ? uint16(acbs.buffer, 6) : 0;
-		const level = acbs ? uint16(acbs.buffer, 8) : 0;
-		const healthOffset = acbs ? uint16(acbs.buffer, 20) : 0;
+	const selfId = mp.getIdFromDesc(mp.get(pcFormId, 'baseDesc'));
+	const rec = mp.lookupEspmRecordById(selfId).record;
+	if (!rec) return defaultReturn;
 
-		let raceId: number = 0;
+	const acbs = rec.fields.find((x) => x.type === 'ACBS')?.data;
+	const magickaOffset = acbs ? uint16(acbs.buffer, 4) : 0;
+	const staminaOffset = acbs ? uint16(acbs.buffer, 6) : 0;
+	const level = acbs ? uint16(acbs.buffer, 8) : 0;
+	const healthOffset = acbs ? uint16(acbs.buffer, 20) : 0;
 
-		if (pcFormId >= 0xff000000) {
-			try {
-				const appearance = mp.get(pcFormId, 'appearance');
-				raceId = appearance?.raceId ?? 0;
-			} catch (error) {}
-		}
+	const raceId = getRaceId(mp, pcFormId, rec);
+	if (!raceId) return defaultReturn;
 
-		if (raceId === 0) {
-			const rnam = rec.fields.find((x) => x.type === 'RNAM')?.data;
-			if (!rnam) return defaultReturn;
+	mp.set(pcFormId, 'race', raceId);
+	const espmRecord = mp.lookupEspmRecordById(raceId) as EspmLookupResult;
 
-			raceId = uint32(rnam.buffer, 0);
-		}
-
-		const espmRecord = mp.lookupEspmRecordById(raceId);
-		const d = espmRecord.record?.fields.find((x) => x.type === 'DATA')?.data;
-		if (d) {
-			const health = float32(d.buffer, 36);
-			const magicka = float32(d.buffer, 40);
-			const stamina = float32(d.buffer, 44);
-			return [health + healthOffset, magicka + magickaOffset, stamina + staminaOffset];
-		}
-		return defaultReturn;
-	} catch (err) {
-		console.log('[ERROR] getAttrFromRace', err);
-		return defaultReturn;
-	}
+	return {
+		health: (getRaceHealth(espmRecord) ?? 100) + healthOffset,
+		healrate: getRaceHealthRate(espmRecord) ?? 0,
+		magicka: (getRaceMagicka(espmRecord) ?? 100) + magickaOffset,
+		magickarate: getRaceMagickaRate(espmRecord) ?? 0,
+		stamina: (getRaceStamina(espmRecord) ?? 100) + staminaOffset,
+		staminarate: getRaceStaminaRate(espmRecord) ?? 0,
+	};
 };
-
-const initAVFromRace = (mp: Mp, pcFormId: number) => {
+export const initAVFromRace = (mp: Mp, pcFormId: number, serverOptions?: ServerOption) => {
 	if (mp.get(pcFormId, 'isDead') !== undefined) return;
 
-	const baseId = getBaseObjectIdById(mp, null, [pcFormId]);
-
 	if (!mp.get(pcFormId, 'spawnPointPosition')) {
-		mp.set(pcFormId, 'spawnPointPosition', getServerOptionsValue(mp, ['SpawnPointPosition']));
-		mp.set(pcFormId, 'spawnPointAngle', getServerOptionsValue(mp, ['SpawnPointAngle']));
-		mp.set(pcFormId, 'spawnPointWorldOrCellDesc', getServerOptionsValue(mp, ['SpawnPointWorldOrCellDesc']));
+		const { SpawnPointPosition, SpawnPointAngle, SpawnPointWorldOrCellDesc } =
+			serverOptions ?? serverOptionProvider.getServerOptions();
 
-		const timeById: { id: number; time: number }[] =
-			getServerOptionsValue(mp, ['spawnTimeById'])?.map((x: string) => {
-				const xParse = x.split(':');
-				if (xParse.length != 2) return;
-				return {
-					id: +xParse[0],
-					time: +xParse[1],
-				};
-			}) ?? [];
-		const refTime = timeById.find((x) => x.id === pcFormId)?.time;
-		const baseTime = timeById.find((x) => x.id === baseId)?.time;
-		const time =
-			refTime ?? baseTime ?? getServerOptionsValue(mp, [baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC']);
-
+		mp.set(pcFormId, 'spawnPointPosition', SpawnPointPosition);
+		mp.set(pcFormId, 'spawnPointAngle', SpawnPointAngle);
+		mp.set(pcFormId, 'spawnPointWorldOrCellDesc', SpawnPointWorldOrCellDesc);
+		const time = getRespawnTimeById(mp, null, [pcFormId]);
 		mp.set(pcFormId, 'spawnTimeToRespawn', time);
 	}
 
-	Object.keys(skillList).forEach((avName) => {
-		mp.set(pcFormId, `av${avName}`, mp.get(pcFormId, `av${avName}`) ?? 1);
-		mp.set(pcFormId, `av${avName}Exp`, mp.get(pcFormId, `av${avName}Exp`) ?? 0);
-	});
+	const raceAttr = getAttrFromRace(mp, pcFormId);
 
-	mp.set(pcFormId, `avspeedmult`, mp.get(pcFormId, `avspeedmult`) ?? 100);
-	mp.set(pcFormId, `avweaponspeedmult`, mp.get(pcFormId, `avweaponspeedmult`) ?? 1);
-
-	const [health, magicka, stamina] = getAttrFromRace(mp, pcFormId);
-	const {
-		AVhealrate: healrate,
-		AVhealratemult: healratemult,
-		AVstaminarate: staminarate,
-		AVstaminaratemult: staminaratemult,
-		AVmagickarate: magickarate,
-		AVmagickaratemult: magickaratemult,
-	} = getServerOptions(mp);
-
-	actorValues.setDefaults(
-		pcFormId,
-		{ force: true },
-		{
-			health,
-			magicka,
-			stamina,
-			healrate,
-			healratemult,
-			staminarate,
-			staminaratemult,
-			magickarate,
-			magickaratemult,
-		}
-	);
+	actorValues.setDefaults(pcFormId, { force: true }, raceAttr);
 };
-
 const logExecuteTime = (startTime: number, eventName: string) => {
 	if (Date.now() - startTime > 10) {
-		console.log(`Event ${eventName}: `, Date.now() - startTime);
+		console.log('[PERFOMANCE]', `Event ${eventName}: `, Date.now() - startTime);
 	}
 };
-export const throwOrInit = (mp: Mp, id: number) => {
+export const throwOrInit = (mp: Mp, id: number, serverOptions?: ServerOption) => {
 	if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0') {
-		mp.set(id, 'pos', [-99_999, -99_999, -99_999]);
-		mp.set(id, 'isDead', true);
-		try {
-			actorValues.set(id, 'health', 'base', 0);
-		} catch (err) {
-			console.log('[ERROR] actorValues.set', err);
-		}
-		try {
-			mp.set(id, 'isDisabled', true);
-		} catch {}
-		mp.set(id, 'worldOrCellDesc', '0');
+		throwOutById(mp, id);
 	} else if (!mp.get(id, 'spawnPointPosition')) {
 		try {
-			initAVFromRace(mp, id);
+			initAVFromRace(mp, id, serverOptions);
 		} catch (err) {
 			console.log('[ERROR] initAVFromRace', err);
 		}
@@ -215,11 +160,12 @@ export const register = (mp: Mp): void => {
 		mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
 
 		initAVFromRace(mp, pcFormId);
+		const serverOptions = serverOptionProvider.getServerOptions();
 		const neighbors = mp.get(pcFormId, 'neighbors');
 		neighbors
 			.filter((n) => mp.get(n, 'type') === 'MpActor')
 			.forEach((id) => {
-				throwOrInit(mp, id);
+				throwOrInit(mp, id, serverOptions);
 			});
 
 		logExecuteTime(start, '_onLoadGame');
@@ -235,15 +181,11 @@ export const register = (mp: Mp): void => {
 		try {
 			if (mp.get(target, 'blockActivationState')) return false;
 		} catch {}
-		const actiovation1 = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
+		const actiovation = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
 
 		logExecuteTime(start, 'onActivate');
 
-		if (!actiovation1) {
-			return false;
-		}
-
-		return true;
+		return actiovation ?? true;
 	};
 
 	mp.makeEventSource('_onCellChange', new FunctionInfo(onCellChange).body);
@@ -256,10 +198,11 @@ export const register = (mp: Mp): void => {
 		const currentCell: PapyrusObject = { type: 'espm', desc: mp.getDescFromId(event.currentCell) };
 
 		const neighbors = mp.get(pcFormId, 'neighbors');
+		const serverOptions = serverOptionProvider.getServerOptions();
 		neighbors
 			.filter((n) => mp.get(n, 'type') === 'MpActor')
 			.forEach((id) => {
-				throwOrInit(mp, id);
+				throwOrInit(mp, id, serverOptions);
 			});
 
 		mp.set(pcFormId, 'cellDesc', currentCell.desc);
@@ -273,6 +216,29 @@ export const register = (mp: Mp): void => {
 	mp['_onHit'] = (pcFormId: number, event: any) => {
 		const start = Date.now();
 
+		// const set = mp.set;
+		// const get = mp.get;
+		// mp.set = () => undefined;
+		// mp.get = (formId: number, propertyName: string): any => {
+		//   const obj: Record<string, any> = {
+		//     av_health: { base: 100, modifier: 0, damage: 0 },
+		//     av_magicka: { base: 100, modifier: 0, damage: 0 },
+		//     av_stamina: { base: 100, modifier: 0, damage: 0 },
+		//     av_mp_healthdrain: { base: 100, modifier: 0, damage: 0 },
+		//     av_mp_magickadrain: { base: 100, modifier: 0, damage: 0 },
+		//     av_mp_staminadrain: { base: 100, modifier: 0, damage: 0 },
+		//     av_healrate: { base: 100, modifier: 0, damage: 0 },
+		//     av_magickarate: { base: 100, modifier: 0, damage: 0 },
+		//     av_staminarate: { base: 100, modifier: 0, damage: 0 },
+		//     av_healratemult: { base: 100, modifier: 0, damage: 0 },
+		//     av_magickaratemult: { base: 100, modifier: 0, damage: 0 },
+		//     av_staminaratemult: { base: 100, modifier: 0, damage: 0 },
+		//     equipment: { inv: { entries: [] } },
+		//     isDead: false,
+		//   };
+		//   return obj[propertyName];
+		// };
+
 		if (!pcFormId) return console.log('Plz reconnect');
 
 		if (event.target === 0x14) {
@@ -282,87 +248,109 @@ export const register = (mp: Mp): void => {
 			event.agressor = pcFormId;
 		}
 
+		const { HitDamageMod, isPowerAttackMult, isBashAttackMult } = serverOptionProvider.getServerOptions();
+
 		const target: PapyrusObject = { type: 'form', desc: mp.getDescFromId(event.target) };
 		const agressor: PapyrusObject = { type: 'form', desc: mp.getDescFromId(event.agressor) };
 
-		let damageMod = getServerOptionsValue(mp, ['HitDamageMod']);
+		let damageMod: number = HitDamageMod;
+		const raceId = mp.get<number>(pcFormId, 'race');
+		if (raceId) {
+			const espmRecord = mp.lookupEspmRecordById(raceId) as EspmLookupResult;
+			const unarmedDamage = getRaceUnarmedDamage(espmRecord);
+			unarmedDamage && (damageMod = -unarmedDamage);
+		}
 
+		// TODO: optimize
+		// getEquipment(mp, event.agressor); 13
 		const eq = getEquipment(mp, event.agressor);
 		const eq1 = getEquipment(mp, event.target);
+
 		const weap = eq?.inv.entries.filter((x) => x.type === 'WEAP');
 		const arm = eq1?.inv.entries.filter((x) => x.type === 'ARMO');
 		let isHammer = false;
 
 		// TODO: нужно учитывать оружие в левой руке
 		// * BUG: оружие в левой руке не учитывается в свойстве equipment
-		if (weap && weap.length > 0 && !event.isBashAttack) {
-			const f = getForm(mp, null, [weap[0].baseId]);
-			if (f) {
-				const baseDmg = weapon.getBaseDamage(mp, f);
-				baseDmg && (damageMod = baseDmg * -1);
-				const type = weapon.getWeaponType(mp, f);
-
-				// определяю что оружие это булава
-				if (type === WeaponType.BattleaxesANDWarhammers || type === WeaponType.Maces) isHammer = true;
-			}
+		if (weap && weap.length > 0) {
+			const baseDmg = weap[0].baseDamage;
+			baseDmg && (damageMod = baseDmg * -1);
+			const type = weap[0].weaponType;
+			if (type === WeaponType.BattleaxesANDWarhammers || type === WeaponType.Maces) isHammer = true;
 		}
 
 		// класс брони противника
 		if (arm && arm.length > 0) {
 			arm.forEach((x) => {
-				const start = Date.now();
 				if (!x.baseArmor) return;
 				// если оружение это булава, то броню уменьшаю на 25%
 				if (isHammer) x.baseArmor * 0.75;
 
 				// снижаю урон от кол-ва брони (12 брони снизит урон на 1.2% или 0.012)
 				const percent = 1 - x.baseArmor / 1000;
-				damageMod *= percent;
+				damageMod = damageMod * percent;
 			});
 		}
 
 		if (event.isPowerAttack) {
-			damageMod *= getServerOptionsValue(mp, ['isPowerAttackMult']);
-			console.log('isPowerAttack');
+			damageMod = damageMod * isPowerAttackMult;
 		}
 		if (event.isBashAttack) {
-			damageMod *= getServerOptionsValue(mp, ['isBashAttackMult']);
-			console.log('isBashAttack');
+			damageMod = damageMod * isBashAttackMult;
+		}
+		const calcPerks = false;
+
+		// TODO: optimize
+		if (calcPerks) {
+			const targetId = getSelfId(mp, agressor.desc);
+			const rec = mp.lookupEspmRecordById(targetId).record;
+			const prkr = rec?.fields.filter((x) => x.type === 'PRKR').map((x) => x.data);
+			try {
+				prkr?.forEach((p) => {
+					const perkId = uint32(p.buffer, 0);
+					const effectData = getPerkEffectData(mp, perkId);
+					effectData?.forEach((eff) => {
+						if (!eff) return;
+						// Mod Attack Damage 0x23
+						if (eff.effectType === 0x23 && eff.functionType === EffectFunctionType.MultiplyValue) {
+							if (!eff.conditionFunction || !weap || weap.length === 0) return;
+							const conditionResult = eff.conditionFunction(weap[0].baseId);
+							if (!conditionResult) return;
+							if (eff.effectValue) {
+								damageMod *= eff.effectValue;
+								// console.log('perk multiply', eff.effectValue);
+							}
+						}
+					});
+				});
+			} catch (error) {
+				console.log('Perk effect ERROR', error);
+			}
 		}
 
+		// const isBlocking = mp.get(pcFormId, 'isBlocking') ?? false;
 		if (event.isHitBlocked) {
 			damageMod *= 0.5;
 		}
 
-		const targetId = getSelfId(mp, agressor.desc);
-		const rec = mp.lookupEspmRecordById(targetId).record;
-		const prkr = rec?.fields.filter((x) => x.type === 'PRKR').map((x) => x.data);
-		try {
-			prkr?.forEach((p) => {
-				const perkId = uint32(p.buffer, 0);
-				const effectData = getPerkEffectData(mp, perkId);
-				effectData?.forEach((eff) => {
-					if (!eff) return;
-					if (eff.effectType === 0x23 && eff.functionType === EffectFunctionType.MultiplyValue) {
-						if (!eff.conditionFunction || !weap || weap.length === 0) return;
-						const conditionResult = eff.conditionFunction(weap[0].baseId);
-						if (!conditionResult) return;
-						if (eff.effectValue) {
-							damageMod *= eff.effectValue;
-						}
-					}
-				});
-			});
-		} catch (error) {
-			console.log('Perk effect ERROR', error);
-		}
+		console.log('[HIT]', damageMod);
 
 		const avName = 'health';
+		// const agressorDead = actorValues.getCurrent(event.agressor, avName) <= 0;
+		// if (damageMod < 0 && agressorDead) {
+		//   console.log("Dead characters can't hit");
+		//   return;
+		// }
 
 		const damage = actorValues.get(event.target, avName, 'damage');
 		const newDamageModValue = damage + damageMod;
+
+		// TODO: optimize
+		// actorValues.set(event.target, avName, 'damage', newDamageModValue); 35ms
 		actorValues.set(event.target, avName, 'damage', newDamageModValue);
 
+		// TODO: optimize
+		// const wouldDie = actorValues.getMaximum(event.target, avName) + newDamageModValue <= 0; 15ms
 		const wouldDie = actorValues.getMaximum(event.target, avName) + newDamageModValue <= 0;
 
 		if (wouldDie && !mp.get(event.target, 'isDead')) {
@@ -378,6 +366,8 @@ export const register = (mp: Mp): void => {
 			event.isHitBlocked,
 		]);
 
+		// mp.set = set;
+		// mp.get = get;
 		logExecuteTime(start, '_onHit');
 	};
 
@@ -429,21 +419,29 @@ export const register = (mp: Mp): void => {
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(event.actor) };
 		const target: PapyrusObject = { type: 'espm', desc: mp.getDescFromId(event.target) };
 
-		if (getServerOptionsValue(mp, ['enableALCHeffect'])) {
-			const rec = mp.lookupEspmRecordById(event.target).record;
-			if (rec && rec?.type === 'ALCH') {
-				const mges = getObjectArray([potion.getMagicEffects(mp, target)], 0);
-				mges.forEach((m) => {
-					const id = mp.getIdFromDesc(m.desc);
-					const f = getForm(mp, null, [id]);
-					if (!f) return;
-					const hitShader = magicEffect.getHitShader(mp, f);
-					if (!hitShader) return;
-					effectShader.play(mp, hitShader, [ac, 5]);
-				});
-			}
-		}
+		// if (serverOptionProvider.getServerOptionsValue(['enableALCHeffect'])) {
+		// 	const rec = mp.lookupEspmRecordById(event.target).record;
+		// 	if (rec && rec?.type === 'ALCH') {
+		// 		const mges = getObjectArray([potion.getMagicEffects(mp, target)], 0);
+		// 		mges.forEach((m) => {
+		// 			const id = mp.getIdFromDesc(m.desc);
+		// 			const f = getForm(mp, null, [id]);
+		// 			if (!f) return;
+		// 			const hitShader = magicEffect.getHitShader(mp, f);
+		// 			if (!hitShader) return;
+		// 			effectShader.play(mp, hitShader, [ac, 5]);
+		// 		});
 
+		// 		// console.log('ALCHeffect', pcFormId, event.actor);
+		// 		// if (pcFormId === event.actor) {
+		// 		//   const f = getForm(mp, null, [event.target]);
+		// 		//   if (f) equipItem(mp, ac, [event.target]);
+		// 		//   // potion.equip(mp, ac, [event.target]);
+		// 		// }
+		// 	}
+		// }
+
+		// console.log('[functions] _onEquip', JSON.stringify([ac, target]));
 		mp.callPapyrusFunction('global', 'GM_Main', '_onEquip', null, [ac, target]);
 		logExecuteTime(start, '_onEquip');
 	};
@@ -473,8 +471,21 @@ export const register = (mp: Mp): void => {
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
 		mp.callPapyrusFunction('global', 'GM_Main', '_OnInput', null, [ac, keycodes]);
 
-		const keybindingBrowserSetVisible = getServerOptionsValue(mp, ['keybindingBrowserSetVisible']);
-		const keybindingBrowserSetFocused = getServerOptionsValue(mp, ['keybindingBrowserSetFocused']);
+		const {
+			keybindingBrowserSetVisible,
+			keybindingBrowserSetFocused,
+			command1,
+			command2,
+			command3,
+			command4,
+			command5,
+			command0,
+			command6,
+			command7,
+			command8,
+			command9,
+		} = serverOptionProvider.getServerOptions();
+
 		if (!mp.get(pcFormId, 'browserModal')) {
 			if (keycodes.length === 1 && keycodes[0] === keybindingBrowserSetVisible) {
 				mp.callPapyrusFunction('global', 'M', 'BrowserSetVisible', null, [
@@ -490,33 +501,76 @@ export const register = (mp: Mp): void => {
 			}
 		}
 
-		let command = '';
-		if (keycodes.includes(56) && keycodes.includes(0x02)) {
-			command = getServerOptionsValue(mp, ['command1']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x03)) {
-			command = getServerOptionsValue(mp, ['command2']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x04)) {
-			command = getServerOptionsValue(mp, ['command3']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x05)) {
-			command = getServerOptionsValue(mp, ['command4']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x06)) {
-			command = getServerOptionsValue(mp, ['command5']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x07)) {
-			command = getServerOptionsValue(mp, ['command6']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x08)) {
-			command = getServerOptionsValue(mp, ['command7']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x09)) {
-			command = getServerOptionsValue(mp, ['command8']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x0a)) {
-			command = getServerOptionsValue(mp, ['command9']);
-		} else if (keycodes.includes(56) && keycodes.includes(0x0b)) {
-			command = getServerOptionsValue(mp, ['command0']);
-		}
+		const getCommand = () => {
+			if (keycodes.includes(56) && keycodes.includes(0x02)) {
+				return command1;
+			} else if (keycodes.includes(56) && keycodes.includes(0x03)) {
+				return command2;
+			} else if (keycodes.includes(56) && keycodes.includes(0x04)) {
+				return command3;
+			} else if (keycodes.includes(56) && keycodes.includes(0x05)) {
+				return command4;
+			} else if (keycodes.includes(56) && keycodes.includes(0x06)) {
+				return command5;
+			} else if (keycodes.includes(56) && keycodes.includes(0x07)) {
+				return command6;
+			} else if (keycodes.includes(56) && keycodes.includes(0x08)) {
+				return command7;
+			} else if (keycodes.includes(56) && keycodes.includes(0x09)) {
+				return command8;
+			} else if (keycodes.includes(56) && keycodes.includes(0x0a)) {
+				return command9;
+			} else if (keycodes.includes(56) && keycodes.includes(0x0b)) {
+				return command0;
+			}
+			return;
+		};
+
+		const command = getCommand();
 		if (command) {
 			mp.callPapyrusFunction('global', 'GM_Main', '_OnChatInput', null, [ac, command]);
 		}
 
 		if (keycodes.length === 1 && keycodes[0] === 0x04) {
+			const func = (ctx: Ctx) => {
+				ctx.sp.once('update', async () => {
+					const ac = ctx.refr as Actor;
+					if (!ac) return;
+
+					// const _obj = ctx.sp.Game.getFormFromFile(0x1be215, 'HIVE.esp');
+					// const _obj = ctx.sp.Game.getForm(119267862);
+
+					const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190090));
+					ctx.sp.printConsole(_obj);
+					if (!_obj) return;
+					const obj = ctx.sp.ObjectReference.from(_obj);
+					if (!obj) return;
+
+					// const x = obj.getPositionX();
+					// const y = obj.getPositionY();
+					// const z = obj.getPositionZ();
+					// ctx.sp.printConsole('splineTranslateTo')
+					// obj.translateTo(x + 1000, y + 1000, 0, 0, 0, 0, 100, 100);
+
+					// obj.forceAddRagdollToWorld();
+				});
+			};
+			evalClient(mp, pcFormId, new FunctionInfo(func).getText({}), true);
+		}
+		if (keycodes.length === 1 && keycodes[0] === 0x05) {
+			const func = (ctx: Ctx) => {
+				ctx.sp.once('update', async () => {
+					const ac = ctx.refr;
+					if (!ac) return;
+					const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190085));
+					if (!_obj) return;
+					const obj = ctx.sp.ObjectReference.from(_obj);
+					if (!obj) return;
+					ctx.sp.printConsole('stopTranslation');
+					obj.stopTranslation();
+				});
+			};
+			evalClient(mp, pcFormId, new FunctionInfo(func).getText({}), true);
 		}
 		logExecuteTime(start, '_onInput');
 	};
@@ -525,6 +579,7 @@ export const register = (mp: Mp): void => {
 
 	mp['_onAnimationEvent'] = (pcFormId: number, animationEvent: { current: string; previous: string }) => {
 		const start = Date.now();
+		// console.log(animationEvent);
 		if (!pcFormId) return console.log('Plz reconnect');
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
 
@@ -532,41 +587,26 @@ export const register = (mp: Mp): void => {
 		const isJump = ['JumpDirectionalStart', 'JumpStandingStart'].includes(animationEvent.current);
 		const isJumpLand = animationEvent.current.startsWith('JumpLand');
 		const isAttack = animationEvent.current.toLowerCase().startsWith('attack');
-		const isAttackPower = animationEvent.current.toLowerCase().startsWith('attackPower');
+		// ? remove isAttackPower because when power attack actor do two simple attack and reduce stamina twice
+		// const isAttackPower = animationEvent.current.toLowerCase().startsWith('attackpower');
+		let isChangeHp = false;
 
-		if (animationEvent.current === 'blockStart') {
-			mp.set(pcFormId, 'isBlocking', true);
-		} else if (animationEvent.current === 'blockStop') {
-			mp.set(pcFormId, 'isBlocking', false);
-		}
+		mp.set(pcFormId, 'isBlocking', animationEvent.current === 'blockStart');
 
 		const stamina = 'stamina';
-
 		if (isAttack) {
+			let { HitStaminaReduce } = serverOptionProvider.getServerOptions();
 			const eq = getEquipment(mp, pcFormId);
 			const weap = eq?.inv.entries.filter((x) => x.type === 'WEAP');
 
-			let weapWeight = null;
 			if (weap && weap.length > 0) {
-				const f = getForm(mp, null, [weap[0].baseId]);
-				if (f) {
-					weapWeight = getWeight(mp, f);
-				}
+				weap[0].weight && (HitStaminaReduce = weap[0].weight);
 			}
 
-			let hitStaminaReduce = 0;
-			hitStaminaReduce = weapWeight ?? getServerOptionsValue(mp, ['HitStaminaReduce']);
-
-			if (isAttackPower) {
-				const powerAttackStaminaReduce = weapWeight
-					? weapWeight * 2
-					: getServerOptionsValue(mp, ['isPowerAttackStaminaReduce']);
-				hitStaminaReduce = powerAttackStaminaReduce - hitStaminaReduce;
-			}
-
-			if (hitStaminaReduce) {
+			if (HitStaminaReduce > 0) {
 				const damage = actorValues.get(pcFormId, stamina, 'damage');
-				actorValues.set(pcFormId, stamina, 'damage', damage - hitStaminaReduce);
+				const newDamageModValue = damage - HitStaminaReduce;
+				actorValues.set(pcFormId, stamina, 'damage', newDamageModValue);
 			}
 		}
 
@@ -580,10 +620,21 @@ export const register = (mp: Mp): void => {
 		}
 
 		if (isJumpLand) {
-			const diff = mp.get(pcFormId, 'startZCoord') - position.getPositionZ(mp, ac);
-			if (diff > 300) {
-				const damage = actorValues.get(pcFormId, 'health', 'damage');
-				actorValues.set(pcFormId, 'health', 'damage', damage - diff / 100);
+			const startZCoord = mp.get<number>(pcFormId, 'startZCoord');
+			if (startZCoord) {
+				const diff = startZCoord - position.getPositionZ(mp, ac);
+				if (diff > 300) {
+					const damage = actorValues.get(pcFormId, 'health', 'damage');
+					const newDamageModValue = damage - diff / 100;
+					actorValues.set(pcFormId, 'health', 'damage', newDamageModValue);
+
+					const wouldDie = actorValues.getMaximum(pcFormId, 'health') + newDamageModValue <= 0;
+					if (wouldDie && !mp.get(pcFormId, 'isDead')) {
+						mp.onDeath && mp.onDeath(pcFormId);
+					}
+
+					isChangeHp = true;
+				}
 			}
 		}
 
@@ -592,6 +643,11 @@ export const register = (mp: Mp): void => {
 			ac,
 			animationEvent.current,
 			animationEvent.previous,
+			isAttack,
+			isJump,
+			isFall,
+			isJumpLand,
+			isChangeHp,
 		]);
 		logExecuteTime(start, '_onAnimationEvent');
 	};
@@ -653,6 +709,15 @@ export const register = (mp: Mp): void => {
 		mp.set(pcFormId, 'CurrentCrosshairRef', form ? crosshairRefId : null);
 		mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, form]);
 		logExecuteTime(start, '_onCurrentCrosshairChange');
+	};
+
+	mp.makeEventSource('_onPrintConsole', new FunctionInfo(onPrintConsole).tryCatch());
+	mp['_onPrintConsole'] = (pcFormId: number, event: any) => {
+		console.log('[client]', ...event.map((x: any) => JSON.stringify(x)));
+	};
+
+	mp['onDisconnectEvent'] = (pcFormId: number) => {
+		console.log('disconnect', pcFormId);
 	};
 
 	empty.register(mp);

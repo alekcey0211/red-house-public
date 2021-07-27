@@ -6,7 +6,6 @@ export function avUpdate(ctx: Ctx<Record<string, number | undefined>, number | u
     if (!ac) return;
 
     ac.setActorValue(avName, ctx.value);
-    ctx.sp.printConsole(Date.now(), avName, JSON.stringify(ctx.value));
 
     ctx.state[`last${avName}Value`] = ctx.value;
   }

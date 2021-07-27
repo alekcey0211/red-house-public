@@ -33,7 +33,8 @@ export interface Ctx<S = Record<string, JsonSerializable>, V = JsonSerializable>
    * so attempts getting them are leading to the undefined behavior.
    * @param propertyName Name of the property we are reading.
    */
-  readonly get?: (propertyName: string) => JsonSerializable | undefined;
+  // readonly get?: (propertyName: string) => JsonSerializable | undefined;
+  readonly get?: <T = JsonSerializable>(propertyName: string) => T | undefined;
 
   /**
    * Gets serverside formId by clientside formId or `0` if not found.

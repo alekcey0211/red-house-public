@@ -742,7 +742,143 @@ function localstorage() {
   } catch (e) {}
 }
 
-},{"./debug":"y5CM"}],"WM4h":[function(require,module,exports) {
+},{"./debug":"y5CM"}],"IvCc":[function(require,module,exports) {
+'use strict';
+
+module.exports = (flag, argv) => {
+  argv = argv || process.argv;
+  const prefix = flag.startsWith('-') ? '' : flag.length === 1 ? '-' : '--';
+  const pos = argv.indexOf(prefix + flag);
+  const terminatorPos = argv.indexOf('--');
+  return pos !== -1 && (terminatorPos === -1 ? true : pos < terminatorPos);
+};
+},{}],"DYmO":[function(require,module,exports) {
+'use strict';
+
+const os = require('os');
+
+const hasFlag = require('has-flag');
+
+const env = process.env;
+let forceColor;
+
+if (hasFlag('no-color') || hasFlag('no-colors') || hasFlag('color=false')) {
+  forceColor = false;
+} else if (hasFlag('color') || hasFlag('colors') || hasFlag('color=true') || hasFlag('color=always')) {
+  forceColor = true;
+}
+
+if ('FORCE_COLOR' in env) {
+  forceColor = env.FORCE_COLOR.length === 0 || parseInt(env.FORCE_COLOR, 10) !== 0;
+}
+
+function translateLevel(level) {
+  if (level === 0) {
+    return false;
+  }
+
+  return {
+    level,
+    hasBasic: true,
+    has256: level >= 2,
+    has16m: level >= 3
+  };
+}
+
+function supportsColor(stream) {
+  if (forceColor === false) {
+    return 0;
+  }
+
+  if (hasFlag('color=16m') || hasFlag('color=full') || hasFlag('color=truecolor')) {
+    return 3;
+  }
+
+  if (hasFlag('color=256')) {
+    return 2;
+  }
+
+  if (stream && !stream.isTTY && forceColor !== true) {
+    return 0;
+  }
+
+  const min = forceColor ? 1 : 0;
+
+  if (process.platform === 'win32') {
+    // Node.js 7.5.0 is the first version of Node.js to include a patch to
+    // libuv that enables 256 color output on Windows. Anything earlier and it
+    // won't work. However, here we target Node.js 8 at minimum as it is an LTS
+    // release, and Node.js 7 is not. Windows 10 build 10586 is the first Windows
+    // release that supports 256 colors. Windows 10 build 14931 is the first release
+    // that supports 16m/TrueColor.
+    const osRelease = os.release().split('.');
+
+    if (Number(process.versions.node.split('.')[0]) >= 8 && Number(osRelease[0]) >= 10 && Number(osRelease[2]) >= 10586) {
+      return Number(osRelease[2]) >= 14931 ? 3 : 2;
+    }
+
+    return 1;
+  }
+
+  if ('CI' in env) {
+    if (['TRAVIS', 'CIRCLECI', 'APPVEYOR', 'GITLAB_CI'].some(sign => sign in env) || env.CI_NAME === 'codeship') {
+      return 1;
+    }
+
+    return min;
+  }
+
+  if ('TEAMCITY_VERSION' in env) {
+    return /^(9\.(0*[1-9]\d*)\.|\d{2,}\.)/.test(env.TEAMCITY_VERSION) ? 1 : 0;
+  }
+
+  if (env.COLORTERM === 'truecolor') {
+    return 3;
+  }
+
+  if ('TERM_PROGRAM' in env) {
+    const version = parseInt((env.TERM_PROGRAM_VERSION || '').split('.')[0], 10);
+
+    switch (env.TERM_PROGRAM) {
+      case 'iTerm.app':
+        return version >= 3 ? 3 : 2;
+
+      case 'Apple_Terminal':
+        return 2;
+      // No default
+    }
+  }
+
+  if (/-256(color)?$/i.test(env.TERM)) {
+    return 2;
+  }
+
+  if (/^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/i.test(env.TERM)) {
+    return 1;
+  }
+
+  if ('COLORTERM' in env) {
+    return 1;
+  }
+
+  if (env.TERM === 'dumb') {
+    return min;
+  }
+
+  return min;
+}
+
+function getSupportLevel(stream) {
+  const level = supportsColor(stream);
+  return translateLevel(level);
+}
+
+module.exports = {
+  supportsColor: getSupportLevel,
+  stdout: getSupportLevel(process.stdout),
+  stderr: getSupportLevel(process.stderr)
+};
+},{"has-flag":"IvCc"}],"WM4h":[function(require,module,exports) {
 /**
  * Module dependencies.
  */
@@ -930,7 +1066,7 @@ function init (debug) {
 
 exports.enable(load());
 
-},{"./debug":"y5CM"}],"NLT6":[function(require,module,exports) {
+},{"./debug":"y5CM","supports-color":"DYmO"}],"NLT6":[function(require,module,exports) {
 /**
  * Detect Electron renderer process, which is node, but we should
  * treat as a browser.
@@ -19208,7 +19344,7 @@ formatters.O = function (v) {
   this.inspectOpts.colors = this.useColors;
   return util.inspect(v, this.inspectOpts);
 };
-},{"./common":"qyON"}],"yj3S":[function(require,module,exports) {
+},{"supports-color":"DYmO","./common":"qyON"}],"yj3S":[function(require,module,exports) {
 /**
  * Detect Electron renderer / nwjs process, which is node, but we should
  * treat as a browser.
@@ -62880,7 +63016,7 @@ formatters.O = function (v) {
   this.inspectOpts.colors = this.useColors;
   return util.inspect(v, this.inspectOpts);
 };
-},{"./common":"oP7x"}],"GaZa":[function(require,module,exports) {
+},{"supports-color":"DYmO","./common":"oP7x"}],"GaZa":[function(require,module,exports) {
 /**
  * Detect Electron renderer / nwjs process, which is node, but we should
  * treat as a browser.
@@ -68758,7 +68894,7 @@ class Settings {
     const res = new Settings();
     res.port = +args['port'] || res.port;
     res.maxPlayers = +args['maxPlayers'] || res.maxPlayers;
-    res.master = args['master'];
+    res.master = args['master'] || res.master;
     res.name = args['name'] || res.name;
     res.ip = args['ip'] || res.ip;
     return res;
@@ -70393,38 +70529,53 @@ module.exports = wrap({
 module.exports.wrap = wrap;
 },{"./debug":"AicN"}],"kHha":[function(require,module,exports) {
 module.exports = {
-  "name": "axios",
-  "version": "0.21.1",
-  "description": "Promise based HTTP client for the browser and node.js",
-  "main": "index.js",
-  "scripts": {
-    "test": "grunt test && bundlesize",
-    "start": "node ./sandbox/server.js",
-    "build": "NODE_ENV=production grunt build",
-    "preversion": "npm test",
-    "version": "npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json",
-    "postversion": "git push && git push --tags",
-    "examples": "node ./examples/server.js",
-    "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "fix": "eslint --fix lib/**/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/axios/axios.git"
-  },
-  "keywords": [
-    "xhr",
-    "http",
-    "ajax",
-    "promise",
-    "node"
+  "_args": [
+    [
+      "axios@0.21.1",
+      "C:\\Games\\skymp-workspace\\server-build"
+    ]
   ],
-  "author": "Matt Zabriskie",
-  "license": "MIT",
+  "_from": "axios@0.21.1",
+  "_id": "axios@0.21.1",
+  "_inBundle": false,
+  "_integrity": "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==",
+  "_location": "/axios",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "axios@0.21.1",
+    "name": "axios",
+    "escapedName": "axios",
+    "rawSpec": "0.21.1",
+    "saveSpec": null,
+    "fetchSpec": "0.21.1"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz",
+  "_spec": "0.21.1",
+  "_where": "C:\\Games\\skymp-workspace\\server-build",
+  "author": {
+    "name": "Matt Zabriskie"
+  },
+  "browser": {
+    "./lib/adapters/http.js": "./lib/adapters/xhr.js"
+  },
   "bugs": {
     "url": "https://github.com/axios/axios/issues"
   },
-  "homepage": "https://github.com/axios/axios",
+  "bundlesize": [
+    {
+      "path": "./dist/axios.min.js",
+      "threshold": "5kB"
+    }
+  ],
+  "dependencies": {
+    "follow-redirects": "^1.10.0"
+  },
+  "description": "Promise based HTTP client for the browser and node.js",
   "devDependencies": {
     "bundlesize": "^0.17.0",
     "coveralls": "^3.0.0",
@@ -70462,21 +70613,36 @@ module.exports = {
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
-  "browser": {
-    "./lib/adapters/http.js": "./lib/adapters/xhr.js"
-  },
+  "homepage": "https://github.com/axios/axios",
   "jsdelivr": "dist/axios.min.js",
-  "unpkg": "dist/axios.min.js",
-  "typings": "./index.d.ts",
-  "dependencies": {
-    "follow-redirects": "^1.10.0"
+  "keywords": [
+    "xhr",
+    "http",
+    "ajax",
+    "promise",
+    "node"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "axios",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axios/axios.git"
   },
-  "bundlesize": [
-    {
-      "path": "./dist/axios.min.js",
-      "threshold": "5kB"
-    }
-  ]
+  "scripts": {
+    "build": "NODE_ENV=production grunt build",
+    "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "examples": "node ./examples/server.js",
+    "fix": "eslint --fix lib/**/*.js",
+    "postversion": "git push && git push --tags",
+    "preversion": "npm test",
+    "start": "node ./sandbox/server.js",
+    "test": "grunt test && bundlesize",
+    "version": "npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"
+  },
+  "typings": "./index.d.ts",
+  "unpkg": "dist/axios.min.js",
+  "version": "0.21.1"
 }
 ;
 },{}],"bRJm":[function(require,module,exports) {
@@ -75351,13 +75517,15 @@ let scampNativeNode;
 
 const fs = __importStar(require("fs"));
 
-if (fs.existsSync(process.cwd() + "/scamp_native.node")) {
-  console.log("Using scamp_native.node from server's dir");
-  scampNativeNode = require(process.cwd() + "/scamp_native.node");
+const skympNativeNodeFileName = 'scamp_native.node';
+
+if (fs.existsSync(process.cwd() + '/' + skympNativeNodeFileName)) {
+  console.log(`Using ${skympNativeNodeFileName} from server's dir`);
+  scampNativeNode = require(process.cwd() + '/' + skympNativeNodeFileName);
 } else {
-  const config = !process.env.NODE_ENV || process.env.NODE_ENV === "development" ? "Debug" : "Release";
+  const config = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'Debug' : 'Release';
   console.log(`Using scamp_native config ${config}`);
-  scampNativeNode = require(`../build/${config}/scamp_native.node`);
+  scampNativeNode = require(`../build/${config}/${skympNativeNodeFileName}`);
 }
 
 module.exports.ScampServer = scampNativeNode.ScampServer;
@@ -75572,7 +75740,7 @@ module.exports = Limiter;
 },{}],"Z8cT":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -77509,7 +77677,7 @@ module.exports = {
 },{}],"NDOi":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -78451,7 +78619,7 @@ function socketOnError() {
 },{"./permessage-deflate":"Z8cT","./receiver":"cG8H","./sender":"GeGF","./constants":"ItLI","./event-target":"W3NO","./extension":"sR4p","./buffer-util":"FFSq"}],"kcNa":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -78626,7 +78794,7 @@ module.exports = createWebSocketStream;
 },{}],"QfaL":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -79141,32 +79309,55 @@ const main = server => {
   const svr = new WebSocket.Server({
     port: settings_1.Settings.get().port === 7777 ? 8080 : settings_1.Settings.get().port + 2
   });
-  console.log("websocket server up");
-  svr.on("close", ws => {
+  console.log('websocket server up');
+  svr.on('close', ws => {
     clients = clients.filter(cl => cl !== ws);
     clientByUserId = clientByUserId.map(x => x === ws ? undefined : x);
   });
-  svr.on("connection", ws => {
+  svr.on('connection', ws => {
     clients.push(ws);
-    console.log("New websocket connection"); // runs a callback on message event
+    console.log('New websocket connection'); // runs a callback on message event
 
-    ws.on("message", data => {
+    ws.on('message', data => {
+      var _a, _b;
+
       console.log({
         data
       });
       const dataObj = JSON.parse(data);
 
-      if (dataObj.type === "token") {
-        clients.find(v => v === ws).token = dataObj.token;
-      } else if (dataObj.type === "uiEvent") {
-        const token = clients.find(v => v === ws).token;
+      if (dataObj.type === 'token') {
+        const current = clients.find(v => v === ws);
+        if (!current) return;
+        current.token = dataObj.token;
+      } else if (dataObj.type === 'uiEvent') {
+        // return ping message to front
+        if (dataObj.msg.data === '/ping') {
+          ws.send(JSON.stringify({
+            message: {
+              type: 'COMMAND',
+              data: {
+                commandType: 'DETECT_PING',
+                commandArgs: {},
+                alter: ['']
+              }
+            }
+          }));
+          return;
+        }
+
+        const token = (_a = clients.find(v => v === ws)) === null || _a === void 0 ? void 0 : _a.token;
+        if (!token) return;
         const authoruserId = tokenByUserId.findIndex(v => v === token);
+        if (authoruserId === -1) return;
         const actorId = getUserActorOrZero(server, authoruserId);
         clientByUserId[authoruserId] = ws;
         onUiEvent(actorId, dataObj.msg);
-      } else if (dataObj.type === "chatMessage") {
-        const token = clients.find(v => v === ws).token;
+      } else if (dataObj.type === 'chatMessage') {
+        const token = (_b = clients.find(v => v === ws)) === null || _b === void 0 ? void 0 : _b.token;
+        if (!token) return;
         const authoruserId = tokenByUserId.findIndex(v => v === token);
+        if (authoruserId === -1) return;
         const actorId = getUserActorOrZero(server, authoruserId);
         if (!actorId) return;
         dataObj.author = server.getActorName(actorId);
@@ -79174,13 +79365,16 @@ const main = server => {
         const authorCellOrWorld = server.getActorCellOrWorld(actorId);
         const nonRp = 2;
 
-        if (dataObj.channelIdx === nonRp && dataObj.text !== "") {
-          dataObj.text = "(( " + dataObj.text + " ))";
+        if (dataObj.channelIdx === nonRp && dataObj.text !== '') {
+          dataObj.text = '(( ' + dataObj.text + ' ))';
         }
 
         svr.clients.forEach(client => {
+          var _a;
+
           if (client.readyState !== WebSocket.OPEN) return;
-          const clientToken = clients.find(v => v === client).token;
+          const clientToken = (_a = clients.find(v => v === client)) === null || _a === void 0 ? void 0 : _a.token;
+          if (!clientToken) return;
           const userId = tokenByUserId.findIndex(v => v === clientToken);
           if (userId === -1) return;
           const id = getUserActorOrZero(server, userId);
@@ -79275,7 +79469,7 @@ class ClientVerify {
     this.log = log;
     this.compiledFrontPath = compiledFrontPath;
     this.maxPlayers = maxPlayers;
-    this.systemName = "ClientVerify";
+    this.systemName = 'ClientVerify';
     this.hashVerified = new Array();
     this.connectedUserIds = new Set();
   }
@@ -79285,10 +79479,10 @@ class ClientVerify {
       this.hashVerified.length = this.maxPlayers;
       this.hashVerified.fill(false);
       fs.watch(this.compiledFrontPath, {}, () => {
-        this.log("skymp5-client.js has been modified, reloading");
+        this.log('skymp5-client.js has been modified, reloading');
         this.reloadFront();
         this.connectedUserIds.forEach(userId => {
-          ctx.svr.sendCustomPacket(userId, "newClientVersion", {
+          ctx.svr.sendCustomPacket(userId, 'newClientVersion', {
             src: this.compiledFront
           });
         });
@@ -79298,7 +79492,9 @@ class ClientVerify {
   }
 
   updateAsync() {
-    return;
+    return __awaiter(this, void 0, void 0, function* () {
+      return;
+    });
   }
 
   connect(userId) {
@@ -79311,16 +79507,17 @@ class ClientVerify {
   }
 
   customPacket(userId, type, content, ctx) {
-    if (type !== "clientVersion") return;
+    if (type !== 'clientVersion') return;
     if (this.hashVerified[userId]) return this.log(`User ${userId} is already verified, ignoring`);
+    if (!this.compiledFront) return;
 
-    if (content["src"] === this.compiledFront) {
+    if (content['src'] === this.compiledFront) {
       this.hashVerified[userId] = true;
       this.log(`Verified front source code for ${userId}`);
-      ctx.gm.emit("loginRequired", userId);
+      ctx.gm.emit('loginRequired', userId);
     } else {
-      this.log(`Sending new front for ${userId} (${content["src"].length} !== ${this.compiledFront.length})`);
-      ctx.svr.sendCustomPacket(userId, "newClientVersion", {
+      this.log(`Sending new front for ${userId} (${content['src'].length} !== ${this.compiledFront.length})`);
+      ctx.svr.sendCustomPacket(userId, 'newClientVersion', {
         src: this.compiledFront
       });
     }
@@ -79328,7 +79525,7 @@ class ClientVerify {
 
   reloadFront() {
     this.compiledFront = fs.readFileSync(this.compiledFrontPath, {
-      encoding: "utf-8"
+      encoding: 'utf-8'
     });
   }
 
@@ -79599,7 +79796,7 @@ const axios_1 = __importDefault(require("axios"));
 
 const getMyPublicIp = () => __awaiter(void 0, void 0, void 0, function* () {
   const res = yield axios_1.default.request({
-    url: "http://ipv4bot.whatismyipaddress.com"
+    url: 'http://ipv4bot.whatismyipaddress.com'
   });
   return res.data;
 });
@@ -79611,7 +79808,7 @@ class Login {
     this.masterUrl = masterUrl;
     this.serverPort = serverPort;
     this.ip = ip;
-    this.systemName = "Login";
+    this.systemName = 'Login';
     this.userProfileIds = new Array();
   }
 
@@ -79625,11 +79822,11 @@ class Login {
     return __awaiter(this, void 0, void 0, function* () {
       this.userProfileIds.length = this.maxPlayers;
       this.userProfileIds.fill(undefined);
-      if (this.ip && this.ip != "null") this.myAddr = this.ip + ":" + this.serverPort;else this.myAddr = (yield getMyPublicIp()) + ":" + this.serverPort;
+      if (this.ip && this.ip != 'null') this.myAddr = this.ip + ':' + this.serverPort;else this.myAddr = (yield getMyPublicIp()) + ':' + this.serverPort;
       this.log(`Login system assumed that ${this.myAddr} is our address on master`);
-      ctx.gm.on("loginRequired", userId => {
-        ctx.svr.sendCustomPacket(userId, "loginRequired", {});
-        console.log("Login required for " + userId);
+      ctx.gm.on('loginRequired', userId => {
+        ctx.svr.sendCustomPacket(userId, 'loginRequired', {});
+        console.log('Login required for ' + userId);
       });
     });
   }
@@ -79639,20 +79836,20 @@ class Login {
   }
 
   customPacket(userId, type, content, ctx) {
-    if (type !== "loginWithSkympIo") return;
-    const gameData = content["gameData"];
+    if (type !== 'loginWithSkympIo') return;
+    const gameData = content['gameData'];
 
     if (gameData && gameData.session) {
       this.getUserProfileId(gameData.session).then(res => {
-        console.log("getUserProfileId", res.data);
-        if (!res.data || !res.data.user || res.data.user.id === undefined) this.log("Bad master answer");else {
+        console.log('getUserProfileId', res.data);
+        if (!res.data || !res.data.user || res.data.user.id === undefined) this.log('Bad master answer');else {
           this.userProfileIds[userId] = res.data.user.id;
-          ctx.gm.emit("spawnAllowed", userId, res.data.user.id);
-          this.log("Logged as " + res.data.user.id);
+          ctx.gm.emit('spawnAllowed', userId, res.data.user.id);
+          this.log('Logged as ' + res.data.user.id);
         }
       });
     } else {
-      this.log("No credentials found in gameData:", gameData);
+      this.log('No credentials found in gameData:', gameData);
     }
   }
 
@@ -79712,7 +79909,7 @@ exports.NativeGameServer = NativeGameServer;
 },{}],"wIyF":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -80508,7 +80705,7 @@ module.exports = scan;
 },{"./utils":"OYpc","./constants":"wIyF"}],"WmuT":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -81747,7 +81944,7 @@ module.exports = parse;
 },{"./constants":"wIyF","./utils":"OYpc"}],"l794":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -82144,7 +82341,7 @@ module.exports = require('./lib/picomatch');
 },{"./lib/picomatch":"l794"}],"kBM5":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -85208,7 +85405,7 @@ module.exports = NodeFsHandler;
 },{"is-binary-path":"nM71","./constants":"H5PM"}],"Ojbj":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -85757,7 +85954,7 @@ module.exports.canUse = canUse;
 },{"./constants":"H5PM"}],"Nisg":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -87303,15 +87500,15 @@ const libkey = __importStar(require("./libkey"));
 const manifestGen = __importStar(require("./manifestGen"));
 
 console.log(`Current process ID is ${process_1.pid}`);
-const master = settings_1.Settings.get().master || "https://skymp.io";
+const master = settings_1.Settings.get().master || 'https://skymp.io';
 const gamemodeCache = new Map(); // https://stackoverflow.com/questions/37521893/determine-if-a-path-is-subdirectory-of-another-in-node-js
 
 const isChildOf = (child, parent) => {
   child = path.resolve(child);
   parent = path.resolve(parent);
   if (child === parent) return false;
-  const parentTokens = parent.split("/").filter(i => i.length);
-  return parentTokens.every((t, i) => child.split("/")[i] === t);
+  const parentTokens = parent.split('/').filter(i => i.length);
+  return parentTokens.every((t, i) => child.split('/')[i] === t);
 };
 
 const runGamemodeWithVm = (gamemodeContents, server) => {
@@ -87320,7 +87517,7 @@ const runGamemodeWithVm = (gamemodeContents, server) => {
 
 function requireUncached(module, clear, server) {
   delete require.cache[require.resolve(module)];
-  let gamemodeContents = fs.readFileSync(require.resolve(module), "utf8"); // Reload gamemode.js only if there are real changes
+  let gamemodeContents = fs.readFileSync(require.resolve(module), 'utf8'); // Reload gamemode.js only if there are real changes
 
   const gamemodeContentsOld = gamemodeCache.get(module);
 
@@ -87336,7 +87533,7 @@ function requireUncached(module, clear, server) {
         if (`${e}`.indexOf("'JsRun' returned error 0x30002") === -1) {
           throw e;
         } else {
-          console.log("Bad syntax, ignoring");
+          console.log('Bad syntax, ignoring');
           return;
         }
       }
@@ -87346,21 +87543,21 @@ function requireUncached(module, clear, server) {
 
 const log = console.log;
 const systems = new Array();
-systems.push(new masterClient_1.MasterClient(log, settings_1.Settings.get().port, master, settings_1.Settings.get().maxPlayers, settings_1.Settings.get().name, settings_1.Settings.get().ip, 5000), new clientVerify_1.ClientVerify(log, "./dist_front/skymp5-client.js", settings_1.Settings.get().maxPlayers), new spawn_1.Spawn(log), new login_1.Login(log, settings_1.Settings.get().maxPlayers, master, settings_1.Settings.get().port, settings_1.Settings.get().ip));
+systems.push(new masterClient_1.MasterClient(log, settings_1.Settings.get().port, master, settings_1.Settings.get().maxPlayers, settings_1.Settings.get().name, settings_1.Settings.get().ip, 5000), new clientVerify_1.ClientVerify(log, './dist_front/skymp5-client.js', settings_1.Settings.get().maxPlayers), new spawn_1.Spawn(log), new login_1.Login(log, settings_1.Settings.get().maxPlayers, master, settings_1.Settings.get().port, settings_1.Settings.get().ip));
 
 const handleLibkeyJs = () => {
-  fs.writeFileSync("data/_libkey.js", libkey.src);
+  fs.writeFileSync('data/_libkey.js', libkey.src);
   setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     while (1) {
       yield new Promise(r => setTimeout(r, 5000));
-      const data = yield new Promise(resolve => fs.readFile("data/_libkey.js", {
-        encoding: "utf-8"
+      const data = yield new Promise(resolve => fs.readFile('data/_libkey.js', {
+        encoding: 'utf-8'
       }, (err, data) => {
-        err ? resolve("") : resolve(data);
+        err ? resolve('') : resolve(data);
       }));
 
       if (data !== libkey.src) {
-        yield new Promise(r => fs.writeFile("data/_libkey.js", libkey.src, () => r()));
+        yield new Promise(r => fs.writeFile('data/_libkey.js', libkey.src, () => r()));
       }
     }
   }), 1);
@@ -87391,11 +87588,13 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     if (system.initAsync) yield system.initAsync(ctx);
     log(`Initialized ${system.systemName}`);
     if (system.updateAsync) (() => __awaiter(void 0, void 0, void 0, function* () {
+      if (!(system === null || system === void 0 ? void 0 : system.updateAsync)) return;
+
       while (1) {
         yield new Promise(r => setTimeout(r, 1));
 
         try {
-          yield system.updateAsync(ctx);
+          yield system === null || system === void 0 ? void 0 : system.updateAsync(ctx);
         } catch (e) {
           log(`Error in ${system.systemName}.updateAsync: ${e}\n${e.stack}`);
         }
@@ -87403,8 +87602,8 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     }))();
   }
 
-  server.on("connect", userId => {
-    log("connect", userId);
+  server.on('connect', userId => {
+    log('connect', userId);
 
     for (const system of systems) {
       try {
@@ -87414,8 +87613,10 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
       }
     }
   });
-  server.on("disconnect", userId => {
-    log("disconnect", userId);
+  server.on('disconnect', userId => {
+    log('disconnect', userId);
+    const formId = server.getUserActor(userId);
+    log('disconnect formId', formId); // server.onDisconnectEvent(formId);
 
     for (const system of systems) {
       try {
@@ -87425,7 +87626,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
       }
     }
   });
-  server.on("customPacket", (userId, rawContent) => {
+  server.on('customPacket', (userId, rawContent) => {
     const content = JSON.parse(rawContent);
     const type = `${content.customPacketType}`;
     delete content.customPacketType;
@@ -87439,11 +87640,11 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     }
   });
   chat.main(server);
-  server.on("customPacket", (userId, content) => {
+  server.on('customPacket', (userId, content) => {
     const contentObj = JSON.parse(content);
 
     switch (contentObj.customPacketType) {
-      case "browserToken":
+      case 'browserToken':
         const newToken = `${contentObj.token}`;
         console.log(`User ${userId} sets browser token to ${newToken}`);
         chat.onBrowserTokenChange(userId, newToken);
@@ -87453,8 +87654,8 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
   chat.attachMpApi((formId, msg) => server.onUiEvent(formId, msg));
 
   const sendUiMessage = (formId, message) => {
-    if (typeof message !== "object") {
-      throw new TypeError("Messages must be objects");
+    if (typeof message !== 'object') {
+      throw new TypeError('Messages must be objects');
     }
 
     chat.sendMsg(server, formId, message);
@@ -87466,7 +87667,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
 
   const toAbsolute = p => {
     if (path.isAbsolute(p)) return p;
-    return path.resolve("", p);
+    return path.resolve('', p);
   };
 
   const gamemodePath = toAbsolute(settings_1.Settings.get().gamemodePath);
@@ -87512,12 +87713,12 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
       setTimeout(() => n === numReloads.n ? reloadGamemode() : undefined, 1000);
     };
 
-    watcher.on("add", reloadGamemodeTimeout);
-    watcher.on("addDir", reloadGamemodeTimeout);
-    watcher.on("change", reloadGamemodeTimeout);
-    watcher.on("unlink", reloadGamemodeTimeout);
-    watcher.on("error", function (error) {
-      console.error("Error happened in chokidar watch", error);
+    watcher.on('add', reloadGamemodeTimeout);
+    watcher.on('addDir', reloadGamemodeTimeout);
+    watcher.on('change', reloadGamemodeTimeout);
+    watcher.on('unlink', reloadGamemodeTimeout);
+    watcher.on('error', function (error) {
+      console.error('Error happened in chokidar watch', error);
     });
   }
 
@@ -87526,10 +87727,10 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
 
 main().catch(e => {
   log(`Main function threw an error: ${e}`);
-  if (e["stack"]) log(e["stack"]);
+  if (e['stack']) log(e['stack']);
   process.exit(-1);
 });
-process.on("unhandledRejection", (...args) => {
+process.on('unhandledRejection', (...args) => {
   console.error(...args);
 });
 },{"./ui":"sRuM","source-map-support":"ALvQ","./scampNative":"lqoW","./chat":"MuUD","./settings":"NYkG","./systems/clientVerify":"HJY6","./systems/masterClient":"xvJC","./systems/spawn":"ZF3F","./systems/login":"GFD4","./nativeGameServer":"Z5sg","chokidar":"Nisg","./libkey":"hIAS","./manifestGen":"BoWx"}]},{},["QCba"], null)
