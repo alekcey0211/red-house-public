@@ -34,27 +34,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-System.register("src/skyrim-platform/skyrimPlatform", [], function (exports_1, context_1) {
+/* eslint-disable @typescript-eslint/adjacent-overload-signatures */
+/* eslint-disable @typescript-eslint/no-namespace */
+// Generated automatically. Do not edit.
+System.register("build/dist/client/Data/Platform/Modules/skyrimPlatform", [], function (exports_1, context_1) {
     "use strict";
-    var MotionType;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [],
         execute: function () {
-            (function (MotionType) {
-                MotionType[MotionType["Dynamic"] = 1] = "Dynamic";
-                MotionType[MotionType["SphereInertia"] = 2] = "SphereInertia";
-                MotionType[MotionType["BoxInertia"] = 3] = "BoxInertia";
-                MotionType[MotionType["Keyframed"] = 4] = "Keyframed";
-                MotionType[MotionType["Fixed"] = 5] = "Fixed";
-                MotionType[MotionType["ThinBoxInertia"] = 6] = "ThinBoxInertia";
-                MotionType[MotionType["Character"] = 7] = "Character";
-            })(MotionType || (MotionType = {}));
-            exports_1("MotionType", MotionType);
         }
     };
 });
-System.register("src/front/browser", ["src/skyrim-platform/skyrimPlatform"], function (exports_2, context_2) {
+System.register("skymp5-client/src/front/browser", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_2, context_2) {
     "use strict";
     var skyrimPlatform_1, main;
     var __moduleName = context_2 && context_2.id;
@@ -66,68 +58,67 @@ System.register("src/front/browser", ["src/skyrim-platform/skyrimPlatform"], fun
         ],
         execute: function () {
             exports_2("main", main = function () {
-                // const F2 = 0x3c;
-                // const F6 = 0x40;
-                // const Escape = 0x01;
-                // const badMenus = [
-                //   "BarterMenu",
-                //   "Book Menu",
-                //   "ContainerMenu",
-                //   "Crafting Menu",
-                //   "GiftMenu",
-                //   "InventoryMenu",
-                //   "Journal Menu",
-                //   "Lockpicking Menu",
-                //   "Loading Menu",
-                //   "MapMenu",
-                //   "RaceSex Menu",
-                //   "StatsMenu",
-                //   "TweenMenu",
+                // var F2 = 0x3c;
+                // var F6 = 0x40;
+                // var Escape = 0x01;
+                // var badMenus = [
+                //     "BarterMenu",
+                //     "Book Menu",
+                //     "ContainerMenu",
+                //     "Crafting Menu",
+                //     "GiftMenu",
+                //     "InventoryMenu",
+                //     "Journal Menu",
+                //     "Lockpicking Menu",
+                //     "Loading Menu",
+                //     "MapMenu",
+                //     "RaceSex Menu",
+                //     "StatsMenu",
+                //     "TweenMenu",
                 // ];
-                // browser.setVisible(false);
-                // let visible = false;
-                // let noBadMenuOpen = true;
-                // let lastBadMenuCheck = 0;
-                // once("update", () => {
-                //   visible = true;
-                //   browser.setVisible(true);
+                // skyrimPlatform_1.browser.setVisible(false);
+                // var visible = false;
+                // var noBadMenuOpen = true;
+                // var lastBadMenuCheck = 0;
+                // skyrimPlatform_1.once("update", function () {
+                //     visible = true;
+                //     skyrimPlatform_1.browser.setVisible(true);
                 // });
                 // {
-                //   let pressedWas = false;
-                //   on("update", () => {
-                //     const pressed = Input.isKeyPressed(F2);
-                //     if (pressedWas !== pressed) {
-                //       pressedWas = pressed;
-                //       if (pressed) {
-                //         visible = !visible;
-                //       }
-                //     }
-                //     if (Date.now() - lastBadMenuCheck > 200) {
-                //       lastBadMenuCheck = Date.now();
-                //       noBadMenuOpen =
-                //         badMenus.findIndex((menu) => Ui.isMenuOpen(menu)) === -1;
-                //     }
-                //     browser.setVisible(visible && noBadMenuOpen);
-                //   });
+                //     var pressedWas_1 = false;
+                //     skyrimPlatform_1.on("update", function () {
+                //         var pressed = skyrimPlatform_1.Input.isKeyPressed(F2);
+                //         if (pressedWas_1 !== pressed) {
+                //             pressedWas_1 = pressed;
+                //             if (pressed) {
+                //                 visible = !visible;
+                //             }
+                //         }
+                //         if (Date.now() - lastBadMenuCheck > 200) {
+                //             lastBadMenuCheck = Date.now();
+                //             noBadMenuOpen =
+                //                 badMenus.findIndex(function (menu) { return skyrimPlatform_1.Ui.isMenuOpen(menu); }) === -1;
+                //         }
+                //         skyrimPlatform_1.browser.setVisible(visible && noBadMenuOpen);
+                //     });
                 // }
                 // {
-                //   let focused = false;
-                //   let pressedWas = false;
-                //   on("update", () => {
-                //     const pressed =
-                //       Input.isKeyPressed(F6) || (focused && Input.isKeyPressed(Escape));
-                //     if (pressedWas !== pressed) {
-                //       pressedWas = pressed;
-                //       if (pressed) {
-                //         focused = !focused;
-                //         browser.setFocused(focused);
-                //       }
-                //     }
-                //   });
+                //     var focused_1 = false;
+                //     var pressedWas_2 = false;
+                //     skyrimPlatform_1.on("update", function () {
+                //         var pressed = skyrimPlatform_1.Input.isKeyPressed(F6) || (focused_1 && skyrimPlatform_1.Input.isKeyPressed(Escape));
+                //         if (pressedWas_2 !== pressed) {
+                //             pressedWas_2 = pressed;
+                //             if (pressed) {
+                //                 focused_1 = !focused_1;
+                //                 skyrimPlatform_1.browser.setFocused(focused_1);
+                //             }
+                //         }
+                //     });
                 // }
                 var cfg = {
-                    ip: skyrimPlatform_1.settings['skymp5-client']['server-ip'],
-                    port: skyrimPlatform_1.settings['skymp5-client']['server-port'],
+                    ip: skyrimPlatform_1.settings["skymp5-client"]["server-ip"],
+                    port: skyrimPlatform_1.settings["skymp5-client"]["server-port"],
                 };
                 skyrimPlatform_1.printConsole({ cfg: cfg });
                 var uiPort = cfg.port === 7777 ? 3000 : cfg.port + 1;
@@ -138,7 +129,7 @@ System.register("src/front/browser", ["src/skyrim-platform/skyrimPlatform"], fun
         }
     };
 });
-System.register("src/front/consoleCommands", [], function (exports_3, context_3) {
+System.register("skymp5-client/src/front/consoleCommands", [], function (exports_3, context_3) {
     "use strict";
     var scriptCommands, consoleCommands;
     var __moduleName = context_3 && context_3.id;
@@ -660,7 +651,7 @@ System.register("src/front/consoleCommands", [], function (exports_3, context_3)
         }
     };
 });
-System.register("src/lib/structures/movement", [], function (exports_4, context_4) {
+System.register("skymp5-client/src/lib/structures/movement", [], function (exports_4, context_4) {
     "use strict";
     var __moduleName = context_4 && context_4.id;
     return {
@@ -669,7 +660,7 @@ System.register("src/lib/structures/movement", [], function (exports_4, context_
         }
     };
 });
-System.register("src/lib/structures/look", [], function (exports_5, context_5) {
+System.register("skymp5-client/src/lib/structures/look", [], function (exports_5, context_5) {
     "use strict";
     var __moduleName = context_5 && context_5.id;
     return {
@@ -678,7 +669,7 @@ System.register("src/lib/structures/look", [], function (exports_5, context_5) {
         }
     };
 });
-System.register("src/lib/structures/animation", [], function (exports_6, context_6) {
+System.register("skymp5-client/src/lib/structures/animation", [], function (exports_6, context_6) {
     "use strict";
     var __moduleName = context_6 && context_6.id;
     return {
@@ -687,7 +678,7 @@ System.register("src/lib/structures/animation", [], function (exports_6, context
         }
     };
 });
-System.register("src/lib/structures/inventory", [], function (exports_7, context_7) {
+System.register("skymp5-client/src/lib/structures/inventory", [], function (exports_7, context_7) {
     "use strict";
     var __moduleName = context_7 && context_7.id;
     return {
@@ -696,7 +687,7 @@ System.register("src/lib/structures/inventory", [], function (exports_7, context
         }
     };
 });
-System.register("src/lib/structures/equipment", [], function (exports_8, context_8) {
+System.register("skymp5-client/src/lib/structures/equipment", [], function (exports_8, context_8) {
     "use strict";
     var __moduleName = context_8 && context_8.id;
     return {
@@ -705,7 +696,7 @@ System.register("src/lib/structures/equipment", [], function (exports_8, context
         }
     };
 });
-System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], function (exports_9, context_9) {
+System.register("skymp5-client/src/front/spSnippet", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_9, context_9) {
     "use strict";
     var skyrimPlatform_2, sp, spAny, deserializeArg, runMethod, runStatic, run;
     var __moduleName = context_9 && context_9.id;
@@ -779,7 +770,7 @@ System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], f
         }
     };
 });
-System.register("src/front/messages", [], function (exports_10, context_10) {
+System.register("skymp5-client/src/front/messages", [], function (exports_10, context_10) {
     "use strict";
     var MsgType;
     var __moduleName = context_10 && context_10.id;
@@ -807,7 +798,7 @@ System.register("src/front/messages", [], function (exports_10, context_10) {
         }
     };
 });
-System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src/front/consoleCommands", "src/front/messages"], function (exports_11, context_11) {
+System.register("skymp5-client/src/front/console", ["build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/consoleCommands", "skymp5-client/src/front/messages"], function (exports_11, context_11) {
     "use strict";
     var skyrimPlatform_3, consoleCommands_1, messages_1, blockConsole, CmdArgument, schemas, immuneSchema, nonVanilaCommands, getCommandExecutor, setUpConsoleCommands;
     var __moduleName = context_11 && context_11.id;
@@ -905,7 +896,7 @@ System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src
         }
     };
 });
-System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"], function (exports_12, context_12) {
+System.register("skymp5-client/src/front/deathSystem", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_12, context_12) {
     "use strict";
     var skyrimPlatform_4, gAllowGetUp, update;
     var __moduleName = context_12 && context_12.id;
@@ -918,7 +909,8 @@ System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"],
         execute: function () {
             gAllowGetUp = true;
             exports_12("update", update = function () {
-                gAllowGetUp = skyrimPlatform_4.Game.getPlayer().getActorValuePercentage("health") >= 0.05;
+                gAllowGetUp =
+                    skyrimPlatform_4.Game.getPlayer().getActorValuePercentage("health") >= 0.05;
             });
             skyrimPlatform_4.hooks.sendAnimationEvent.add({
                 enter: function (ctx) {
@@ -939,7 +931,7 @@ System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"],
         }
     };
 });
-System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"], function (exports_13, context_13) {
+System.register("skymp5-client/src/front/hostAttempts", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_13, context_13) {
     "use strict";
     var skyrimPlatform_5, tryHost, nextHostAttempt;
     var __moduleName = context_13 && context_13.id;
@@ -963,7 +955,7 @@ System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"]
         }
     };
 });
-System.register("src/front/components/movementApply", ["src/skyrim-platform/skyrimPlatform"], function (exports_14, context_14) {
+System.register("skymp5-client/src/front/components/movementApply", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_14, context_14) {
     "use strict";
     var skyrimPlatform_6, applyMovement, keepOffsetFromActor, getOffsetZ, applySprinting, applyBlocking, applySneaking, applyWeapDrawn, applyHealthPercentage, translateTo, teleportIfNeed, cellWidth, isInDifferentExteriorCell, isInDifferentWorldOrCell, getPos, getDistance;
     var __moduleName = context_14 && context_14.id;
@@ -980,7 +972,7 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
                 translateTo(refr, m);
                 var ac = skyrimPlatform_6.Actor.from(refr);
                 if (ac) {
-                    var lookAt = void 0;
+                    var lookAt = undefined;
                     if (m.lookAt) {
                         try {
                             lookAt = skyrimPlatform_6.Game.findClosestActor(m.lookAt[0], m.lookAt[1], m.lookAt[2], 128);
@@ -1104,7 +1096,7 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
         }
     };
 });
-System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrimPlatform"], function (exports_15, context_15) {
+System.register("skymp5-client/src/front/components/movementGet", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_15, context_15) {
     "use strict";
     var skyrimPlatform_7, getMovement, isSneaking, getRunMode;
     var __moduleName = context_15 && context_15.id;
@@ -1143,10 +1135,10 @@ System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrim
                     direction: runMode !== "Standing"
                         ? 360 * refr.getAnimationVariableFloat("Direction")
                         : 0,
-                    isInJumpState: ac && ac.getAnimationVariableBool("bInJumpState"),
-                    isSneaking: ac && isSneaking(ac),
-                    isBlocking: ac && ac.getAnimationVariableBool("IsBlocking"),
-                    isWeapDrawn: ac && ac.isWeaponDrawn(),
+                    isInJumpState: (ac && ac.getAnimationVariableBool("bInJumpState")),
+                    isSneaking: (ac && isSneaking(ac)),
+                    isBlocking: (ac && ac.getAnimationVariableBool("IsBlocking")),
+                    isWeapDrawn: (ac && ac.isWeaponDrawn()),
                     healthPercentage: healthPercentage,
                     lookAt: lookAt,
                 };
@@ -1181,7 +1173,7 @@ System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrim
         }
     };
 });
-System.register("src/front/components/movement", ["src/front/components/movementApply", "src/front/components/movementGet"], function (exports_16, context_16) {
+System.register("skymp5-client/src/front/components/movement", ["skymp5-client/src/front/components/movementApply", "skymp5-client/src/front/components/movementGet"], function (exports_16, context_16) {
     "use strict";
     var movementApply, applyMovement, movementGet, getMovement;
     var __moduleName = context_16 && context_16.id;
@@ -1200,7 +1192,7 @@ System.register("src/front/components/movement", ["src/front/components/movement
         }
     };
 });
-System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPlatform", "src/front/components/movementApply"], function (exports_17, context_17) {
+System.register("skymp5-client/src/front/components/animation", ["build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/components/movementApply"], function (exports_17, context_17) {
     "use strict";
     var skyrimPlatform_8, movementApply_2, allowedIdles, refsWithDefaultAnimsDisabled, allowedAnims, isIdle, applyAnimation, setDefaultAnimsDisabled, AnimationSource, ignoredAnims, setupHooks;
     var __moduleName = context_17 && context_17.id;
@@ -1382,7 +1374,7 @@ System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPl
         }
     };
 });
-System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatform"], function (exports_18, context_18) {
+System.register("skymp5-client/src/front/components/look", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_18, context_18) {
     "use strict";
     var skyrimPlatform_9, getLook, isVisible, applyTints, silentVoiceTypeId, applyLookCommon, applyLook, applyLookToPlayer;
     var __moduleName = context_18 && context_18.id;
@@ -1500,7 +1492,7 @@ System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatfor
         }
     };
 });
-System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPlatform"], function (exports_19, context_19) {
+System.register("skymp5-client/src/front/components/inventory", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_19, context_19) {
     "use strict";
     var skyrimPlatform_10, getRealName, cropName, checkIfNameIsGeneratedByGame, namesEqual, extrasEqual, hasExtras, extractExtraData, squash, getExtraContainerChangesAsInventory, getBaseContainerAsInventory, sumInventories, getDiff, getInventory, basesReset, resetBase, applyInventory;
     var __moduleName = context_19 && context_19.id;
@@ -1772,7 +1764,7 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
         }
     };
 });
-System.register("src/front/components/equipment", ["src/skyrim-platform/skyrimPlatform", "src/front/components/inventory"], function (exports_20, context_20) {
+System.register("skymp5-client/src/front/components/equipment", ["build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/components/inventory"], function (exports_20, context_20) {
     "use strict";
     var skyrimPlatform_11, inventory_1, filterWorn, removeUnnecessaryExtra, getEquipment, applyEquipment, isBadMenuShown;
     var __moduleName = context_20 && context_20.id;
@@ -1817,7 +1809,7 @@ System.register("src/front/components/equipment", ["src/skyrim-platform/skyrimPl
         }
     };
 });
-System.register("src/front/model", [], function (exports_21, context_21) {
+System.register("skymp5-client/src/front/model", [], function (exports_21, context_21) {
     "use strict";
     var __moduleName = context_21 && context_21.id;
     return {
@@ -1826,7 +1818,7 @@ System.register("src/front/model", [], function (exports_21, context_21) {
         }
     };
 });
-System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"], function (exports_22, context_22) {
+System.register("skymp5-client/src/front/worldCleaner", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_22, context_22) {
     "use strict";
     var skyrimPlatform_12, protection, isInDialogue;
     var __moduleName = context_22 && context_22.id;
@@ -1875,7 +1867,7 @@ System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"]
         }
     };
 });
-System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/front/components/movement", "src/front/components/animation", "src/front/components/look", "src/front/components/equipment", "src/front/worldCleaner", "src/front/components/inventory", "src/front/hostAttempts", "src/front/components/movementGet"], function (exports_23, context_23) {
+System.register("skymp5-client/src/front/view", ["build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/components/movement", "skymp5-client/src/front/components/animation", "skymp5-client/src/front/components/look", "skymp5-client/src/front/components/equipment", "skymp5-client/src/front/worldCleaner", "skymp5-client/src/front/components/inventory", "skymp5-client/src/front/hostAttempts", "skymp5-client/src/front/components/movementGet"], function (exports_23, context_23) {
     "use strict";
     var skyrimPlatform_13, sp, movement_1, animation_1, look_1, equipment_1, worldCleaner_1, inventory_2, hostAttempts_1, movementGet_2, gCrosshairRefId, gPcInJumpState, gPcWorldOrCellId, gUpdateNeighborFunctionsKeys, gUpdateNeighborFunctions, getFormEx, lastTryHost, tryHostIfNeed, SpawnProcess, getDefaultEquipState, getDefaultLookState, undefinedRefr, unknownValue, undefinedFormModel, undefinedObject, undefinedView, ctx, FormView, FormViewArray, WorldView, getViewFromStorage, localIdToRemoteId, remoteIdToLocalId;
     var __moduleName = context_23 && context_23.id;
@@ -1921,13 +1913,13 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
             ref.lock(false, false);
         }
         if (isItem(t)) {
-            ref.setMotionType(skyrimPlatform_13.MotionType.Keyframed, false);
+            ref.setMotionType(4 /* Keyframed */, false);
         }
         // https://github.com/skyrim-multiplayer/issue-tracker/issues/36
         if (isFlora) {
             var hasIngr = sp.Flora.from(base).getIngredient() != null;
             if (hasIngr)
-                ref.setMotionType(skyrimPlatform_13.MotionType.Keyframed, false);
+                ref.setMotionType(4 /* Keyframed */, false);
         }
     }
     return {
@@ -1983,7 +1975,8 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                 var last = lastTryHost[remoteId];
                 if (!last || Date.now() - last >= 1000) {
                     lastTryHost[remoteId] = Date.now();
-                    if (movementGet_2.getMovement(ac).worldOrCell === movementGet_2.getMovement(skyrimPlatform_13.Game.getPlayer()).worldOrCell) {
+                    if (movementGet_2.getMovement(ac).worldOrCell ===
+                        movementGet_2.getMovement(skyrimPlatform_13.Game.getPlayer()).worldOrCell) {
                         return hostAttempts_1.tryHost(remoteId);
                     }
                 }
@@ -2018,7 +2011,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                             _this.callback();
                         });
                     }
-                    return refr.setMotionType(skyrimPlatform_13.MotionType.Keyframed, true).then(this.callback);
+                    return refr.setMotionType(4 /* Keyframed */, true).then(this.callback);
                 };
                 return SpawnProcess;
             }());
@@ -2080,6 +2073,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                 }
                 FormView.prototype.update = function (model) {
                     var _this = this;
+                    var _a, _b, _c;
                     // Other players mutate into PC clones when moving to another location
                     if (model.movement) {
                         if (!this.lastWorldOrCell)
@@ -2095,7 +2089,8 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                     }
                     // Players with different worldOrCell should be invisible
                     if (model.movement) {
-                        var worldOrCell = skyrimPlatform_13.Game.getPlayer().getWorldSpace() || skyrimPlatform_13.Game.getPlayer().getParentCell();
+                        var worldOrCell = skyrimPlatform_13.Game.getPlayer().getWorldSpace() ||
+                            skyrimPlatform_13.Game.getPlayer().getParentCell();
                         if (worldOrCell &&
                             model.movement.worldOrCell !== worldOrCell.getFormID()) {
                             this.destroy();
@@ -2127,7 +2122,8 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                         }
                     }
                     else {
-                        var base = getFormEx(+model.baseId) || getFormEx(this.getLookBasedBase());
+                        var base = getFormEx(+model.baseId) ||
+                            getFormEx(this.getLookBasedBase());
                         if (!base)
                             return;
                         var refr_2 = skyrimPlatform_13.ObjectReference.from(skyrimPlatform_13.Game.getFormEx(this.refrId));
@@ -2141,7 +2137,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                             delete this.wasHostedByOther;
                             var kTypeNpc = 43;
                             if (base.getType() !== kTypeNpc) {
-                                refr_2.setAngle(model.movement.rot[0], model.movement.rot[1], model.movement.rot[2]);
+                                refr_2.setAngle(((_a = model.movement) === null || _a === void 0 ? void 0 : _a.rot[0]) || 0, ((_b = model.movement) === null || _b === void 0 ? void 0 : _b.rot[1]) || 0, ((_c = model.movement) === null || _c === void 0 ? void 0 : _c.rot[2]) || 0);
                             }
                             worldCleaner_1.modWcProtection(refr_2.getFormID(), 1);
                             // TODO: reset all states?
@@ -2220,7 +2216,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                         if (t >= 38 && t <= 39) {
                             var wasHarvested = refr.isHarvested();
                             if (isHarvested != wasHarvested) {
-                                var ac = void 0;
+                                var ac = undefined;
                                 if (isHarvested)
                                     for (var i = 0; i < 20; ++i) {
                                         ac = skyrimPlatform_13.Game.findRandomActor(refr.getPositionX(), refr.getPositionY(), refr.getPositionZ(), 10000);
@@ -2319,7 +2315,8 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                                 }
                             }
                         }
-                        if (+model.numMovementChanges !== this.movState.lastNumChanges ||
+                        if (+model.numMovementChanges !==
+                            this.movState.lastNumChanges ||
                             Date.now() - this.movState.lastApply > 2000) {
                             this.movState.lastApply = Date.now();
                             if (model.isHostedByOther || !this.movState.everApplied) {
@@ -2458,11 +2455,15 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                             continue;
                         }
                         var form = forms[i];
-                        var realPos = void 0;
+                        var realPos = undefined;
                         var offset = form.movement && (model.playerCharacterFormIdx === i || isCloneView);
                         if (offset) {
                             realPos = form.movement.pos;
-                            form.movement.pos = [realPos[0] + 128, realPos[1] + 128, realPos[2]];
+                            form.movement.pos = [
+                                realPos[0] + 128,
+                                realPos[1] + 128,
+                                realPos[2],
+                            ];
                         }
                         if (isCloneView) {
                             // Prevent using the same refr by normal and clone views
@@ -2601,7 +2602,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
         }
     };
 });
-System.register("src/front/msgHandler", [], function (exports_24, context_24) {
+System.register("skymp5-client/src/front/msgHandler", [], function (exports_24, context_24) {
     "use strict";
     var __moduleName = context_24 && context_24.id;
     return {
@@ -2610,7 +2611,7 @@ System.register("src/front/msgHandler", [], function (exports_24, context_24) {
         }
     };
 });
-System.register("src/front/modelSource", [], function (exports_25, context_25) {
+System.register("skymp5-client/src/front/modelSource", [], function (exports_25, context_25) {
     "use strict";
     var __moduleName = context_25 && context_25.id;
     return {
@@ -2619,7 +2620,7 @@ System.register("src/front/modelSource", [], function (exports_25, context_25) {
         }
     };
 });
-System.register("src/front/networking", ["src/skyrim-platform/skyrimPlatform"], function (exports_26, context_26) {
+System.register("skymp5-client/src/front/networking", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_26, context_26) {
     "use strict";
     var skyrimPlatform_14, sp, handlersMap, lastHostname, lastPort, createClientSafe, connect, close, on, send, reconnect;
     var __moduleName = context_26 && context_26.id;
@@ -2683,7 +2684,7 @@ System.register("src/front/networking", ["src/skyrim-platform/skyrimPlatform"], 
         }
     };
 });
-System.register("src/front/sendTarget", [], function (exports_27, context_27) {
+System.register("skymp5-client/src/front/sendTarget", [], function (exports_27, context_27) {
     "use strict";
     var __moduleName = context_27 && context_27.id;
     return {
@@ -2692,7 +2693,7 @@ System.register("src/front/sendTarget", [], function (exports_27, context_27) {
         }
     };
 });
-System.register("src/front/loadGameManager", ["src/skyrim-platform/skyrimPlatform"], function (exports_28, context_28) {
+System.register("skymp5-client/src/front/loadGameManager", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_28, context_28) {
     "use strict";
     var sp, isCausedBySkyrimPlatform, addLoadGameListener, loadGame;
     var __moduleName = context_28 && context_28.id;
@@ -2727,7 +2728,7 @@ System.register("src/front/loadGameManager", ["src/skyrim-platform/skyrimPlatfor
         }
     };
 });
-System.register("src/lib/idManager", [], function (exports_29, context_29) {
+System.register("skymp5-client/src/lib/idManager", [], function (exports_29, context_29) {
     "use strict";
     var IdManager;
     var __moduleName = context_29 && context_29.id;
@@ -2779,7 +2780,7 @@ System.register("src/lib/idManager", [], function (exports_29, context_29) {
         }
     };
 });
-System.register("src/front/updateOwner", ["src/skyrim-platform/skyrimPlatform", "src/front/view"], function (exports_30, context_30) {
+System.register("skymp5-client/src/front/updateOwner", ["build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/view"], function (exports_30, context_30) {
     "use strict";
     var sp, view, setOwnerModel, setup;
     var __moduleName = context_30 && context_30.id;
@@ -2850,7 +2851,7 @@ System.register("src/front/updateOwner", ["src/skyrim-platform/skyrimPlatform", 
         }
     };
 });
-System.register("src/front/remoteServer", ["src/front/networking", "src/front/messages", "src/skyrim-platform/skyrimPlatform", "src/front/loadGameManager", "src/front/components/inventory", "src/front/components/equipment", "src/lib/idManager", "src/front/components/look", "src/front/spSnippet", "src/front/view", "src/front/updateOwner"], function (exports_31, context_31) {
+System.register("skymp5-client/src/front/remoteServer", ["skymp5-client/src/front/networking", "skymp5-client/src/front/messages", "build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/loadGameManager", "skymp5-client/src/front/components/inventory", "skymp5-client/src/front/components/equipment", "skymp5-client/src/lib/idManager", "skymp5-client/src/front/components/look", "skymp5-client/src/front/spSnippet", "skymp5-client/src/front/view", "skymp5-client/src/front/updateOwner"], function (exports_31, context_31) {
     "use strict";
     var networking, messages, skyrimPlatform_15, loadGameManager, inventory_3, equipment_2, idManager_1, look_2, spSnippet, sp, view_2, updateOwner, setupEventSource, maxVerifyDelayDefault, verifyStartMoment, loggingStartMoment, maxVerifyDelay, SpawnTask, sendBrowserToken, verifySourceCode, loginWithSkympIoCredentials, taskVerifySourceCode, getPcInventory, setPcInventory, pcInvLastApply, RemoteServer;
     var __moduleName = context_31 && context_31.id;
@@ -3119,7 +3120,7 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                                 entries: msg.equipment.inv.entries.filter(function (x) { return !!skyrimPlatform_15.Armor.from(skyrimPlatform_15.Game.getFormEx(x.baseId)); }),
                             }
                             : { entries: [] }, false);
-                        if (msg.props.inventory)
+                        if (msg.props && msg.props.inventory)
                             _this.setInventory({
                                 type: "setInventory",
                                 inventory: msg.props.inventory,
@@ -3162,7 +3163,7 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                                         if (msg.look) {
                                             look_2.applyLookToPlayer(msg.look);
                                             if (msg.look.isFemale)
-                                                // Fix gender-related walking anim
+                                                // Fix gender-specific walking anim
                                                 skyrimPlatform_15.Game.getPlayer().resurrect();
                                         }
                                     });
@@ -3391,7 +3392,7 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
         }
     };
 });
-System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", "src/front/view", "src/front/components/movement", "src/front/components/look", "src/front/components/animation", "src/front/components/equipment", "src/front/components/inventory", "src/front/messages", "src/front/remoteServer", "src/front/networking", "src/front/loadGameManager", "src/front/deathSystem", "src/front/console", "src/front/hostAttempts", "src/front/updateOwner"], function (exports_32, context_32) {
+System.register("skymp5-client/src/front/skympClient", ["build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/view", "skymp5-client/src/front/components/movement", "skymp5-client/src/front/components/look", "skymp5-client/src/front/components/animation", "skymp5-client/src/front/components/equipment", "skymp5-client/src/front/components/inventory", "skymp5-client/src/front/messages", "skymp5-client/src/front/remoteServer", "skymp5-client/src/front/networking", "skymp5-client/src/front/loadGameManager", "skymp5-client/src/front/deathSystem", "skymp5-client/src/front/console", "skymp5-client/src/front/hostAttempts", "skymp5-client/src/front/updateOwner"], function (exports_32, context_32) {
     "use strict";
     var skyrimPlatform_16, view_3, movement_2, look_3, animation_2, equipment_3, inventory_4, messages_3, remoteServer_1, networking, sp, loadGameManager, deathSystem, console_1, hostAttempts_2, updateOwner, handleMessage, targetIp, targetPort, SkympClient;
     var __moduleName = context_32 && context_32.id;
@@ -3504,6 +3505,8 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     this.playerAnimSource = new Map();
                     this.lastSendMovementMoment = new Map();
                     this.lastAnimationSent = new Map();
+                    this.msgHandler = undefined;
+                    this.sendTarget = undefined;
                     this.isRaceSexMenuShown = false;
                     this.singlePlayer = false;
                     this.equipmentChanged = false;
@@ -3830,7 +3833,7 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
         }
     };
 });
-System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], function (exports_33, context_33) {
+System.register("skymp5-client/src/front/version", ["build/dist/client/Data/Platform/Modules/skyrimPlatform"], function (exports_33, context_33) {
     "use strict";
     var skyrimPlatform_17, requiredVersion, realVersion, verifyVersion;
     var __moduleName = context_33 && context_33.id;
@@ -3857,7 +3860,7 @@ System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], fun
         }
     };
 });
-System.register("src/front/index", ["src/front/skympClient", "src/front/console", "src/front/browser", "src/front/loadGameManager", "src/skyrim-platform/skyrimPlatform", "src/front/version", "src/front/worldCleaner"], function (exports_34, context_34) {
+System.register("skymp5-client/src/front/index", ["skymp5-client/src/front/skympClient", "skymp5-client/src/front/console", "skymp5-client/src/front/browser", "skymp5-client/src/front/loadGameManager", "build/dist/client/Data/Platform/Modules/skyrimPlatform", "skymp5-client/src/front/version", "skymp5-client/src/front/worldCleaner"], function (exports_34, context_34) {
     "use strict";
     var skympClient_1, console_2, browser, loadGameManager, skyrimPlatform_18, version_1, worldCleaner_2, enforceLimitations, lastTimeUpd, riftenUnlocked, n, k, zeroKMoment, lastFps;
     var __moduleName = context_34 && context_34.id;
@@ -3965,7 +3968,7 @@ System.register("src/front/index", ["src/front/skympClient", "src/front/console"
         }
     };
 });
-System.register("src/lib/helloWorld", [], function (exports_35, context_35) {
+System.register("skymp5-client/src/lib/helloWorld", [], function (exports_35, context_35) {
     "use strict";
     var helloWorld;
     var __moduleName = context_35 && context_35.id;

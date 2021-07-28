@@ -26,7 +26,7 @@ export const getRaceUnarmedDamage = (espmRecord: EspmLookupResult): number | und
 
 export const getRaceHealth = (espmRecord: EspmLookupResult): number | undefined =>
 	getRaceFloat32DataValue(espmRecord, 36);
-export const getRaceHealthRate = (espmRecord: EspmLookupResult): number | undefined =>
+export const getRaceHealRate = (espmRecord: EspmLookupResult): number | undefined =>
 	getRaceFloat32DataValue(espmRecord, 84);
 export const getRaceMagicka = (espmRecord: EspmLookupResult): number | undefined =>
 	getRaceFloat32DataValue(espmRecord, 40);

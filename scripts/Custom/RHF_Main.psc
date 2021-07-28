@@ -16,7 +16,6 @@ Bool Function _onActivate(ObjectReference target, ObjectReference caster) global
     Actor ac = caster As Actor
     
     RHF_PlayersCommunication.HandleActivate(target, caster)
-    RHF_Spawn.HandleActivate(caster, target)
     
     Return True
 EndFunction
@@ -77,9 +76,7 @@ Function _OnInput(Actor ac, Int[] keycodes) global
         Return
     EndIf
 
-
     RHF_Keybinding.HandleInput(ac, keycodes)
-    RHF_Spawn.HandleInput(ac, keycodes)
 
     If (keycodes.Length != 1)
         Return
@@ -97,8 +94,7 @@ Function _OnInput(Actor ac, Int[] keycodes) global
     EndIf
 EndFunction
 
-; ???
-Function _onAnimationEvent(Actor ac, String current, String previous = "") global
+Function _onAnimationEvent(Actor ac, String current, String previous = "", bool isAttack = false, bool isJump = false, bool isFall = false, bool isJumpLand = false, bool isChangeHp = false) global
 EndFunction
 
 ; ???
@@ -117,8 +113,8 @@ Function _onDeath(Actor ac) global
 EndFunction
 
 
-Function onTriggerleave(ObjectReference triggerRef) global
+Function onTriggerleave(ObjectReference triggerRef, Int targetId) global
 endFunction
 
-Function onTriggerEnter(ObjectReference triggerRef) global
+Function onTriggerEnter(ObjectReference triggerRef, Int targetId) global
 endFunction

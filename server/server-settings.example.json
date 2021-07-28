@@ -16,7 +16,7 @@
 	"locale": "ru-RU",
 	"stringsPath": "strings",
 	"isPapyrusHotReloadEnabled": true,
-	"isServerOptionsHotReloadEnabled": true,
+	"isServerOptionsHotReloadEnabled": false,
 	"startPoints": [
 		{
 			"pos": [22106.24609375, -44752.68359375, -140.59170532226562],

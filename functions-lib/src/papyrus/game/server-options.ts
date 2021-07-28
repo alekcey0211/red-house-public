@@ -12,9 +12,6 @@ export interface ServerOption {
 	SpawnTimeToRespawn: number;
 	spawnTimeToRespawnNPC: number;
 	spawnTimeById: string[];
-	SpawnPointPosition: [number, number, number];
-	SpawnPointAngle: [number, number, number];
-	SpawnPointWorldOrCellDesc: number;
 
 	SatietyDefaultValue: number;
 	SatietyDelay: number;
@@ -44,13 +41,6 @@ export interface ServerOption {
 	command9: string;
 	command0: string;
 
-	AVhealrate: number;
-	AVhealratemult: number;
-	AVstaminarate: number;
-	AVstaminaratemult: number;
-	AVmagickarate: number;
-	AVmagickaratemult: number;
-
 	StartUpItemsAdd: string[];
 
 	LocationsForBuying: number[];
@@ -64,6 +54,7 @@ export interface ServerOption {
 	enableALCHeffect: boolean;
 	adminPassword: string;
 }
+type ServerOptionKey = keyof ServerOption;
 
 export class ServerOptionProvider {
 	private serverOptions?: ServerOption;
@@ -78,9 +69,6 @@ export class ServerOptionProvider {
 		SpawnTimeToRespawn: 1,
 		spawnTimeToRespawnNPC: 10,
 		spawnTimeById: [],
-		SpawnPointPosition: [227, 239, 53],
-		SpawnPointAngle: [0, 0, 0],
-		SpawnPointWorldOrCellDesc: 91559,
 
 		SatietyDefaultValue: 95,
 		SatietyDelay: 120,
@@ -147,22 +135,29 @@ export class ServerOptionProvider {
 	get data() {
 		return this.mp.readDataFile('server-options.json');
 	}
+	get json() {
+		const data = JSON.parse(this.decomment(this.data));
+		Object.keys(this.defaultSettings).forEach((k) => {
+			if (data[k] === undefined) data[k] = this.defaultSettings[k as ServerOptionKey];
+		});
+		return data;
+	}
 
 	constructor(private mp: Mp, private hotReload: boolean) {
-		if (!this.hotReload) this.serverOptions = JSON.parse(this.decomment(this.data));
+		if (!this.hotReload) this.serverOptions = this.json;
 	}
 
 	getServerOptions(): ServerOption {
-		return this.serverOptions ?? JSON.parse(this.decomment(this.data));
+		return this.serverOptions ?? this.json;
 	}
 
 	getServerOptionsValue(args: PapyrusValue[]): PapyrusValue {
 		const settings = this.getServerOptions();
-		const key: keyof ServerOption | undefined =
-			(Object.keys(settings).find((x) => x.toLowerCase() === getString(args, 0).toLowerCase()) as keyof ServerOption) ??
+		const key: ServerOptionKey | undefined =
+			(Object.keys(settings).find((x) => x.toLowerCase() === getString(args, 0).toLowerCase()) as ServerOptionKey) ??
 			(Object.keys(this.defaultSettings).find(
 				(x) => x.toLowerCase() === getString(args, 0).toLowerCase()
-			) as keyof ServerOption);
+			) as ServerOptionKey);
 		if (!key) return null;
 		const value = settings[key] ?? this.defaultSettings[key];
 		return value;

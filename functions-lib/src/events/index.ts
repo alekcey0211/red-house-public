@@ -31,7 +31,7 @@ import { ServerOption } from '../papyrus/game/server-options';
 import { Actor } from '../types/skyrimPlatform';
 import {
 	getRaceHealth,
-	getRaceHealthRate,
+	getRaceHealRate,
 	getRaceId,
 	getRaceMagicka,
 	getRaceMagickaRate,
@@ -69,7 +69,7 @@ const getAttrFromRace = (mp: Mp, pcFormId: number): Partial<Record<AttrAll, numb
 
 	return {
 		health: (getRaceHealth(espmRecord) ?? 100) + healthOffset,
-		healrate: getRaceHealthRate(espmRecord) ?? 0,
+		healrate: getRaceHealRate(espmRecord) ?? 0,
 		magicka: (getRaceMagicka(espmRecord) ?? 100) + magickaOffset,
 		magickarate: getRaceMagickaRate(espmRecord) ?? 0,
 		stamina: (getRaceStamina(espmRecord) ?? 100) + staminaOffset,
@@ -79,13 +79,7 @@ const getAttrFromRace = (mp: Mp, pcFormId: number): Partial<Record<AttrAll, numb
 export const initAVFromRace = (mp: Mp, pcFormId: number, serverOptions?: ServerOption) => {
 	if (mp.get(pcFormId, 'isDead') !== undefined) return;
 
-	if (!mp.get(pcFormId, 'spawnPointPosition')) {
-		const { SpawnPointPosition, SpawnPointAngle, SpawnPointWorldOrCellDesc } =
-			serverOptions ?? serverOptionProvider.getServerOptions();
-
-		mp.set(pcFormId, 'spawnPointPosition', SpawnPointPosition);
-		mp.set(pcFormId, 'spawnPointAngle', SpawnPointAngle);
-		mp.set(pcFormId, 'spawnPointWorldOrCellDesc', SpawnPointWorldOrCellDesc);
+	if (!mp.get(pcFormId, 'spawnTimeToRespawn')) {
 		const time = getRespawnTimeById(mp, null, [pcFormId]);
 		mp.set(pcFormId, 'spawnTimeToRespawn', time);
 	}
@@ -102,7 +96,7 @@ const logExecuteTime = (startTime: number, eventName: string) => {
 export const throwOrInit = (mp: Mp, id: number, serverOptions?: ServerOption) => {
 	if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0') {
 		throwOutById(mp, id);
-	} else if (!mp.get(id, 'spawnPointPosition')) {
+	} else if (!mp.get(id, 'spawnTimeToRespawn')) {
 		try {
 			initAVFromRace(mp, id, serverOptions);
 		} catch (err) {
@@ -159,8 +153,8 @@ export const register = (mp: Mp): void => {
 
 		mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
 
-		initAVFromRace(mp, pcFormId);
 		const serverOptions = serverOptionProvider.getServerOptions();
+		initAVFromRace(mp, pcFormId, serverOptions);
 		const neighbors = mp.get(pcFormId, 'neighbors');
 		neighbors
 			.filter((n) => mp.get(n, 'type') === 'MpActor')

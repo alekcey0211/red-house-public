@@ -229,8 +229,8 @@ const shiftEvalCommand = (mp, isVisibleByNeighbors) => {
   }
 };
 
-const evalClient = (mp, id, f, isVisibleByNeighbors = false, immediatly = false) => {
-  if (immediatly) {
+const evalClient = (mp, id, f, isVisibleByNeighbors = false, immediately = false) => {
+  if (immediately) {
     execEvalCommand(mp, {
       id,
       f
@@ -357,101 +357,7 @@ const getBooleanArray = (args, index) => {
 };
 
 exports.getBooleanArray = getBooleanArray;
-},{}],"nnyN":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getServerOptionsValue = exports.getServerOptions = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const defaultSettings = {
-  serverName: 'Secret Project',
-  EnableDebug: false,
-  CookingDuration: 5,
-  CookingActivationDistance: 55,
-  IsChooseSpawnEnable: true,
-  SpawnTimeToRespawn: 1,
-  spawnTimeToRespawnNPC: 10,
-  spawnTimeById: [],
-  SpawnPointPosition: [227, 239, 53],
-  SpawnPointAngle: [0, 0, 0],
-  SpawnPointWorldOrCellDesc: 91559,
-  SatietyDefaultValue: 95,
-  SatietyDelay: 120,
-  SatietyReduceValue: -1,
-  HitDamageMod: -5,
-  HitStaminaReduce: 5,
-  isPowerAttackMult: 2,
-  isBashAttackMult: 0.5,
-  isPowerAttackStaminaReduce: 25,
-  keybindingBrowserSetVisible: 60,
-  keybindingBrowserSetFocused: 64,
-  keybindingShowChat: 20,
-  keybindingShowMenu: 21,
-  keybindingShowAnimList: 22,
-  keybindingShowPerkTree: 24,
-  command1: '',
-  command2: '',
-  command3: '',
-  command4: '',
-  command5: '',
-  command6: '',
-  command7: '',
-  command8: '',
-  command9: '',
-  command0: '',
-  AVhealrate: 0,
-  AVhealratemult: 0,
-  AVstaminarate: 5,
-  AVstaminaratemult: 100,
-  AVmagickarate: 5,
-  AVmagickaratemult: 100,
-  StartUpItemsAdd: ['0x64b42;10', '0xf4314;10', '0x34cdf;30', '0x64b3f;30', '0x64b41;30', '0x669a5;30', '0x65c9f;30', '0x64b42;30', '0x34d22;30', '0x45c28;30', '0x65c9b;5', '0x65c99;10', '0x64b40;30', '0x65c9e;30', '0xf2011;30', '0x515def1;2', '0x515def2;2', '0x12eb7;1', '0x3eadd;50'],
-  LocationsForBuying: [],
-  LocationsForBuyingValue: [],
-  TimeScale: 20,
-  showNickname: false,
-  enableInterval: true,
-  enableALCHeffect: true,
-  adminPassword: "12345"
-};
-
-const decomment = jsonString => {
-  const regex = /\/\/.+/gm;
-  return jsonString.replace(regex, '');
-};
-
-let serverOptions = '';
-
-const getServerOptions = mp => {
-  const config = mp.getServerSettings();
-  const hotReload = config.isServerOptionsHotReloadEnabled;
-
-  if (!serverOptions && !hotReload) {
-    serverOptions = JSON.parse(decomment(mp.readDataFile('server-options.json')));
-  }
-
-  const settings = !hotReload ? serverOptions : JSON.parse(decomment(mp.readDataFile('server-options.json')));
-  return settings;
-};
-
-exports.getServerOptions = getServerOptions;
-
-const getServerOptionsValue = (mp, args) => {
-  var _a, _b;
-
-  const settings = exports.getServerOptions(mp);
-  const key = (_a = Object.keys(settings).find(x => x.toLowerCase() === papyrusArgs_1.getString(args, 0).toLowerCase())) !== null && _a !== void 0 ? _a : Object.keys(defaultSettings).find(x => x.toLowerCase() === papyrusArgs_1.getString(args, 0).toLowerCase());
-  if (!key) return;
-  const value = (_b = settings[key]) !== null && _b !== void 0 ? _b : defaultSettings[key];
-  return value;
-};
-
-exports.getServerOptionsValue = getServerOptionsValue;
-},{"../../utils/papyrusArgs":"oZY1"}],"WCBi":[function(require,module,exports) {
+},{}],"WCBi":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -464,8 +370,6 @@ const eval_1 = require("../../properties/eval");
 const functionInfo_1 = require("../../utils/functionInfo");
 
 const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const server_options_1 = require("./server-options");
 
 const getForm = (mp, self, args) => {
   var _a, _b;
@@ -592,7 +496,7 @@ const getCurrentCrosshairRef = (mp, selfNull, args) => {
   return refId && exports.getForm(mp, null, [refId]);
 };
 
-const register = mp => {
+const register = (mp, serverOptionProvider) => {
   mp.registerPapyrusFunction('global', 'Game', 'GetForm', (self, args) => exports.getForm(mp, self, args));
   mp.registerPapyrusFunction('global', 'Game', 'GetFormEx', (self, args) => exports.getForm(mp, self, args));
   mp.registerPapyrusFunction('global', 'Game', 'GetFormFromFile', (self, args) => exports.getFormFromFile(mp, self, args));
@@ -601,17 +505,17 @@ const register = mp => {
   mp.registerPapyrusFunction('global', 'GameEx', 'DisablePlayerControls', (self, args) => disablePlayerControls(mp, self, args));
   mp.registerPapyrusFunction('global', 'GameEx', 'EnablePlayerControls', (self, args) => enablePlayerControls(mp, self, args));
   mp.registerPapyrusFunction('global', 'GameEx', 'GetCurrentCrosshairRef', (self, args) => getCurrentCrosshairRef(mp, self, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsString', (self, args) => server_options_1.getServerOptionsValue(mp, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsStringArray', (self, args) => server_options_1.getServerOptionsValue(mp, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsInt', (self, args) => server_options_1.getServerOptionsValue(mp, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsIntArray', (self, args) => server_options_1.getServerOptionsValue(mp, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsFloat', (self, args) => server_options_1.getServerOptionsValue(mp, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsFloatArray', (self, args) => server_options_1.getServerOptionsValue(mp, args));
-  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsBool', (self, args) => server_options_1.getServerOptionsValue(mp, args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsString', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsStringArray', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsInt', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsIntArray', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsFloat', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsFloatArray', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+  mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsBool', (self, args) => serverOptionProvider.getServerOptionsValue(args));
 };
 
 exports.register = register;
-},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1","./server-options":"nnyN"}],"wmVe":[function(require,module,exports) {
+},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1"}],"wmVe":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -629,7 +533,11 @@ const setPosition = (mp, self, args) => {
 
 exports.setPosition = setPosition;
 
-const getPosition = (mp, self) => mp.get(mp.getIdFromDesc(self.desc), 'pos');
+const getPosition = (mp, self) => {
+  var _a;
+
+  return (_a = mp.get(mp.getIdFromDesc(self.desc), 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0];
+};
 
 exports.getPosition = getPosition;
 
@@ -672,7 +580,11 @@ const setAngle = (mp, self, args) => {
 
 exports.setAngle = setAngle;
 
-const getAngle = (mp, self) => mp.get(mp.getIdFromDesc(self.desc), 'angle');
+const getAngle = (mp, self) => {
+  var _a;
+
+  return (_a = mp.get(mp.getIdFromDesc(self.desc), 'angle')) !== null && _a !== void 0 ? _a : [0, 0, 0];
+};
 
 exports.getAngle = getAngle;
 
@@ -842,7 +754,7 @@ const getStorageValue = (mp, self, args) => {
   const refId = mp.getIdFromDesc(ref.desc);
   const key = papyrusArgs_1.getString(args, 1);
   functions_1.checkAndCreatePropertyExist(mp, refId, key);
-  let val = null;
+  let val;
 
   try {
     val = mp.get(refId, key);
@@ -857,28 +769,28 @@ exports.getStorageValue = getStorageValue;
 
 const getStorageValueString = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getString([val], 0);
+  return val === null || val === undefined ? "" : papyrusArgs_1.getString([val], 0);
 };
 
 exports.getStorageValueString = getStorageValueString;
 
 const getStorageValueStringArray = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getStringArray([val], 0);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getStringArray([val], 0);
 };
 
 exports.getStorageValueStringArray = getStorageValueStringArray;
 
 const getStorageValueNumber = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getNumber([val], 0);
+  return val === null || val === undefined ? 0 : papyrusArgs_1.getNumber([val], 0);
 };
 
 exports.getStorageValueNumber = getStorageValueNumber;
 
 const getStorageValueNumberArray = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getNumberArray([val], 0);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getNumberArray([val], 0);
 };
 
 exports.getStorageValueNumberArray = getStorageValueNumberArray;
@@ -892,7 +804,7 @@ exports.getStorageValueBool = getStorageValueBool;
 
 const getStorageValueBoolArray = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getBooleanArray([val], 0);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getBooleanArray([val], 0);
 };
 
 exports.getStorageValueBoolArray = getStorageValueBoolArray;
@@ -906,7 +818,7 @@ exports.getStorageValueForm = getStorageValueForm;
 
 const getStorageValueFormArray = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getObjectArray([val], 0);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getObjectArray([val], 0);
 };
 
 exports.getStorageValueFormArray = getStorageValueFormArray;
@@ -1181,7 +1093,7 @@ var __importStar = this && this.__importStar || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.getRespawnTime = exports.setOpen = exports.getLocationRef = exports.isInInterior = exports.getParentCell = exports.getWorldSpace = exports.getDisplayName = exports.placeAtMeEx = exports.placeObjectOnStatic = exports.getBaseObjectIdById = exports.getBaseObjectId = void 0;
+exports.register = exports.getRespawnTime = exports.getRespawnTimeById = exports.setOpen = exports.getLocationRef = exports.isInInterior = exports.getParentCell = exports.getWorldSpace = exports.getDisplayName = exports.placeAtMeEx = exports.placeObjectOnStatic = exports.getBaseObjectIdById = exports.getBaseObjectId = void 0;
 
 const papyrusArgs_1 = require("../../utils/papyrusArgs");
 
@@ -1205,7 +1117,7 @@ const helper_1 = require("../../utils/helper");
 
 const events_1 = require("../../events");
 
-const server_options_1 = require("../game/server-options");
+const __1 = require("../../..");
 
 const setScale = (mp, self, args) => {
   const scale = papyrusArgs_1.getNumber(args, 0);
@@ -1371,6 +1283,8 @@ const placeObjectOnStatic = (mp, self, args) => {
 exports.placeObjectOnStatic = placeObjectOnStatic;
 
 const placeAtMeEx = (mp, selfNull, args) => {
+  var _a;
+
   const self = papyrusArgs_1.getObject(args, 0);
   const selfId = mp.getIdFromDesc(self.desc);
   const spawnId = papyrusArgs_1.getNumber(args, 1);
@@ -1380,7 +1294,7 @@ const placeAtMeEx = (mp, selfNull, args) => {
     desc: mp.getDescFromId(sRefId)
   };
   const targetPoint = {
-    pos: mp.get(selfId, 'pos'),
+    pos: (_a = mp.get(selfId, 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0],
     angle: [0, 0, 0],
     worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc')
   };
@@ -1480,7 +1394,7 @@ const getParentCell = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
   const cellDesc = mp.get(selfId, 'cellDesc');
   if (!cellDesc) return;
-  const cellId = mp.getIdFromDesc(mp.get(selfId, 'cellDesc'));
+  const cellId = mp.getIdFromDesc(cellDesc);
   return game.getForm(mp, null, [cellId]);
 };
 
@@ -1516,23 +1430,34 @@ const setOpen = (mp, self, args) => {
 
 exports.setOpen = setOpen;
 
-const getRespawnTime = (mp, selfNull, args) => {
-  var _a, _b, _c;
+const getRespawnTimeById = (mp, selfNull, args) => {
+  var _a, _b, _c, _d;
 
-  const self = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
+  const selfId = papyrusArgs_1.getNumber(args, 0);
   const baseId = exports.getBaseObjectIdById(mp, null, [selfId]);
-  const timeById = server_options_1.getServerOptionsValue(mp, ['spawnTimeById']).map(x => {
+
+  const spawnTimeById = __1.serverOptionProvider.getServerOptionsValue(['spawnTimeById']);
+
+  const timeById = Array.isArray(spawnTimeById) ? spawnTimeById.map(x => {
+    if (!x || typeof x !== 'string') return;
     const xParse = x.split(':');
     if (xParse.length != 2) return;
     return {
       id: +xParse[0],
       time: +xParse[1]
     };
-  });
+  }).filter(x => x) : [];
   const refTime = (_a = timeById.find(x => x.id === selfId)) === null || _a === void 0 ? void 0 : _a.time;
   const baseTime = (_b = timeById.find(x => x.id === baseId)) === null || _b === void 0 ? void 0 : _b.time;
-  return (_c = refTime !== null && refTime !== void 0 ? refTime : baseTime) !== null && _c !== void 0 ? _c : server_options_1.getServerOptionsValue(mp, [baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC']);
+  return (_d = (_c = refTime !== null && refTime !== void 0 ? refTime : baseTime) !== null && _c !== void 0 ? _c : __1.serverOptionProvider.getServerOptionsValue([baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC'])) !== null && _d !== void 0 ? _d : -1;
+};
+
+exports.getRespawnTimeById = getRespawnTimeById;
+
+const getRespawnTime = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  return exports.getRespawnTimeById(mp, null, [selfId]);
 };
 
 exports.getRespawnTime = getRespawnTime;
@@ -1567,13 +1492,13 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi","./position":"wmVe","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","./storage":"P8j4","../cell":"WIJZ","../../utils/helper":"FxH1","../../events":"VJVi","../game/server-options":"nnyN"}],"WNwQ":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi","./position":"wmVe","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","./storage":"P8j4","../cell":"WIJZ","../../utils/helper":"FxH1","../../events":"VJVi","../../..":"QCba"}],"WNwQ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateAttributeCommon = void 0;
+exports.updateAttributeMult = exports.updateAttributeCommon = void 0;
 
 const functionInfo_1 = require("../../../utils/functionInfo");
 
@@ -1589,6 +1514,7 @@ const updateAttributeCommon = (attrParam, isOwner = false) => {
     if (!ctx.refr || !ctx.get) return;
     const ac = ctx.sp.Actor.from(ctx.refr);
     if (!ac) return;
+    if (!ctx.value) return;
     const base = ctx.value.base || 0;
     const perm = ctx.value.permanent || 0;
     const temp = ctx.value.temporary || 0;
@@ -1657,6 +1583,37 @@ const updateAttributeCommon = (attrParam, isOwner = false) => {
 };
 
 exports.updateAttributeCommon = updateAttributeCommon;
+
+const updateAttributeMult = attrParam => {
+  return new functionInfo_1.FunctionInfo((ctx, attrParam) => {
+    const av = attrParam;
+    if (!ctx.refr || !ctx.get) return;
+    const ac = ctx.sp.Actor.from(ctx.refr);
+    if (!ac) return;
+    if (!ctx.value) return;
+    const base = ctx.value.base || 0;
+    const perm = ctx.value.permanent || 0;
+    const temp = ctx.value.temporary || 0;
+    const targetMax = base + perm + temp;
+    const targetDmg = ctx.value.damage || 0;
+    const currentPercentage = ac.getActorValuePercentage(av);
+    const currentMax = ac.getBaseActorValue(av);
+    let targetPercentage = (targetMax + targetDmg) / targetMax;
+    const deltaPercentage = targetPercentage - currentPercentage;
+
+    if (deltaPercentage > 0) {
+      ac.restoreActorValue(av, deltaPercentage * currentMax);
+    } else if (deltaPercentage < 0) {
+      ac.damageActorValue(av, deltaPercentage * currentMax);
+    }
+
+    ac.setActorValue(av, base);
+  }).getText({
+    attrParam
+  });
+};
+
+exports.updateAttributeMult = updateAttributeMult;
 },{"../../../utils/functionInfo":"fC7F"}],"Klzq":[function(require,module,exports) {
 "use strict";
 
@@ -1790,16 +1747,28 @@ const register = mp => {
     functions_1.statePropFactory(mp, propName, true);
   }
 
+  ['speedmult', 'weaponspeedmult'].forEach(mult => {
+    mp.makeProperty(`av_${mult}`, {
+      isVisibleByOwner: true,
+      isVisibleByNeighbors: true,
+      updateOwner: attributes_func_1.updateAttributeMult(mult),
+      updateNeighbor: attributes_func_1.updateAttributeMult(mult)
+    });
+  });
   let avOps = {
     set(formId, avName, modifierName, newValue) {
+      var _a;
+
       const propName = 'av_' + avName.toLowerCase();
-      const value = mp.get(formId, propName);
+      let value = mp.get(formId, propName);
+      if (!value) return;
       value[modifierName] = newValue;
       mp.set(formId, propName, value);
 
       if (['health', 'magicka', 'stamina'].indexOf(avName.toLowerCase()) !== -1) {
         const propName = `${avName.toLowerCase()}NumChanges`;
-        mp.set(formId, propName, 1 + (mp.get(formId, propName) || 0));
+        const numChanges = (_a = mp.get(formId, propName)) !== null && _a !== void 0 ? _a : 0;
+        mp.set(formId, propName, 1 + numChanges);
       }
     },
 
@@ -1808,7 +1777,7 @@ const register = mp => {
       const propValue = mp.get(formId, propName);
 
       if (propValue === undefined) {
-        const s = `'${propName}' was '${propValue}' for ${formId.toString(16)}`;
+        const s = `[av] '${propName}' was undefined for ${formId.toString(16)}`;
         throw new Error(s);
       }
 
@@ -1894,9 +1863,10 @@ const register = mp => {
       avOps.set(formId, avName, 'damage', damageModAfterRegen);
     },
     setDefaults: (formId, options, base = {}) => {
-      var _a, _b, _c, _d;
+      var _a, _b, _c, _d, _e, _f;
 
-      const force = options && options.force;
+      console.log('[sync] setDefaults', formId.toString(16), base);
+      const force = !!(options === null || options === void 0 ? void 0 : options.force);
 
       if (mp.get(formId, 'type') === 'MpActor') {
         if (mp.get(formId, 'isDead') === undefined || force) {
@@ -1934,46 +1904,31 @@ const register = mp => {
             });
           }
         }
+
+        if (!mp.get(formId, 'av_speedmult') || force) {
+          mp.set(formId, 'av_speedmult', {
+            base: (_e = base.speedmult) !== null && _e !== void 0 ? _e : 100
+          });
+        }
+
+        if (!mp.get(formId, 'av_weaponspeedmult') || force) {
+          mp.set(formId, 'av_weaponspeedmult', {
+            base: (_f = base.weaponspeedmult) !== null && _f !== void 0 ? _f : 1
+          });
+        }
       }
     }
   };
 };
 
 exports.register = register;
-},{"../../../papyrus/multiplayer/functions":"zNfc","./attributes-func":"WNwQ"}],"ZKYg":[function(require,module,exports) {
+},{"../../../papyrus/multiplayer/functions":"zNfc","./attributes-func":"WNwQ"}],"dwII":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.skillList = void 0;
-exports.skillList = {
-  OneHanded: 0x44c,
-  TwoHanded: 0x44d,
-  Marksman: 0x44e,
-  Block: 0x44f,
-  Smithing: 0x450,
-  HeavyArmor: 0x451,
-  LightArmor: 0x452,
-  Pickpocket: 0x453,
-  Lockpicking: 0x454,
-  Sneak: 0x455,
-  Alchemy: 0x456,
-  Speechcraft: 0x457,
-  Alteration: 0x458,
-  Conjuration: 0x459,
-  Destruction: 0x45a,
-  Illusion: 0x45b,
-  Restoration: 0x45c,
-  Enchanting: 0x45d
-};
-},{}],"dwII":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.onCurrentCrosshairChange = exports.onEffectStart = exports.onUiMenuToggle = exports.onAnimationEvent = exports.onInput = exports.onEquip = exports.onHit = exports.onCellChange = exports.onLoad = void 0;
+exports.onCurrentCrosshairChange = exports.onEffectStart = exports.onUiMenuToggle = exports.onPrintConsole = exports.onAnimationEvent = exports.onInput = exports.onEquip = exports.onHit = exports.onCellChange = exports.onLoad = void 0;
 
 const onLoad = ctx => {
   ctx.sp.once('update', () => {
@@ -2090,6 +2045,22 @@ const onAnimationEvent = ctx => {
 };
 
 exports.onAnimationEvent = onAnimationEvent;
+
+const onPrintConsole = ctx => {
+  const next = ctx.sp.storage._api_onPrintConsole;
+  ctx.sp.storage._api_onPrintConsole = {
+    callback(...args) {
+      ctx.sendEvent(args);
+
+      if (typeof next.callback === 'function') {
+        next.callback(...args);
+      }
+    }
+
+  };
+};
+
+exports.onPrintConsole = onPrintConsole;
 
 const onUiMenuToggle = ctx => {
   const badMenus = ['BarterMenu', 'Book Menu', 'ContainerMenu', 'GiftMenu', 'InventoryMenu', 'Journal Menu', 'Lockpicking Menu', 'Loading Menu', 'MapMenu', 'RaceSex Menu', 'StatsMenu', 'TweenMenu', 'Console', 'Loading Menu', 'Main Menu'];
@@ -2281,6 +2252,8 @@ exports.register = void 0;
 
 const _1 = require(".");
 
+const __1 = require("../..");
+
 const functionInfo_1 = require("../utils/functionInfo");
 
 const empty_functions_1 = require("./empty-functions");
@@ -2292,23 +2265,29 @@ const register = mp => {
     clearTimeout(mp.timer);
   }
 
-  const interval = () => {
-    mp.timer = setTimeout(() => {
-      mp.get(0, 'onlinePlayers').forEach(id => {
-        const neighbors = mp.get(id, 'neighbors').filter(n => mp.get(n, 'type') === 'MpActor');
-        neighbors.forEach(n => {
-          _1.throwOrInit(mp, n);
-        });
-      });
-      interval();
-    }, 200);
-  };
+  const serverOptions = __1.serverOptionProvider.getServerOptions();
 
-  interval();
+  if (serverOptions.enableInterval) {
+    const interval = () => {
+      mp.timer = setTimeout(() => {
+        mp.get(0, 'onlinePlayers').forEach(id => {
+          const neighbors = mp.get(id, 'neighbors').filter(n => mp.get(n, 'type') === 'MpActor');
+          neighbors.forEach(n => {
+            if (!mp.get(n, 'spawnTimeToRespawn')) return;
+
+            _1.throwOrInit(mp, n, serverOptions);
+          });
+        });
+        interval();
+      }, 200);
+    };
+
+    interval();
+  }
 };
 
 exports.register = register;
-},{".":"VJVi","../utils/functionInfo":"fC7F","./empty-functions":"A7KX"}],"dvBS":[function(require,module,exports) {
+},{".":"VJVi","../..":"QCba","../utils/functionInfo":"fC7F","./empty-functions":"A7KX"}],"dvBS":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2367,149 +2346,13 @@ exports.getFlags = getFlags;
 const register = mp => {};
 
 exports.register = register;
-},{"../utils/papyrusArgs":"oZY1"}],"Xpf2":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"icKT":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.WeaponType = void 0;
-var WeaponType;
-
-(function (WeaponType) {
-  WeaponType[WeaponType["Fists"] = 0] = "Fists";
-  WeaponType[WeaponType["Swords"] = 1] = "Swords";
-  WeaponType[WeaponType["Daggers"] = 2] = "Daggers";
-  WeaponType[WeaponType["WarAxes"] = 3] = "WarAxes";
-  WeaponType[WeaponType["Maces"] = 4] = "Maces";
-  WeaponType[WeaponType["Greatswords"] = 5] = "Greatswords";
-  WeaponType[WeaponType["BattleaxesANDWarhammers"] = 6] = "BattleaxesANDWarhammers";
-  WeaponType[WeaponType["Bows"] = 7] = "Bows";
-  WeaponType[WeaponType["Staff"] = 8] = "Staff";
-  WeaponType[WeaponType["Crossbows"] = 9] = "Crossbows";
-})(WeaponType = exports.WeaponType || (exports.WeaponType = {}));
-},{}],"TCaz":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.getBaseDamage = exports.getWeaponType = void 0;
-
-const helper_1 = require("../../utils/helper");
-
-const type_1 = require("./type");
-
-const getWeaponType = (mp, self) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const data = mp.lookupEspmRecordById(selfId);
-  const kwda = (_b = (_a = data.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'KWDA')) === null || _b === void 0 ? void 0 : _b.data;
-  const keywords = [];
-
-  if (kwda) {
-    const dataView = new DataView(kwda.buffer);
-
-    for (let i = 0; i < dataView.byteLength; i += 4) {
-      keywords.push(dataView.getUint32(i, true));
-    }
-
-    if (keywords.includes(0x1e711)) {
-      return type_1.WeaponType.Swords;
-    } else if (keywords.includes(0x6d931)) {
-      return type_1.WeaponType.Greatswords;
-    } else if (keywords.includes(0x1e713)) {
-      return type_1.WeaponType.Daggers;
-    } else if (keywords.includes(0x6d932) || keywords.includes(0x6d930)) {
-      return type_1.WeaponType.BattleaxesANDWarhammers;
-    } else if (keywords.includes(0x1e714)) {
-      return type_1.WeaponType.Maces;
-    } else if (keywords.includes(0x1e712)) {
-      return type_1.WeaponType.WarAxes;
-    } else if (keywords.includes(0x1e715)) {
-      return type_1.WeaponType.Bows;
-    } else if (keywords.includes(0x1e716)) {
-      return type_1.WeaponType.Staff;
-    } else if (keywords.includes(-1)) {
-      return type_1.WeaponType.Crossbows;
-    }
-  }
-};
-
-exports.getWeaponType = getWeaponType;
-
-const getBaseDamage = (mp, self) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const data = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!data) return;
-  const damage = helper_1.uint16(data.buffer, 8);
-  return damage;
-};
-
-exports.getBaseDamage = getBaseDamage;
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'Weapon', 'GetWeaponType', self => exports.getWeaponType(mp, self));
-  mp.registerPapyrusFunction('method', 'Weapon', 'GetBaseDamage', self => exports.getBaseDamage(mp, self));
-};
-
-exports.register = register;
-},{"../../utils/helper":"FxH1","./type":"Xpf2"}],"lP44":[function(require,module,exports) {
-"use strict";
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function () {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getEquippedWeapon = exports.getEquippedShield = exports.getEquippedArmorInSlot = exports.getEquippedObject = exports.getWornFormsId = exports.getWornForms = exports.getEquippedItemType = exports.unequipItemSlot = exports.unequipAll = exports.unequipItemEx = exports.unequipItem = exports.isEquipped = exports.equipItemById = exports.equipItemEx = exports.equipItem = exports.getEquipment = exports.equipSlotMap = void 0;
-
-const eval_1 = require("../../properties/eval");
-
-const functionInfo_1 = require("../../utils/functionInfo");
-
-const helper_1 = require("../../utils/helper");
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const game = __importStar(require("../game"));
-
-const weapon = __importStar(require("../weapon"));
-
+exports.equipSlotMap = void 0;
 exports.equipSlotMap = {
   0x1: 30,
   0x2: 31,
@@ -2526,302 +2369,63 @@ exports.equipSlotMap = {
   0x1000: 42,
   0x2000: 43
 };
+},{}],"WNhg":[function(require,module,exports) {
+"use strict";
 
-const getEquipment = (mp, selfId, opt = {
-  mapARMO: true,
-  mapWEAP: true
-}) => {
-  if (opt.mapWEAP === undefined) opt.mapWEAP = true;
-  if (opt.mapARMO === undefined) opt.mapARMO = true;
-  const eq = mp.get(selfId, 'equipment');
-  if (!eq) return;
-  eq.inv.entries = eq.inv.entries.filter(x => x.worn).map(x => {
-    var _a, _b, _c, _d;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.getSlot = exports.getSlotById = exports.getBaseArmor = exports.getBaseArmorById = void 0;
 
-    const rec = mp.lookupEspmRecordById(x.baseId);
-    if (!rec.record) return x;
-    x.type = rec.record.type;
+const helper_1 = require("../../utils/helper");
 
-    switch (true) {
-      case rec.record.type === 'WEAP' && opt.mapWEAP:
-        const etype = (_a = rec.record.fields.find(x => x.type === 'ETYP')) === null || _a === void 0 ? void 0 : _a.data;
-        const etypeId = etype && mp.lookupEspmRecordById(helper_1.uint32(etype.buffer, 0));
-        const edidEquipSlot = etypeId && ((_b = etypeId.record) === null || _b === void 0 ? void 0 : _b.editorId);
-        if (edidEquipSlot === 'RightHand') x.location = 1;
-        if (edidEquipSlot === 'LeftHand') x.location = 0;
-        const f = game.getForm(mp, null, [x.baseId]);
-        if (f) x.baseDamage = weapon.getBaseDamage(mp, f);
-        break;
+const types_1 = require("./types");
 
-      case rec.record.type === 'ARMO' && opt.mapARMO:
-        const b2 = (_c = rec.record.fields.find(x => x.type === 'BOD2')) === null || _c === void 0 ? void 0 : _c.data;
-        const slot = b2 && helper_1.uint32(b2.buffer, 0);
-        slot && (x.slot = Object.keys(exports.equipSlotMap).filter(k => slot & +k).map(k => exports.equipSlotMap[+k]));
-        const dnam = (_d = rec.record.fields.find(x => x.type === 'DNAM')) === null || _d === void 0 ? void 0 : _d.data;
-        if (dnam) x.baseArmor = helper_1.uint32(dnam.buffer, 0) / 100;
-        break;
+const getBaseArmorById = (mp, selfId, espmRecord) => {
+  var _a, _b;
 
-      default:
-        break;
-    }
-
-    return x;
-  });
-  return eq;
+  if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
+  const dnam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DNAM')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!dnam) return;
+  return helper_1.uint32(dnam.buffer, 0) / 100;
 };
 
-exports.getEquipment = getEquipment;
+exports.getBaseArmorById = getBaseArmorById;
 
-const equipItem = (mp, self, args) => {
+const getBaseArmor = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
-  const item = papyrusArgs_1.getObject(args, 0);
-  const itemId = mp.getIdFromDesc(item.desc);
-  const preventRemoval = papyrusArgs_1.getBoolean(args, 1);
-  const silent = papyrusArgs_1.getBoolean(args, 2);
-  const countExist = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [item]);
-
-  if (countExist === 0) {
-    mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, 1, true]);
-  }
-
-  const func = (ctx, itemId, preventRemoval, silent) => {
-    (() => {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      const form = ctx.sp.Game.getFormEx(itemId);
-      ac === null || ac === void 0 ? void 0 : ac.equipItem(form, preventRemoval, silent);
-    })();
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    itemId,
-    preventRemoval,
-    silent
-  }));
-
-  if (!silent) {}
+  return exports.getBaseArmorById(mp, selfId);
 };
 
-exports.equipItem = equipItem;
+exports.getBaseArmor = getBaseArmor;
 
-const equipItemEx = (mp, self, args) => {
+const getSlotById = (mp, selfId, espmRecord) => {
+  var _a, _b;
+
+  if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
+  const b2 = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'BOD2')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!b2) return;
+  const slot = helper_1.uint32(b2.buffer, 0);
+  if (!slot) return;
+  return Object.keys(types_1.equipSlotMap).filter(k => slot & +k).map(k => types_1.equipSlotMap[+k]);
+};
+
+exports.getSlotById = getSlotById;
+
+const getSlot = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
-  const item = papyrusArgs_1.getObject(args, 0);
-  const itemId = mp.getIdFromDesc(item.desc);
-  const slot = args[1] ? papyrusArgs_1.getNumber(args, 1) : 0;
-  const preventUnequip = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
-  const equipSound = args[3] ? papyrusArgs_1.getBoolean(args, 3) : true;
-
-  const func = (ctx, itemId, slot, preventUnequip, equipSound) => {
-    ctx.sp.once('update', () => {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      const form = ctx.sp.Game.getFormEx(itemId);
-      ac === null || ac === void 0 ? void 0 : ac.equipItemEx(form, slot, preventUnequip, equipSound);
-    });
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    itemId,
-    slot,
-    preventUnequip,
-    equipSound
-  }));
-
-  if (!equipSound) {}
+  return exports.getSlotById(mp, selfId);
 };
 
-exports.equipItemEx = equipItemEx;
+exports.getSlot = getSlot;
 
-const equipItemById = (mp, self, args) => {};
-
-exports.equipItemById = equipItemById;
-
-const isEquipped = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const item = papyrusArgs_1.getObject(args, 0);
-  const itemId = mp.getIdFromDesc(item.desc);
-  const eq = exports.getEquipment(mp, selfId);
-  if (!eq) return false;
-  return eq.inv.entries.findIndex(item => item.baseId === itemId && item.worn) >= 0;
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'Armor', 'GetBaseArmor', self => exports.getBaseArmor(mp, self));
+  mp.registerPapyrusFunction('method', 'Armor', 'GetSlot', self => exports.getSlot(mp, self));
 };
 
-exports.isEquipped = isEquipped;
-
-const unequipItem = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const item = papyrusArgs_1.getObject(args, 0);
-  const itemId = mp.getIdFromDesc(item.desc);
-  const preventRemoval = args[1] ? papyrusArgs_1.getBoolean(args, 1) : false;
-  const silent = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
-
-  const func = (ctx, itemId, preventRemoval, silent) => {
-    ctx.sp.once('update', () => {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      const form = ctx.sp.Game.getFormEx(itemId);
-      ac === null || ac === void 0 ? void 0 : ac.unequipItem(form, preventRemoval, silent);
-    });
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    itemId,
-    preventRemoval,
-    silent
-  }));
-
-  if (!silent) {}
-};
-
-exports.unequipItem = unequipItem;
-
-const unequipItemEx = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const item = papyrusArgs_1.getObject(args, 0);
-  const itemId = mp.getIdFromDesc(item.desc);
-  const slot = args[1] ? papyrusArgs_1.getNumber(args, 1) : 0;
-  const preventEquip = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
-
-  const func = (ctx, itemId, slot, preventEquip) => {
-    ctx.sp.once('update', () => {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      const form = ctx.sp.Game.getFormEx(itemId);
-      ac === null || ac === void 0 ? void 0 : ac.unequipItemEx(form, slot, preventEquip);
-    });
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    itemId,
-    slot,
-    preventEquip
-  }));
-};
-
-exports.unequipItemEx = unequipItemEx;
-
-const unequipAll = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-
-  const func = ctx => {
-    ctx.sp.once('update', () => {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      ac === null || ac === void 0 ? void 0 : ac.unequipAll();
-    });
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText());
-};
-
-exports.unequipAll = unequipAll;
-
-const unequipItemSlot = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const slotId = papyrusArgs_1.getNumber(args, 0);
-
-  const func = (ctx, slotId) => {
-    ctx.sp.once('update', () => {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      ac === null || ac === void 0 ? void 0 : ac.unequipItemSlot(slotId);
-    });
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    slotId
-  }));
-};
-
-exports.unequipItemSlot = unequipItemSlot;
-
-const getEquippedItemType = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const hand = papyrusArgs_1.getNumber(args, 0);
-};
-
-exports.getEquippedItemType = getEquippedItemType;
-
-const getWornForms = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
-  const eq = exports.getEquipment(mp, selfId);
-  return eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.worn).map(x => game.getForm(mp, null, [x.baseId])).filter(x => x);
-};
-
-exports.getWornForms = getWornForms;
-
-const getWornFormsId = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
-  const eq = exports.getEquipment(mp, selfId);
-  return eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.worn).map(x => x.baseId);
-};
-
-exports.getWornFormsId = getWornFormsId;
-
-const getEquippedObject = (mp, self, args) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const loc = papyrusArgs_1.getNumber(args, 0);
-  const eq = exports.getEquipment(mp, selfId, {
-    mapARMO: false
-  });
-  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => x.location === loc)) === null || _a === void 0 ? void 0 : _a.baseId;
-  if (baseId) return game.getForm(mp, null, [baseId]);
-};
-
-exports.getEquippedObject = getEquippedObject;
-
-const getEquippedArmorInSlot = (mp, self, args) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const slot = papyrusArgs_1.getNumber(args, 0);
-  const eq = exports.getEquipment(mp, selfId, {
-    mapWEAP: false
-  });
-  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => {
-    var _a;
-
-    return (_a = x.slot) === null || _a === void 0 ? void 0 : _a.includes(slot);
-  })) === null || _a === void 0 ? void 0 : _a.baseId;
-  if (baseId) return game.getForm(mp, null, [baseId]);
-};
-
-exports.getEquippedArmorInSlot = getEquippedArmorInSlot;
-
-const getEquippedShield = (mp, self, args) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const eq = exports.getEquipment(mp, selfId, {
-    mapWEAP: false
-  });
-  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => {
-    var _a;
-
-    return (_a = x.slot) === null || _a === void 0 ? void 0 : _a.includes(39);
-  })) === null || _a === void 0 ? void 0 : _a.baseId;
-  if (baseId) return game.getForm(mp, null, [baseId]);
-};
-
-exports.getEquippedShield = getEquippedShield;
-
-const getEquippedWeapon = (mp, self, args) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const isLeftHand = papyrusArgs_1.getBoolean(args, 0);
-  const loc = isLeftHand ? 0 : 1;
-  const eq = exports.getEquipment(mp, selfId, {
-    mapARMO: false
-  });
-  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => x.location === loc)) === null || _a === void 0 ? void 0 : _a.baseId;
-  if (baseId) return game.getForm(mp, null, [baseId]);
-};
-
-exports.getEquippedWeapon = getEquippedWeapon;
-},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","../game":"WCBi","../weapon":"TCaz"}],"D1sz":[function(require,module,exports) {
+exports.register = register;
+},{"../../utils/helper":"FxH1","./types":"icKT"}],"D1sz":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3234,7 +2838,7 @@ exports.formType = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.getWeight = exports.getEditorIdById = exports.getEditorId = exports._getEditorId = exports.getDescription = exports.getName = exports.getSelfId = void 0;
+exports.register = exports.getWeightById = exports.getWeight = exports.getEditorIdById = exports.getEditorId = exports._getEditorId = exports.getDescription = exports.getName = exports.getSelfId = void 0;
 
 const helper_1 = require("../../utils/helper");
 
@@ -3267,23 +2871,20 @@ const getName = (strings, mp, self) => {
   const espmRecord = mp.lookupEspmRecordById(selfId);
   const full = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'FULL')) === null || _b === void 0 ? void 0 : _b.data;
   const tplt = (_d = (_c = espmRecord.record) === null || _c === void 0 ? void 0 : _c.fields.find(x => x.type === 'TPLT')) === null || _d === void 0 ? void 0 : _d.data;
+  if (!full && !tplt) return 'NOT_FOUND';
+  if (!full && tplt) return exports.getName(strings, mp, {
+    type: 'form',
+    desc: mp.getDescFromId(helper_1.uint32(tplt.buffer, 0))
+  });
+  if (full && full.length > 4) return new TextDecoder().decode(full);
 
   if (full) {
-    if (full.length > 4) {
-      return new TextDecoder().decode(full);
-    } else {
-      const espName = self.desc.split(':')[1].split('.')[0].toLowerCase();
-      const index = helper_1.uint32(full.buffer, 0);
-      return (_e = strings.getText(espName, index)) !== null && _e !== void 0 ? _e : '';
-    }
-  } else if (tplt) {
-    return exports.getName(strings, mp, {
-      type: 'form',
-      desc: mp.getDescFromId(helper_1.uint32(tplt.buffer, 0))
-    });
+    const espName = self.desc.split(':')[1].split('.')[0].toLowerCase();
+    const index = helper_1.uint32(full.buffer, 0);
+    return (_e = strings.getText(espName, index)) !== null && _e !== void 0 ? _e : '';
   }
 
-  return 'unknown';
+  return 'NOT_FOUND';
 };
 
 exports.getName = getName;
@@ -3366,21 +2967,23 @@ const getGoldValue = (mp, self) => {
 };
 
 const getWeight = (mp, self) => {
-  var _a, _b;
-
   const selfId = exports.getSelfId(mp, self.desc);
-  const recordData = mp.lookupEspmRecordById(selfId);
-  const data = (_b = (_a = recordData.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (data) {
-    const dataView = new DataView(data.buffer);
-    return dataView.getFloat32(4, true);
-  }
-
-  return -1;
+  return exports.getWeightById(mp, selfId);
 };
 
 exports.getWeight = getWeight;
+
+const getWeightById = (mp, selfId) => {
+  var _a, _b;
+
+  const recordData = mp.lookupEspmRecordById(selfId);
+  const data = (_b = (_a = recordData.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!data) return;
+  const dataView = new DataView(data.buffer);
+  return dataView.getFloat32(4, true);
+};
+
+exports.getWeightById = getWeightById;
 
 const getType = (mp, self) => {
   var _a, _b, _c;
@@ -3427,7 +3030,441 @@ const register = (mp, strings) => {
 };
 
 exports.register = register;
-},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","./keywords":"D1sz","./type":"CIMu"}],"sC2V":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","./keywords":"D1sz","./type":"CIMu"}],"Xpf2":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.WeaponLocation = exports.WeaponType = void 0;
+var WeaponType;
+
+(function (WeaponType) {
+  WeaponType[WeaponType["Fists"] = 0] = "Fists";
+  WeaponType[WeaponType["Swords"] = 1] = "Swords";
+  WeaponType[WeaponType["Daggers"] = 2] = "Daggers";
+  WeaponType[WeaponType["WarAxes"] = 3] = "WarAxes";
+  WeaponType[WeaponType["Maces"] = 4] = "Maces";
+  WeaponType[WeaponType["Greatswords"] = 5] = "Greatswords";
+  WeaponType[WeaponType["BattleaxesANDWarhammers"] = 6] = "BattleaxesANDWarhammers";
+  WeaponType[WeaponType["Bows"] = 7] = "Bows";
+  WeaponType[WeaponType["Staff"] = 8] = "Staff";
+  WeaponType[WeaponType["Crossbows"] = 9] = "Crossbows";
+})(WeaponType = exports.WeaponType || (exports.WeaponType = {}));
+
+var WeaponLocation;
+
+(function (WeaponLocation) {
+  WeaponLocation[WeaponLocation["LeftHand"] = 0] = "LeftHand";
+  WeaponLocation[WeaponLocation["RightHand"] = 1] = "RightHand";
+})(WeaponLocation = exports.WeaponLocation || (exports.WeaponLocation = {}));
+},{}],"TCaz":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.getLocationById = exports.getBaseDamage = exports.getBaseDamageById = exports.getWeaponType = exports.getWeaponTypeById = void 0;
+
+const helper_1 = require("../../utils/helper");
+
+const type_1 = require("./type");
+
+const getWeaponTypeById = (mp, selfId, espmRecord) => {
+  var _a, _b;
+
+  if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
+  const kwda = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'KWDA')) === null || _b === void 0 ? void 0 : _b.data;
+  const keywords = [];
+
+  if (kwda) {
+    const dataView = new DataView(kwda.buffer);
+
+    for (let i = 0; i < dataView.byteLength; i += 4) {
+      keywords.push(dataView.getUint32(i, true));
+    }
+
+    if (keywords.includes(0x1e711)) {
+      return type_1.WeaponType.Swords;
+    } else if (keywords.includes(0x6d931)) {
+      return type_1.WeaponType.Greatswords;
+    } else if (keywords.includes(0x1e713)) {
+      return type_1.WeaponType.Daggers;
+    } else if (keywords.includes(0x6d932) || keywords.includes(0x6d930)) {
+      return type_1.WeaponType.BattleaxesANDWarhammers;
+    } else if (keywords.includes(0x1e714)) {
+      return type_1.WeaponType.Maces;
+    } else if (keywords.includes(0x1e712)) {
+      return type_1.WeaponType.WarAxes;
+    } else if (keywords.includes(0x1e715)) {
+      return type_1.WeaponType.Bows;
+    } else if (keywords.includes(0x1e716)) {
+      return type_1.WeaponType.Staff;
+    } else if (keywords.includes(-1)) {
+      return type_1.WeaponType.Crossbows;
+    }
+  }
+};
+
+exports.getWeaponTypeById = getWeaponTypeById;
+
+const getWeaponType = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  return exports.getWeaponTypeById(mp, selfId);
+};
+
+exports.getWeaponType = getWeaponType;
+
+const getBaseDamageById = (mp, selfId, espmRecord) => {
+  var _a, _b;
+
+  if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
+  const data = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!data) return;
+  const damage = helper_1.uint16(data.buffer, 8);
+  return damage;
+};
+
+exports.getBaseDamageById = getBaseDamageById;
+
+const getBaseDamage = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  return exports.getBaseDamageById(mp, selfId);
+};
+
+exports.getBaseDamage = getBaseDamage;
+
+const getLocationById = (mp, selfId, espmRecord) => {
+  var _a, _b, _c;
+
+  if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
+  const etype = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'ETYP')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!etype) return type_1.WeaponLocation.RightHand;
+  const etypeId = mp.lookupEspmRecordById(helper_1.uint32(etype.buffer, 0));
+  if (!etypeId) return type_1.WeaponLocation.RightHand;
+  const edidEquipSlot = (_c = etypeId.record) === null || _c === void 0 ? void 0 : _c.editorId;
+  if (edidEquipSlot === 'LeftHand') return type_1.WeaponLocation.LeftHand;
+  return type_1.WeaponLocation.RightHand;
+};
+
+exports.getLocationById = getLocationById;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'Weapon', 'GetWeaponType', self => exports.getWeaponType(mp, self));
+  mp.registerPapyrusFunction('method', 'Weapon', 'GetBaseDamage', self => exports.getBaseDamage(mp, self));
+};
+
+exports.register = register;
+},{"../../utils/helper":"FxH1","./type":"Xpf2"}],"lP44":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getEquippedWeapon = exports.getEquippedShield = exports.getEquippedArmorInSlot = exports.getEquippedObject = exports.getWornFormsId = exports.getWornForms = exports.getEquippedItemType = exports.unequipItemSlot = exports.unequipAll = exports.unequipItemEx = exports.unequipItem = exports.isEquipped = exports.equipItemById = exports.equipItemEx = exports.equipItem = exports.getEquipment = void 0;
+
+const eval_1 = require("../../properties/eval");
+
+const functionInfo_1 = require("../../utils/functionInfo");
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const armor_1 = require("../armor");
+
+const form_1 = require("../form");
+
+const game_1 = require("../game");
+
+const weapon_1 = require("../weapon");
+
+const getEquipment = (mp, selfId, opt = {
+  mapARMO: true,
+  mapWEAP: true
+}) => {
+  if (opt.mapWEAP === undefined) opt.mapWEAP = true;
+  if (opt.mapARMO === undefined) opt.mapARMO = true;
+  const eq = mp.get(selfId, 'equipment');
+  if (!eq) return;
+  if (!opt.mapWEAP && !opt.mapARMO) return eq;
+  eq.inv.entries = eq.inv.entries.filter(x => x.worn).map(x => {
+    const rec = mp.lookupEspmRecordById(x.baseId);
+    if (!rec.record) return x;
+    x.type = rec.record.type;
+    x.weight = form_1.getWeightById(mp, x.baseId);
+
+    switch (true) {
+      case rec.record.type === 'WEAP' && opt.mapWEAP:
+        x.location = weapon_1.getLocationById(mp, x.baseId, rec);
+        x.baseDamage = weapon_1.getBaseDamageById(mp, x.baseId, rec);
+        x.weaponType = weapon_1.getWeaponTypeById(mp, x.baseId, rec);
+        break;
+
+      case rec.record.type === 'ARMO' && opt.mapARMO:
+        x.baseArmor = armor_1.getBaseArmorById(mp, x.baseId, rec);
+        x.slot = armor_1.getSlotById(mp, x.baseId, rec);
+        break;
+
+      default:
+        break;
+    }
+
+    return x;
+  });
+  return eq;
+};
+
+exports.getEquipment = getEquipment;
+
+const equipItem = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const item = papyrusArgs_1.getObject(args, 0);
+  const itemId = mp.getIdFromDesc(item.desc);
+  const preventRemoval = papyrusArgs_1.getBoolean(args, 1);
+  const silent = papyrusArgs_1.getBoolean(args, 2);
+  const countExist = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [item]);
+
+  if (countExist === 0) {
+    mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, 1, true]);
+  }
+
+  const func = (ctx, itemId, preventRemoval, silent) => {
+    (() => {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      const form = ctx.sp.Game.getFormEx(itemId);
+      ac === null || ac === void 0 ? void 0 : ac.equipItem(form, preventRemoval, silent);
+    })();
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    itemId,
+    preventRemoval,
+    silent
+  }));
+
+  if (!silent) {}
+};
+
+exports.equipItem = equipItem;
+
+const equipItemEx = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const item = papyrusArgs_1.getObject(args, 0);
+  const itemId = mp.getIdFromDesc(item.desc);
+  const slot = args[1] ? papyrusArgs_1.getNumber(args, 1) : 0;
+  const preventUnequip = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
+  const equipSound = args[3] ? papyrusArgs_1.getBoolean(args, 3) : true;
+
+  const func = (ctx, itemId, slot, preventUnequip, equipSound) => {
+    ctx.sp.once('update', () => {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      const form = ctx.sp.Game.getFormEx(itemId);
+      ac === null || ac === void 0 ? void 0 : ac.equipItemEx(form, slot, preventUnequip, equipSound);
+    });
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    itemId,
+    slot,
+    preventUnequip,
+    equipSound
+  }));
+
+  if (!equipSound) {}
+};
+
+exports.equipItemEx = equipItemEx;
+
+const equipItemById = (mp, self, args) => {};
+
+exports.equipItemById = equipItemById;
+
+const isEquipped = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const item = papyrusArgs_1.getObject(args, 0);
+  const itemId = mp.getIdFromDesc(item.desc);
+  const eq = exports.getEquipment(mp, selfId);
+  if (!eq) return false;
+  return eq.inv.entries.findIndex(item => item.baseId === itemId && item.worn) >= 0;
+};
+
+exports.isEquipped = isEquipped;
+
+const unequipItem = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const item = papyrusArgs_1.getObject(args, 0);
+  const itemId = mp.getIdFromDesc(item.desc);
+  const preventRemoval = args[1] ? papyrusArgs_1.getBoolean(args, 1) : false;
+  const silent = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
+
+  const func = (ctx, itemId, preventRemoval, silent) => {
+    ctx.sp.once('update', () => {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      const form = ctx.sp.Game.getFormEx(itemId);
+      ac === null || ac === void 0 ? void 0 : ac.unequipItem(form, preventRemoval, silent);
+    });
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    itemId,
+    preventRemoval,
+    silent
+  }));
+
+  if (!silent) {}
+};
+
+exports.unequipItem = unequipItem;
+
+const unequipItemEx = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const item = papyrusArgs_1.getObject(args, 0);
+  const itemId = mp.getIdFromDesc(item.desc);
+  const slot = args[1] ? papyrusArgs_1.getNumber(args, 1) : 0;
+  const preventEquip = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
+
+  const func = (ctx, itemId, slot, preventEquip) => {
+    ctx.sp.once('update', () => {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      const form = ctx.sp.Game.getFormEx(itemId);
+      ac === null || ac === void 0 ? void 0 : ac.unequipItemEx(form, slot, preventEquip);
+    });
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    itemId,
+    slot,
+    preventEquip
+  }));
+};
+
+exports.unequipItemEx = unequipItemEx;
+
+const unequipAll = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+
+  const func = ctx => {
+    ctx.sp.once('update', () => {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      ac === null || ac === void 0 ? void 0 : ac.unequipAll();
+    });
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText());
+};
+
+exports.unequipAll = unequipAll;
+
+const unequipItemSlot = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const slotId = papyrusArgs_1.getNumber(args, 0);
+
+  const func = (ctx, slotId) => {
+    ctx.sp.once('update', () => {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      ac === null || ac === void 0 ? void 0 : ac.unequipItemSlot(slotId);
+    });
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    slotId
+  }));
+};
+
+exports.unequipItemSlot = unequipItemSlot;
+
+const getEquippedItemType = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const hand = papyrusArgs_1.getNumber(args, 0);
+};
+
+exports.getEquippedItemType = getEquippedItemType;
+
+const getWornForms = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
+  const eq = exports.getEquipment(mp, selfId);
+  return eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.worn).map(x => game_1.getForm(mp, null, [x.baseId])).filter(x => x);
+};
+
+exports.getWornForms = getWornForms;
+
+const getWornFormsId = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
+  const eq = exports.getEquipment(mp, selfId);
+  return eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.worn).map(x => x.baseId);
+};
+
+exports.getWornFormsId = getWornFormsId;
+
+const getEquippedObject = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const loc = papyrusArgs_1.getNumber(args, 0);
+  const eq = exports.getEquipment(mp, selfId, {
+    mapARMO: false
+  });
+  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => x.location === loc)) === null || _a === void 0 ? void 0 : _a.baseId;
+  if (baseId) return game_1.getForm(mp, null, [baseId]);
+};
+
+exports.getEquippedObject = getEquippedObject;
+
+const getEquippedArmorInSlot = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const slot = papyrusArgs_1.getNumber(args, 0);
+  const eq = exports.getEquipment(mp, selfId, {
+    mapWEAP: false
+  });
+  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => {
+    var _a;
+
+    return (_a = x.slot) === null || _a === void 0 ? void 0 : _a.includes(slot);
+  })) === null || _a === void 0 ? void 0 : _a.baseId;
+  if (baseId) return game_1.getForm(mp, null, [baseId]);
+};
+
+exports.getEquippedArmorInSlot = getEquippedArmorInSlot;
+
+const getEquippedShield = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const eq = exports.getEquipment(mp, selfId, {
+    mapWEAP: false
+  });
+  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => {
+    var _a;
+
+    return (_a = x.slot) === null || _a === void 0 ? void 0 : _a.includes(39);
+  })) === null || _a === void 0 ? void 0 : _a.baseId;
+  if (baseId) return game_1.getForm(mp, null, [baseId]);
+};
+
+exports.getEquippedShield = getEquippedShield;
+
+const getEquippedWeapon = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const isLeftHand = papyrusArgs_1.getBoolean(args, 0);
+  const loc = isLeftHand ? 0 : 1;
+  const eq = exports.getEquipment(mp, selfId, {
+    mapARMO: false
+  });
+  const baseId = (_a = eq === null || eq === void 0 ? void 0 : eq.inv.entries.find(x => x.location === loc)) === null || _a === void 0 ? void 0 : _a.baseId;
+  if (baseId) return game_1.getForm(mp, null, [baseId]);
+};
+
+exports.getEquippedWeapon = getEquippedWeapon;
+},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1","../armor":"WNhg","../form":"mnzc","../game":"WCBi","../weapon":"TCaz"}],"sC2V":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3643,261 +3680,376 @@ exports.getPerkEffectData = getPerkEffectData;
 const register = mp => {};
 
 exports.register = register;
-},{"../../utils/helper":"FxH1","./condition":"lgGM","./type":"x9IM"}],"jRUP":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","./condition":"lgGM","./type":"x9IM"}],"AkNH":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.play = void 0;
-
-const papyrusArgs_1 = require("../utils/papyrusArgs");
-
-const _play = (mp, selfId, refId, duration) => {
-  var _a;
-
-  const {
-    n = 0
-  } = (_a = mp.get(refId, 'activeShader')) !== null && _a !== void 0 ? _a : {};
-  mp.set(refId, 'activeShader', {
-    n: n + 1,
-    id: selfId,
-    duration
-  });
-  setTimeout(() => {
-    mp.set(refId, 'activeShader', {
-      n: n + 2
-    });
-  }, 200);
-};
-
-const play = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const ref = papyrusArgs_1.getObject(args, 0);
-  const refId = mp.getIdFromDesc(ref.desc);
-  const duration = papyrusArgs_1.getNumber(args, 1);
-
-  _play(mp, selfId, refId, duration);
-};
-
-exports.play = play;
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'EffectShader', 'Play', (self, args) => exports.play(mp, self, args));
-};
-
-exports.register = register;
-},{"../utils/papyrusArgs":"oZY1"}],"SDpR":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.equip = exports.getMagicEffects = exports.getEffectDurations = exports.getEffectAreas = exports.getEffectMagnitudes = exports.getNthEffectMagicEffect = exports.getNthEffectDuration = exports.getNthEffectArea = exports.getNthEffectMagnitude = exports.getNthEffectInfo = exports.getEffectInfo = exports.getNumEffects = exports.isPoison = exports.isFood = void 0;
-
-const helper_1 = require("../../utils/helper");
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const game_1 = require("../game");
-
-const FLG_ManualCalc = 0x00001;
-const FLG_Food = 0x00002;
-const FLG_Medicine = 0x10000;
-const FLG_Poison = 0x20000;
-
-const flagExists = (mp, self, flag) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const enit = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'ENIT')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!enit) return false;
-  const flags = helper_1.uint32(enit.buffer, 4);
-  return !!(flags & flag);
-};
-
-const isFood = (mp, self) => flagExists(mp, self, FLG_Food);
-
-exports.isFood = isFood;
-
-const isPoison = (mp, self) => flagExists(mp, self, FLG_Poison);
-
-exports.isPoison = isPoison;
-
-const getNumEffects = (mp, self) => {
-  var _a, _b, _c;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  return (_c = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'EFID')) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0;
-};
-
-exports.getNumEffects = getNumEffects;
-
-const getEffectInfo = (mp, self) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const efit = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'EFIT');
-  const efid = (_b = espmRecord.record) === null || _b === void 0 ? void 0 : _b.fields.filter(x => x.type === 'EFID');
-  if (!efit || efit.length === 0 || !efid || efid.length === 0) return [];
-  return [efid, efit];
-};
-
-exports.getEffectInfo = getEffectInfo;
-
-const getNthEffectInfo = (mp, self, args) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const index = papyrusArgs_1.getNumber(args, 0);
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const efit = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'EFIT');
-  const efid = (_b = espmRecord.record) === null || _b === void 0 ? void 0 : _b.fields.filter(x => x.type === 'EFID');
-  if (!efit || efit.length <= index || !efid || efid.length <= index) return [];
-  return [efid[index], efit[index]];
-};
-
-exports.getNthEffectInfo = getNthEffectInfo;
-
-const getNthEffectMagnitude = (mp, self, args) => {
-  const [_, efit] = exports.getNthEffectInfo(mp, self, args);
-  return efit ? helper_1.float32(efit.data.buffer, 0) : 0;
-};
-
-exports.getNthEffectMagnitude = getNthEffectMagnitude;
-
-const getNthEffectArea = (mp, self, args) => {
-  const [_, efit] = exports.getNthEffectInfo(mp, self, args);
-  return efit ? helper_1.uint32(efit.data.buffer, 4) : 0;
-};
-
-exports.getNthEffectArea = getNthEffectArea;
-
-const getNthEffectDuration = (mp, self, args) => {
-  const [_, efit] = exports.getNthEffectInfo(mp, self, args);
-  return efit ? helper_1.uint32(efit.data.buffer, 8) : 0;
-};
-
-exports.getNthEffectDuration = getNthEffectDuration;
-
-const getNthEffectMagicEffect = (mp, self, args) => {
-  const [efid, _] = exports.getNthEffectInfo(mp, self, args);
-  return efid && game_1.getForm(mp, null, [helper_1.uint32(efid.data.buffer, 0)]);
-};
-
-exports.getNthEffectMagicEffect = getNthEffectMagicEffect;
-
-const getEffectMagnitudes = (mp, self) => {
-  const [_, efit] = exports.getEffectInfo(mp, self);
-  return efit ? efit.map(x => helper_1.float32(x.data.buffer, 0)) : null;
-};
-
-exports.getEffectMagnitudes = getEffectMagnitudes;
-
-const getEffectAreas = (mp, self) => {
-  const [_, efit] = exports.getEffectInfo(mp, self);
-  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 4)) : null;
-};
-
-exports.getEffectAreas = getEffectAreas;
-
-const getEffectDurations = (mp, self) => {
-  const [_, efit] = exports.getEffectInfo(mp, self);
-  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 8)) : null;
-};
-
-exports.getEffectDurations = getEffectDurations;
-
-const getMagicEffects = (mp, self) => {
-  const [efid, _] = exports.getEffectInfo(mp, self);
-  return efid ? efid.map(x => {
-    var _a;
-
-    return (_a = game_1.getForm(mp, null, [helper_1.uint32(x.data.buffer, 0)])) !== null && _a !== void 0 ? _a : null;
-  }) : null;
-};
-
-exports.getMagicEffects = getMagicEffects;
-
-const equip = (mp, self, args) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const potionId = papyrusArgs_1.getNumber(args, 0);
-  const {
-    n = 0
-  } = (_a = mp.get(selfId, 'ALCHequipped')) !== null && _a !== void 0 ? _a : {};
-  mp.set(selfId, 'ALCHequipped', {
-    n: n + 1,
-    id: potionId
-  });
-};
-
-exports.equip = equip;
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'Potion', 'IsFood', self => exports.isFood(mp, self));
-  mp.registerPapyrusFunction('method', 'Potion', 'IsPoison', self => exports.isPoison(mp, self));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetNumEffects', self => exports.getNumEffects(mp, self));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectMagnitude', (self, args) => exports.getNthEffectMagnitude(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectArea', (self, args) => exports.getNthEffectArea(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectDuration', (self, args) => exports.getNthEffectDuration(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectMagicEffect', (self, args) => exports.getNthEffectMagicEffect(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetEffectMagnitudes', self => exports.getEffectMagnitudes(mp, self));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetEffectAreas', self => exports.getEffectAreas(mp, self));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetEffectDurations', self => exports.getEffectDurations(mp, self));
-  mp.registerPapyrusFunction('method', 'Potion', 'GetMagicEffects', self => exports.getMagicEffects(mp, self));
-};
-
-exports.register = register;
-},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"pZ4P":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.getHitShader = exports.getHitShaderId = void 0;
+exports.getRaceStaminaRate = exports.getRaceStamina = exports.getRaceMagickaRate = exports.getRaceMagicka = exports.getRaceHealRate = exports.getRaceHealth = exports.getRaceUnarmedDamage = exports.getRaceId = void 0;
 
 const helper_1 = require("../utils/helper");
 
-const papyrusArgs_1 = require("../utils/papyrusArgs");
+const getRaceId = (mp, pcFormId, rec) => {
+  var _a, _b;
 
-const game_1 = require("./game");
+  if (pcFormId >= 0xff000000) {
+    try {
+      const appearance = mp.get(pcFormId, 'appearance');
+      return (_a = appearance === null || appearance === void 0 ? void 0 : appearance.raceId) !== null && _a !== void 0 ? _a : 0;
+    } catch (error) {}
+  }
 
-const getHitShaderId = (mp, selfNull, args) => {
+  const rnam = (_b = rec.fields.find(x => x.type === 'RNAM')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!rnam) return;
+  return helper_1.uint32(rnam.buffer, 0);
+};
+
+exports.getRaceId = getRaceId;
+
+const getRaceFloat32DataValue = (espmRecord, offset) => {
+  var _a, _b;
+
+  const raceData = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!raceData) return;
+  return helper_1.float32(raceData.buffer, offset);
+};
+
+const getRaceUnarmedDamage = espmRecord => getRaceFloat32DataValue(espmRecord, 96);
+
+exports.getRaceUnarmedDamage = getRaceUnarmedDamage;
+
+const getRaceHealth = espmRecord => getRaceFloat32DataValue(espmRecord, 36);
+
+exports.getRaceHealth = getRaceHealth;
+
+const getRaceHealRate = espmRecord => getRaceFloat32DataValue(espmRecord, 84);
+
+exports.getRaceHealRate = getRaceHealRate;
+
+const getRaceMagicka = espmRecord => getRaceFloat32DataValue(espmRecord, 40);
+
+exports.getRaceMagicka = getRaceMagicka;
+
+const getRaceMagickaRate = espmRecord => getRaceFloat32DataValue(espmRecord, 88);
+
+exports.getRaceMagickaRate = getRaceMagickaRate;
+
+const getRaceStamina = espmRecord => getRaceFloat32DataValue(espmRecord, 44);
+
+exports.getRaceStamina = getRaceStamina;
+
+const getRaceStaminaRate = espmRecord => getRaceFloat32DataValue(espmRecord, 92);
+
+exports.getRaceStaminaRate = getRaceStaminaRate;
+},{"../utils/helper":"FxH1"}],"I1C7":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addSkillExperience = exports.restoreActorValue = exports.damageActorValue = exports.getActorValue = exports.setActorValue = void 0;
+
+const attributes_1 = require("../../properties/actor/actorValues/attributes");
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const setActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  attributes_1.actorValues.set(selfId, avName, 'base', avValue);
+};
+
+exports.setActorValue = setActorValue;
+
+const getActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  return attributes_1.actorValues.getCurrent(selfId, avName);
+};
+
+exports.getActorValue = getActorValue;
+
+const damageActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
+  attributes_1.actorValues.set(selfId, avName, 'damage', damage - avValue);
+};
+
+exports.damageActorValue = damageActorValue;
+
+const restoreActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
+  attributes_1.actorValues.set(selfId, avName, 'damage', damage + avValue > 0 ? 0 : damage + avValue);
+};
+
+exports.restoreActorValue = restoreActorValue;
+
+const addSkillExperience = (mp, self, args) => {
+  const ac = papyrusArgs_1.getObject(args, 0);
+  const acId = mp.getIdFromDesc(ac.desc);
+  const avName = papyrusArgs_1.getString(args, 1);
+  const exp = papyrusArgs_1.getNumber(args, 2);
+};
+
+exports.addSkillExperience = addSkillExperience;
+},{"../../properties/actor/actorValues/attributes":"Klzq","../../utils/papyrusArgs":"oZY1"}],"d40v":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.removePerk = exports.addPerk = exports.hasPerk = void 0;
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const getPerkList = (mp, selfId) => {
   var _a;
 
+  return (_a = mp.get(selfId, 'perk')) !== null && _a !== void 0 ? _a : [];
+};
+
+const setPerkList = (mp, selfId, perkList) => {
+  mp.set(selfId, 'perk', perkList);
+};
+
+const hasPerk = (mp, self, args) => {
+  const perk = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const perkId = mp.getIdFromDesc(perk.desc);
+  return getPerkList(mp, selfId).includes(perkId);
+};
+
+exports.hasPerk = hasPerk;
+
+const addPerk = (mp, self, args) => {
+  const perk = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const perkId = mp.getIdFromDesc(perk.desc);
+  if (exports.hasPerk(mp, self, args)) return;
+  const perkList = getPerkList(mp, selfId);
+  perkList.push(perkId);
+  setPerkList(mp, selfId, perkList);
+};
+
+exports.addPerk = addPerk;
+
+const removePerk = (mp, self, args) => {
+  const perk = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const perkId = mp.getIdFromDesc(perk.desc);
+  if (!exports.hasPerk(mp, self, args)) return;
+  const perkList = getPerkList(mp, selfId);
+  perkList.push(perkId);
+  setPerkList(mp, selfId, perkList.filter(id => id !== perkId));
+};
+
+exports.removePerk = removePerk;
+},{"../../utils/papyrusArgs":"oZY1"}],"ZYrz":[function(require,module,exports) {
+"use strict";
+
+var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.throwOutById = void 0;
+
+const value_1 = require("./value");
+
+const perk_1 = require("./perk");
+
+const equip_1 = require("./equip");
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const eval_1 = require("../../properties/eval");
+
+const functionInfo_1 = require("../../utils/functionInfo");
+
+const game_1 = require("../game");
+
+const attributes_1 = require("../../properties/actor/actorValues/attributes");
+
+const objectReference_1 = require("../objectReference");
+
+const race_1 = require("../race");
+
+const isWeaponDrawn = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isWeaponDrawn');
+
+const isDead = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isDead');
+
+const setOutfit = (mp, self, args) => {
+  var _a, _b;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const outfit = papyrusArgs_1.getObject(args, 0);
+  const outfitId = mp.getIdFromDesc(outfit.desc);
+  const espmRecord = mp.lookupEspmRecordById(outfitId);
+  const inam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'INAM')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (inam) {
+    const dt = new DataView(inam.buffer);
+
+    for (let index = 0; index < inam.length; index += 4) {
+      const itemId = dt.getUint32(index, true);
+      const form = game_1.getForm(mp, null, [itemId]);
+
+      if (form) {
+        const countExist = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [form]);
+
+        if (countExist === 0) {
+          mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [form, 1, true]);
+        }
+
+        equip_1.unequipItem(mp, self, [form, false, true]);
+        equip_1.equipItem(mp, self, [form, false, true]);
+      }
+    }
+  }
+
+  const sleepOutfit = papyrusArgs_1.getBoolean(args, 1);
+
+  const func = (ctx, outfitId, sleepOutfit) => {
+    ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      if (!ac) return;
+      const outfit = ctx.sp.Game.getForm(outfitId);
+      if (!outfit) return;
+      ac.setOutfit(ctx.sp.Outfit.from(outfit), sleepOutfit);
+    }));
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    outfitId,
+    sleepOutfit
+  }), true);
+};
+
+const setRace = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const race = papyrusArgs_1.getObject(args, 0);
+  const raceId = mp.getIdFromDesc(race.desc);
+  mp.set(selfId, 'race', raceId);
+  const espmRecord = mp.lookupEspmRecordById(raceId);
+  const hp = race_1.getRaceHealth(espmRecord);
+  const stamina = race_1.getRaceStamina(espmRecord);
+  attributes_1.actorValues.set(selfId, 'health', 'base', hp);
+  attributes_1.actorValues.set(selfId, 'stamina', 'base', stamina);
+};
+
+const getRace = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const raceId = mp.get(selfId, 'race');
+  if (!raceId) return;
+  return game_1.getForm(mp, null, [raceId]);
+};
+
+const setWorldOrCell = (mp, selfNull, args) => {
   const self = papyrusArgs_1.getObject(args, 0);
   const selfId = mp.getIdFromDesc(self.desc);
-  const rec = mp.lookupEspmRecordById(selfId).record;
-  if (!rec) return null;
-  const data = (_a = rec.fields.find(x => x.type === 'DATA')) === null || _a === void 0 ? void 0 : _a.data;
-  if (!data) return null;
-  return helper_1.uint32(data.buffer, 0x20);
+  const worldOrCell = papyrusArgs_1.getNumber(args, 1);
+  mp.set(selfId, 'worldOrCellDesc', mp.getDescFromId(worldOrCell));
 };
 
-exports.getHitShaderId = getHitShaderId;
-
-const getHitShader = (mp, self) => {
-  var _a;
-
-  const hitShaderId = exports.getHitShaderId(mp, null, [self]);
-  if (!hitShaderId) return null;
-  return (_a = game_1.getForm(mp, null, [hitShaderId])) !== null && _a !== void 0 ? _a : null;
+const throwOut = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  console.log('npc remove', selfId, objectReference_1.getDisplayName(mp, self));
+  exports.throwOutById(mp, selfId);
 };
 
-exports.getHitShader = getHitShader;
+const throwOutById = (mp, selfId) => {
+  mp.set(selfId, 'pos', [-99999, -99999, -99999]);
+  mp.set(selfId, 'isDead', true);
+
+  try {
+    attributes_1.actorValues.set(selfId, 'health', 'base', 0);
+  } catch (_a) {}
+
+  try {
+    mp.set(selfId, 'isDisabled', true);
+  } catch (_b) {}
+
+  mp.set(selfId, 'worldOrCellDesc', '0');
+};
+
+exports.throwOutById = throwOutById;
 
 const register = mp => {
-  mp.registerPapyrusFunction('method', 'MagicEffect', 'GetHitShader', self => exports.getHitShader(mp, self));
-  mp.registerPapyrusFunction('global', 'MagicEffectEx', 'GetHitShaderId', (self, args) => exports.getHitShaderId(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'AddPerk', (self, args) => perk_1.addPerk(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'RemovePerk', (self, args) => perk_1.removePerk(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'HasPerk', (self, args) => perk_1.hasPerk(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'IsEquipped', (self, args) => equip_1.isEquipped(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'EquipItem', (self, args) => equip_1.equipItem(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'EquipItemEx', (self, args) => equip_1.equipItemEx(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItem', (self, args) => equip_1.unequipItem(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemEx', (self, args) => equip_1.unequipItemEx(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipAll', self => equip_1.unequipAll(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemSlot', (self, args) => equip_1.unequipItemSlot(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedObject', (self, args) => equip_1.getEquippedObject(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedArmorInSlot', (self, args) => equip_1.getEquippedArmorInSlot(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', (self, args) => equip_1.getEquippedShield(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedWeapon', (self, args) => equip_1.getEquippedWeapon(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetActorValue', (self, args) => value_1.setActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetAV', (self, args) => value_1.setActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetActorValue', (self, args) => value_1.getActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetAV', (self, args) => value_1.getActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'DamageActorValue', (self, args) => value_1.damageActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'DamageAV', (self, args) => value_1.damageActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'RestoreActorValue', (self, args) => value_1.restoreActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'RestoreAV', (self, args) => value_1.restoreActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'IsWeaponDrawn', self => isWeaponDrawn(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'IsDead', self => isDead(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetOutfit', (self, args) => setOutfit(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetRace', (self, args) => setRace(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetRace', self => getRace(mp, self));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'AddSkillExperience', (self, args) => value_1.addSkillExperience(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornForms', (self, args) => equip_1.getWornForms(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornFormsId', (self, args) => equip_1.getWornFormsId(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'SetWorldOrCell', (self, args) => setWorldOrCell(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'ThrowOut', (self, args) => throwOut(mp, self, args));
 };
 
 exports.register = register;
-},{"../utils/helper":"FxH1","../utils/papyrusArgs":"oZY1","./game":"WCBi"}],"VJVi":[function(require,module,exports) {
+},{"./value":"I1C7","./perk":"d40v","./equip":"lP44","../../utils/papyrusArgs":"oZY1","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../game":"WCBi","../../properties/actor/actorValues/attributes":"Klzq","../objectReference":"YRYD","../race":"AkNH"}],"VJVi":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -3932,18 +4084,48 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.throwOrInit = void 0;
+exports.register = exports.throwOrInit = exports.initAVFromRace = void 0;
 
 const game_1 = require("../papyrus/game");
 
 const objectReference_1 = require("../papyrus/objectReference");
 
 const attributes_1 = require("../properties/actor/actorValues/attributes");
-
-const skillList_1 = require("../properties/actor/actorValues/skillList");
 
 const functionInfo_1 = require("../utils/functionInfo");
 
@@ -3953,11 +4135,7 @@ const empty = __importStar(require("./empty"));
 
 const activeMagicEffect_1 = require("../papyrus/activeMagicEffect");
 
-const server_options_1 = require("../papyrus/game/server-options");
-
 const equip_1 = require("../papyrus/actor/equip");
-
-const weapon = __importStar(require("../papyrus/weapon"));
 
 const position = __importStar(require("../papyrus/objectReference/position"));
 
@@ -3973,141 +4151,73 @@ const perk_1 = require("../papyrus/perk");
 
 const type_2 = require("../papyrus/perk/type");
 
-const effectShader = __importStar(require("../papyrus/effectShader"));
+const __1 = require("../..");
 
-const potion = __importStar(require("../papyrus/potion"));
+const race_1 = require("../papyrus/race");
 
-const magicEffect = __importStar(require("../papyrus/magicEffect"));
-
-const papyrusArgs_1 = require("../utils/papyrusArgs");
+const actor_1 = require("../papyrus/actor");
 
 const getAttrFromRace = (mp, pcFormId) => {
-  var _a, _b, _c, _d, _e;
-
-  const defaultReturn = [100, 100, 100];
-
-  try {
-    const selfId = mp.getIdFromDesc(mp.get(pcFormId, 'baseDesc'));
-    const rec = mp.lookupEspmRecordById(selfId).record;
-    if (!rec) return defaultReturn;
-    const acbs = (_a = rec.fields.find(x => x.type === 'ACBS')) === null || _a === void 0 ? void 0 : _a.data;
-    const magickaOffset = acbs ? helper_1.uint16(acbs.buffer, 4) : 0;
-    const staminaOffset = acbs ? helper_1.uint16(acbs.buffer, 6) : 0;
-    const level = acbs ? helper_1.uint16(acbs.buffer, 8) : 0;
-    const healthOffset = acbs ? helper_1.uint16(acbs.buffer, 20) : 0;
-    let raceId = 0;
-
-    if (pcFormId >= 0xff000000) {
-      try {
-        const appearance = mp.get(pcFormId, 'appearance');
-        raceId = (_b = appearance === null || appearance === void 0 ? void 0 : appearance.raceId) !== null && _b !== void 0 ? _b : 0;
-      } catch (error) {}
-    }
-
-    if (raceId === 0) {
-      const rnam = (_c = rec.fields.find(x => x.type === 'RNAM')) === null || _c === void 0 ? void 0 : _c.data;
-      if (!rnam) return defaultReturn;
-      raceId = helper_1.uint32(rnam.buffer, 0);
-    }
-
-    const espmRecord = mp.lookupEspmRecordById(raceId);
-    const d = (_e = (_d = espmRecord.record) === null || _d === void 0 ? void 0 : _d.fields.find(x => x.type === 'DATA')) === null || _e === void 0 ? void 0 : _e.data;
-
-    if (d) {
-      const health = helper_1.float32(d.buffer, 36);
-      const magicka = helper_1.float32(d.buffer, 40);
-      const stamina = helper_1.float32(d.buffer, 44);
-      return [health + healthOffset, magicka + magickaOffset, stamina + staminaOffset];
-    }
-
-    return defaultReturn;
-  } catch (err) {
-    console.log('[ERROR] getAttrFromRace', err);
-    return defaultReturn;
-  }
-};
-
-const initAVFromRace = (mp, pcFormId) => {
   var _a, _b, _c, _d, _e, _f, _g;
 
-  if (mp.get(pcFormId, 'isDead') !== undefined) return;
-  const baseId = objectReference_1.getBaseObjectIdById(mp, null, [pcFormId]);
+  const defaultReturn = {
+    health: 100,
+    healrate: 0,
+    magicka: 100,
+    magickarate: 0,
+    stamina: 100,
+    staminarate: 0
+  };
+  const selfId = mp.getIdFromDesc(mp.get(pcFormId, 'baseDesc'));
+  const rec = mp.lookupEspmRecordById(selfId).record;
+  if (!rec) return defaultReturn;
+  const acbs = (_a = rec.fields.find(x => x.type === 'ACBS')) === null || _a === void 0 ? void 0 : _a.data;
+  const magickaOffset = acbs ? helper_1.uint16(acbs.buffer, 4) : 0;
+  const staminaOffset = acbs ? helper_1.uint16(acbs.buffer, 6) : 0;
+  const level = acbs ? helper_1.uint16(acbs.buffer, 8) : 0;
+  const healthOffset = acbs ? helper_1.uint16(acbs.buffer, 20) : 0;
+  const raceId = race_1.getRaceId(mp, pcFormId, rec);
+  if (!raceId) return defaultReturn;
+  mp.set(pcFormId, 'race', raceId);
+  const espmRecord = mp.lookupEspmRecordById(raceId);
+  return {
+    health: ((_b = race_1.getRaceHealth(espmRecord)) !== null && _b !== void 0 ? _b : 100) + healthOffset,
+    healrate: (_c = race_1.getRaceHealRate(espmRecord)) !== null && _c !== void 0 ? _c : 0,
+    magicka: ((_d = race_1.getRaceMagicka(espmRecord)) !== null && _d !== void 0 ? _d : 100) + magickaOffset,
+    magickarate: (_e = race_1.getRaceMagickaRate(espmRecord)) !== null && _e !== void 0 ? _e : 0,
+    stamina: ((_f = race_1.getRaceStamina(espmRecord)) !== null && _f !== void 0 ? _f : 100) + staminaOffset,
+    staminarate: (_g = race_1.getRaceStaminaRate(espmRecord)) !== null && _g !== void 0 ? _g : 0
+  };
+};
 
-  if (!mp.get(pcFormId, 'spawnPointPosition')) {
-    mp.set(pcFormId, 'spawnPointPosition', server_options_1.getServerOptionsValue(mp, ['SpawnPointPosition']));
-    mp.set(pcFormId, 'spawnPointAngle', server_options_1.getServerOptionsValue(mp, ['SpawnPointAngle']));
-    mp.set(pcFormId, 'spawnPointWorldOrCellDesc', server_options_1.getServerOptionsValue(mp, ['SpawnPointWorldOrCellDesc']));
-    const timeById = (_b = (_a = server_options_1.getServerOptionsValue(mp, ['spawnTimeById'])) === null || _a === void 0 ? void 0 : _a.map(x => {
-      const xParse = x.split(':');
-      if (xParse.length != 2) return;
-      return {
-        id: +xParse[0],
-        time: +xParse[1]
-      };
-    })) !== null && _b !== void 0 ? _b : [];
-    const refTime = (_c = timeById.find(x => x.id === pcFormId)) === null || _c === void 0 ? void 0 : _c.time;
-    const baseTime = (_d = timeById.find(x => x.id === baseId)) === null || _d === void 0 ? void 0 : _d.time;
-    const time = (_e = refTime !== null && refTime !== void 0 ? refTime : baseTime) !== null && _e !== void 0 ? _e : server_options_1.getServerOptionsValue(mp, [baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC']);
+const initAVFromRace = (mp, pcFormId, serverOptions) => {
+  if (mp.get(pcFormId, 'isDead') !== undefined) return;
+
+  if (!mp.get(pcFormId, 'spawnTimeToRespawn')) {
+    const time = objectReference_1.getRespawnTimeById(mp, null, [pcFormId]);
     mp.set(pcFormId, 'spawnTimeToRespawn', time);
   }
 
-  Object.keys(skillList_1.skillList).forEach(avName => {
-    var _a, _b;
-
-    mp.set(pcFormId, `av${avName}`, (_a = mp.get(pcFormId, `av${avName}`)) !== null && _a !== void 0 ? _a : 1);
-    mp.set(pcFormId, `av${avName}Exp`, (_b = mp.get(pcFormId, `av${avName}Exp`)) !== null && _b !== void 0 ? _b : 0);
-  });
-  mp.set(pcFormId, `avspeedmult`, (_f = mp.get(pcFormId, `avspeedmult`)) !== null && _f !== void 0 ? _f : 100);
-  mp.set(pcFormId, `avweaponspeedmult`, (_g = mp.get(pcFormId, `avweaponspeedmult`)) !== null && _g !== void 0 ? _g : 1);
-  const [health, magicka, stamina] = getAttrFromRace(mp, pcFormId);
-  const {
-    AVhealrate: healrate,
-    AVhealratemult: healratemult,
-    AVstaminarate: staminarate,
-    AVstaminaratemult: staminaratemult,
-    AVmagickarate: magickarate,
-    AVmagickaratemult: magickaratemult
-  } = server_options_1.getServerOptions(mp);
+  const raceAttr = getAttrFromRace(mp, pcFormId);
   attributes_1.actorValues.setDefaults(pcFormId, {
     force: true
-  }, {
-    health,
-    magicka,
-    stamina,
-    healrate,
-    healratemult,
-    staminarate,
-    staminaratemult,
-    magickarate,
-    magickaratemult
-  });
+  }, raceAttr);
 };
+
+exports.initAVFromRace = initAVFromRace;
 
 const logExecuteTime = (startTime, eventName) => {
   if (Date.now() - startTime > 10) {
-    console.log(`Event ${eventName}: `, Date.now() - startTime);
+    console.log('[PERFOMANCE]', `Event ${eventName}: `, Date.now() - startTime);
   }
 };
 
-const throwOrInit = (mp, id) => {
+const throwOrInit = (mp, id, serverOptions) => {
   if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0') {
-    mp.set(id, 'pos', [-99999, -99999, -99999]);
-    mp.set(id, 'isDead', true);
-
+    actor_1.throwOutById(mp, id);
+  } else if (!mp.get(id, 'spawnTimeToRespawn')) {
     try {
-      attributes_1.actorValues.set(id, 'health', 'base', 0);
-    } catch (err) {
-      console.log('[ERROR] actorValues.set', err);
-    }
-
-    try {
-      mp.set(id, 'isDisabled', true);
-    } catch (_a) {}
-
-    mp.set(id, 'worldOrCellDesc', '0');
-  } else if (!mp.get(id, 'spawnPointPosition')) {
-    try {
-      initAVFromRace(mp, id);
+      exports.initAVFromRace(mp, id, serverOptions);
     } catch (err) {
       console.log('[ERROR] initAVFromRace', err);
     }
@@ -4173,10 +4283,13 @@ const register = mp => {
     mp.set(pcFormId, 'browserVisible', true);
     mp.set(pcFormId, 'browserModal', false);
     mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
-    initAVFromRace(mp, pcFormId);
+
+    const serverOptions = __1.serverOptionProvider.getServerOptions();
+
+    exports.initAVFromRace(mp, pcFormId, serverOptions);
     const neighbors = mp.get(pcFormId, 'neighbors');
     neighbors.filter(n => mp.get(n, 'type') === 'MpActor').forEach(id => {
-      exports.throwOrInit(mp, id);
+      exports.throwOrInit(mp, id, serverOptions);
     });
     logExecuteTime(start, '_onLoadGame');
   };
@@ -4197,14 +4310,9 @@ const register = mp => {
       if (mp.get(target, 'blockActivationState')) return false;
     } catch (_a) {}
 
-    const actiovation1 = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
+    const actiovation = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
     logExecuteTime(start, 'onActivate');
-
-    if (!actiovation1) {
-      return false;
-    }
-
-    return true;
+    return actiovation !== null && actiovation !== void 0 ? actiovation : true;
   };
 
   mp.makeEventSource('_onCellChange', new functionInfo_1.FunctionInfo(functions_1.onCellChange).body);
@@ -4225,8 +4333,11 @@ const register = mp => {
       desc: mp.getDescFromId(event.currentCell)
     };
     const neighbors = mp.get(pcFormId, 'neighbors');
+
+    const serverOptions = __1.serverOptionProvider.getServerOptions();
+
     neighbors.filter(n => mp.get(n, 'type') === 'MpActor').forEach(id => {
-      exports.throwOrInit(mp, id);
+      exports.throwOrInit(mp, id, serverOptions);
     });
     mp.set(pcFormId, 'cellDesc', currentCell.desc);
     mp.callPapyrusFunction('global', 'GM_Main', '_onCellChange', null, [ac, prevCell, currentCell]);
@@ -4249,6 +4360,12 @@ const register = mp => {
       event.agressor = pcFormId;
     }
 
+    const {
+      HitDamageMod,
+      isPowerAttackMult,
+      isBashAttackMult
+    } = __1.serverOptionProvider.getServerOptions();
+
     const target = {
       type: 'form',
       desc: mp.getDescFromId(event.target)
@@ -4257,74 +4374,80 @@ const register = mp => {
       type: 'form',
       desc: mp.getDescFromId(event.agressor)
     };
-    let damageMod = server_options_1.getServerOptionsValue(mp, ['HitDamageMod']);
+    let damageMod = HitDamageMod;
+    const raceId = mp.get(pcFormId, 'race');
+
+    if (raceId) {
+      const espmRecord = mp.lookupEspmRecordById(raceId);
+      const unarmedDamage = race_1.getRaceUnarmedDamage(espmRecord);
+      unarmedDamage && (damageMod = -unarmedDamage);
+    }
+
     const eq = equip_1.getEquipment(mp, event.agressor);
     const eq1 = equip_1.getEquipment(mp, event.target);
     const weap = eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.type === 'WEAP');
     const arm = eq1 === null || eq1 === void 0 ? void 0 : eq1.inv.entries.filter(x => x.type === 'ARMO');
     let isHammer = false;
 
-    if (weap && weap.length > 0 && !event.isBashAttack) {
-      const f = game_1.getForm(mp, null, [weap[0].baseId]);
-
-      if (f) {
-        const baseDmg = weapon.getBaseDamage(mp, f);
-        baseDmg && (damageMod = baseDmg * -1);
-        const type = weapon.getWeaponType(mp, f);
-        if (type === type_1.WeaponType.BattleaxesANDWarhammers || type === type_1.WeaponType.Maces) isHammer = true;
-      }
+    if (weap && weap.length > 0) {
+      const baseDmg = weap[0].baseDamage;
+      baseDmg && (damageMod = baseDmg * -1);
+      const type = weap[0].weaponType;
+      if (type === type_1.WeaponType.BattleaxesANDWarhammers || type === type_1.WeaponType.Maces) isHammer = true;
     }
 
     if (arm && arm.length > 0) {
       arm.forEach(x => {
-        const start = Date.now();
         if (!x.baseArmor) return;
         if (isHammer) x.baseArmor * 0.75;
         const percent = 1 - x.baseArmor / 1000;
-        damageMod *= percent;
+        damageMod = damageMod * percent;
       });
     }
 
     if (event.isPowerAttack) {
-      damageMod *= server_options_1.getServerOptionsValue(mp, ['isPowerAttackMult']);
-      console.log('isPowerAttack');
+      damageMod = damageMod * isPowerAttackMult;
     }
 
     if (event.isBashAttack) {
-      damageMod *= server_options_1.getServerOptionsValue(mp, ['isBashAttackMult']);
-      console.log('isBashAttack');
+      damageMod = damageMod * isBashAttackMult;
+    }
+
+    const calcPerks = false;
+
+    if (calcPerks) {
+      const targetId = form_1.getSelfId(mp, agressor.desc);
+      const rec = mp.lookupEspmRecordById(targetId).record;
+      const prkr = rec === null || rec === void 0 ? void 0 : rec.fields.filter(x => x.type === 'PRKR').map(x => x.data);
+
+      try {
+        prkr === null || prkr === void 0 ? void 0 : prkr.forEach(p => {
+          const perkId = helper_1.uint32(p.buffer, 0);
+          const effectData = perk_1.getPerkEffectData(mp, perkId);
+          effectData === null || effectData === void 0 ? void 0 : effectData.forEach(eff => {
+            if (!eff) return;
+
+            if (eff.effectType === 0x23 && eff.functionType === type_2.EffectFunctionType.MultiplyValue) {
+              if (!eff.conditionFunction || !weap || weap.length === 0) return;
+              const conditionResult = eff.conditionFunction(weap[0].baseId);
+              if (!conditionResult) return;
+
+              if (eff.effectValue) {
+                damageMod *= eff.effectValue;
+              }
+            }
+          });
+        });
+      } catch (error) {
+        console.log('Perk effect ERROR', error);
+      }
     }
 
     if (event.isHitBlocked) {
       damageMod *= 0.5;
     }
 
-    const targetId = form_1.getSelfId(mp, agressor.desc);
-    const rec = mp.lookupEspmRecordById(targetId).record;
-    const prkr = rec === null || rec === void 0 ? void 0 : rec.fields.filter(x => x.type === 'PRKR').map(x => x.data);
-
-    try {
-      prkr === null || prkr === void 0 ? void 0 : prkr.forEach(p => {
-        const perkId = helper_1.uint32(p.buffer, 0);
-        const effectData = perk_1.getPerkEffectData(mp, perkId);
-        effectData === null || effectData === void 0 ? void 0 : effectData.forEach(eff => {
-          if (!eff) return;
-
-          if (eff.effectType === 0x23 && eff.functionType === type_2.EffectFunctionType.MultiplyValue) {
-            if (!eff.conditionFunction || !weap || weap.length === 0) return;
-            const conditionResult = eff.conditionFunction(weap[0].baseId);
-            if (!conditionResult) return;
-
-            if (eff.effectValue) {
-              damageMod *= eff.effectValue;
-            }
-          }
-        });
-      });
-    } catch (error) {
-      console.log('Perk effect ERROR', error);
-    }
-
+    console.log('[HIT]', damageMod);
     const avName = 'health';
     const damage = attributes_1.actorValues.get(event.target, avName, 'damage');
     const newDamageModValue = damage + damageMod;
@@ -4396,23 +4519,6 @@ const register = mp => {
       type: 'espm',
       desc: mp.getDescFromId(event.target)
     };
-
-    if (server_options_1.getServerOptionsValue(mp, ['enableALCHeffect'])) {
-      const rec = mp.lookupEspmRecordById(event.target).record;
-
-      if (rec && (rec === null || rec === void 0 ? void 0 : rec.type) === 'ALCH') {
-        const mges = papyrusArgs_1.getObjectArray([potion.getMagicEffects(mp, target)], 0);
-        mges.forEach(m => {
-          const id = mp.getIdFromDesc(m.desc);
-          const f = game_1.getForm(mp, null, [id]);
-          if (!f) return;
-          const hitShader = magicEffect.getHitShader(mp, f);
-          if (!hitShader) return;
-          effectShader.play(mp, hitShader, [ac, 5]);
-        });
-      }
-    }
-
     mp.callPapyrusFunction('global', 'GM_Main', '_onEquip', null, [ac, target]);
     logExecuteTime(start, '_onEquip');
   };
@@ -4451,8 +4557,21 @@ const register = mp => {
       desc: mp.getDescFromId(pcFormId)
     };
     mp.callPapyrusFunction('global', 'GM_Main', '_OnInput', null, [ac, keycodes]);
-    const keybindingBrowserSetVisible = server_options_1.getServerOptionsValue(mp, ['keybindingBrowserSetVisible']);
-    const keybindingBrowserSetFocused = server_options_1.getServerOptionsValue(mp, ['keybindingBrowserSetFocused']);
+
+    const {
+      keybindingBrowserSetVisible,
+      keybindingBrowserSetFocused,
+      command1,
+      command2,
+      command3,
+      command4,
+      command5,
+      command0,
+      command6,
+      command7,
+      command8,
+      command9
+    } = __1.serverOptionProvider.getServerOptions();
 
     if (!mp.get(pcFormId, 'browserModal')) {
       if (keycodes.length === 1 && keycodes[0] === keybindingBrowserSetVisible) {
@@ -4464,35 +4583,74 @@ const register = mp => {
       }
     }
 
-    let command = '';
+    const getCommand = () => {
+      if (keycodes.includes(56) && keycodes.includes(0x02)) {
+        return command1;
+      } else if (keycodes.includes(56) && keycodes.includes(0x03)) {
+        return command2;
+      } else if (keycodes.includes(56) && keycodes.includes(0x04)) {
+        return command3;
+      } else if (keycodes.includes(56) && keycodes.includes(0x05)) {
+        return command4;
+      } else if (keycodes.includes(56) && keycodes.includes(0x06)) {
+        return command5;
+      } else if (keycodes.includes(56) && keycodes.includes(0x07)) {
+        return command6;
+      } else if (keycodes.includes(56) && keycodes.includes(0x08)) {
+        return command7;
+      } else if (keycodes.includes(56) && keycodes.includes(0x09)) {
+        return command8;
+      } else if (keycodes.includes(56) && keycodes.includes(0x0a)) {
+        return command9;
+      } else if (keycodes.includes(56) && keycodes.includes(0x0b)) {
+        return command0;
+      }
 
-    if (keycodes.includes(56) && keycodes.includes(0x02)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command1']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x03)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command2']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x04)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command3']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x05)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command4']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x06)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command5']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x07)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command6']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x08)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command7']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x09)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command8']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x0a)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command9']);
-    } else if (keycodes.includes(56) && keycodes.includes(0x0b)) {
-      command = server_options_1.getServerOptionsValue(mp, ['command0']);
-    }
+      return;
+    };
+
+    const command = getCommand();
 
     if (command) {
       mp.callPapyrusFunction('global', 'GM_Main', '_OnChatInput', null, [ac, command]);
     }
 
-    if (keycodes.length === 1 && keycodes[0] === 0x04) {}
+    if (keycodes.length === 1 && keycodes[0] === 0x04) {
+      const func = ctx => {
+        ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
+          const ac = ctx.refr;
+          if (!ac) return;
+
+          const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190090));
+
+          ctx.sp.printConsole(_obj);
+          if (!_obj) return;
+          const obj = ctx.sp.ObjectReference.from(_obj);
+          if (!obj) return;
+        }));
+      };
+
+      eval_1.evalClient(mp, pcFormId, new functionInfo_1.FunctionInfo(func).getText({}), true);
+    }
+
+    if (keycodes.length === 1 && keycodes[0] === 0x05) {
+      const func = ctx => {
+        ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
+          const ac = ctx.refr;
+          if (!ac) return;
+
+          const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190085));
+
+          if (!_obj) return;
+          const obj = ctx.sp.ObjectReference.from(_obj);
+          if (!obj) return;
+          ctx.sp.printConsole('stopTranslation');
+          obj.stopTranslation();
+        }));
+      };
+
+      eval_1.evalClient(mp, pcFormId, new functionInfo_1.FunctionInfo(func).getText({}), true);
+    }
 
     logExecuteTime(start, '_onInput');
   };
@@ -4510,40 +4668,26 @@ const register = mp => {
     const isJump = ['JumpDirectionalStart', 'JumpStandingStart'].includes(animationEvent.current);
     const isJumpLand = animationEvent.current.startsWith('JumpLand');
     const isAttack = animationEvent.current.toLowerCase().startsWith('attack');
-    const isAttackPower = animationEvent.current.toLowerCase().startsWith('attackPower');
-
-    if (animationEvent.current === 'blockStart') {
-      mp.set(pcFormId, 'isBlocking', true);
-    } else if (animationEvent.current === 'blockStop') {
-      mp.set(pcFormId, 'isBlocking', false);
-    }
-
+    let isChangeHp = false;
+    mp.set(pcFormId, 'isBlocking', animationEvent.current === 'blockStart');
     const stamina = 'stamina';
 
     if (isAttack) {
+      let {
+        HitStaminaReduce
+      } = __1.serverOptionProvider.getServerOptions();
+
       const eq = equip_1.getEquipment(mp, pcFormId);
       const weap = eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.type === 'WEAP');
-      let weapWeight = null;
 
       if (weap && weap.length > 0) {
-        const f = game_1.getForm(mp, null, [weap[0].baseId]);
-
-        if (f) {
-          weapWeight = form_1.getWeight(mp, f);
-        }
+        weap[0].weight && (HitStaminaReduce = weap[0].weight);
       }
 
-      let hitStaminaReduce = 0;
-      hitStaminaReduce = weapWeight !== null && weapWeight !== void 0 ? weapWeight : server_options_1.getServerOptionsValue(mp, ['HitStaminaReduce']);
-
-      if (isAttackPower) {
-        const powerAttackStaminaReduce = weapWeight ? weapWeight * 2 : server_options_1.getServerOptionsValue(mp, ['isPowerAttackStaminaReduce']);
-        hitStaminaReduce = powerAttackStaminaReduce - hitStaminaReduce;
-      }
-
-      if (hitStaminaReduce) {
+      if (HitStaminaReduce > 0) {
         const damage = attributes_1.actorValues.get(pcFormId, stamina, 'damage');
-        attributes_1.actorValues.set(pcFormId, stamina, 'damage', damage - hitStaminaReduce);
+        const newDamageModValue = damage - HitStaminaReduce;
+        attributes_1.actorValues.set(pcFormId, stamina, 'damage', newDamageModValue);
       }
     }
 
@@ -4557,16 +4701,28 @@ const register = mp => {
     }
 
     if (isJumpLand) {
-      const diff = mp.get(pcFormId, 'startZCoord') - position.getPositionZ(mp, ac);
+      const startZCoord = mp.get(pcFormId, 'startZCoord');
 
-      if (diff > 300) {
-        const damage = attributes_1.actorValues.get(pcFormId, 'health', 'damage');
-        attributes_1.actorValues.set(pcFormId, 'health', 'damage', damage - diff / 100);
+      if (startZCoord) {
+        const diff = startZCoord - position.getPositionZ(mp, ac);
+
+        if (diff > 300) {
+          const damage = attributes_1.actorValues.get(pcFormId, 'health', 'damage');
+          const newDamageModValue = damage - diff / 100;
+          attributes_1.actorValues.set(pcFormId, 'health', 'damage', newDamageModValue);
+          const wouldDie = attributes_1.actorValues.getMaximum(pcFormId, 'health') + newDamageModValue <= 0;
+
+          if (wouldDie && !mp.get(pcFormId, 'isDead')) {
+            mp.onDeath && mp.onDeath(pcFormId);
+          }
+
+          isChangeHp = true;
+        }
       }
     }
 
     mp.set(pcFormId, 'lastAnimation', animationEvent.current);
-    mp.callPapyrusFunction('global', 'GM_Main', '_onAnimationEvent', null, [ac, animationEvent.current, animationEvent.previous]);
+    mp.callPapyrusFunction('global', 'GM_Main', '_onAnimationEvent', null, [ac, animationEvent.current, animationEvent.previous, isAttack, isJump, isFall, isJumpLand, isChangeHp]);
     logExecuteTime(start, '_onAnimationEvent');
   };
 
@@ -4628,11 +4784,21 @@ const register = mp => {
     logExecuteTime(start, '_onCurrentCrosshairChange');
   };
 
+  mp.makeEventSource('_onPrintConsole', new functionInfo_1.FunctionInfo(functions_1.onPrintConsole).tryCatch());
+
+  mp['_onPrintConsole'] = (pcFormId, event) => {
+    console.log('[client]', ...event.map(x => JSON.stringify(x)));
+  };
+
+  mp['onDisconnectEvent'] = pcFormId => {
+    console.log('disconnect', pcFormId);
+  };
+
   empty.register(mp);
 };
 
 exports.register = register;
-},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/actor/actorValues/attributes":"Klzq","../properties/actor/actorValues/skillList":"ZKYg","../utils/functionInfo":"fC7F","./functions":"dwII","./empty":"eVF9","../papyrus/activeMagicEffect":"dvBS","../papyrus/game/server-options":"nnyN","../papyrus/actor/equip":"lP44","../papyrus/weapon":"TCaz","../papyrus/objectReference/position":"wmVe","../papyrus/weapon/type":"Xpf2","../papyrus/form":"mnzc","../utils/helper":"FxH1","../properties/eval":"mJTA","../papyrus/perk":"Fep9","../papyrus/perk/type":"x9IM","../papyrus/effectShader":"jRUP","../papyrus/potion":"SDpR","../papyrus/magicEffect":"pZ4P","../utils/papyrusArgs":"oZY1"}],"t0IM":[function(require,module,exports) {
+},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/actor/actorValues/attributes":"Klzq","../utils/functionInfo":"fC7F","./functions":"dwII","./empty":"eVF9","../papyrus/activeMagicEffect":"dvBS","../papyrus/actor/equip":"lP44","../papyrus/objectReference/position":"wmVe","../papyrus/weapon/type":"Xpf2","../papyrus/form":"mnzc","../utils/helper":"FxH1","../properties/eval":"mJTA","../papyrus/perk":"Fep9","../papyrus/perk/type":"x9IM","../..":"QCba","../papyrus/race":"AkNH","../papyrus/actor":"ZYrz"}],"t0IM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4695,8 +4861,6 @@ const register = mp => {
 
     if (isSprinting) {
       attributes_1.actorValues.set(pcFormId, `mp_${sprintAttr}drain`, 'base', -staminaReduce);
-      const damageMod = attributes_1.actorValues.get(pcFormId, sprintAttr, 'damage');
-      attributes_1.actorValues.set(pcFormId, sprintAttr, 'damage', damageMod - staminaReduce);
     } else {
       attributes_1.actorValues.set(pcFormId, `mp_${sprintAttr}drain`, 'base', 0);
     }
@@ -5036,311 +5200,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"oZY1"}],"I1C7":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addSkillExperience = exports.restoreActorValue = exports.damageActorValue = exports.getActorValue = exports.setActorValue = void 0;
-
-const attributes_1 = require("../../properties/actor/actorValues/attributes");
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const setActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  const avValue = papyrusArgs_1.getNumber(args, 1);
-  mp.set(selfId, `av${avName}`, avValue);
-};
-
-exports.setActorValue = setActorValue;
-
-const getActorValue = (mp, self, args) => mp.get(mp.getIdFromDesc(self.desc), `av${papyrusArgs_1.getString(args, 0)}`);
-
-exports.getActorValue = getActorValue;
-
-const damageActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  const avValue = papyrusArgs_1.getNumber(args, 1);
-  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
-  attributes_1.actorValues.set(selfId, avName, 'damage', damage - avValue);
-};
-
-exports.damageActorValue = damageActorValue;
-
-const restoreActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  const avValue = papyrusArgs_1.getNumber(args, 1);
-  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
-  attributes_1.actorValues.set(selfId, avName, 'damage', damage + avValue > 0 ? 0 : damage + avValue);
-};
-
-exports.restoreActorValue = restoreActorValue;
-
-const addSkillExperience = (mp, self, args) => {
-  const ac = papyrusArgs_1.getObject(args, 0);
-  const acId = mp.getIdFromDesc(ac.desc);
-  const avName = papyrusArgs_1.getString(args, 1);
-  const exp = papyrusArgs_1.getNumber(args, 2);
-  const currentAvValue = mp.get(acId, `av${avName}`);
-  const currentExp = mp.get(acId, `av${avName}Exp`);
-
-  const formula = () => (65 * currentAvValue ** 1.19 + 1925) * 1;
-
-  if (currentExp + exp >= formula()) {
-    mp.set(acId, `av${avName}`, currentAvValue + 1);
-    mp.set(acId, `av${avName}Exp`, currentExp + exp - 100);
-  } else {
-    mp.set(acId, `av${avName}Exp`, currentExp + exp);
-  }
-};
-
-exports.addSkillExperience = addSkillExperience;
-},{"../../properties/actor/actorValues/attributes":"Klzq","../../utils/papyrusArgs":"oZY1"}],"d40v":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.removePerk = exports.addPerk = exports.hasPerk = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const getPerkList = (mp, selfId) => {
-  var _a;
-
-  return (_a = mp.get(selfId, 'perk')) !== null && _a !== void 0 ? _a : [];
-};
-
-const setPerkList = (mp, selfId, perkList) => {
-  mp.set(selfId, 'perk', perkList);
-};
-
-const hasPerk = (mp, self, args) => {
-  const perk = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const perkId = mp.getIdFromDesc(perk.desc);
-  return getPerkList(mp, selfId).includes(perkId);
-};
-
-exports.hasPerk = hasPerk;
-
-const addPerk = (mp, self, args) => {
-  const perk = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const perkId = mp.getIdFromDesc(perk.desc);
-  if (exports.hasPerk(mp, self, args)) return;
-  const perkList = getPerkList(mp, selfId);
-  perkList.push(perkId);
-  setPerkList(mp, selfId, perkList);
-};
-
-exports.addPerk = addPerk;
-
-const removePerk = (mp, self, args) => {
-  const perk = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const perkId = mp.getIdFromDesc(perk.desc);
-  if (!exports.hasPerk(mp, self, args)) return;
-  const perkList = getPerkList(mp, selfId);
-  perkList.push(perkId);
-  setPerkList(mp, selfId, perkList.filter(id => id !== perkId));
-};
-
-exports.removePerk = removePerk;
-},{"../../utils/papyrusArgs":"oZY1"}],"ZYrz":[function(require,module,exports) {
-"use strict";
-
-var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = void 0;
-
-const value_1 = require("./value");
-
-const perk_1 = require("./perk");
-
-const equip_1 = require("./equip");
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const eval_1 = require("../../properties/eval");
-
-const functionInfo_1 = require("../../utils/functionInfo");
-
-const game_1 = require("../game");
-
-const attributes_1 = require("../../properties/actor/actorValues/attributes");
-
-const objectReference_1 = require("../objectReference");
-
-const isWeaponDrawn = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isWeaponDrawn');
-
-const isDead = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isDead');
-
-const setOutfit = (mp, self, args) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const outfit = papyrusArgs_1.getObject(args, 0);
-  const outfitId = mp.getIdFromDesc(outfit.desc);
-  const espmRecord = mp.lookupEspmRecordById(outfitId);
-  const inam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'INAM')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (inam) {
-    const dt = new DataView(inam.buffer);
-
-    for (let index = 0; index < inam.length; index += 4) {
-      const itemId = dt.getUint32(index, true);
-      const form = game_1.getForm(mp, null, [itemId]);
-
-      if (form) {
-        const countExist = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [form]);
-
-        if (countExist === 0) {
-          mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [form, 1, true]);
-        }
-
-        equip_1.unequipItem(mp, self, [form, false, true]);
-        equip_1.equipItem(mp, self, [form, false, true]);
-      }
-    }
-  }
-
-  const sleepOutfit = papyrusArgs_1.getBoolean(args, 1);
-
-  const func = (ctx, outfitId, sleepOutfit) => {
-    ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      if (!ac) return;
-      const outfit = ctx.sp.Game.getForm(outfitId);
-      if (!outfit) return;
-      ac.setOutfit(ctx.sp.Outfit.from(outfit), sleepOutfit);
-    }));
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    outfitId,
-    sleepOutfit
-  }), true);
-};
-
-const setRace = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const race = papyrusArgs_1.getObject(args, 0);
-  const raceId = mp.getIdFromDesc(race.desc);
-
-  const func = (ctx, raceId) => {
-    ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      if (!ac) return;
-      const race = ctx.sp.Game.getForm(raceId);
-      if (!race) return;
-      ac.setRace(ctx.sp.Race.from(race));
-    }));
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    raceId
-  }), true);
-};
-
-const setWorldOrCell = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const worldOrCell = papyrusArgs_1.getNumber(args, 1);
-  mp.set(selfId, 'worldOrCellDesc', mp.getDescFromId(worldOrCell));
-};
-
-const throwOut = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  console.log('npc remove', selfId, objectReference_1.getDisplayName(mp, self));
-  mp.set(selfId, 'pos', [-99999, -99999, -99999]);
-  mp.set(selfId, 'isDead', true);
-  attributes_1.actorValues.set(selfId, 'health', 'base', 0);
-
-  try {
-    mp.set(selfId, 'isDisabled', true);
-  } catch (_a) {}
-
-  mp.set(selfId, 'worldOrCellDesc', '0');
-};
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'Actor', 'AddPerk', (self, args) => perk_1.addPerk(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'RemovePerk', (self, args) => perk_1.removePerk(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'HasPerk', (self, args) => perk_1.hasPerk(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'IsEquipped', (self, args) => equip_1.isEquipped(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'EquipItem', (self, args) => equip_1.equipItem(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'EquipItemEx', (self, args) => equip_1.equipItemEx(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItem', (self, args) => equip_1.unequipItem(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemEx', (self, args) => equip_1.unequipItemEx(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipAll', self => equip_1.unequipAll(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemSlot', (self, args) => equip_1.unequipItemSlot(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedObject', (self, args) => equip_1.getEquippedObject(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedArmorInSlot', (self, args) => equip_1.getEquippedArmorInSlot(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', (self, args) => equip_1.getEquippedShield(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedWeapon', (self, args) => equip_1.getEquippedWeapon(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetActorValue', (self, args) => value_1.setActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetAV', (self, args) => value_1.setActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetActorValue', (self, args) => value_1.getActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetAV', (self, args) => value_1.getActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'DamageActorValue', (self, args) => value_1.damageActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'DamageAV', (self, args) => value_1.damageActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'RestoreActorValue', (self, args) => value_1.restoreActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'RestoreAV', (self, args) => value_1.restoreActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'IsWeaponDrawn', self => isWeaponDrawn(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'IsDead', self => isDead(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetOutfit', (self, args) => setOutfit(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetRace', (self, args) => setRace(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'AddSkillExperience', (self, args) => value_1.addSkillExperience(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornForms', (self, args) => equip_1.getWornForms(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornFormsId', (self, args) => equip_1.getWornFormsId(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'SetWorldOrCell', (self, args) => setWorldOrCell(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'ThrowOut', (self, args) => throwOut(mp, self, args));
-};
-
-exports.register = register;
-},{"./value":"I1C7","./perk":"d40v","./equip":"lP44","../../utils/papyrusArgs":"oZY1","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../game":"WCBi","../../properties/actor/actorValues/attributes":"Klzq","../objectReference":"YRYD"}],"GnGy":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1"}],"GnGy":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5351,6 +5211,17 @@ exports.register = void 0;
 const helper_1 = require("../utils/helper");
 
 const papyrusArgs_1 = require("../utils/papyrusArgs");
+
+const getAllIndexes = (arr, val) => {
+  let indexes = [],
+      i = -1;
+
+  while ((i = arr.indexOf(val, i + 1)) != -1) {
+    indexes.push(i);
+  }
+
+  return indexes;
+};
 
 const createStringArray = (mp, self, args) => {
   const size = papyrusArgs_1.getNumber(args, 0);
@@ -5403,6 +5274,18 @@ const arrayNumberFind = (mp, self, args) => {
   return array.findIndex(x => x === find);
 };
 
+const arrayStringFindAll = (mp, self, args) => {
+  const array = papyrusArgs_1.getStringArray(args, 0);
+  const find = papyrusArgs_1.getString(args, 1);
+  return getAllIndexes(array, find);
+};
+
+const arrayNumberFindAll = (mp, self, args) => {
+  const array = papyrusArgs_1.getNumberArray(args, 0);
+  const find = papyrusArgs_1.getNumber(args, 1);
+  return getAllIndexes(array, find);
+};
+
 const pushStringArray = (mp, self, args) => {
   const array = papyrusArgs_1.getStringArray(args, 0);
 
@@ -5420,6 +5303,12 @@ const pushNumberArray = (mp, self, args) => {
   return [...array, newValue];
 };
 
+const pushFormArray = (mp, self, args) => {
+  const array = papyrusArgs_1.getObjectArray(args, 0);
+  const newValue = papyrusArgs_1.getObject(args, 1);
+  return [...array, newValue];
+};
+
 const unshiftStringArray = (mp, self, args) => {
   const array = papyrusArgs_1.getStringArray(args, 0);
   const newValue = papyrusArgs_1.getString(args, 1);
@@ -5432,7 +5321,65 @@ const unshiftNumberArray = (mp, self, args) => {
   return [newValue, ...array];
 };
 
+const unshiftFormArray = (mp, self, args) => {
+  const array = papyrusArgs_1.getObjectArray(args, 0);
+  const newValue = papyrusArgs_1.getObject(args, 1);
+  return [newValue, ...array];
+};
+
+const spliceStringArray = (mp, self, args) => {
+  var _a;
+
+  const array = papyrusArgs_1.getStringArray(args, 0);
+  const index = papyrusArgs_1.getNumber(args, 1);
+  const countDeleteElements = (_a = papyrusArgs_1.getNumber(args, 2)) !== null && _a !== void 0 ? _a : 1;
+
+  if (index >= array.length) {
+    console.log('Index was outside the bounds of the array');
+    return [];
+  }
+
+  array.splice(index, countDeleteElements);
+  return array;
+};
+
+const spliceNumberArray = (mp, self, args) => {
+  var _a;
+
+  const array = papyrusArgs_1.getNumberArray(args, 0);
+  const index = papyrusArgs_1.getNumber(args, 1);
+  const countDeleteElements = (_a = papyrusArgs_1.getNumber(args, 2)) !== null && _a !== void 0 ? _a : 1;
+
+  if (index >= array.length) {
+    console.log('Index was outside the bounds of the array');
+    return [];
+  }
+
+  array.splice(index, countDeleteElements);
+  return array;
+};
+
+const spliceFormArray = (mp, self, args) => {
+  var _a;
+
+  const array = papyrusArgs_1.getObjectArray(args, 0);
+  const index = papyrusArgs_1.getNumber(args, 1);
+  const countDeleteElements = (_a = papyrusArgs_1.getNumber(args, 2)) !== null && _a !== void 0 ? _a : 1;
+
+  if (index >= array.length) {
+    console.log('Index was outside the bounds of the array');
+    return [];
+  }
+
+  array.splice(index, countDeleteElements);
+  return array;
+};
+
 const stringArrayToNumberArray = (mp, self, args) => papyrusArgs_1.getStringArray(args, 0).map(x => +x);
+
+const formArrayToObjectReferenceArray = (mp, self, args) => papyrusArgs_1.getObjectArray(args, 0);
+
+const formArrayToActorArray = (mp, self, args) => papyrusArgs_1.getObjectArray(args, 0);
 
 const randomInt = (mp, self, args) => helper_1.randomInRange(papyrusArgs_1.getNumber(args, 0), papyrusArgs_1.getNumber(args, 1));
 
@@ -5447,14 +5394,25 @@ const register = mp => {
   mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayStringFind', (self, args) => arrayStringFind(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayIntFind', (self, args) => arrayNumberFind(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayFloatFind', (self, args) => arrayNumberFind(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayStringFindAll', (self, args) => arrayStringFindAll(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayIntFindAll', (self, args) => arrayNumberFindAll(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayFloatFindAll', (self, args) => arrayNumberFindAll(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'StringArrayToIntArray', (self, args) => stringArrayToNumberArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'StringArrayToFloatArray', (self, args) => stringArrayToNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'FormArrayToObjectReferenceArray', (self, args) => formArrayToObjectReferenceArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'FormArrayToActorArray', (self, args) => formArrayToActorArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'PushStringArray', (self, args) => pushStringArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'PushIntArray', (self, args) => pushNumberArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'PushFloatArray', (self, args) => pushNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'PushFormArray', (self, args) => pushFormArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'UnshiftStringArray', (self, args) => unshiftStringArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'UnshiftIntArray', (self, args) => unshiftNumberArray(mp, self, args));
   mp.registerPapyrusFunction('global', 'UtilityEx', 'UnshiftFloatArray', (self, args) => unshiftNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'UnshiftFormArray', (self, args) => unshiftFormArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceStringArray', (self, args) => spliceStringArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceIntArray', (self, args) => spliceNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceFloatArray', (self, args) => spliceNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceFormArray', (self, args) => spliceFormArray(mp, self, args));
 };
 
 exports.register = register;
@@ -5566,7 +5524,34 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../utils/papyrusArgs":"oZY1","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"Ojqs":[function(require,module,exports) {
+},{"../utils/papyrusArgs":"oZY1","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"ZKYg":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.skillList = void 0;
+exports.skillList = {
+  OneHanded: 0x44c,
+  TwoHanded: 0x44d,
+  Marksman: 0x44e,
+  Block: 0x44f,
+  Smithing: 0x450,
+  HeavyArmor: 0x451,
+  LightArmor: 0x452,
+  Pickpocket: 0x453,
+  Lockpicking: 0x454,
+  Sneak: 0x455,
+  Alchemy: 0x456,
+  Speechcraft: 0x457,
+  Alteration: 0x458,
+  Conjuration: 0x459,
+  Destruction: 0x45a,
+  Illusion: 0x45b,
+  Restoration: 0x45c,
+  Enchanting: 0x45d
+};
+},{}],"Ojqs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5929,7 +5914,173 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"GeQ2":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"SDpR":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.equip = exports.getMagicEffects = exports.getEffectDurations = exports.getEffectAreas = exports.getEffectMagnitudes = exports.getNthEffectMagicEffect = exports.getNthEffectDuration = exports.getNthEffectArea = exports.getNthEffectMagnitude = exports.getNthEffectInfo = exports.getEffectInfo = exports.getNumEffects = exports.isPoison = exports.isFood = void 0;
+
+const helper_1 = require("../../utils/helper");
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const game_1 = require("../game");
+
+const FLG_ManualCalc = 0x00001;
+const FLG_Food = 0x00002;
+const FLG_Medicine = 0x10000;
+const FLG_Poison = 0x20000;
+
+const flagExists = (mp, self, flag) => {
+  var _a, _b;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  const enit = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'ENIT')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!enit) return false;
+  const flags = helper_1.uint32(enit.buffer, 4);
+  return !!(flags & flag);
+};
+
+const isFood = (mp, self) => flagExists(mp, self, FLG_Food);
+
+exports.isFood = isFood;
+
+const isPoison = (mp, self) => flagExists(mp, self, FLG_Poison);
+
+exports.isPoison = isPoison;
+
+const getNumEffects = (mp, self) => {
+  var _a, _b, _c;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  return (_c = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'EFID')) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0;
+};
+
+exports.getNumEffects = getNumEffects;
+
+const getEffectInfo = (mp, self) => {
+  var _a, _b;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  const efit = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'EFIT');
+  const efid = (_b = espmRecord.record) === null || _b === void 0 ? void 0 : _b.fields.filter(x => x.type === 'EFID');
+  if (!efit || efit.length === 0 || !efid || efid.length === 0) return [];
+  return [efid, efit];
+};
+
+exports.getEffectInfo = getEffectInfo;
+
+const getNthEffectInfo = (mp, self, args) => {
+  var _a, _b;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const index = papyrusArgs_1.getNumber(args, 0);
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  const efit = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'EFIT');
+  const efid = (_b = espmRecord.record) === null || _b === void 0 ? void 0 : _b.fields.filter(x => x.type === 'EFID');
+  if (!efit || efit.length <= index || !efid || efid.length <= index) return [];
+  return [efid[index], efit[index]];
+};
+
+exports.getNthEffectInfo = getNthEffectInfo;
+
+const getNthEffectMagnitude = (mp, self, args) => {
+  const [_, efit] = exports.getNthEffectInfo(mp, self, args);
+  return efit ? helper_1.float32(efit.data.buffer, 0) : 0;
+};
+
+exports.getNthEffectMagnitude = getNthEffectMagnitude;
+
+const getNthEffectArea = (mp, self, args) => {
+  const [_, efit] = exports.getNthEffectInfo(mp, self, args);
+  return efit ? helper_1.uint32(efit.data.buffer, 4) : 0;
+};
+
+exports.getNthEffectArea = getNthEffectArea;
+
+const getNthEffectDuration = (mp, self, args) => {
+  const [_, efit] = exports.getNthEffectInfo(mp, self, args);
+  return efit ? helper_1.uint32(efit.data.buffer, 8) : 0;
+};
+
+exports.getNthEffectDuration = getNthEffectDuration;
+
+const getNthEffectMagicEffect = (mp, self, args) => {
+  const [efid, _] = exports.getNthEffectInfo(mp, self, args);
+  return efid && game_1.getForm(mp, null, [helper_1.uint32(efid.data.buffer, 0)]);
+};
+
+exports.getNthEffectMagicEffect = getNthEffectMagicEffect;
+
+const getEffectMagnitudes = (mp, self) => {
+  const [_, efit] = exports.getEffectInfo(mp, self);
+  return efit ? efit.map(x => helper_1.float32(x.data.buffer, 0)) : null;
+};
+
+exports.getEffectMagnitudes = getEffectMagnitudes;
+
+const getEffectAreas = (mp, self) => {
+  const [_, efit] = exports.getEffectInfo(mp, self);
+  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 4)) : null;
+};
+
+exports.getEffectAreas = getEffectAreas;
+
+const getEffectDurations = (mp, self) => {
+  const [_, efit] = exports.getEffectInfo(mp, self);
+  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 8)) : null;
+};
+
+exports.getEffectDurations = getEffectDurations;
+
+const getMagicEffects = (mp, self) => {
+  const [efid, _] = exports.getEffectInfo(mp, self);
+  return efid ? efid.map(x => {
+    var _a;
+
+    return (_a = game_1.getForm(mp, null, [helper_1.uint32(x.data.buffer, 0)])) !== null && _a !== void 0 ? _a : null;
+  }) : null;
+};
+
+exports.getMagicEffects = getMagicEffects;
+
+const equip = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const potionId = papyrusArgs_1.getNumber(args, 0);
+  const {
+    n = 0
+  } = (_a = mp.get(selfId, 'ALCHequipped')) !== null && _a !== void 0 ? _a : {};
+  mp.set(selfId, 'ALCHequipped', {
+    n: n + 1,
+    id: potionId
+  });
+};
+
+exports.equip = equip;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'Potion', 'IsFood', self => exports.isFood(mp, self));
+  mp.registerPapyrusFunction('method', 'Potion', 'IsPoison', self => exports.isPoison(mp, self));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetNumEffects', self => exports.getNumEffects(mp, self));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectMagnitude', (self, args) => exports.getNthEffectMagnitude(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectArea', (self, args) => exports.getNthEffectArea(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectDuration', (self, args) => exports.getNthEffectDuration(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetNthEffectMagicEffect', (self, args) => exports.getNthEffectMagicEffect(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetEffectMagnitudes', self => exports.getEffectMagnitudes(mp, self));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetEffectAreas', self => exports.getEffectAreas(mp, self));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetEffectDurations', self => exports.getEffectDurations(mp, self));
+  mp.registerPapyrusFunction('method', 'Potion', 'GetMagicEffects', self => exports.getMagicEffects(mp, self));
+};
+
+exports.register = register;
+},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"GeQ2":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5993,7 +6144,7 @@ exports.register = register;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.max = exports.min = exports.pow = exports.sqrt = void 0;
+exports.register = exports.ceil = exports.floor = exports.max = exports.min = exports.pow = exports.sqrt = void 0;
 
 const papyrusArgs_1 = require("../utils/papyrusArgs");
 
@@ -6013,11 +6164,109 @@ const max = (mp, self, args) => Math.max(...papyrusArgs_1.getNumberArray(args, 0
 
 exports.max = max;
 
+const floor = (mp, self, args) => Math.floor(papyrusArgs_1.getNumber(args, 0));
+
+exports.floor = floor;
+
+const ceil = (mp, self, args) => Math.ceil(papyrusArgs_1.getNumber(args, 0));
+
+exports.ceil = ceil;
+
 const register = mp => {
   mp.registerPapyrusFunction('global', 'Math', 'sqrt', (self, args) => exports.sqrt(mp, self, args));
   mp.registerPapyrusFunction('global', 'Math', 'pow', (self, args) => exports.pow(mp, self, args));
+  mp.registerPapyrusFunction('global', 'Math', 'Floor', (self, args) => exports.floor(mp, self, args));
+  mp.registerPapyrusFunction('global', 'Math', 'Ceiling', (self, args) => exports.ceil(mp, self, args));
   mp.registerPapyrusFunction('global', 'MathEx', 'min', (self, args) => exports.min(mp, self, args));
   mp.registerPapyrusFunction('global', 'MathEx', 'max', (self, args) => exports.max(mp, self, args));
+};
+
+exports.register = register;
+},{"../utils/papyrusArgs":"oZY1"}],"pZ4P":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.getHitShader = exports.getHitShaderId = void 0;
+
+const helper_1 = require("../utils/helper");
+
+const papyrusArgs_1 = require("../utils/papyrusArgs");
+
+const game_1 = require("./game");
+
+const getHitShaderId = (mp, selfNull, args) => {
+  var _a;
+
+  const self = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const rec = mp.lookupEspmRecordById(selfId).record;
+  if (!rec) return null;
+  const data = (_a = rec.fields.find(x => x.type === 'DATA')) === null || _a === void 0 ? void 0 : _a.data;
+  if (!data) return null;
+  return helper_1.uint32(data.buffer, 0x20);
+};
+
+exports.getHitShaderId = getHitShaderId;
+
+const getHitShader = (mp, self) => {
+  var _a;
+
+  const hitShaderId = exports.getHitShaderId(mp, null, [self]);
+  if (!hitShaderId) return null;
+  return (_a = game_1.getForm(mp, null, [hitShaderId])) !== null && _a !== void 0 ? _a : null;
+};
+
+exports.getHitShader = getHitShader;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'MagicEffect', 'GetHitShader', self => exports.getHitShader(mp, self));
+  mp.registerPapyrusFunction('global', 'MagicEffectEx', 'GetHitShaderId', (self, args) => exports.getHitShaderId(mp, self, args));
+};
+
+exports.register = register;
+},{"../utils/helper":"FxH1","../utils/papyrusArgs":"oZY1","./game":"WCBi"}],"jRUP":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.play = void 0;
+
+const papyrusArgs_1 = require("../utils/papyrusArgs");
+
+const _play = (mp, selfId, refId, duration) => {
+  var _a;
+
+  const {
+    n = 0
+  } = (_a = mp.get(refId, 'activeShader')) !== null && _a !== void 0 ? _a : {};
+  mp.set(refId, 'activeShader', {
+    n: n + 1,
+    id: selfId,
+    duration
+  });
+  setTimeout(() => {
+    mp.set(refId, 'activeShader', {
+      n: n + 2
+    });
+  }, 200);
+};
+
+const play = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const ref = papyrusArgs_1.getObject(args, 0);
+  const refId = mp.getIdFromDesc(ref.desc);
+  const duration = papyrusArgs_1.getNumber(args, 1);
+
+  _play(mp, selfId, refId, duration);
+};
+
+exports.play = play;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'EffectShader', 'Play', (self, args) => exports.play(mp, self, args));
 };
 
 exports.register = register;
@@ -6221,7 +6470,6 @@ function avUpdate(ctx, avName) {
     const ac = ctx.sp.Actor.from(ctx.refr);
     if (!ac) return;
     ac.setActorValue(avName, ctx.value);
-    ctx.sp.printConsole(Date.now(), avName, JSON.stringify(ctx.value));
     ctx.state[`last${avName}Value`] = ctx.value;
   }
 }
@@ -6309,35 +6557,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../../utils/functionInfo":"fC7F","./functions":"QHL1","./skillList":"ZKYg"}],"hj77":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = void 0;
-
-const functionInfo_1 = require("../../../utils/functionInfo");
-
-const functions_1 = require("./functions");
-
-const register = mp => {
-  ['speedmult', 'weaponspeedmult'].forEach(avName => {
-    mp.makeProperty(`av${avName}`, {
-      isVisibleByOwner: true,
-      isVisibleByNeighbors: true,
-      updateOwner: new functionInfo_1.FunctionInfo(functions_1.avUpdate).getText({
-        avName
-      }),
-      updateNeighbor: new functionInfo_1.FunctionInfo(functions_1.avUpdate).getText({
-        avName
-      })
-    });
-  });
-};
-
-exports.register = register;
-},{"../../../utils/functionInfo":"fC7F","./functions":"QHL1"}],"TBbX":[function(require,module,exports) {
+},{"../../../utils/functionInfo":"fC7F","./functions":"QHL1","./skillList":"ZKYg"}],"TBbX":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -6385,8 +6605,6 @@ const attributes = __importStar(require("./actorValues/attributes"));
 
 const skill = __importStar(require("./actorValues/skill"));
 
-const mult = __importStar(require("./actorValues/mult"));
-
 const updateNeighborIsDead = ctx => {
   if (!ctx.refr) return;
   const ac = ctx.sp.Actor.from(ctx.refr);
@@ -6411,6 +6629,7 @@ const updateOwnerIsDead = ctx => {
   if (!ac) return;
   ac.startDeferredKill();
   const value = ctx.value;
+  if (value === undefined) return;
 
   if (value !== ctx.state.value) {
     const die = !!value;
@@ -6433,10 +6652,21 @@ const updateOwnerIsDead = ctx => {
   }
 };
 
+const updateRace = ctx => {
+  if (!ctx.refr || ctx.value === undefined || ctx.state.lastRace === ctx.value) return;
+  const ac = ctx.sp.Actor.from(ctx.refr);
+  if (!ac) return;
+  const raceForm = ctx.sp.Game.getForm(ctx.value);
+  if (!raceForm) return;
+  const race = ctx.sp.Race.from(raceForm);
+  if (!race) return;
+  ac.setRace(race);
+  ctx.state.lastRace = ctx.value;
+};
+
 const register = mp => {
   attributes.register(mp);
   skill.register(mp);
-  mult.register(mp);
   functions_1.statePropFactory(mp, 'isWeaponDrawn');
   functions_1.statePropFactory(mp, 'isSprinting');
   functions_1.statePropFactory(mp, 'CurrentCrosshairRef');
@@ -6449,10 +6679,16 @@ const register = mp => {
     updateNeighbor: new functionInfo_1.FunctionInfo(updateNeighborIsDead).tryCatch(),
     updateOwner: new functionInfo_1.FunctionInfo(updateOwnerIsDead).tryCatch()
   });
+  mp.makeProperty('race', {
+    isVisibleByOwner: true,
+    isVisibleByNeighbors: true,
+    updateNeighbor: new functionInfo_1.FunctionInfo(updateRace).tryCatch(),
+    updateOwner: new functionInfo_1.FunctionInfo(updateRace).tryCatch()
+  });
 };
 
 exports.register = register;
-},{"../../papyrus/multiplayer/functions":"zNfc","../../utils/functionInfo":"fC7F","./actorValues/attributes":"Klzq","./actorValues/skill":"kcSw","./actorValues/mult":"hj77"}],"hqDV":[function(require,module,exports) {
+},{"../../papyrus/multiplayer/functions":"zNfc","../../utils/functionInfo":"fC7F","./actorValues/attributes":"Klzq","./actorValues/skill":"kcSw"}],"hqDV":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6623,9 +6859,6 @@ exports.register = void 0;
 const functions_1 = require("../papyrus/multiplayer/functions");
 
 const register = mp => {
-  functions_1.statePropFactory(mp, 'spawnPointPosition');
-  functions_1.statePropFactory(mp, 'spawnPointAngle');
-  functions_1.statePropFactory(mp, 'spawnPointWorldOrCellDesc');
   functions_1.statePropFactory(mp, 'spawnTimeToRespawn');
 };
 
@@ -6745,7 +6978,102 @@ class StringLocalizationProvider {
 }
 
 exports.StringLocalizationProvider = StringLocalizationProvider;
-},{}],"QCba":[function(require,module,exports) {
+},{}],"nnyN":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ServerOptionProvider = void 0;
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+class ServerOptionProvider {
+  constructor(mp, hotReload) {
+    this.mp = mp;
+    this.hotReload = hotReload;
+    this.defaultSettings = {
+      serverName: 'Secret Project',
+      EnableDebug: false,
+      CookingDuration: 5,
+      CookingActivationDistance: 55,
+      IsChooseSpawnEnable: true,
+      SpawnTimeToRespawn: 1,
+      spawnTimeToRespawnNPC: 10,
+      spawnTimeById: [],
+      SatietyDefaultValue: 95,
+      SatietyDelay: 120,
+      SatietyReduceValue: -1,
+      HitDamageMod: -5,
+      HitStaminaReduce: 5,
+      isPowerAttackMult: 2,
+      isBashAttackMult: 0.5,
+      isPowerAttackStaminaReduce: 25,
+      keybindingBrowserSetVisible: 60,
+      keybindingBrowserSetFocused: 64,
+      keybindingShowChat: 20,
+      keybindingShowMenu: 21,
+      keybindingShowAnimList: 22,
+      keybindingShowPerkTree: 24,
+      command1: '',
+      command2: '',
+      command3: '',
+      command4: '',
+      command5: '',
+      command6: '',
+      command7: '',
+      command8: '',
+      command9: '',
+      command0: '',
+      StartUpItemsAdd: ['0x64b42;10', '0xf4314;10', '0x34cdf;30', '0x64b3f;30', '0x64b41;30', '0x669a5;30', '0x65c9f;30', '0x64b42;30', '0x34d22;30', '0x45c28;30', '0x65c9b;5', '0x65c99;10', '0x64b40;30', '0x65c9e;30', '0xf2011;30', '0x515def1;2', '0x515def2;2', '0x12eb7;1', '0x3eadd;50'],
+      LocationsForBuying: [],
+      LocationsForBuyingValue: [],
+      TimeScale: 20,
+      showNickname: false,
+      enableInterval: true,
+      enableALCHeffect: true,
+      adminPassword: '12345'
+    };
+    if (!this.hotReload) this.serverOptions = this.json;
+  }
+
+  get data() {
+    return this.mp.readDataFile('server-options.json');
+  }
+
+  get json() {
+    const data = JSON.parse(this.decomment(this.data));
+    Object.keys(this.defaultSettings).forEach(k => {
+      if (data[k] === undefined) data[k] = this.defaultSettings[k];
+    });
+    return data;
+  }
+
+  getServerOptions() {
+    var _a;
+
+    return (_a = this.serverOptions) !== null && _a !== void 0 ? _a : this.json;
+  }
+
+  getServerOptionsValue(args) {
+    var _a, _b;
+
+    const settings = this.getServerOptions();
+    const key = (_a = Object.keys(settings).find(x => x.toLowerCase() === papyrusArgs_1.getString(args, 0).toLowerCase())) !== null && _a !== void 0 ? _a : Object.keys(this.defaultSettings).find(x => x.toLowerCase() === papyrusArgs_1.getString(args, 0).toLowerCase());
+    if (!key) return null;
+    const value = (_b = settings[key]) !== null && _b !== void 0 ? _b : this.defaultSettings[key];
+    return value;
+  }
+
+  decomment(jsonString) {
+    const regex = /\/\/.+/gm;
+    return jsonString.replace(regex, '');
+  }
+
+}
+
+exports.ServerOptionProvider = ServerOptionProvider;
+},{"../../utils/papyrusArgs":"oZY1"}],"QCba":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -6785,7 +7113,17 @@ var _a, _b;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.serverOptionProvider = void 0;
 console.log('gamemode.js starts...');
+
+console.debug = (...data) => {
+  console.log('[DEBUG]', data);
+};
+
+console.error = (...data) => {
+  console.log('[ERROR]', data);
+};
+
 const register = mp.registerPapyrusFunction;
 
 mp.registerPapyrusFunction = (callType, className, functionName, f) => {
@@ -6884,14 +7222,18 @@ const localizationProvider_1 = require("./src/utils/localizationProvider");
 
 const stringLocalizationProvider_1 = require("./src/utils/stringLocalizationProvider");
 
+const server_options_1 = require("./src/papyrus/game/server-options");
+
 const config = mp.getServerSettings();
 const locale = config.locale;
 const data = config.dataDir;
 const isPapyrusHotReloadEnabled = config.isPapyrusHotReloadEnabled;
+const isServerOptionsHotReloadEnabled = config.isServerOptionsHotReloadEnabled;
 const stringsPath = (_a = config.stringsPath) !== null && _a !== void 0 ? _a : 'strings';
 const gamemodePath = (_b = config.gamemodePath) !== null && _b !== void 0 ? _b : 'gamemode.js';
 const localizationProvider = new localizationProvider_1.LocalizationProvider(mp, 'localization/' + locale + '.json', isPapyrusHotReloadEnabled ? 'hotreload' : 'once');
 const stringLocalizationProvider = new stringLocalizationProvider_1.StringLocalizationProvider(mp, mp.readDataFile('localization/' + locale + '.json'), locale);
+exports.serverOptionProvider = new server_options_1.ServerOptionProvider(mp, isServerOptionsHotReloadEnabled);
 mp.clear();
 perkProp.register(mp);
 evalProp.register(mp);
@@ -6911,7 +7253,7 @@ actor.register(mp);
 actorValueInfo.register(mp);
 objectReference.register(mp);
 utility.register(mp);
-game.register(mp);
+game.register(mp, exports.serverOptionProvider);
 debug.register(mp);
 weapon.register(mp);
 globalVariable.register(mp);
@@ -6927,5 +7269,8 @@ effectShader.register(mp);
 visualEffect.register(mp);
 setTimeout(() => {
   mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
+  const formId = 0xff000000;
+  const sprintAttr = 'stamina';
+  const staminaReduce = 10;
 }, 0);
-},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9"}]},{},["QCba"], null)
+},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9","./src/papyrus/game/server-options":"nnyN"}]},{},["QCba"], null)
