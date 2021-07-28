@@ -28,6 +28,7 @@
 		"Actor.IsDead",
 		"Actor.SetOutfit",
 		"Actor.SetRace",
+		"Actor.GetRace",
 		"ActorEx.GetWornForms",
 		"ActorEx.GetWornFormsId",
 
