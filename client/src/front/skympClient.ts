@@ -38,8 +38,8 @@ interface AnyMessage {
   t?: number;
 }
 const handleMessage = (msgAny: AnyMessage, handler_: MsgHandler) => {
-  const msgType: string = msgAny.type || MsgType[msgAny.t];
-  const handler = (handler_ as unknown) as Record<
+  const msgType: string = msgAny.type || (MsgType as any)[(msgAny.t as any)];
+  const handler = handler_ as unknown as Record<
     string,
     (m: AnyMessage) => void
   >;
@@ -65,8 +65,8 @@ const handleMessage = (msgAny: AnyMessage, handler_: MsgHandler) => {
       storage["hosted"] = hosted;
     }
 
-    if (!hosted.includes(target)) {
-      hosted.push(target);
+    if (!(hosted as Array<unknown>).includes(target)) {
+      (hosted as Array<unknown>).push(target);
     }
   }
 
@@ -88,8 +88,8 @@ for (let i = 0; i < 100; ++i) printConsole();
 printConsole("Hello Multiplayer");
 printConsole("settings:", settings["skymp5-client"]);
 
-const targetIp = settings["skymp5-client"]["server-ip"];
-const targetPort = settings["skymp5-client"]["server-port"];
+const targetIp = settings["skymp5-client"]["server-ip"] as string;
+const targetPort = settings["skymp5-client"]["server-port"] as number;
 
 if (storage.targetIp !== targetIp || storage.targetPort !== targetPort) {
   storage.targetIp = targetIp;
@@ -114,7 +114,7 @@ export class SkympClient {
       printConsole("Connection failed");
     });
 
-    networking.on("connectionDenied", (err: string) => {
+    networking.on("connectionDenied", (err: Record<string, any> | string) => {
       printConsole("Connection denied: ", err);
     });
 
@@ -126,8 +126,8 @@ export class SkympClient {
       this.msgHandler.handleDisconnect();
     });
 
-    networking.on("message", (msgAny: Record<string, unknown>) => {
-      handleMessage(msgAny, this.msgHandler);
+    networking.on("message", (msgAny: Record<string, unknown> | string) => {
+      handleMessage(msgAny as Record<string, unknown>, this.msgHandler as MsgHandler);
     });
 
     on("update", () => {
@@ -149,7 +149,7 @@ export class SkympClient {
     });
 
     on("activate", (e) => {
-      lastInv = getInventory(Game.getPlayer());
+      lastInv = getInventory(Game.getPlayer() as Actor);
       let caster = e.caster ? e.caster.getFormID() : 0;
       let target = e.target ? e.target.getFormID() : 0;
 
@@ -191,7 +191,7 @@ export class SkympClient {
       const baseObjId = e.baseObj ? e.baseObj.getFormID() : 0;
       if (oldContainerId !== 0x14 && newContainerId !== 0x14) return;
 
-      const furnitureRef = Game.getPlayer().getFurnitureReference();
+      const furnitureRef = (Game.getPlayer() as Actor).getFurnitureReference();
       if (!furnitureRef) return;
 
       const furrnitureId = furnitureRef.getFormID();
@@ -243,7 +243,7 @@ export class SkympClient {
           if (!lastInv) lastInv = getPcInventory();
           if (lastInv) {
             printConsole(2);
-            const newInv = getInventory(Game.getPlayer());
+            const newInv = getInventory(Game.getPlayer() as Actor);
 
             // It seems that 'ignoreWorn = false' fixes this:
             // https://github.com/skyrim-multiplayer/issue-tracker/issues/43
@@ -365,11 +365,11 @@ export class SkympClient {
           false
         );
         if (
-          storage._api_onAnimationEvent &&
-          storage._api_onAnimationEvent.callback
+          (storage as Record<string, any>)._api_onAnimationEvent &&
+          (storage as Record<string, any>)._api_onAnimationEvent.callback
         ) {
           try {
-            storage._api_onAnimationEvent.callback(
+            (storage as Record<string, any>)._api_onAnimationEvent.callback(
               _refrId ? _refrId : 0x14,
               anim.animEventName
             );
@@ -389,7 +389,11 @@ export class SkympClient {
       if (!shown) {
         printConsole("Exited from race menu");
 
-        const look = getLook(Game.getPlayer());
+				if (storage._api_onCloseRaceMenu && storage._api_onCloseRaceMenu.callback) {
+					storage._api_onCloseRaceMenu.callback();
+				}
+
+        const look = getLook(Game.getPlayer() as Actor);
         this.sendTarget.send(
           { t: MsgType.UpdateLook, data: look, _refrId },
           true
@@ -405,7 +409,7 @@ export class SkympClient {
 
       ++this.numEquipmentChanges;
 
-      const eq = getEquipment(Game.getPlayer(), this.numEquipmentChanges);
+      const eq = getEquipment(Game.getPlayer() as Actor, this.numEquipmentChanges);
       this.sendTarget.send(
         { t: MsgType.UpdateEquipment, data: eq, _refrId },
         true
@@ -424,7 +428,7 @@ export class SkympClient {
   private sendInputs() {
     const hosted =
       typeof storage["hosted"] === typeof [] ? storage["hosted"] : [];
-    const targets = [undefined].concat(hosted);
+    const targets = [undefined].concat(hosted as any);
     //printConsole({ targets });
     targets.forEach((target) => {
       this.sendMovement(target);
@@ -436,19 +440,17 @@ export class SkympClient {
   }
 
   private resetRemoteServer() {
-    const prevRemoteServer: RemoteServer = storage.remoteServer;
+    const prevRemoteServer: RemoteServer = storage.remoteServer as RemoteServer;
     let rs: RemoteServer;
 
-    if (prevRemoteServer && prevRemoteServer.getWorldModel) {
+    if (prevRemoteServer && prevRemoteServer.getWorldModel as unknown) {
       rs = prevRemoteServer;
       printConsole("Restore previous RemoteServer");
 
       // Keep previous RemoteServer, but update func implementations
-      const newObj: Record<
-        string,
-        unknown
-      > = (new RemoteServer() as unknown) as Record<string, unknown>;
-      const rsAny: Record<string, unknown> = (rs as unknown) as Record<
+      const newObj: Record<string, unknown> =
+        new RemoteServer() as unknown as Record<string, unknown>;
+      const rsAny: Record<string, unknown> = rs as unknown as Record<
         string,
         unknown
       >;
@@ -467,7 +469,7 @@ export class SkympClient {
   }
 
   private resetView() {
-    const prevView: WorldView = storage.view;
+    const prevView: WorldView = storage.view as WorldView;
     const view = new WorldView();
     once("update", () => {
       if (prevView && prevView.destroy) {
@@ -477,7 +479,8 @@ export class SkympClient {
       storage.view = view;
     });
     on("update", () => {
-      if (!this.singlePlayer) view.update(this.modelSource.getWorldModel());
+      if (!this.singlePlayer)
+        view.update((this.modelSource as ModelSource).getWorldModel());
     });
   }
 
@@ -496,9 +499,9 @@ export class SkympClient {
   private playerAnimSource = new Map<string, AnimationSource>();
   private lastSendMovementMoment = new Map<string, number>();
   private lastAnimationSent = new Map<string, Animation>();
-  private msgHandler?: MsgHandler;
+  private msgHandler: MsgHandler = undefined as unknown as MsgHandler;
   private modelSource?: ModelSource;
-  private sendTarget?: SendTarget;
+  private sendTarget: SendTarget = undefined as unknown as SendTarget;
   private isRaceSexMenuShown = false;
   private singlePlayer = false;
   private equipmentChanged = false;
@@ -507,5 +510,5 @@ export class SkympClient {
 
 once("update", () => {
   // Is it racing with OnInit in Papyrus?
-  sp.TESModPlatform.blockPapyrusEvents(true);
+  (sp.TESModPlatform as any).blockPapyrusEvents(true);
 });

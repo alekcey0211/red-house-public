@@ -1,13 +1,15 @@
 import { Ctx } from '../types/ctx';
 import { EquipEvent, HitEvent } from '../types/skyrimPlatform';
 
-export const onLoad = (ctx: Ctx) => {
-	ctx.sp.once('update', () => {
-		ctx.sp.Utility.wait(0.3).then(() => {
-			ctx.sendEvent();
-		});
-	});
-};
+// export const onLoad = (ctx: Ctx) => {
+// 	ctx.sp.once('update', async () => {
+// 		await ctx.sp.Utility.wait(0.4);
+// 		if (ctx.state.loaded === true) return;
+// 		ctx.state.loaded = true;
+// 		ctx.sp.printConsole(Date.now(), ctx.sp.Game.getPlayer()?.getFormID(), 'onLoadEvent');
+// 		ctx.sendEvent();
+// 	});
+// };
 
 export const onCellChange = (ctx: Ctx) => {
 	ctx.sp.on('update', () => {
@@ -57,11 +59,12 @@ export const onEquip = (ctx: Ctx) => {
 		const e: EquipEvent = event as EquipEvent;
 		const target = ctx.getFormIdInServerFormat(e.baseObj?.getFormID());
 		const actor = ctx.getFormIdInServerFormat(e.actor.getFormID());
-		ctx.sendEvent({
+		const data: { actor: number; target: number; player?: number } = {
 			actor,
 			target,
 			player: ctx.sp.Game.getPlayer()?.getFormID(),
-		});
+		};
+		ctx.sendEvent(data);
 	});
 };
 
@@ -106,6 +109,18 @@ export const onPrintConsole = (ctx: Ctx) => {
 			ctx.sendEvent(args);
 			if (typeof next.callback === 'function') {
 				next.callback(...args);
+			}
+		},
+	};
+};
+
+export const onCloseRaceMenu = (ctx: Ctx) => {
+	const next = ctx.sp.storage._api_onCloseRaceMenu as { callback: any };
+	ctx.sp.storage._api_onCloseRaceMenu = {
+		callback() {
+			ctx.sendEvent();
+			if (typeof next.callback === 'function') {
+				next.callback();
 			}
 		},
 	};
@@ -197,14 +212,15 @@ export const onEffectStart = (ctx: Ctx) => {
 	});
 };
 
-export const onCurrentCrosshairChange = (ctx: Ctx) => {
+export const onCurrentCrosshairChange = (ctx: Ctx<{ lastCrosshairRef?: number }>) => {
 	ctx.sp.on('update', () => {
 		const ref = ctx.sp.Game.getCurrentCrosshairRef();
 		const refId = ref?.getFormID();
 		if (ctx.state.lastCrosshairRef !== refId) {
-			ctx.sendEvent({
-				CrosshairRefId: refId,
-			});
+			const data: { crosshairRefId?: number } = {
+				crosshairRefId: refId && ctx.getFormIdInServerFormat(refId),
+			};
+			ctx.sendEvent(data);
 			ctx.state.lastCrosshairRef = refId;
 		}
 	});

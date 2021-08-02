@@ -17,7 +17,7 @@ const getFormID = (mp: Mp, self: PapyrusObject): number => {
 	return mp.getIdFromDesc(self.desc);
 };
 
-export const getName = (strings: StringLocalizationProvider, mp: Mp, self: PapyrusObject): string | null => {
+export const getName = (strings: StringLocalizationProvider, mp: Mp, self: PapyrusObject): string | 'NOT_FOUND' => {
 	const selfId = getSelfId(mp, self.desc);
 
 	const espmRecord = mp.lookupEspmRecordById(selfId);
@@ -31,27 +31,13 @@ export const getName = (strings: StringLocalizationProvider, mp: Mp, self: Papyr
 
 	if (full && full.length > 4) return new TextDecoder().decode(full);
 
-	if (full) {
+	if (full && self.desc) {
 		const espName = self.desc.split(':')[1].split('.')[0].toLowerCase();
 		const index = uint32(full.buffer, 0);
 		return strings.getText(espName, index) ?? '';
 	}
 
 	return 'NOT_FOUND';
-
-	// if (full) {
-	// 	if (full.length > 4) {
-	// 		console.log('TextDecoder', new TextDecoder().decode(full));
-	// 		return new TextDecoder().decode(full);
-	// 	} else {
-	// 		const espName = self.desc.split(':')[1].split('.')[0].toLowerCase();
-	// 		const index = uint32(full.buffer, 0);
-	// 		return strings.getText(espName, index) ?? '';
-	// 	}
-	// } else if (tplt) {
-	// 	return getName(strings, mp, { type: 'form', desc: mp.getDescFromId(uint32(tplt.buffer, 0)) });
-	// }
-	// return 'unknown';
 };
 
 const getNameEx = (
@@ -88,10 +74,10 @@ export const getDescription = (
 	return '';
 };
 
-export const _getEditorId = (mp: Mp, selfId: number): string | undefined => {
+export const _getEditorId = (mp: Mp, selfId: number): string => {
 	const espmRecord = mp.lookupEspmRecordById(selfId);
 	const name = espmRecord.record?.fields.find((x) => x.type === 'NAME')?.data;
-	if (!name) return;
+	if (!name) return '';
 
 	const dataView = new DataView(name.buffer);
 	const baseId = dataView.getUint32(0, true);
@@ -99,15 +85,14 @@ export const _getEditorId = (mp: Mp, selfId: number): string | undefined => {
 	const espmRecordBase = mp.lookupEspmRecordById(baseId);
 
 	const edid = espmRecordBase.record?.fields.find((x) => x.type === 'EDID')?.data;
-	if (edid) {
-		return uint8arrayToStringMethod(edid);
-	}
-	return '';
+	if (!edid) return '';
+
+	return uint8arrayToStringMethod(edid);
 };
-export const getEditorId = (mp: Mp, self: null, args: PapyrusValue[]): string | undefined => {
+export const getEditorId = (mp: Mp, self: null, args: PapyrusValue[]): string => {
 	return _getEditorId(mp, getSelfId(mp, getObject(args, 0).desc));
 };
-export const getEditorIdById = (mp: Mp, self: null, args: PapyrusValue[]): string | undefined => {
+export const getEditorIdById = (mp: Mp, self: null, args: PapyrusValue[]): string => {
 	return _getEditorId(mp, getNumber(args, 0));
 };
 
@@ -115,21 +100,20 @@ const getGoldValue = (mp: Mp, self: PapyrusObject) => {
 	const selfId = getSelfId(mp, self.desc);
 	const recordData = mp.lookupEspmRecordById(selfId);
 	const data = recordData.record?.fields.find((x) => x.type === 'DATA')?.data;
-	if (data) {
-		const dataView = new DataView(data.buffer);
-		return dataView.getUint32(0, true);
-	}
-	return -1;
+	if (!data) return -1;
+
+	const dataView = new DataView(data.buffer);
+	return dataView.getUint32(0, true);
 };
 
-export const getWeight = (mp: Mp, self: PapyrusObject): number | undefined => {
+export const getWeight = (mp: Mp, self: PapyrusObject): number => {
 	const selfId = getSelfId(mp, self.desc);
 	return getWeightById(mp, selfId);
 };
-export const getWeightById = (mp: Mp, selfId: number): number | undefined => {
+export const getWeightById = (mp: Mp, selfId: number): number => {
 	const recordData = mp.lookupEspmRecordById(selfId);
 	const data = recordData.record?.fields.find((x) => x.type === 'DATA')?.data;
-	if (!data) return;
+	if (!data) return 0;
 	const dataView = new DataView(data.buffer);
 	return dataView.getFloat32(4, true);
 };
@@ -140,19 +124,22 @@ const getType = (mp: Mp, self: PapyrusObject) => {
 	return data.record?.type && formType[data.record?.type] ? formType[data.record?.type] : 0;
 };
 
-const getSignature = (mp: Mp, self: null, args: PapyrusValue[]) => {
-	const espmRecord = mp.lookupEspmRecordById(getNumber(args, 0));
-	const type = espmRecord.record?.type;
-	return type;
+const _getSignature = (mp: Mp, selfId: number) => {
+	const espmRecord = mp.lookupEspmRecordById(selfId);
+	return espmRecord.record?.type ?? '';
 };
+const getSignature = (mp: Mp, self: PapyrusObject) => _getSignature(mp, getSelfId(mp, self.desc));
+const getSignatureEx = (mp: Mp, self: null, args: PapyrusValue[]) => _getSignature(mp, getNumber(args, 0));
 
-const equalSignature = (mp: Mp, self: null, args: PapyrusValue[]) => {
-	const espmRecord = mp.lookupEspmRecordById(getNumber(args, 0));
-	const isType = getString(args, 1);
-	const type = espmRecord.record?.type;
-	if (isType === type) return true;
+const _equalSignature = (mp: Mp, selfId: number, type: string) => {
+	const espmRecord = mp.lookupEspmRecordById(selfId);
+	if (espmRecord.record?.type === type) return true;
 	return false;
 };
+const equalSignature = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) =>
+	_equalSignature(mp, getSelfId(mp, self.desc), getString(args, 0));
+const equalSignatureEx = (mp: Mp, self: null, args: PapyrusValue[]) =>
+	_equalSignature(mp, getNumber(args, 0), getString(args, 1));
 
 export const register = (mp: Mp, strings: StringLocalizationProvider): void => {
 	mp.registerPapyrusFunction('method', 'Form', 'GetFormID', (self) => getFormID(mp, self));
@@ -166,6 +153,8 @@ export const register = (mp: Mp, strings: StringLocalizationProvider): void => {
 	mp.registerPapyrusFunction('method', 'Form', 'GetNumKeywords', (self) => getNumKeywords(mp, self));
 	mp.registerPapyrusFunction('method', 'Form', 'GetNthKeyword', (self, args) => getNthKeyword(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Form', 'HasKeyword', (self, args) => hasKeyword(mp, self, args));
+	mp.registerPapyrusFunction('method', 'Form', 'GetSignature', (self, args) => getSignature(mp, self));
+	mp.registerPapyrusFunction('method', 'Form', 'EqualSignature', (self, args) => equalSignature(mp, self, args));
 
 	mp.registerPapyrusFunction('global', 'FormEx', 'GetName', (self, args) => getNameEx(strings, mp, self, args));
 	mp.registerPapyrusFunction('global', 'FormEx', 'GetEditorID', (self, args) => getEditorId(mp, self, args));
@@ -173,6 +162,6 @@ export const register = (mp: Mp, strings: StringLocalizationProvider): void => {
 		getDescription(strings, mp, self, args)
 	);
 	mp.registerPapyrusFunction('global', 'FormEx', 'HasKeyword', (self, args) => hasKeywordEx(mp, self, args));
-	mp.registerPapyrusFunction('global', 'FormEx', 'GetSignature', (self, args) => getSignature(mp, self, args));
-	mp.registerPapyrusFunction('global', 'FormEx', 'EqualSignature', (self, args) => equalSignature(mp, self, args));
+	mp.registerPapyrusFunction('global', 'FormEx', 'GetSignature', (self, args) => getSignatureEx(mp, self, args));
+	mp.registerPapyrusFunction('global', 'FormEx', 'EqualSignature', (self, args) => equalSignatureEx(mp, self, args));
 };

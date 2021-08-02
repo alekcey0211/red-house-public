@@ -22,7 +22,7 @@ export class IdManager {
   }
 
   freeIdFor(value: number): void {
-    const id = this.idByValue[value];
+    const id = this.idByValue[value] as number;
     if (id < this.minimumUnusedId) {
       this.minimumUnusedId = id;
     }

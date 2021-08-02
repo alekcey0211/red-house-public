@@ -1,9 +1,9 @@
-import { ObjectReference, Actor, TESModPlatform } from "skyrimPlatform";
+import { ObjectReference, Actor, TESModPlatform, Form } from "skyrimPlatform";
 import { NiPoint3 } from "../../lib/structures/movement";
 import { Movement, RunMode } from "./movement";
 
 export const getMovement = (refr: ObjectReference): Movement => {
-  const ac = Actor.from(refr);
+  const ac = Actor.from(refr) as Actor;
 
   // It is running for ObjectReferences because Standing
   // Doesn't lead to translateTo call
@@ -27,7 +27,7 @@ export const getMovement = (refr: ObjectReference): Movement => {
   }
 
   return {
-    worldOrCell: (refr.getWorldSpace() || refr.getParentCell()).getFormID(),
+    worldOrCell: ((refr.getWorldSpace() || refr.getParentCell()) as Form).getFormID(),
     pos: [refr.getPositionX(), refr.getPositionY(), refr.getPositionZ()],
     rot: [refr.getAngleX(), refr.getAngleY(), refr.getAngleZ()],
     runMode: runMode,
@@ -35,11 +35,11 @@ export const getMovement = (refr: ObjectReference): Movement => {
       runMode !== "Standing"
         ? 360 * refr.getAnimationVariableFloat("Direction")
         : 0,
-    isInJumpState: ac && ac.getAnimationVariableBool("bInJumpState"),
-    isSneaking: ac && isSneaking(ac),
-    isBlocking: ac && ac.getAnimationVariableBool("IsBlocking"),
-    isWeapDrawn: ac && ac.isWeaponDrawn(),
-    healthPercentage,
+    isInJumpState: (ac && ac.getAnimationVariableBool("bInJumpState")) as boolean,
+    isSneaking: (ac && isSneaking(ac)) as boolean,
+    isBlocking: (ac && ac.getAnimationVariableBool("IsBlocking")) as boolean,
+    isWeapDrawn: (ac && ac.isWeaponDrawn()) as boolean,
+    healthPercentage: healthPercentage as number,
     lookAt,
   };
 };

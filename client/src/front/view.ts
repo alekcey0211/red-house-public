@@ -28,6 +28,7 @@ import { modWcProtection } from "./worldCleaner";
 import { applyInventory } from "./components/inventory";
 import { tryHost } from "./hostAttempts";
 import { getMovement } from "./components/movementGet";
+import { Movement } from "../lib/structures/movement";
 
 let gCrosshairRefId = 0;
 let gPcInJumpState = false;
@@ -42,7 +43,10 @@ on("tick", () => {
   } else {
     gUpdateNeighborFunctionsKeys = [];
   }
-  gUpdateNeighborFunctions = storage["updateNeighborFunctions"];
+  gUpdateNeighborFunctions = storage["updateNeighborFunctions"] as Record<
+    string,
+    any
+  >;
 });
 
 export interface View<T> {
@@ -86,7 +90,8 @@ const tryHostIfNeed = (ac: Actor, remoteId: number) => {
     lastTryHost[remoteId] = Date.now();
 
     if (
-      getMovement(ac).worldOrCell === getMovement(Game.getPlayer()).worldOrCell
+      getMovement(ac).worldOrCell ===
+      getMovement(Game.getPlayer() as Actor).worldOrCell
     ) {
       return tryHost(remoteId);
     }
@@ -121,7 +126,7 @@ function dealWithRef(ref: ObjectReference, base: Form): void {
   }
   // https://github.com/skyrim-multiplayer/issue-tracker/issues/36
   if (isFlora) {
-    const hasIngr = sp.Flora.from(base).getIngredient() != null;
+    const hasIngr = (sp.Flora.from(base) as sp.Flora).getIngredient() != null;
     if (hasIngr) ref.setMotionType(MotionType.Keyframed, false);
   }
 }
@@ -168,18 +173,21 @@ const getDefaultEquipState = () => {
 
 interface LookState {
   lastNumChanges: number;
-  look: Look;
+  look: Look | null;
 }
 
 const getDefaultLookState = (): LookState => {
   return { lastNumChanges: 0, look: null };
 };
 
-const undefinedRefr: ObjectReference = undefined;
+const undefinedRefr: ObjectReference = undefined as unknown as ObjectReference;
 const unknownValue: unknown = undefined;
-const undefinedFormModel: FormModel = undefined;
-const undefinedObject: Record<string, unknown> = undefined;
-const undefinedView: FormViewArray = undefined;
+const undefinedFormModel: FormModel = undefined as unknown as FormModel;
+const undefinedObject: Record<string, unknown> = undefined as unknown as Record<
+  string,
+  unknown
+>;
+const undefinedView: FormViewArray = undefined as unknown as FormViewArray;
 const ctx = {
   refr: undefinedRefr,
   value: unknownValue,
@@ -195,7 +203,7 @@ const ctx = {
     return remoteIdToLocalId(serversideFormId);
   },
   get(propName: string) {
-    return this._model[propName];
+    return (this._model as Record<string, any>)[propName];
   },
   respawn() {
     this._view.destroyForm(this.i);
@@ -227,7 +235,8 @@ export class FormView implements View<FormModel> {
     // Players with different worldOrCell should be invisible
     if (model.movement) {
       const worldOrCell =
-        Game.getPlayer().getWorldSpace() || Game.getPlayer().getParentCell();
+        (Game.getPlayer() as Actor).getWorldSpace() ||
+        (Game.getPlayer() as Actor).getParentCell();
       if (
         worldOrCell &&
         model.movement.worldOrCell !== worldOrCell.getFormID()
@@ -245,7 +254,7 @@ export class FormView implements View<FormModel> {
         model.numLookChanges !== this.lookState.lastNumChanges
       ) {
         this.lookState.look = model.look;
-        this.lookState.lastNumChanges = model.numLookChanges;
+        this.lookState.lastNumChanges = model.numLookChanges as number;
         this.lookBasedBaseId = 0;
       }
     }
@@ -255,7 +264,7 @@ export class FormView implements View<FormModel> {
     if (refId) {
       if (this.refrId !== refId) {
         this.destroy();
-        this.refrId = model.refrId;
+        this.refrId = model.refrId as number;
         this.ready = true;
         const refr = ObjectReference.from(Game.getFormEx(this.refrId));
         if (refr) {
@@ -265,26 +274,32 @@ export class FormView implements View<FormModel> {
       }
     } else {
       const base =
-        getFormEx(+model.baseId) || getFormEx(this.getLookBasedBase());
+        getFormEx(+(model.baseId as number)) ||
+        getFormEx(this.getLookBasedBase());
       if (!base) return;
 
       let refr = ObjectReference.from(Game.getFormEx(this.refrId));
       const respawnRequired =
         !refr ||
         !refr.getBaseObject() ||
-        refr.getBaseObject().getFormID() !== base.getFormID();
+        (refr.getBaseObject() as Form).getFormID() !== base.getFormID();
 
       if (respawnRequired) {
         this.destroy();
-        refr = Game.getPlayer().placeAtMe(base, 1, true, true);
+        refr = (Game.getPlayer() as Actor).placeAtMe(
+          base,
+          1,
+          true,
+          true
+        ) as ObjectReference;
         this.state = {};
         delete this.wasHostedByOther;
         const kTypeNpc = 43;
         if (base.getType() !== kTypeNpc) {
           refr.setAngle(
-            model.movement.rot[0],
-            model.movement.rot[1],
-            model.movement.rot[2]
+            model.movement?.rot[0] || 0,
+            model.movement?.rot[1] || 0,
+            model.movement?.rot[2] || 0
           );
         }
         modWcProtection(refr.getFormID(), 1);
@@ -294,13 +309,13 @@ export class FormView implements View<FormModel> {
 
         this.ready = false;
         new SpawnProcess(
-          this.lookState.look,
+          this.lookState.look as Look,
           model.movement
             ? model.movement.pos
             : [
-                Game.getPlayer().getPositionX(),
-                Game.getPlayer().getPositionY(),
-                Game.getPlayer().getPositionZ(),
+                (Game.getPlayer() as Actor).getPositionX(),
+                (Game.getPlayer() as Actor).getPositionY(),
+                (Game.getPlayer() as Actor).getPositionZ(),
               ],
           refr.getFormID(),
           () => {
@@ -311,7 +326,7 @@ export class FormView implements View<FormModel> {
         if (model.look && model.look.name)
           refr.setDisplayName("" + model.look.name, true);
       }
-      this.refrId = refr.getFormID();
+      this.refrId = (refr as ObjectReference).getFormID();
     }
 
     if (!this.ready) return;
@@ -370,7 +385,7 @@ export class FormView implements View<FormModel> {
       if (t >= 38 && t <= 39) {
         const wasHarvested = refr.isHarvested();
         if (isHarvested != wasHarvested) {
-          let ac: Actor;
+          let ac: Actor = undefined as unknown as Actor;
           if (isHarvested)
             for (let i = 0; i < 20; ++i) {
               ac = Game.findRandomActor(
@@ -378,7 +393,7 @@ export class FormView implements View<FormModel> {
                 refr.getPositionY(),
                 refr.getPositionZ(),
                 10000
-              );
+              ) as Actor;
               if (ac && ac.getFormID() !== 0x14) {
                 break;
               }
@@ -475,14 +490,15 @@ export class FormView implements View<FormModel> {
           this.movState.lastRehost = Date.now();
           const remoteId = this.remoteRefrId;
           if (ac && ac.is3DLoaded()) {
-            tryHostIfNeed(ac, remoteId);
+            tryHostIfNeed(ac, remoteId as number);
             printConsole("try to rehost");
           }
         }
       }
 
       if (
-        +model.numMovementChanges !== this.movState.lastNumChanges ||
+        +(model.numMovementChanges as number) !==
+          this.movState.lastNumChanges ||
         Date.now() - this.movState.lastApply > 2000
       ) {
         this.movState.lastApply = Date.now();
@@ -494,7 +510,7 @@ export class FormView implements View<FormModel> {
           applyMovement(refr, model.movement);
           model.movement.isWeapDrawn = backup;
 
-          this.movState.lastNumChanges = +model.numMovementChanges;
+          this.movState.lastNumChanges = +(model.numMovementChanges as number);
           this.movState.everApplied = true;
         } else {
           if (ac) ac.clearKeepOffsetFromActor();
@@ -537,7 +553,7 @@ export class FormView implements View<FormModel> {
           this.isOnScreen = isOnScreen;
           if (isOnScreen) {
             actor.queueNiNodeUpdate();
-            Game.getPlayer().queueNiNodeUpdate();
+            (Game.getPlayer() as Actor).queueNiNodeUpdate();
           }
         }
       }
@@ -588,7 +604,7 @@ export class FormView implements View<FormModel> {
   }
 
   getRemoteRefrId(): number {
-    return this.remoteRefrId;
+    return this.remoteRefrId as number;
   }
 
   private refrId = 0;
@@ -624,7 +640,7 @@ class FormViewArray {
   destroyForm(i: number) {
     if (!this.formViews[i]) return;
     this.formViews[i].destroy();
-    this.formViews[i] = undefined;
+    this.formViews[i] = undefined as unknown as FormView;
   }
 
   resize(newSize: number) {
@@ -645,12 +661,16 @@ class FormViewArray {
       }
       const form = forms[i];
 
-      let realPos: NiPoint3;
+      let realPos: NiPoint3 = undefined as unknown as NiPoint3;
       const offset =
         form.movement && (model.playerCharacterFormIdx === i || isCloneView);
       if (offset) {
-        realPos = form.movement.pos;
-        form.movement.pos = [realPos[0] + 128, realPos[1] + 128, realPos[2]];
+        realPos = (form.movement as Movement).pos;
+        (form.movement as Movement).pos = [
+          realPos[0] + 128,
+          realPos[1] + 128,
+          realPos[2],
+        ];
       }
       if (isCloneView) {
         // Prevent using the same refr by normal and clone views
@@ -666,7 +686,7 @@ class FormViewArray {
       }
 
       if (offset) {
-        form.movement.pos = realPos;
+        (form.movement as Movement).pos = realPos as NiPoint3;
       }
     }
   }
@@ -698,9 +718,9 @@ export class WorldView implements View<WorldModel> {
     // Default nord in Race Menu will have very ugly face
     // If other players are spawning when we show this menu
     on("update", () => {
-      const pc = Game.getPlayer();
+      const pc = Game.getPlayer() as Actor;
       const pcWorldOrCell = (
-        pc.getWorldSpace() || pc.getParentCell()
+        (pc.getWorldSpace() || pc.getParentCell()) as Form
       ).getFormID();
       if (this.pcWorldOrCell !== pcWorldOrCell) {
         if (this.pcWorldOrCell) {
@@ -743,13 +763,13 @@ export class WorldView implements View<WorldModel> {
     const crosshair = Game.getCurrentCrosshairRef();
     gCrosshairRefId = crosshair ? crosshair.getFormID() : 0;
 
-    gPcInJumpState = Game.getPlayer().getAnimationVariableBool("bInJumpState");
+    gPcInJumpState = (Game.getPlayer() as Actor).getAnimationVariableBool("bInJumpState");
 
     const pcWorldOrCell =
-      Game.getPlayer().getWorldSpace() || Game.getPlayer().getParentCell();
+      (Game.getPlayer() as Actor).getWorldSpace() || (Game.getPlayer() as Actor).getParentCell();
     gPcWorldOrCellId = pcWorldOrCell ? pcWorldOrCell.getFormID() : 0;
 
-    this.formViews.updateAll(model, showMe, false);
+    this.formViews.updateAll(model, showMe as boolean, false);
 
     if (showClones) {
       this.cloneFormViews.updateAll(model, false, true);

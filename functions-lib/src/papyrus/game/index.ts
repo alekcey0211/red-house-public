@@ -133,7 +133,8 @@ const getCurrentCrosshairRef = (mp: Mp, selfNull: null, args: PapyrusValue[]) =>
 	const self = getObject(args, 0);
 	const selfId = mp.getIdFromDesc(self.desc);
 	const refId = mp.get<number>(selfId, 'CurrentCrosshairRef');
-	return refId && getForm(mp, null, [refId]);
+	if (!refId) return undefined;
+	return getForm(mp, null, [refId]);
 };
 
 export const register = (mp: Mp, serverOptionProvider: ServerOptionProvider): void => {
@@ -159,7 +160,9 @@ export const register = (mp: Mp, serverOptionProvider: ServerOptionProvider): vo
 	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsStringArray', (self, args) =>
 		serverOptionProvider.getServerOptionsValue(args)
 	);
-	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsInt', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsInt', (self, args) =>
+		serverOptionProvider.getServerOptionsValue(args)
+	);
 	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsIntArray', (self, args) =>
 		serverOptionProvider.getServerOptionsValue(args)
 	);
@@ -169,5 +172,7 @@ export const register = (mp: Mp, serverOptionProvider: ServerOptionProvider): vo
 	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsFloatArray', (self, args) =>
 		serverOptionProvider.getServerOptionsValue(args)
 	);
-	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsBool', (self, args) => serverOptionProvider.getServerOptionsValue(args));
+	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsBool', (self, args) =>
+		serverOptionProvider.getServerOptionsValue(args)
+	);
 };

@@ -18,6 +18,7 @@ import {
   Actor,
   Ammo,
   printConsole,
+  ActorBase,
 } from "skyrimPlatform";
 
 import * as structures from "../../lib/structures/inventory";
@@ -27,7 +28,7 @@ export type BasicEntry = structures.BasicEntry;
 
 // 'loxsword (Legendary)' => 'loxsword'
 const getRealName = (s?: string): string => {
-  if (!s) return s;
+  if (!s) return s as string;
 
   const arr = s.split(" ");
   if (arr.length && arr[arr.length - 1].match(/^\(.*\)$/)) arr.pop();
@@ -36,7 +37,7 @@ const getRealName = (s?: string): string => {
 
 // 'aaaaaaaaaaaaaaaa' => 'aaa...'
 const cropName = (s?: string): string => {
-  if (!s) return s;
+  if (!s) return s as string;
 
   const max = 128;
   return s.length >= max
@@ -200,7 +201,7 @@ const getExtraContainerChangesAsInventory = (
 };
 
 const getBaseContainerAsInventory = (refr: ObjectReference): Inventory => {
-  return { entries: getContainer(refr.getBaseObject().getFormID()) };
+  return { entries: getContainer((refr.getBaseObject() as ActorBase).getFormID()) };
 };
 
 const sumInventories = (lhs: Inventory, rhs: Inventory): Inventory => {
@@ -263,7 +264,7 @@ const basesReset = (): Set<number> => {
     storage["basesResetExists"] = true;
     storage["basesReset"] = new Set<number>();
   }
-  return storage["basesReset"];
+  return storage["basesReset"] as Set<number>;
 };
 
 const resetBase = (refr: ObjectReference): void => {

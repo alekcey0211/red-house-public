@@ -4,9 +4,7 @@ import { addPerk, removePerk, hasPerk } from './perk';
 import {
 	isEquipped,
 	equipItem,
-	equipItemEx,
 	unequipItem,
-	unequipItemEx,
 	unequipAll,
 	unequipItemSlot,
 	getWornForms,
@@ -15,6 +13,7 @@ import {
 	getEquippedArmorInSlot,
 	getEquippedShield,
 	getEquippedWeapon,
+	_getWornForms,
 } from './equip';
 import { getBoolean, getNumber, getObject } from '../../utils/papyrusArgs';
 import { evalClient } from '../../properties/eval';
@@ -23,8 +22,6 @@ import { Ctx } from '../../types/ctx';
 import { getForm } from '../game';
 import { actorValues } from '../../properties/actor/actorValues/attributes';
 import { getDisplayName } from '../objectReference';
-import { initAVFromRace } from '../../events';
-import { serverOptionProvider } from '../../..';
 import { getRaceHealth, getRaceStamina } from '../race';
 
 const isWeaponDrawn = (mp: Mp, self: PapyrusObject) => !!mp.get(mp.getIdFromDesc(self.desc), 'isWeaponDrawn');
@@ -95,11 +92,14 @@ const setWorldOrCell = (mp: Mp, selfNull: null, args: PapyrusValue[]) => {
 	mp.set(selfId, 'worldOrCellDesc', mp.getDescFromId(worldOrCell));
 };
 
-const throwOut = (mp: Mp, selfNull: null, args: PapyrusValue[]) => {
-	const self = getObject(args, 0);
+const _throwOut = (mp: Mp, self: PapyrusObject) => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	console.log('npc remove', selfId, getDisplayName(mp, self));
 	throwOutById(mp, selfId);
+};
+const throwOut = (mp: Mp, selfNull: null, args: PapyrusValue[]) => {
+	const self = getObject(args, 0);
+	_throwOut(mp, self);
 };
 export const throwOutById = (mp: Mp, selfId: number) => {
 	mp.set(selfId, 'pos', [-99_999, -99_999, -99_999]);
@@ -123,10 +123,10 @@ export const register = (mp: Mp): void => {
 
 	mp.registerPapyrusFunction('method', 'Actor', 'IsEquipped', (self, args) => isEquipped(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Actor', 'EquipItem', (self, args) => equipItem(mp, self, args));
-	mp.registerPapyrusFunction('method', 'Actor', 'EquipItemEx', (self, args) => equipItemEx(mp, self, args));
+	// mp.registerPapyrusFunction('method', 'Actor', 'EquipItemEx', (self, args) => equipItemEx(mp, self, args));
 	// mp.registerPapyrusFunction('method', 'Actor', 'EquipItemById', (self, args) => equipItemById(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Actor', 'UnequipItem', (self, args) => unequipItem(mp, self, args));
-	mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemEx', (self, args) => unequipItemEx(mp, self, args));
+	// mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemEx', (self, args) => unequipItemEx(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Actor', 'UnequipAll', (self) => unequipAll(mp, self));
 	mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemSlot', (self, args) => unequipItemSlot(mp, self, args));
 	// mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedItemType', (self, args) => getEquippedItemType(mp, self, args));
@@ -134,7 +134,7 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedArmorInSlot', (self, args) =>
 		getEquippedArmorInSlot(mp, self, args)
 	);
-	mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', (self, args) => getEquippedShield(mp, self, args));
+	mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', (self) => getEquippedShield(mp, self));
 	mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedWeapon', (self, args) => getEquippedWeapon(mp, self, args));
 
 	mp.registerPapyrusFunction('method', 'Actor', 'SetActorValue', (self, args) => setActorValue(mp, self, args));

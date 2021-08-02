@@ -1,5 +1,4 @@
 import { Mp, PapyrusValue } from '../types/mp';
-import { PapyrusObject } from '../types/skyrimPlatform';
 import { randomInRange } from '../utils/helper';
 import { getBoolean, getNumber, getNumberArray, getObject, getObjectArray, getString, getStringArray } from '../utils/papyrusArgs';
 

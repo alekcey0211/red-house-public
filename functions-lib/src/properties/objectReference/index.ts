@@ -87,16 +87,10 @@ const ALCHequipped = (
 ) => {
   if (ctx.refr && ctx.value !== undefined && ctx.state.lastALCHequippedExecN !== ctx.value.n) {
     ctx.state.lastALCHequippedExecN = ctx.value.n;
-    // ctx.sp.printConsole(Date.now(), JSON.stringify(ctx.value));
     if (!ctx.value.n || !ctx.value.id) return;
     const ac = ctx.sp.Actor.from(ctx.refr);
     if (!ac) return;
     const item = ctx.sp.Game.getFormEx(ctx.value.id);
-    // const potion = ctx.sp.Potion.from(item);
-    // if (!potion) return;
-    // for (let i = 0; i < potion.getNumEffects(); i++) {
-    //   potion.setNthEffectMagnitude(i, 0);
-    // }
     ctx.sp.printConsole(Date.now(), ctx.getFormIdInServerFormat(ac.getFormID()).toString(16));
     ac.equipItem(item, false, true);
   }

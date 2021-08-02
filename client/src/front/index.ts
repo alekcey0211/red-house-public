@@ -57,7 +57,7 @@ on("update", () => {
 
   const d = new Date();
 
-  const gameHour = GlobalVariable.from(Game.getFormEx(gameHourId));
+  const gameHour = GlobalVariable.from(Game.getFormEx(gameHourId)) as GlobalVariable;
   gameHour.setValue(
     d.getUTCHours() +
       d.getUTCMinutes() / 60 +
@@ -65,16 +65,16 @@ on("update", () => {
       d.getUTCMilliseconds() / 60 / 60 / 1000
   );
 
-  const gameDay = GlobalVariable.from(Game.getFormEx(gameDayId));
+  const gameDay = GlobalVariable.from(Game.getFormEx(gameDayId)) as GlobalVariable;
   gameDay.setValue(d.getUTCDate());
 
-  const gameMonth = GlobalVariable.from(Game.getFormEx(gameMonthId));
+  const gameMonth = GlobalVariable.from(Game.getFormEx(gameMonthId)) as GlobalVariable;
   gameMonth.setValue(d.getUTCMonth());
 
-  const gameYear = GlobalVariable.from(Game.getFormEx(gameYearId));
+  const gameYear = GlobalVariable.from(Game.getFormEx(gameYearId)) as GlobalVariable;
   gameYear.setValue(d.getUTCFullYear() - 2020 + 199);
 
-  const timeScale = GlobalVariable.from(Game.getFormEx(timeScaleId));
+  const timeScale = GlobalVariable.from(Game.getFormEx(timeScaleId)) as GlobalVariable;
   timeScale.setValue(1);
 });
 

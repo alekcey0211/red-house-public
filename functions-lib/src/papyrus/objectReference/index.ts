@@ -1,7 +1,12 @@
 import { getBoolean, getNumber, getObject, getString } from '../../utils/papyrusArgs';
 import { Mp, PapyrusValue, PapyrusObject, Inventory } from '../../types/mp';
 import { getForm } from '../game';
-import { getAngle, getDistance, getPosition, getEspPosition, setPosition } from './position';
+import {
+	getAngle,
+	getDistance,
+	getPosition,
+	getEspPosition,
+} from './position';
 import { Ctx } from '../../types/ctx';
 import { evalClient } from '../../properties/eval';
 import { FunctionInfo } from '../../utils/functionInfo';
@@ -13,6 +18,7 @@ import { uint32 } from '../../utils/helper';
 import { throwOrInit } from '../../events';
 import { CellItem, CellItemProps } from '../debug';
 import { serverOptionProvider } from '../../..';
+import { _getStorageValue, _setStorageValue } from './storage';
 
 const setScale = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const scale = getNumber(args, 0);
@@ -37,11 +43,15 @@ const getCurrentDestructionStage = (mp: Mp, self: PapyrusObject): number => {
 	return mp.get(selfId, 'currentDestructionStage') ?? -1;
 };
 
+const _setCurrentDestructionStage = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+	const selfId = mp.getIdFromDesc(self.desc);
+	const stage = getNumber(args, 0);
+	mp.set(selfId, 'currentDestructionStage', stage);
+};
 const setCurrentDestructionStage = (mp: Mp, self: null, args: PapyrusValue[]) => {
 	const ref = getObject(args, 0);
-	const refId = mp.getIdFromDesc(ref.desc);
 	const stage = getNumber(args, 1);
-	mp.set(refId, 'currentDestructionStage', stage);
+	_setCurrentDestructionStage(mp, ref, [stage]);
 };
 
 const damageObject = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
@@ -78,7 +88,7 @@ const clearDestruction = (mp: Mp, self: PapyrusObject): void => {
 	evalClient(mp, 0xff000000, new FunctionInfo(func).getText({ selfId }), true);
 };
 
-const getContainerForms = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusObject[] => {
+const getContainerForms = (mp: Mp, self: PapyrusObject): PapyrusObject[] => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	return mp
 		.get(selfId, 'inventory')
@@ -98,14 +108,18 @@ const blockActivation = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
 const moveTo = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const target = getObject(args, 0);
+	const targetId = mp.getIdFromDesc(target.desc);
 	const xoffset = getNumber(args, 1);
 	const yoffset = getNumber(args, 2);
 	const zoffset = getNumber(args, 3);
 	const matchRotation = getBoolean(args, 4);
 
 	const [x, y, z] = getPosition(mp, target);
+	const w = mp.get(targetId, 'worldOrCellDesc');
 
+	console.log(selfId, [x + xoffset, y + yoffset, z + zoffset]);
 	mp.set(selfId, 'pos', [x + xoffset, y + yoffset, z + zoffset]);
+	mp.set(selfId, 'worldOrCellDesc', w);
 	if (matchRotation) {
 		mp.set(selfId, 'angle', getAngle(mp, target));
 	}
@@ -147,53 +161,73 @@ export const getBaseObjectIdById = (mp: Mp, self: null, args: PapyrusValue[]): n
 	return;
 };
 
-export const placeObjectOnStatic = (mp: Mp, self: null, args: PapyrusValue[]): number | undefined => {
+export const placeObjectOnStatic = (mp: Mp, self: null, args: PapyrusValue[]): PapyrusObject | null => {
 	const placeId = getNumber(args, 0);
 	const whatSpawnId = getNumber(args, 1);
 	const sRefId = mp.place(whatSpawnId);
-	const sRef: PapyrusObject = {
-		type: 'form',
-		desc: mp.getDescFromId(sRefId),
-	};
-	setPosition(mp, sRef, getEspPosition(mp, placeId));
-	throwOrInit(mp, sRefId);
-	return sRefId;
-};
-export const placeAtMeEx = (mp: Mp, selfNull: null, args: PapyrusValue[]): PapyrusValue => {
-	const self = getObject(args, 0);
-	const selfId = mp.getIdFromDesc(self.desc);
-	const spawnId = getNumber(args, 1);
-	const sRefId = mp.place(spawnId);
-	const sRef: PapyrusObject = {
-		type: 'form',
-		desc: mp.getDescFromId(sRefId),
-	};
+	const sRef = getForm(mp, null, [sRefId]);
+	if (!sRef) return null;
+
 	const targetPoint: CellItem = {
-		pos: mp.get<[number, number, number]>(selfId, 'pos') ?? [0, 0, 0],
+		pos: getEspPosition(mp, placeId),
 		angle: [0, 0, 0],
-		worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc'),
+		worldOrCellDesc: mp.get(placeId, 'worldOrCellDesc'),
 	};
 	for (const key of Object.keys(targetPoint)) {
 		const propName = key as CellItemProps;
 		mp.set(sRefId, propName, targetPoint[propName]);
 	}
+
 	throwOrInit(mp, sRefId);
 	return sRef;
 };
 
-const getLinkedReferenceId = (mp: Mp, self: null, args: PapyrusValue[]): number[] | undefined => {
+const _placeAtMe = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusObject | null => {
+	const selfId = mp.getIdFromDesc(self.desc);
+	const whatSpawnId = getNumber(args, 0);
+	const count = getNumber(args, 1);
+	let sRefResult: PapyrusObject[] = [];
+	for (let i = 0; i < count; i++) {
+		const sRefId = mp.place(whatSpawnId);
+		const sRef = getForm(mp, null, [sRefId]);
+		if (!sRef) return null;
+
+		sRefResult.push(sRef);
+
+		const targetPoint: CellItem = {
+			pos: mp.get<[number, number, number]>(selfId, 'pos') ?? [0, 0, 0],
+			angle: [0, 0, 0],
+			worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc'),
+		};
+		for (const key of Object.keys(targetPoint)) {
+			const propName = key as CellItemProps;
+			mp.set(sRefId, propName, targetPoint[propName]);
+		}
+
+		throwOrInit(mp, sRefId);
+	}
+	if (sRefResult.length === 0) return null;
+	return sRefResult[sRefResult.length - 1];
+};
+export const placeAtMe = (mp: Mp, selfNull: null, args: PapyrusValue[]): PapyrusObject | null => {
+	const self = getObject(args, 0);
+	const targetId = getNumber(args, 1);
+	const count = getNumber(args, 2);
+	return _placeAtMe(mp, self, [targetId, count]);
+};
+
+const getLinkedReferenceId = (mp: Mp, self: null, args: PapyrusValue[]): number[] => {
 	const base = mp.getIdFromDesc(getObject(args, 0).desc);
 	const espmRecord = mp.lookupEspmRecordById(base);
 	const links = espmRecord.record?.fields.find((x) => x.type === 'XLKR')?.data;
-	if (links) {
-		const dataView = new DataView(links.buffer);
-		let keywordsId: Array<number> = [];
-		for (let i = 4; i + 4 <= links.length; i += 8) {
-			keywordsId.push(dataView.getUint32(i, true));
-		}
-		return keywordsId;
+	if (!links) return [];
+
+	const dataView = new DataView(links.buffer);
+	let keywordsId: Array<number> = [];
+	for (let i = 4; i + 4 <= links.length; i += 8) {
+		keywordsId.push(dataView.getUint32(i, true));
 	}
-	return;
+	return keywordsId;
 };
 
 const getLinkedReferenceIdByKeywordId = (mp: Mp, self: null, args: PapyrusValue[]): number | undefined => {
@@ -290,28 +324,44 @@ export const setOpen = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void
 export const getRespawnTimeById = (mp: Mp, selfNull: null, args: PapyrusValue[]): number => {
 	const selfId = getNumber(args, 0);
 	const baseId = getBaseObjectIdById(mp, null, [selfId]);
-	const spawnTimeById = serverOptionProvider.getServerOptionsValue(['spawnTimeById'])
-	const timeById: { id: number; time: number }[] =
-		Array.isArray(spawnTimeById) ? spawnTimeById.map((x: PapyrusValue) => {
-			if (!x || typeof x !== 'string') return
-			const xParse = x.split(':');
-			if (xParse.length != 2) return;
-			return {
-				id: +xParse[0],
-				time: +xParse[1],
-			};
-		}).filter(x => x) as { id: number; time: number }[] : [];
+	const spawnTimeById = serverOptionProvider.getServerOptionsValue(['spawnTimeById']);
+	const timeById: { id: number; time: number }[] = Array.isArray(spawnTimeById)
+		? (spawnTimeById
+				.map((x: PapyrusValue) => {
+					if (!x || typeof x !== 'string') return;
+					const xParse = x.split(':');
+					if (xParse.length != 2) return;
+					return {
+						id: +xParse[0],
+						time: +xParse[1],
+					};
+				})
+				.filter((x) => x) as { id: number; time: number }[])
+		: [];
 	const refTime = timeById.find((x) => x.id === selfId)?.time;
 	const baseTime = timeById.find((x) => x.id === baseId)?.time;
-	return refTime ?? baseTime ?? serverOptionProvider.getServerOptionsValue([baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC']) as number ?? -1;
+	return (
+		refTime ??
+		baseTime ??
+		(serverOptionProvider.getServerOptionsValue([
+			baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC',
+		]) as number) ??
+		-1
+	);
 };
 
 export const getRespawnTime = (mp: Mp, selfNull: null, args: PapyrusValue[]): number => {
 	const self = getObject(args, 0);
 	const selfId = mp.getIdFromDesc(self.desc);
-	return getRespawnTimeById(mp, null, [selfId])
+	return getRespawnTimeById(mp, null, [selfId]);
 };
 
+export const addItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+	const item = getObject(args, 0);
+	const count = getNumber(args, 1);
+	const silent = getBoolean(args, 2);
+	mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, count, silent]);
+};
 
 export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetScale', (self, args) => setScale(mp, self, args));
@@ -322,9 +372,7 @@ export const register = (mp: Mp): void => {
 
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'MoveTo', (self, args) => moveTo(mp, self, args));
 
-	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetContainerForms', (self, args) =>
-		getContainerForms(mp, self, args)
-	);
+	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetContainerForms', (self) => getContainerForms(mp, self));
 
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetCurrentDestructionStage', (self) =>
 		getCurrentDestructionStage(mp, self)
@@ -352,7 +400,7 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceObjectOnStatic', (self, args) =>
 		placeObjectOnStatic(mp, self, args)
 	);
-	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceAtMe', (self, args) => placeAtMeEx(mp, self, args));
+	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceAtMe', (self, args) => placeAtMe(mp, self, args));
 
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDisplayName', (self) => getDisplayName(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetDisplayName', (self, args) =>
@@ -363,7 +411,6 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetParentCell', (self) => getParentCell(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'IsInInterior', (self) => isInInterior(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetOpen', (self, args) => setOpen(mp, self, args));
-	// mp.registerPapyrusFunction('method', 'ObjectReference', 'GetOpenState', (self) => getOpenState(mp, self));
 	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLocationRef', (self, args) =>
 		getLocationRef(mp, self, args)
 	);

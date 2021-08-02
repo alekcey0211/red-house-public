@@ -493,7 +493,8 @@ const getCurrentCrosshairRef = (mp, selfNull, args) => {
   const self = papyrusArgs_1.getObject(args, 0);
   const selfId = mp.getIdFromDesc(self.desc);
   const refId = mp.get(selfId, 'CurrentCrosshairRef');
-  return refId && exports.getForm(mp, null, [refId]);
+  if (!refId) return undefined;
+  return exports.getForm(mp, null, [refId]);
 };
 
 const register = (mp, serverOptionProvider) => {
@@ -671,7 +672,6 @@ const register = mp => {
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionX', self => exports.getPositionX(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionY', self => exports.getPositionY(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionZ', self => exports.getPositionZ(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionZ', self => exports.getPositionZ(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'SetAngle', (self, args) => exports.setAngle(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleX', self => exports.getAngleX(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleY', self => exports.getAngleY(mp, self));
@@ -743,16 +743,15 @@ exports.statePropFactory = statePropFactory;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.setStorageValue = exports.setStorageValueFormArray = exports.setStorageValueForm = exports.setStorageValueBoolArray = exports.setStorageValueBool = exports.setStorageValueNumberArray = exports.setStorageValueNumber = exports.setStorageValueStringArray = exports.setStorageValueString = exports.getStorageValueFormArray = exports.getStorageValueForm = exports.getStorageValueBoolArray = exports.getStorageValueBool = exports.getStorageValueNumberArray = exports.getStorageValueNumber = exports.getStorageValueStringArray = exports.getStorageValueString = exports.getStorageValue = void 0;
+exports.register = exports.setStorageValue = exports._setStorageValue = exports.setStorageValueFormArray = exports.setStorageValueForm = exports.setStorageValueBoolArray = exports.setStorageValueBool = exports.setStorageValueNumberArray = exports.setStorageValueNumber = exports.setStorageValueStringArray = exports.setStorageValueString = exports.getStorageValueFormArray = exports.getStorageValueForm = exports.getStorageValueBoolArray = exports.getStorageValueBool = exports.getStorageValueNumberArray = exports.getStorageValueNumber = exports.getStorageValueStringArray = exports.getStorageValueString = exports.getStorageValue = exports._getStorageValue = void 0;
 
 const papyrusArgs_1 = require("../../utils/papyrusArgs");
 
 const functions_1 = require("../multiplayer/functions");
 
-const getStorageValue = (mp, self, args) => {
-  const ref = papyrusArgs_1.getObject(args, 0);
-  const refId = mp.getIdFromDesc(ref.desc);
-  const key = papyrusArgs_1.getString(args, 1);
+const _getStorageValue = (mp, self, args) => {
+  const refId = mp.getIdFromDesc(self.desc);
+  const key = papyrusArgs_1.getString(args, 0);
   functions_1.checkAndCreatePropertyExist(mp, refId, key);
   let val;
 
@@ -765,11 +764,19 @@ const getStorageValue = (mp, self, args) => {
   return val;
 };
 
+exports._getStorageValue = _getStorageValue;
+
+const getStorageValue = (mp, self, args) => {
+  const ref = papyrusArgs_1.getObject(args, 0);
+  const key = papyrusArgs_1.getString(args, 1);
+  return exports._getStorageValue(mp, ref, [key]);
+};
+
 exports.getStorageValue = getStorageValue;
 
 const getStorageValueString = (mp, self, args) => {
   const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? "" : papyrusArgs_1.getString([val], 0);
+  return val === null || val === undefined ? '' : papyrusArgs_1.getString([val], 0);
 };
 
 exports.getStorageValueString = getStorageValueString;
@@ -854,6 +861,21 @@ exports.setStorageValueForm = setStorageValueForm;
 const setStorageValueFormArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getObjectArray(args, 2));
 
 exports.setStorageValueFormArray = setStorageValueFormArray;
+
+const _setStorageValue = (mp, self, args) => {
+  const refId = mp.getIdFromDesc(self.desc);
+  const key = papyrusArgs_1.getString(args, 0);
+  const value = args[1];
+  functions_1.checkAndCreatePropertyExist(mp, refId, key);
+
+  try {
+    mp.set(refId, key, value);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports._setStorageValue = _setStorageValue;
 
 const setStorageValue = (mp, args, value) => {
   const ref = papyrusArgs_1.getObject(args, 0);
@@ -1093,7 +1115,7 @@ var __importStar = this && this.__importStar || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.getRespawnTime = exports.getRespawnTimeById = exports.setOpen = exports.getLocationRef = exports.isInInterior = exports.getParentCell = exports.getWorldSpace = exports.getDisplayName = exports.placeAtMeEx = exports.placeObjectOnStatic = exports.getBaseObjectIdById = exports.getBaseObjectId = void 0;
+exports.register = exports.addItem = exports.getRespawnTime = exports.getRespawnTimeById = exports.setOpen = exports.getLocationRef = exports.isInInterior = exports.getParentCell = exports.getWorldSpace = exports.getDisplayName = exports.placeAtMe = exports.placeObjectOnStatic = exports.getBaseObjectIdById = exports.getBaseObjectId = void 0;
 
 const papyrusArgs_1 = require("../../utils/papyrusArgs");
 
@@ -1142,11 +1164,17 @@ const getCurrentDestructionStage = (mp, self) => {
   return (_a = mp.get(selfId, 'currentDestructionStage')) !== null && _a !== void 0 ? _a : -1;
 };
 
+const _setCurrentDestructionStage = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const stage = papyrusArgs_1.getNumber(args, 0);
+  mp.set(selfId, 'currentDestructionStage', stage);
+};
+
 const setCurrentDestructionStage = (mp, self, args) => {
   const ref = papyrusArgs_1.getObject(args, 0);
-  const refId = mp.getIdFromDesc(ref.desc);
   const stage = papyrusArgs_1.getNumber(args, 1);
-  mp.set(refId, 'currentDestructionStage', stage);
+
+  _setCurrentDestructionStage(mp, ref, [stage]);
 };
 
 const damageObject = (mp, self, args) => {
@@ -1187,7 +1215,7 @@ const clearDestruction = (mp, self) => {
   }), true);
 };
 
-const getContainerForms = (mp, self, args) => {
+const getContainerForms = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
   return mp.get(selfId, 'inventory').entries.map(item => {
     return game_1.getForm(mp, null, [item.baseId]);
@@ -1203,12 +1231,16 @@ const blockActivation = (mp, self, args) => {
 const moveTo = (mp, self, args) => {
   const selfId = mp.getIdFromDesc(self.desc);
   const target = papyrusArgs_1.getObject(args, 0);
+  const targetId = mp.getIdFromDesc(target.desc);
   const xoffset = papyrusArgs_1.getNumber(args, 1);
   const yoffset = papyrusArgs_1.getNumber(args, 2);
   const zoffset = papyrusArgs_1.getNumber(args, 3);
   const matchRotation = papyrusArgs_1.getBoolean(args, 4);
   const [x, y, z] = position_1.getPosition(mp, target);
+  const w = mp.get(targetId, 'worldOrCellDesc');
+  console.log(selfId, [x + xoffset, y + yoffset, z + zoffset]);
   mp.set(selfId, 'pos', [x + xoffset, y + yoffset, z + zoffset]);
+  mp.set(selfId, 'worldOrCellDesc', w);
 
   if (matchRotation) {
     mp.set(selfId, 'angle', position_1.getAngle(mp, target));
@@ -1271,32 +1303,12 @@ const placeObjectOnStatic = (mp, self, args) => {
   const placeId = papyrusArgs_1.getNumber(args, 0);
   const whatSpawnId = papyrusArgs_1.getNumber(args, 1);
   const sRefId = mp.place(whatSpawnId);
-  const sRef = {
-    type: 'form',
-    desc: mp.getDescFromId(sRefId)
-  };
-  position_1.setPosition(mp, sRef, position_1.getEspPosition(mp, placeId));
-  events_1.throwOrInit(mp, sRefId);
-  return sRefId;
-};
-
-exports.placeObjectOnStatic = placeObjectOnStatic;
-
-const placeAtMeEx = (mp, selfNull, args) => {
-  var _a;
-
-  const self = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const spawnId = papyrusArgs_1.getNumber(args, 1);
-  const sRefId = mp.place(spawnId);
-  const sRef = {
-    type: 'form',
-    desc: mp.getDescFromId(sRefId)
-  };
+  const sRef = game_1.getForm(mp, null, [sRefId]);
+  if (!sRef) return null;
   const targetPoint = {
-    pos: (_a = mp.get(selfId, 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0],
+    pos: position_1.getEspPosition(mp, placeId),
     angle: [0, 0, 0],
-    worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc')
+    worldOrCellDesc: mp.get(placeId, 'worldOrCellDesc')
   };
 
   for (const key of Object.keys(targetPoint)) {
@@ -1308,7 +1320,47 @@ const placeAtMeEx = (mp, selfNull, args) => {
   return sRef;
 };
 
-exports.placeAtMeEx = placeAtMeEx;
+exports.placeObjectOnStatic = placeObjectOnStatic;
+
+const _placeAtMe = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const whatSpawnId = papyrusArgs_1.getNumber(args, 0);
+  const count = papyrusArgs_1.getNumber(args, 1);
+  let sRefResult = [];
+
+  for (let i = 0; i < count; i++) {
+    const sRefId = mp.place(whatSpawnId);
+    const sRef = game_1.getForm(mp, null, [sRefId]);
+    if (!sRef) return null;
+    sRefResult.push(sRef);
+    const targetPoint = {
+      pos: (_a = mp.get(selfId, 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0],
+      angle: [0, 0, 0],
+      worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc')
+    };
+
+    for (const key of Object.keys(targetPoint)) {
+      const propName = key;
+      mp.set(sRefId, propName, targetPoint[propName]);
+    }
+
+    events_1.throwOrInit(mp, sRefId);
+  }
+
+  if (sRefResult.length === 0) return null;
+  return sRefResult[sRefResult.length - 1];
+};
+
+const placeAtMe = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  const targetId = papyrusArgs_1.getNumber(args, 1);
+  const count = papyrusArgs_1.getNumber(args, 2);
+  return _placeAtMe(mp, self, [targetId, count]);
+};
+
+exports.placeAtMe = placeAtMe;
 
 const getLinkedReferenceId = (mp, self, args) => {
   var _a, _b;
@@ -1316,19 +1368,15 @@ const getLinkedReferenceId = (mp, self, args) => {
   const base = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
   const espmRecord = mp.lookupEspmRecordById(base);
   const links = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLKR')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!links) return [];
+  const dataView = new DataView(links.buffer);
+  let keywordsId = [];
 
-  if (links) {
-    const dataView = new DataView(links.buffer);
-    let keywordsId = [];
-
-    for (let i = 4; i + 4 <= links.length; i += 8) {
-      keywordsId.push(dataView.getUint32(i, true));
-    }
-
-    return keywordsId;
+  for (let i = 4; i + 4 <= links.length; i += 8) {
+    keywordsId.push(dataView.getUint32(i, true));
   }
 
-  return;
+  return keywordsId;
 };
 
 const getLinkedReferenceIdByKeywordId = (mp, self, args) => {
@@ -1462,12 +1510,21 @@ const getRespawnTime = (mp, selfNull, args) => {
 
 exports.getRespawnTime = getRespawnTime;
 
+const addItem = (mp, self, args) => {
+  const item = papyrusArgs_1.getObject(args, 0);
+  const count = papyrusArgs_1.getNumber(args, 1);
+  const silent = papyrusArgs_1.getBoolean(args, 2);
+  mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, count, silent]);
+};
+
+exports.addItem = addItem;
+
 const register = mp => {
   mp.registerPapyrusFunction('method', 'ObjectReference', 'SetScale', (self, args) => setScale(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'RemoveAllItems', (self, args) => removeAllItems(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDistance', (self, args) => position_1.getDistance(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'MoveTo', (self, args) => moveTo(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetContainerForms', (self, args) => getContainerForms(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetContainerForms', self => getContainerForms(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetCurrentDestructionStage', self => getCurrentDestructionStage(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'DamageObject', (self, args) => damageObject(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'ClearDestruction', self => clearDestruction(mp, self));
@@ -1478,7 +1535,7 @@ const register = mp => {
   mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceId', (self, args) => getLinkedReferenceId(mp, self, args));
   mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceIdByKeywordId', (self, args) => getLinkedReferenceIdByKeywordId(mp, self, args));
   mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceObjectOnStatic', (self, args) => exports.placeObjectOnStatic(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceAtMe', (self, args) => exports.placeAtMeEx(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceAtMe', (self, args) => exports.placeAtMe(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDisplayName', self => exports.getDisplayName(mp, self));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'SetDisplayName', (self, args) => setDisplayName(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetWorldSpace', self => exports.getWorldSpace(mp, self));
@@ -1928,17 +1985,7 @@ exports.register = register;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.onCurrentCrosshairChange = exports.onEffectStart = exports.onUiMenuToggle = exports.onPrintConsole = exports.onAnimationEvent = exports.onInput = exports.onEquip = exports.onHit = exports.onCellChange = exports.onLoad = void 0;
-
-const onLoad = ctx => {
-  ctx.sp.once('update', () => {
-    ctx.sp.Utility.wait(0.3).then(() => {
-      ctx.sendEvent();
-    });
-  });
-};
-
-exports.onLoad = onLoad;
+exports.onCurrentCrosshairChange = exports.onEffectStart = exports.onUiMenuToggle = exports.onCloseRaceMenu = exports.onPrintConsole = exports.onAnimationEvent = exports.onInput = exports.onEquip = exports.onHit = exports.onCellChange = void 0;
 
 const onCellChange = ctx => {
   ctx.sp.on('update', () => {
@@ -1993,11 +2040,12 @@ const onEquip = ctx => {
     const e = event;
     const target = ctx.getFormIdInServerFormat((_a = e.baseObj) === null || _a === void 0 ? void 0 : _a.getFormID());
     const actor = ctx.getFormIdInServerFormat(e.actor.getFormID());
-    ctx.sendEvent({
+    const data = {
       actor,
       target,
       player: (_b = ctx.sp.Game.getPlayer()) === null || _b === void 0 ? void 0 : _b.getFormID()
-    });
+    };
+    ctx.sendEvent(data);
   });
 };
 
@@ -2062,6 +2110,22 @@ const onPrintConsole = ctx => {
 
 exports.onPrintConsole = onPrintConsole;
 
+const onCloseRaceMenu = ctx => {
+  const next = ctx.sp.storage._api_onCloseRaceMenu;
+  ctx.sp.storage._api_onCloseRaceMenu = {
+    callback() {
+      ctx.sendEvent();
+
+      if (typeof next.callback === 'function') {
+        next.callback();
+      }
+    }
+
+  };
+};
+
+exports.onCloseRaceMenu = onCloseRaceMenu;
+
 const onUiMenuToggle = ctx => {
   const badMenus = ['BarterMenu', 'Book Menu', 'ContainerMenu', 'GiftMenu', 'InventoryMenu', 'Journal Menu', 'Lockpicking Menu', 'Loading Menu', 'MapMenu', 'RaceSex Menu', 'StatsMenu', 'TweenMenu', 'Console', 'Loading Menu', 'Main Menu'];
   const allMenu = ['BarterMenu', 'Book Menu', 'Console', 'Console Native UI Menu', 'ContainerMenu', 'Crafting Menu', 'Credits Menu', 'Cursor Menu', 'Debug Text Menu', 'Dialogue Menu', 'Fader Menu', 'FavoritesMenu', 'GiftMenu', 'HUD Menu', 'InventoryMenu', 'Journal Menu', 'Kinect Menu', 'LevelUp Menu', 'Loading Menu', 'Main Menu', 'Lockpicking Menu', 'MagicMenu', 'MapMenu', 'MessageBoxMenu', 'Mist Menu', 'Overlay Interaction Menu', 'Overlay Menu', 'Quantity Menu', 'RaceSex Menu', 'Sleep/Wait Menu', 'StatsMenu', 'TitleSequence Menu', 'Top Menu', 'Training Menu', 'Tutorial Menu', 'TweenMenu'];
@@ -2104,9 +2168,10 @@ const onCurrentCrosshairChange = ctx => {
     const refId = ref === null || ref === void 0 ? void 0 : ref.getFormID();
 
     if (ctx.state.lastCrosshairRef !== refId) {
-      ctx.sendEvent({
-        CrosshairRefId: refId
-      });
+      const data = {
+        crosshairRefId: refId && ctx.getFormIdInServerFormat(refId)
+      };
+      ctx.sendEvent(data);
       ctx.state.lastCrosshairRef = refId;
     }
   });
@@ -2375,7 +2440,7 @@ exports.equipSlotMap = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.getSlot = exports.getSlotById = exports.getBaseArmor = exports.getBaseArmorById = void 0;
+exports.register = exports.getSlot = exports.getSlotById = exports.getArmorRating = exports.getBaseArmorById = void 0;
 
 const helper_1 = require("../../utils/helper");
 
@@ -2386,27 +2451,27 @@ const getBaseArmorById = (mp, selfId, espmRecord) => {
 
   if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
   const dnam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DNAM')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!dnam) return;
+  if (!dnam) return 0;
   return helper_1.uint32(dnam.buffer, 0) / 100;
 };
 
 exports.getBaseArmorById = getBaseArmorById;
 
-const getBaseArmor = (mp, self) => {
+const getArmorRating = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
   return exports.getBaseArmorById(mp, selfId);
 };
 
-exports.getBaseArmor = getBaseArmor;
+exports.getArmorRating = getArmorRating;
 
 const getSlotById = (mp, selfId, espmRecord) => {
   var _a, _b;
 
   if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
   const b2 = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'BOD2')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!b2) return;
+  if (!b2) return [];
   const slot = helper_1.uint32(b2.buffer, 0);
-  if (!slot) return;
+  if (!slot) return [];
   return Object.keys(types_1.equipSlotMap).filter(k => slot & +k).map(k => types_1.equipSlotMap[+k]);
 };
 
@@ -2420,7 +2485,8 @@ const getSlot = (mp, self) => {
 exports.getSlot = getSlot;
 
 const register = mp => {
-  mp.registerPapyrusFunction('method', 'Armor', 'GetBaseArmor', self => exports.getBaseArmor(mp, self));
+  mp.registerPapyrusFunction('method', 'Armor', 'GetArmorRating', self => exports.getArmorRating(mp, self));
+  mp.registerPapyrusFunction('method', 'Armor', 'GetAR', self => exports.getArmorRating(mp, self));
   mp.registerPapyrusFunction('method', 'Armor', 'GetSlot', self => exports.getSlot(mp, self));
 };
 
@@ -2878,7 +2944,7 @@ const getName = (strings, mp, self) => {
   });
   if (full && full.length > 4) return new TextDecoder().decode(full);
 
-  if (full) {
+  if (full && self.desc) {
     const espName = self.desc.split(':')[1].split('.')[0].toLowerCase();
     const index = helper_1.uint32(full.buffer, 0);
     return (_e = strings.getText(espName, index)) !== null && _e !== void 0 ? _e : '';
@@ -2924,17 +2990,13 @@ const _getEditorId = (mp, selfId) => {
 
   const espmRecord = mp.lookupEspmRecordById(selfId);
   const name = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'NAME')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!name) return;
+  if (!name) return '';
   const dataView = new DataView(name.buffer);
   const baseId = dataView.getUint32(0, true);
   const espmRecordBase = mp.lookupEspmRecordById(baseId);
   const edid = (_d = (_c = espmRecordBase.record) === null || _c === void 0 ? void 0 : _c.fields.find(x => x.type === 'EDID')) === null || _d === void 0 ? void 0 : _d.data;
-
-  if (edid) {
-    return helper_1.uint8arrayToStringMethod(edid);
-  }
-
-  return '';
+  if (!edid) return '';
+  return helper_1.uint8arrayToStringMethod(edid);
 };
 
 exports._getEditorId = _getEditorId;
@@ -2957,13 +3019,9 @@ const getGoldValue = (mp, self) => {
   const selfId = exports.getSelfId(mp, self.desc);
   const recordData = mp.lookupEspmRecordById(selfId);
   const data = (_b = (_a = recordData.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (data) {
-    const dataView = new DataView(data.buffer);
-    return dataView.getUint32(0, true);
-  }
-
-  return -1;
+  if (!data) return -1;
+  const dataView = new DataView(data.buffer);
+  return dataView.getUint32(0, true);
 };
 
 const getWeight = (mp, self) => {
@@ -2978,7 +3036,7 @@ const getWeightById = (mp, selfId) => {
 
   const recordData = mp.lookupEspmRecordById(selfId);
   const data = (_b = (_a = recordData.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!data) return;
+  if (!data) return 0;
   const dataView = new DataView(data.buffer);
   return dataView.getFloat32(4, true);
 };
@@ -2993,23 +3051,28 @@ const getType = (mp, self) => {
   return ((_a = data.record) === null || _a === void 0 ? void 0 : _a.type) && type_1.formType[(_b = data.record) === null || _b === void 0 ? void 0 : _b.type] ? type_1.formType[(_c = data.record) === null || _c === void 0 ? void 0 : _c.type] : 0;
 };
 
-const getSignature = (mp, self, args) => {
-  var _a;
+const _getSignature = (mp, selfId) => {
+  var _a, _b;
 
-  const espmRecord = mp.lookupEspmRecordById(papyrusArgs_1.getNumber(args, 0));
-  const type = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.type;
-  return type;
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  return (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.type) !== null && _b !== void 0 ? _b : '';
 };
 
-const equalSignature = (mp, self, args) => {
+const getSignature = (mp, self) => _getSignature(mp, exports.getSelfId(mp, self.desc));
+
+const getSignatureEx = (mp, self, args) => _getSignature(mp, papyrusArgs_1.getNumber(args, 0));
+
+const _equalSignature = (mp, selfId, type) => {
   var _a;
 
-  const espmRecord = mp.lookupEspmRecordById(papyrusArgs_1.getNumber(args, 0));
-  const isType = papyrusArgs_1.getString(args, 1);
-  const type = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.type;
-  if (isType === type) return true;
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  if (((_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.type) === type) return true;
   return false;
 };
+
+const equalSignature = (mp, self, args) => _equalSignature(mp, exports.getSelfId(mp, self.desc), papyrusArgs_1.getString(args, 0));
+
+const equalSignatureEx = (mp, self, args) => _equalSignature(mp, papyrusArgs_1.getNumber(args, 0), papyrusArgs_1.getString(args, 1));
 
 const register = (mp, strings) => {
   mp.registerPapyrusFunction('method', 'Form', 'GetFormID', self => getFormID(mp, self));
@@ -3021,12 +3084,14 @@ const register = (mp, strings) => {
   mp.registerPapyrusFunction('method', 'Form', 'GetNumKeywords', self => keywords_1.getNumKeywords(mp, self));
   mp.registerPapyrusFunction('method', 'Form', 'GetNthKeyword', (self, args) => keywords_1.getNthKeyword(mp, self, args));
   mp.registerPapyrusFunction('method', 'Form', 'HasKeyword', (self, args) => keywords_1.hasKeyword(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Form', 'GetSignature', (self, args) => getSignature(mp, self));
+  mp.registerPapyrusFunction('method', 'Form', 'EqualSignature', (self, args) => equalSignature(mp, self, args));
   mp.registerPapyrusFunction('global', 'FormEx', 'GetName', (self, args) => getNameEx(strings, mp, self, args));
   mp.registerPapyrusFunction('global', 'FormEx', 'GetEditorID', (self, args) => exports.getEditorId(mp, self, args));
   mp.registerPapyrusFunction('global', 'FormEx', 'GetDescription', (self, args) => exports.getDescription(strings, mp, self, args));
   mp.registerPapyrusFunction('global', 'FormEx', 'HasKeyword', (self, args) => keywords_1.hasKeywordEx(mp, self, args));
-  mp.registerPapyrusFunction('global', 'FormEx', 'GetSignature', (self, args) => getSignature(mp, self, args));
-  mp.registerPapyrusFunction('global', 'FormEx', 'EqualSignature', (self, args) => equalSignature(mp, self, args));
+  mp.registerPapyrusFunction('global', 'FormEx', 'GetSignature', (self, args) => getSignatureEx(mp, self, args));
+  mp.registerPapyrusFunction('global', 'FormEx', 'EqualSignature', (self, args) => equalSignatureEx(mp, self, args));
 };
 
 exports.register = register;
@@ -3076,33 +3141,31 @@ const getWeaponTypeById = (mp, selfId, espmRecord) => {
   if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
   const kwda = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'KWDA')) === null || _b === void 0 ? void 0 : _b.data;
   const keywords = [];
+  if (!kwda) return type_1.WeaponType.Fists;
+  const dataView = new DataView(kwda.buffer);
 
-  if (kwda) {
-    const dataView = new DataView(kwda.buffer);
+  for (let i = 0; i < dataView.byteLength; i += 4) {
+    keywords.push(dataView.getUint32(i, true));
+  }
 
-    for (let i = 0; i < dataView.byteLength; i += 4) {
-      keywords.push(dataView.getUint32(i, true));
-    }
-
-    if (keywords.includes(0x1e711)) {
-      return type_1.WeaponType.Swords;
-    } else if (keywords.includes(0x6d931)) {
-      return type_1.WeaponType.Greatswords;
-    } else if (keywords.includes(0x1e713)) {
-      return type_1.WeaponType.Daggers;
-    } else if (keywords.includes(0x6d932) || keywords.includes(0x6d930)) {
-      return type_1.WeaponType.BattleaxesANDWarhammers;
-    } else if (keywords.includes(0x1e714)) {
-      return type_1.WeaponType.Maces;
-    } else if (keywords.includes(0x1e712)) {
-      return type_1.WeaponType.WarAxes;
-    } else if (keywords.includes(0x1e715)) {
-      return type_1.WeaponType.Bows;
-    } else if (keywords.includes(0x1e716)) {
-      return type_1.WeaponType.Staff;
-    } else if (keywords.includes(-1)) {
-      return type_1.WeaponType.Crossbows;
-    }
+  if (keywords.includes(0x1e711)) {
+    return type_1.WeaponType.Swords;
+  } else if (keywords.includes(0x6d931)) {
+    return type_1.WeaponType.Greatswords;
+  } else if (keywords.includes(0x1e713)) {
+    return type_1.WeaponType.Daggers;
+  } else if (keywords.includes(0x6d932) || keywords.includes(0x6d930)) {
+    return type_1.WeaponType.BattleaxesANDWarhammers;
+  } else if (keywords.includes(0x1e714)) {
+    return type_1.WeaponType.Maces;
+  } else if (keywords.includes(0x1e712)) {
+    return type_1.WeaponType.WarAxes;
+  } else if (keywords.includes(0x1e715)) {
+    return type_1.WeaponType.Bows;
+  } else if (keywords.includes(0x1e716)) {
+    return type_1.WeaponType.Staff;
+  } else if (keywords.includes(-1)) {
+    return type_1.WeaponType.Crossbows;
   }
 };
 
@@ -3120,7 +3183,7 @@ const getBaseDamageById = (mp, selfId, espmRecord) => {
 
   if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
   const data = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!data) return;
+  if (!data) return 0;
   const damage = helper_1.uint16(data.buffer, 8);
   return damage;
 };
@@ -3161,7 +3224,7 @@ exports.register = register;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getEquippedWeapon = exports.getEquippedShield = exports.getEquippedArmorInSlot = exports.getEquippedObject = exports.getWornFormsId = exports.getWornForms = exports.getEquippedItemType = exports.unequipItemSlot = exports.unequipAll = exports.unequipItemEx = exports.unequipItem = exports.isEquipped = exports.equipItemById = exports.equipItemEx = exports.equipItem = exports.getEquipment = void 0;
+exports.getEquippedWeapon = exports.getEquippedShield = exports.getEquippedArmorInSlot = exports.getEquippedObject = exports.getWornFormsId = exports.getWornForms = exports._getWornForms = exports.getEquippedItemType = exports.unequipItemSlot = exports.unequipAll = exports.unequipItemEx = exports.unequipItem = exports.isEquipped = exports.equipItemById = exports.equipItemEx = exports.equipItem = exports.getEquipment = void 0;
 
 const eval_1 = require("../../properties/eval");
 
@@ -3385,15 +3448,22 @@ const getEquippedItemType = (mp, self, args) => {
 
 exports.getEquippedItemType = getEquippedItemType;
 
-const getWornForms = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
+const _getWornForms = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
   const eq = exports.getEquipment(mp, selfId);
   return eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.worn).map(x => game_1.getForm(mp, null, [x.baseId])).filter(x => x);
 };
 
+exports._getWornForms = _getWornForms;
+
+const getWornForms = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  return exports._getWornForms(mp, self);
+};
+
 exports.getWornForms = getWornForms;
 
-const getWornFormsId = (mp, self, args) => {
+const getWornFormsId = (mp, selfNull, args) => {
   const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
   const eq = exports.getEquipment(mp, selfId);
   return eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.worn).map(x => x.baseId);
@@ -3433,7 +3503,7 @@ const getEquippedArmorInSlot = (mp, self, args) => {
 
 exports.getEquippedArmorInSlot = getEquippedArmorInSlot;
 
-const getEquippedShield = (mp, self, args) => {
+const getEquippedShield = (mp, self) => {
   var _a;
 
   const selfId = mp.getIdFromDesc(self.desc);
@@ -3989,11 +4059,16 @@ const setWorldOrCell = (mp, selfNull, args) => {
   mp.set(selfId, 'worldOrCellDesc', mp.getDescFromId(worldOrCell));
 };
 
-const throwOut = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
+const _throwOut = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
   console.log('npc remove', selfId, objectReference_1.getDisplayName(mp, self));
   exports.throwOutById(mp, selfId);
+};
+
+const throwOut = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+
+  _throwOut(mp, self);
 };
 
 const throwOutById = (mp, selfId) => {
@@ -4019,14 +4094,12 @@ const register = mp => {
   mp.registerPapyrusFunction('method', 'Actor', 'HasPerk', (self, args) => perk_1.hasPerk(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'IsEquipped', (self, args) => equip_1.isEquipped(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'EquipItem', (self, args) => equip_1.equipItem(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'EquipItemEx', (self, args) => equip_1.equipItemEx(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'UnequipItem', (self, args) => equip_1.unequipItem(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemEx', (self, args) => equip_1.unequipItemEx(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'UnequipAll', self => equip_1.unequipAll(mp, self));
   mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemSlot', (self, args) => equip_1.unequipItemSlot(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedObject', (self, args) => equip_1.getEquippedObject(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedArmorInSlot', (self, args) => equip_1.getEquippedArmorInSlot(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', (self, args) => equip_1.getEquippedShield(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', self => equip_1.getEquippedShield(mp, self));
   mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedWeapon', (self, args) => equip_1.getEquippedWeapon(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'SetActorValue', (self, args) => value_1.setActorValue(mp, self, args));
   mp.registerPapyrusFunction('method', 'Actor', 'SetAV', (self, args) => value_1.setActorValue(mp, self, args));
@@ -4082,38 +4155,6 @@ var __importStar = this && this.__importStar || function (mod) {
   __setModuleDefault(result, mod);
 
   return result;
-};
-
-var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
 };
 
 Object.defineProperty(exports, "__esModule", {
@@ -4176,7 +4217,7 @@ const getAttrFromRace = (mp, pcFormId) => {
   const staminaOffset = acbs ? helper_1.uint16(acbs.buffer, 6) : 0;
   const level = acbs ? helper_1.uint16(acbs.buffer, 8) : 0;
   const healthOffset = acbs ? helper_1.uint16(acbs.buffer, 20) : 0;
-  const raceId = race_1.getRaceId(mp, pcFormId, rec);
+  const raceId = race_1.getRaceId(mp, selfId, rec);
   if (!raceId) return defaultReturn;
   mp.set(pcFormId, 'race', raceId);
   const espmRecord = mp.lookupEspmRecordById(raceId);
@@ -4227,8 +4268,6 @@ const throwOrInit = (mp, id, serverOptions) => {
 exports.throwOrInit = throwOrInit;
 
 const register = mp => {
-  mp.makeEventSource('_onLoadGame', new functionInfo_1.FunctionInfo(functions_1.onLoad).body);
-
   mp['_onLoadGame'] = pcFormId => {
     const start = Date.now();
     console.log('_onLoadGame', pcFormId);
@@ -4282,7 +4321,6 @@ const register = mp => {
     eval_1.evalClient(mp, pcFormId, new functionInfo_1.FunctionInfo(func).getText({}), true);
     mp.set(pcFormId, 'browserVisible', true);
     mp.set(pcFormId, 'browserModal', false);
-    mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
 
     const serverOptions = __1.serverOptionProvider.getServerOptions();
 
@@ -4291,6 +4329,7 @@ const register = mp => {
     neighbors.filter(n => mp.get(n, 'type') === 'MpActor').forEach(id => {
       exports.throwOrInit(mp, id, serverOptions);
     });
+    mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
     logExecuteTime(start, '_onLoadGame');
   };
 
@@ -4464,12 +4503,13 @@ const register = mp => {
 
   mp['onDeath'] = pcFormId => {
     const start = Date.now();
-    console.log(`${pcFormId.toString(16)} died`);
-    mp.set(pcFormId, 'isDead', true);
-    mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [{
+    const ac = {
       type: 'form',
       desc: mp.getDescFromId(pcFormId)
-    }]);
+    };
+    console.log(`${pcFormId.toString(16)} died`);
+    mp.set(pcFormId, 'isDead', true);
+    mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [ac]);
     logExecuteTime(start, 'onDeath');
   };
 
@@ -4615,43 +4655,6 @@ const register = mp => {
       mp.callPapyrusFunction('global', 'GM_Main', '_OnChatInput', null, [ac, command]);
     }
 
-    if (keycodes.length === 1 && keycodes[0] === 0x04) {
-      const func = ctx => {
-        ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
-          const ac = ctx.refr;
-          if (!ac) return;
-
-          const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190090));
-
-          ctx.sp.printConsole(_obj);
-          if (!_obj) return;
-          const obj = ctx.sp.ObjectReference.from(_obj);
-          if (!obj) return;
-        }));
-      };
-
-      eval_1.evalClient(mp, pcFormId, new functionInfo_1.FunctionInfo(func).getText({}), true);
-    }
-
-    if (keycodes.length === 1 && keycodes[0] === 0x05) {
-      const func = ctx => {
-        ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
-          const ac = ctx.refr;
-          if (!ac) return;
-
-          const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190085));
-
-          if (!_obj) return;
-          const obj = ctx.sp.ObjectReference.from(_obj);
-          if (!obj) return;
-          ctx.sp.printConsole('stopTranslation');
-          obj.stopTranslation();
-        }));
-      };
-
-      eval_1.evalClient(mp, pcFormId, new functionInfo_1.FunctionInfo(func).getText({}), true);
-    }
-
     logExecuteTime(start, '_onInput');
   };
 
@@ -4777,17 +4780,24 @@ const register = mp => {
       type: 'form',
       desc: mp.getDescFromId(pcFormId)
     };
-    const crosshairRefId = event.CrosshairRefId;
-    const form = crosshairRefId && game_1.getForm(mp, null, [crosshairRefId]);
-    mp.set(pcFormId, 'CurrentCrosshairRef', form ? crosshairRefId : null);
-    mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, form]);
+    const crosshairRefId = event.crosshairRefId;
+    const target = crosshairRefId && game_1.getForm(mp, null, [crosshairRefId]);
+    mp.set(pcFormId, 'CurrentCrosshairRef', target ? crosshairRefId : null);
+    mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, target]);
     logExecuteTime(start, '_onCurrentCrosshairChange');
   };
 
   mp.makeEventSource('_onPrintConsole', new functionInfo_1.FunctionInfo(functions_1.onPrintConsole).tryCatch());
 
   mp['_onPrintConsole'] = (pcFormId, event) => {
-    console.log('[client]', ...event.map(x => JSON.stringify(x)));
+    console.log('[client]', '\x1b[33m', ...event, '\x1b[0m');
+  };
+
+  mp.makeEventSource('_onCloseRaceMenu', new functionInfo_1.FunctionInfo(functions_1.onCloseRaceMenu).tryCatch());
+
+  mp['_onCloseRaceMenu'] = pcFormId => {
+    console.debug('_onCloseRaceMenu', pcFormId);
+    mp['_onLoadGame'](pcFormId);
   };
 
   mp['onDisconnectEvent'] = pcFormId => {
@@ -5438,25 +5448,20 @@ const centerOnCell = (mp, selfNull, args) => {
   const self = papyrusArgs_1.getObject(args, 0);
   const selfId = mp.getIdFromDesc(self.desc);
   const cellName = papyrusArgs_1.getString(args, 1).toLowerCase();
+  const cellList = JSON.parse(mp.readDataFile('coc/cell.json'));
 
-  try {
-    const cellList = JSON.parse(mp.readDataFile('coc/cell.json'));
+  if (!cocMarkers) {
+    cocMarkers = JSON.parse(mp.readDataFile('xelib/coc-markers.json'));
+  }
 
-    if (!cocMarkers) {
-      cocMarkers = JSON.parse(mp.readDataFile('xelib/coc-markers.json'));
-    }
+  if (!cellList || !cocMarkers) return;
+  const targetCellFromFile = (_a = Object.keys(cocMarkers).find(x => x.toLowerCase() === cellName)) !== null && _a !== void 0 ? _a : Object.keys(cellList).find(x => x.toLowerCase() === cellName);
+  if (!targetCellFromFile) return;
+  const targetPoint = (_b = cocMarkers[targetCellFromFile]) !== null && _b !== void 0 ? _b : cellList[targetCellFromFile];
 
-    if (!cellList || !cocMarkers) return;
-    const targetCellFromFile = (_a = Object.keys(cocMarkers).find(x => x.toLowerCase() === cellName)) !== null && _a !== void 0 ? _a : Object.keys(cellList).find(x => x.toLowerCase() === cellName);
-    if (!targetCellFromFile) return;
-    const targetPoint = (_b = cocMarkers[targetCellFromFile]) !== null && _b !== void 0 ? _b : cellList[targetCellFromFile];
-
-    for (const key of Object.keys(targetPoint)) {
-      const propName = key;
-      mp.set(selfId, propName, targetPoint[propName]);
-    }
-  } catch (_c) {
-    return;
+  for (const key of Object.keys(targetPoint)) {
+    const propName = key;
+    mp.set(selfId, propName, targetPoint[propName]);
   }
 };
 
@@ -5749,6 +5754,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.register = void 0;
 
+const helper_1 = require("../../utils/helper");
+
 const papyrusArgs_1 = require("../../utils/papyrusArgs");
 
 const game_1 = require("../game");
@@ -5781,8 +5788,7 @@ const getRecipeItems = (mp, self, args) => {
 
   if (cntoRecords && cntoRecords.length > 0) {
     return cntoRecords.map(rec => {
-      const dataView = new DataView(rec.data.buffer);
-      return dataView.getUint32(0, true);
+      return helper_1.uint32(rec.data.buffer, 0);
     });
   }
 
@@ -5795,13 +5801,8 @@ const getRecipeCraftItem = (mp, self, args) => {
   const id = papyrusArgs_1.getNumber(args, 0);
   const espmRecord = mp.lookupEspmRecordById(id);
   const cnam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'CNAM')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (cnam) {
-    const dataView = new DataView(cnam.buffer);
-    return dataView.getUint32(0, true);
-  }
-
-  return;
+  if (!cnam) return;
+  return helper_1.uint32(cnam.buffer, 0);
 };
 
 const getRecipeItemCount = (mp, self, args) => {
@@ -5811,20 +5812,14 @@ const getRecipeItemCount = (mp, self, args) => {
   const itemId = papyrusArgs_1.getNumber(args, 1);
   const espmRecord = mp.lookupEspmRecordById(id);
   const cntoRecords = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'CNTO');
+  if (!cntoRecords || cntoRecords.length === 0) return;
+  const findItem = cntoRecords.find(rec => {
+    return helper_1.uint32(rec.data.buffer, 0) === itemId;
+  });
 
-  if (cntoRecords && cntoRecords.length > 0) {
-    const findItem = cntoRecords.find(rec => {
-      const dataView = new DataView(rec.data.buffer);
-      return dataView.getUint32(0, true) === itemId;
-    });
-
-    if (findItem) {
-      const dataView = new DataView(findItem.data.buffer);
-      return dataView.getUint32(4, true);
-    }
+  if (findItem) {
+    return helper_1.uint32(findItem.data.buffer, 4);
   }
-
-  return;
 };
 
 const getResult = (mp, self) => {
@@ -5833,13 +5828,9 @@ const getResult = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
   const espmRecord = mp.lookupEspmRecordById(selfId);
   const cnam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'CNAM')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (cnam) {
-    const dataView = new DataView(cnam.buffer);
-    return game_1.getForm(mp, null, [dataView.getUint32(0, true)]);
-  }
-
-  return;
+  if (!cnam) return;
+  const formid = helper_1.uint32(cnam.buffer, 0);
+  return game_1.getForm(mp, null, [formid]);
 };
 
 const getNumIngredients = (mp, self) => {
@@ -5858,14 +5849,10 @@ const getNthIngredient = (mp, self, args) => {
   const index = papyrusArgs_1.getNumber(args, 0);
   const espmRecord = mp.lookupEspmRecordById(selfId);
   const cntoRecords = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'CNTO');
-
-  if (cntoRecords && cntoRecords.length > 0) {
-    if (index >= cntoRecords.length) return;
-    const dataView = new DataView(cntoRecords[index].data.buffer);
-    return game_1.getForm(mp, null, [dataView.getUint32(0, true)]);
-  }
-
-  return;
+  if (!cntoRecords || cntoRecords.length === 0) return;
+  if (index >= cntoRecords.length) return;
+  const formid = helper_1.uint32(cntoRecords[index].data.buffer, 0);
+  return game_1.getForm(mp, null, [formid]);
 };
 
 const getNthIngredientQuantity = (mp, self, args) => {
@@ -5875,14 +5862,9 @@ const getNthIngredientQuantity = (mp, self, args) => {
   const index = papyrusArgs_1.getNumber(args, 0);
   const espmRecord = mp.lookupEspmRecordById(selfId);
   const cntoRecords = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.filter(x => x.type === 'CNTO');
-
-  if (cntoRecords && cntoRecords.length > 0) {
-    if (index >= cntoRecords.length) return;
-    const dataView = new DataView(cntoRecords[index].data.buffer);
-    return dataView.getUint32(4, true);
-  }
-
-  return;
+  if (!cntoRecords || cntoRecords.length === 0) return 0;
+  if (index >= cntoRecords.length) return 0;
+  return helper_1.uint32(cntoRecords[index].data.buffer, 4);
 };
 
 const getWorkbenchKeyword = (mp, self) => {
@@ -5891,13 +5873,9 @@ const getWorkbenchKeyword = (mp, self) => {
   const selfId = mp.getIdFromDesc(self.desc);
   const espmRecord = mp.lookupEspmRecordById(selfId);
   const bnam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'BNAM')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (bnam) {
-    const dataView = new DataView(bnam.buffer);
-    return game_1.getForm(mp, null, [dataView.getUint32(0, true)]);
-  }
-
-  return;
+  if (!bnam) return;
+  const formid = helper_1.uint32(bnam.buffer, 0);
+  return game_1.getForm(mp, null, [formid]);
 };
 
 const register = mp => {
@@ -5914,7 +5892,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"SDpR":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","../../utils/papyrusArgs":"oZY1","../game":"WCBi"}],"SDpR":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6019,21 +5997,21 @@ exports.getNthEffectMagicEffect = getNthEffectMagicEffect;
 
 const getEffectMagnitudes = (mp, self) => {
   const [_, efit] = exports.getEffectInfo(mp, self);
-  return efit ? efit.map(x => helper_1.float32(x.data.buffer, 0)) : null;
+  return efit ? efit.map(x => helper_1.float32(x.data.buffer, 0)) : [];
 };
 
 exports.getEffectMagnitudes = getEffectMagnitudes;
 
 const getEffectAreas = (mp, self) => {
   const [_, efit] = exports.getEffectInfo(mp, self);
-  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 4)) : null;
+  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 4)) : [];
 };
 
 exports.getEffectAreas = getEffectAreas;
 
 const getEffectDurations = (mp, self) => {
   const [_, efit] = exports.getEffectInfo(mp, self);
-  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 8)) : null;
+  return efit ? efit.map(x => helper_1.uint32(x.data.buffer, 8)) : [];
 };
 
 exports.getEffectDurations = getEffectDurations;
@@ -6044,7 +6022,7 @@ const getMagicEffects = (mp, self) => {
     var _a;
 
     return (_a = game_1.getForm(mp, null, [helper_1.uint32(x.data.buffer, 0)])) !== null && _a !== void 0 ? _a : null;
-  }) : null;
+  }).filter(x => x) : [];
 };
 
 exports.getMagicEffects = getMagicEffects;

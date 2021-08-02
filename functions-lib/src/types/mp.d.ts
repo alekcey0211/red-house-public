@@ -1,5 +1,3 @@
-import { Number } from 'aws-sdk/clients/iot';
-
 export interface MakePropertyOptions {
 	/**
 	 * If set to false, `updateOwner` would never be invoked
@@ -27,7 +25,7 @@ export interface MakePropertyOptions {
 	updateNeighbor: string;
 }
 
-export type JsonSerializablePrimitive = string | number | null;
+export type JsonSerializablePrimitive = boolean | string | number | null;
 export type JsonSerializable = JsonSerializablePrimitive | JsonSerializable[] | { [key: string]: JsonSerializable };
 // | Record<string, JsonSerializable>;
 

@@ -215,16 +215,20 @@ export const getEquippedItemType = (mp: Mp, self: PapyrusObject, args: PapyrusVa
 	const hand = getNumber(args, 0);
 };
 
-export const getWornForms = (mp: Mp, self: null, args: PapyrusValue[]): PapyrusObject[] => {
-	const selfId = mp.getIdFromDesc(getObject(args, 0).desc);
+export const _getWornForms = (mp: Mp, self: PapyrusObject): PapyrusObject[] => {
+	const selfId = mp.getIdFromDesc(self.desc);
 	const eq = getEquipment(mp, selfId);
 	return eq?.inv.entries
 		.filter((x) => x.worn)
 		.map((x) => getForm(mp, null, [x.baseId]))
 		.filter((x) => x) as PapyrusObject[];
 };
+export const getWornForms = (mp: Mp, selfNull: null, args: PapyrusValue[]): PapyrusObject[] => {
+	const self = getObject(args, 0);
+	return _getWornForms(mp, self);
+};
 
-export const getWornFormsId = (mp: Mp, self: null, args: PapyrusValue[]): number[] | undefined => {
+export const getWornFormsId = (mp: Mp, selfNull: null, args: PapyrusValue[]): number[] | undefined => {
 	const selfId = mp.getIdFromDesc(getObject(args, 0).desc);
 	const eq = getEquipment(mp, selfId);
 	return eq?.inv.entries.filter((x) => x.worn).map((x) => x.baseId);
@@ -250,7 +254,7 @@ export const getEquippedArmorInSlot = (
 	if (baseId) return getForm(mp, null, [baseId]);
 };
 
-export const getEquippedShield = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusObject | undefined => {
+export const getEquippedShield = (mp: Mp, self: PapyrusObject): PapyrusObject | undefined => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const eq = getEquipment(mp, selfId, { mapWEAP: false });
 	const baseId = eq?.inv.entries.find((x) => x.slot?.includes(39))?.baseId;

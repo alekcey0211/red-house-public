@@ -10,9 +10,9 @@ export const setOwnerModel = (ownerModel: FormModel): void => {
 export const setup = (): void => {
   const ctx = {
     sp: sp,
-    refr: undefined as sp.ObjectReference,
+    refr: undefined as unknown as sp.ObjectReference,
     value: undefined as unknown,
-    _model: undefined as FormModel,
+    _model: undefined as unknown as FormModel,
     getFormIdInServerFormat: (clientsideFormId: number) => {
       return view.localIdToRemoteId(clientsideFormId);
     },
@@ -20,7 +20,7 @@ export const setup = (): void => {
       return view.remoteIdToLocalId(serversideFormId);
     },
     get(propName: string) {
-      return this._model[propName];
+      return (this._model as Record<string, any>)[propName];
     },
     state: {},
   };
@@ -36,7 +36,7 @@ export const setup = (): void => {
     const ownerModel = sp.storage["ownerModel"] as FormModel;
 
     for (const propName of keys) {
-      const f = funcs[propName];
+      const f = (funcs as Record<string, any>)[propName];
       // Actually, must always be a valid funciton, but who knows
       if (!f) continue;
 
@@ -46,7 +46,9 @@ export const setup = (): void => {
       ctx.value = (ctx._model as Record<string, unknown>)[propName];
       if (ctx.value === undefined) continue;
 
-      ctx.refr = sp.ObjectReference.from(sp.Game.getPlayer());
+      ctx.refr = sp.ObjectReference.from(
+        sp.Game.getPlayer()
+      ) as sp.ObjectReference;
       ctx._model = ownerModel;
       try {
         if (f) f(ctx);

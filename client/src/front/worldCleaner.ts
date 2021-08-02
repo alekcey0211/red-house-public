@@ -6,16 +6,16 @@ const isInDialogue = (ac: Actor): boolean =>
   ac.isInDialogueWithPlayer() || !!ac.getDialogueTarget();
 
 function processOneActor(): void {
-  const pc = Game.getPlayer();
+  const pc = Game.getPlayer() as Actor;
   const actor = Game.findRandomActor(
     pc.getPositionX(),
     pc.getPositionY(),
     pc.getPositionZ(),
     8192
-  );
+  ) as Actor;
   const actorId = actor.getFormID();
 
-  const currentProtection = protection.get(actorId);
+  const currentProtection = protection.get(actorId) as number;
   if (currentProtection > 0) return;
 
   if (!actor || actorId === 0x14 || actor.isDisabled() || actor.isDeleted())

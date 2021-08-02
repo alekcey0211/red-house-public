@@ -111,8 +111,6 @@ export const register = (mp: Mp) => {
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionY', (self) => getPositionY(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionZ', (self) => getPositionZ(mp, self));
 
-	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionZ', (self) => getPositionZ(mp, self));
-
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetAngle', (self, args) => setAngle(mp, self, args));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleX', (self) => getAngleX(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleY', (self) => getAngleY(mp, self));

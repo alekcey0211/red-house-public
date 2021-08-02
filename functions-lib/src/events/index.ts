@@ -6,12 +6,12 @@ import { FunctionInfo } from '../utils/functionInfo';
 import {
 	onAnimationEvent,
 	onCellChange,
+	onCloseRaceMenu,
 	onCurrentCrosshairChange,
 	onEffectStart,
 	onEquip,
 	onHit,
 	onInput,
-	onLoad,
 	onPrintConsole,
 	onUiMenuToggle,
 } from './functions';
@@ -61,7 +61,9 @@ const getAttrFromRace = (mp: Mp, pcFormId: number): Partial<Record<AttrAll, numb
 	const level = acbs ? uint16(acbs.buffer, 8) : 0;
 	const healthOffset = acbs ? uint16(acbs.buffer, 20) : 0;
 
-	const raceId = getRaceId(mp, pcFormId, rec);
+	// replace pcFormId with selfId
+	// find race in base class
+	const raceId = getRaceId(mp, selfId, rec);
 	if (!raceId) return defaultReturn;
 
 	mp.set(pcFormId, 'race', raceId);
@@ -106,8 +108,6 @@ export const throwOrInit = (mp: Mp, id: number, serverOptions?: ServerOption) =>
 };
 
 export const register = (mp: Mp): void => {
-	mp.makeEventSource('_onLoadGame', new FunctionInfo(onLoad).body);
-
 	mp['_onLoadGame'] = (pcFormId: number) => {
 		const start = Date.now();
 		console.log('_onLoadGame', pcFormId);
@@ -151,8 +151,6 @@ export const register = (mp: Mp): void => {
 		mp.set(pcFormId, 'browserVisible', true);
 		mp.set(pcFormId, 'browserModal', false);
 
-		mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
-
 		const serverOptions = serverOptionProvider.getServerOptions();
 		initAVFromRace(mp, pcFormId, serverOptions);
 		const neighbors = mp.get(pcFormId, 'neighbors');
@@ -162,6 +160,7 @@ export const register = (mp: Mp): void => {
 				throwOrInit(mp, id, serverOptions);
 			});
 
+		mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
 		logExecuteTime(start, '_onLoadGame');
 	};
 
@@ -210,29 +209,6 @@ export const register = (mp: Mp): void => {
 	mp['_onHit'] = (pcFormId: number, event: any) => {
 		const start = Date.now();
 
-		// const set = mp.set;
-		// const get = mp.get;
-		// mp.set = () => undefined;
-		// mp.get = (formId: number, propertyName: string): any => {
-		//   const obj: Record<string, any> = {
-		//     av_health: { base: 100, modifier: 0, damage: 0 },
-		//     av_magicka: { base: 100, modifier: 0, damage: 0 },
-		//     av_stamina: { base: 100, modifier: 0, damage: 0 },
-		//     av_mp_healthdrain: { base: 100, modifier: 0, damage: 0 },
-		//     av_mp_magickadrain: { base: 100, modifier: 0, damage: 0 },
-		//     av_mp_staminadrain: { base: 100, modifier: 0, damage: 0 },
-		//     av_healrate: { base: 100, modifier: 0, damage: 0 },
-		//     av_magickarate: { base: 100, modifier: 0, damage: 0 },
-		//     av_staminarate: { base: 100, modifier: 0, damage: 0 },
-		//     av_healratemult: { base: 100, modifier: 0, damage: 0 },
-		//     av_magickaratemult: { base: 100, modifier: 0, damage: 0 },
-		//     av_staminaratemult: { base: 100, modifier: 0, damage: 0 },
-		//     equipment: { inv: { entries: [] } },
-		//     isDead: false,
-		//   };
-		//   return obj[propertyName];
-		// };
-
 		if (!pcFormId) return console.log('Plz reconnect');
 
 		if (event.target === 0x14) {
@@ -256,7 +232,6 @@ export const register = (mp: Mp): void => {
 		}
 
 		// TODO: optimize
-		// getEquipment(mp, event.agressor); 13
 		const eq = getEquipment(mp, event.agressor);
 		const eq1 = getEquipment(mp, event.target);
 
@@ -305,14 +280,12 @@ export const register = (mp: Mp): void => {
 					const effectData = getPerkEffectData(mp, perkId);
 					effectData?.forEach((eff) => {
 						if (!eff) return;
-						// Mod Attack Damage 0x23
 						if (eff.effectType === 0x23 && eff.functionType === EffectFunctionType.MultiplyValue) {
 							if (!eff.conditionFunction || !weap || weap.length === 0) return;
 							const conditionResult = eff.conditionFunction(weap[0].baseId);
 							if (!conditionResult) return;
 							if (eff.effectValue) {
 								damageMod *= eff.effectValue;
-								// console.log('perk multiply', eff.effectValue);
 							}
 						}
 					});
@@ -330,21 +303,14 @@ export const register = (mp: Mp): void => {
 		console.log('[HIT]', damageMod);
 
 		const avName = 'health';
-		// const agressorDead = actorValues.getCurrent(event.agressor, avName) <= 0;
-		// if (damageMod < 0 && agressorDead) {
-		//   console.log("Dead characters can't hit");
-		//   return;
-		// }
 
 		const damage = actorValues.get(event.target, avName, 'damage');
 		const newDamageModValue = damage + damageMod;
 
 		// TODO: optimize
-		// actorValues.set(event.target, avName, 'damage', newDamageModValue); 35ms
 		actorValues.set(event.target, avName, 'damage', newDamageModValue);
 
 		// TODO: optimize
-		// const wouldDie = actorValues.getMaximum(event.target, avName) + newDamageModValue <= 0; 15ms
 		const wouldDie = actorValues.getMaximum(event.target, avName) + newDamageModValue <= 0;
 
 		if (wouldDie && !mp.get(event.target, 'isDead')) {
@@ -360,16 +326,15 @@ export const register = (mp: Mp): void => {
 			event.isHitBlocked,
 		]);
 
-		// mp.set = set;
-		// mp.get = get;
 		logExecuteTime(start, '_onHit');
 	};
 
 	mp['onDeath'] = (pcFormId: number) => {
 		const start = Date.now();
+		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
 		console.log(`${pcFormId.toString(16)} died`);
 		mp.set(pcFormId, 'isDead', true);
-		mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [{ type: 'form', desc: mp.getDescFromId(pcFormId) }]);
+		mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [ac]);
 		logExecuteTime(start, 'onDeath');
 	};
 
@@ -413,29 +378,6 @@ export const register = (mp: Mp): void => {
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(event.actor) };
 		const target: PapyrusObject = { type: 'espm', desc: mp.getDescFromId(event.target) };
 
-		// if (serverOptionProvider.getServerOptionsValue(['enableALCHeffect'])) {
-		// 	const rec = mp.lookupEspmRecordById(event.target).record;
-		// 	if (rec && rec?.type === 'ALCH') {
-		// 		const mges = getObjectArray([potion.getMagicEffects(mp, target)], 0);
-		// 		mges.forEach((m) => {
-		// 			const id = mp.getIdFromDesc(m.desc);
-		// 			const f = getForm(mp, null, [id]);
-		// 			if (!f) return;
-		// 			const hitShader = magicEffect.getHitShader(mp, f);
-		// 			if (!hitShader) return;
-		// 			effectShader.play(mp, hitShader, [ac, 5]);
-		// 		});
-
-		// 		// console.log('ALCHeffect', pcFormId, event.actor);
-		// 		// if (pcFormId === event.actor) {
-		// 		//   const f = getForm(mp, null, [event.target]);
-		// 		//   if (f) equipItem(mp, ac, [event.target]);
-		// 		//   // potion.equip(mp, ac, [event.target]);
-		// 		// }
-		// 	}
-		// }
-
-		// console.log('[functions] _onEquip', JSON.stringify([ac, target]));
 		mp.callPapyrusFunction('global', 'GM_Main', '_onEquip', null, [ac, target]);
 		logExecuteTime(start, '_onEquip');
 	};
@@ -525,47 +467,6 @@ export const register = (mp: Mp): void => {
 			mp.callPapyrusFunction('global', 'GM_Main', '_OnChatInput', null, [ac, command]);
 		}
 
-		if (keycodes.length === 1 && keycodes[0] === 0x04) {
-			const func = (ctx: Ctx) => {
-				ctx.sp.once('update', async () => {
-					const ac = ctx.refr as Actor;
-					if (!ac) return;
-
-					// const _obj = ctx.sp.Game.getFormFromFile(0x1be215, 'HIVE.esp');
-					// const _obj = ctx.sp.Game.getForm(119267862);
-
-					const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190090));
-					ctx.sp.printConsole(_obj);
-					if (!_obj) return;
-					const obj = ctx.sp.ObjectReference.from(_obj);
-					if (!obj) return;
-
-					// const x = obj.getPositionX();
-					// const y = obj.getPositionY();
-					// const z = obj.getPositionZ();
-					// ctx.sp.printConsole('splineTranslateTo')
-					// obj.translateTo(x + 1000, y + 1000, 0, 0, 0, 0, 100, 100);
-
-					// obj.forceAddRagdollToWorld();
-				});
-			};
-			evalClient(mp, pcFormId, new FunctionInfo(func).getText({}), true);
-		}
-		if (keycodes.length === 1 && keycodes[0] === 0x05) {
-			const func = (ctx: Ctx) => {
-				ctx.sp.once('update', async () => {
-					const ac = ctx.refr;
-					if (!ac) return;
-					const _obj = ctx.sp.Game.getFormEx(ctx.getFormIdInClientFormat(4278190085));
-					if (!_obj) return;
-					const obj = ctx.sp.ObjectReference.from(_obj);
-					if (!obj) return;
-					ctx.sp.printConsole('stopTranslation');
-					obj.stopTranslation();
-				});
-			};
-			evalClient(mp, pcFormId, new FunctionInfo(func).getText({}), true);
-		}
 		logExecuteTime(start, '_onInput');
 	};
 
@@ -697,17 +598,23 @@ export const register = (mp: Mp): void => {
 		if (!pcFormId) return console.log('Plz reconnect');
 
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
-		const crosshairRefId = event.CrosshairRefId;
+		const crosshairRefId = event.crosshairRefId;
 
-		const form = crosshairRefId && getForm(mp, null, [crosshairRefId]);
-		mp.set(pcFormId, 'CurrentCrosshairRef', form ? crosshairRefId : null);
-		mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, form]);
+		const target = crosshairRefId && getForm(mp, null, [crosshairRefId]);
+		mp.set(pcFormId, 'CurrentCrosshairRef', target ? crosshairRefId : null);
+		mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, target]);
 		logExecuteTime(start, '_onCurrentCrosshairChange');
 	};
 
 	mp.makeEventSource('_onPrintConsole', new FunctionInfo(onPrintConsole).tryCatch());
 	mp['_onPrintConsole'] = (pcFormId: number, event: any) => {
-		console.log('[client]', ...event.map((x: any) => JSON.stringify(x)));
+		console.log('[client]', '\x1b[33m', ...event, '\x1b[0m');
+	};
+
+	mp.makeEventSource('_onCloseRaceMenu', new FunctionInfo(onCloseRaceMenu).tryCatch());
+	mp['_onCloseRaceMenu'] = (pcFormId: number) => {
+		console.debug('_onCloseRaceMenu', pcFormId);
+		(mp['_onLoadGame'] as any)(pcFormId);
 	};
 
 	mp['onDisconnectEvent'] = (pcFormId: number) => {

@@ -15,25 +15,25 @@ export type Look = structures.Look;
 export type Tint = structures.Tint;
 
 export const getLook = (actor: Actor): Look => {
-  const base = ActorBase.from(actor.getBaseObject());
+  const base = ActorBase.from(actor.getBaseObject()) as ActorBase;
 
   const hairColor = base.getHairColor();
   const skinColor = TESModPlatform.getSkinColor(base);
 
   const newLook: Look = {
     isFemale: base.getSex() === 1,
-    raceId: base.getRace() ? base.getRace().getFormID() : 0,
+    raceId: base.getRace() ? (base.getRace() as Race).getFormID() : 0,
     weight: base.getWeight(),
     hairColor: hairColor ? hairColor.getColor() : 0,
     headpartIds: [],
     headTextureSetId: base.getFaceTextureSet()
-      ? base.getFaceTextureSet().getFormID()
+      ? (base.getFaceTextureSet() as TextureSet).getFormID()
       : 0,
     options: new Array(19),
     presets: new Array(4),
     tints: [],
     skinColor: skinColor ? skinColor.getColor() : 0,
-    name: actor.getBaseObject().getName(),
+    name: (actor.getBaseObject() as ActorBase).getName(),
   };
 
   const numHeadparts = base.getNumHeadParts();
@@ -51,7 +51,7 @@ export const getLook = (actor: Actor): Look => {
   }
 
   const numTints =
-    Game.getPlayer().getFormID() === actor.getFormID()
+    (Game.getPlayer() as Actor).getFormID() === actor.getFormID()
       ? Game.getNumTintMasks()
       : 0;
   for (let i = 0; i < numTints; ++i) {
@@ -68,7 +68,7 @@ export const getLook = (actor: Actor): Look => {
 
 const isVisible = (argb: number) => argb > 0x00ffffff || argb < 0;
 
-export const applyTints = (actor: Actor, look: Look): void => {
+export const applyTints = (actor: Actor | null, look: Look): void => {
   if (!look) throw new Error("null look has been passed to applyTints");
 
   const tints = look.tints.filter((t) => isVisible(t.argb));
@@ -93,7 +93,7 @@ export const applyTints = (actor: Actor, look: Look): void => {
     TESModPlatform.pushTintMask(actor, tint.type, tint.argb, tint.texturePath);
   });
 
-  const playerBaseId = Game.getPlayer().getBaseObject().getFormID();
+  const playerBaseId = ((Game.getPlayer() as Actor).getBaseObject() as ActorBase).getFormID();
 
   if (actor)
     TESModPlatform.setFormIdUnsafe(actor.getBaseObject(), playerBaseId);
@@ -127,14 +127,17 @@ const applyLookCommon = (look: Look, npc: ActorBase): void => {
 };
 
 export const applyLook = (look: Look): ActorBase => {
-  const npc: ActorBase = TESModPlatform.createNpc();
+  const npc: ActorBase = TESModPlatform.createNpc() as ActorBase;
   if (!npc) throw new Error("createNpc returned null");
   applyLookCommon(look, npc);
   return npc;
 };
 
 export const applyLookToPlayer = (look: Look): void => {
-  applyLookCommon(look, ActorBase.from(Game.getPlayer().getBaseObject()));
+  applyLookCommon(
+    look,
+    ActorBase.from((Game.getPlayer() as Actor).getBaseObject()) as ActorBase
+  );
   applyTints(null, look);
-  Game.getPlayer().queueNiNodeUpdate();
+  (Game.getPlayer() as Actor).queueNiNodeUpdate();
 };

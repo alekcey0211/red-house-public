@@ -4,6 +4,7 @@ import {
   Game,
   TESModPlatform,
   Debug,
+  Form,
 } from "skyrimPlatform";
 import { Movement, RunMode, AnimationVariables, Transform } from "./movement";
 
@@ -15,7 +16,7 @@ export const applyMovement = (refr: ObjectReference, m: Movement): void => {
   const ac = Actor.from(refr);
 
   if (ac) {
-    let lookAt: Actor | null;
+    let lookAt: Actor | null = undefined as unknown as Actor;
     if (m.lookAt) {
       try {
         lookAt = Game.findClosestActor(
@@ -29,7 +30,7 @@ export const applyMovement = (refr: ObjectReference, m: Movement): void => {
       }
     }
 
-    if (lookAt) {
+    if (lookAt as Actor) {
       ac.setHeadTracking(true);
       ac.setLookAt(lookAt, false);
     } else {
@@ -162,7 +163,7 @@ const cellWidth = 4096;
 
 const isInDifferentExteriorCell = (refr: ObjectReference, pos: number[]) => {
   const currentPos = getPos(refr);
-  const playerPos = getPos(Game.getPlayer());
+  const playerPos = getPos(Game.getPlayer() as Actor);
   const targetDistanceToPlayer = getDistance(playerPos, pos);
   const currentDistanceToPlayer = getDistance(playerPos, currentPos);
   return (
@@ -175,7 +176,7 @@ const isInDifferentWorldOrCell = (
   worldOrCell: number
 ) => {
   return (
-    worldOrCell !== (refr.getWorldSpace() || refr.getParentCell()).getFormID()
+    worldOrCell !== ((refr.getWorldSpace() || refr.getParentCell()) as Form).getFormID()
   );
 };
 
