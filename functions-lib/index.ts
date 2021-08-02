@@ -2,14 +2,18 @@ import { Mp, PapyrusGlobalFunction, PapyrusMethod } from './src/types/mp';
 
 declare const mp: Mp;
 
-console.log('gamemode.js starts...');
-
+const log = console.log;
+// console.log = (...data: any[]) => {
+// 	log('[GM]', '\x1b[32m', data, '\x1b[0m');
+// };
 console.debug = (...data: any[]) => {
-	console.log('[DEBUG]', data);
+	log('[DEBUG]', '\x1b[36m', ...data, '\x1b[0m');
 };
 console.error = (...data: any[]) => {
-	console.log('[ERROR]', data);
+	log('[ERROR]', '\x1b[31m', ...data, '\x1b[0m');
 };
+
+console.log('gamemode.js starts...');
 
 const register = mp.registerPapyrusFunction;
 mp.registerPapyrusFunction = (
@@ -98,7 +102,6 @@ import * as animProp from './src/properties/anim';
 
 import { LocalizationProvider } from './src/utils/localizationProvider';
 import { StringLocalizationProvider } from './src/utils/stringLocalizationProvider';
-import { actorValues, AttrAll, Attr } from './src/properties/actor/actorValues/attributes';
 import { ServerOptionProvider } from './src/papyrus/game/server-options';
 
 const config = mp.getServerSettings();
@@ -163,19 +166,4 @@ visualEffect.register(mp);
 
 setTimeout(() => {
 	mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
-
-	const formId = 0xff000000;
-	const sprintAttr: Attr = 'stamina';
-	const staminaReduce = 10;
-	// actorValues.set(formId, sprintAttr, 'base', 200);
-	// mp.set(formId, 'av_stamina', { "base": 200, "damage": 0 })
-
-	// mp.set(formId, 'av_stamina', '200')
-
-	// mp.set(formId, 'isSprinting', true)
-	// mp.set(formId, 'pos', [0, 0, 0])
-	// mp.set(0, 'pos', [0, 0, 0])
-	// mp.get(formId, 'av_stamina')
-
-	// console.log(actorValues.get(id, sprintAttr, 'base'));
 }, 0);
