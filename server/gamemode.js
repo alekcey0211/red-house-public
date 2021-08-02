@@ -2338,8 +2338,6 @@ const register = mp => {
         mp.get(0, 'onlinePlayers').forEach(id => {
           const neighbors = mp.get(id, 'neighbors').filter(n => mp.get(n, 'type') === 'MpActor');
           neighbors.forEach(n => {
-            if (!mp.get(n, 'spawnTimeToRespawn')) return;
-
             _1.throwOrInit(mp, n, serverOptions);
           });
         });

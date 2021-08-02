@@ -23,7 +23,6 @@ export const register = (mp: Mp): void => {
 					// }
 
 					neighbors.forEach((n) => {
-						if (!mp.get(n, 'spawnTimeToRespawn')) return;
 						throwOrInit(mp, n, serverOptions);
 					});
 				});
