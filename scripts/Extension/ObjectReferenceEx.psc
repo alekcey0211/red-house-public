@@ -42,10 +42,10 @@ Int Function GetLocationRef(Int ObjectReferenceId) global Native
 Int Function GetLinkedCellId(ObjectReference door) global native
 
 ; Телепортирует к связанной двери
-Function TeleportToLinkedDoorMarker(ObjectReference doorRef, ObjectReference ref) global native
+Function TeleportToLinkedDoorMarker(ObjectReference doorRef, Actor ref) global native
 
 ; Выдает Id связанной двери
-Int Function GetLinkedDoorId(ObjectReference target) global native
+Int Function GetLinkedDoorId(ObjectReference door) global native
 
-ObjectReference Function PlaceAtMe(ObjectReference ref, Int SpawnId) global native
+ObjectReference Function PlaceAtMe(ObjectReference ref, Int SpawnId, int aiCount = 1, bool abForcePersist = false, bool abInitiallyDisabled = false) global native
 Int Function GetRespawnTime(Actor ac) global native

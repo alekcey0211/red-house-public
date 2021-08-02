@@ -7092,16 +7092,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.serverOptionProvider = void 0;
-console.log('gamemode.js starts...');
+const log = console.log;
 
 console.debug = (...data) => {
-  console.log('[DEBUG]', data);
+  log('[DEBUG]', '\x1b[36m', ...data, '\x1b[0m');
 };
 
 console.error = (...data) => {
-  console.log('[ERROR]', data);
+  log('[ERROR]', '\x1b[31m', ...data, '\x1b[0m');
 };
 
+console.log('gamemode.js starts...');
 const register = mp.registerPapyrusFunction;
 
 mp.registerPapyrusFunction = (callType, className, functionName, f) => {
@@ -7247,8 +7248,5 @@ effectShader.register(mp);
 visualEffect.register(mp);
 setTimeout(() => {
   mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
-  const formId = 0xff000000;
-  const sprintAttr = 'stamina';
-  const staminaReduce = 10;
 }, 0);
 },{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9","./src/papyrus/game/server-options":"nnyN"}]},{},["QCba"], null)

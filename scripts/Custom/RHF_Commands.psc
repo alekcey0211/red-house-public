@@ -177,7 +177,7 @@ Bool Function HandleCommand(Actor ac, String[] tokens) global
       If tokens.Length < 2
           Return false
       EndIf
-      ObjectReferenceEx.PlaceAtMe(ac, M.StringToInt(tokens[1]))
+      ObjectReferenceEx.PlaceAtMe(ac, M.StringToInt(tokens[1]), 1)
       Return true
 
     ElseIf command == "/browserFocused"
