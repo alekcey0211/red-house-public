@@ -13,10 +13,7 @@ EndFunction
 
 ; ???
 Bool Function _onActivate(ObjectReference target, ObjectReference caster) global
-    Actor ac = caster As Actor
-    
     RHF_PlayersCommunication.HandleActivate(target, caster)
-    
     Return True
 EndFunction
 
@@ -43,10 +40,7 @@ Function _onEquip(Actor ac, Form target) global
             Float dur = pot.GetNthEffectDuration(i)
             If (mef[i].GetFormID() == Game.GetFormFromFile(0x3EB15, "skyrim.esm").GetFormID())
                 ac.RestoreAV("health", mag)
-            ElseIf (
-                mef[i].GetFormID() == Game.GetFormFromFile(0x1058A2, "skyrim.esm").GetFormID() ||
-                mef[i].GetFormID() == Game.GetFormFromFile(0x2287ab, "hive.esp").GetFormID()
-                )
+            ElseIf (mef[i].GetFormID() == Game.GetFormFromFile(0x1058A2, "skyrim.esm").GetFormID())
                 Int steps = 2
                 int j = 0
                 Float diff = mag / dur
