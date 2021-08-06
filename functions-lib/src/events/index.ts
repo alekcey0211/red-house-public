@@ -78,7 +78,7 @@ const getAttrFromRace = (mp: Mp, pcFormId: number): Partial<Record<AttrAll, numb
 		staminarate: getRaceStaminaRate(espmRecord) ?? 0,
 	};
 };
-export const initAVFromRace = (mp: Mp, pcFormId: number, serverOptions?: ServerOption) => {
+export const initAVFromRace = (mp: Mp, pcFormId: number) => {
 	if (mp.get(pcFormId, 'isDead') !== undefined) return;
 
 	if (!mp.get(pcFormId, 'spawnTimeToRespawn')) {
@@ -96,11 +96,12 @@ const logExecuteTime = (startTime: number, eventName: string) => {
 	}
 };
 export const throwOrInit = (mp: Mp, id: number, serverOptions?: ServerOption) => {
-	if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0') {
+	if (!serverOptions) serverOptions = serverOptionProvider.getServerOptions();
+	if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0' && !serverOptions.isVanillaSpawn) {
 		throwOutById(mp, id);
 	} else if (!mp.get(id, 'spawnTimeToRespawn')) {
 		try {
-			initAVFromRace(mp, id, serverOptions);
+			initAVFromRace(mp, id);
 		} catch (err) {
 			console.log('[ERROR] initAVFromRace', err);
 		}

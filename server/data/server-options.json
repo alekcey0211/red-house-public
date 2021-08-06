@@ -1,17 +1,11 @@
 {
 	"serverName": "My server",
 	"EnableDebug": true,
-
-	"CookingDuration": 5,
-	"CookingActivationDistance": 55,
+	"isVanillaSpawn": false,
 
 	"SpawnTimeToRespawn": 1,
 	"spawnTimeToRespawnNPC": 10,
 	"spawnTimeById": ["0x23a9c:-1", "0x23a99:-1"],
-
-	"SatietyDefaultValue": 95,
-	"SatietyDelay": 120,
-	"SatietyReduceValue": -1,
 
 	"HitDamageMod": -5,
 	"HitStaminaReduce": 5,
@@ -22,9 +16,7 @@
 	"keybindingBrowserSetVisible": 65,
 	"keybindingBrowserSetFocused": 64,
 	"keybindingShowChat": 28,
-	"keybindingShowMenu": 51,
 	"keybindingShowAnimList": 22,
-	"keybindingShowPerkTree": 24,
 	"keybindingAcceptTrade": 21,
 	"keybindingRejectTrade": 49,
 

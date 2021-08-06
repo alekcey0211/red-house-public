@@ -4,18 +4,12 @@ import { getString } from '../../utils/papyrusArgs';
 export interface ServerOption {
 	serverName: string;
 	EnableDebug: boolean;
-
-	CookingDuration: number;
-	CookingActivationDistance: number;
+	isVanillaSpawn: boolean;
 
 	IsChooseSpawnEnable: boolean;
 	SpawnTimeToRespawn: number;
 	spawnTimeToRespawnNPC: number;
 	spawnTimeById: string[];
-
-	SatietyDefaultValue: number;
-	SatietyDelay: number;
-	SatietyReduceValue: number;
 
 	HitDamageMod: number;
 	HitStaminaReduce: number;
@@ -26,9 +20,9 @@ export interface ServerOption {
 	keybindingBrowserSetVisible: number;
 	keybindingBrowserSetFocused: number;
 	keybindingShowChat: number;
-	keybindingShowMenu: number;
 	keybindingShowAnimList: number;
-	keybindingShowPerkTree: number;
+	keybindingAcceptTrade: number;
+	keybindingRejectTrade: number;
 
 	command1: string;
 	command2: string;
@@ -43,13 +37,8 @@ export interface ServerOption {
 
 	StartUpItemsAdd: string[];
 
-	LocationsForBuying: number[];
-
-	LocationsForBuyingValue: number[];
-
 	TimeScale: number;
 
-	showNickname: boolean;
 	enableInterval: boolean;
 	enableALCHeffect: boolean;
 	adminPassword: string;
@@ -61,18 +50,12 @@ export class ServerOptionProvider {
 	private defaultSettings: ServerOption = {
 		serverName: 'Secret Project',
 		EnableDebug: false,
-
-		CookingDuration: 5,
-		CookingActivationDistance: 55,
+		isVanillaSpawn: false,
 
 		IsChooseSpawnEnable: true,
 		SpawnTimeToRespawn: 1,
 		spawnTimeToRespawnNPC: 10,
 		spawnTimeById: [],
-
-		SatietyDefaultValue: 95,
-		SatietyDelay: 120,
-		SatietyReduceValue: -1,
 
 		HitDamageMod: -5,
 		HitStaminaReduce: 5,
@@ -83,9 +66,9 @@ export class ServerOptionProvider {
 		keybindingBrowserSetVisible: 60,
 		keybindingBrowserSetFocused: 64,
 		keybindingShowChat: 20,
-		keybindingShowMenu: 21,
 		keybindingShowAnimList: 22,
-		keybindingShowPerkTree: 24,
+		keybindingAcceptTrade: 21,
+		keybindingRejectTrade: 49,
 
 		command1: '',
 		command2: '',
@@ -98,35 +81,10 @@ export class ServerOptionProvider {
 		command9: '',
 		command0: '',
 
-		StartUpItemsAdd: [
-			'0x64b42;10',
-			'0xf4314;10',
-			'0x34cdf;30',
-			'0x64b3f;30',
-			'0x64b41;30',
-			'0x669a5;30',
-			'0x65c9f;30',
-			'0x64b42;30',
-			'0x34d22;30',
-			'0x45c28;30',
-			'0x65c9b;5',
-			'0x65c99;10',
-			'0x64b40;30',
-			'0x65c9e;30',
-			'0xf2011;30',
-			'0x515def1;2',
-			'0x515def2;2',
-			'0x12eb7;1',
-			'0x3eadd;50',
-		],
-
-		LocationsForBuying: [],
-
-		LocationsForBuyingValue: [],
+		StartUpItemsAdd: ['0x12eb7;1', '0x3eadd;50', '0x3eade;50'],
 
 		TimeScale: 20,
 
-		showNickname: false,
 		enableInterval: true,
 		enableALCHeffect: true,
 		adminPassword: '12345',

@@ -24,6 +24,17 @@ A boolean setting that enables to turn on or turn off log debug info in papyrus 
 }
 ```
 
+## isVanillaSpawn
+
+A boolean setting that enables to spawn vanilla NPC
+
+```json
+{
+	// ...
+	"isVanillaSpawn": false
+	// ...
+}
+```
 
 ## SpawnTimeToRespawn
 
@@ -186,7 +197,7 @@ A string setting that contains password for admin login
 ```json
 {
 	// ...
-	"adminPassword": "12345",
+	"adminPassword": "12345"
 	// ...
 }
 ```

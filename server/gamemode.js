@@ -4229,7 +4229,7 @@ const getAttrFromRace = (mp, pcFormId) => {
   };
 };
 
-const initAVFromRace = (mp, pcFormId, serverOptions) => {
+const initAVFromRace = (mp, pcFormId) => {
   if (mp.get(pcFormId, 'isDead') !== undefined) return;
 
   if (!mp.get(pcFormId, 'spawnTimeToRespawn')) {
@@ -4252,11 +4252,13 @@ const logExecuteTime = (startTime, eventName) => {
 };
 
 const throwOrInit = (mp, id, serverOptions) => {
-  if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0') {
+  if (!serverOptions) serverOptions = __1.serverOptionProvider.getServerOptions();
+
+  if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0' && !serverOptions.isVanillaSpawn) {
     actor_1.throwOutById(mp, id);
   } else if (!mp.get(id, 'spawnTimeToRespawn')) {
     try {
-      exports.initAVFromRace(mp, id, serverOptions);
+      exports.initAVFromRace(mp, id);
     } catch (err) {
       console.log('[ERROR] initAVFromRace', err);
     }
@@ -6971,15 +6973,11 @@ class ServerOptionProvider {
     this.defaultSettings = {
       serverName: 'Secret Project',
       EnableDebug: false,
-      CookingDuration: 5,
-      CookingActivationDistance: 55,
+      isVanillaSpawn: false,
       IsChooseSpawnEnable: true,
       SpawnTimeToRespawn: 1,
       spawnTimeToRespawnNPC: 10,
       spawnTimeById: [],
-      SatietyDefaultValue: 95,
-      SatietyDelay: 120,
-      SatietyReduceValue: -1,
       HitDamageMod: -5,
       HitStaminaReduce: 5,
       isPowerAttackMult: 2,
@@ -6988,9 +6986,9 @@ class ServerOptionProvider {
       keybindingBrowserSetVisible: 60,
       keybindingBrowserSetFocused: 64,
       keybindingShowChat: 20,
-      keybindingShowMenu: 21,
       keybindingShowAnimList: 22,
-      keybindingShowPerkTree: 24,
+      keybindingAcceptTrade: 21,
+      keybindingRejectTrade: 49,
       command1: '',
       command2: '',
       command3: '',
@@ -7001,11 +6999,8 @@ class ServerOptionProvider {
       command8: '',
       command9: '',
       command0: '',
-      StartUpItemsAdd: ['0x64b42;10', '0xf4314;10', '0x34cdf;30', '0x64b3f;30', '0x64b41;30', '0x669a5;30', '0x65c9f;30', '0x64b42;30', '0x34d22;30', '0x45c28;30', '0x65c9b;5', '0x65c99;10', '0x64b40;30', '0x65c9e;30', '0xf2011;30', '0x515def1;2', '0x515def2;2', '0x12eb7;1', '0x3eadd;50'],
-      LocationsForBuying: [],
-      LocationsForBuyingValue: [],
+      StartUpItemsAdd: ['0x12eb7;1', '0x3eadd;50', '0x3eade;50'],
       TimeScale: 20,
-      showNickname: false,
       enableInterval: true,
       enableALCHeffect: true,
       adminPassword: '12345'
