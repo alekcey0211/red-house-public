@@ -68,9 +68,9 @@ Bool Function HandleCommand(Actor ac, String[] tokens) global
       If tokens.Length != 2
           Return false
       EndIf
-      Form perk = Game.GetFormEx(M.StringToInt(tokens[1]))
-      If (perk != None)
-          ac.AddPerk(M.AsPerk(perk))
+      Form p = Game.GetFormEx(M.StringToInt(tokens[1]))
+      If (p != None)
+          ac.AddPerk(M.AsPerk(p))
       EndIf
       Return true
 
@@ -82,8 +82,6 @@ Bool Function HandleCommand(Actor ac, String[] tokens) global
       If tokens.Length != 2
           Return false
       EndIf
-      VisualEffectEx.Play(Game.GetForm(0x1733C), ac, 1, ac)
-      Utility.Wait(0.2)
       VisualEffectEx.Play(Game.GetForm(0x107D96), ac, 1, ac)
       Utility.Wait(1.2)
       DebugEx.CenterOnCell(ac, tokens[1])

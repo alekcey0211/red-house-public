@@ -119,7 +119,7 @@ Function Ban(Actor ac, String[] tokens, Bool banned = true, Bool byPlayerId = fa
       If timeInt == -1
         index = index - 1
       EndIf
-      String messageStr = "Вы забанены. "
+      messageStr = "Вы забанены. "
       While index < tokens.Length
         messageStr = messageStr + " " + tokens[index]
         index = index + 1
@@ -148,11 +148,11 @@ Function PlayerAddItem(Actor ac, String[] tokens) global
   Form formToAdd = Game.GetFormEx(M.StringToInt(tokens[2]))
   Int count = 1
   If tokens.Length == 4
-    Int count = M.StringToInt(tokens[3])
+    count = M.StringToInt(tokens[3])
   EndIf
   Bool isSilent = False
   If tokens.Length == 5
-    Int count = M.StringToInt(tokens[4])
+    count = M.StringToInt(tokens[4])
   EndIf
   Actor acToAdd = GetActorBy(ac, tokens[1])
   If acToAdd != None
