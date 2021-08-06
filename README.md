@@ -6,7 +6,6 @@ Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
 
 if you only want to run the server without development, then you need to use the server folder.
 
-- in server folder rename server-settings.example.json to server-settings.json and configure your server (replace if exists)
 - in server folder rename server-settings.example.json to server-settings.json and configure your server
 - copy Dawnguard.esm, Dragonborn.esm, HearthFires.esm, Skyrim.esm, Update.esm from skyrim folder to server data folder
 - in server folder unzip the scripts.zip to the server/data/scripts folder
