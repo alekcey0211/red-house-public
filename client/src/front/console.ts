@@ -3,13 +3,13 @@ import {
 	printConsole,
 	findConsoleCommand,
 	storage,
-} from "skyrimPlatform";
-import { consoleCommands, scriptCommands } from "./consoleCommands";
-import { MsgType } from "./messages";
+} from 'skyrimPlatform';
+import { consoleCommands, scriptCommands } from './consoleCommands';
+import { MsgType } from './messages';
 
 export const blockConsole = (): void => {
-	if (settings["skymp5-client"]["enable-console"] !== true) {
-		const legalCommands = ["qqq"];
+	if (settings['skymp5-client']['enable-console'] !== true) {
+		const legalCommands = ['qqq'];
 		consoleCommands.concat(scriptCommands).forEach((name) => {
 			const command = findConsoleCommand(name);
 
@@ -36,7 +36,7 @@ enum CmdArgument {
 	String,
 }
 
-type CmdName = "additem" | "placeatme" | "disable" | "mp";
+type CmdName = 'additem' | 'placeatme' | 'disable' | 'mp';
 
 const schemas = {
 	additem: [CmdArgument.ObjectReference, CmdArgument.BaseForm, CmdArgument.Int],
@@ -45,8 +45,8 @@ const schemas = {
 	mp: [CmdArgument.ObjectReference, CmdArgument.String],
 };
 
-const immuneSchema = ["mp"];
-const nonVanilaCommands = ["mp"];
+const immuneSchema = ['mp'];
+const nonVanilaCommands = ['mp'];
 
 const getCommandExecutor = (
 	commandName: CmdName,
@@ -66,15 +66,15 @@ const getCommandExecutor = (
 					break;
 			}
 		}
-		printConsole("sent");
+		printConsole('sent');
 		send({ t: MsgType.ConsoleCommand, data: { commandName, args } });
 		if (
-			storage["_api_onConsoleCommand"] &&
-			(storage["_api_onConsoleCommand"] as any)["callback"]
+			storage['_api_onConsoleCommand'] &&
+			(storage['_api_onConsoleCommand'] as any)['callback']
 		) {
-			if (commandName === "mp") {
+			if (commandName === 'mp') {
 				try {
-					(storage["_api_onConsoleCommand"] as any)["callback"](...args);
+					(storage['_api_onConsoleCommand'] as any)['callback'](...args);
 				} catch (e) {
 					printConsole("'_api_onConsoleCommand' - ", e);
 				}
@@ -89,22 +89,26 @@ export const setUpConsoleCommands = (
 	localIdToRemoteId: (localId: number) => number
 ): void => {
 	const command =
-		findConsoleCommand(" ConfigureUM") || findConsoleCommand("test");
+		findConsoleCommand(' ConfigureUM') || findConsoleCommand('test');
 	if (command) {
-		command.shortName = "mp";
-		command.execute = getCommandExecutor("mp", send, localIdToRemoteId) as (...args: unknown[]) => boolean;
+		command.shortName = 'mp';
+		command.execute = getCommandExecutor('mp', send, localIdToRemoteId) as (
+			...args: unknown[]
+		) => boolean;
 	}
 
 	(Object.keys(schemas) as any[]).forEach((commandName: CmdName) => {
 		const command = findConsoleCommand(commandName);
 		if (!command || nonVanilaCommands.includes(commandName)) return;
-		command.execute = getCommandExecutor(commandName, send, localIdToRemoteId) as (...args: unknown[]) => boolean;
+		command.execute = getCommandExecutor(
+			commandName,
+			send,
+			localIdToRemoteId
+		) as (...args: unknown[]) => boolean;
 	});
 };
 
 export const printConsoleServer = (...argumets: any[]) => {
-	if (storage._api_onPrintConsole && storage._api_onPrintConsole.callback) {
-		storage._api_onPrintConsole.callback(...argumets);
-	}
+	const s = storage._api_onPrintConsole;
+	if (s?.callback) s.callback(...argumets);
 };
-

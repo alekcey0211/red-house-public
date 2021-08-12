@@ -47,7 +47,7 @@ export class Settings {
 
 		res.port = +args['port'] || res.port;
 		res.maxPlayers = +args['maxPlayers'] || res.maxPlayers;
-		res.master = args['master'];
+		res.master = args['master'] || res.master;
 		res.name = args['name'] || res.name;
 		res.ip = args['ip'] || res.ip;
 

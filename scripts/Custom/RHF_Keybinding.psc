@@ -9,6 +9,7 @@ Function HandleInput(Actor ac, Int[] keycodes) global
   Bool BrowserFocused = M.BrowserGetFocused(ac)
 
   If (BrowserFocused)
+    ; TODO: может все-таки закрывать интерфейс на хроме, но как-то не дублировать?
     Utility.Wait(0.3)
     DebugEx.DebugLog("BrowserSetFocused")
     M.BrowserSetFocused(ac, false)
@@ -17,12 +18,10 @@ Function HandleInput(Actor ac, Int[] keycodes) global
 
   M.BrowserSetFocused(ac, true)
 
-  If (keycodes[0] == GameEx.GetServerOptionsInt("keybindingShowChat"))
-    M.SendChatCommand(ac, RHF_Front_CHAT.show())
-  ElseIf (keycodes[0] == GameEx.GetServerOptionsInt("keybindingShowAnimList"))
-    M.SendChatCommand(ac, RHF_Front_ANIMLIST.show())
-  ElseIf (keycodes[0] == GameEx.GetServerOptionsInt("keybindingAcceptTrade") && !RHF_PlayersCommunication.AcceptTrade(ac)) ; Принять запрос обмена
+  If (keycodes[0] == GameEx.GetServerOptionsInt("keybindingAcceptTrade")) ; Принять запрос обмена
+    If !RHF_PlayersCommunication.Accept(ac)
     M.BrowserSetFocused(ac, false)
+    EndIf
   ElseIf (keycodes[0] == GameEx.GetServerOptionsInt("keybindingRejectTrade")) ; Отклонить запрос обмена
     RHF_PlayersCommunication.DeleteAndHide(ac)
     M.BrowserSetFocused(ac, false)
@@ -31,10 +30,9 @@ EndFunction
 
 Bool Function IsBind(Int[] keycodes) global
   Int[] keys = Utility.CreateIntArray(0)
-  keys = UtilityEx.PushIntArray(keys, GameEx.GetServerOptionsInt("keybindingShowChat"))
-  keys = UtilityEx.PushIntArray(keys, GameEx.GetServerOptionsInt("keybindingShowAnimList"))
   keys = UtilityEx.PushIntArray(keys, GameEx.GetServerOptionsInt("keybindingAcceptTrade"))
   keys = UtilityEx.PushIntArray(keys, GameEx.GetServerOptionsInt("keybindingRejectTrade"))
+
   Return UtilityEx.ArrayIntFind(keys, keycodes[0]) >= 0
 EndFunction
 

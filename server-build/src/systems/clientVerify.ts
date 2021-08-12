@@ -1,77 +1,79 @@
-import { System, Log, Content, SystemContext } from "./system";
-import * as fs from "fs";
+import { System, Log, Content, SystemContext } from './system';
+import * as fs from 'fs';
 
 export class ClientVerify implements System {
-  systemName = "ClientVerify";
+	systemName = 'ClientVerify';
 
-  constructor(
-    private log: Log,
-    private compiledFrontPath: string,
-    private maxPlayers: number
-  ) {}
+	private hashVerified = new Array<boolean>();
+	private compiledFront?: string;
+	private connectedUserIds = new Set<number>();
 
-  async initAsync(ctx: SystemContext): Promise<void> {
-    this.hashVerified.length = this.maxPlayers;
-    this.hashVerified.fill(false);
+	constructor(
+		private log: Log,
+		private compiledFrontPath: string,
+		private maxPlayers: number
+	) {}
 
-    fs.watch(this.compiledFrontPath, {}, () => {
-      this.log("skymp5-client.js has been modified, reloading");
-      this.reloadFront();
-      this.connectedUserIds.forEach((userId) => {
-        ctx.svr.sendCustomPacket(userId, "newClientVersion", {
-          src: this.compiledFront,
-        });
-      });
-    });
+	async initAsync(ctx: SystemContext): Promise<void> {
+		this.hashVerified.length = this.maxPlayers;
+		this.hashVerified.fill(false);
 
-    this.reloadFront();
-  }
+		fs.watch(this.compiledFrontPath, {}, () => {
+			this.log('skymp5-client.js has been modified, reloading');
+			this.reloadFront();
+			this.connectedUserIds.forEach((userId) => {
+				ctx.svr.sendCustomPacket(userId, 'newClientVersion', {
+					src: this.compiledFront,
+				});
+			});
+		});
 
-  updateAsync(): Promise<void> {
-    return;
-  }
+		this.reloadFront();
+	}
 
-  connect(userId: number): void {
-    this.connectedUserIds.add(userId);
-  }
+	async updateAsync(): Promise<void> {
+		return;
+	}
 
-  disconnect(userId: number): void {
-    this.hashVerified[userId] = false;
-    this.connectedUserIds.delete(userId);
-  }
+	connect(userId: number): void {
+		this.connectedUserIds.add(userId);
+	}
 
-  customPacket(
-    userId: number,
-    type: string,
-    content: Content,
-    ctx: SystemContext
-  ): void {
-    if (type !== "clientVersion") return;
+	disconnect(userId: number): void {
+		this.hashVerified[userId] = false;
+		this.connectedUserIds.delete(userId);
+	}
 
-    if (this.hashVerified[userId])
-      return this.log(`User ${userId} is already verified, ignoring`);
+	customPacket(
+		userId: number,
+		type: string,
+		content: Content,
+		ctx: SystemContext
+	): void {
+		if (type !== 'clientVersion') return;
 
-    if (content["src"] === this.compiledFront) {
-      this.hashVerified[userId] = true;
-      this.log(`Verified front source code for ${userId}`);
-      ctx.gm.emit("loginRequired", userId);
-    } else {
-      this.log(
-        `Sending new front for ${userId} (${content["src"].length} !== ${this.compiledFront.length})`
-      );
-      ctx.svr.sendCustomPacket(userId, "newClientVersion", {
-        src: this.compiledFront,
-      });
-    }
-  }
+		if (this.hashVerified[userId])
+			return this.log(`User ${userId} is already verified, ignoring`);
 
-  private reloadFront(): void {
-    this.compiledFront = fs.readFileSync(this.compiledFrontPath, {
-      encoding: "utf-8",
-    });
-  }
+		if (!this.compiledFront) return;
 
-  private hashVerified = new Array<boolean>();
-  private compiledFront: string;
-  private connectedUserIds = new Set<number>();
+		if (content['src'] === this.compiledFront) {
+			this.hashVerified[userId] = true;
+			this.log(`Verified front source code for ${userId}`);
+			ctx.gm.emit('loginRequired', userId);
+		} else {
+			this.log(
+				`Sending new front for ${userId} (${content['src'].length} !== ${this.compiledFront.length})`
+			);
+			ctx.svr.sendCustomPacket(userId, 'newClientVersion', {
+				src: this.compiledFront,
+			});
+		}
+	}
+
+	private reloadFront(): void {
+		this.compiledFront = fs.readFileSync(this.compiledFrontPath, {
+			encoding: 'utf-8',
+		});
+	}
 }

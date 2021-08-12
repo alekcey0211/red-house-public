@@ -34,24 +34,22 @@ const updateOwnerIsDead = (ctx: Ctx) => {
 	if (value === undefined) return;
 	if (value !== ctx.state.value) {
 		const die = !!value;
-		if (die) {
-			const pos = [ac.getPositionX(), ac.getPositionY(), ac.getPositionZ()];
+		ctx.state.value = value;
 
-			// Everyone should stop combat with us
-			for (let i = 0; i < 200; ++i) {
-				const randomActor = ctx.sp.Game.findRandomActor(pos[0], pos[1], pos[2], 10000);
-				if (!randomActor) continue;
-				const tgt = randomActor.getCombatTarget();
-				if (!tgt || tgt?.getFormID() !== 0x14) continue;
-				randomActor.stopCombat();
-			}
+		if (!die) return ctx.sp.Debug.sendAnimationEvent(ac, 'GetUpBegin');
 
-			ac.pushActorAway(ac, 0);
-		} else {
-			// ctx.sp.Debug.sendAnimationEvent(ac, 'GetUpBegin');
+		const pos = [ac.getPositionX(), ac.getPositionY(), ac.getPositionZ()];
+
+		// Everyone should stop combat with us
+		for (let i = 0; i < 200; ++i) {
+			const randomActor = ctx.sp.Game.findRandomActor(pos[0], pos[1], pos[2], 10000);
+			if (!randomActor) continue;
+			const tgt = randomActor.getCombatTarget();
+			if (!tgt || tgt?.getFormID() !== 0x14) continue;
+			randomActor.stopCombat();
 		}
 
-		ctx.state.value = value;
+		ac.pushActorAway(ac, 0);
 	}
 };
 
@@ -76,6 +74,7 @@ export const register = (mp: Mp): void => {
 	statePropFactory(mp, 'CurrentCrosshairRef');
 	statePropFactory(mp, 'isFlying');
 	statePropFactory(mp, 'isBlocking');
+	statePropFactory(mp, 'isFirstLoad');
 
 	statePropFactory(mp, 'startZCoord');
 

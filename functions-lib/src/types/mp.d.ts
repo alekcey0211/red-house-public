@@ -133,6 +133,7 @@ export interface Mp {
 	set(formId: number, propertyName: 'pos' | 'angle', newValue: [number, number, number]): void;
 	set(formId: number, propertyName: 'isDisabled', newValue: boolean): void;
 	set(formId: number, propertyName: 'isOpen', newValue: boolean): void;
+	set(formId: number, propertyName: 'worldOrCellDesc', newValue: string): void;
 
 	/**
 	 * Creates a new property that would be attached to all instances of
@@ -174,9 +175,7 @@ export interface Mp {
 	place(globalRecordId: number): number;
 
 	registerPapyrusFunction(callType: 'method', className: string, functionName: string, f: PapyrusMethod): void;
-	// registerPapyrusFunctionLog(callType: 'method', className: string, functionName: string, f: PapyrusMethod): void;
 	registerPapyrusFunction(callType: 'global', className: string, functionName: string, f: PapyrusGlobalFunction): void;
-	// registerPapyrusFunctionLog(callType: 'global', className: string, functionName: string, f: PapyrusGlobalFunction): void;
 
 	callPapyrusFunction(
 		callType: 'method',

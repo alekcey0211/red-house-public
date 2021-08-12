@@ -103,6 +103,7 @@ import * as animProp from './src/properties/anim';
 import { LocalizationProvider } from './src/utils/localizationProvider';
 import { StringLocalizationProvider } from './src/utils/stringLocalizationProvider';
 import { ServerOptionProvider } from './src/papyrus/game/server-options';
+import { overrideNotify } from './src/events/shared';
 
 const config = mp.getServerSettings();
 const locale = config.locale;
@@ -114,13 +115,13 @@ const gamemodePath = config.gamemodePath ?? 'gamemode.js';
 
 const localizationProvider = new LocalizationProvider(
 	mp,
-	'localization/' + locale + '.json',
+	`localization/${locale}.json`,
 	isPapyrusHotReloadEnabled ? 'hotreload' : 'once'
 );
 
 const stringLocalizationProvider = new StringLocalizationProvider(
 	mp,
-	mp.readDataFile('localization/' + locale + '.json'),
+	mp.readDataFile(`localization/${locale}.json`),
 	locale
 );
 
@@ -166,4 +167,7 @@ visualEffect.register(mp);
 
 setTimeout(() => {
 	mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
+	mp.get(0, 'onlinePlayers').forEach((p) => {
+		overrideNotify(mp, p);
+	});
 }, 0);

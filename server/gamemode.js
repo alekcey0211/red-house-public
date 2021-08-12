@@ -516,173 +516,7 @@ const register = (mp, serverOptionProvider) => {
 };
 
 exports.register = register;
-},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1"}],"wmVe":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.getLinkedCellId = exports.getLinkedDoorId = exports.teleportToLinkedDoorMarker = exports.getDistance = exports.getAngleZ = exports.getAngleY = exports.getAngleX = exports.getAngle = exports.setAngle = exports.getEspPosition = exports.getPositionZ = exports.getPositionY = exports.getPositionX = exports.getPosition = exports.setPosition = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const setPosition = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const [x, y, z] = [papyrusArgs_1.getNumber(args, 0), papyrusArgs_1.getNumber(args, 1), papyrusArgs_1.getNumber(args, 2)];
-  mp.set(selfId, 'pos', [x, y, z]);
-};
-
-exports.setPosition = setPosition;
-
-const getPosition = (mp, self) => {
-  var _a;
-
-  return (_a = mp.get(mp.getIdFromDesc(self.desc), 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0];
-};
-
-exports.getPosition = getPosition;
-
-const getPositionX = (mp, self) => exports.getPosition(mp, self)[0];
-
-exports.getPositionX = getPositionX;
-
-const getPositionY = (mp, self) => exports.getPosition(mp, self)[1];
-
-exports.getPositionY = getPositionY;
-
-const getPositionZ = (mp, self) => exports.getPosition(mp, self)[2];
-
-exports.getPositionZ = getPositionZ;
-
-const getEspPosition = (mp, placeId) => {
-  var _a, _b;
-
-  const espmRecord = mp.lookupEspmRecordById(placeId);
-  const data = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (data) {
-    const dataView = new DataView(data.buffer);
-    const posX = dataView.getFloat32(4, true);
-    const posY = dataView.getFloat32(8, true);
-    const posZ = dataView.getFloat32(12, true);
-    return [posX, posY, posZ];
-  }
-
-  return [0, 0, 0];
-};
-
-exports.getEspPosition = getEspPosition;
-
-const setAngle = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const [x, y, z] = [papyrusArgs_1.getNumber(args, 0), papyrusArgs_1.getNumber(args, 1), papyrusArgs_1.getNumber(args, 2)];
-  mp.set(selfId, 'angle', [x, y, z]);
-};
-
-exports.setAngle = setAngle;
-
-const getAngle = (mp, self) => {
-  var _a;
-
-  return (_a = mp.get(mp.getIdFromDesc(self.desc), 'angle')) !== null && _a !== void 0 ? _a : [0, 0, 0];
-};
-
-exports.getAngle = getAngle;
-
-const getAngleX = (mp, self) => exports.getAngle(mp, self)[0];
-
-exports.getAngleX = getAngleX;
-
-const getAngleY = (mp, self) => exports.getAngle(mp, self)[1];
-
-exports.getAngleY = getAngleY;
-
-const getAngleZ = (mp, self) => exports.getAngle(mp, self)[2];
-
-exports.getAngleZ = getAngleZ;
-
-const getDistance = (mp, self, args) => {
-  const target = papyrusArgs_1.getObject(args, 0);
-  const selfPosition = exports.getPosition(mp, self);
-  const targetCoord = exports.getPosition(mp, target);
-  return Math.sqrt(Math.pow(selfPosition[0] - targetCoord[0], 2) + Math.pow(selfPosition[1] - targetCoord[1], 2) + Math.pow(selfPosition[2] - targetCoord[2], 2));
-};
-
-exports.getDistance = getDistance;
-
-const teleportToLinkedDoorMarker = (mp, self, args) => {
-  var _a, _b;
-
-  const objectToTeleportId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 1).desc);
-  const door = papyrusArgs_1.getObject(args, 0);
-  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(door.desc));
-  const xtel = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XTEL')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (xtel) {
-    const dataView = new DataView(xtel.buffer);
-    const linkedDoorId = dataView.getUint32(0, true);
-    const cell = mp.get(linkedDoorId, 'worldOrCellDesc');
-    const [posX, posY, posZ] = [dataView.getFloat32(4, true), dataView.getFloat32(8, true), dataView.getFloat32(12, true)];
-    const [angleX, angleY, angleZ] = [dataView.getFloat32(16, true), dataView.getFloat32(20, true), dataView.getFloat32(24, true)];
-    mp.set(objectToTeleportId, 'worldOrCellDesc', cell);
-    mp.set(objectToTeleportId, 'pos', [posX, posY, posZ]);
-    mp.set(objectToTeleportId, 'angle', [angleX, angleY, angleZ]);
-  }
-};
-
-exports.teleportToLinkedDoorMarker = teleportToLinkedDoorMarker;
-
-const getLinkedDoorId = (mp, self, args) => {
-  var _a, _b;
-
-  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc));
-  const xtel = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XTEL')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (xtel) {
-    const dataView = new DataView(xtel.buffer);
-    const linkedDoorId = dataView.getUint32(0, true);
-    return linkedDoorId;
-  }
-
-  return 0;
-};
-
-exports.getLinkedDoorId = getLinkedDoorId;
-
-const getLinkedCellId = (mp, self, args) => {
-  var _a, _b;
-
-  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc));
-  const xtel = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XTEL')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (xtel) {
-    const dataView = new DataView(xtel.buffer);
-    const linkedDoorId = dataView.getUint32(0, true);
-    const linkedCellId = mp.getIdFromDesc(mp.get(linkedDoorId, 'worldOrCellDesc'));
-    return linkedCellId;
-  }
-
-  return 0;
-};
-
-exports.getLinkedCellId = getLinkedCellId;
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetPosition', (self, args) => exports.setPosition(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionX', self => exports.getPositionX(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionY', self => exports.getPositionY(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionZ', self => exports.getPositionZ(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetAngle', (self, args) => exports.setAngle(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleX', self => exports.getAngleX(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleY', self => exports.getAngleY(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleZ', self => exports.getAngleZ(mp, self));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'TeleportToLinkedDoorMarker', (self, args) => exports.teleportToLinkedDoorMarker(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedDoorId', (self, args) => exports.getLinkedDoorId(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedCellId', (self, args) => exports.getLinkedCellId(mp, self, args));
-};
-
-exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1"}],"zNfc":[function(require,module,exports) {
+},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1"}],"zNfc":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -737,819 +571,7 @@ const statePropFactory = (mp, stateName, sync = false) => {
 };
 
 exports.statePropFactory = statePropFactory;
-},{}],"P8j4":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.setStorageValue = exports._setStorageValue = exports.setStorageValueFormArray = exports.setStorageValueForm = exports.setStorageValueBoolArray = exports.setStorageValueBool = exports.setStorageValueNumberArray = exports.setStorageValueNumber = exports.setStorageValueStringArray = exports.setStorageValueString = exports.getStorageValueFormArray = exports.getStorageValueForm = exports.getStorageValueBoolArray = exports.getStorageValueBool = exports.getStorageValueNumberArray = exports.getStorageValueNumber = exports.getStorageValueStringArray = exports.getStorageValueString = exports.getStorageValue = exports._getStorageValue = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const functions_1 = require("../multiplayer/functions");
-
-const _getStorageValue = (mp, self, args) => {
-  const refId = mp.getIdFromDesc(self.desc);
-  const key = papyrusArgs_1.getString(args, 0);
-  functions_1.checkAndCreatePropertyExist(mp, refId, key);
-  let val;
-
-  try {
-    val = mp.get(refId, key);
-  } catch (err) {
-    console.log(err);
-  }
-
-  return val;
-};
-
-exports._getStorageValue = _getStorageValue;
-
-const getStorageValue = (mp, self, args) => {
-  const ref = papyrusArgs_1.getObject(args, 0);
-  const key = papyrusArgs_1.getString(args, 1);
-  return exports._getStorageValue(mp, ref, [key]);
-};
-
-exports.getStorageValue = getStorageValue;
-
-const getStorageValueString = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? '' : papyrusArgs_1.getString([val], 0);
-};
-
-exports.getStorageValueString = getStorageValueString;
-
-const getStorageValueStringArray = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? [] : papyrusArgs_1.getStringArray([val], 0);
-};
-
-exports.getStorageValueStringArray = getStorageValueStringArray;
-
-const getStorageValueNumber = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? 0 : papyrusArgs_1.getNumber([val], 0);
-};
-
-exports.getStorageValueNumber = getStorageValueNumber;
-
-const getStorageValueNumberArray = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? [] : papyrusArgs_1.getNumberArray([val], 0);
-};
-
-exports.getStorageValueNumberArray = getStorageValueNumberArray;
-
-const getStorageValueBool = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getBoolean([val], 0);
-};
-
-exports.getStorageValueBool = getStorageValueBool;
-
-const getStorageValueBoolArray = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? [] : papyrusArgs_1.getBooleanArray([val], 0);
-};
-
-exports.getStorageValueBoolArray = getStorageValueBoolArray;
-
-const getStorageValueForm = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? null : papyrusArgs_1.getObject([val], 0);
-};
-
-exports.getStorageValueForm = getStorageValueForm;
-
-const getStorageValueFormArray = (mp, self, args) => {
-  const val = exports.getStorageValue(mp, self, args);
-  return val === null || val === undefined ? [] : papyrusArgs_1.getObjectArray([val], 0);
-};
-
-exports.getStorageValueFormArray = getStorageValueFormArray;
-
-const setStorageValueString = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getString(args, 2));
-
-exports.setStorageValueString = setStorageValueString;
-
-const setStorageValueStringArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getStringArray(args, 2));
-
-exports.setStorageValueStringArray = setStorageValueStringArray;
-
-const setStorageValueNumber = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getNumber(args, 2));
-
-exports.setStorageValueNumber = setStorageValueNumber;
-
-const setStorageValueNumberArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getNumberArray(args, 2));
-
-exports.setStorageValueNumberArray = setStorageValueNumberArray;
-
-const setStorageValueBool = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getBoolean(args, 2));
-
-exports.setStorageValueBool = setStorageValueBool;
-
-const setStorageValueBoolArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getBooleanArray(args, 2));
-
-exports.setStorageValueBoolArray = setStorageValueBoolArray;
-
-const setStorageValueForm = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getObject(args, 2));
-
-exports.setStorageValueForm = setStorageValueForm;
-
-const setStorageValueFormArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getObjectArray(args, 2));
-
-exports.setStorageValueFormArray = setStorageValueFormArray;
-
-const _setStorageValue = (mp, self, args) => {
-  const refId = mp.getIdFromDesc(self.desc);
-  const key = papyrusArgs_1.getString(args, 0);
-  const value = args[1];
-  functions_1.checkAndCreatePropertyExist(mp, refId, key);
-
-  try {
-    mp.set(refId, key, value);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-exports._setStorageValue = _setStorageValue;
-
-const setStorageValue = (mp, args, value) => {
-  const ref = papyrusArgs_1.getObject(args, 0);
-  const refId = mp.getIdFromDesc(ref.desc);
-  const key = papyrusArgs_1.getString(args, 1);
-  functions_1.checkAndCreatePropertyExist(mp, refId, key);
-
-  try {
-    mp.set(refId, key, value);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-exports.setStorageValue = setStorageValue;
-
-const register = mp => {
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueString', (self, args) => exports.getStorageValueString(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueStringArray', (self, args) => exports.getStorageValueStringArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueInt', (self, args) => exports.getStorageValueNumber(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueIntArray', (self, args) => exports.getStorageValueNumberArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueFloat', (self, args) => exports.getStorageValueNumber(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueFloatArray', (self, args) => exports.getStorageValueNumberArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueBool', (self, args) => exports.getStorageValueBool(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueBoolArray', (self, args) => exports.getStorageValueBoolArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueForm', (self, args) => exports.getStorageValueForm(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueFormArray', (self, args) => exports.getStorageValueFormArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueString', (self, args) => exports.setStorageValueString(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueStringArray', (self, args) => exports.setStorageValueStringArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueInt', (self, args) => exports.setStorageValueNumber(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueIntArray', (self, args) => exports.setStorageValueNumberArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueFloat', (self, args) => exports.setStorageValueNumber(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueFloatArray', (self, args) => exports.setStorageValueNumberArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueBool', (self, args) => exports.setStorageValueBool(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueBoolArray', (self, args) => exports.setStorageValueBoolArray(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueForm', (self, args) => exports.setStorageValueForm(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueFormArray', (self, args) => exports.setStorageValueFormArray(mp, self, args));
-};
-
-exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1","../multiplayer/functions":"zNfc"}],"FxH1":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.float32 = exports.int32 = exports.uint32 = exports.uint16 = exports.uint8 = exports.uint8arrayToStringMethod = exports.inPoly = exports.randomInRange = exports.isArrayEqual = void 0;
-
-const isArrayEqual = (arr1, arr2) => {
-  const type = Object.prototype.toString.call(arr1);
-  if (type !== Object.prototype.toString.call(arr2)) return false;
-  if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;
-  const valueLen = type === '[object Array]' ? arr1.length : Object.keys(arr1).length;
-  const otherLen = type === '[object Array]' ? arr2.length : Object.keys(arr2).length;
-  if (valueLen !== otherLen) return false;
-
-  const compare = (item1, item2) => {
-    const itemType = Object.prototype.toString.call(item1);
-
-    if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
-      if (!exports.isArrayEqual(item1, item2)) return false;
-    } else {
-      if (itemType !== Object.prototype.toString.call(item2)) return false;
-
-      if (itemType === '[object Function]') {
-        if (item1.toString() !== item2.toString()) return false;
-      } else {
-        if (item1 !== item2) return false;
-      }
-    }
-  };
-
-  if (type === '[object Array]') {
-    for (var i = 0; i < valueLen; i++) {
-      if (compare(arr1[i], arr2[i]) === false) return false;
-    }
-  } else {
-    for (var key in arr1) {
-      if (arr1.hasOwnProperty(key)) {
-        if (compare(arr1[key], arr2[key]) === false) return false;
-      }
-    }
-  }
-
-  return true;
-};
-
-exports.isArrayEqual = isArrayEqual;
-
-const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-exports.randomInRange = randomInRange;
-let cacheInPoly = {};
-
-const inPoly = (x, y, xp, yp) => {
-  const index = x.toString() + y.toString() + xp.join('') + yp.join('');
-
-  if (cacheInPoly[index]) {
-    return cacheInPoly[index];
-  }
-
-  let npol = xp.length;
-  let j = npol - 1;
-  let c = false;
-
-  for (let i = 0; i < npol; i++) {
-    if ((yp[i] <= y && y < yp[j] || yp[j] <= y && y < yp[i]) && x > (xp[j] - xp[i]) * (y - yp[i]) / (yp[j] - yp[i]) + xp[i]) {
-      c = !c;
-    }
-
-    j = i;
-  }
-
-  cacheInPoly[index] = c;
-  return c;
-};
-
-exports.inPoly = inPoly;
-
-const uint8arrayToStringMethod = myUint8Arr => {
-  return String.fromCharCode.apply(null, [...myUint8Arr]);
-};
-
-exports.uint8arrayToStringMethod = uint8arrayToStringMethod;
-
-const uint8 = (buffer, offset) => new DataView(buffer).getUint8(offset);
-
-exports.uint8 = uint8;
-
-const uint16 = (buffer, offset) => new DataView(buffer).getUint16(offset, true);
-
-exports.uint16 = uint16;
-
-const uint32 = (buffer, offset) => new DataView(buffer).getUint32(offset, true);
-
-exports.uint32 = uint32;
-
-const int32 = (buffer, offset) => new DataView(buffer).getInt32(offset, true);
-
-exports.int32 = int32;
-
-const float32 = (buffer, offset) => new DataView(buffer).getFloat32(offset, true);
-
-exports.float32 = float32;
-},{}],"WIJZ":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.getLocationId = exports.isInterior = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const helper_1 = require("../../utils/helper");
-
-const FLG_Interior = 0x0001;
-const FLG_Has_Water = 0x0002;
-const FLG_Cant_Travel_From_Here = 0x0004;
-const FLG_No_LOD_Water = 0x0008;
-const FLG_Public_Area = 0x0020;
-const FLG_Hand_Changed = 0x0040;
-const FLG_Show_Sky = 0x0080;
-const FLG_Use_Sky_Lighting = 0x0100;
-
-const flagExists = (mp, self, flag) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const enit = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!enit) return false;
-  const flags = helper_1.uint16(enit.buffer, 0);
-  return !!(flags & flag);
-};
-
-const isInterior = (mp, self) => flagExists(mp, self, FLG_Interior);
-
-exports.isInterior = isInterior;
-
-const getLocationId = (mp, self, args) => {
-  var _a, _b;
-
-  const cell = papyrusArgs_1.getObject(args, 0);
-  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(cell.desc));
-  const xlcn = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLCN')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (xlcn) {
-    const dataView = new DataView(xlcn.buffer);
-    return dataView.getUint32(0, true);
-  }
-};
-
-exports.getLocationId = getLocationId;
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'Cell', 'IsInterior', self => exports.isInterior(mp, self));
-  mp.registerPapyrusFunction('global', 'CellEx', 'GetLocationId', (self, args) => exports.getLocationId(mp, self, args));
-};
-
-exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1","../../utils/helper":"FxH1"}],"YRYD":[function(require,module,exports) {
-"use strict";
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function () {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.addItem = exports.getRespawnTime = exports.getRespawnTimeById = exports.setOpen = exports.getLocationRef = exports.isInInterior = exports.getParentCell = exports.getWorldSpace = exports.getDisplayName = exports.placeAtMe = exports.placeObjectOnStatic = exports.getBaseObjectIdById = exports.getBaseObjectId = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const game_1 = require("../game");
-
-const position_1 = require("./position");
-
-const eval_1 = require("../../properties/eval");
-
-const functionInfo_1 = require("../../utils/functionInfo");
-
-const storage = __importStar(require("./storage"));
-
-const position = __importStar(require("./position"));
-
-const game = __importStar(require("../game"));
-
-const cell_1 = require("../cell");
-
-const helper_1 = require("../../utils/helper");
-
-const events_1 = require("../../events");
-
-const __1 = require("../../..");
-
-const setScale = (mp, self, args) => {
-  const scale = papyrusArgs_1.getNumber(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-};
-
-const removeAllItems = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const transferTo = args[0] ? papyrusArgs_1.getObject(args, 0) : null;
-  const keepOwnership = args[1] ? papyrusArgs_1.getBoolean(args, 1) : false;
-  const removeQuestItems = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
-  const emptyInv = {
-    entries: []
-  };
-  mp.set(selfId, 'inventory', emptyInv);
-};
-
-const getCurrentDestructionStage = (mp, self) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  return (_a = mp.get(selfId, 'currentDestructionStage')) !== null && _a !== void 0 ? _a : -1;
-};
-
-const _setCurrentDestructionStage = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const stage = papyrusArgs_1.getNumber(args, 0);
-  mp.set(selfId, 'currentDestructionStage', stage);
-};
-
-const setCurrentDestructionStage = (mp, self, args) => {
-  const ref = papyrusArgs_1.getObject(args, 0);
-  const stage = papyrusArgs_1.getNumber(args, 1);
-
-  _setCurrentDestructionStage(mp, ref, [stage]);
-};
-
-const damageObject = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const damage = papyrusArgs_1.getNumber(args, 0);
-
-  const func = (ctx, selfId, damage) => {
-    ctx.sp.once('update', () => {
-      const form = ctx.sp.Game.getFormEx(selfId);
-      if (!form) return;
-      const ref = ctx.sp.ObjectReference.from(form);
-      if (!ref) return;
-      ref.damageObject(damage);
-    });
-  };
-
-  eval_1.evalClient(mp, 0xff000000, new functionInfo_1.FunctionInfo(func).getText({
-    selfId,
-    damage
-  }));
-};
-
-const clearDestruction = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-
-  const func = (ctx, selfId) => {
-    ctx.sp.once('update', () => {
-      const form = ctx.sp.Game.getFormEx(selfId);
-      if (!form) return;
-      const ref = ctx.sp.ObjectReference.from(form);
-      if (!ref) return;
-      ref.clearDestruction();
-    });
-  };
-
-  eval_1.evalClient(mp, 0xff000000, new functionInfo_1.FunctionInfo(func).getText({
-    selfId
-  }), true);
-};
-
-const getContainerForms = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  return mp.get(selfId, 'inventory').entries.map(item => {
-    return game_1.getForm(mp, null, [item.baseId]);
-  }).filter(item => item);
-};
-
-const blockActivation = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const state = papyrusArgs_1.getBoolean(args, 0);
-  mp.set(selfId, 'blockActivationState', state);
-};
-
-const moveTo = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const target = papyrusArgs_1.getObject(args, 0);
-  const targetId = mp.getIdFromDesc(target.desc);
-  const xoffset = papyrusArgs_1.getNumber(args, 1);
-  const yoffset = papyrusArgs_1.getNumber(args, 2);
-  const zoffset = papyrusArgs_1.getNumber(args, 3);
-  const matchRotation = papyrusArgs_1.getBoolean(args, 4);
-  const [x, y, z] = position_1.getPosition(mp, target);
-  const w = mp.get(targetId, 'worldOrCellDesc');
-  console.log(selfId, [x + xoffset, y + yoffset, z + zoffset]);
-  mp.set(selfId, 'pos', [x + xoffset, y + yoffset, z + zoffset]);
-  mp.set(selfId, 'worldOrCellDesc', w);
-
-  if (matchRotation) {
-    mp.set(selfId, 'angle', position_1.getAngle(mp, target));
-  }
-};
-
-const _getBaseObject = (mp, selfId) => {
-  var _a, _b;
-
-  if (selfId >= 0xff000000) {
-    selfId = mp.getIdFromDesc(mp.get(selfId, 'baseDesc'));
-    return game_1.getForm(mp, null, [selfId]);
-  }
-
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const name = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'NAME')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (name) {
-    const dataView = new DataView(name.buffer);
-    return game_1.getForm(mp, null, [dataView.getUint32(0, true)]);
-  }
-
-  return;
-};
-
-const getBaseObject = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  return _getBaseObject(mp, selfId);
-};
-
-const getBaseObjectId = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
-
-  const base = _getBaseObject(mp, selfId);
-
-  if (base) {
-    return mp.getIdFromDesc(base.desc);
-  }
-
-  return;
-};
-
-exports.getBaseObjectId = getBaseObjectId;
-
-const getBaseObjectIdById = (mp, self, args) => {
-  const selfId = papyrusArgs_1.getNumber(args, 0);
-
-  const base = _getBaseObject(mp, selfId);
-
-  if (base) {
-    return mp.getIdFromDesc(base.desc);
-  }
-
-  return;
-};
-
-exports.getBaseObjectIdById = getBaseObjectIdById;
-
-const placeObjectOnStatic = (mp, self, args) => {
-  const placeId = papyrusArgs_1.getNumber(args, 0);
-  const whatSpawnId = papyrusArgs_1.getNumber(args, 1);
-  const sRefId = mp.place(whatSpawnId);
-  const sRef = game_1.getForm(mp, null, [sRefId]);
-  if (!sRef) return null;
-  const targetPoint = {
-    pos: position_1.getEspPosition(mp, placeId),
-    angle: [0, 0, 0],
-    worldOrCellDesc: mp.get(placeId, 'worldOrCellDesc')
-  };
-
-  for (const key of Object.keys(targetPoint)) {
-    const propName = key;
-    mp.set(sRefId, propName, targetPoint[propName]);
-  }
-
-  events_1.throwOrInit(mp, sRefId);
-  return sRef;
-};
-
-exports.placeObjectOnStatic = placeObjectOnStatic;
-
-const _placeAtMe = (mp, self, args) => {
-  var _a;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const whatSpawnId = papyrusArgs_1.getNumber(args, 0);
-  const count = papyrusArgs_1.getNumber(args, 1);
-  let sRefResult = [];
-
-  for (let i = 0; i < count; i++) {
-    const sRefId = mp.place(whatSpawnId);
-    const sRef = game_1.getForm(mp, null, [sRefId]);
-    if (!sRef) return null;
-    sRefResult.push(sRef);
-    const targetPoint = {
-      pos: (_a = mp.get(selfId, 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0],
-      angle: [0, 0, 0],
-      worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc')
-    };
-
-    for (const key of Object.keys(targetPoint)) {
-      const propName = key;
-      mp.set(sRefId, propName, targetPoint[propName]);
-    }
-
-    events_1.throwOrInit(mp, sRefId);
-  }
-
-  if (sRefResult.length === 0) return null;
-  return sRefResult[sRefResult.length - 1];
-};
-
-const placeAtMe = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
-  const targetId = papyrusArgs_1.getNumber(args, 1);
-  const count = papyrusArgs_1.getNumber(args, 2);
-  return _placeAtMe(mp, self, [targetId, count]);
-};
-
-exports.placeAtMe = placeAtMe;
-
-const getLinkedReferenceId = (mp, self, args) => {
-  var _a, _b;
-
-  const base = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
-  const espmRecord = mp.lookupEspmRecordById(base);
-  const links = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLKR')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!links) return [];
-  const dataView = new DataView(links.buffer);
-  let keywordsId = [];
-
-  for (let i = 4; i + 4 <= links.length; i += 8) {
-    keywordsId.push(dataView.getUint32(i, true));
-  }
-
-  return keywordsId;
-};
-
-const getLinkedReferenceIdByKeywordId = (mp, self, args) => {
-  var _a, _b;
-
-  const base = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
-  const keywordId = papyrusArgs_1.getNumber(args, 1);
-  const espmRecord = mp.lookupEspmRecordById(base);
-  const links = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLKR')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (links) {
-    const dataView = new DataView(links.buffer);
-
-    for (let i = 0; i + 4 <= dataView.byteLength; i += 8) {
-      if (dataView.getUint32(i, true) == keywordId) {
-        return dataView.getUint32(i + 4, true);
-      }
-    }
-  }
-
-  return;
-};
-
-const getDisplayName = (mp, self) => {
-  var _a, _b, _c, _d, _e, _f;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const appearance = mp.get(selfId, 'appearance');
-
-  if (selfId >= 0xff000000) {
-    const f = game_1.getForm(mp, null, [mp.getIdFromDesc(mp.get(selfId, 'baseDesc'))]);
-    const n = f && mp.callPapyrusFunction('global', 'FormEx', 'GetName', null, [f]);
-    return (_b = (_a = mp.get(selfId, 'displayName')) !== null && _a !== void 0 ? _a : appearance === null || appearance === void 0 ? void 0 : appearance.name) !== null && _b !== void 0 ? _b : n;
-  }
-
-  const espmRecord = mp.lookupEspmRecordById(selfId);
-  const name = (_d = (_c = espmRecord.record) === null || _c === void 0 ? void 0 : _c.fields.find(x => x.type === 'NAME')) === null || _d === void 0 ? void 0 : _d.data;
-  if (!name) return '';
-  const baseId = helper_1.uint32(name.buffer, 0);
-  const f = game_1.getForm(mp, null, [baseId]);
-  const n = f && mp.callPapyrusFunction('global', 'FormEx', 'GetName', null, [f]);
-  return (_f = (_e = mp.get(selfId, 'displayName')) !== null && _e !== void 0 ? _e : appearance === null || appearance === void 0 ? void 0 : appearance.name) !== null && _f !== void 0 ? _f : n;
-};
-
-exports.getDisplayName = getDisplayName;
-
-const setDisplayName = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const name = papyrusArgs_1.getString(args, 0);
-  const force = papyrusArgs_1.getBoolean(args, 1);
-  mp.set(selfId, 'displayName', name);
-};
-
-const getWorldSpace = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const worldOrCellId = mp.getIdFromDesc(mp.get(selfId, 'worldOrCellDesc'));
-  return game.getForm(mp, null, [worldOrCellId]);
-};
-
-exports.getWorldSpace = getWorldSpace;
-
-const getParentCell = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const cellDesc = mp.get(selfId, 'cellDesc');
-  if (!cellDesc) return;
-  const cellId = mp.getIdFromDesc(cellDesc);
-  return game.getForm(mp, null, [cellId]);
-};
-
-exports.getParentCell = getParentCell;
-
-const isInInterior = (mp, self) => {
-  const cell = exports.getParentCell(mp, self);
-  if (!cell) return false;
-  return cell_1.isInterior(mp, cell);
-};
-
-exports.isInInterior = isInInterior;
-
-const getLocationRef = (mp, self, args) => {
-  var _a, _b;
-
-  const espmRecord = mp.lookupEspmRecordById(papyrusArgs_1.getNumber(args, 0));
-  const locationRef = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLRT')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!locationRef) return;
-  const dataView = new DataView(locationRef.buffer);
-  const locationRefId = dataView.getUint32(0, true);
-  return locationRefId;
-};
-
-exports.getLocationRef = getLocationRef;
-
-const setOpen = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const openState = papyrusArgs_1.getBoolean(args, 0);
-  console.log(selfId, openState);
-  mp.set(selfId, 'openState', openState);
-};
-
-exports.setOpen = setOpen;
-
-const getRespawnTimeById = (mp, selfNull, args) => {
-  var _a, _b, _c, _d;
-
-  const selfId = papyrusArgs_1.getNumber(args, 0);
-  const baseId = exports.getBaseObjectIdById(mp, null, [selfId]);
-
-  const spawnTimeById = __1.serverOptionProvider.getServerOptionsValue(['spawnTimeById']);
-
-  const timeById = Array.isArray(spawnTimeById) ? spawnTimeById.map(x => {
-    if (!x || typeof x !== 'string') return;
-    const xParse = x.split(':');
-    if (xParse.length != 2) return;
-    return {
-      id: +xParse[0],
-      time: +xParse[1]
-    };
-  }).filter(x => x) : [];
-  const refTime = (_a = timeById.find(x => x.id === selfId)) === null || _a === void 0 ? void 0 : _a.time;
-  const baseTime = (_b = timeById.find(x => x.id === baseId)) === null || _b === void 0 ? void 0 : _b.time;
-  return (_d = (_c = refTime !== null && refTime !== void 0 ? refTime : baseTime) !== null && _c !== void 0 ? _c : __1.serverOptionProvider.getServerOptionsValue([baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC'])) !== null && _d !== void 0 ? _d : -1;
-};
-
-exports.getRespawnTimeById = getRespawnTimeById;
-
-const getRespawnTime = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  return exports.getRespawnTimeById(mp, null, [selfId]);
-};
-
-exports.getRespawnTime = getRespawnTime;
-
-const addItem = (mp, self, args) => {
-  const item = papyrusArgs_1.getObject(args, 0);
-  const count = papyrusArgs_1.getNumber(args, 1);
-  const silent = papyrusArgs_1.getBoolean(args, 2);
-  mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, count, silent]);
-};
-
-exports.addItem = addItem;
-
-const register = mp => {
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetScale', (self, args) => setScale(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'RemoveAllItems', (self, args) => removeAllItems(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDistance', (self, args) => position_1.getDistance(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'MoveTo', (self, args) => moveTo(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetContainerForms', self => getContainerForms(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetCurrentDestructionStage', self => getCurrentDestructionStage(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'DamageObject', (self, args) => damageObject(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'ClearDestruction', self => clearDestruction(mp, self));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetCurrentDestructionStage', (self, args) => setCurrentDestructionStage(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'BlockActivation', (self, args) => blockActivation(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetBaseObject', self => getBaseObject(mp, self));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetBaseObjectId', (self, args) => exports.getBaseObjectId(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceId', (self, args) => getLinkedReferenceId(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceIdByKeywordId', (self, args) => getLinkedReferenceIdByKeywordId(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceObjectOnStatic', (self, args) => exports.placeObjectOnStatic(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceAtMe', (self, args) => exports.placeAtMe(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDisplayName', self => exports.getDisplayName(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetDisplayName', (self, args) => setDisplayName(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetWorldSpace', self => exports.getWorldSpace(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetParentCell', self => exports.getParentCell(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'IsInInterior', self => exports.isInInterior(mp, self));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetOpen', (self, args) => exports.setOpen(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLocationRef', (self, args) => exports.getLocationRef(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetRespawnTime', (self, args) => exports.getRespawnTime(mp, self, args));
-  storage.register(mp);
-  position.register(mp);
-};
-
-exports.register = register;
-},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi","./position":"wmVe","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","./storage":"P8j4","../cell":"WIJZ","../../utils/helper":"FxH1","../../events":"VJVi","../../..":"QCba"}],"WNwQ":[function(require,module,exports) {
+},{}],"WNwQ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1982,10 +1004,51 @@ exports.register = register;
 },{"../../../papyrus/multiplayer/functions":"zNfc","./attributes-func":"WNwQ"}],"dwII":[function(require,module,exports) {
 "use strict";
 
+var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.onCurrentCrosshairChange = exports.onEffectStart = exports.onUiMenuToggle = exports.onCloseRaceMenu = exports.onPrintConsole = exports.onAnimationEvent = exports.onInput = exports.onEquip = exports.onHit = exports.onCellChange = void 0;
+exports.onCurrentCrosshairChange = exports.onEffectStart = exports.onUiMenuToggle = exports.onCloseRaceMenu = exports.onPrintConsole = exports.onAnimationEvent = exports.onInput = exports.onEquip = exports.onHit = exports.onCellChange = exports.onLoad = void 0;
+
+const onLoad = ctx => {
+  ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield ctx.sp.Utility.wait(0.4);
+    ctx.sendEvent();
+  }));
+};
+
+exports.onLoad = onLoad;
 
 const onCellChange = ctx => {
   ctx.sp.on('update', () => {
@@ -2178,238 +1241,622 @@ const onCurrentCrosshairChange = ctx => {
 };
 
 exports.onCurrentCrosshairChange = onCurrentCrosshairChange;
-},{}],"A7KX":[function(require,module,exports) {
+},{}],"wmVe":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.showNick = exports.showNicknames = exports.sendPlayerPos = void 0;
+exports.register = exports.getLinkedCellId = exports.getLinkedDoorId = exports.teleportToLinkedDoorMarker = exports.getDistance = exports.getAngleZ = exports.getAngleY = exports.getAngleX = exports.getAngle = exports.setAngle = exports.getEspPosition = exports.getPositionZ = exports.getPositionY = exports.getPositionX = exports.getPosition = exports.setPosition = void 0;
 
-const game_1 = require("../papyrus/game");
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
 
-const objectReference_1 = require("../papyrus/objectReference");
-
-const eval_1 = require("../properties/eval");
-
-const functionInfo_1 = require("../utils/functionInfo");
-
-const sendPlayerPos = ctx => {
-  ctx.sp.on('update', () => {
-    const player = ctx.sp.Game.getPlayer();
-    if (!player) return;
-    const [x, y, z] = [player.getPositionX(), player.getPositionY(), player.getPositionZ()];
-    const [xF, yF, zF] = [x.toFixed(), y.toFixed(), z.toFixed()];
-    if (xF === ctx.state.lastPosX && yF === ctx.state.lastPosY && zF === ctx.state.lastPosZ) return;
-    let src = [];
-    src.push(`window.playerPos = ${JSON.stringify([x, y, z])}`);
-
-    try {
-      ctx.sp.browser.executeJavaScript(src.join('\n'));
-    } catch (error) {}
-
-    ctx.state.lastPosX = xF;
-    ctx.state.lastPosY = yF;
-    ctx.state.lastPosZ = zF;
-  });
+const setPosition = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const [x, y, z] = [papyrusArgs_1.getNumber(args, 0), papyrusArgs_1.getNumber(args, 1), papyrusArgs_1.getNumber(args, 2)];
+  mp.set(selfId, 'pos', [x, y, z]);
 };
 
-exports.sendPlayerPos = sendPlayerPos;
+exports.setPosition = setPosition;
 
-const showNicknames = ctx => {
-  ctx.sp.on('update', () => {
-    const ac1 = ctx.sp.Actor.from(ctx.sp.Game.getFormEx(85837870));
-    if (!ac1) return;
-    const [x, y, z] = [ac1.getPositionX(), ac1.getPositionY(), ac1.getPositionZ()];
-    const [[x1, y1, z1]] = ctx.sp.worldPointToScreenPoint([x, y, z]);
-    const [xF, yF, zF] = [x1.toFixed(4), y1.toFixed(4), z1.toFixed(4)];
-    if (xF === ctx.state.lastScreenPosX && yF === ctx.state.lastScreenPosY) return;
-    ctx.sp.printConsole(x, y, z);
-    ctx.sp.printConsole(x1, y1, z1);
-    ctx.sp.printConsole(xF, yF, zF);
-    ctx.sp.printConsole({
-      text: ac1.getDisplayName(),
-      posX: x1 * 100,
-      posY: y1 * 100
-    });
-    const nick = [{
-      text: ac1.getDisplayName(),
-      posX: x1 < 0 ? 0 : (x1 + 0) * 100,
-      posY: y1 < 0 ? 0 : y1 * 100
-    }];
-    let src = [];
-    src.push(`
-      window.storage.dispatch({
-        type: 'COMMAND',
-        data: {
-          commandType: 'NICKNAMES_UPDATE',
-          alter: ['${JSON.stringify(nick)}']
-        }
-      })
-    `);
+const getPosition = (mp, self) => {
+  var _a;
 
-    try {
-      ctx.sp.browser.executeJavaScript(src.join('\n'));
-    } catch (error) {}
-
-    ctx.state.lastScreenPosX = xF;
-    ctx.state.lastScreenPosY = yF;
-  });
+  return (_a = mp.get(mp.getIdFromDesc(self.desc), 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0];
 };
 
-exports.showNicknames = showNicknames;
+exports.getPosition = getPosition;
 
-const showNick = (mp, playerId, neighbors) => {
-  const func2 = (ctx, itemsString) => {
-    (() => {
-      try {
-        const items = JSON.parse(itemsString);
-        const nicks = items.map(i => {
-          const [[x, y, z]] = ctx.sp.worldPointToScreenPoint(i.pos);
-          const ratio = (1 - z) * 20;
-          return {
-            text: i.text,
-            posX: x * 100,
-            posY: y * 100,
-            posZ: z * 100,
-            ratio
-          };
-        }).filter(x => x.posX >= 0 && x.posX <= 100 && x.posY >= 0 && x.posY <= 100 && x.posZ >= 0 && x.posZ <= 100 && x.ratio >= 0.25 && x.ratio <= 0.9);
-        const src = [];
-        src.push(`
-        window.storage.dispatch({
-          type: 'COMMAND',
-          data: {
-            commandType: 'NICKNAMES_UPDATE',
-            alter: ['${JSON.stringify(nicks)}']
-          }
-        })
-        `);
-        ctx.sp.browser.executeJavaScript(src.join('\n'));
-      } catch (err) {
-        ctx.sp.printConsole('error', err);
-      }
-    })();
-  };
+const getPositionX = (mp, self) => exports.getPosition(mp, self)[0];
 
-  const items = neighbors.filter(n => mp.get(n, 'worldOrCellDesc') !== '0').map(n => {
-    const pos = mp.get(n, 'pos');
-    const nForm = game_1.getForm(mp, null, [n]);
-    const text = nForm && objectReference_1.getDisplayName(mp, nForm);
-    return {
-      pos,
-      text
-    };
-  });
-  eval_1.evalClient(mp, playerId, new functionInfo_1.FunctionInfo(func2).getText({
-    itemsString: JSON.stringify(items)
-  }), false, true);
+exports.getPositionX = getPositionX;
+
+const getPositionY = (mp, self) => exports.getPosition(mp, self)[1];
+
+exports.getPositionY = getPositionY;
+
+const getPositionZ = (mp, self) => exports.getPosition(mp, self)[2];
+
+exports.getPositionZ = getPositionZ;
+
+const getEspPosition = (mp, placeId) => {
+  var _a, _b;
+
+  const espmRecord = mp.lookupEspmRecordById(placeId);
+  const data = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (data) {
+    const dataView = new DataView(data.buffer);
+    const posX = dataView.getFloat32(4, true);
+    const posY = dataView.getFloat32(8, true);
+    const posZ = dataView.getFloat32(12, true);
+    return [posX, posY, posZ];
+  }
+
+  return [0, 0, 0];
 };
 
-exports.showNick = showNick;
-},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"eVF9":[function(require,module,exports) {
-"use strict";
+exports.getEspPosition = getEspPosition;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = void 0;
+const setAngle = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const [x, y, z] = [papyrusArgs_1.getNumber(args, 0), papyrusArgs_1.getNumber(args, 1), papyrusArgs_1.getNumber(args, 2)];
+  mp.set(selfId, 'angle', [x, y, z]);
+};
 
-const _1 = require(".");
+exports.setAngle = setAngle;
 
-const __1 = require("../..");
+const getAngle = (mp, self) => {
+  var _a;
 
-const functionInfo_1 = require("../utils/functionInfo");
+  return (_a = mp.get(mp.getIdFromDesc(self.desc), 'angle')) !== null && _a !== void 0 ? _a : [0, 0, 0];
+};
 
-const empty_functions_1 = require("./empty-functions");
+exports.getAngle = getAngle;
+
+const getAngleX = (mp, self) => exports.getAngle(mp, self)[0];
+
+exports.getAngleX = getAngleX;
+
+const getAngleY = (mp, self) => exports.getAngle(mp, self)[1];
+
+exports.getAngleY = getAngleY;
+
+const getAngleZ = (mp, self) => exports.getAngle(mp, self)[2];
+
+exports.getAngleZ = getAngleZ;
+
+const getDistance = (mp, self, args) => {
+  const target = papyrusArgs_1.getObject(args, 0);
+  const selfPosition = exports.getPosition(mp, self);
+  const targetCoord = exports.getPosition(mp, target);
+  return Math.sqrt(Math.pow(selfPosition[0] - targetCoord[0], 2) + Math.pow(selfPosition[1] - targetCoord[1], 2) + Math.pow(selfPosition[2] - targetCoord[2], 2));
+};
+
+exports.getDistance = getDistance;
+
+const teleportToLinkedDoorMarker = (mp, self, args) => {
+  var _a, _b;
+
+  const objectToTeleportId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 1).desc);
+  const door = papyrusArgs_1.getObject(args, 0);
+  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(door.desc));
+  const xtel = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XTEL')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (xtel) {
+    const dataView = new DataView(xtel.buffer);
+    const linkedDoorId = dataView.getUint32(0, true);
+    const cell = mp.get(linkedDoorId, 'worldOrCellDesc');
+    const [posX, posY, posZ] = [dataView.getFloat32(4, true), dataView.getFloat32(8, true), dataView.getFloat32(12, true)];
+    const [angleX, angleY, angleZ] = [dataView.getFloat32(16, true), dataView.getFloat32(20, true), dataView.getFloat32(24, true)];
+    mp.set(objectToTeleportId, 'worldOrCellDesc', cell);
+    mp.set(objectToTeleportId, 'pos', [posX, posY, posZ]);
+    mp.set(objectToTeleportId, 'angle', [angleX, angleY, angleZ]);
+  }
+};
+
+exports.teleportToLinkedDoorMarker = teleportToLinkedDoorMarker;
+
+const getLinkedDoorId = (mp, self, args) => {
+  var _a, _b;
+
+  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc));
+  const xtel = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XTEL')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (xtel) {
+    const dataView = new DataView(xtel.buffer);
+    const linkedDoorId = dataView.getUint32(0, true);
+    return linkedDoorId;
+  }
+
+  return 0;
+};
+
+exports.getLinkedDoorId = getLinkedDoorId;
+
+const getLinkedCellId = (mp, self, args) => {
+  var _a, _b;
+
+  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc));
+  const xtel = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XTEL')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (xtel) {
+    const dataView = new DataView(xtel.buffer);
+    const linkedDoorId = dataView.getUint32(0, true);
+    const linkedCellId = mp.getIdFromDesc(mp.get(linkedDoorId, 'worldOrCellDesc'));
+    return linkedCellId;
+  }
+
+  return 0;
+};
+
+exports.getLinkedCellId = getLinkedCellId;
 
 const register = mp => {
-  mp.makeEventSource('_empty01', new functionInfo_1.FunctionInfo(empty_functions_1.sendPlayerPos).body);
-
-  if (mp.timer) {
-    clearTimeout(mp.timer);
-  }
-
-  const serverOptions = __1.serverOptionProvider.getServerOptions();
-
-  if (serverOptions.enableInterval) {
-    const interval = () => {
-      mp.timer = setTimeout(() => {
-        mp.get(0, 'onlinePlayers').forEach(id => {
-          const neighbors = mp.get(id, 'neighbors').filter(n => mp.get(n, 'type') === 'MpActor');
-          neighbors.forEach(n => {
-            _1.throwOrInit(mp, n, serverOptions);
-          });
-        });
-        interval();
-      }, 200);
-    };
-
-    interval();
-  }
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetPosition', (self, args) => exports.setPosition(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionX', self => exports.getPositionX(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionY', self => exports.getPositionY(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionZ', self => exports.getPositionZ(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetAngle', (self, args) => exports.setAngle(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleX', self => exports.getAngleX(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleY', self => exports.getAngleY(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetAngleZ', self => exports.getAngleZ(mp, self));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'TeleportToLinkedDoorMarker', (self, args) => exports.teleportToLinkedDoorMarker(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedDoorId', (self, args) => exports.getLinkedDoorId(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedCellId', (self, args) => exports.getLinkedCellId(mp, self, args));
 };
 
 exports.register = register;
-},{".":"VJVi","../..":"QCba","../utils/functionInfo":"fC7F","./empty-functions":"A7KX"}],"dvBS":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1"}],"P8j4":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.getFlags = void 0;
+exports.register = exports.setStorageValue = exports._setStorageValue = exports.setStorageValueFormArray = exports.setStorageValueForm = exports.setStorageValueBoolArray = exports.setStorageValueBool = exports.setStorageValueNumberArray = exports.setStorageValueNumber = exports.setStorageValueStringArray = exports.setStorageValueString = exports.getStorageValueFormArray = exports.getStorageValueForm = exports.getStorageValueBoolArray = exports.getStorageValueBool = exports.getStorageValueNumberArray = exports.getStorageValueNumber = exports.getStorageValueStringArray = exports.getStorageValueString = exports.getStorageValue = exports._getStorageValue = void 0;
 
-const papyrusArgs_1 = require("../utils/papyrusArgs");
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
 
-const MGEF_FLGS = {
-  Hostile: 0x00000001,
-  Recover: 0x00000002,
-  Detrimental: 0x00000004,
-  'Snap to Navmesh': 0x00000008,
-  'No Hit Event': 0x00000010,
-  'Dispel Effects (toggle keywords to dispel type?)': 0x00000100,
-  'No Duration': 0x00000200,
-  'No Magnitude': 0x00000400,
-  'No Area': 0x00000800,
-  'FX Persist': 0x00001000,
-  'Gory Visual': 0x00004000,
-  'Hide in UI': 0x00008000,
-  'No Recast': 0x00020000,
-  'Power Affects Magnitude': 0x00200000,
-  'Power Affects Duration': 0x00400000,
-  Painless: 0x04000000,
-  'No Hit Effect': 0x08000000,
-  'No Death Dispel': 0x10000000
+const functions_1 = require("../multiplayer/functions");
+
+const _getStorageValue = (mp, self, args) => {
+  const refId = mp.getIdFromDesc(self.desc);
+  const key = papyrusArgs_1.getString(args, 0);
+  functions_1.checkAndCreatePropertyExist(mp, refId, key);
+  let val;
+
+  try {
+    val = mp.get(refId, key);
+  } catch (err) {
+    console.log(err);
+  }
+
+  return val;
 };
 
-const getFlags = (mp, self, args) => {
-  var _a, _b;
+exports._getStorageValue = _getStorageValue;
 
-  const id = papyrusArgs_1.getNumber(args, 0);
-  const espmRecord = mp.lookupEspmRecordById(id);
-  const d = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-  const flgs = [];
+const getStorageValue = (mp, self, args) => {
+  const ref = papyrusArgs_1.getObject(args, 0);
+  const key = papyrusArgs_1.getString(args, 1);
+  return exports._getStorageValue(mp, ref, [key]);
+};
 
-  if (d) {
-    const dv = new DataView(d.buffer);
-    let fl = dv.getUint32(0, true);
+exports.getStorageValue = getStorageValue;
 
-    for (const k of Object.keys(MGEF_FLGS).reverse()) {
-      if (fl - MGEF_FLGS[k] >= 0) {
-        flgs.push(MGEF_FLGS[k]);
-        fl = fl - MGEF_FLGS[k];
+const getStorageValueString = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? '' : papyrusArgs_1.getString([val], 0);
+};
+
+exports.getStorageValueString = getStorageValueString;
+
+const getStorageValueStringArray = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getStringArray([val], 0);
+};
+
+exports.getStorageValueStringArray = getStorageValueStringArray;
+
+const getStorageValueNumber = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? 0 : papyrusArgs_1.getNumber([val], 0);
+};
+
+exports.getStorageValueNumber = getStorageValueNumber;
+
+const getStorageValueNumberArray = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getNumberArray([val], 0);
+};
+
+exports.getStorageValueNumberArray = getStorageValueNumberArray;
+
+const getStorageValueBool = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? null : papyrusArgs_1.getBoolean([val], 0);
+};
+
+exports.getStorageValueBool = getStorageValueBool;
+
+const getStorageValueBoolArray = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getBooleanArray([val], 0);
+};
+
+exports.getStorageValueBoolArray = getStorageValueBoolArray;
+
+const getStorageValueForm = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? null : papyrusArgs_1.getObject([val], 0);
+};
+
+exports.getStorageValueForm = getStorageValueForm;
+
+const getStorageValueFormArray = (mp, self, args) => {
+  const val = exports.getStorageValue(mp, self, args);
+  return val === null || val === undefined ? [] : papyrusArgs_1.getObjectArray([val], 0);
+};
+
+exports.getStorageValueFormArray = getStorageValueFormArray;
+
+const setStorageValueString = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getString(args, 2));
+
+exports.setStorageValueString = setStorageValueString;
+
+const setStorageValueStringArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getStringArray(args, 2));
+
+exports.setStorageValueStringArray = setStorageValueStringArray;
+
+const setStorageValueNumber = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getNumber(args, 2));
+
+exports.setStorageValueNumber = setStorageValueNumber;
+
+const setStorageValueNumberArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getNumberArray(args, 2));
+
+exports.setStorageValueNumberArray = setStorageValueNumberArray;
+
+const setStorageValueBool = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getBoolean(args, 2));
+
+exports.setStorageValueBool = setStorageValueBool;
+
+const setStorageValueBoolArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getBooleanArray(args, 2));
+
+exports.setStorageValueBoolArray = setStorageValueBoolArray;
+
+const setStorageValueForm = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getObject(args, 2));
+
+exports.setStorageValueForm = setStorageValueForm;
+
+const setStorageValueFormArray = (mp, self, args) => exports.setStorageValue(mp, args, papyrusArgs_1.getObjectArray(args, 2));
+
+exports.setStorageValueFormArray = setStorageValueFormArray;
+
+const _setStorageValue = (mp, self, args) => {
+  const refId = mp.getIdFromDesc(self.desc);
+  const key = papyrusArgs_1.getString(args, 0);
+  const value = args[1];
+  functions_1.checkAndCreatePropertyExist(mp, refId, key);
+
+  try {
+    mp.set(refId, key, value);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports._setStorageValue = _setStorageValue;
+
+const setStorageValue = (mp, args, value) => {
+  const ref = papyrusArgs_1.getObject(args, 0);
+  const refId = mp.getIdFromDesc(ref.desc);
+  const key = papyrusArgs_1.getString(args, 1);
+  functions_1.checkAndCreatePropertyExist(mp, refId, key);
+
+  try {
+    mp.set(refId, key, value);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.setStorageValue = setStorageValue;
+
+const register = mp => {
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueString', (self, args) => exports.getStorageValueString(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueStringArray', (self, args) => exports.getStorageValueStringArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueInt', (self, args) => exports.getStorageValueNumber(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueIntArray', (self, args) => exports.getStorageValueNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueFloat', (self, args) => exports.getStorageValueNumber(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueFloatArray', (self, args) => exports.getStorageValueNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueBool', (self, args) => exports.getStorageValueBool(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueBoolArray', (self, args) => exports.getStorageValueBoolArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueForm', (self, args) => exports.getStorageValueForm(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueFormArray', (self, args) => exports.getStorageValueFormArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueString', (self, args) => exports.setStorageValueString(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueStringArray', (self, args) => exports.setStorageValueStringArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueInt', (self, args) => exports.setStorageValueNumber(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueIntArray', (self, args) => exports.setStorageValueNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueFloat', (self, args) => exports.setStorageValueNumber(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueFloatArray', (self, args) => exports.setStorageValueNumberArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueBool', (self, args) => exports.setStorageValueBool(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueBoolArray', (self, args) => exports.setStorageValueBoolArray(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueForm', (self, args) => exports.setStorageValueForm(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetStorageValueFormArray', (self, args) => exports.setStorageValueFormArray(mp, self, args));
+};
+
+exports.register = register;
+},{"../../utils/papyrusArgs":"oZY1","../multiplayer/functions":"zNfc"}],"FxH1":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.float32 = exports.int32 = exports.uint32 = exports.uint16 = exports.uint8 = exports.uint8arrayToStringMethod = exports.inPoly = exports.randomInRange = exports.isArrayEqual = void 0;
+
+const isArrayEqual = (arr1, arr2) => {
+  const type = Object.prototype.toString.call(arr1);
+  if (type !== Object.prototype.toString.call(arr2)) return false;
+  if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;
+  const valueLen = type === '[object Array]' ? arr1.length : Object.keys(arr1).length;
+  const otherLen = type === '[object Array]' ? arr2.length : Object.keys(arr2).length;
+  if (valueLen !== otherLen) return false;
+
+  const compare = (item1, item2) => {
+    const itemType = Object.prototype.toString.call(item1);
+
+    if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
+      if (!exports.isArrayEqual(item1, item2)) return false;
+    } else {
+      if (itemType !== Object.prototype.toString.call(item2)) return false;
+
+      if (itemType === '[object Function]') {
+        if (item1.toString() !== item2.toString()) return false;
+      } else {
+        if (item1 !== item2) return false;
+      }
+    }
+  };
+
+  if (type === '[object Array]') {
+    for (var i = 0; i < valueLen; i++) {
+      if (compare(arr1[i], arr2[i]) === false) return false;
+    }
+  } else {
+    for (var key in arr1) {
+      if (arr1.hasOwnProperty(key)) {
+        if (compare(arr1[key], arr2[key]) === false) return false;
       }
     }
   }
 
-  return flgs;
+  return true;
 };
 
-exports.getFlags = getFlags;
+exports.isArrayEqual = isArrayEqual;
 
-const register = mp => {};
+const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+exports.randomInRange = randomInRange;
+let cacheInPoly = {};
+
+const inPoly = (x, y, xp, yp) => {
+  const index = x.toString() + y.toString() + xp.join('') + yp.join('');
+
+  if (cacheInPoly[index]) {
+    return cacheInPoly[index];
+  }
+
+  let npol = xp.length;
+  let j = npol - 1;
+  let c = false;
+
+  for (let i = 0; i < npol; i++) {
+    if ((yp[i] <= y && y < yp[j] || yp[j] <= y && y < yp[i]) && x > (xp[j] - xp[i]) * (y - yp[i]) / (yp[j] - yp[i]) + xp[i]) {
+      c = !c;
+    }
+
+    j = i;
+  }
+
+  cacheInPoly[index] = c;
+  return c;
+};
+
+exports.inPoly = inPoly;
+
+const uint8arrayToStringMethod = myUint8Arr => {
+  return String.fromCharCode.apply(null, [...myUint8Arr]);
+};
+
+exports.uint8arrayToStringMethod = uint8arrayToStringMethod;
+
+const uint8 = (buffer, offset) => new DataView(buffer).getUint8(offset);
+
+exports.uint8 = uint8;
+
+const uint16 = (buffer, offset) => new DataView(buffer).getUint16(offset, true);
+
+exports.uint16 = uint16;
+
+const uint32 = (buffer, offset) => new DataView(buffer).getUint32(offset, true);
+
+exports.uint32 = uint32;
+
+const int32 = (buffer, offset) => new DataView(buffer).getInt32(offset, true);
+
+exports.int32 = int32;
+
+const float32 = (buffer, offset) => new DataView(buffer).getFloat32(offset, true);
+
+exports.float32 = float32;
+},{}],"WIJZ":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.getLocationId = exports.isInterior = void 0;
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const helper_1 = require("../../utils/helper");
+
+const FLG_Interior = 0x0001;
+const FLG_Has_Water = 0x0002;
+const FLG_Cant_Travel_From_Here = 0x0004;
+const FLG_No_LOD_Water = 0x0008;
+const FLG_Public_Area = 0x0020;
+const FLG_Hand_Changed = 0x0040;
+const FLG_Show_Sky = 0x0080;
+const FLG_Use_Sky_Lighting = 0x0100;
+
+const flagExists = (mp, self, flag) => {
+  var _a, _b;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  const enit = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!enit) return false;
+  const flags = helper_1.uint16(enit.buffer, 0);
+  return !!(flags & flag);
+};
+
+const isInterior = (mp, self) => flagExists(mp, self, FLG_Interior);
+
+exports.isInterior = isInterior;
+
+const getLocationId = (mp, self, args) => {
+  var _a, _b;
+
+  const cell = papyrusArgs_1.getObject(args, 0);
+  const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(cell.desc));
+  const xlcn = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLCN')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (xlcn) {
+    const dataView = new DataView(xlcn.buffer);
+    return dataView.getUint32(0, true);
+  }
+};
+
+exports.getLocationId = getLocationId;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'Cell', 'IsInterior', self => exports.isInterior(mp, self));
+  mp.registerPapyrusFunction('global', 'CellEx', 'GetLocationId', (self, args) => exports.getLocationId(mp, self, args));
+};
 
 exports.register = register;
-},{"../utils/papyrusArgs":"oZY1"}],"icKT":[function(require,module,exports) {
+},{"../../utils/papyrusArgs":"oZY1","../../utils/helper":"FxH1"}],"I1C7":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.modActorValue = exports.restoreActorValue = exports.damageActorValue = exports.getActorValue = exports.setActorValue = void 0;
+
+const attributes_1 = require("../../properties/actor/actorValues/attributes");
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const setActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  attributes_1.actorValues.set(selfId, avName, 'base', avValue);
+};
+
+exports.setActorValue = setActorValue;
+
+const getActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  return attributes_1.actorValues.getCurrent(selfId, avName);
+};
+
+exports.getActorValue = getActorValue;
+
+const damageActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
+  attributes_1.actorValues.set(selfId, avName, 'damage', damage - avValue);
+};
+
+exports.damageActorValue = damageActorValue;
+
+const restoreActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
+  attributes_1.actorValues.set(selfId, avName, 'damage', damage + avValue > 0 ? 0 : damage + avValue);
+};
+
+exports.restoreActorValue = restoreActorValue;
+
+const modActorValue = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const avName = papyrusArgs_1.getString(args, 0);
+  const avValue = papyrusArgs_1.getNumber(args, 1);
+  attributes_1.actorValues.set(selfId, avName, 'temporary', avValue);
+};
+
+exports.modActorValue = modActorValue;
+},{"../../properties/actor/actorValues/attributes":"Klzq","../../utils/papyrusArgs":"oZY1"}],"d40v":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.removePerk = exports.addPerk = exports.hasPerk = void 0;
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const getPerkList = (mp, selfId) => {
+  var _a;
+
+  return (_a = mp.get(selfId, 'perk')) !== null && _a !== void 0 ? _a : [];
+};
+
+const setPerkList = (mp, selfId, perkList) => {
+  mp.set(selfId, 'perk', perkList);
+};
+
+const hasPerk = (mp, self, args) => {
+  const perk = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const perkId = mp.getIdFromDesc(perk.desc);
+  return getPerkList(mp, selfId).includes(perkId);
+};
+
+exports.hasPerk = hasPerk;
+
+const addPerk = (mp, self, args) => {
+  const perk = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const perkId = mp.getIdFromDesc(perk.desc);
+  if (exports.hasPerk(mp, self, args)) return;
+  const perkList = getPerkList(mp, selfId);
+  perkList.push(perkId);
+  setPerkList(mp, selfId, perkList);
+};
+
+exports.addPerk = addPerk;
+
+const removePerk = (mp, self, args) => {
+  const perk = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const perkId = mp.getIdFromDesc(perk.desc);
+  if (!exports.hasPerk(mp, self, args)) return;
+  const perkList = getPerkList(mp, selfId);
+  perkList.push(perkId);
+  setPerkList(mp, selfId, perkList.filter(id => id !== perkId));
+};
+
+exports.removePerk = removePerk;
+},{"../../utils/papyrusArgs":"oZY1"}],"icKT":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2511,16 +1958,14 @@ const getKeywords = (mp, self) => {
   const data = mp.lookupEspmRecordById(selfId);
   const kwda = (_b = (_a = data.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'KWDA')) === null || _b === void 0 ? void 0 : _b.data;
   const keywords = [];
+  if (!kwda) return keywords;
+  const dataView = new DataView(kwda.buffer);
 
-  if (kwda) {
-    const dataView = new DataView(kwda.buffer);
-
-    for (let i = 0; i < dataView.byteLength; i += 4) {
-      keywords.push({
-        desc: mp.getDescFromId(dataView.getUint32(i, true)),
-        type: 'espm'
-      });
-    }
+  for (let i = 0; i < dataView.byteLength; i += 4) {
+    keywords.push({
+      desc: mp.getDescFromId(dataView.getUint32(i, true)),
+      type: 'espm'
+    });
   }
 
   return keywords;
@@ -2535,13 +1980,9 @@ const getNumKeywords = (mp, self) => {
 
   const data = mp.lookupEspmRecordById(selfId);
   const ksiz = (_b = (_a = data.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'KSIZ')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (ksiz) {
-    const dataView = new DataView(ksiz.buffer);
-    return dataView.getUint32(0, true);
-  }
-
-  return;
+  if (!ksiz) return 0;
+  const dataView = new DataView(ksiz.buffer);
+  return dataView.getUint32(0, true);
 };
 
 exports.getNumKeywords = getNumKeywords;
@@ -2902,7 +2343,7 @@ exports.formType = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.getWeightById = exports.getWeight = exports.getEditorIdById = exports.getEditorId = exports._getEditorId = exports.getDescription = exports.getName = exports.getSelfId = void 0;
+exports.register = exports.getWeight = exports.getWeightById = exports.getEditorIdById = exports.getEditorId = exports._getEditorId = exports.getDescription = exports.getName = exports.getSelfId = void 0;
 
 const helper_1 = require("../../utils/helper");
 
@@ -2913,7 +2354,7 @@ const keywords_1 = require("./keywords");
 const type_1 = require("./type");
 
 const getSelfId = (mp, desc) => {
-  let selfId = mp.getIdFromDesc(desc);
+  const selfId = mp.getIdFromDesc(desc);
 
   if (selfId >= 0xff000000) {
     return mp.getIdFromDesc(mp.get(selfId, 'baseDesc'));
@@ -2924,9 +2365,7 @@ const getSelfId = (mp, desc) => {
 
 exports.getSelfId = getSelfId;
 
-const getFormID = (mp, self) => {
-  return mp.getIdFromDesc(self.desc);
-};
+const getFormID = (mp, self) => mp.getIdFromDesc(self.desc);
 
 const getName = (strings, mp, self) => {
   var _a, _b, _c, _d, _e;
@@ -2973,9 +2412,9 @@ const getDescription = (strings, mp, selfNull, args) => {
 
     if (desc.length > 4) {
       return new TextDecoder().decode(desc);
-    } else {
-      return (_c = strings.getText(espName, index)) !== null && _c !== void 0 ? _c : '';
     }
+
+    return (_c = strings.getText(espName, index)) !== null && _c !== void 0 ? _c : '';
   }
 
   return '';
@@ -2984,30 +2423,27 @@ const getDescription = (strings, mp, selfNull, args) => {
 exports.getDescription = getDescription;
 
 const _getEditorId = (mp, selfId) => {
-  var _a, _b, _c, _d;
+  var _a;
 
   const espmRecord = mp.lookupEspmRecordById(selfId);
-  const name = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'NAME')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!name) return '';
+  const rec = espmRecord.record;
+  if (!rec) return '';
+  const name = (_a = rec.fields.find(x => x.type === 'NAME')) === null || _a === void 0 ? void 0 : _a.data;
+  if (!name) return rec.editorId;
   const dataView = new DataView(name.buffer);
   const baseId = dataView.getUint32(0, true);
-  const espmRecordBase = mp.lookupEspmRecordById(baseId);
-  const edid = (_d = (_c = espmRecordBase.record) === null || _c === void 0 ? void 0 : _c.fields.find(x => x.type === 'EDID')) === null || _d === void 0 ? void 0 : _d.data;
-  if (!edid) return '';
-  return helper_1.uint8arrayToStringMethod(edid);
+  const recBase = mp.lookupEspmRecordById(baseId).record;
+  if (!recBase) return '';
+  return recBase.editorId;
 };
 
 exports._getEditorId = _getEditorId;
 
-const getEditorId = (mp, self, args) => {
-  return exports._getEditorId(mp, exports.getSelfId(mp, papyrusArgs_1.getObject(args, 0).desc));
-};
+const getEditorId = (mp, self, args) => exports._getEditorId(mp, exports.getSelfId(mp, papyrusArgs_1.getObject(args, 0).desc));
 
 exports.getEditorId = getEditorId;
 
-const getEditorIdById = (mp, self, args) => {
-  return exports._getEditorId(mp, papyrusArgs_1.getNumber(args, 0));
-};
+const getEditorIdById = (mp, self, args) => exports._getEditorId(mp, papyrusArgs_1.getNumber(args, 0));
 
 exports.getEditorIdById = getEditorIdById;
 
@@ -3022,13 +2458,6 @@ const getGoldValue = (mp, self) => {
   return dataView.getUint32(0, true);
 };
 
-const getWeight = (mp, self) => {
-  const selfId = exports.getSelfId(mp, self.desc);
-  return exports.getWeightById(mp, selfId);
-};
-
-exports.getWeight = getWeight;
-
 const getWeightById = (mp, selfId) => {
   var _a, _b;
 
@@ -3040,6 +2469,13 @@ const getWeightById = (mp, selfId) => {
 };
 
 exports.getWeightById = getWeightById;
+
+const getWeight = (mp, self) => {
+  const selfId = exports.getSelfId(mp, self.desc);
+  return exports.getWeightById(mp, selfId);
+};
+
+exports.getWeight = getWeight;
 
 const getType = (mp, self) => {
   var _a, _b, _c;
@@ -3082,7 +2518,7 @@ const register = (mp, strings) => {
   mp.registerPapyrusFunction('method', 'Form', 'GetNumKeywords', self => keywords_1.getNumKeywords(mp, self));
   mp.registerPapyrusFunction('method', 'Form', 'GetNthKeyword', (self, args) => keywords_1.getNthKeyword(mp, self, args));
   mp.registerPapyrusFunction('method', 'Form', 'HasKeyword', (self, args) => keywords_1.hasKeyword(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Form', 'GetSignature', (self, args) => getSignature(mp, self));
+  mp.registerPapyrusFunction('method', 'Form', 'GetSignature', self => getSignature(mp, self));
   mp.registerPapyrusFunction('method', 'Form', 'EqualSignature', (self, args) => equalSignature(mp, self, args));
   mp.registerPapyrusFunction('global', 'FormEx', 'GetName', (self, args) => getNameEx(strings, mp, self, args));
   mp.registerPapyrusFunction('global', 'FormEx', 'GetEditorID', (self, args) => exports.getEditorId(mp, self, args));
@@ -3532,7 +2968,1167 @@ const getEquippedWeapon = (mp, self, args) => {
 };
 
 exports.getEquippedWeapon = getEquippedWeapon;
-},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1","../armor":"WNhg","../form":"mnzc","../game":"WCBi","../weapon":"TCaz"}],"sC2V":[function(require,module,exports) {
+},{"../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../../utils/papyrusArgs":"oZY1","../armor":"WNhg","../form":"mnzc","../game":"WCBi","../weapon":"TCaz"}],"AkNH":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAttr = exports.getRaceStaminaRate = exports.getRaceStamina = exports.getRaceMagickaRate = exports.getRaceMagicka = exports.getRaceHealRate = exports.getRaceHealth = exports.getRaceUnarmedDamage = exports.getRaceId = exports.raceDefaultAttr = void 0;
+
+const helper_1 = require("../utils/helper");
+
+exports.raceDefaultAttr = {
+  health: 100,
+  healrate: 1,
+  magicka: 100,
+  magickarate: 5,
+  stamina: 100,
+  staminarate: 5
+};
+
+const getRaceId = (mp, pcFormId, rec) => {
+  var _a, _b;
+
+  if (pcFormId >= 0xff000000) {
+    try {
+      const appearance = mp.get(pcFormId, 'appearance');
+      return (_a = appearance === null || appearance === void 0 ? void 0 : appearance.raceId) !== null && _a !== void 0 ? _a : 0;
+    } catch (error) {}
+  }
+
+  const rnam = (_b = rec.fields.find(x => x.type === 'RNAM')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!rnam) return 0;
+  return helper_1.uint32(rnam.buffer, 0);
+};
+
+exports.getRaceId = getRaceId;
+
+const getRaceFloat32DataValue = (espmRecord, offset) => {
+  var _a, _b;
+
+  const raceData = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!raceData) return;
+  return helper_1.float32(raceData.buffer, offset);
+};
+
+const getRaceUnarmedDamage = espmRecord => getRaceFloat32DataValue(espmRecord, 96);
+
+exports.getRaceUnarmedDamage = getRaceUnarmedDamage;
+
+const getRaceHealth = espmRecord => getRaceFloat32DataValue(espmRecord, 36);
+
+exports.getRaceHealth = getRaceHealth;
+
+const getRaceHealRate = espmRecord => getRaceFloat32DataValue(espmRecord, 84);
+
+exports.getRaceHealRate = getRaceHealRate;
+
+const getRaceMagicka = espmRecord => getRaceFloat32DataValue(espmRecord, 40);
+
+exports.getRaceMagicka = getRaceMagicka;
+
+const getRaceMagickaRate = espmRecord => getRaceFloat32DataValue(espmRecord, 88);
+
+exports.getRaceMagickaRate = getRaceMagickaRate;
+
+const getRaceStamina = espmRecord => getRaceFloat32DataValue(espmRecord, 44);
+
+exports.getRaceStamina = getRaceStamina;
+
+const getRaceStaminaRate = espmRecord => getRaceFloat32DataValue(espmRecord, 92);
+
+exports.getRaceStaminaRate = getRaceStaminaRate;
+
+const getAttr = (mp, pcFormId) => {
+  var _a, _b, _c, _d, _e, _f, _g;
+
+  const selfId = mp.getIdFromDesc(mp.get(pcFormId, 'baseDesc'));
+  const rec = mp.lookupEspmRecordById(selfId).record;
+  if (!rec) return exports.raceDefaultAttr;
+  const acbs = (_a = rec.fields.find(x => x.type === 'ACBS')) === null || _a === void 0 ? void 0 : _a.data;
+  const magickaOffset = acbs ? helper_1.uint16(acbs.buffer, 4) : 0;
+  const staminaOffset = acbs ? helper_1.uint16(acbs.buffer, 6) : 0;
+  const level = acbs ? helper_1.uint16(acbs.buffer, 8) : 0;
+  const healthOffset = acbs ? helper_1.uint16(acbs.buffer, 20) : 0;
+  const raceId = exports.getRaceId(mp, selfId, rec);
+  if (!raceId) return exports.raceDefaultAttr;
+  mp.set(pcFormId, 'race', raceId);
+  const race = mp.lookupEspmRecordById(raceId);
+  return {
+    health: ((_b = exports.getRaceHealth(race)) !== null && _b !== void 0 ? _b : 100) + healthOffset,
+    healrate: (_c = exports.getRaceHealRate(race)) !== null && _c !== void 0 ? _c : 0,
+    magicka: ((_d = exports.getRaceMagicka(race)) !== null && _d !== void 0 ? _d : 100) + magickaOffset,
+    magickarate: (_e = exports.getRaceMagickaRate(race)) !== null && _e !== void 0 ? _e : 0,
+    stamina: ((_f = exports.getRaceStamina(race)) !== null && _f !== void 0 ? _f : 100) + staminaOffset,
+    staminarate: (_g = exports.getRaceStaminaRate(race)) !== null && _g !== void 0 ? _g : 0
+  };
+};
+
+exports.getAttr = getAttr;
+},{"../utils/helper":"FxH1"}],"ZYrz":[function(require,module,exports) {
+"use strict";
+
+var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.throwOutById = void 0;
+
+const value_1 = require("./value");
+
+const perk_1 = require("./perk");
+
+const equip_1 = require("./equip");
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const eval_1 = require("../../properties/eval");
+
+const functionInfo_1 = require("../../utils/functionInfo");
+
+const game_1 = require("../game");
+
+const attributes_1 = require("../../properties/actor/actorValues/attributes");
+
+const objectReference_1 = require("../objectReference");
+
+const race_1 = require("../race");
+
+const isWeaponDrawn = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isWeaponDrawn');
+
+const isDead = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isDead');
+
+const setOutfit = (mp, self, args) => {
+  var _a, _b;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const outfit = papyrusArgs_1.getObject(args, 0);
+  const outfitId = mp.getIdFromDesc(outfit.desc);
+  const espmRecord = mp.lookupEspmRecordById(outfitId);
+  const inam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'INAM')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (inam) {
+    const dt = new DataView(inam.buffer);
+
+    for (let index = 0; index < inam.length; index += 4) {
+      const itemId = dt.getUint32(index, true);
+      const form = game_1.getForm(mp, null, [itemId]);
+
+      if (form) {
+        const countExist = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [form]);
+
+        if (countExist === 0) {
+          mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [form, 1, true]);
+        }
+
+        equip_1.unequipItem(mp, self, [form, false, true]);
+        equip_1.equipItem(mp, self, [form, false, true]);
+      }
+    }
+  }
+
+  const sleepOutfit = papyrusArgs_1.getBoolean(args, 1);
+
+  const func = (ctx, outfitId, sleepOutfit) => {
+    ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
+      if (!ctx.refr) return;
+      const ac = ctx.sp.Actor.from(ctx.refr);
+      if (!ac) return;
+      const outfit = ctx.sp.Game.getForm(outfitId);
+      if (!outfit) return;
+      ac.setOutfit(ctx.sp.Outfit.from(outfit), sleepOutfit);
+    }));
+  };
+
+  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
+    outfitId,
+    sleepOutfit
+  }), true);
+};
+
+const setRace = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const race = papyrusArgs_1.getObject(args, 0);
+  const raceId = mp.getIdFromDesc(race.desc);
+  mp.set(selfId, 'race', raceId);
+  const espmRecord = mp.lookupEspmRecordById(raceId);
+  const hp = race_1.getRaceHealth(espmRecord);
+  const stamina = race_1.getRaceStamina(espmRecord);
+  attributes_1.actorValues.set(selfId, 'health', 'base', hp);
+  attributes_1.actorValues.set(selfId, 'stamina', 'base', stamina);
+};
+
+const getRace = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const raceId = mp.get(selfId, 'race');
+  if (!raceId) return;
+  return game_1.getForm(mp, null, [raceId]);
+};
+
+const setWorldOrCell = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  const worldOrCell = papyrusArgs_1.getNumber(args, 1);
+  mp.set(selfId, 'worldOrCellDesc', mp.getDescFromId(worldOrCell));
+};
+
+const _throwOut = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  console.log('npc remove', selfId, objectReference_1.getDisplayName(mp, self));
+  exports.throwOutById(mp, selfId);
+};
+
+const throwOut = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+
+  _throwOut(mp, self);
+};
+
+const throwOutById = (mp, selfId) => {
+  mp.set(selfId, 'pos', [-99999, -99999, -99999]);
+  mp.set(selfId, 'isDead', true);
+
+  try {
+    attributes_1.actorValues.set(selfId, 'health', 'base', 0);
+  } catch (_a) {}
+
+  if (selfId >= 0xff000000) {
+    try {
+      mp.set(selfId, 'isDisabled', true);
+    } catch (_b) {}
+  }
+
+  mp.set(selfId, 'worldOrCellDesc', '0');
+};
+
+exports.throwOutById = throwOutById;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'Actor', 'AddPerk', (self, args) => perk_1.addPerk(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'RemovePerk', (self, args) => perk_1.removePerk(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'HasPerk', (self, args) => perk_1.hasPerk(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'IsEquipped', (self, args) => equip_1.isEquipped(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'EquipItem', (self, args) => equip_1.equipItem(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItem', (self, args) => equip_1.unequipItem(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipAll', self => equip_1.unequipAll(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemSlot', (self, args) => equip_1.unequipItemSlot(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedObject', (self, args) => equip_1.getEquippedObject(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedArmorInSlot', (self, args) => equip_1.getEquippedArmorInSlot(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', self => equip_1.getEquippedShield(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedWeapon', (self, args) => equip_1.getEquippedWeapon(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetActorValue', (self, args) => value_1.setActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetAV', (self, args) => value_1.setActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetActorValue', (self, args) => value_1.getActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetAV', (self, args) => value_1.getActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'DamageActorValue', (self, args) => value_1.damageActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'DamageAV', (self, args) => value_1.damageActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'RestoreActorValue', (self, args) => value_1.restoreActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'RestoreAV', (self, args) => value_1.restoreActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'ModActorValue', (self, args) => value_1.modActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'ModAV', (self, args) => value_1.modActorValue(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'IsWeaponDrawn', self => isWeaponDrawn(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'IsDead', self => isDead(mp, self));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetOutfit', (self, args) => setOutfit(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'SetRace', (self, args) => setRace(mp, self, args));
+  mp.registerPapyrusFunction('method', 'Actor', 'GetRace', self => getRace(mp, self));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornForms', (self, args) => equip_1.getWornForms(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornFormsId', (self, args) => equip_1.getWornFormsId(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'SetWorldOrCell', (self, args) => setWorldOrCell(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ActorEx', 'ThrowOut', (self, args) => throwOut(mp, self, args));
+};
+
+exports.register = register;
+},{"./value":"I1C7","./perk":"d40v","./equip":"lP44","../../utils/papyrusArgs":"oZY1","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../game":"WCBi","../../properties/actor/actorValues/attributes":"Klzq","../objectReference":"YRYD","../race":"AkNH"}],"jnne":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.overrideNotify = exports.throwOrInit = exports.logExecuteTime = exports.initAVFromRace = void 0;
+
+const __1 = require("../..");
+
+const actor_1 = require("../papyrus/actor");
+
+const objectReference_1 = require("../papyrus/objectReference");
+
+const race_1 = require("../papyrus/race");
+
+const attributes_1 = require("../properties/actor/actorValues/attributes");
+
+const eval_1 = require("../properties/eval");
+
+const functionInfo_1 = require("../utils/functionInfo");
+
+const initAVFromRace = (mp, pcFormId, serverOptions) => {
+  if (mp.get(pcFormId, 'isDead') !== undefined) return;
+
+  if (!mp.get(pcFormId, 'spawnTimeToRespawn')) {
+    const time = objectReference_1.getRespawnTimeById(mp, null, [pcFormId]);
+    mp.set(pcFormId, 'spawnTimeToRespawn', time);
+  }
+
+  const raceAttr = race_1.getAttr(mp, pcFormId);
+  attributes_1.actorValues.setDefaults(pcFormId, {
+    force: true
+  }, raceAttr);
+};
+
+exports.initAVFromRace = initAVFromRace;
+
+const logExecuteTime = (startTime, eventName) => {
+  if (Date.now() - startTime > 10) {
+    console.log('[PERFOMANCE]', `Event ${eventName}: `, Date.now() - startTime);
+  }
+};
+
+exports.logExecuteTime = logExecuteTime;
+
+const throwOrInit = (mp, id, serverOptions) => {
+  if (!serverOptions) serverOptions = __1.serverOptionProvider.getServerOptions();
+
+  if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0' && !serverOptions.isVanillaSpawn) {
+    actor_1.throwOutById(mp, id);
+  } else if (!mp.get(id, 'spawnTimeToRespawn')) {
+    try {
+      exports.initAVFromRace(mp, id, serverOptions);
+    } catch (err) {
+      console.log('[ERROR] initAVFromRace', err);
+    }
+  }
+};
+
+exports.throwOrInit = throwOrInit;
+
+const overrideNotify = (mp, formId) => {
+  const func = ctx => {
+    ctx.sp.once('update', () => {
+      const notify = msg => {
+        var _a;
+
+        const src = [];
+        const countRegex = /(\d+)/;
+        const countRemoveRegex = /[(].+[)]$/gm;
+        const typeRemoveRegex = /^[+-]\s/gm;
+
+        const getType = msg => {
+          if (msg.startsWith('+')) return 'additem';
+          if (msg.startsWith('-')) return 'deleteitem';
+          return 'default';
+        };
+
+        const type = getType(msg);
+        const match = (_a = msg.match(countRegex)) !== null && _a !== void 0 ? _a : [];
+        const count = +match[0];
+        const message = msg.replace(countRemoveRegex, '').replace(typeRemoveRegex, '');
+        const data = {
+          message,
+          type,
+          count
+        };
+        src.push(`
+				window.storage.dispatch({
+					type: 'COMMAND',
+					data: {
+						commandType: 'INFOBAR_ADD_MESSAGE',
+						alter: ['${JSON.stringify(data)}']
+					}
+				})
+				`);
+        ctx.sp.browser.executeJavaScript(src.join('\n'));
+      };
+
+      ctx.sp.Debug.notification = notify;
+
+      ctx.sp.printConsole = (...argumets) => {
+        const s = ctx.sp.storage._api_onPrintConsole;
+        if (s === null || s === void 0 ? void 0 : s.callback) s.callback(...argumets);
+      };
+    });
+  };
+
+  eval_1.evalClient(mp, formId, new functionInfo_1.FunctionInfo(func).getText({}), false, true);
+};
+
+exports.overrideNotify = overrideNotify;
+},{"../..":"QCba","../papyrus/actor":"ZYrz","../papyrus/objectReference":"YRYD","../papyrus/race":"AkNH","../properties/actor/actorValues/attributes":"Klzq","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"YRYD":[function(require,module,exports) {
+"use strict";
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function () {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.getItemCount = exports.disable = exports.removeItem = exports.addItem = exports.getRespawnTime = exports.getRespawnTimeById = exports.setOpen = exports.getLocationRef = exports.isInInterior = exports.getParentCell = exports.getWorldSpace = exports.getDisplayName = exports.placeAtMe = exports.placeObjectOnStatic = exports.getBaseObjectIdById = exports.getBaseObjectId = void 0;
+
+const papyrusArgs_1 = require("../../utils/papyrusArgs");
+
+const game_1 = require("../game");
+
+const position_1 = require("./position");
+
+const eval_1 = require("../../properties/eval");
+
+const functionInfo_1 = require("../../utils/functionInfo");
+
+const storage = __importStar(require("./storage"));
+
+const position = __importStar(require("./position"));
+
+const game = __importStar(require("../game"));
+
+const cell_1 = require("../cell");
+
+const helper_1 = require("../../utils/helper");
+
+const __1 = require("../../..");
+
+const shared_1 = require("../../events/shared");
+
+const setScale = (mp, self, args) => {
+  const scale = papyrusArgs_1.getNumber(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+};
+
+const removeAllItems = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const transferTo = args[0] ? papyrusArgs_1.getObject(args, 0) : null;
+  const keepOwnership = args[1] ? papyrusArgs_1.getBoolean(args, 1) : false;
+  const removeQuestItems = args[2] ? papyrusArgs_1.getBoolean(args, 2) : false;
+
+  if (transferTo) {
+    const transferToId = mp.getIdFromDesc(transferTo.desc);
+    const transferToInv = mp.get(transferToId, 'inventory');
+    const selfInv = mp.get(selfId, 'inventory');
+    selfInv.entries.forEach(item => {
+      const same = transferToInv.entries.find(x => x.baseId === item.baseId);
+
+      if (same) {
+        same.count += item.count;
+      } else {
+        transferToInv.entries.push(item);
+      }
+    });
+    mp.set(transferToId, 'inventory', transferToInv);
+  }
+
+  const emptyInv = {
+    entries: []
+  };
+  mp.set(selfId, 'inventory', emptyInv);
+};
+
+const getCurrentDestructionStage = (mp, self) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  return (_a = mp.get(selfId, 'currentDestructionStage')) !== null && _a !== void 0 ? _a : -1;
+};
+
+const _setCurrentDestructionStage = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const stage = papyrusArgs_1.getNumber(args, 0);
+  mp.set(selfId, 'currentDestructionStage', stage);
+};
+
+const setCurrentDestructionStage = (mp, self, args) => {
+  const ref = papyrusArgs_1.getObject(args, 0);
+  const stage = papyrusArgs_1.getNumber(args, 1);
+
+  _setCurrentDestructionStage(mp, ref, [stage]);
+};
+
+const damageObject = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const damage = papyrusArgs_1.getNumber(args, 0);
+
+  const func = (ctx, selfId, damage) => {
+    ctx.sp.once('update', () => {
+      const form = ctx.sp.Game.getFormEx(selfId);
+      if (!form) return;
+      const ref = ctx.sp.ObjectReference.from(form);
+      if (!ref) return;
+      ref.damageObject(damage);
+    });
+  };
+
+  eval_1.evalClient(mp, 0xff000000, new functionInfo_1.FunctionInfo(func).getText({
+    selfId,
+    damage
+  }));
+};
+
+const clearDestruction = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+
+  const func = (ctx, selfId) => {
+    ctx.sp.once('update', () => {
+      const form = ctx.sp.Game.getFormEx(selfId);
+      if (!form) return;
+      const ref = ctx.sp.ObjectReference.from(form);
+      if (!ref) return;
+      ref.clearDestruction();
+    });
+  };
+
+  eval_1.evalClient(mp, 0xff000000, new functionInfo_1.FunctionInfo(func).getText({
+    selfId
+  }), true);
+};
+
+const getContainerForms = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  return mp.get(selfId, 'inventory').entries.map(item => {
+    return game_1.getForm(mp, null, [item.baseId]);
+  }).filter(item => item);
+};
+
+const blockActivation = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const state = papyrusArgs_1.getBoolean(args, 0);
+  mp.set(selfId, 'blockActivationState', state);
+};
+
+const moveTo = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const target = papyrusArgs_1.getObject(args, 0);
+  const targetId = mp.getIdFromDesc(target.desc);
+  const xoffset = papyrusArgs_1.getNumber(args, 1);
+  const yoffset = papyrusArgs_1.getNumber(args, 2);
+  const zoffset = papyrusArgs_1.getNumber(args, 3);
+  const matchRotation = papyrusArgs_1.getBoolean(args, 4);
+  const [x, y, z] = position_1.getPosition(mp, target);
+  const w = mp.get(targetId, 'worldOrCellDesc');
+  console.log(selfId, [x + xoffset, y + yoffset, z + zoffset]);
+  mp.set(selfId, 'pos', [x + xoffset, y + yoffset, z + zoffset]);
+  mp.set(selfId, 'worldOrCellDesc', w);
+
+  if (matchRotation) {
+    mp.set(selfId, 'angle', position_1.getAngle(mp, target));
+  }
+};
+
+const _getBaseObject = (mp, selfId) => {
+  var _a, _b;
+
+  if (selfId >= 0xff000000) {
+    selfId = mp.getIdFromDesc(mp.get(selfId, 'baseDesc'));
+    return game_1.getForm(mp, null, [selfId]);
+  }
+
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  const name = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'NAME')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (name) {
+    const dataView = new DataView(name.buffer);
+    return game_1.getForm(mp, null, [dataView.getUint32(0, true)]);
+  }
+};
+
+const getBaseObject = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  return _getBaseObject(mp, selfId);
+};
+
+const getBaseObjectId = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
+
+  const base = _getBaseObject(mp, selfId);
+
+  if (base) {
+    return mp.getIdFromDesc(base.desc);
+  }
+};
+
+exports.getBaseObjectId = getBaseObjectId;
+
+const getBaseObjectIdById = (mp, self, args) => {
+  const selfId = papyrusArgs_1.getNumber(args, 0);
+
+  const base = _getBaseObject(mp, selfId);
+
+  if (base) {
+    return mp.getIdFromDesc(base.desc);
+  }
+};
+
+exports.getBaseObjectIdById = getBaseObjectIdById;
+
+const placeObjectOnStatic = (mp, self, args) => {
+  const placeId = papyrusArgs_1.getNumber(args, 0);
+  const whatSpawnId = papyrusArgs_1.getNumber(args, 1);
+  const sRefId = mp.place(whatSpawnId);
+  const sRef = game_1.getForm(mp, null, [sRefId]);
+  if (!sRef) return null;
+  const targetPoint = {
+    pos: position_1.getEspPosition(mp, placeId),
+    angle: [0, 0, 0],
+    worldOrCellDesc: mp.get(placeId, 'worldOrCellDesc')
+  };
+
+  for (const key of Object.keys(targetPoint)) {
+    const propName = key;
+    mp.set(sRefId, propName, targetPoint[propName]);
+  }
+
+  shared_1.throwOrInit(mp, sRefId);
+  return sRef;
+};
+
+exports.placeObjectOnStatic = placeObjectOnStatic;
+
+const _placeAtMe = (mp, self, args) => {
+  var _a;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const whatSpawnId = papyrusArgs_1.getNumber(args, 0);
+  const count = papyrusArgs_1.getNumber(args, 1);
+  const sRefResult = [];
+
+  for (let i = 0; i < count; i++) {
+    const sRefId = mp.place(whatSpawnId);
+    const sRef = game_1.getForm(mp, null, [sRefId]);
+    if (!sRef) return null;
+    sRefResult.push(sRef);
+    const targetPoint = {
+      pos: (_a = mp.get(selfId, 'pos')) !== null && _a !== void 0 ? _a : [0, 0, 0],
+      angle: [0, 0, 0],
+      worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc')
+    };
+
+    for (const key of Object.keys(targetPoint)) {
+      const propName = key;
+      mp.set(sRefId, propName, targetPoint[propName]);
+    }
+
+    shared_1.throwOrInit(mp, sRefId);
+  }
+
+  if (sRefResult.length === 0) return null;
+  return sRefResult[sRefResult.length - 1];
+};
+
+const placeAtMeObj = (mp, self, args) => {
+  const target = papyrusArgs_1.getObject(args, 0);
+  const targetId = mp.getIdFromDesc(target.desc);
+  const count = papyrusArgs_1.getNumber(args, 1);
+  return _placeAtMe(mp, self, [targetId, count]);
+};
+
+const placeAtMe = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  const targetId = papyrusArgs_1.getNumber(args, 1);
+  const count = papyrusArgs_1.getNumber(args, 2);
+  return _placeAtMe(mp, self, [targetId, count]);
+};
+
+exports.placeAtMe = placeAtMe;
+
+const getLinkedReferenceId = (mp, self, args) => {
+  var _a, _b;
+
+  const base = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
+  const espmRecord = mp.lookupEspmRecordById(base);
+  const links = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLKR')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!links) return [];
+  const dataView = new DataView(links.buffer);
+  const keywordsId = [];
+
+  for (let i = 4; i + 4 <= links.length; i += 8) {
+    keywordsId.push(dataView.getUint32(i, true));
+  }
+
+  return keywordsId;
+};
+
+const getLinkedReferenceIdByKeywordId = (mp, self, args) => {
+  var _a, _b;
+
+  const base = mp.getIdFromDesc(papyrusArgs_1.getObject(args, 0).desc);
+  const keywordId = papyrusArgs_1.getNumber(args, 1);
+  const espmRecord = mp.lookupEspmRecordById(base);
+  const links = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLKR')) === null || _b === void 0 ? void 0 : _b.data;
+
+  if (links) {
+    const dataView = new DataView(links.buffer);
+
+    for (let i = 0; i + 4 <= dataView.byteLength; i += 8) {
+      if (dataView.getUint32(i, true) == keywordId) {
+        return dataView.getUint32(i + 4, true);
+      }
+    }
+  }
+};
+
+const getDisplayName = (mp, self) => {
+  var _a, _b, _c, _d, _e, _f;
+
+  const selfId = mp.getIdFromDesc(self.desc);
+  const appearance = mp.get(selfId, 'appearance');
+
+  if (selfId >= 0xff000000) {
+    const f = game_1.getForm(mp, null, [mp.getIdFromDesc(mp.get(selfId, 'baseDesc'))]);
+    const n = f && mp.callPapyrusFunction('global', 'FormEx', 'GetName', null, [f]);
+    return (_b = (_a = mp.get(selfId, 'displayName')) !== null && _a !== void 0 ? _a : appearance === null || appearance === void 0 ? void 0 : appearance.name) !== null && _b !== void 0 ? _b : n;
+  }
+
+  const espmRecord = mp.lookupEspmRecordById(selfId);
+  const name = (_d = (_c = espmRecord.record) === null || _c === void 0 ? void 0 : _c.fields.find(x => x.type === 'NAME')) === null || _d === void 0 ? void 0 : _d.data;
+  if (!name) return '';
+  const baseId = helper_1.uint32(name.buffer, 0);
+  const f = game_1.getForm(mp, null, [baseId]);
+  const n = f && mp.callPapyrusFunction('global', 'FormEx', 'GetName', null, [f]);
+  return (_f = (_e = mp.get(selfId, 'displayName')) !== null && _e !== void 0 ? _e : appearance === null || appearance === void 0 ? void 0 : appearance.name) !== null && _f !== void 0 ? _f : n;
+};
+
+exports.getDisplayName = getDisplayName;
+
+const setDisplayName = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const name = papyrusArgs_1.getString(args, 0);
+  const force = papyrusArgs_1.getBoolean(args, 1);
+  mp.set(selfId, 'displayName', name);
+};
+
+const getWorldSpace = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const worldOrCellId = mp.getIdFromDesc(mp.get(selfId, 'worldOrCellDesc'));
+  return game.getForm(mp, null, [worldOrCellId]);
+};
+
+exports.getWorldSpace = getWorldSpace;
+
+const getParentCell = (mp, self) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const cellDesc = mp.get(selfId, 'cellDesc');
+  if (!cellDesc) return;
+  const cellId = mp.getIdFromDesc(cellDesc);
+  return game.getForm(mp, null, [cellId]);
+};
+
+exports.getParentCell = getParentCell;
+
+const isInInterior = (mp, self) => {
+  const cell = exports.getParentCell(mp, self);
+  if (!cell) return false;
+  return cell_1.isInterior(mp, cell);
+};
+
+exports.isInInterior = isInInterior;
+
+const getLocationRef = (mp, self, args) => {
+  var _a, _b;
+
+  const espmRecord = mp.lookupEspmRecordById(papyrusArgs_1.getNumber(args, 0));
+  const locationRef = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'XLRT')) === null || _b === void 0 ? void 0 : _b.data;
+  if (!locationRef) return;
+  const dataView = new DataView(locationRef.buffer);
+  const locationRefId = dataView.getUint32(0, true);
+  return locationRefId;
+};
+
+exports.getLocationRef = getLocationRef;
+
+const setOpen = (mp, self, args) => {
+  const selfId = mp.getIdFromDesc(self.desc);
+  const openState = papyrusArgs_1.getBoolean(args, 0);
+  console.log(selfId, openState);
+  mp.set(selfId, 'openState', openState);
+};
+
+exports.setOpen = setOpen;
+
+const getRespawnTimeById = (mp, selfNull, args) => {
+  var _a, _b, _c, _d;
+
+  const selfId = papyrusArgs_1.getNumber(args, 0);
+  const baseId = exports.getBaseObjectIdById(mp, null, [selfId]);
+
+  const spawnTimeById = __1.serverOptionProvider.getServerOptionsValue(['spawnTimeById']);
+
+  const timeById = Array.isArray(spawnTimeById) ? spawnTimeById.map(x => {
+    if (!x || typeof x !== 'string') return;
+    const xParse = x.split(':');
+    if (xParse.length != 2) return;
+    return {
+      id: +xParse[0],
+      time: +xParse[1]
+    };
+  }).filter(x => x) : [];
+  const refTime = (_a = timeById.find(x => x.id === selfId)) === null || _a === void 0 ? void 0 : _a.time;
+  const baseTime = (_b = timeById.find(x => x.id === baseId)) === null || _b === void 0 ? void 0 : _b.time;
+  return (_d = (_c = refTime !== null && refTime !== void 0 ? refTime : baseTime) !== null && _c !== void 0 ? _c : __1.serverOptionProvider.getServerOptionsValue([baseId === 7 ? 'SpawnTimeToRespawn' : 'SpawnTimeToRespawnNPC'])) !== null && _d !== void 0 ? _d : -1;
+};
+
+exports.getRespawnTimeById = getRespawnTimeById;
+
+const getRespawnTime = (mp, selfNull, args) => {
+  const self = papyrusArgs_1.getObject(args, 0);
+  const selfId = mp.getIdFromDesc(self.desc);
+  return exports.getRespawnTimeById(mp, null, [selfId]);
+};
+
+exports.getRespawnTime = getRespawnTime;
+
+const addItem = (mp, self, args) => {
+  const item = papyrusArgs_1.getObject(args, 0);
+  const count = papyrusArgs_1.getNumber(args, 1);
+  const silent = papyrusArgs_1.getBoolean(args, 2);
+  mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, count, silent]);
+};
+
+exports.addItem = addItem;
+
+const removeItem = (mp, self, args) => {
+  const item = papyrusArgs_1.getObject(args, 0);
+  const count = papyrusArgs_1.getNumber(args, 1);
+  const silent = papyrusArgs_1.getBoolean(args, 2);
+  const other = args[3] ? papyrusArgs_1.getObject(args, 3) : null;
+  mp.callPapyrusFunction('method', 'ObjectReference', 'RemoveItem', self, [item, count, silent, other]);
+};
+
+exports.removeItem = removeItem;
+
+const disable = (mp, self, args) => {
+  const abFadeOut = papyrusArgs_1.getBoolean(args, 0);
+  mp.callPapyrusFunction('method', 'ObjectReference', 'Disable', self, [abFadeOut]);
+};
+
+exports.disable = disable;
+
+const getItemCount = (mp, self, args) => {
+  const item = papyrusArgs_1.getObject(args, 0);
+  const itemCount = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [item]);
+  if (!itemCount) return 0;
+  return itemCount;
+};
+
+exports.getItemCount = getItemCount;
+
+const register = mp => {
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetScale', (self, args) => setScale(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'RemoveAllItems', (self, args) => removeAllItems(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDistance', (self, args) => position_1.getDistance(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'MoveTo', (self, args) => moveTo(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetContainerForms', self => getContainerForms(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetCurrentDestructionStage', self => getCurrentDestructionStage(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'DamageObject', (self, args) => damageObject(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'ClearDestruction', self => clearDestruction(mp, self));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetCurrentDestructionStage', (self, args) => setCurrentDestructionStage(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'BlockActivation', (self, args) => blockActivation(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetBaseObject', self => getBaseObject(mp, self));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetBaseObjectId', (self, args) => exports.getBaseObjectId(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceId', (self, args) => getLinkedReferenceId(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceIdByKeywordId', (self, args) => getLinkedReferenceIdByKeywordId(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceObjectOnStatic', (self, args) => exports.placeObjectOnStatic(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'PlaceAtMe', (self, args) => exports.placeAtMe(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetDisplayName', self => exports.getDisplayName(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetDisplayName', (self, args) => setDisplayName(mp, self, args));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetWorldSpace', self => exports.getWorldSpace(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'GetParentCell', self => exports.getParentCell(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'IsInInterior', self => exports.isInInterior(mp, self));
+  mp.registerPapyrusFunction('method', 'ObjectReference', 'SetOpen', (self, args) => exports.setOpen(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLocationRef', (self, args) => exports.getLocationRef(mp, self, args));
+  mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetRespawnTime', (self, args) => exports.getRespawnTime(mp, self, args));
+  storage.register(mp);
+  position.register(mp);
+};
+
+exports.register = register;
+},{"../../utils/papyrusArgs":"oZY1","../game":"WCBi","./position":"wmVe","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","./storage":"P8j4","../cell":"WIJZ","../../utils/helper":"FxH1","../../..":"QCba","../../events/shared":"jnne"}],"A7KX":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.showNick = exports.showNicknames = exports.sendPlayerPos = void 0;
+
+const game_1 = require("../papyrus/game");
+
+const objectReference_1 = require("../papyrus/objectReference");
+
+const eval_1 = require("../properties/eval");
+
+const functionInfo_1 = require("../utils/functionInfo");
+
+const sendPlayerPos = ctx => {
+  ctx.sp.on('update', () => {
+    const player = ctx.sp.Game.getPlayer();
+    if (!player) return;
+    const [x, y, z] = [player.getPositionX(), player.getPositionY(), player.getPositionZ()];
+    const [xF, yF, zF] = [x.toFixed(), y.toFixed(), z.toFixed()];
+    if (xF === ctx.state.lastPosX && yF === ctx.state.lastPosY && zF === ctx.state.lastPosZ) return;
+    let src = [];
+    src.push(`window.playerPos = ${JSON.stringify([x, y, z])}`);
+
+    try {
+      ctx.sp.browser.executeJavaScript(src.join('\n'));
+    } catch (error) {}
+
+    ctx.state.lastPosX = xF;
+    ctx.state.lastPosY = yF;
+    ctx.state.lastPosZ = zF;
+  });
+};
+
+exports.sendPlayerPos = sendPlayerPos;
+
+const showNicknames = ctx => {
+  ctx.sp.on('update', () => {
+    const ac1 = ctx.sp.Actor.from(ctx.sp.Game.getFormEx(85837870));
+    if (!ac1) return;
+    const [x, y, z] = [ac1.getPositionX(), ac1.getPositionY(), ac1.getPositionZ()];
+    const [[x1, y1, z1]] = ctx.sp.worldPointToScreenPoint([x, y, z]);
+    const [xF, yF, zF] = [x1.toFixed(4), y1.toFixed(4), z1.toFixed(4)];
+    if (xF === ctx.state.lastScreenPosX && yF === ctx.state.lastScreenPosY) return;
+    ctx.sp.printConsole(x, y, z);
+    ctx.sp.printConsole(x1, y1, z1);
+    ctx.sp.printConsole(xF, yF, zF);
+    ctx.sp.printConsole({
+      text: ac1.getDisplayName(),
+      posX: x1 * 100,
+      posY: y1 * 100
+    });
+    const nick = [{
+      text: ac1.getDisplayName(),
+      posX: x1 < 0 ? 0 : (x1 + 0) * 100,
+      posY: y1 < 0 ? 0 : y1 * 100
+    }];
+    let src = [];
+    src.push(`
+      window.storage.dispatch({
+        type: 'COMMAND',
+        data: {
+          commandType: 'NICKNAMES_UPDATE',
+          alter: ['${JSON.stringify(nick)}']
+        }
+      })
+    `);
+
+    try {
+      ctx.sp.browser.executeJavaScript(src.join('\n'));
+    } catch (error) {}
+
+    ctx.state.lastScreenPosX = xF;
+    ctx.state.lastScreenPosY = yF;
+  });
+};
+
+exports.showNicknames = showNicknames;
+
+const showNick = (mp, playerId, neighbors) => {
+  const func2 = (ctx, itemsString) => {
+    (() => {
+      try {
+        const items = JSON.parse(itemsString);
+        const nicks = items.map(i => {
+          const [[x, y, z]] = ctx.sp.worldPointToScreenPoint(i.pos);
+          const ratio = (1 - z) * 20;
+          return {
+            text: i.text,
+            posX: x * 100,
+            posY: y * 100,
+            posZ: z * 100,
+            ratio
+          };
+        }).filter(x => x.posX >= 0 && x.posX <= 100 && x.posY >= 0 && x.posY <= 100 && x.posZ >= 0 && x.posZ <= 100 && x.ratio >= 0.25 && x.ratio <= 0.9);
+        const src = [];
+        src.push(`
+        window.storage.dispatch({
+          type: 'COMMAND',
+          data: {
+            commandType: 'NICKNAMES_UPDATE',
+            alter: ['${JSON.stringify(nicks)}']
+          }
+        })
+        `);
+        ctx.sp.browser.executeJavaScript(src.join('\n'));
+      } catch (err) {
+        ctx.sp.printConsole('error', err);
+      }
+    })();
+  };
+
+  const items = neighbors.filter(n => mp.get(n, 'worldOrCellDesc') !== '0').map(n => {
+    const pos = mp.get(n, 'pos');
+    const nForm = game_1.getForm(mp, null, [n]);
+    const text = nForm && objectReference_1.getDisplayName(mp, nForm);
+    return {
+      pos,
+      text
+    };
+  });
+  eval_1.evalClient(mp, playerId, new functionInfo_1.FunctionInfo(func2).getText({
+    itemsString: JSON.stringify(items)
+  }), false, true);
+};
+
+exports.showNick = showNick;
+},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/eval":"mJTA","../utils/functionInfo":"fC7F"}],"eVF9":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = void 0;
+
+const __1 = require("../..");
+
+const functionInfo_1 = require("../utils/functionInfo");
+
+const empty_functions_1 = require("./empty-functions");
+
+const shared_1 = require("./shared");
+
+const register = mp => {
+  mp.makeEventSource('_empty01', new functionInfo_1.FunctionInfo(empty_functions_1.sendPlayerPos).body);
+
+  if (mp.timer) {
+    clearTimeout(mp.timer);
+  }
+
+  const serverOptions = __1.serverOptionProvider.getServerOptions();
+
+  if (serverOptions.enableInterval) {
+    const interval = () => {
+      mp.timer = setTimeout(() => {
+        mp.get(0, 'onlinePlayers').forEach(id => {
+          const neighbors = mp.get(id, 'neighbors').filter(n => mp.get(n, 'type') === 'MpActor');
+          neighbors.forEach(n => {
+            shared_1.throwOrInit(mp, n, serverOptions);
+          });
+        });
+        interval();
+      }, 200);
+    };
+
+    interval();
+  }
+};
+
+exports.register = register;
+},{"../..":"QCba","../utils/functionInfo":"fC7F","./empty-functions":"A7KX","./shared":"jnne"}],"dvBS":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = exports.getFlags = void 0;
+
+const papyrusArgs_1 = require("../utils/papyrusArgs");
+
+const MGEF_FLGS = {
+  Hostile: 0x00000001,
+  Recover: 0x00000002,
+  Detrimental: 0x00000004,
+  'Snap to Navmesh': 0x00000008,
+  'No Hit Event': 0x00000010,
+  'Dispel Effects (toggle keywords to dispel type?)': 0x00000100,
+  'No Duration': 0x00000200,
+  'No Magnitude': 0x00000400,
+  'No Area': 0x00000800,
+  'FX Persist': 0x00001000,
+  'Gory Visual': 0x00004000,
+  'Hide in UI': 0x00008000,
+  'No Recast': 0x00020000,
+  'Power Affects Magnitude': 0x00200000,
+  'Power Affects Duration': 0x00400000,
+  Painless: 0x04000000,
+  'No Hit Effect': 0x08000000,
+  'No Death Dispel': 0x10000000
+};
+
+const getFlags = (mp, self, args) => {
+  var _a, _b;
+
+  const id = papyrusArgs_1.getNumber(args, 0);
+  const espmRecord = mp.lookupEspmRecordById(id);
+  const d = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
+  const flgs = [];
+
+  if (d) {
+    const dv = new DataView(d.buffer);
+    let fl = dv.getUint32(0, true);
+
+    for (const k of Object.keys(MGEF_FLGS).reverse()) {
+      if (fl - MGEF_FLGS[k] >= 0) {
+        flgs.push(MGEF_FLGS[k]);
+        fl = fl - MGEF_FLGS[k];
+      }
+    }
+  }
+
+  return flgs;
+};
+
+exports.getFlags = getFlags;
+
+const register = mp => {};
+
+exports.register = register;
+},{"../utils/papyrusArgs":"oZY1"}],"sC2V":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3748,379 +4344,191 @@ exports.getPerkEffectData = getPerkEffectData;
 const register = mp => {};
 
 exports.register = register;
-},{"../../utils/helper":"FxH1","./condition":"lgGM","./type":"x9IM"}],"AkNH":[function(require,module,exports) {
+},{"../../utils/helper":"FxH1","./condition":"lgGM","./type":"x9IM"}],"e1XF":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getRaceStaminaRate = exports.getRaceStamina = exports.getRaceMagickaRate = exports.getRaceMagicka = exports.getRaceHealRate = exports.getRaceHealth = exports.getRaceUnarmedDamage = exports.getRaceId = void 0;
+exports.register = void 0;
+
+const __1 = require("../..");
+
+const equip_1 = require("../papyrus/actor/equip");
+
+const form_1 = require("../papyrus/form");
+
+const perk_1 = require("../papyrus/perk");
+
+const type_1 = require("../papyrus/perk/type");
+
+const race_1 = require("../papyrus/race");
+
+const type_2 = require("../papyrus/weapon/type");
+
+const functionInfo_1 = require("../utils/functionInfo");
 
 const helper_1 = require("../utils/helper");
 
-const getRaceId = (mp, pcFormId, rec) => {
-  var _a, _b;
+const functions_1 = require("./functions");
 
-  if (pcFormId >= 0xff000000) {
-    try {
-      const appearance = mp.get(pcFormId, 'appearance');
-      return (_a = appearance === null || appearance === void 0 ? void 0 : appearance.raceId) !== null && _a !== void 0 ? _a : 0;
-    } catch (error) {}
-  }
+const attributes_1 = require("../properties/actor/actorValues/attributes");
 
-  const rnam = (_b = rec.fields.find(x => x.type === 'RNAM')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!rnam) return;
-  return helper_1.uint32(rnam.buffer, 0);
-};
-
-exports.getRaceId = getRaceId;
-
-const getRaceFloat32DataValue = (espmRecord, offset) => {
-  var _a, _b;
-
-  const raceData = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'DATA')) === null || _b === void 0 ? void 0 : _b.data;
-  if (!raceData) return;
-  return helper_1.float32(raceData.buffer, offset);
-};
-
-const getRaceUnarmedDamage = espmRecord => getRaceFloat32DataValue(espmRecord, 96);
-
-exports.getRaceUnarmedDamage = getRaceUnarmedDamage;
-
-const getRaceHealth = espmRecord => getRaceFloat32DataValue(espmRecord, 36);
-
-exports.getRaceHealth = getRaceHealth;
-
-const getRaceHealRate = espmRecord => getRaceFloat32DataValue(espmRecord, 84);
-
-exports.getRaceHealRate = getRaceHealRate;
-
-const getRaceMagicka = espmRecord => getRaceFloat32DataValue(espmRecord, 40);
-
-exports.getRaceMagicka = getRaceMagicka;
-
-const getRaceMagickaRate = espmRecord => getRaceFloat32DataValue(espmRecord, 88);
-
-exports.getRaceMagickaRate = getRaceMagickaRate;
-
-const getRaceStamina = espmRecord => getRaceFloat32DataValue(espmRecord, 44);
-
-exports.getRaceStamina = getRaceStamina;
-
-const getRaceStaminaRate = espmRecord => getRaceFloat32DataValue(espmRecord, 92);
-
-exports.getRaceStaminaRate = getRaceStaminaRate;
-},{"../utils/helper":"FxH1"}],"I1C7":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addSkillExperience = exports.restoreActorValue = exports.damageActorValue = exports.getActorValue = exports.setActorValue = void 0;
-
-const attributes_1 = require("../../properties/actor/actorValues/attributes");
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const setActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  const avValue = papyrusArgs_1.getNumber(args, 1);
-  attributes_1.actorValues.set(selfId, avName, 'base', avValue);
-};
-
-exports.setActorValue = setActorValue;
-
-const getActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  return attributes_1.actorValues.getCurrent(selfId, avName);
-};
-
-exports.getActorValue = getActorValue;
-
-const damageActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  const avValue = papyrusArgs_1.getNumber(args, 1);
-  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
-  attributes_1.actorValues.set(selfId, avName, 'damage', damage - avValue);
-};
-
-exports.damageActorValue = damageActorValue;
-
-const restoreActorValue = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const avName = papyrusArgs_1.getString(args, 0);
-  const avValue = papyrusArgs_1.getNumber(args, 1);
-  const damage = attributes_1.actorValues.get(selfId, avName, 'damage');
-  attributes_1.actorValues.set(selfId, avName, 'damage', damage + avValue > 0 ? 0 : damage + avValue);
-};
-
-exports.restoreActorValue = restoreActorValue;
-
-const addSkillExperience = (mp, self, args) => {
-  const ac = papyrusArgs_1.getObject(args, 0);
-  const acId = mp.getIdFromDesc(ac.desc);
-  const avName = papyrusArgs_1.getString(args, 1);
-  const exp = papyrusArgs_1.getNumber(args, 2);
-};
-
-exports.addSkillExperience = addSkillExperience;
-},{"../../properties/actor/actorValues/attributes":"Klzq","../../utils/papyrusArgs":"oZY1"}],"d40v":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.removePerk = exports.addPerk = exports.hasPerk = void 0;
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const getPerkList = (mp, selfId) => {
-  var _a;
-
-  return (_a = mp.get(selfId, 'perk')) !== null && _a !== void 0 ? _a : [];
-};
-
-const setPerkList = (mp, selfId, perkList) => {
-  mp.set(selfId, 'perk', perkList);
-};
-
-const hasPerk = (mp, self, args) => {
-  const perk = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const perkId = mp.getIdFromDesc(perk.desc);
-  return getPerkList(mp, selfId).includes(perkId);
-};
-
-exports.hasPerk = hasPerk;
-
-const addPerk = (mp, self, args) => {
-  const perk = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const perkId = mp.getIdFromDesc(perk.desc);
-  if (exports.hasPerk(mp, self, args)) return;
-  const perkList = getPerkList(mp, selfId);
-  perkList.push(perkId);
-  setPerkList(mp, selfId, perkList);
-};
-
-exports.addPerk = addPerk;
-
-const removePerk = (mp, self, args) => {
-  const perk = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const perkId = mp.getIdFromDesc(perk.desc);
-  if (!exports.hasPerk(mp, self, args)) return;
-  const perkList = getPerkList(mp, selfId);
-  perkList.push(perkId);
-  setPerkList(mp, selfId, perkList.filter(id => id !== perkId));
-};
-
-exports.removePerk = removePerk;
-},{"../../utils/papyrusArgs":"oZY1"}],"ZYrz":[function(require,module,exports) {
-"use strict";
-
-var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = exports.throwOutById = void 0;
-
-const value_1 = require("./value");
-
-const perk_1 = require("./perk");
-
-const equip_1 = require("./equip");
-
-const papyrusArgs_1 = require("../../utils/papyrusArgs");
-
-const eval_1 = require("../../properties/eval");
-
-const functionInfo_1 = require("../../utils/functionInfo");
-
-const game_1 = require("../game");
-
-const attributes_1 = require("../../properties/actor/actorValues/attributes");
-
-const objectReference_1 = require("../objectReference");
-
-const race_1 = require("../race");
-
-const isWeaponDrawn = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isWeaponDrawn');
-
-const isDead = (mp, self) => !!mp.get(mp.getIdFromDesc(self.desc), 'isDead');
-
-const setOutfit = (mp, self, args) => {
-  var _a, _b;
-
-  const selfId = mp.getIdFromDesc(self.desc);
-  const outfit = papyrusArgs_1.getObject(args, 0);
-  const outfitId = mp.getIdFromDesc(outfit.desc);
-  const espmRecord = mp.lookupEspmRecordById(outfitId);
-  const inam = (_b = (_a = espmRecord.record) === null || _a === void 0 ? void 0 : _a.fields.find(x => x.type === 'INAM')) === null || _b === void 0 ? void 0 : _b.data;
-
-  if (inam) {
-    const dt = new DataView(inam.buffer);
-
-    for (let index = 0; index < inam.length; index += 4) {
-      const itemId = dt.getUint32(index, true);
-      const form = game_1.getForm(mp, null, [itemId]);
-
-      if (form) {
-        const countExist = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [form]);
-
-        if (countExist === 0) {
-          mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [form, 1, true]);
-        }
-
-        equip_1.unequipItem(mp, self, [form, false, true]);
-        equip_1.equipItem(mp, self, [form, false, true]);
-      }
-    }
-  }
-
-  const sleepOutfit = papyrusArgs_1.getBoolean(args, 1);
-
-  const func = (ctx, outfitId, sleepOutfit) => {
-    ctx.sp.once('update', () => __awaiter(void 0, void 0, void 0, function* () {
-      if (!ctx.refr) return;
-      const ac = ctx.sp.Actor.from(ctx.refr);
-      if (!ac) return;
-      const outfit = ctx.sp.Game.getForm(outfitId);
-      if (!outfit) return;
-      ac.setOutfit(ctx.sp.Outfit.from(outfit), sleepOutfit);
-    }));
-  };
-
-  eval_1.evalClient(mp, selfId, new functionInfo_1.FunctionInfo(func).getText({
-    outfitId,
-    sleepOutfit
-  }), true);
-};
-
-const setRace = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const race = papyrusArgs_1.getObject(args, 0);
-  const raceId = mp.getIdFromDesc(race.desc);
-  mp.set(selfId, 'race', raceId);
-  const espmRecord = mp.lookupEspmRecordById(raceId);
-  const hp = race_1.getRaceHealth(espmRecord);
-  const stamina = race_1.getRaceStamina(espmRecord);
-  attributes_1.actorValues.set(selfId, 'health', 'base', hp);
-  attributes_1.actorValues.set(selfId, 'stamina', 'base', stamina);
-};
-
-const getRace = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const raceId = mp.get(selfId, 'race');
-  if (!raceId) return;
-  return game_1.getForm(mp, null, [raceId]);
-};
-
-const setWorldOrCell = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
-  const selfId = mp.getIdFromDesc(self.desc);
-  const worldOrCell = papyrusArgs_1.getNumber(args, 1);
-  mp.set(selfId, 'worldOrCellDesc', mp.getDescFromId(worldOrCell));
-};
-
-const _throwOut = (mp, self) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  console.log('npc remove', selfId, objectReference_1.getDisplayName(mp, self));
-  exports.throwOutById(mp, selfId);
-};
-
-const throwOut = (mp, selfNull, args) => {
-  const self = papyrusArgs_1.getObject(args, 0);
-
-  _throwOut(mp, self);
-};
-
-const throwOutById = (mp, selfId) => {
-  mp.set(selfId, 'pos', [-99999, -99999, -99999]);
-  mp.set(selfId, 'isDead', true);
-
-  try {
-    attributes_1.actorValues.set(selfId, 'health', 'base', 0);
-  } catch (_a) {}
-
-  try {
-    mp.set(selfId, 'isDisabled', true);
-  } catch (_b) {}
-
-  mp.set(selfId, 'worldOrCellDesc', '0');
-};
-
-exports.throwOutById = throwOutById;
+const shared_1 = require("./shared");
 
 const register = mp => {
-  mp.registerPapyrusFunction('method', 'Actor', 'AddPerk', (self, args) => perk_1.addPerk(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'RemovePerk', (self, args) => perk_1.removePerk(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'HasPerk', (self, args) => perk_1.hasPerk(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'IsEquipped', (self, args) => equip_1.isEquipped(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'EquipItem', (self, args) => equip_1.equipItem(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItem', (self, args) => equip_1.unequipItem(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipAll', self => equip_1.unequipAll(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'UnequipItemSlot', (self, args) => equip_1.unequipItemSlot(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedObject', (self, args) => equip_1.getEquippedObject(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedArmorInSlot', (self, args) => equip_1.getEquippedArmorInSlot(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedShield', self => equip_1.getEquippedShield(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetEquippedWeapon', (self, args) => equip_1.getEquippedWeapon(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetActorValue', (self, args) => value_1.setActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetAV', (self, args) => value_1.setActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetActorValue', (self, args) => value_1.getActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetAV', (self, args) => value_1.getActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'DamageActorValue', (self, args) => value_1.damageActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'DamageAV', (self, args) => value_1.damageActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'RestoreActorValue', (self, args) => value_1.restoreActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'RestoreAV', (self, args) => value_1.restoreActorValue(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'IsWeaponDrawn', self => isWeaponDrawn(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'IsDead', self => isDead(mp, self));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetOutfit', (self, args) => setOutfit(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'SetRace', (self, args) => setRace(mp, self, args));
-  mp.registerPapyrusFunction('method', 'Actor', 'GetRace', self => getRace(mp, self));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'AddSkillExperience', (self, args) => value_1.addSkillExperience(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornForms', (self, args) => equip_1.getWornForms(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornFormsId', (self, args) => equip_1.getWornFormsId(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'SetWorldOrCell', (self, args) => setWorldOrCell(mp, self, args));
-  mp.registerPapyrusFunction('global', 'ActorEx', 'ThrowOut', (self, args) => throwOut(mp, self, args));
+  mp.makeEventSource('_onHit', new functionInfo_1.FunctionInfo(functions_1.onHit).getText({
+    isHitStatic: false
+  }));
+
+  mp['_onHit'] = (pcFormId, event) => {
+    const start = Date.now();
+    if (!pcFormId) return console.log('Plz reconnect');
+
+    if (event.target === 0x14) {
+      event.target = pcFormId;
+    }
+
+    if (event.agressor === 0x14) {
+      event.agressor = pcFormId;
+    }
+
+    const target = {
+      type: 'form',
+      desc: mp.getDescFromId(event.target)
+    };
+    const agressor = {
+      type: 'form',
+      desc: mp.getDescFromId(event.agressor)
+    };
+    const isDead = mp.get(event.target, 'isDead');
+
+    if (isDead) {
+      mp.callPapyrusFunction('global', 'GM_Main', '_onHit', null, [target, agressor, event.isPowerAttack, event.isSneakAttack, event.isBashAttack, event.isHitBlocked]);
+      return shared_1.logExecuteTime(start, '_onHit');
+    }
+
+    const {
+      HitDamageMod,
+      isPowerAttackMult,
+      isBashAttackMult
+    } = __1.serverOptionProvider.getServerOptions();
+
+    let damageMod = HitDamageMod;
+    const raceId = mp.get(pcFormId, 'race');
+
+    if (raceId) {
+      const espmRecord = mp.lookupEspmRecordById(raceId);
+      const unarmedDamage = race_1.getRaceUnarmedDamage(espmRecord);
+      unarmedDamage && (damageMod = -unarmedDamage);
+    }
+
+    const eq = equip_1.getEquipment(mp, event.agressor);
+    const eq1 = equip_1.getEquipment(mp, event.target);
+    const weap = eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.type === 'WEAP');
+    const arm = eq1 === null || eq1 === void 0 ? void 0 : eq1.inv.entries.filter(x => x.type === 'ARMO');
+    let isHammer = false;
+
+    if (weap && weap.length > 0) {
+      const baseDmg = weap[0].baseDamage;
+      baseDmg && (damageMod = baseDmg * -1);
+      const type = weap[0].weaponType;
+      if (type === type_2.WeaponType.BattleaxesANDWarhammers || type === type_2.WeaponType.Maces) isHammer = true;
+    }
+
+    if (arm && arm.length > 0) {
+      arm.forEach(x => {
+        if (!x.baseArmor) return;
+        if (isHammer) x.baseArmor * 0.75;
+        const percent = 1 - x.baseArmor / 1000;
+        damageMod = damageMod * percent;
+      });
+    }
+
+    if (event.isPowerAttack) {
+      damageMod = damageMod * isPowerAttackMult;
+    }
+
+    if (event.isBashAttack) {
+      damageMod = damageMod * isBashAttackMult;
+    }
+
+    const calcPerks = false;
+
+    if (calcPerks) {
+      const targetId = form_1.getSelfId(mp, agressor.desc);
+      const rec = mp.lookupEspmRecordById(targetId).record;
+      const prkr = rec === null || rec === void 0 ? void 0 : rec.fields.filter(x => x.type === 'PRKR').map(x => x.data);
+
+      try {
+        prkr === null || prkr === void 0 ? void 0 : prkr.forEach(p => {
+          const perkId = helper_1.uint32(p.buffer, 0);
+          const effectData = perk_1.getPerkEffectData(mp, perkId);
+          effectData === null || effectData === void 0 ? void 0 : effectData.forEach(eff => {
+            if (!eff) return;
+
+            if (eff.effectType === 0x23 && eff.functionType === type_1.EffectFunctionType.MultiplyValue) {
+              if (!eff.conditionFunction || !weap || weap.length === 0) return;
+              const conditionResult = eff.conditionFunction(weap[0].baseId);
+              if (!conditionResult) return;
+
+              if (eff.effectValue) {
+                damageMod *= eff.effectValue;
+              }
+            }
+          });
+        });
+      } catch (error) {
+        console.log('Perk effect ERROR', error);
+      }
+    }
+
+    if (event.isHitBlocked) {
+      damageMod *= 0.5;
+    }
+
+    console.log('[HIT]', damageMod);
+    const avName = 'health';
+    const damage = attributes_1.actorValues.get(event.target, avName, 'damage');
+    const newDamageModValue = damage + damageMod;
+    attributes_1.actorValues.set(event.target, avName, 'damage', newDamageModValue);
+    const wouldDie = attributes_1.actorValues.getMaximum(event.target, avName) + newDamageModValue <= 0;
+
+    if (wouldDie && !isDead) {
+      mp.onDeath && mp.onDeath(event.target);
+    }
+
+    mp.callPapyrusFunction('global', 'GM_Main', '_onHit', null, [target, agressor, event.isPowerAttack, event.isSneakAttack, event.isBashAttack, event.isHitBlocked]);
+    shared_1.logExecuteTime(start, '_onHit');
+  };
 };
 
 exports.register = register;
-},{"./value":"I1C7","./perk":"d40v","./equip":"lP44","../../utils/papyrusArgs":"oZY1","../../properties/eval":"mJTA","../../utils/functionInfo":"fC7F","../game":"WCBi","../../properties/actor/actorValues/attributes":"Klzq","../objectReference":"YRYD","../race":"AkNH"}],"VJVi":[function(require,module,exports) {
+},{"../..":"QCba","../papyrus/actor/equip":"lP44","../papyrus/form":"mnzc","../papyrus/perk":"Fep9","../papyrus/perk/type":"x9IM","../papyrus/race":"AkNH","../papyrus/weapon/type":"Xpf2","../utils/functionInfo":"fC7F","../utils/helper":"FxH1","./functions":"dwII","../properties/actor/actorValues/attributes":"Klzq","./shared":"jnne"}],"YOwo":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.handleServerMsg = void 0;
+
+const handleServerMsg = (mp, pcFormId, data) => {
+  switch (data.action) {
+    case 'disconnect':
+      console.log(pcFormId.toString(16), 'disconnect');
+      const ac = {
+        type: 'form',
+        desc: mp.getDescFromId(pcFormId)
+      };
+      break;
+
+    default:
+      break;
+  }
+};
+
+exports.handleServerMsg = handleServerMsg;
+},{}],"VJVi":[function(require,module,exports) {
 "use strict";
 
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
@@ -4158,11 +4566,9 @@ var __importStar = this && this.__importStar || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.register = exports.throwOrInit = exports.initAVFromRace = void 0;
+exports.register = void 0;
 
 const game_1 = require("../papyrus/game");
-
-const objectReference_1 = require("../papyrus/objectReference");
 
 const attributes_1 = require("../properties/actor/actorValues/attributes");
 
@@ -4178,162 +4584,53 @@ const equip_1 = require("../papyrus/actor/equip");
 
 const position = __importStar(require("../papyrus/objectReference/position"));
 
-const type_1 = require("../papyrus/weapon/type");
-
-const form_1 = require("../papyrus/form");
-
-const helper_1 = require("../utils/helper");
-
-const eval_1 = require("../properties/eval");
-
-const perk_1 = require("../papyrus/perk");
-
-const type_2 = require("../papyrus/perk/type");
-
 const __1 = require("../..");
 
-const race_1 = require("../papyrus/race");
+const shared_1 = require("./shared");
 
-const actor_1 = require("../papyrus/actor");
+const _onHit = __importStar(require("./_onHit"));
 
-const getAttrFromRace = (mp, pcFormId) => {
-  var _a, _b, _c, _d, _e, _f, _g;
+const server_msg_1 = require("./server-msg");
 
-  const defaultReturn = {
-    health: 100,
-    healrate: 0,
-    magicka: 100,
-    magickarate: 0,
-    stamina: 100,
-    staminarate: 0
-  };
-  const selfId = mp.getIdFromDesc(mp.get(pcFormId, 'baseDesc'));
-  const rec = mp.lookupEspmRecordById(selfId).record;
-  if (!rec) return defaultReturn;
-  const acbs = (_a = rec.fields.find(x => x.type === 'ACBS')) === null || _a === void 0 ? void 0 : _a.data;
-  const magickaOffset = acbs ? helper_1.uint16(acbs.buffer, 4) : 0;
-  const staminaOffset = acbs ? helper_1.uint16(acbs.buffer, 6) : 0;
-  const level = acbs ? helper_1.uint16(acbs.buffer, 8) : 0;
-  const healthOffset = acbs ? helper_1.uint16(acbs.buffer, 20) : 0;
-  const raceId = race_1.getRaceId(mp, selfId, rec);
-  if (!raceId) return defaultReturn;
-  mp.set(pcFormId, 'race', raceId);
-  const espmRecord = mp.lookupEspmRecordById(raceId);
-  return {
-    health: ((_b = race_1.getRaceHealth(espmRecord)) !== null && _b !== void 0 ? _b : 100) + healthOffset,
-    healrate: (_c = race_1.getRaceHealRate(espmRecord)) !== null && _c !== void 0 ? _c : 0,
-    magicka: ((_d = race_1.getRaceMagicka(espmRecord)) !== null && _d !== void 0 ? _d : 100) + magickaOffset,
-    magickarate: (_e = race_1.getRaceMagickaRate(espmRecord)) !== null && _e !== void 0 ? _e : 0,
-    stamina: ((_f = race_1.getRaceStamina(espmRecord)) !== null && _f !== void 0 ? _f : 100) + staminaOffset,
-    staminarate: (_g = race_1.getRaceStaminaRate(espmRecord)) !== null && _g !== void 0 ? _g : 0
-  };
-};
-
-const initAVFromRace = (mp, pcFormId) => {
-  if (mp.get(pcFormId, 'isDead') !== undefined) return;
-
-  if (!mp.get(pcFormId, 'spawnTimeToRespawn')) {
-    const time = objectReference_1.getRespawnTimeById(mp, null, [pcFormId]);
-    mp.set(pcFormId, 'spawnTimeToRespawn', time);
-  }
-
-  const raceAttr = getAttrFromRace(mp, pcFormId);
-  attributes_1.actorValues.setDefaults(pcFormId, {
-    force: true
-  }, raceAttr);
-};
-
-exports.initAVFromRace = initAVFromRace;
-
-const logExecuteTime = (startTime, eventName) => {
-  if (Date.now() - startTime > 10) {
-    console.log('[PERFOMANCE]', `Event ${eventName}: `, Date.now() - startTime);
-  }
-};
-
-const throwOrInit = (mp, id, serverOptions) => {
-  if (!serverOptions) serverOptions = __1.serverOptionProvider.getServerOptions();
-
-  if (id < 0x5000000 && mp.get(id, 'worldOrCellDesc') !== '0' && !serverOptions.isVanillaSpawn) {
-    actor_1.throwOutById(mp, id);
-  } else if (!mp.get(id, 'spawnTimeToRespawn')) {
-    try {
-      exports.initAVFromRace(mp, id);
-    } catch (err) {
-      console.log('[ERROR] initAVFromRace', err);
-    }
-  }
-};
-
-exports.throwOrInit = throwOrInit;
+const loadedPc = {};
 
 const register = mp => {
+  mp.makeEventSource('_onLoadGame', new functionInfo_1.FunctionInfo(functions_1.onLoad).body);
+
   mp['_onLoadGame'] = pcFormId => {
     const start = Date.now();
-    console.log('_onLoadGame', pcFormId);
+
+    if (start - loadedPc.pcFormId < 1000) {
+      console.debug(`${pcFormId.toString(16)} has already been loaded`);
+      return;
+    }
+
+    loadedPc.pcFormId = Date.now();
+    console.debug('_onLoadGame', pcFormId.toString(16));
     if (!pcFormId) return console.log('Plz reconnect');
     const ac = {
       type: 'form',
       desc: mp.getDescFromId(pcFormId)
     };
-
-    const func = ctx => {
-      ctx.sp.once('update', () => {
-        const notify = msg => {
-          var _a;
-
-          const src = [];
-          const countRegex = /(\d+)/;
-          const countRemoveRegex = /[(].+[)]$/gm;
-          const typeRemoveRegex = /^[+-]\s/gm;
-
-          const getType = msg => {
-            if (msg.startsWith('+')) return 'additem';
-            if (msg.startsWith('-')) return 'deleteitem';
-            return 'default';
-          };
-
-          const type = getType(msg);
-          const match = (_a = msg.match(countRegex)) !== null && _a !== void 0 ? _a : [];
-          const count = +match[0];
-          const message = msg.replace(countRemoveRegex, '').replace(typeRemoveRegex, '');
-          const data = {
-            message,
-            type,
-            count
-          };
-          src.push(`
-          window.storage.dispatch({
-            type: 'COMMAND',
-            data: {
-              commandType: 'INFOBAR_ADD_MESSAGE',
-              alter: ['${JSON.stringify(data)}']
-            }
-          })
-          `);
-          ctx.sp.browser.executeJavaScript(src.join('\n'));
-        };
-
-        ctx.sp.Debug.notification = notify;
-      });
-    };
-
-    eval_1.evalClient(mp, pcFormId, new functionInfo_1.FunctionInfo(func).getText({}), true);
+    shared_1.overrideNotify(mp, pcFormId);
     mp.set(pcFormId, 'browserVisible', true);
     mp.set(pcFormId, 'browserModal', false);
 
     const serverOptions = __1.serverOptionProvider.getServerOptions();
 
-    exports.initAVFromRace(mp, pcFormId, serverOptions);
+    shared_1.initAVFromRace(mp, pcFormId);
     const neighbors = mp.get(pcFormId, 'neighbors');
     neighbors.filter(n => mp.get(n, 'type') === 'MpActor').forEach(id => {
-      exports.throwOrInit(mp, id, serverOptions);
+      shared_1.throwOrInit(mp, id, serverOptions);
     });
     mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
-    logExecuteTime(start, '_onLoadGame');
+    mp.set(pcFormId, 'isFirstLoad', true);
+    shared_1.logExecuteTime(start, '_onLoadGame');
   };
 
   mp['onActivate'] = (target, pcFormId) => {
+    var _a;
+
     const start = Date.now();
     if (!pcFormId) return console.log('Plz reconnect');
     const casterRef = {
@@ -4347,11 +4644,11 @@ const register = mp => {
 
     try {
       if (mp.get(target, 'blockActivationState')) return false;
-    } catch (_a) {}
+    } catch (_b) {}
 
-    const actiovation = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
-    logExecuteTime(start, 'onActivate');
-    return actiovation !== null && actiovation !== void 0 ? actiovation : true;
+    const activation = (_a = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef])) !== null && _a !== void 0 ? _a : true;
+    shared_1.logExecuteTime(start, 'onActivate');
+    return activation;
   };
 
   mp.makeEventSource('_onCellChange', new functionInfo_1.FunctionInfo(functions_1.onCellChange).body);
@@ -4376,129 +4673,11 @@ const register = mp => {
     const serverOptions = __1.serverOptionProvider.getServerOptions();
 
     neighbors.filter(n => mp.get(n, 'type') === 'MpActor').forEach(id => {
-      exports.throwOrInit(mp, id, serverOptions);
+      shared_1.throwOrInit(mp, id, serverOptions);
     });
     mp.set(pcFormId, 'cellDesc', currentCell.desc);
     mp.callPapyrusFunction('global', 'GM_Main', '_onCellChange', null, [ac, prevCell, currentCell]);
-    logExecuteTime(start, '_onCellChange');
-  };
-
-  mp.makeEventSource('_onHit', new functionInfo_1.FunctionInfo(functions_1.onHit).getText({
-    isHitStatic: false
-  }));
-
-  mp['_onHit'] = (pcFormId, event) => {
-    const start = Date.now();
-    if (!pcFormId) return console.log('Plz reconnect');
-
-    if (event.target === 0x14) {
-      event.target = pcFormId;
-    }
-
-    if (event.agressor === 0x14) {
-      event.agressor = pcFormId;
-    }
-
-    const {
-      HitDamageMod,
-      isPowerAttackMult,
-      isBashAttackMult
-    } = __1.serverOptionProvider.getServerOptions();
-
-    const target = {
-      type: 'form',
-      desc: mp.getDescFromId(event.target)
-    };
-    const agressor = {
-      type: 'form',
-      desc: mp.getDescFromId(event.agressor)
-    };
-    let damageMod = HitDamageMod;
-    const raceId = mp.get(pcFormId, 'race');
-
-    if (raceId) {
-      const espmRecord = mp.lookupEspmRecordById(raceId);
-      const unarmedDamage = race_1.getRaceUnarmedDamage(espmRecord);
-      unarmedDamage && (damageMod = -unarmedDamage);
-    }
-
-    const eq = equip_1.getEquipment(mp, event.agressor);
-    const eq1 = equip_1.getEquipment(mp, event.target);
-    const weap = eq === null || eq === void 0 ? void 0 : eq.inv.entries.filter(x => x.type === 'WEAP');
-    const arm = eq1 === null || eq1 === void 0 ? void 0 : eq1.inv.entries.filter(x => x.type === 'ARMO');
-    let isHammer = false;
-
-    if (weap && weap.length > 0) {
-      const baseDmg = weap[0].baseDamage;
-      baseDmg && (damageMod = baseDmg * -1);
-      const type = weap[0].weaponType;
-      if (type === type_1.WeaponType.BattleaxesANDWarhammers || type === type_1.WeaponType.Maces) isHammer = true;
-    }
-
-    if (arm && arm.length > 0) {
-      arm.forEach(x => {
-        if (!x.baseArmor) return;
-        if (isHammer) x.baseArmor * 0.75;
-        const percent = 1 - x.baseArmor / 1000;
-        damageMod = damageMod * percent;
-      });
-    }
-
-    if (event.isPowerAttack) {
-      damageMod = damageMod * isPowerAttackMult;
-    }
-
-    if (event.isBashAttack) {
-      damageMod = damageMod * isBashAttackMult;
-    }
-
-    const calcPerks = false;
-
-    if (calcPerks) {
-      const targetId = form_1.getSelfId(mp, agressor.desc);
-      const rec = mp.lookupEspmRecordById(targetId).record;
-      const prkr = rec === null || rec === void 0 ? void 0 : rec.fields.filter(x => x.type === 'PRKR').map(x => x.data);
-
-      try {
-        prkr === null || prkr === void 0 ? void 0 : prkr.forEach(p => {
-          const perkId = helper_1.uint32(p.buffer, 0);
-          const effectData = perk_1.getPerkEffectData(mp, perkId);
-          effectData === null || effectData === void 0 ? void 0 : effectData.forEach(eff => {
-            if (!eff) return;
-
-            if (eff.effectType === 0x23 && eff.functionType === type_2.EffectFunctionType.MultiplyValue) {
-              if (!eff.conditionFunction || !weap || weap.length === 0) return;
-              const conditionResult = eff.conditionFunction(weap[0].baseId);
-              if (!conditionResult) return;
-
-              if (eff.effectValue) {
-                damageMod *= eff.effectValue;
-              }
-            }
-          });
-        });
-      } catch (error) {
-        console.log('Perk effect ERROR', error);
-      }
-    }
-
-    if (event.isHitBlocked) {
-      damageMod *= 0.5;
-    }
-
-    console.log('[HIT]', damageMod);
-    const avName = 'health';
-    const damage = attributes_1.actorValues.get(event.target, avName, 'damage');
-    const newDamageModValue = damage + damageMod;
-    attributes_1.actorValues.set(event.target, avName, 'damage', newDamageModValue);
-    const wouldDie = attributes_1.actorValues.getMaximum(event.target, avName) + newDamageModValue <= 0;
-
-    if (wouldDie && !mp.get(event.target, 'isDead')) {
-      mp.onDeath && mp.onDeath(event.target);
-    }
-
-    mp.callPapyrusFunction('global', 'GM_Main', '_onHit', null, [target, agressor, event.isPowerAttack, event.isSneakAttack, event.isBashAttack, event.isHitBlocked]);
-    logExecuteTime(start, '_onHit');
+    shared_1.logExecuteTime(start, '_onCellChange');
   };
 
   mp['onDeath'] = pcFormId => {
@@ -4510,7 +4689,7 @@ const register = mp => {
     console.log(`${pcFormId.toString(16)} died`);
     mp.set(pcFormId, 'isDead', true);
     mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [ac]);
-    logExecuteTime(start, 'onDeath');
+    shared_1.logExecuteTime(start, 'onDeath');
   };
 
   mp.makeEventSource('_onHitStatic', new functionInfo_1.FunctionInfo(functions_1.onHit).getText({
@@ -4538,7 +4717,7 @@ const register = mp => {
       desc: mp.getDescFromId(event.agressor)
     };
     mp.callPapyrusFunction('global', 'GM_Main', '_onHitStatic', null, [target, agressor, event.isPowerAttack, event.isSneakAttack, event.isBashAttack, event.isHitBlocked]);
-    logExecuteTime(start, '_onHitStatic');
+    shared_1.logExecuteTime(start, '_onHitStatic');
   };
 
   mp.makeEventSource('_onEquip', new functionInfo_1.FunctionInfo(functions_1.onEquip).tryCatch());
@@ -4560,35 +4739,40 @@ const register = mp => {
       desc: mp.getDescFromId(event.target)
     };
     mp.callPapyrusFunction('global', 'GM_Main', '_onEquip', null, [ac, target]);
-    logExecuteTime(start, '_onEquip');
+    shared_1.logExecuteTime(start, '_onEquip');
   };
 
   mp['onUiEvent'] = (pcFormId, uiEvent) => {
     const start = Date.now();
-    if (!pcFormId) return console.log('Plz reconnect');
+    const ac = {
+      type: 'form',
+      desc: mp.getDescFromId(pcFormId)
+    };
 
     switch (uiEvent.type) {
       case 'cef::chat:send':
         {
+          if (!pcFormId) return console.log('Plz reconnect');
           const text = uiEvent.data;
 
           if (typeof text === 'string') {
-            const ac = {
-              type: 'form',
-              desc: mp.getDescFromId(pcFormId)
-            };
             mp.callPapyrusFunction('global', 'GM_Main', '_OnChatInput', null, [ac, text]);
           }
         }
+
+      case 'server::msg:send':
+        {
+          server_msg_1.handleServerMsg(mp, pcFormId, uiEvent.data);
+        }
     }
 
-    logExecuteTime(start, 'onUiEvent');
+    shared_1.logExecuteTime(start, 'onUiEvent');
   };
 
   mp.makeEventSource('_onInput', new functionInfo_1.FunctionInfo(functions_1.onInput).tryCatch());
 
   mp['_onInput'] = (pcFormId, keycodes) => {
-    var _a, _b;
+    var _a;
 
     const start = Date.now();
     if (!pcFormId) return console.log('Plz reconnect');
@@ -4616,10 +4800,6 @@ const register = mp => {
     if (!mp.get(pcFormId, 'browserModal')) {
       if (keycodes.length === 1 && keycodes[0] === keybindingBrowserSetVisible) {
         mp.callPapyrusFunction('global', 'M', 'BrowserSetVisible', null, [ac, (_a = !mp.get(pcFormId, 'browserVisible')) !== null && _a !== void 0 ? _a : true]);
-      }
-
-      if (keycodes.length === 1 && keycodes[0] === keybindingBrowserSetFocused) {
-        mp.callPapyrusFunction('global', 'M', 'BrowserSetFocused', null, [ac, (_b = !mp.get(pcFormId, 'browserFocused')) !== null && _b !== void 0 ? _b : true]);
       }
     }
 
@@ -4652,10 +4832,13 @@ const register = mp => {
     const command = getCommand();
 
     if (command) {
-      mp.callPapyrusFunction('global', 'GM_Main', '_OnChatInput', null, [ac, command]);
+      mp['onUiEvent'](pcFormId, {
+        type: 'cef::chat:send',
+        data: command
+      });
     }
 
-    logExecuteTime(start, '_onInput');
+    shared_1.logExecuteTime(start, '_onInput');
   };
 
   mp.makeEventSource('_onAnimationEvent', new functionInfo_1.FunctionInfo(functions_1.onAnimationEvent).tryCatch());
@@ -4726,7 +4909,7 @@ const register = mp => {
 
     mp.set(pcFormId, 'lastAnimation', animationEvent.current);
     mp.callPapyrusFunction('global', 'GM_Main', '_onAnimationEvent', null, [ac, animationEvent.current, animationEvent.previous, isAttack, isJump, isFall, isJumpLand, isChangeHp]);
-    logExecuteTime(start, '_onAnimationEvent');
+    shared_1.logExecuteTime(start, '_onAnimationEvent');
   };
 
   mp.makeEventSource('_onUiMenuToggle', new functionInfo_1.FunctionInfo(functions_1.onUiMenuToggle).tryCatch());
@@ -4736,7 +4919,7 @@ const register = mp => {
     if (!pcFormId) return console.log('Plz reconnect');
     mp.set(pcFormId, 'uiOpened', menuOpen);
     mp.set(pcFormId, 'browserVisible', !menuOpen);
-    logExecuteTime(start, '_onUiMenuToggle');
+    shared_1.logExecuteTime(start, '_onUiMenuToggle');
   };
 
   mp.makeEventSource('_onEffectStart', new functionInfo_1.FunctionInfo(functions_1.onEffectStart).tryCatch());
@@ -4768,7 +4951,7 @@ const register = mp => {
     const isDetrimental = activeMagicEffect_1.getFlags(mp, null, [event.effect]).includes(0x4);
     mp.callPapyrusFunction('global', 'GM_Main', '_onEffectStart', null, [caster, target, effect, event.mag * (isDetrimental ? -1 : 1)]);
     mp.callPapyrusFunction('global', 'GM_Main', '_onEffectStart2', null, [caster, target, event.effect, event.mag * (isDetrimental ? -1 : 1)]);
-    logExecuteTime(start, '_onEffectStart');
+    shared_1.logExecuteTime(start, '_onEffectStart');
   };
 
   mp.makeEventSource('_onCurrentCrosshairChange', new functionInfo_1.FunctionInfo(functions_1.onCurrentCrosshairChange).tryCatch());
@@ -4784,7 +4967,7 @@ const register = mp => {
     const target = crosshairRefId && game_1.getForm(mp, null, [crosshairRefId]);
     mp.set(pcFormId, 'CurrentCrosshairRef', target ? crosshairRefId : null);
     mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, target]);
-    logExecuteTime(start, '_onCurrentCrosshairChange');
+    shared_1.logExecuteTime(start, '_onCurrentCrosshairChange');
   };
 
   mp.makeEventSource('_onPrintConsole', new functionInfo_1.FunctionInfo(functions_1.onPrintConsole).tryCatch());
@@ -4793,22 +4976,13 @@ const register = mp => {
     console.log('[client]', '\x1b[33m', ...event, '\x1b[0m');
   };
 
-  mp.makeEventSource('_onCloseRaceMenu', new functionInfo_1.FunctionInfo(functions_1.onCloseRaceMenu).tryCatch());
-
-  mp['_onCloseRaceMenu'] = pcFormId => {
-    console.debug('_onCloseRaceMenu', pcFormId);
-    mp['_onLoadGame'](pcFormId);
-  };
-
-  mp['onDisconnectEvent'] = pcFormId => {
-    console.log('disconnect', pcFormId);
-  };
+  _onHit.register(mp);
 
   empty.register(mp);
 };
 
 exports.register = register;
-},{"../papyrus/game":"WCBi","../papyrus/objectReference":"YRYD","../properties/actor/actorValues/attributes":"Klzq","../utils/functionInfo":"fC7F","./functions":"dwII","./empty":"eVF9","../papyrus/activeMagicEffect":"dvBS","../papyrus/actor/equip":"lP44","../papyrus/objectReference/position":"wmVe","../papyrus/weapon/type":"Xpf2","../papyrus/form":"mnzc","../utils/helper":"FxH1","../properties/eval":"mJTA","../papyrus/perk":"Fep9","../papyrus/perk/type":"x9IM","../..":"QCba","../papyrus/race":"AkNH","../papyrus/actor":"ZYrz"}],"t0IM":[function(require,module,exports) {
+},{"../papyrus/game":"WCBi","../properties/actor/actorValues/attributes":"Klzq","../utils/functionInfo":"fC7F","./functions":"dwII","./empty":"eVF9","../papyrus/activeMagicEffect":"dvBS","../papyrus/actor/equip":"lP44","../papyrus/objectReference/position":"wmVe","../..":"QCba","./shared":"jnne","./_onHit":"e1XF","./server-msg":"YOwo"}],"t0IM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5010,7 +5184,7 @@ const executeUiCommand = (mp, self, args) => {
 
 const log = (mp, self, args) => {
   const text = papyrusArgs_1.getString(args, 0);
-  console.log('[GM]', text);
+  console.log('[GM]', '\x1b[34m', text, '\x1b[0m');
 };
 
 const getText = (localization, mp, self, args) => {
@@ -5496,11 +5670,11 @@ exports.getNumberEspmLoad = getNumberEspmLoad;
 const aboutForm = (mp, self, args) => {
   const formId = papyrusArgs_1.getNumber(args, 0);
   const data = mp.lookupEspmRecordById(formId).record;
-  console.log('AboutForm: ' + JSON.stringify(data, null, 2));
+  console.log(`AboutForm: ${JSON.stringify(data, null, 2)}`);
 };
 
 const about = (mp, self, args) => {
-  console.log('About: ' + JSON.stringify(papyrusArgs_1.getObject(args, 0), null, 2));
+  console.log(`About: ${JSON.stringify(papyrusArgs_1.getObject(args, 0), null, 2)}`);
 };
 
 const sendClientConsole = (mp, self, args) => {
@@ -5516,7 +5690,6 @@ const sendClientConsole = (mp, self, args) => {
   eval_1.evalClient(mp, 0xff000000, new functionInfo_1.FunctionInfo(func).getText({
     message
   }));
-  return;
 };
 
 const register = mp => {
@@ -6611,22 +6784,19 @@ const updateOwnerIsDead = ctx => {
 
   if (value !== ctx.state.value) {
     const die = !!value;
-
-    if (die) {
-      const pos = [ac.getPositionX(), ac.getPositionY(), ac.getPositionZ()];
-
-      for (let i = 0; i < 200; ++i) {
-        const randomActor = ctx.sp.Game.findRandomActor(pos[0], pos[1], pos[2], 10000);
-        if (!randomActor) continue;
-        const tgt = randomActor.getCombatTarget();
-        if (!tgt || (tgt === null || tgt === void 0 ? void 0 : tgt.getFormID()) !== 0x14) continue;
-        randomActor.stopCombat();
-      }
-
-      ac.pushActorAway(ac, 0);
-    } else {}
-
     ctx.state.value = value;
+    if (!die) return ctx.sp.Debug.sendAnimationEvent(ac, 'GetUpBegin');
+    const pos = [ac.getPositionX(), ac.getPositionY(), ac.getPositionZ()];
+
+    for (let i = 0; i < 200; ++i) {
+      const randomActor = ctx.sp.Game.findRandomActor(pos[0], pos[1], pos[2], 10000);
+      if (!randomActor) continue;
+      const tgt = randomActor.getCombatTarget();
+      if (!tgt || (tgt === null || tgt === void 0 ? void 0 : tgt.getFormID()) !== 0x14) continue;
+      randomActor.stopCombat();
+    }
+
+    ac.pushActorAway(ac, 0);
   }
 };
 
@@ -6650,6 +6820,7 @@ const register = mp => {
   functions_1.statePropFactory(mp, 'CurrentCrosshairRef');
   functions_1.statePropFactory(mp, 'isFlying');
   functions_1.statePropFactory(mp, 'isBlocking');
+  functions_1.statePropFactory(mp, 'isFirstLoad');
   functions_1.statePropFactory(mp, 'startZCoord');
   mp.makeProperty('isDead', {
     isVisibleByOwner: true,
@@ -7196,6 +7367,8 @@ const stringLocalizationProvider_1 = require("./src/utils/stringLocalizationProv
 
 const server_options_1 = require("./src/papyrus/game/server-options");
 
+const shared_1 = require("./src/events/shared");
+
 const config = mp.getServerSettings();
 const locale = config.locale;
 const data = config.dataDir;
@@ -7203,8 +7376,8 @@ const isPapyrusHotReloadEnabled = config.isPapyrusHotReloadEnabled;
 const isServerOptionsHotReloadEnabled = config.isServerOptionsHotReloadEnabled;
 const stringsPath = (_a = config.stringsPath) !== null && _a !== void 0 ? _a : 'strings';
 const gamemodePath = (_b = config.gamemodePath) !== null && _b !== void 0 ? _b : 'gamemode.js';
-const localizationProvider = new localizationProvider_1.LocalizationProvider(mp, 'localization/' + locale + '.json', isPapyrusHotReloadEnabled ? 'hotreload' : 'once');
-const stringLocalizationProvider = new stringLocalizationProvider_1.StringLocalizationProvider(mp, mp.readDataFile('localization/' + locale + '.json'), locale);
+const localizationProvider = new localizationProvider_1.LocalizationProvider(mp, `localization/${locale}.json`, isPapyrusHotReloadEnabled ? 'hotreload' : 'once');
+const stringLocalizationProvider = new stringLocalizationProvider_1.StringLocalizationProvider(mp, mp.readDataFile(`localization/${locale}.json`), locale);
 exports.serverOptionProvider = new server_options_1.ServerOptionProvider(mp, isServerOptionsHotReloadEnabled);
 mp.clear();
 perkProp.register(mp);
@@ -7241,5 +7414,8 @@ effectShader.register(mp);
 visualEffect.register(mp);
 setTimeout(() => {
   mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
+  mp.get(0, 'onlinePlayers').forEach(p => {
+    shared_1.overrideNotify(mp, p);
+  });
 }, 0);
-},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9","./src/papyrus/game/server-options":"nnyN"}]},{},["QCba"], null)
+},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9","./src/papyrus/game/server-options":"nnyN","./src/events/shared":"jnne"}]},{},["QCba"], null)

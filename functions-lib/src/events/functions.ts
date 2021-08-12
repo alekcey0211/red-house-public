@@ -1,15 +1,12 @@
 import { Ctx } from '../types/ctx';
 import { EquipEvent, HitEvent } from '../types/skyrimPlatform';
 
-// export const onLoad = (ctx: Ctx) => {
-// 	ctx.sp.once('update', async () => {
-// 		await ctx.sp.Utility.wait(0.4);
-// 		if (ctx.state.loaded === true) return;
-// 		ctx.state.loaded = true;
-// 		ctx.sp.printConsole(Date.now(), ctx.sp.Game.getPlayer()?.getFormID(), 'onLoadEvent');
-// 		ctx.sendEvent();
-// 	});
-// };
+export const onLoad = (ctx: Ctx) => {
+	ctx.sp.once('update', async () => {
+		await ctx.sp.Utility.wait(0.4);
+		ctx.sendEvent();
+	});
+};
 
 export const onCellChange = (ctx: Ctx) => {
 	ctx.sp.on('update', () => {

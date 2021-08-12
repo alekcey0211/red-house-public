@@ -1,1 +1,1 @@
-papyrus.exe -compile -input "..\scripts\Extension" "..\scripts\GM" "..\scripts\Custom" -output "..\server\data\scripts" "..\scripts\compiled"
+papyrus -compile -crutches -i "..\scripts\Extension" "..\scripts\GM" "..\scripts\Custom" -o "..\server\data\scripts"

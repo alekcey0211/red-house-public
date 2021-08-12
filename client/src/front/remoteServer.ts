@@ -44,9 +44,9 @@ const setupEventSource = (ctx: any) => {
 	once('update', () => {
 		try {
 			ctx._fn(ctx);
-			printConsoleServer(`'eventSources.${ctx._eventName}' - Added`);
+			// printConsoleServer(`'eventSources.${ctx._eventName}' - Added`);
 		} catch (e) {
-			printConsoleServer(`'eventSources.${ctx._eventName}' -`, e);
+			// printConsoleServer(`'eventSources.${ctx._eventName}' -`, e);
 		}
 	});
 };
@@ -282,8 +282,9 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 		if (msg.props && !msg.props.isHostedByOther) {
 		}
 
-		if (msg.props && msg.props.isRaceMenuOpen && msg.isMe)
+		if (msg.props && msg.props.isRaceMenuOpen && msg.isMe) {
 			this.setRaceMenuOpen({ type: 'setRaceMenuOpen', open: true });
+		}
 
 		const applyPcInv = () => {
 			applyInventory(
@@ -510,9 +511,9 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 				const emptyFunction = functionSources[propName] === '';
 				if (emptyFunction) {
 					delete (storage[storageVar] as any)[propName];
-					printConsoleServer(`'${storageVar}.${propName}' -`, 'Added empty');
+					// printConsoleServer(`'${storageVar}.${propName}' -`, 'Added empty');
 				} else {
-					printConsoleServer(`'${storageVar}.${propName}' -`, 'Added');
+					// printConsoleServer(`'${storageVar}.${propName}' -`, 'Added');
 				}
 			} catch (e) {
 				printConsoleServer(`'${storageVar}.${propName}' -`, e);

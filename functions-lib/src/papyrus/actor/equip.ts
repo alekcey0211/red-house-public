@@ -132,7 +132,6 @@ export const equipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) =
 
 export const equipItemById = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {};
 
-// TODO: not correct work boolean return
 export const isEquipped = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): boolean => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const item = getObject(args, 0);
@@ -140,6 +139,7 @@ export const isEquipped = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): b
 
 	const eq = getEquipment(mp, selfId);
 	if (!eq) return false;
+
 	return eq.inv.entries.findIndex((item) => item.baseId === itemId && item.worn) >= 0;
 };
 

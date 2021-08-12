@@ -1,12 +1,7 @@
 import { getBoolean, getNumber, getObject, getString } from '../../utils/papyrusArgs';
 import { Mp, PapyrusValue, PapyrusObject, Inventory } from '../../types/mp';
 import { getForm } from '../game';
-import {
-	getAngle,
-	getDistance,
-	getPosition,
-	getEspPosition,
-} from './position';
+import { getAngle, getDistance, getPosition, getEspPosition } from './position';
 import { Ctx } from '../../types/ctx';
 import { evalClient } from '../../properties/eval';
 import { FunctionInfo } from '../../utils/functionInfo';
@@ -15,10 +10,10 @@ import * as position from './position';
 import * as game from '../game';
 import { isInterior } from '../cell';
 import { uint32 } from '../../utils/helper';
-import { throwOrInit } from '../../events';
 import { CellItem, CellItemProps } from '../debug';
 import { serverOptionProvider } from '../../..';
 import { _getStorageValue, _setStorageValue } from './storage';
+import { throwOrInit } from '../../events/shared';
 
 const setScale = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const scale = getNumber(args, 0);
@@ -26,12 +21,27 @@ const setScale = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	// ...
 };
 
-// TODO: use transferTo, keepOwnership, removeQuestItems
+// TODO: keepOwnership, removeQuestItems
 const removeAllItems = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const transferTo = args[0] ? getObject(args, 0) : null;
 	const keepOwnership = args[1] ? getBoolean(args, 1) : false;
 	const removeQuestItems = args[2] ? getBoolean(args, 2) : false;
+
+	if (transferTo) {
+		const transferToId = mp.getIdFromDesc(transferTo.desc);
+		const transferToInv = mp.get(transferToId, 'inventory');
+		const selfInv = mp.get(selfId, 'inventory');
+		selfInv.entries.forEach((item) => {
+			const same = transferToInv.entries.find((x) => x.baseId === item.baseId);
+			if (same) {
+				same.count += item.count;
+			} else {
+				transferToInv.entries.push(item);
+			}
+		});
+		mp.set(transferToId, 'inventory', transferToInv);
+	}
 
 	const emptyInv: Inventory = { entries: [] };
 
@@ -138,7 +148,6 @@ const _getBaseObject = (mp: Mp, selfId: number): PapyrusObject | undefined => {
 		const dataView = new DataView(name.buffer);
 		return getForm(mp, null, [dataView.getUint32(0, true)]);
 	}
-	return;
 };
 const getBaseObject = (mp: Mp, self: PapyrusObject): PapyrusObject | undefined => {
 	const selfId = mp.getIdFromDesc(self.desc);
@@ -150,7 +159,6 @@ export const getBaseObjectId = (mp: Mp, self: null, args: PapyrusValue[]): numbe
 	if (base) {
 		return mp.getIdFromDesc(base.desc);
 	}
-	return;
 };
 export const getBaseObjectIdById = (mp: Mp, self: null, args: PapyrusValue[]): number | undefined => {
 	const selfId = getNumber(args, 0);
@@ -158,7 +166,6 @@ export const getBaseObjectIdById = (mp: Mp, self: null, args: PapyrusValue[]): n
 	if (base) {
 		return mp.getIdFromDesc(base.desc);
 	}
-	return;
 };
 
 export const placeObjectOnStatic = (mp: Mp, self: null, args: PapyrusValue[]): PapyrusObject | null => {
@@ -186,7 +193,7 @@ const _placeAtMe = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusO
 	const selfId = mp.getIdFromDesc(self.desc);
 	const whatSpawnId = getNumber(args, 0);
 	const count = getNumber(args, 1);
-	let sRefResult: PapyrusObject[] = [];
+	const sRefResult: PapyrusObject[] = [];
 	for (let i = 0; i < count; i++) {
 		const sRefId = mp.place(whatSpawnId);
 		const sRef = getForm(mp, null, [sRefId]);
@@ -209,6 +216,12 @@ const _placeAtMe = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusO
 	if (sRefResult.length === 0) return null;
 	return sRefResult[sRefResult.length - 1];
 };
+const placeAtMeObj = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusObject | null => {
+	const target = getObject(args, 0);
+	const targetId = mp.getIdFromDesc(target.desc);
+	const count = getNumber(args, 1);
+	return _placeAtMe(mp, self, [targetId, count]);
+};
 export const placeAtMe = (mp: Mp, selfNull: null, args: PapyrusValue[]): PapyrusObject | null => {
 	const self = getObject(args, 0);
 	const targetId = getNumber(args, 1);
@@ -223,7 +236,7 @@ const getLinkedReferenceId = (mp: Mp, self: null, args: PapyrusValue[]): number[
 	if (!links) return [];
 
 	const dataView = new DataView(links.buffer);
-	let keywordsId: Array<number> = [];
+	const keywordsId: Array<number> = [];
 	for (let i = 4; i + 4 <= links.length; i += 8) {
 		keywordsId.push(dataView.getUint32(i, true));
 	}
@@ -243,7 +256,6 @@ const getLinkedReferenceIdByKeywordId = (mp: Mp, self: null, args: PapyrusValue[
 			}
 		}
 	}
-	return;
 };
 
 export const getDisplayName = (mp: Mp, self: PapyrusObject): string => {
@@ -361,6 +373,23 @@ export const addItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
 	const count = getNumber(args, 1);
 	const silent = getBoolean(args, 2);
 	mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, count, silent]);
+};
+export const removeItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+	const item = getObject(args, 0);
+	const count = getNumber(args, 1);
+	const silent = getBoolean(args, 2);
+	const other = args[3] ? getObject(args, 3) : null;
+	mp.callPapyrusFunction('method', 'ObjectReference', 'RemoveItem', self, [item, count, silent, other]);
+};
+export const disable = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+	const abFadeOut = getBoolean(args, 0);
+	mp.callPapyrusFunction('method', 'ObjectReference', 'Disable', self, [abFadeOut]);
+};
+export const getItemCount = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): number => {
+	const item = getObject(args, 0);
+	const itemCount = mp.callPapyrusFunction('method', 'ObjectReference', 'GetItemCount', self, [item]);
+	if (!itemCount) return 0;
+	return itemCount as number;
 };
 
 export const register = (mp: Mp): void => {

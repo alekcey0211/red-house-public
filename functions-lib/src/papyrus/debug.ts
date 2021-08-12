@@ -66,11 +66,11 @@ const aboutForm = (mp: Mp, self: null, args: PapyrusValue[]) => {
 	const formId = getNumber(args, 0);
 
 	const data = mp.lookupEspmRecordById(formId).record;
-	console.log('AboutForm: ' + JSON.stringify(data, null, 2));
+	console.log(`AboutForm: ${JSON.stringify(data, null, 2)}`);
 };
 
 const about = (mp: Mp, self: null, args: PapyrusValue[]) => {
-	console.log('About: ' + JSON.stringify(getObject(args, 0), null, 2));
+	console.log(`About: ${JSON.stringify(getObject(args, 0), null, 2)}`);
 };
 
 const sendClientConsole = (mp: Mp, self: null, args: PapyrusValue[]) => {
@@ -82,7 +82,6 @@ const sendClientConsole = (mp: Mp, self: null, args: PapyrusValue[]) => {
 		});
 	};
 	evalClient(mp, 0xff000000, new FunctionInfo(func).getText({ message }));
-	return;
 };
 
 export const register = (mp: Mp): void => {

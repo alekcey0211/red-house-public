@@ -1,5 +1,5 @@
 import { EspmLookupResult, Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
-import { setActorValue, getActorValue, damageActorValue, restoreActorValue, addSkillExperience } from './value';
+import { setActorValue, getActorValue, damageActorValue, restoreActorValue, modActorValue } from './value';
 import { addPerk, removePerk, hasPerk } from './perk';
 import {
 	isEquipped,
@@ -107,9 +107,11 @@ export const throwOutById = (mp: Mp, selfId: number) => {
 	try {
 		actorValues.set(selfId, 'health', 'base', 0);
 	} catch {}
-	try {
-		mp.set(selfId, 'isDisabled', true);
-	} catch {}
+	if (selfId >= 0xff000000) {
+		try {
+			mp.set(selfId, 'isDisabled', true);
+		} catch {}
+	}
 	mp.set(selfId, 'worldOrCellDesc', '0');
 };
 
@@ -145,6 +147,8 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Actor', 'DamageAV', (self, args) => damageActorValue(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Actor', 'RestoreActorValue', (self, args) => restoreActorValue(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Actor', 'RestoreAV', (self, args) => restoreActorValue(mp, self, args));
+	mp.registerPapyrusFunction('method', 'Actor', 'ModActorValue', (self, args) => modActorValue(mp, self, args));
+	mp.registerPapyrusFunction('method', 'Actor', 'ModAV', (self, args) => modActorValue(mp, self, args));
 
 	// mp.registerPapyrusFunction('method', 'Actor', 'DrawWeapon', (self) => drawWeapon(mp, self));
 	mp.registerPapyrusFunction('method', 'Actor', 'IsWeaponDrawn', (self) => isWeaponDrawn(mp, self));
@@ -154,10 +158,6 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Actor', 'SetRace', (self, args) => setRace(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Actor', 'GetRace', (self) => getRace(mp, self));
 
-	// TODO: temp solve, try to use ActorValueInfo
-	mp.registerPapyrusFunction('global', 'ActorEx', 'AddSkillExperience', (self, args) =>
-		addSkillExperience(mp, self, args)
-	);
 	mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornForms', (self, args) => getWornForms(mp, self, args));
 	mp.registerPapyrusFunction('global', 'ActorEx', 'GetWornFormsId', (self, args) => getWornFormsId(mp, self, args));
 	mp.registerPapyrusFunction('global', 'ActorEx', 'SetWorldOrCell', (self, args) => setWorldOrCell(mp, self, args));

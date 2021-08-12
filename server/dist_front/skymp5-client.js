@@ -54,39 +54,174 @@ System.register("src/skyrim-platform/skyrimPlatform", [], function (exports_1, c
         }
     };
 });
-System.register("src/front/browser", ["src/skyrim-platform/skyrimPlatform"], function (exports_2, context_2) {
+System.register("src/lib/dx-scan-codes", [], function (exports_2, context_2) {
     "use strict";
-    var skyrimPlatform_1, main;
+    var DXScanCodes;
     var __moduleName = context_2 && context_2.id;
     return {
-        setters: [
-            function (skyrimPlatform_1_1) {
-                skyrimPlatform_1 = skyrimPlatform_1_1;
-            }
-        ],
+        setters: [],
         execute: function () {
-            exports_2("main", main = function () {
-                var cfg = {
-                    ip: skyrimPlatform_1.settings["skymp5-client"]["server-ip"],
-                    port: skyrimPlatform_1.settings["skymp5-client"]["server-port"],
-                };
-                skyrimPlatform_1.printConsole({ cfg: cfg });
-                var uiPort = cfg.port === 7777 ? 3000 : cfg.port + 1;
-                var url = "http://" + cfg.ip + ":" + uiPort + "/ui/index.html";
-                skyrimPlatform_1.printConsole("loading url " + url);
-                skyrimPlatform_1.browser.loadUrl(url);
-            });
+            (function (DXScanCodes) {
+                DXScanCodes[DXScanCodes["NONE"] = 0] = "NONE";
+                DXScanCodes[DXScanCodes["Escape"] = 1] = "Escape";
+                DXScanCodes[DXScanCodes["n1"] = 2] = "n1";
+                DXScanCodes[DXScanCodes["n2"] = 3] = "n2";
+                DXScanCodes[DXScanCodes["n3"] = 4] = "n3";
+                DXScanCodes[DXScanCodes["n4"] = 5] = "n4";
+                DXScanCodes[DXScanCodes["n5"] = 6] = "n5";
+                DXScanCodes[DXScanCodes["n6"] = 7] = "n6";
+                DXScanCodes[DXScanCodes["n7"] = 8] = "n7";
+                DXScanCodes[DXScanCodes["n8"] = 9] = "n8";
+                DXScanCodes[DXScanCodes["n9"] = 10] = "n9";
+                DXScanCodes[DXScanCodes["n0"] = 11] = "n0";
+                DXScanCodes[DXScanCodes["Minus"] = 12] = "Minus";
+                DXScanCodes[DXScanCodes["Equals"] = 13] = "Equals";
+                DXScanCodes[DXScanCodes["Backspace"] = 14] = "Backspace";
+                DXScanCodes[DXScanCodes["Tab"] = 15] = "Tab";
+                DXScanCodes[DXScanCodes["Q"] = 16] = "Q";
+                DXScanCodes[DXScanCodes["W"] = 17] = "W";
+                DXScanCodes[DXScanCodes["E"] = 18] = "E";
+                DXScanCodes[DXScanCodes["R"] = 19] = "R";
+                DXScanCodes[DXScanCodes["T"] = 20] = "T";
+                DXScanCodes[DXScanCodes["Y"] = 21] = "Y";
+                DXScanCodes[DXScanCodes["U"] = 22] = "U";
+                DXScanCodes[DXScanCodes["I"] = 23] = "I";
+                DXScanCodes[DXScanCodes["O"] = 24] = "O";
+                DXScanCodes[DXScanCodes["P"] = 25] = "P";
+                DXScanCodes[DXScanCodes["LeftBracket"] = 26] = "LeftBracket";
+                DXScanCodes[DXScanCodes["RightBracket"] = 27] = "RightBracket";
+                DXScanCodes[DXScanCodes["Enter"] = 28] = "Enter";
+                DXScanCodes[DXScanCodes["LeftControl"] = 29] = "LeftControl";
+                DXScanCodes[DXScanCodes["A"] = 30] = "A";
+                DXScanCodes[DXScanCodes["S"] = 31] = "S";
+                DXScanCodes[DXScanCodes["D"] = 32] = "D";
+                DXScanCodes[DXScanCodes["F"] = 33] = "F";
+                DXScanCodes[DXScanCodes["G"] = 34] = "G";
+                DXScanCodes[DXScanCodes["H"] = 35] = "H";
+                DXScanCodes[DXScanCodes["J"] = 36] = "J";
+                DXScanCodes[DXScanCodes["K"] = 37] = "K";
+                DXScanCodes[DXScanCodes["L"] = 38] = "L";
+                DXScanCodes[DXScanCodes["Semicolon"] = 39] = "Semicolon";
+                DXScanCodes[DXScanCodes["Apostrophe"] = 40] = "Apostrophe";
+                DXScanCodes[DXScanCodes["Console"] = 41] = "Console";
+                DXScanCodes[DXScanCodes["LeftShift"] = 42] = "LeftShift";
+                DXScanCodes[DXScanCodes["BackSlash"] = 43] = "BackSlash";
+                DXScanCodes[DXScanCodes["Z"] = 44] = "Z";
+                DXScanCodes[DXScanCodes["X"] = 45] = "X";
+                DXScanCodes[DXScanCodes["C"] = 46] = "C";
+                DXScanCodes[DXScanCodes["V"] = 47] = "V";
+                DXScanCodes[DXScanCodes["B"] = 48] = "B";
+                DXScanCodes[DXScanCodes["N"] = 49] = "N";
+                DXScanCodes[DXScanCodes["M"] = 50] = "M";
+                DXScanCodes[DXScanCodes["Comma"] = 51] = "Comma";
+                DXScanCodes[DXScanCodes["Period"] = 52] = "Period";
+                DXScanCodes[DXScanCodes["ForwardSlash"] = 53] = "ForwardSlash";
+                DXScanCodes[DXScanCodes["RightShift"] = 54] = "RightShift";
+                DXScanCodes[DXScanCodes["NUMmult"] = 55] = "NUMmult";
+                DXScanCodes[DXScanCodes["LeftAlt"] = 56] = "LeftAlt";
+                DXScanCodes[DXScanCodes["Spacebar"] = 57] = "Spacebar";
+                DXScanCodes[DXScanCodes["CapsLock"] = 58] = "CapsLock";
+                DXScanCodes[DXScanCodes["F1"] = 59] = "F1";
+                DXScanCodes[DXScanCodes["F2"] = 60] = "F2";
+                DXScanCodes[DXScanCodes["F3"] = 61] = "F3";
+                DXScanCodes[DXScanCodes["F4"] = 62] = "F4";
+                DXScanCodes[DXScanCodes["F5"] = 63] = "F5";
+                DXScanCodes[DXScanCodes["F6"] = 64] = "F6";
+                DXScanCodes[DXScanCodes["F7"] = 65] = "F7";
+                DXScanCodes[DXScanCodes["F8"] = 66] = "F8";
+                DXScanCodes[DXScanCodes["F9"] = 67] = "F9";
+                DXScanCodes[DXScanCodes["F10"] = 68] = "F10";
+                DXScanCodes[DXScanCodes["NumLock"] = 69] = "NumLock";
+                DXScanCodes[DXScanCodes["ScrollLock"] = 70] = "ScrollLock";
+                DXScanCodes[DXScanCodes["NUM7"] = 71] = "NUM7";
+                DXScanCodes[DXScanCodes["NUM8"] = 72] = "NUM8";
+                DXScanCodes[DXScanCodes["NUM9"] = 73] = "NUM9";
+                DXScanCodes[DXScanCodes["NUMminus"] = 74] = "NUMminus";
+                DXScanCodes[DXScanCodes["NUM4"] = 75] = "NUM4";
+                DXScanCodes[DXScanCodes["NUM5"] = 76] = "NUM5";
+                DXScanCodes[DXScanCodes["NUM6"] = 77] = "NUM6";
+                DXScanCodes[DXScanCodes["NUMplus"] = 78] = "NUMplus";
+                DXScanCodes[DXScanCodes["NUM1"] = 79] = "NUM1";
+                DXScanCodes[DXScanCodes["NUM2"] = 80] = "NUM2";
+                DXScanCodes[DXScanCodes["NUM3"] = 81] = "NUM3";
+                DXScanCodes[DXScanCodes["NUM0"] = 82] = "NUM0";
+                DXScanCodes[DXScanCodes["NUMdot"] = 83] = "NUMdot";
+                DXScanCodes[DXScanCodes["F11"] = 84] = "F11";
+                DXScanCodes[DXScanCodes["F12"] = 85] = "F12";
+                DXScanCodes[DXScanCodes["NUMEnter"] = 86] = "NUMEnter";
+                DXScanCodes[DXScanCodes["RightControl"] = 87] = "RightControl";
+                DXScanCodes[DXScanCodes["NUMslash"] = 88] = "NUMslash";
+                DXScanCodes[DXScanCodes["SysRqPtrScr"] = 89] = "SysRqPtrScr";
+                DXScanCodes[DXScanCodes["RightAlt"] = 90] = "RightAlt";
+                DXScanCodes[DXScanCodes["Pause"] = 91] = "Pause";
+                DXScanCodes[DXScanCodes["Home"] = 92] = "Home";
+                DXScanCodes[DXScanCodes["UpArrow"] = 93] = "UpArrow";
+                DXScanCodes[DXScanCodes["PgUp"] = 94] = "PgUp";
+                DXScanCodes[DXScanCodes["LeftArrow"] = 95] = "LeftArrow";
+                DXScanCodes[DXScanCodes["RightArrow"] = 96] = "RightArrow";
+                DXScanCodes[DXScanCodes["End"] = 97] = "End";
+                DXScanCodes[DXScanCodes["DownArrow"] = 98] = "DownArrow";
+                DXScanCodes[DXScanCodes["PgDown"] = 99] = "PgDown";
+                DXScanCodes[DXScanCodes["Insert"] = 100] = "Insert";
+                DXScanCodes[DXScanCodes["Delete"] = 101] = "Delete";
+                DXScanCodes[DXScanCodes["LeftMouseButton"] = 102] = "LeftMouseButton";
+                DXScanCodes[DXScanCodes["RightMouseButton"] = 103] = "RightMouseButton";
+                DXScanCodes[DXScanCodes["MiddleMouseButton"] = 104] = "MiddleMouseButton";
+                DXScanCodes[DXScanCodes["MouseButton3"] = 105] = "MouseButton3";
+                DXScanCodes[DXScanCodes["MouseButton4"] = 106] = "MouseButton4";
+                DXScanCodes[DXScanCodes["MouseButton5"] = 107] = "MouseButton5";
+                DXScanCodes[DXScanCodes["MouseButton6"] = 108] = "MouseButton6";
+                DXScanCodes[DXScanCodes["MouseButton7"] = 109] = "MouseButton7";
+                DXScanCodes[DXScanCodes["MouseWheelUp"] = 110] = "MouseWheelUp";
+                DXScanCodes[DXScanCodes["MouseWheelDown"] = 111] = "MouseWheelDown";
+            })(DXScanCodes || (DXScanCodes = {}));
+            exports_2("DXScanCodes", DXScanCodes);
         }
     };
 });
-System.register("src/front/consoleCommands", [], function (exports_3, context_3) {
+System.register("src/lib/event-emitter", [], function (exports_3, context_3) {
     "use strict";
-    var scriptCommands, consoleCommands;
+    var EventEmitter;
     var __moduleName = context_3 && context_3.id;
     return {
         setters: [],
         execute: function () {
-            exports_3("scriptCommands", scriptCommands = [
+            EventEmitter = /** @class */ (function () {
+                function EventEmitter() {
+                    this.events = {};
+                }
+                EventEmitter.prototype.emit = function (eventName, data) {
+                    var event = this.events[eventName];
+                    if (!event)
+                        return;
+                    event.forEach(function (fn) {
+                        fn.call(null, data);
+                    });
+                };
+                EventEmitter.prototype.subscribe = function (eventName, fn) {
+                    var _this = this;
+                    if (!this.events[eventName]) {
+                        this.events[eventName] = [];
+                    }
+                    this.events[eventName].push(fn);
+                    return function () {
+                        _this.events[eventName] = _this.events[eventName].filter(function (eventFn) { return fn !== eventFn; });
+                    };
+                };
+                return EventEmitter;
+            }());
+            exports_3("EventEmitter", EventEmitter);
+        }
+    };
+});
+System.register("src/front/consoleCommands", [], function (exports_4, context_4) {
+    "use strict";
+    var scriptCommands, consoleCommands;
+    var __moduleName = context_4 && context_4.id;
+    return {
+        setters: [],
+        execute: function () {
+            exports_4("scriptCommands", scriptCommands = [
                 "additem",
                 "addperk",
                 "addspell",
@@ -160,7 +295,7 @@ System.register("src/front/consoleCommands", [], function (exports_3, context_3)
                 "unlock",
                 "unlockword",
             ]);
-            exports_3("consoleCommands", consoleCommands = [
+            exports_4("consoleCommands", consoleCommands = [
                 "Show",
                 "ShowVars",
                 "ShowGlobalVars",
@@ -601,16 +736,7 @@ System.register("src/front/consoleCommands", [], function (exports_3, context_3)
         }
     };
 });
-System.register("src/lib/structures/movement", [], function (exports_4, context_4) {
-    "use strict";
-    var __moduleName = context_4 && context_4.id;
-    return {
-        setters: [],
-        execute: function () {
-        }
-    };
-});
-System.register("src/lib/structures/look", [], function (exports_5, context_5) {
+System.register("src/lib/structures/movement", [], function (exports_5, context_5) {
     "use strict";
     var __moduleName = context_5 && context_5.id;
     return {
@@ -619,7 +745,7 @@ System.register("src/lib/structures/look", [], function (exports_5, context_5) {
         }
     };
 });
-System.register("src/lib/structures/animation", [], function (exports_6, context_6) {
+System.register("src/lib/structures/look", [], function (exports_6, context_6) {
     "use strict";
     var __moduleName = context_6 && context_6.id;
     return {
@@ -628,7 +754,7 @@ System.register("src/lib/structures/animation", [], function (exports_6, context
         }
     };
 });
-System.register("src/lib/structures/inventory", [], function (exports_7, context_7) {
+System.register("src/lib/structures/animation", [], function (exports_7, context_7) {
     "use strict";
     var __moduleName = context_7 && context_7.id;
     return {
@@ -637,7 +763,7 @@ System.register("src/lib/structures/inventory", [], function (exports_7, context
         }
     };
 });
-System.register("src/lib/structures/equipment", [], function (exports_8, context_8) {
+System.register("src/lib/structures/inventory", [], function (exports_8, context_8) {
     "use strict";
     var __moduleName = context_8 && context_8.id;
     return {
@@ -646,22 +772,31 @@ System.register("src/lib/structures/equipment", [], function (exports_8, context
         }
     };
 });
-System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], function (exports_9, context_9) {
+System.register("src/lib/structures/equipment", [], function (exports_9, context_9) {
     "use strict";
-    var skyrimPlatform_2, sp, spAny, deserializeArg, runMethod, runStatic, run;
     var __moduleName = context_9 && context_9.id;
     return {
+        setters: [],
+        execute: function () {
+        }
+    };
+});
+System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], function (exports_10, context_10) {
+    "use strict";
+    var skyrimPlatform_1, sp, spAny, deserializeArg, runMethod, runStatic, run;
+    var __moduleName = context_10 && context_10.id;
+    return {
         setters: [
-            function (skyrimPlatform_2_1) {
-                skyrimPlatform_2 = skyrimPlatform_2_1;
-                sp = skyrimPlatform_2_1;
+            function (skyrimPlatform_1_1) {
+                skyrimPlatform_1 = skyrimPlatform_1_1;
+                sp = skyrimPlatform_1_1;
             }
         ],
         execute: function () {
             spAny = sp;
             deserializeArg = function (arg) {
                 if (typeof arg === "object") {
-                    var form = skyrimPlatform_2.Game.getFormEx(arg.formId);
+                    var form = skyrimPlatform_1.Game.getFormEx(arg.formId);
                     var gameObject = spAny[arg.type].from(form);
                     return gameObject;
                 }
@@ -672,7 +807,7 @@ System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], f
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            self = skyrimPlatform_2.Game.getFormEx(snippet.selfId);
+                            self = skyrimPlatform_1.Game.getFormEx(snippet.selfId);
                             if (!self)
                                 throw new Error("Unable to find form with id " + snippet.selfId.toString(16));
                             selfCasted = spAny[snippet.class].from(self);
@@ -695,18 +830,18 @@ System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], f
                     }
                 });
             }); };
-            exports_9("run", run = function (snippet) { return __awaiter(void 0, void 0, void 0, function () {
+            exports_10("run", run = function (snippet) { return __awaiter(void 0, void 0, void 0, function () {
                 var form, sign, count, soundId;
                 return __generator(this, function (_a) {
                     if (snippet.class === "SkympHacks") {
                         if (snippet.function === "AddItem" || snippet.function === "RemoveItem") {
-                            form = skyrimPlatform_2.Form.from(deserializeArg(snippet.arguments[0]));
+                            form = skyrimPlatform_1.Form.from(deserializeArg(snippet.arguments[0]));
                             sign = snippet.function === "AddItem" ? "+" : "-";
                             count = snippet.arguments[1];
                             soundId = 0x334ab;
                             if (form.getFormID() !== 0xf)
                                 soundId = 0x14115;
-                            sp.Sound.from(skyrimPlatform_2.Game.getFormEx(soundId)).play(skyrimPlatform_2.Game.getPlayer());
+                            sp.Sound.from(skyrimPlatform_1.Game.getFormEx(soundId)).play(skyrimPlatform_1.Game.getPlayer());
                             if (count > 0)
                                 sp.Debug.notification(sign + " " + form.getName() + " (" + count + ")");
                         }
@@ -720,10 +855,10 @@ System.register("src/front/spSnippet", ["src/skyrim-platform/skyrimPlatform"], f
         }
     };
 });
-System.register("src/front/messages", [], function (exports_10, context_10) {
+System.register("src/front/messages", [], function (exports_11, context_11) {
     "use strict";
     var MsgType;
-    var __moduleName = context_10 && context_10.id;
+    var __moduleName = context_11 && context_11.id;
     return {
         setters: [],
         execute: function () {
@@ -744,18 +879,18 @@ System.register("src/front/messages", [], function (exports_10, context_10) {
                 MsgType[MsgType["Host"] = 14] = "Host";
                 MsgType[MsgType["CustomEvent"] = 15] = "CustomEvent";
             })(MsgType || (MsgType = {}));
-            exports_10("MsgType", MsgType);
+            exports_11("MsgType", MsgType);
         }
     };
 });
-System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src/front/consoleCommands", "src/front/messages"], function (exports_11, context_11) {
+System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src/front/consoleCommands", "src/front/messages"], function (exports_12, context_12) {
     "use strict";
-    var skyrimPlatform_3, consoleCommands_1, messages_1, blockConsole, CmdArgument, schemas, immuneSchema, nonVanilaCommands, getCommandExecutor, setUpConsoleCommands, printConsoleServer;
-    var __moduleName = context_11 && context_11.id;
+    var skyrimPlatform_2, consoleCommands_1, messages_1, blockConsole, CmdArgument, schemas, immuneSchema, nonVanilaCommands, getCommandExecutor, setUpConsoleCommands, printConsoleServer;
+    var __moduleName = context_12 && context_12.id;
     return {
         setters: [
-            function (skyrimPlatform_3_1) {
-                skyrimPlatform_3 = skyrimPlatform_3_1;
+            function (skyrimPlatform_2_1) {
+                skyrimPlatform_2 = skyrimPlatform_2_1;
             },
             function (consoleCommands_1_1) {
                 consoleCommands_1 = consoleCommands_1_1;
@@ -765,17 +900,17 @@ System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src
             }
         ],
         execute: function () {
-            exports_11("blockConsole", blockConsole = function () {
-                if (skyrimPlatform_3.settings["skymp5-client"]["enable-console"] !== true) {
-                    var legalCommands_1 = ["qqq"];
+            exports_12("blockConsole", blockConsole = function () {
+                if (skyrimPlatform_2.settings['skymp5-client']['enable-console'] !== true) {
+                    var legalCommands_1 = ['qqq'];
                     consoleCommands_1.consoleCommands.concat(consoleCommands_1.scriptCommands).forEach(function (name) {
-                        var command = skyrimPlatform_3.findConsoleCommand(name);
+                        var command = skyrimPlatform_2.findConsoleCommand(name);
                         if (!command ||
                             legalCommands_1.includes(command.longName.toLowerCase()) ||
                             legalCommands_1.includes(command.shortName.toLowerCase()))
                             return;
                         command.execute = function () {
-                            skyrimPlatform_3.printConsole("You do not have permission to use this command ('" + name + "')");
+                            skyrimPlatform_2.printConsole("You do not have permission to use this command ('" + name + "')");
                             return false;
                         };
                     });
@@ -793,8 +928,8 @@ System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src
                 disable: [CmdArgument.ObjectReference],
                 mp: [CmdArgument.ObjectReference, CmdArgument.String],
             };
-            immuneSchema = ["mp"];
-            nonVanilaCommands = ["mp"];
+            immuneSchema = ['mp'];
+            nonVanilaCommands = ['mp'];
             getCommandExecutor = function (commandName, send, localIdToRemoteId) {
                 return function () {
                     var _a;
@@ -804,7 +939,7 @@ System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src
                     }
                     var schema = schemas[commandName];
                     if (args.length !== schema.length && !immuneSchema.includes(commandName)) {
-                        skyrimPlatform_3.printConsole("Mismatch found in the schema of '" + commandName + "' command");
+                        skyrimPlatform_2.printConsole("Mismatch found in the schema of '" + commandName + "' command");
                         return false;
                     }
                     for (var i = 0; i < args.length; ++i) {
@@ -814,52 +949,169 @@ System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src
                                 break;
                         }
                     }
-                    skyrimPlatform_3.printConsole("sent");
+                    skyrimPlatform_2.printConsole('sent');
                     send({ t: messages_1.MsgType.ConsoleCommand, data: { commandName: commandName, args: args } });
-                    if (skyrimPlatform_3.storage["_api_onConsoleCommand"] &&
-                        skyrimPlatform_3.storage["_api_onConsoleCommand"]["callback"]) {
-                        if (commandName === "mp") {
+                    if (skyrimPlatform_2.storage['_api_onConsoleCommand'] &&
+                        skyrimPlatform_2.storage['_api_onConsoleCommand']['callback']) {
+                        if (commandName === 'mp') {
                             try {
-                                (_a = skyrimPlatform_3.storage["_api_onConsoleCommand"])["callback"].apply(_a, args);
+                                (_a = skyrimPlatform_2.storage['_api_onConsoleCommand'])['callback'].apply(_a, args);
                             }
                             catch (e) {
-                                skyrimPlatform_3.printConsole("'_api_onConsoleCommand' - ", e);
+                                skyrimPlatform_2.printConsole("'_api_onConsoleCommand' - ", e);
                             }
                         }
                     }
                     return false;
                 };
             };
-            exports_11("setUpConsoleCommands", setUpConsoleCommands = function (send, localIdToRemoteId) {
-                var command = skyrimPlatform_3.findConsoleCommand(" ConfigureUM") || skyrimPlatform_3.findConsoleCommand("test");
+            exports_12("setUpConsoleCommands", setUpConsoleCommands = function (send, localIdToRemoteId) {
+                var command = skyrimPlatform_2.findConsoleCommand(' ConfigureUM') || skyrimPlatform_2.findConsoleCommand('test');
                 if (command) {
-                    command.shortName = "mp";
-                    command.execute = getCommandExecutor("mp", send, localIdToRemoteId);
+                    command.shortName = 'mp';
+                    command.execute = getCommandExecutor('mp', send, localIdToRemoteId);
                 }
                 Object.keys(schemas).forEach(function (commandName) {
-                    var command = skyrimPlatform_3.findConsoleCommand(commandName);
+                    var command = skyrimPlatform_2.findConsoleCommand(commandName);
                     if (!command || nonVanilaCommands.includes(commandName))
                         return;
                     command.execute = getCommandExecutor(commandName, send, localIdToRemoteId);
                 });
             });
-            exports_11("printConsoleServer", printConsoleServer = function () {
-                var _a;
+            exports_12("printConsoleServer", printConsoleServer = function () {
                 var argumets = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
                     argumets[_i] = arguments[_i];
                 }
-                if (skyrimPlatform_3.storage._api_onPrintConsole && skyrimPlatform_3.storage._api_onPrintConsole.callback) {
-                    (_a = skyrimPlatform_3.storage._api_onPrintConsole).callback.apply(_a, argumets);
-                }
+                var s = skyrimPlatform_2.storage._api_onPrintConsole;
+                if (s === null || s === void 0 ? void 0 : s.callback)
+                    s.callback.apply(s, argumets);
             });
         }
     };
 });
-System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"], function (exports_12, context_12) {
+System.register("src/front/browser", ["src/skyrim-platform/skyrimPlatform", "src/lib/dx-scan-codes", "src/lib/event-emitter", "src/front/console"], function (exports_13, context_13) {
+    "use strict";
+    var skyrimPlatform_3, dx_scan_codes_1, event_emitter_1, console_1, dispatch, main;
+    var __moduleName = context_13 && context_13.id;
+    return {
+        setters: [
+            function (skyrimPlatform_3_1) {
+                skyrimPlatform_3 = skyrimPlatform_3_1;
+            },
+            function (dx_scan_codes_1_1) {
+                dx_scan_codes_1 = dx_scan_codes_1_1;
+            },
+            function (event_emitter_1_1) {
+                event_emitter_1 = event_emitter_1_1;
+            },
+            function (console_1_1) {
+                console_1 = console_1_1;
+            }
+        ],
+        execute: function () {
+            dispatch = function (commandType, data) {
+                if (data === void 0) { data = {}; }
+                var src = [];
+                src.push("\n\t\t\t\twindow.storage.dispatch({\n\t\t\t\t\ttype: 'COMMAND',\n\t\t\t\t\tdata: {\n\t\t\t\t\t\tcommandType: '" + commandType + "',\n\t\t\t\t\t\talter: ['" + JSON.stringify(data) + "']\n\t\t\t\t\t}\n\t\t\t\t})\n\t\t\t");
+                try {
+                    skyrimPlatform_3.browser.executeJavaScript(src.join('\n'));
+                }
+                catch (error) {
+                    console_1.printConsoleServer(error);
+                }
+            };
+            exports_13("main", main = function () {
+                var _a;
+                var badMenus = [
+                    'BarterMenu',
+                    'Book Menu',
+                    'ContainerMenu',
+                    'Crafting Menu',
+                    'GiftMenu',
+                    'InventoryMenu',
+                    'Journal Menu',
+                    'Lockpicking Menu',
+                    'Loading Menu',
+                    'MapMenu',
+                    'RaceSex Menu',
+                    'StatsMenu',
+                    'TweenMenu',
+                ];
+                // on('update', () => {
+                // 	if (Date.now() - lastBadMenuCheck > 200) {
+                // 		lastBadMenuCheck = Date.now();
+                // 		noBadMenuOpen = badMenus.findIndex((menu) => Ui.isMenuOpen(menu)) === -1;
+                // 	}
+                // });
+                var emitter = new event_emitter_1.EventEmitter();
+                var noBadMenuOpen = true;
+                var lastBadMenuCheck = 0;
+                var inputChangeEvent = 'event:input-change';
+                var keyState = { num: 0 };
+                skyrimPlatform_3.on('update', function () {
+                    var numKeys = skyrimPlatform_3.Input.getNumKeysPressed();
+                    if (keyState.num !== numKeys) {
+                        keyState.num = numKeys;
+                        var keyCodes = Array(numKeys)
+                            .fill(null)
+                            .map(function (x, i) { return skyrimPlatform_3.Input.getNthKeyPressed(i); });
+                        emitter.emit(inputChangeEvent, keyCodes);
+                    }
+                    if (Date.now() - lastBadMenuCheck > 200) {
+                        lastBadMenuCheck = Date.now();
+                        noBadMenuOpen = badMenus.findIndex(function (menu) { return skyrimPlatform_3.Ui.isMenuOpen(menu); }) === -1;
+                    }
+                });
+                var localBrowserFocused = false;
+                var browserSetFocused = function (state) {
+                    localBrowserFocused = state;
+                    skyrimPlatform_3.browser.setFocused(state);
+                };
+                var singleBindings = (_a = {},
+                    _a[dx_scan_codes_1.DXScanCodes.F6] = function () { return browserSetFocused(!localBrowserFocused); },
+                    _a[dx_scan_codes_1.DXScanCodes.Escape] = function () { return (localBrowserFocused ? browserSetFocused(false) : undefined); },
+                    _a[dx_scan_codes_1.DXScanCodes.U] = function () {
+                        if (!noBadMenuOpen || localBrowserFocused)
+                            return;
+                        browserSetFocused(true);
+                        dispatch('ANIMLIST_SHOW');
+                    },
+                    _a[dx_scan_codes_1.DXScanCodes.Enter] = function () {
+                        if (!noBadMenuOpen || localBrowserFocused)
+                            return;
+                        browserSetFocused(true);
+                        dispatch('CHAT_SHOW');
+                    },
+                    _a);
+                emitter.subscribe(inputChangeEvent, function (data) {
+                    if (!Array.isArray(data))
+                        return;
+                    var keycodes = data;
+                    if (keycodes.length === 0)
+                        return;
+                    var single = keycodes[0];
+                    if (!singleBindings[single])
+                        return;
+                    singleBindings[single]();
+                });
+                var cfg = {
+                    ip: skyrimPlatform_3.settings['skymp5-client']['server-ip'],
+                    port: skyrimPlatform_3.settings['skymp5-client']['server-port'],
+                };
+                skyrimPlatform_3.printConsole({ cfg: cfg });
+                var uiPort = cfg.port === 7777 ? 3000 : cfg.port + 1;
+                var url = "http://" + cfg.ip + ":" + uiPort + "/ui/index.html";
+                skyrimPlatform_3.printConsole("loading url " + url);
+                skyrimPlatform_3.browser.loadUrl(url);
+            });
+        }
+    };
+});
+System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"], function (exports_14, context_14) {
     "use strict";
     var skyrimPlatform_4, gAllowGetUp, update;
-    var __moduleName = context_12 && context_12.id;
+    var __moduleName = context_14 && context_14.id;
     return {
         setters: [
             function (skyrimPlatform_4_1) {
@@ -868,7 +1120,7 @@ System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"],
         ],
         execute: function () {
             gAllowGetUp = true;
-            exports_12("update", update = function () {
+            exports_14("update", update = function () {
                 gAllowGetUp =
                     skyrimPlatform_4.Game.getPlayer().getActorValuePercentage("health") >= 0.05;
             });
@@ -891,10 +1143,10 @@ System.register("src/front/deathSystem", ["src/skyrim-platform/skyrimPlatform"],
         }
     };
 });
-System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"], function (exports_13, context_13) {
+System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"], function (exports_15, context_15) {
     "use strict";
     var skyrimPlatform_5, tryHost, nextHostAttempt;
-    var __moduleName = context_13 && context_13.id;
+    var __moduleName = context_15 && context_15.id;
     return {
         setters: [
             function (skyrimPlatform_5_1) {
@@ -903,10 +1155,10 @@ System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"]
         ],
         execute: function () {
             skyrimPlatform_5.storage["hostAttempts"] = [];
-            exports_13("tryHost", tryHost = function (targetRemoteId) {
+            exports_15("tryHost", tryHost = function (targetRemoteId) {
                 skyrimPlatform_5.storage["hostAttempts"].push(targetRemoteId);
             });
-            exports_13("nextHostAttempt", nextHostAttempt = function () {
+            exports_15("nextHostAttempt", nextHostAttempt = function () {
                 var arr = skyrimPlatform_5.storage["hostAttempts"];
                 if (arr.length === 0)
                     return undefined;
@@ -915,10 +1167,10 @@ System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"]
         }
     };
 });
-System.register("src/front/components/movementApply", ["src/skyrim-platform/skyrimPlatform"], function (exports_14, context_14) {
+System.register("src/front/components/movementApply", ["src/skyrim-platform/skyrimPlatform"], function (exports_16, context_16) {
     "use strict";
     var skyrimPlatform_6, applyMovement, keepOffsetFromActor, getOffsetZ, applySprinting, applyBlocking, applySneaking, applyWeapDrawn, applyHealthPercentage, translateTo, teleportIfNeed, cellWidth, isInDifferentExteriorCell, isInDifferentWorldOrCell, getPos, getDistance;
-    var __moduleName = context_14 && context_14.id;
+    var __moduleName = context_16 && context_16.id;
     return {
         setters: [
             function (skyrimPlatform_6_1) {
@@ -926,7 +1178,7 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
             }
         ],
         execute: function () {
-            exports_14("applyMovement", applyMovement = function (refr, m) {
+            exports_16("applyMovement", applyMovement = function (refr, m) {
                 if (teleportIfNeed(refr, m))
                     return;
                 translateTo(refr, m);
@@ -998,7 +1250,7 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
                     skyrimPlatform_6.Debug.sendAnimationEvent(ac, isSneaking ? "SneakStart" : "SneakStop");
                 }
             };
-            exports_14("applyWeapDrawn", applyWeapDrawn = function (ac, isWeapDrawn) {
+            exports_16("applyWeapDrawn", applyWeapDrawn = function (ac, isWeapDrawn) {
                 if (ac.isWeaponDrawn() !== isWeapDrawn) {
                     skyrimPlatform_6.TESModPlatform.setWeaponDrawnMode(ac, isWeapDrawn ? 1 : 0);
                 }
@@ -1056,10 +1308,10 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
         }
     };
 });
-System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrimPlatform"], function (exports_15, context_15) {
+System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrimPlatform"], function (exports_17, context_17) {
     "use strict";
     var skyrimPlatform_7, getMovement, isSneaking, getRunMode;
-    var __moduleName = context_15 && context_15.id;
+    var __moduleName = context_17 && context_17.id;
     return {
         setters: [
             function (skyrimPlatform_7_1) {
@@ -1067,7 +1319,7 @@ System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrim
             }
         ],
         execute: function () {
-            exports_15("getMovement", getMovement = function (refr) {
+            exports_17("getMovement", getMovement = function (refr) {
                 var ac = skyrimPlatform_7.Actor.from(refr);
                 // It is running for ObjectReferences because Standing
                 // Doesn't lead to translateTo call
@@ -1133,10 +1385,10 @@ System.register("src/front/components/movementGet", ["src/skyrim-platform/skyrim
         }
     };
 });
-System.register("src/front/components/movement", ["src/front/components/movementApply", "src/front/components/movementGet"], function (exports_16, context_16) {
+System.register("src/front/components/movement", ["src/front/components/movementApply", "src/front/components/movementGet"], function (exports_18, context_18) {
     "use strict";
     var movementApply, applyMovement, movementGet, getMovement;
-    var __moduleName = context_16 && context_16.id;
+    var __moduleName = context_18 && context_18.id;
     return {
         setters: [
             function (movementApply_1) {
@@ -1147,15 +1399,15 @@ System.register("src/front/components/movement", ["src/front/components/movement
             }
         ],
         execute: function () {
-            exports_16("applyMovement", applyMovement = movementApply.applyMovement);
-            exports_16("getMovement", getMovement = movementGet.getMovement);
+            exports_18("applyMovement", applyMovement = movementApply.applyMovement);
+            exports_18("getMovement", getMovement = movementGet.getMovement);
         }
     };
 });
-System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPlatform", "src/front/components/movementApply"], function (exports_17, context_17) {
+System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPlatform", "src/front/components/movementApply"], function (exports_19, context_19) {
     "use strict";
     var skyrimPlatform_8, movementApply_2, allowedIdles, refsWithDefaultAnimsDisabled, allowedAnims, isIdle, applyAnimation, setDefaultAnimsDisabled, AnimationSource, ignoredAnims, setupHooks;
-    var __moduleName = context_17 && context_17.id;
+    var __moduleName = context_19 && context_19.id;
     return {
         setters: [
             function (skyrimPlatform_8_1) {
@@ -1175,7 +1427,7 @@ System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPl
                         animEventName !== "IdleStop" &&
                         animEventName !== "IdleForceDefaultState"));
             };
-            exports_17("applyAnimation", applyAnimation = function (refr, anim, state) {
+            exports_19("applyAnimation", applyAnimation = function (refr, anim, state) {
                 if (state.lastNumChanges === anim.numChanges)
                     return;
                 state.lastNumChanges = anim.numChanges;
@@ -1216,7 +1468,7 @@ System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPl
                     }
                 }
             });
-            exports_17("setDefaultAnimsDisabled", setDefaultAnimsDisabled = function (refrId, disabled) {
+            exports_19("setDefaultAnimsDisabled", setDefaultAnimsDisabled = function (refrId, disabled) {
                 if (disabled)
                     refsWithDefaultAnimsDisabled.add(refrId);
                 else
@@ -1289,7 +1541,7 @@ System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPl
                 };
                 return AnimationSource;
             }());
-            exports_17("AnimationSource", AnimationSource);
+            exports_19("AnimationSource", AnimationSource);
             ignoredAnims = new Set([
                 "moveStart",
                 "moveStop",
@@ -1299,7 +1551,7 @@ System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPl
                 "TurnLeft",
                 "TurnRight",
             ]);
-            exports_17("setupHooks", setupHooks = function () {
+            exports_19("setupHooks", setupHooks = function () {
                 skyrimPlatform_8.hooks.sendAnimationEvent.add({
                     enter: function (ctx) {
                         if (refsWithDefaultAnimsDisabled.has(ctx.selfId)) {
@@ -1334,10 +1586,10 @@ System.register("src/front/components/animation", ["src/skyrim-platform/skyrimPl
         }
     };
 });
-System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatform"], function (exports_18, context_18) {
+System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatform"], function (exports_20, context_20) {
     "use strict";
     var skyrimPlatform_9, getLook, isVisible, applyTints, silentVoiceTypeId, applyLookCommon, applyLook, applyLookToPlayer;
-    var __moduleName = context_18 && context_18.id;
+    var __moduleName = context_20 && context_20.id;
     return {
         setters: [
             function (skyrimPlatform_9_1) {
@@ -1345,7 +1597,7 @@ System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatfor
             }
         ],
         execute: function () {
-            exports_18("getLook", getLook = function (actor) {
+            exports_20("getLook", getLook = function (actor) {
                 var base = skyrimPlatform_9.ActorBase.from(actor.getBaseObject());
                 var hairColor = base.getHairColor();
                 var skinColor = skyrimPlatform_9.TESModPlatform.getSkinColor(base);
@@ -1390,7 +1642,7 @@ System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatfor
                 return newLook;
             });
             isVisible = function (argb) { return argb > 0x00ffffff || argb < 0; };
-            exports_18("applyTints", applyTints = function (actor, look) {
+            exports_20("applyTints", applyTints = function (actor, look) {
                 if (!look)
                     throw new Error("null look has been passed to applyTints");
                 var tints = look.tints.filter(function (t) { return isVisible(t.argb); });
@@ -1411,7 +1663,7 @@ System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatfor
                 if (actor)
                     skyrimPlatform_9.TESModPlatform.setFormIdUnsafe(actor.getBaseObject(), playerBaseId);
             });
-            exports_18("silentVoiceTypeId", silentVoiceTypeId = 0x0002f7c3);
+            exports_20("silentVoiceTypeId", silentVoiceTypeId = 0x0002f7c3);
             applyLookCommon = function (look, npc) {
                 var race = skyrimPlatform_9.Race.from(skyrimPlatform_9.Game.getFormEx(look.raceId));
                 var headparts = look.headpartIds
@@ -1437,14 +1689,14 @@ System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatfor
                     npc.setName(" ");
                 }
             };
-            exports_18("applyLook", applyLook = function (look) {
+            exports_20("applyLook", applyLook = function (look) {
                 var npc = skyrimPlatform_9.TESModPlatform.createNpc();
                 if (!npc)
                     throw new Error("createNpc returned null");
                 applyLookCommon(look, npc);
                 return npc;
             });
-            exports_18("applyLookToPlayer", applyLookToPlayer = function (look) {
+            exports_20("applyLookToPlayer", applyLookToPlayer = function (look) {
                 applyLookCommon(look, skyrimPlatform_9.ActorBase.from(skyrimPlatform_9.Game.getPlayer().getBaseObject()));
                 applyTints(null, look);
                 skyrimPlatform_9.Game.getPlayer().queueNiNodeUpdate();
@@ -1452,14 +1704,17 @@ System.register("src/front/components/look", ["src/skyrim-platform/skyrimPlatfor
         }
     };
 });
-System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPlatform"], function (exports_19, context_19) {
+System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPlatform", "src/front/console"], function (exports_21, context_21) {
     "use strict";
-    var skyrimPlatform_10, getRealName, cropName, checkIfNameIsGeneratedByGame, namesEqual, extrasEqual, hasExtras, extractExtraData, squash, getExtraContainerChangesAsInventory, getBaseContainerAsInventory, sumInventories, getDiff, getInventory, basesReset, resetBase, applyInventory;
-    var __moduleName = context_19 && context_19.id;
+    var skyrimPlatform_10, console_2, getRealName, cropName, checkIfNameIsGeneratedByGame, namesEqual, extrasEqual, hasExtras, extractExtraData, squash, getExtraContainerChangesAsInventory, getBaseContainerAsInventory, sumInventories, getDiff, getInventory, basesReset, resetBase, applyInventory;
+    var __moduleName = context_21 && context_21.id;
     return {
         setters: [
             function (skyrimPlatform_10_1) {
                 skyrimPlatform_10 = skyrimPlatform_10_1;
+            },
+            function (console_2_1) {
+                console_2 = console_2_1;
             }
         ],
         execute: function () {
@@ -1467,10 +1722,10 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
             getRealName = function (s) {
                 if (!s)
                     return s;
-                var arr = s.split(" ");
+                var arr = s.split(' ');
                 if (arr.length && arr[arr.length - 1].match(/^\(.*\)$/))
                     arr.pop();
-                return arr.join(" ");
+                return arr.join(' ');
             };
             // 'aaaaaaaaaaaaaaaa' => 'aaa...'
             cropName = function (s) {
@@ -1479,10 +1734,10 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                 var max = 128;
                 return s.length >= max
                     ? s
-                        .split("")
+                        .split('')
                         .filter(function (x, i) { return i < max; })
-                        .join("")
-                        .concat("...")
+                        .join('')
+                        .concat('...')
                     : s;
             };
             checkIfNameIsGeneratedByGame = function (aStr, bStr, formName) {
@@ -1495,16 +1750,15 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                 return false;
             };
             namesEqual = function (a, b) {
-                var aStr = a.name || "";
-                var bStr = b.name || "";
+                var aStr = a.name || '';
+                var bStr = b.name || '';
                 if (cropName(getRealName(aStr)) === cropName(getRealName(bStr)))
                     return true;
                 if (a.baseId === b.baseId) {
                     var form = skyrimPlatform_10.Game.getFormEx(a.baseId);
                     if (form) {
                         var formName = form.getName();
-                        if (checkIfNameIsGeneratedByGame(aStr, bStr, formName) ||
-                            checkIfNameIsGeneratedByGame(bStr, aStr, formName))
+                        if (checkIfNameIsGeneratedByGame(aStr, bStr, formName) || checkIfNameIsGeneratedByGame(bStr, aStr, formName))
                             return true;
                     }
                 }
@@ -1537,38 +1791,38 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                 }
                 (extraList || []).forEach(function (extra) {
                     switch (extra.type) {
-                        case "Health":
+                        case 'Health':
                             out.health = Math.round(extra.health * 10) / 10;
                             // TESModPlatform::AddItemEx makes all items at least 1.01 health
                             if (out.health === 1) {
                                 delete out.health;
                             }
                             break;
-                        case "Count":
+                        case 'Count':
                             out.count = extra.count;
                             break;
-                        case "Enchantment":
+                        case 'Enchantment':
                             out.enchantmentId = extra.enchantmentId;
                             out.maxCharge = extra.maxCharge;
                             out.removeEnchantmentOnUnequip = extra.removeOnUnequip;
                             break;
-                        case "Charge":
+                        case 'Charge':
                             out.chargePercent = extra.charge;
                             break;
-                        case "Poison":
+                        case 'Poison':
                             out.poisonId = extra.poisonId;
                             out.poisonCount = extra.count;
                             break;
-                        case "Soul":
+                        case 'Soul':
                             out.soul = extra.soul;
                             break;
-                        case "TextDisplayData":
+                        case 'TextDisplayData':
                             out.name = extra.name;
                             break;
-                        case "Worn":
+                        case 'Worn':
                             out.worn = true;
                             break;
-                        case "WornLeft":
+                        case 'WornLeft':
                             out.wornLeft = true;
                             break;
                     }
@@ -1612,7 +1866,9 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                 return res;
             };
             getBaseContainerAsInventory = function (refr) {
-                return { entries: skyrimPlatform_10.getContainer(refr.getBaseObject().getFormID()) };
+                return {
+                    entries: skyrimPlatform_10.getContainer(refr.getBaseObject().getFormID()),
+                };
             };
             sumInventories = function (lhs, rhs) {
                 var leftEntriesWithExtras = lhs.entries.filter(function (e) { return hasExtras(e); });
@@ -1634,7 +1890,7 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                         .filter(function (e) { return e.count !== 0; }),
                 };
             };
-            exports_19("getDiff", getDiff = function (lhs, rhs, ignoreWorn) {
+            exports_21("getDiff", getDiff = function (lhs, rhs, ignoreWorn) {
                 var lhsCopy = JSON.parse(JSON.stringify(lhs));
                 var rhsCopy = JSON.parse(JSON.stringify(rhs));
                 rhsCopy.entries.forEach(function (e) {
@@ -1649,15 +1905,15 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                 });
                 return { entries: lhsCopy.entries.filter(function (x) { return x.count !== 0; }) };
             });
-            exports_19("getInventory", getInventory = function (refr) {
+            exports_21("getInventory", getInventory = function (refr) {
                 return squash(sumInventories(getBaseContainerAsInventory(refr), getExtraContainerChangesAsInventory(refr)));
             });
             basesReset = function () {
-                if (skyrimPlatform_10.storage["basesResetExists"] !== true) {
-                    skyrimPlatform_10.storage["basesResetExists"] = true;
-                    skyrimPlatform_10.storage["basesReset"] = new Set();
+                if (skyrimPlatform_10.storage['basesResetExists'] !== true) {
+                    skyrimPlatform_10.storage['basesResetExists'] = true;
+                    skyrimPlatform_10.storage['basesReset'] = new Set();
                 }
-                return skyrimPlatform_10.storage["basesReset"];
+                return skyrimPlatform_10.storage['basesReset'];
             };
             resetBase = function (refr) {
                 var base = refr.getBaseObject();
@@ -1668,10 +1924,11 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                     refr.removeAllItems(null, false, true);
                 }
             };
-            exports_19("applyInventory", applyInventory = function (refr, newInventory, enableCrashProtection, ignoreWorn) {
+            exports_21("applyInventory", applyInventory = function (refr, newInventory, enableCrashProtection, ignoreWorn) {
                 if (ignoreWorn === void 0) { ignoreWorn = false; }
                 resetBase(refr);
                 var diff = getDiff(newInventory, getInventory(refr), ignoreWorn).entries;
+                // printConsoleServer('diff', JSON.stringify(diff));
                 var res = true;
                 diff.sort(function (a, b) { return (a.count < b.count ? -1 : 1); });
                 diff.forEach(function (e, i) {
@@ -1691,6 +1948,8 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                         if (worn && e.count < 0)
                             absCount = 0;
                     }
+                    // if (e.baseId.toString(16).startsWith('2'))
+                    // 	e.baseId = +('0x' + e.baseId.toString(16).replace('2', '4'));
                     if (e.count > 1 && skyrimPlatform_10.Ammo.from(skyrimPlatform_10.Game.getFormEx(e.baseId))) {
                         absCount = 1;
                         oneStepCount = e.count;
@@ -1705,12 +1964,11 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
                             queueNiNodeUpdateNeeded = true;
                         }
                         var f = skyrimPlatform_10.Game.getFormEx(e.baseId);
-                        if (!f)
-                            skyrimPlatform_10.printConsole("Bad form ID " + e.baseId.toString(16));
+                        if (!f) {
+                            console_2.printConsoleServer("Bad form ID " + e.baseId.toString(16));
+                        }
                         else
-                            skyrimPlatform_10.TESModPlatform.addItemEx(refr, f, oneStepCount, e.health ? e.health : 1, e.enchantmentId
-                                ? skyrimPlatform_10.Enchantment.from(skyrimPlatform_10.Game.getFormEx(e.enchantmentId))
-                                : null, e.maxCharge ? e.maxCharge : 0, !!e.removeEnchantmentOnUnequip, e.chargePercent ? e.chargePercent : 0, e.name ? cropName(e.name) : f.getName(), e.soul ? e.soul : 0, e.poisonId ? skyrimPlatform_10.Potion.from(skyrimPlatform_10.Game.getFormEx(e.poisonId)) : null, e.poisonCount ? e.poisonCount : 0);
+                            skyrimPlatform_10.TESModPlatform.addItemEx(refr, f, oneStepCount, e.health ? e.health : 1, e.enchantmentId ? skyrimPlatform_10.Enchantment.from(skyrimPlatform_10.Game.getFormEx(e.enchantmentId)) : null, e.maxCharge ? e.maxCharge : 0, !!e.removeEnchantmentOnUnequip, e.chargePercent ? e.chargePercent : 0, e.name ? cropName(e.name) : f.getName(), e.soul ? e.soul : 0, e.poisonId ? skyrimPlatform_10.Potion.from(skyrimPlatform_10.Game.getFormEx(e.poisonId)) : null, e.poisonCount ? e.poisonCount : 0);
                     }
                     if (queueNiNodeUpdateNeeded) {
                         var ac = skyrimPlatform_10.Actor.from(refr);
@@ -1724,10 +1982,10 @@ System.register("src/front/components/inventory", ["src/skyrim-platform/skyrimPl
         }
     };
 });
-System.register("src/front/components/equipment", ["src/skyrim-platform/skyrimPlatform", "src/front/components/inventory"], function (exports_20, context_20) {
+System.register("src/front/components/equipment", ["src/skyrim-platform/skyrimPlatform", "src/front/components/inventory"], function (exports_22, context_22) {
     "use strict";
     var skyrimPlatform_11, inventory_1, filterWorn, removeUnnecessaryExtra, getEquipment, applyEquipment, isBadMenuShown;
-    var __moduleName = context_20 && context_20.id;
+    var __moduleName = context_22 && context_22.id;
     return {
         setters: [
             function (skyrimPlatform_11_1) {
@@ -1752,13 +2010,13 @@ System.register("src/front/components/equipment", ["src/skyrim-platform/skyrimPl
                     }),
                 };
             };
-            exports_20("getEquipment", getEquipment = function (ac, numChanges) {
+            exports_22("getEquipment", getEquipment = function (ac, numChanges) {
                 return { inv: inventory_1.getInventory(ac), numChanges: numChanges };
             });
-            exports_20("applyEquipment", applyEquipment = function (ac, eq) {
+            exports_22("applyEquipment", applyEquipment = function (ac, eq) {
                 return inventory_1.applyInventory(ac, removeUnnecessaryExtra(filterWorn(eq.inv)), true);
             });
-            exports_20("isBadMenuShown", isBadMenuShown = function () {
+            exports_22("isBadMenuShown", isBadMenuShown = function () {
                 return (skyrimPlatform_11.Ui.isMenuOpen("InventoryMenu") ||
                     skyrimPlatform_11.Ui.isMenuOpen("FavoritesMenu") ||
                     skyrimPlatform_11.Ui.isMenuOpen("MagicMenu") ||
@@ -1769,19 +2027,19 @@ System.register("src/front/components/equipment", ["src/skyrim-platform/skyrimPl
         }
     };
 });
-System.register("src/front/model", [], function (exports_21, context_21) {
+System.register("src/front/model", [], function (exports_23, context_23) {
     "use strict";
-    var __moduleName = context_21 && context_21.id;
+    var __moduleName = context_23 && context_23.id;
     return {
         setters: [],
         execute: function () {
         }
     };
 });
-System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"], function (exports_22, context_22) {
+System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"], function (exports_24, context_24) {
     "use strict";
     var skyrimPlatform_12, protection, isInDialogue;
-    var __moduleName = context_22 && context_22.id;
+    var __moduleName = context_24 && context_24.id;
     function processOneActor() {
         var pc = skyrimPlatform_12.Game.getPlayer();
         var actor = skyrimPlatform_12.Game.findRandomActor(pc.getPositionX(), pc.getPositionY(), pc.getPositionZ(), 8192);
@@ -1807,12 +2065,12 @@ System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"]
     function updateWc() {
         return processOneActor();
     }
-    exports_22("updateWc", updateWc);
+    exports_24("updateWc", updateWc);
     function modWcProtection(actorId, mod) {
         var currentProtection = protection.get(actorId);
         protection.set(actorId, currentProtection ? currentProtection + mod : mod);
     }
-    exports_22("modWcProtection", modWcProtection);
+    exports_24("modWcProtection", modWcProtection);
     return {
         setters: [
             function (skyrimPlatform_12_1) {
@@ -1827,10 +2085,10 @@ System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"]
         }
     };
 });
-System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/front/components/movement", "src/front/components/animation", "src/front/components/look", "src/front/components/equipment", "src/front/worldCleaner", "src/front/components/inventory", "src/front/hostAttempts", "src/front/components/movementGet"], function (exports_23, context_23) {
+System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/front/components/movement", "src/front/components/animation", "src/front/components/look", "src/front/components/equipment", "src/front/worldCleaner", "src/front/components/inventory", "src/front/hostAttempts", "src/front/components/movementGet"], function (exports_25, context_25) {
     "use strict";
     var skyrimPlatform_13, sp, movement_1, animation_1, look_1, equipment_1, worldCleaner_1, inventory_2, hostAttempts_1, movementGet_2, gCrosshairRefId, gPcInJumpState, gPcWorldOrCellId, gUpdateNeighborFunctionsKeys, gUpdateNeighborFunctions, getFormEx, lastTryHost, tryHostIfNeed, SpawnProcess, getDefaultEquipState, getDefaultLookState, undefinedRefr, unknownValue, undefinedFormModel, undefinedObject, undefinedView, ctx, FormView, FormViewArray, WorldView, getViewFromStorage, localIdToRemoteId, remoteIdToLocalId;
-    var __moduleName = context_23 && context_23.id;
+    var __moduleName = context_25 && context_25.id;
     function isItem(t) {
         var isAmmo = t === 42;
         var isArmor = t === 26;
@@ -2379,7 +2637,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                 };
                 return FormView;
             }());
-            exports_23("FormView", FormView);
+            exports_25("FormView", FormView);
             FormViewArray = /** @class */ (function () {
                 function FormViewArray() {
                     this.formViews = new Array();
@@ -2526,14 +2784,14 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                 };
                 return WorldView;
             }());
-            exports_23("WorldView", WorldView);
-            exports_23("getViewFromStorage", getViewFromStorage = function () {
+            exports_25("WorldView", WorldView);
+            exports_25("getViewFromStorage", getViewFromStorage = function () {
                 var res = skyrimPlatform_13.storage.view;
                 if (typeof res === "object")
                     return res;
                 return undefined;
             });
-            exports_23("localIdToRemoteId", localIdToRemoteId = function (localFormId) {
+            exports_25("localIdToRemoteId", localIdToRemoteId = function (localFormId) {
                 if (localFormId >= 0xff000000) {
                     var view = getViewFromStorage();
                     if (!view)
@@ -2548,7 +2806,7 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
                 }
                 return localFormId;
             });
-            exports_23("remoteIdToLocalId", remoteIdToLocalId = function (remoteFormId) {
+            exports_25("remoteIdToLocalId", remoteIdToLocalId = function (remoteFormId) {
                 if (remoteFormId >= 0xff000000) {
                     var view = getViewFromStorage();
                     if (!view)
@@ -2562,28 +2820,28 @@ System.register("src/front/view", ["src/skyrim-platform/skyrimPlatform", "src/fr
         }
     };
 });
-System.register("src/front/msgHandler", [], function (exports_24, context_24) {
+System.register("src/front/msgHandler", [], function (exports_26, context_26) {
     "use strict";
-    var __moduleName = context_24 && context_24.id;
+    var __moduleName = context_26 && context_26.id;
     return {
         setters: [],
         execute: function () {
         }
     };
 });
-System.register("src/front/modelSource", [], function (exports_25, context_25) {
+System.register("src/front/modelSource", [], function (exports_27, context_27) {
     "use strict";
-    var __moduleName = context_25 && context_25.id;
+    var __moduleName = context_27 && context_27.id;
     return {
         setters: [],
         execute: function () {
         }
     };
 });
-System.register("src/front/networking", ["src/skyrim-platform/skyrimPlatform"], function (exports_26, context_26) {
+System.register("src/front/networking", ["src/skyrim-platform/skyrimPlatform"], function (exports_28, context_28) {
     "use strict";
     var skyrimPlatform_14, sp, handlersMap, lastHostname, lastPort, createClientSafe, connect, close, on, send, reconnect;
-    var __moduleName = context_26 && context_26.id;
+    var __moduleName = context_28 && context_28.id;
     return {
         setters: [
             function (skyrimPlatform_14_1) {
@@ -2620,43 +2878,43 @@ System.register("src/front/networking", ["src/skyrim-platform/skyrimPlatform"], 
                     });
                 });
             });
-            exports_26("connect", connect = function (hostname, port) {
+            exports_28("connect", connect = function (hostname, port) {
                 lastHostname = hostname;
                 lastPort = port;
                 createClientSafe(hostname, port);
             });
-            exports_26("close", close = function () {
+            exports_28("close", close = function () {
                 skyrimPlatform_14.mpClientPlugin.destroyClient();
             });
-            exports_26("on", on = function (packetType, handler) {
+            exports_28("on", on = function (packetType, handler) {
                 var arr = handlersMap.get(packetType);
                 arr = (arr ? arr : []).concat([handler]);
                 handlersMap.set(packetType, arr);
             });
-            exports_26("send", send = function (msg, reliable) {
+            exports_28("send", send = function (msg, reliable) {
                 skyrimPlatform_14.mpClientPlugin.send(JSON.stringify(msg), reliable);
             });
             // Reconnect automatically
-            exports_26("reconnect", reconnect = function () { return createClientSafe(lastHostname, lastPort); });
+            exports_28("reconnect", reconnect = function () { return createClientSafe(lastHostname, lastPort); });
             on("connectionFailed", reconnect);
             on("connectionDenied", reconnect);
             on("disconnect", reconnect);
         }
     };
 });
-System.register("src/front/sendTarget", [], function (exports_27, context_27) {
+System.register("src/front/sendTarget", [], function (exports_29, context_29) {
     "use strict";
-    var __moduleName = context_27 && context_27.id;
+    var __moduleName = context_29 && context_29.id;
     return {
         setters: [],
         execute: function () {
         }
     };
 });
-System.register("src/front/loadGameManager", ["src/skyrim-platform/skyrimPlatform"], function (exports_28, context_28) {
+System.register("src/front/loadGameManager", ["src/skyrim-platform/skyrimPlatform"], function (exports_30, context_30) {
     "use strict";
     var sp, isCausedBySkyrimPlatform, addLoadGameListener, loadGame;
-    var __moduleName = context_28 && context_28.id;
+    var __moduleName = context_30 && context_30.id;
     return {
         setters: [
             function (sp_1) {
@@ -2665,7 +2923,7 @@ System.register("src/front/loadGameManager", ["src/skyrim-platform/skyrimPlatfor
         ],
         execute: function () {
             isCausedBySkyrimPlatform = false;
-            exports_28("addLoadGameListener", addLoadGameListener = function (onGameLoad) {
+            exports_30("addLoadGameListener", addLoadGameListener = function (onGameLoad) {
                 sp.on("loadGame", function () {
                     try {
                         onGameLoad({ isCausedBySkyrimPlatform: isCausedBySkyrimPlatform });
@@ -2681,17 +2939,17 @@ System.register("src/front/loadGameManager", ["src/skyrim-platform/skyrimPlatfor
                     });
                 });
             });
-            exports_28("loadGame", loadGame = function (pos, rot, worldOrCell, changeFormNpc) {
+            exports_30("loadGame", loadGame = function (pos, rot, worldOrCell, changeFormNpc) {
                 sp.loadGame(pos, rot, worldOrCell, changeFormNpc);
                 isCausedBySkyrimPlatform = true;
             });
         }
     };
 });
-System.register("src/lib/idManager", [], function (exports_29, context_29) {
+System.register("src/lib/idManager", [], function (exports_31, context_31) {
     "use strict";
     var IdManager;
-    var __moduleName = context_29 && context_29.id;
+    var __moduleName = context_31 && context_31.id;
     return {
         setters: [],
         execute: function () {
@@ -2736,14 +2994,14 @@ System.register("src/lib/idManager", [], function (exports_29, context_29) {
                 };
                 return IdManager;
             }());
-            exports_29("IdManager", IdManager);
+            exports_31("IdManager", IdManager);
         }
     };
 });
-System.register("src/front/updateOwner", ["src/skyrim-platform/skyrimPlatform", "src/front/view"], function (exports_30, context_30) {
+System.register("src/front/updateOwner", ["src/skyrim-platform/skyrimPlatform", "src/front/view"], function (exports_32, context_32) {
     "use strict";
     var sp, view, setOwnerModel, setup;
-    var __moduleName = context_30 && context_30.id;
+    var __moduleName = context_32 && context_32.id;
     return {
         setters: [
             function (sp_2) {
@@ -2754,11 +3012,11 @@ System.register("src/front/updateOwner", ["src/skyrim-platform/skyrimPlatform", 
             }
         ],
         execute: function () {
-            exports_30("setOwnerModel", setOwnerModel = function (ownerModel) {
+            exports_32("setOwnerModel", setOwnerModel = function (ownerModel) {
                 sp.storage["ownerModel"] = ownerModel;
                 sp.storage["ownerModelSet"] = true;
             });
-            exports_30("setup", setup = function () {
+            exports_32("setup", setup = function () {
                 var ctx = {
                     sp: sp,
                     refr: undefined,
@@ -2811,10 +3069,10 @@ System.register("src/front/updateOwner", ["src/skyrim-platform/skyrimPlatform", 
         }
     };
 });
-System.register("src/front/remoteServer", ["src/front/networking", "src/front/messages", "src/skyrim-platform/skyrimPlatform", "src/front/loadGameManager", "src/front/components/inventory", "src/front/components/equipment", "src/lib/idManager", "src/front/components/look", "src/front/spSnippet", "src/front/view", "src/front/updateOwner", "src/front/console"], function (exports_31, context_31) {
+System.register("src/front/remoteServer", ["src/front/networking", "src/front/messages", "src/skyrim-platform/skyrimPlatform", "src/front/loadGameManager", "src/front/components/inventory", "src/front/components/equipment", "src/lib/idManager", "src/front/components/look", "src/front/spSnippet", "src/front/view", "src/front/updateOwner", "src/front/console"], function (exports_33, context_33) {
     "use strict";
-    var networking, messages, skyrimPlatform_15, loadGameManager, inventory_3, equipment_2, idManager_1, look_2, spSnippet, sp, view_2, updateOwner, console_1, setupEventSource, maxVerifyDelayDefault, verifyStartMoment, loggingStartMoment, maxVerifyDelay, SpawnTask, sendBrowserToken, verifySourceCode, loginWithSkympIoCredentials, taskVerifySourceCode, getPcInventory, setPcInventory, pcInvLastApply, RemoteServer;
-    var __moduleName = context_31 && context_31.id;
+    var networking, messages, skyrimPlatform_15, loadGameManager, inventory_3, equipment_2, idManager_1, look_2, spSnippet, sp, view_2, updateOwner, console_3, setupEventSource, maxVerifyDelayDefault, verifyStartMoment, loggingStartMoment, maxVerifyDelay, SpawnTask, sendBrowserToken, verifySourceCode, loginWithSkympIoCredentials, taskVerifySourceCode, getPcInventory, setPcInventory, pcInvLastApply, RemoteServer;
+    var __moduleName = context_33 && context_33.id;
     return {
         setters: [
             function (networking_1) {
@@ -2851,8 +3109,8 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
             function (updateOwner_1) {
                 updateOwner = updateOwner_1;
             },
-            function (console_1_1) {
-                console_1 = console_1_1;
+            function (console_3_1) {
+                console_3 = console_3_1;
             }
         ],
         execute: function () {
@@ -2863,10 +3121,10 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                 skyrimPlatform_15.once('update', function () {
                     try {
                         ctx._fn(ctx);
-                        console_1.printConsoleServer("'eventSources." + ctx._eventName + "' - Added");
+                        // printConsoleServer(`'eventSources.${ctx._eventName}' - Added`);
                     }
                     catch (e) {
-                        console_1.printConsoleServer("'eventSources." + ctx._eventName + "' -", e);
+                        // printConsoleServer(`'eventSources.${ctx._eventName}' -`, e);
                     }
                 });
             };
@@ -2945,7 +3203,7 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                 });
                 skyrimPlatform_15.storage['taskVerifySourceCode'] = false;
             }
-            exports_31("getPcInventory", getPcInventory = function () {
+            exports_33("getPcInventory", getPcInventory = function () {
                 var res = skyrimPlatform_15.storage['pcInv'];
                 if (typeof res === 'object' && res['entries']) {
                     return res;
@@ -3075,8 +3333,9 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                     // TODO: move to a separate module
                     if (msg.props && !msg.props.isHostedByOther) {
                     }
-                    if (msg.props && msg.props.isRaceMenuOpen && msg.isMe)
+                    if (msg.props && msg.props.isRaceMenuOpen && msg.isMe) {
                         this.setRaceMenuOpen({ type: 'setRaceMenuOpen', open: true });
+                    }
                     var applyPcInv = function () {
                         inventory_3.applyInventory(skyrimPlatform_15.Game.getPlayer(), msg.equipment
                             ? {
@@ -3268,14 +3527,14 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                             var emptyFunction = functionSources[propName] === '';
                             if (emptyFunction) {
                                 delete skyrimPlatform_15.storage[storageVar][propName];
-                                console_1.printConsoleServer("'" + storageVar + "." + propName + "' -", 'Added empty');
+                                // printConsoleServer(`'${storageVar}.${propName}' -`, 'Added empty');
                             }
                             else {
-                                console_1.printConsoleServer("'" + storageVar + "." + propName + "' -", 'Added');
+                                // printConsoleServer(`'${storageVar}.${propName}' -`, 'Added');
                             }
                         }
                         catch (e) {
-                            console_1.printConsoleServer("'" + storageVar + "." + propName + "' -", e);
+                            console_3.printConsoleServer("'" + storageVar + "." + propName + "' -", e);
                         }
                     }
                     skyrimPlatform_15.storage[storageVar + "_keys"] = Object.keys(skyrimPlatform_15.storage[storageVar]);
@@ -3362,14 +3621,14 @@ System.register("src/front/remoteServer", ["src/front/networking", "src/front/me
                 };
                 return RemoteServer;
             }());
-            exports_31("RemoteServer", RemoteServer);
+            exports_33("RemoteServer", RemoteServer);
         }
     };
 });
-System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", "src/front/view", "src/front/components/movement", "src/front/components/look", "src/front/components/animation", "src/front/components/equipment", "src/front/components/inventory", "src/front/messages", "src/front/remoteServer", "src/front/networking", "src/front/loadGameManager", "src/front/deathSystem", "src/front/console", "src/front/hostAttempts", "src/front/updateOwner"], function (exports_32, context_32) {
+System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", "src/front/view", "src/front/components/movement", "src/front/components/look", "src/front/components/animation", "src/front/components/equipment", "src/front/components/inventory", "src/front/messages", "src/front/remoteServer", "src/front/networking", "src/front/loadGameManager", "src/front/deathSystem", "src/front/console", "src/front/hostAttempts", "src/front/updateOwner"], function (exports_34, context_34) {
     "use strict";
-    var skyrimPlatform_16, view_3, movement_2, look_3, animation_2, equipment_3, inventory_4, messages_3, remoteServer_1, networking, sp, loadGameManager, deathSystem, console_2, hostAttempts_2, updateOwner, handleMessage, targetIp, targetPort, SkympClient;
-    var __moduleName = context_32 && context_32.id;
+    var skyrimPlatform_16, view_3, movement_2, look_3, animation_2, equipment_3, inventory_4, messages_3, remoteServer_1, networking, sp, loadGameManager, deathSystem, console_4, hostAttempts_2, updateOwner, handleMessage, targetIp, targetPort, SkympClient;
+    var __moduleName = context_34 && context_34.id;
     return {
         setters: [
             function (skyrimPlatform_16_1) {
@@ -3409,8 +3668,8 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
             function (deathSystem_1) {
                 deathSystem = deathSystem_1;
             },
-            function (console_2_1) {
-                console_2 = console_2_1;
+            function (console_4_1) {
+                console_4 = console_4_1;
             },
             function (hostAttempts_2_1) {
                 hostAttempts_2 = hostAttempts_2_1;
@@ -3425,45 +3684,45 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                 var handler = handler_;
                 var f = handler[msgType];
                 /*if (msgType !== "UpdateMovement") {
-                  printConsole();
-                  for (const key in msgAny) {
-                    const v = (msgAny as Record<string, any>)[key];
-                    printConsole(`${key}=${JSON.stringify(v)}`);
-                  }
-                }*/
-                if (msgType === "hostStart") {
+                printConsole();
+                for (const key in msgAny) {
+                  const v = (msgAny as Record<string, any>)[key];
+                  printConsole(`${key}=${JSON.stringify(v)}`);
+                }
+              }*/
+                if (msgType === 'hostStart') {
                     var msg = msgAny;
                     var target = msg.target;
-                    skyrimPlatform_16.printConsole("hostStart", target.toString(16));
-                    var hosted = skyrimPlatform_16.storage["hosted"];
+                    skyrimPlatform_16.printConsole('hostStart', target.toString(16));
+                    var hosted = skyrimPlatform_16.storage['hosted'];
                     if (typeof hosted !== typeof []) {
                         // if you try to switch to Set checkout .concat usage.
                         // concat compiles but doesn't work as expected
                         hosted = new Array();
-                        skyrimPlatform_16.storage["hosted"] = hosted;
+                        skyrimPlatform_16.storage['hosted'] = hosted;
                     }
                     if (!hosted.includes(target)) {
                         hosted.push(target);
                     }
                 }
-                if (msgType === "hostStop") {
+                if (msgType === 'hostStop') {
                     var msg = msgAny;
                     var target_1 = msg.target;
-                    skyrimPlatform_16.printConsole("hostStop", target_1.toString(16));
-                    var hosted = skyrimPlatform_16.storage["hosted"];
+                    skyrimPlatform_16.printConsole('hostStop', target_1.toString(16));
+                    var hosted = skyrimPlatform_16.storage['hosted'];
                     if (typeof hosted === typeof []) {
-                        skyrimPlatform_16.storage["hosted"] = hosted.filter(function (x) { return x !== target_1; });
+                        skyrimPlatform_16.storage['hosted'] = hosted.filter(function (x) { return x !== target_1; });
                     }
                 }
-                if (f && typeof f === "function")
+                if (f && typeof f === 'function')
                     handler[msgType](msgAny);
             };
             for (var i = 0; i < 100; ++i)
                 skyrimPlatform_16.printConsole();
-            skyrimPlatform_16.printConsole("Hello Multiplayer");
-            skyrimPlatform_16.printConsole("settings:", skyrimPlatform_16.settings["skymp5-client"]);
-            targetIp = skyrimPlatform_16.settings["skymp5-client"]["server-ip"];
-            targetPort = skyrimPlatform_16.settings["skymp5-client"]["server-port"];
+            skyrimPlatform_16.printConsole('Hello Multiplayer');
+            skyrimPlatform_16.printConsole('settings:', skyrimPlatform_16.settings['skymp5-client']);
+            targetIp = skyrimPlatform_16.settings['skymp5-client']['server-ip'];
+            targetPort = skyrimPlatform_16.settings['skymp5-client']['server-port'];
             if (skyrimPlatform_16.storage.targetIp !== targetIp || skyrimPlatform_16.storage.targetPort !== targetPort) {
                 skyrimPlatform_16.storage.targetIp = targetIp;
                 skyrimPlatform_16.storage.targetPort = targetPort;
@@ -3471,7 +3730,7 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                 networking.connect(targetIp, targetPort);
             }
             else {
-                skyrimPlatform_16.printConsole("Reconnect is not required");
+                skyrimPlatform_16.printConsole('Reconnect is not required');
             }
             SkympClient = /** @class */ (function () {
                 function SkympClient() {
@@ -3489,38 +3748,38 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     this.resetRemoteServer();
                     animation_2.setupHooks();
                     updateOwner.setup();
-                    sp.printConsole("SkympClient ctor");
-                    networking.on("connectionFailed", function () {
-                        skyrimPlatform_16.printConsole("Connection failed");
+                    sp.printConsole('SkympClient ctor');
+                    networking.on('connectionFailed', function () {
+                        skyrimPlatform_16.printConsole('Connection failed');
                     });
-                    networking.on("connectionDenied", function (err) {
-                        skyrimPlatform_16.printConsole("Connection denied: ", err);
+                    networking.on('connectionDenied', function (err) {
+                        skyrimPlatform_16.printConsole('Connection denied: ', err);
                     });
-                    networking.on("connectionAccepted", function () {
+                    networking.on('connectionAccepted', function () {
                         _this.msgHandler.handleConnectionAccepted();
                     });
-                    networking.on("disconnect", function () {
+                    networking.on('disconnect', function () {
                         _this.msgHandler.handleDisconnect();
                     });
-                    networking.on("message", function (msgAny) {
+                    networking.on('message', function (msgAny) {
                         handleMessage(msgAny, _this.msgHandler);
                     });
-                    skyrimPlatform_16.on("update", function () {
+                    skyrimPlatform_16.on('update', function () {
                         if (!_this.singlePlayer) {
                             _this.sendInputs();
                         }
                     });
                     var lastInv;
-                    skyrimPlatform_16.once("update", function () {
+                    skyrimPlatform_16.once('update', function () {
                         var send = function (msg) {
                             _this.sendTarget.send(msg, true);
                         };
                         var localIdToRemoteId = function (localId) {
                             return _this.localIdToRemoteId(localId);
                         };
-                        console_2.setUpConsoleCommands(send, localIdToRemoteId);
+                        console_4.setUpConsoleCommands(send, localIdToRemoteId);
                     });
-                    skyrimPlatform_16.on("activate", function (e) {
+                    skyrimPlatform_16.on('activate', function (e) {
                         lastInv = inventory_4.getInventory(skyrimPlatform_16.Game.getPlayer());
                         var caster = e.caster ? e.caster.getFormID() : 0;
                         var target = e.target ? e.target.getFormID() : 0;
@@ -3531,18 +3790,18 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                             return;
                         target = _this.localIdToRemoteId(target);
                         if (!target)
-                            return skyrimPlatform_16.printConsole("localIdToRemoteId returned 0 (target)");
+                            return skyrimPlatform_16.printConsole('localIdToRemoteId returned 0 (target)');
                         caster = _this.localIdToRemoteId(caster);
                         if (!caster)
-                            return skyrimPlatform_16.printConsole("localIdToRemoteId returned 0 (caster)");
+                            return skyrimPlatform_16.printConsole('localIdToRemoteId returned 0 (caster)');
                         var openState = e.target.getOpenState();
                         if (openState === 2 /* Opening */ || openState === 4 /* Closing */)
                             return;
                         _this.sendTarget.send({ t: messages_3.MsgType.Activate, data: { caster: caster, target: target } }, true);
-                        skyrimPlatform_16.printConsole("sendActi", { caster: caster, target: target });
+                        skyrimPlatform_16.printConsole('sendActi', { caster: caster, target: target });
                     });
                     var furnitureStreak = new Map();
-                    skyrimPlatform_16.on("containerChanged", function (e) {
+                    skyrimPlatform_16.on('containerChanged', function (e) {
                         var oldContainerId = e.oldContainer ? e.oldContainer.getFormID() : 0;
                         var newContainerId = e.newContainer ? e.newContainer.getFormID() : 0;
                         var baseObjId = e.baseObj ? e.baseObj.getFormID() : 0;
@@ -3565,18 +3824,18 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                             skyrimPlatform_16.printConsole("Adding " + baseObjId.toString(16) + " (" + e.numItems + ") to recipe");
                         }
                         else if (oldContainerId === 0 && newContainerId === 0x14) {
-                            skyrimPlatform_16.printConsole("Flushing recipe");
+                            skyrimPlatform_16.printConsole('Flushing recipe');
                             var craftInputObjects = furnitureStreak.get(furrnitureId);
                             if (craftInputObjects && craftInputObjects.entries.length) {
                                 furnitureStreak.delete(furrnitureId);
                                 var workbench = _this.localIdToRemoteId(furrnitureId);
                                 if (!workbench)
-                                    return skyrimPlatform_16.printConsole("localIdToRemoteId returned 0");
+                                    return skyrimPlatform_16.printConsole('localIdToRemoteId returned 0');
                                 _this.sendTarget.send({
                                     t: messages_3.MsgType.CraftItem,
                                     data: { workbench: workbench, craftInputObjects: craftInputObjects, resultObjectId: baseObjId },
                                 }, true);
-                                skyrimPlatform_16.printConsole("sendCraft", {
+                                skyrimPlatform_16.printConsole('sendCraft', {
                                     workbench: workbench,
                                     craftInputObjects: craftInputObjects,
                                     resultObjectId: baseObjId,
@@ -3584,10 +3843,9 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                             }
                         }
                     });
-                    skyrimPlatform_16.on("containerChanged", function (e) {
+                    skyrimPlatform_16.on('containerChanged', function (e) {
                         if (e.oldContainer && e.newContainer) {
-                            if (e.oldContainer.getFormID() === 0x14 ||
-                                e.newContainer.getFormID() === 0x14) {
+                            if (e.oldContainer.getFormID() === 0x14 || e.newContainer.getFormID() === 0x14) {
                                 skyrimPlatform_16.printConsole(1);
                                 if (!lastInv)
                                     lastInv = remoteServer_1.getPcInventory();
@@ -3600,20 +3858,18 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                                     // I thought that it would be vice versa but that's how it works
                                     var ignoreWorn = false;
                                     var diff = inventory_4.getDiff(lastInv, newInv, ignoreWorn);
-                                    skyrimPlatform_16.printConsole("diff:");
+                                    skyrimPlatform_16.printConsole('diff:');
                                     for (var i = 0; i < diff.entries.length; ++i) {
                                         skyrimPlatform_16.printConsole("[" + i + "] " + JSON.stringify(diff.entries[i]));
                                     }
                                     var msgs = diff.entries.map(function (entry) {
                                         if (entry.count !== 0) {
                                             var msg = JSON.parse(JSON.stringify(entry));
-                                            delete msg["name"]; // Extra name works too strange
-                                            msg["t"] = entry.count > 0 ? messages_3.MsgType.PutItem : messages_3.MsgType.TakeItem;
-                                            msg["count"] = Math.abs(msg["count"]);
-                                            msg["target"] =
-                                                e.oldContainer.getFormID() === 0x14
-                                                    ? e.newContainer.getFormID()
-                                                    : e.oldContainer.getFormID();
+                                            delete msg['name']; // Extra name works too strange
+                                            msg['t'] = entry.count > 0 ? messages_3.MsgType.PutItem : messages_3.MsgType.TakeItem;
+                                            msg['count'] = Math.abs(msg['count']);
+                                            msg['target'] =
+                                                e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
                                             return msg;
                                         }
                                     });
@@ -3623,7 +3879,7 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                         }
                     });
                     var playerFormId = 0x14;
-                    skyrimPlatform_16.on("equip", function (e) {
+                    skyrimPlatform_16.on('equip', function (e) {
                         if (!e.actor || !e.baseObj)
                             return;
                         if (e.actor.getFormID() === playerFormId) {
@@ -3631,33 +3887,31 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                             _this.sendTarget.send({ t: messages_3.MsgType.OnEquip, baseId: e.baseObj.getFormID() }, false);
                         }
                     });
-                    skyrimPlatform_16.on("unequip", function (e) {
+                    skyrimPlatform_16.on('unequip', function (e) {
                         if (!e.actor || !e.baseObj)
                             return;
                         if (e.actor.getFormID() === playerFormId) {
                             _this.equipmentChanged = true;
                         }
                     });
-                    skyrimPlatform_16.on("loadGame", function () {
+                    skyrimPlatform_16.on('loadGame', function () {
                         // Currently only armor is equipped after relogging (see remoteServer.ts)
                         // This hack forces sending /equipment without weapons/ back to the server
                         skyrimPlatform_16.Utility.wait(3).then(function () { return (_this.equipmentChanged = true); });
                     });
                     loadGameManager.addLoadGameListener(function (e) {
                         if (!e.isCausedBySkyrimPlatform && !_this.singlePlayer) {
-                            sp.Debug.messageBox("Save has been loaded in multiplayer, switching to the single-player mode");
+                            sp.Debug.messageBox('Save has been loaded in multiplayer, switching to the single-player mode');
                             networking.close();
                             _this.singlePlayer = true;
                             skyrimPlatform_16.Game.setInChargen(false, false, false);
                         }
                     });
-                    skyrimPlatform_16.on("update", function () { return deathSystem.update(); });
+                    skyrimPlatform_16.on('update', function () { return deathSystem.update(); });
                 }
                 // May return null
                 SkympClient.prototype.getInputOwner = function (_refrId) {
-                    return _refrId
-                        ? skyrimPlatform_16.Actor.from(skyrimPlatform_16.Game.getFormEx(this.remoteIdToLocalId(_refrId)))
-                        : skyrimPlatform_16.Game.getPlayer();
+                    return _refrId ? skyrimPlatform_16.Actor.from(skyrimPlatform_16.Game.getFormEx(this.remoteIdToLocalId(_refrId))) : skyrimPlatform_16.Game.getPlayer();
                 };
                 SkympClient.prototype.sendMovement = function (_refrId) {
                     var owner = this.getInputOwner(_refrId);
@@ -3689,9 +3943,8 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     }
                     var anim = animSource.getAnimation();
                     var lastAnimationSent = this.lastAnimationSent.get(refrIdStr);
-                    if (!lastAnimationSent ||
-                        anim.numChanges !== lastAnimationSent.numChanges) {
-                        if (anim.animEventName !== "") {
+                    if (!lastAnimationSent || anim.numChanges !== lastAnimationSent.numChanges) {
+                        if (anim.animEventName !== '') {
                             this.lastAnimationSent.set(refrIdStr, anim);
                             this.sendTarget.send({ t: messages_3.MsgType.UpdateAnimation, data: anim, _refrId: _refrId }, false);
                             if (skyrimPlatform_16.storage._api_onAnimationEvent &&
@@ -3707,16 +3960,16 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     }
                 };
                 SkympClient.prototype.sendLook = function (_refrId) {
+                    var _a;
                     if (_refrId)
                         return;
-                    var shown = skyrimPlatform_16.Ui.isMenuOpen("RaceSex Menu");
+                    var shown = skyrimPlatform_16.Ui.isMenuOpen('RaceSex Menu');
                     if (shown != this.isRaceSexMenuShown) {
                         this.isRaceSexMenuShown = shown;
                         if (!shown) {
-                            skyrimPlatform_16.printConsole("Exited from race menu");
-                            if (skyrimPlatform_16.storage._api_onCloseRaceMenu && skyrimPlatform_16.storage._api_onCloseRaceMenu.callback) {
+                            skyrimPlatform_16.printConsole('Exited from race menu');
+                            if ((_a = skyrimPlatform_16.storage._api_onCloseRaceMenu) === null || _a === void 0 ? void 0 : _a.callback)
                                 skyrimPlatform_16.storage._api_onCloseRaceMenu.callback();
-                            }
                             var look = look_3.getLook(skyrimPlatform_16.Game.getPlayer());
                             this.sendTarget.send({ t: messages_3.MsgType.UpdateLook, data: look, _refrId: _refrId }, true);
                         }
@@ -3741,7 +3994,7 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                 };
                 SkympClient.prototype.sendInputs = function () {
                     var _this = this;
-                    var hosted = typeof skyrimPlatform_16.storage["hosted"] === typeof [] ? skyrimPlatform_16.storage["hosted"] : [];
+                    var hosted = typeof skyrimPlatform_16.storage['hosted'] === typeof [] ? skyrimPlatform_16.storage['hosted'] : [];
                     var targets = [undefined].concat(hosted);
                     //printConsole({ targets });
                     targets.forEach(function (target) {
@@ -3757,18 +4010,18 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     var rs;
                     if (prevRemoteServer && prevRemoteServer.getWorldModel) {
                         rs = prevRemoteServer;
-                        skyrimPlatform_16.printConsole("Restore previous RemoteServer");
+                        skyrimPlatform_16.printConsole('Restore previous RemoteServer');
                         // Keep previous RemoteServer, but update func implementations
                         var newObj = new remoteServer_1.RemoteServer();
                         var rsAny = rs;
                         for (var key in newObj) {
-                            if (typeof newObj[key] === "function")
+                            if (typeof newObj[key] === 'function')
                                 rsAny[key] = newObj[key];
                         }
                     }
                     else {
                         rs = new remoteServer_1.RemoteServer();
-                        skyrimPlatform_16.printConsole("Creating RemoteServer");
+                        skyrimPlatform_16.printConsole('Creating RemoteServer');
                     }
                     this.sendTarget = rs;
                     this.msgHandler = rs;
@@ -3779,14 +4032,14 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     var _this = this;
                     var prevView = skyrimPlatform_16.storage.view;
                     var view = new view_3.WorldView();
-                    skyrimPlatform_16.once("update", function () {
+                    skyrimPlatform_16.once('update', function () {
                         if (prevView && prevView.destroy) {
                             prevView.destroy();
-                            skyrimPlatform_16.printConsole("Previous View destroyed");
+                            skyrimPlatform_16.printConsole('Previous View destroyed');
                         }
                         skyrimPlatform_16.storage.view = view;
                     });
-                    skyrimPlatform_16.on("update", function () {
+                    skyrimPlatform_16.on('update', function () {
                         if (!_this.singlePlayer)
                             view.update(_this.modelSource.getWorldModel());
                     });
@@ -3802,18 +4055,18 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                 };
                 return SkympClient;
             }());
-            exports_32("SkympClient", SkympClient);
-            skyrimPlatform_16.once("update", function () {
+            exports_34("SkympClient", SkympClient);
+            skyrimPlatform_16.once('update', function () {
                 // Is it racing with OnInit in Papyrus?
                 sp.TESModPlatform.blockPapyrusEvents(true);
             });
         }
     };
 });
-System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], function (exports_33, context_33) {
+System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], function (exports_35, context_35) {
     "use strict";
     var skyrimPlatform_17, requiredVersion, realVersion, verifyVersion;
-    var __moduleName = context_33 && context_33.id;
+    var __moduleName = context_35 && context_35.id;
     return {
         setters: [
             function (skyrimPlatform_17_1) {
@@ -3823,7 +4076,7 @@ System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], fun
         execute: function () {
             requiredVersion = "0.7.0+build3";
             realVersion = typeof skyrimPlatform_17.getPlatformVersion === "function" ? skyrimPlatform_17.getPlatformVersion() : "unknown";
-            exports_33("verifyVersion", verifyVersion = function () {
+            exports_35("verifyVersion", verifyVersion = function () {
                 if (!requiredVersion.includes(realVersion)) {
                     skyrimPlatform_17.Debug.messageBox("You need to have on of those SkyrimPlatform versions " + JSON.stringify(requiredVersion) + " to join this server. Your current version is " + realVersion);
                     skyrimPlatform_17.Utility.waitMenuMode(0.5).then(function () {
@@ -3837,17 +4090,17 @@ System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], fun
         }
     };
 });
-System.register("src/front/index", ["src/front/skympClient", "src/front/console", "src/front/browser", "src/front/loadGameManager", "src/skyrim-platform/skyrimPlatform", "src/front/version", "src/front/worldCleaner"], function (exports_34, context_34) {
+System.register("src/front/index", ["src/front/skympClient", "src/front/console", "src/front/browser", "src/front/loadGameManager", "src/skyrim-platform/skyrimPlatform", "src/front/version", "src/front/worldCleaner"], function (exports_36, context_36) {
     "use strict";
-    var skympClient_1, console_3, browser, loadGameManager, skyrimPlatform_18, version_1, worldCleaner_2, enforceLimitations, lastTimeUpd, riftenUnlocked, n, k, zeroKMoment, lastFps;
-    var __moduleName = context_34 && context_34.id;
+    var skympClient_1, console_5, browser, loadGameManager, skyrimPlatform_18, version_1, worldCleaner_2, enforceLimitations, lastTimeUpd, riftenUnlocked, n, k, zeroKMoment, lastFps;
+    var __moduleName = context_36 && context_36.id;
     return {
         setters: [
             function (skympClient_1_1) {
                 skympClient_1 = skympClient_1_1;
             },
-            function (console_3_1) {
-                console_3 = console_3_1;
+            function (console_5_1) {
+                console_5 = console_5_1;
             },
             function (browser_1) {
                 browser = browser_1;
@@ -3880,7 +4133,7 @@ System.register("src/front/index", ["src/front/skympClient", "src/front/console"
                 skyrimPlatform_18.Game.enableFastTravel(false);
             });
             browser.main();
-            console_3.blockConsole();
+            console_5.blockConsole();
             skyrimPlatform_18.once("update", version_1.verifyVersion);
             skyrimPlatform_18.on("update", function () { return worldCleaner_2.updateWc(); });
             lastTimeUpd = 0;
@@ -3945,14 +4198,14 @@ System.register("src/front/index", ["src/front/skympClient", "src/front/console"
         }
     };
 });
-System.register("src/lib/helloWorld", [], function (exports_35, context_35) {
+System.register("src/lib/helloWorld", [], function (exports_37, context_37) {
     "use strict";
     var helloWorld;
-    var __moduleName = context_35 && context_35.id;
+    var __moduleName = context_37 && context_37.id;
     return {
         setters: [],
         execute: function () {
-            exports_35("helloWorld", helloWorld = function () { return "hello world!"; });
+            exports_37("helloWorld", helloWorld = function () { return "hello world!"; });
         }
     };
 });

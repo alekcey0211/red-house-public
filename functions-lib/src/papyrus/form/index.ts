@@ -1,21 +1,19 @@
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
-import { uint32, uint8arrayToStringMethod } from '../../utils/helper';
+import { uint32 } from '../../utils/helper';
 import { getNumber, getObject, getString } from '../../utils/papyrusArgs';
 import { StringLocalizationProvider } from '../../utils/stringLocalizationProvider';
 import { getKeywords, getNthKeyword, getNumKeywords, hasKeyword, hasKeywordEx } from './keywords';
 import { formType } from './type';
 
 export const getSelfId = (mp: Mp, desc: string) => {
-	let selfId = mp.getIdFromDesc(desc);
+	const selfId = mp.getIdFromDesc(desc);
 	if (selfId >= 0xff000000) {
 		return mp.getIdFromDesc(mp.get(selfId, 'baseDesc'));
 	}
 	return selfId;
 };
 
-const getFormID = (mp: Mp, self: PapyrusObject): number => {
-	return mp.getIdFromDesc(self.desc);
-};
+const getFormID = (mp: Mp, self: PapyrusObject): number => mp.getIdFromDesc(self.desc);
 
 export const getName = (strings: StringLocalizationProvider, mp: Mp, self: PapyrusObject): string | 'NOT_FOUND' => {
 	const selfId = getSelfId(mp, self.desc);
@@ -67,34 +65,32 @@ export const getDescription = (
 		const index = dataView.getUint32(0, true);
 		if (desc.length > 4) {
 			return new TextDecoder().decode(desc);
-		} else {
-			return strings.getText(espName, index) ?? '';
 		}
+		return strings.getText(espName, index) ?? '';
 	}
 	return '';
 };
 
 export const _getEditorId = (mp: Mp, selfId: number): string => {
 	const espmRecord = mp.lookupEspmRecordById(selfId);
-	const name = espmRecord.record?.fields.find((x) => x.type === 'NAME')?.data;
-	if (!name) return '';
+	const rec = espmRecord.record;
+	if (!rec) return '';
+
+	const name = rec.fields.find((x) => x.type === 'NAME')?.data;
+	if (!name) return rec.editorId;
 
 	const dataView = new DataView(name.buffer);
 	const baseId = dataView.getUint32(0, true);
 
-	const espmRecordBase = mp.lookupEspmRecordById(baseId);
+	const recBase = mp.lookupEspmRecordById(baseId).record;
+	if (!recBase) return '';
 
-	const edid = espmRecordBase.record?.fields.find((x) => x.type === 'EDID')?.data;
-	if (!edid) return '';
-
-	return uint8arrayToStringMethod(edid);
+	return recBase.editorId;
 };
-export const getEditorId = (mp: Mp, self: null, args: PapyrusValue[]): string => {
-	return _getEditorId(mp, getSelfId(mp, getObject(args, 0).desc));
-};
-export const getEditorIdById = (mp: Mp, self: null, args: PapyrusValue[]): string => {
-	return _getEditorId(mp, getNumber(args, 0));
-};
+export const getEditorId = (mp: Mp, self: null, args: PapyrusValue[]): string =>
+	_getEditorId(mp, getSelfId(mp, getObject(args, 0).desc));
+export const getEditorIdById = (mp: Mp, self: null, args: PapyrusValue[]): string =>
+	_getEditorId(mp, getNumber(args, 0));
 
 const getGoldValue = (mp: Mp, self: PapyrusObject) => {
 	const selfId = getSelfId(mp, self.desc);
@@ -106,16 +102,16 @@ const getGoldValue = (mp: Mp, self: PapyrusObject) => {
 	return dataView.getUint32(0, true);
 };
 
-export const getWeight = (mp: Mp, self: PapyrusObject): number => {
-	const selfId = getSelfId(mp, self.desc);
-	return getWeightById(mp, selfId);
-};
 export const getWeightById = (mp: Mp, selfId: number): number => {
 	const recordData = mp.lookupEspmRecordById(selfId);
 	const data = recordData.record?.fields.find((x) => x.type === 'DATA')?.data;
 	if (!data) return 0;
 	const dataView = new DataView(data.buffer);
 	return dataView.getFloat32(4, true);
+};
+export const getWeight = (mp: Mp, self: PapyrusObject): number => {
+	const selfId = getSelfId(mp, self.desc);
+	return getWeightById(mp, selfId);
 };
 
 const getType = (mp: Mp, self: PapyrusObject) => {
@@ -153,7 +149,7 @@ export const register = (mp: Mp, strings: StringLocalizationProvider): void => {
 	mp.registerPapyrusFunction('method', 'Form', 'GetNumKeywords', (self) => getNumKeywords(mp, self));
 	mp.registerPapyrusFunction('method', 'Form', 'GetNthKeyword', (self, args) => getNthKeyword(mp, self, args));
 	mp.registerPapyrusFunction('method', 'Form', 'HasKeyword', (self, args) => hasKeyword(mp, self, args));
-	mp.registerPapyrusFunction('method', 'Form', 'GetSignature', (self, args) => getSignature(mp, self));
+	mp.registerPapyrusFunction('method', 'Form', 'GetSignature', (self) => getSignature(mp, self));
 	mp.registerPapyrusFunction('method', 'Form', 'EqualSignature', (self, args) => equalSignature(mp, self, args));
 
 	mp.registerPapyrusFunction('global', 'FormEx', 'GetName', (self, args) => getNameEx(strings, mp, self, args));
