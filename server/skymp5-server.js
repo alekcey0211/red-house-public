@@ -742,7 +742,143 @@ function localstorage() {
   } catch (e) {}
 }
 
-},{"./debug":"y5CM"}],"WM4h":[function(require,module,exports) {
+},{"./debug":"y5CM"}],"IvCc":[function(require,module,exports) {
+'use strict';
+
+module.exports = (flag, argv) => {
+  argv = argv || process.argv;
+  const prefix = flag.startsWith('-') ? '' : flag.length === 1 ? '-' : '--';
+  const pos = argv.indexOf(prefix + flag);
+  const terminatorPos = argv.indexOf('--');
+  return pos !== -1 && (terminatorPos === -1 ? true : pos < terminatorPos);
+};
+},{}],"DYmO":[function(require,module,exports) {
+'use strict';
+
+const os = require('os');
+
+const hasFlag = require('has-flag');
+
+const env = process.env;
+let forceColor;
+
+if (hasFlag('no-color') || hasFlag('no-colors') || hasFlag('color=false')) {
+  forceColor = false;
+} else if (hasFlag('color') || hasFlag('colors') || hasFlag('color=true') || hasFlag('color=always')) {
+  forceColor = true;
+}
+
+if ('FORCE_COLOR' in env) {
+  forceColor = env.FORCE_COLOR.length === 0 || parseInt(env.FORCE_COLOR, 10) !== 0;
+}
+
+function translateLevel(level) {
+  if (level === 0) {
+    return false;
+  }
+
+  return {
+    level,
+    hasBasic: true,
+    has256: level >= 2,
+    has16m: level >= 3
+  };
+}
+
+function supportsColor(stream) {
+  if (forceColor === false) {
+    return 0;
+  }
+
+  if (hasFlag('color=16m') || hasFlag('color=full') || hasFlag('color=truecolor')) {
+    return 3;
+  }
+
+  if (hasFlag('color=256')) {
+    return 2;
+  }
+
+  if (stream && !stream.isTTY && forceColor !== true) {
+    return 0;
+  }
+
+  const min = forceColor ? 1 : 0;
+
+  if (process.platform === 'win32') {
+    // Node.js 7.5.0 is the first version of Node.js to include a patch to
+    // libuv that enables 256 color output on Windows. Anything earlier and it
+    // won't work. However, here we target Node.js 8 at minimum as it is an LTS
+    // release, and Node.js 7 is not. Windows 10 build 10586 is the first Windows
+    // release that supports 256 colors. Windows 10 build 14931 is the first release
+    // that supports 16m/TrueColor.
+    const osRelease = os.release().split('.');
+
+    if (Number(process.versions.node.split('.')[0]) >= 8 && Number(osRelease[0]) >= 10 && Number(osRelease[2]) >= 10586) {
+      return Number(osRelease[2]) >= 14931 ? 3 : 2;
+    }
+
+    return 1;
+  }
+
+  if ('CI' in env) {
+    if (['TRAVIS', 'CIRCLECI', 'APPVEYOR', 'GITLAB_CI'].some(sign => sign in env) || env.CI_NAME === 'codeship') {
+      return 1;
+    }
+
+    return min;
+  }
+
+  if ('TEAMCITY_VERSION' in env) {
+    return /^(9\.(0*[1-9]\d*)\.|\d{2,}\.)/.test(env.TEAMCITY_VERSION) ? 1 : 0;
+  }
+
+  if (env.COLORTERM === 'truecolor') {
+    return 3;
+  }
+
+  if ('TERM_PROGRAM' in env) {
+    const version = parseInt((env.TERM_PROGRAM_VERSION || '').split('.')[0], 10);
+
+    switch (env.TERM_PROGRAM) {
+      case 'iTerm.app':
+        return version >= 3 ? 3 : 2;
+
+      case 'Apple_Terminal':
+        return 2;
+      // No default
+    }
+  }
+
+  if (/-256(color)?$/i.test(env.TERM)) {
+    return 2;
+  }
+
+  if (/^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/i.test(env.TERM)) {
+    return 1;
+  }
+
+  if ('COLORTERM' in env) {
+    return 1;
+  }
+
+  if (env.TERM === 'dumb') {
+    return min;
+  }
+
+  return min;
+}
+
+function getSupportLevel(stream) {
+  const level = supportsColor(stream);
+  return translateLevel(level);
+}
+
+module.exports = {
+  supportsColor: getSupportLevel,
+  stdout: getSupportLevel(process.stdout),
+  stderr: getSupportLevel(process.stderr)
+};
+},{"has-flag":"IvCc"}],"WM4h":[function(require,module,exports) {
 /**
  * Module dependencies.
  */
@@ -930,7 +1066,7 @@ function init (debug) {
 
 exports.enable(load());
 
-},{"./debug":"y5CM"}],"NLT6":[function(require,module,exports) {
+},{"./debug":"y5CM","supports-color":"DYmO"}],"NLT6":[function(require,module,exports) {
 /**
  * Detect Electron renderer process, which is node, but we should
  * treat as a browser.
@@ -19208,7 +19344,7 @@ formatters.O = function (v) {
   this.inspectOpts.colors = this.useColors;
   return util.inspect(v, this.inspectOpts);
 };
-},{"./common":"qyON"}],"yj3S":[function(require,module,exports) {
+},{"supports-color":"DYmO","./common":"qyON"}],"yj3S":[function(require,module,exports) {
 /**
  * Detect Electron renderer / nwjs process, which is node, but we should
  * treat as a browser.
@@ -62880,7 +63016,7 @@ formatters.O = function (v) {
   this.inspectOpts.colors = this.useColors;
   return util.inspect(v, this.inspectOpts);
 };
-},{"./common":"oP7x"}],"GaZa":[function(require,module,exports) {
+},{"supports-color":"DYmO","./common":"oP7x"}],"GaZa":[function(require,module,exports) {
 /**
  * Detect Electron renderer / nwjs process, which is node, but we should
  * treat as a browser.
@@ -68748,6 +68884,7 @@ class Settings {
     if (fs.existsSync('./server-settings.json')) {
       const parsed = JSON.parse(fs.readFileSync('./server-settings.json', 'utf-8'));
       ['ip', 'port', 'maxPlayers', 'master', 'name', 'gamemodePath', 'loadOrder', 'dataDir', 'startPoints'].forEach(prop => {
+        if (parsed[prop] === undefined || parsed[prop] === null) return;
         this[prop] = parsed[prop];
       });
     }
@@ -70396,7 +70533,7 @@ module.exports = {
   "_args": [
     [
       "axios@0.21.1",
-      "C:\\Games\\red-house-public\\server-build"
+      "C:\\Games\\skymp-workspace\\server-build"
     ]
   ],
   "_from": "axios@0.21.1",
@@ -70420,7 +70557,7 @@ module.exports = {
   ],
   "_resolved": "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz",
   "_spec": "0.21.1",
-  "_where": "C:\\Games\\red-house-public\\server-build",
+  "_where": "C:\\Games\\skymp-workspace\\server-build",
   "author": {
     "name": "Matt Zabriskie"
   },
@@ -71409,13 +71546,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.main = void 0;
 
-const Koa = require("koa");
+const koa_1 = __importDefault(require("koa"));
 
-const serve = require("koa-static");
+const koa_static_1 = __importDefault(require("koa-static"));
 
-const proxy = require("koa-proxy");
+const koa_proxy_1 = __importDefault(require("koa-proxy"));
 
-const Router = require("koa-router");
+const koa_router_1 = __importDefault(require("koa-router"));
 
 const http = __importStar(require("http"));
 
@@ -71424,11 +71561,16 @@ const settings_1 = require("./settings");
 const axios_1 = __importDefault(require("axios"));
 
 const createApp = getOriginPort => {
-  const app = new Koa();
-  const router = new Router();
-  router.get(new RegExp("/scripts/.*"), ctx => ctx.throw(403));
+  const app = new koa_1.default();
+  const router = new koa_router_1.default();
+  router.get(new RegExp('/scripts/.*'), ctx => ctx.throw(403));
+  router.get(new RegExp('/plugins/.*'), ctx => ctx.throw(403));
+  router.get(new RegExp('/coc/.*'), ctx => ctx.throw(403));
+  router.get(new RegExp('/localization/.*'), ctx => ctx.throw(403));
+  router.get(new RegExp('/xelib/.*'), ctx => ctx.throw(403));
+  router.get(new RegExp('/plugins/.*'), ctx => ctx.throw(403));
   app.use(router.routes()).use(router.allowedMethods());
-  app.use(serve("data"));
+  app.use(koa_static_1.default('data'));
   return app;
 };
 
@@ -71437,7 +71579,7 @@ const main = () => {
   const devServerPort = 1234;
   const uiPort = settings.port === 7777 ? 3000 : settings.port + 1;
   axios_1.default({
-    method: "get",
+    method: 'get',
     url: `http://localhost:${devServerPort}`
   }).then(() => {
     console.log(`UI dev server has been detected on port ${devServerPort}`);
@@ -71451,8 +71593,8 @@ const main = () => {
         port
       } = srv.address();
       state.port = port;
-      const appProxy = new Koa();
-      appProxy.use(proxy({
+      const appProxy = new koa_1.default();
+      appProxy.use(koa_proxy_1.default({
         host: `http://localhost:${devServerPort}`,
         map: path => {
           const resultPath = path.match(/^\/ui\/.*/) ? `http://localhost:${devServerPort}` + path.substr(3) : `http://localhost:${port}` + path;
@@ -71467,7 +71609,7 @@ const main = () => {
     const app = createApp(() => uiPort);
     console.log(`Server resources folder is listening on ${uiPort}`);
 
-    const server = require("http").createServer(app.callback());
+    const server = require('http').createServer(app.callback());
 
     server.listen(uiPort);
   });
@@ -75604,7 +75746,7 @@ module.exports = Limiter;
 },{}],"Z8cT":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -77541,7 +77683,7 @@ module.exports = {
 },{}],"NDOi":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -78483,7 +78625,7 @@ function socketOnError() {
 },{"./permessage-deflate":"Z8cT","./receiver":"cG8H","./sender":"GeGF","./constants":"ItLI","./event-target":"W3NO","./extension":"sR4p","./buffer-util":"FFSq"}],"kcNa":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -78658,7 +78800,7 @@ module.exports = createWebSocketStream;
 },{}],"QfaL":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -79195,6 +79337,21 @@ const main = server => {
         if (!current) return;
         current.token = dataObj.token;
       } else if (dataObj.type === 'uiEvent') {
+        // return ping message to front
+        if (dataObj.msg.data === '/ping') {
+          ws.send(JSON.stringify({
+            message: {
+              type: 'COMMAND',
+              data: {
+                commandType: 'DETECT_PING',
+                commandArgs: {},
+                alter: ['']
+              }
+            }
+          }));
+          return;
+        }
+
         const token = (_a = clients.find(v => v === ws)) === null || _a === void 0 ? void 0 : _a.token;
         if (!token) return;
         const authoruserId = tokenByUserId.findIndex(v => v === token);
@@ -79758,7 +79915,7 @@ exports.NativeGameServer = NativeGameServer;
 },{}],"wIyF":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -80554,7 +80711,7 @@ module.exports = scan;
 },{"./utils":"OYpc","./constants":"wIyF"}],"WmuT":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -81793,7 +81950,7 @@ module.exports = parse;
 },{"./constants":"wIyF","./utils":"OYpc"}],"l794":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -82190,7 +82347,7 @@ module.exports = require('./lib/picomatch');
 },{"./lib/picomatch":"l794"}],"kBM5":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -85254,7 +85411,7 @@ module.exports = NodeFsHandler;
 },{"is-binary-path":"nM71","./constants":"H5PM"}],"Ojbj":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -85803,7 +85960,7 @@ module.exports.canUse = canUse;
 },{"./constants":"H5PM"}],"Nisg":[function(require,module,exports) {
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -87570,6 +87727,31 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     watcher.on('change', reloadGamemodeTimeout);
     watcher.on('unlink', reloadGamemodeTimeout);
     watcher.on('error', function (error) {
+      console.error('Error happened in chokidar watch', error);
+    });
+    let isFirstWatchPlugins = {};
+    const pluginWatcher = chokidar.watch(path.join('data', 'plugins'), {
+      ignored: /^\./,
+      persistent: true,
+      awaitWriteFinish: true
+    });
+
+    const pluginWatcherHandle = path => {
+      if (!isFirstWatchPlugins[path]) return isFirstWatchPlugins[path] = true;
+      server.onUiEvent(0, {
+        type: 'server::msg:send',
+        data: {
+          action: 'pluginHotReload',
+          path
+        }
+      });
+    };
+
+    pluginWatcher.on('add', pluginWatcherHandle);
+    pluginWatcher.on('addDir', pluginWatcherHandle);
+    pluginWatcher.on('change', pluginWatcherHandle);
+    pluginWatcher.on('unlink', pluginWatcherHandle);
+    pluginWatcher.on('error', function (error) {
       console.error('Error happened in chokidar watch', error);
     });
   }

@@ -222,516 +222,516 @@ System.register("src/front/consoleCommands", [], function (exports_4, context_4)
         setters: [],
         execute: function () {
             exports_4("scriptCommands", scriptCommands = [
-                "additem",
-                "addperk",
-                "addspell",
-                "addtofaction",
-                "advlevel",
-                "AdvSkill",
-                "Cast",
-                "completequest",
-                "DamageActorValue",
-                "disable",
-                "dispelallspells",
-                "drop",
-                "duplicateallitems",
-                "enable",
-                "equipitem",
-                "equipspell",
-                "equipshout",
-                "forceAV",
-                "getAV",
-                "getAVinfo",
-                "getlevel",
-                "GetLocationCleared",
-                "getrelationshiprank",
-                "getstage",
-                "hasperk",
-                "incPCS",
-                "kill",
-                "lock",
-                "MarkForDelete",
-                "modAV",
-                "moveto",
-                "movetoqt",
-                "openactorcontainer",
-                "paycrimegold",
-                "placeatme",
+                'additem',
+                'addperk',
+                'addspell',
+                'addtofaction',
+                'advlevel',
+                'AdvSkill',
+                'Cast',
+                'completequest',
+                'DamageActorValue',
+                'disable',
+                'dispelallspells',
+                'drop',
+                'duplicateallitems',
+                'enable',
+                'equipitem',
+                'equipspell',
+                'equipshout',
+                'forceAV',
+                'getAV',
+                'getAVinfo',
+                'getlevel',
+                'GetLocationCleared',
+                'getrelationshiprank',
+                'getstage',
+                'hasperk',
+                'incPCS',
+                'kill',
+                'lock',
+                'MarkForDelete',
+                'modAV',
+                'moveto',
+                'movetoqt',
+                'openactorcontainer',
+                'paycrimegold',
+                'placeatme',
                 //"playidle",
-                "pushactoraway",
-                "recycleactor",
-                "removeallitems",
-                "removeitem",
-                "removeperk",
-                "removespell",
-                "resetAI",
-                "resethealth",
-                "resetinventory",
-                "RestoreActorValue",
-                "resurrect",
-                "say",
-                "setactoralpha",
-                "setAV",
-                "setessential",
-                "setghost",
-                "setgs",
-                "setlevel",
-                "SetLocationCleared",
-                "setnpcweight",
-                "setownership",
-                "setrace",
-                "setrelationshiprank",
-                "setscale",
-                "setstage",
-                "setunconscious",
-                "showinventory",
-                "shp",
-                "sifh",
-                "sqs",
-                "stopcombat",
-                "str",
-                "teachword",
-                "unequipitem",
-                "unlock",
-                "unlockword",
+                'pushactoraway',
+                'recycleactor',
+                'removeallitems',
+                'removeitem',
+                'removeperk',
+                'removespell',
+                'resetAI',
+                'resethealth',
+                'resetinventory',
+                'RestoreActorValue',
+                'resurrect',
+                'say',
+                'setactoralpha',
+                'setAV',
+                'setessential',
+                'setghost',
+                'setgs',
+                'setlevel',
+                'SetLocationCleared',
+                'setnpcweight',
+                'setownership',
+                'setrace',
+                'setrelationshiprank',
+                'setscale',
+                'setstage',
+                'setunconscious',
+                'showinventory',
+                'shp',
+                'sifh',
+                'sqs',
+                'stopcombat',
+                'str',
+                'teachword',
+                'unequipitem',
+                'unlock',
+                'unlockword',
             ]);
             exports_4("consoleCommands", consoleCommands = [
-                "Show",
-                "ShowVars",
-                "ShowGlobalVars",
-                "ShowQuestVars",
-                "ShowQuests",
-                "ShowQuestAliases",
-                "SetPapyrusQuestVar",
-                "SetPapyrusVar",
-                "SetQuestAliases",
-                "ClearQuestAliases",
-                "ToggleCombatStats",
-                "ToggleSafeZone",
-                "ToggleAI",
-                "ToggleCollisionGeometry",
-                "ToggleMaterialGeometry",
-                "ToggleStairsGeometry",
-                "ToggleBorders",
-                "ToggleSky",
-                "ToggleWireframe",
-                "ToggleCollision",
-                "ToggleDebugText",
-                "ToggleMenus",
-                "TogglePrimitives",
-                "ShowScenegraph",
-                "ShowScenegraph",
-                "ToggleMagicStats",
-                "ShowAnim",
-                "Show1stPerson",
-                "Help",
-                "ToggleNavMesh",
-                "TogglePathLine",
-                "PickRefByID",
-                "SetLightingPasses",
-                "ToggleLensFlare",
-                "SetLensFlareGlobalIntensity",
-                "ToggleLODLand",
-                "ToggleMapEffect",
-                "SetLODObjectDistance",
-                "ToggleGrassUpdate",
-                "CenterOnCell",
-                "CheckRenderTargets",
-                "SetGameSetting",
-                "SetINISetting",
-                "GetINISetting",
-                "CenterOnExterior",
-                "CalcPathToPoint",
-                "CalcLowPathToPoint",
-                "SetFog",
-                "SetClipDist",
-                "ToggleShadowVolumes",
-                "SetImageSpaceGlow",
-                "ToggleDetection",
-                "ToggleHighProcess",
-                "ToggleLowProcess",
-                "ToggleMiddleLowProcess",
-                "ToggleMiddleHighProcess",
-                "ToggleAiSchedules",
-                "SpeakSound",
-                "BetaComment",
-                "GameComment",
-                "ToggleCellNode",
-                "ToggleTrees",
+                'Show',
+                'ShowVars',
+                'ShowGlobalVars',
+                'ShowQuestVars',
+                'ShowQuests',
+                'ShowQuestAliases',
+                'SetPapyrusQuestVar',
+                'SetPapyrusVar',
+                'SetQuestAliases',
+                'ClearQuestAliases',
+                'ToggleCombatStats',
+                'ToggleSafeZone',
+                'ToggleAI',
+                'ToggleCollisionGeometry',
+                'ToggleMaterialGeometry',
+                'ToggleStairsGeometry',
+                'ToggleBorders',
+                'ToggleSky',
+                'ToggleWireframe',
+                'ToggleCollision',
+                'ToggleDebugText',
+                'ToggleMenus',
+                'TogglePrimitives',
+                'ShowScenegraph',
+                'ShowScenegraph',
+                'ToggleMagicStats',
+                'ShowAnim',
+                'Show1stPerson',
+                'Help',
+                'ToggleNavMesh',
+                'TogglePathLine',
+                'PickRefByID',
+                'SetLightingPasses',
+                'ToggleLensFlare',
+                'SetLensFlareGlobalIntensity',
+                'ToggleLODLand',
+                'ToggleMapEffect',
+                'SetLODObjectDistance',
+                'ToggleGrassUpdate',
+                'CenterOnCell',
+                'CheckRenderTargets',
+                'SetGameSetting',
+                'SetINISetting',
+                'GetINISetting',
+                'CenterOnExterior',
+                'CalcPathToPoint',
+                'CalcLowPathToPoint',
+                'SetFog',
+                'SetClipDist',
+                'ToggleShadowVolumes',
+                'SetImageSpaceGlow',
+                'ToggleDetection',
+                'ToggleHighProcess',
+                'ToggleLowProcess',
+                'ToggleMiddleLowProcess',
+                'ToggleMiddleHighProcess',
+                'ToggleAiSchedules',
+                'SpeakSound',
+                'BetaComment',
+                'GameComment',
+                'ToggleCellNode',
+                'ToggleTrees',
                 //"SetCameraFOV",
-                "ToggleGodMode",
-                "RefreshShaders",
-                "ReloadFXP",
-                "ToggleScripts",
-                "ToggleConversations",
-                "ToggleFullHelp",
-                "ShowQuestLog",
-                "ShowFullQuestLog",
-                "DumpTexturePalette",
-                "DumpModelMap",
-                "CenterOnWorld",
-                "ToggleGrass",
-                "CreateGrassAt",
-                "AddFaceAnimNote",
-                "RefreshINI",
-                "ToggleEmotions",
-                "AddDecal",
-                "TestCode",
-                "PlayerSpellBook",
-                "PrintAiList",
-                "ShowQuestTargets",
-                "HairTint",
-                "SaveGame",
-                "LoadGame",
-                "DisplayPlayerIDs",
-                "SetDisplayPlayerID",
-                "TestAllCells",
-                "RenderTestCell",
-                "RenderTestHere",
-                "SaveWorld",
-                "ReloadCurrentClimate",
-                "ReloadCurrentWeather",
-                "TestSeenData",
-                "TestLocalMap",
-                "MoveToQuestTarget",
-                "PrintNPCDialog",
-                "ShowSubtitle",
-                "ShowRenderPasses",
-                "FreezeRenderAccumulation",
-                "ToggleOcclusion",
-                "OutputMemContexts",
-                "OutputMemStats",
-                "SetMemCheckPoint",
-                "GetMemCheckPoint",
-                "IncMemCheckPoint",
-                "OutputAllocations",
-                "AddWatchAddress",
-                "RemoveWatchAddress",
-                "ToggleDetectionStats",
-                "SetTargetRefraction",
-                "SetTargetRefractionFire",
-                "ToggleRefractionDebug",
-                "ToggleCharControllerShape",
-                "ShowHeadTrackTarget",
-                "SetCinematicParam",
-                "SetTintParam",
-                "SetHDRParam",
-                "VisualRefPosition",
-                "ShowPivot",
-                "PrintHDRParam",
-                "ToggleHDRDebug",
-                "ToggleHDRMultipleLuminance",
-                "RevertWorld",
-                "OutputArchiveProfile",
-                "QuitGame",
-                "SaveIniFiles",
-                "SetDebugText",
-                "ToggleLiteBrite",
-                "RunMemoryPass",
-                "ResetMemContexts",
-                "ToggleWaterSystem",
-                "ToggleWaterRadius",
-                "ShowWhoDetectsPlayer",
-                "ToggleCombatAI",
-                "ToggleFlyCam",
-                "ModWaterShader",
-                "WaterColor",
-                "BeginTrace",
-                "RunCellTest",
-                "StartAllQuests",
-                "CompleteAllQuestStages",
-                "ToggleFogOfWar",
-                "OutputLocalMapPictures",
-                "SetGamma",
-                "WasteMemory",
-                "ClearAdaptedLight",
-                "SetHudGlowConstants",
-                "CloseFile",
-                "SetTreeMipmapBias",
-                "SendSherlockDebugText",
-                "PlayExplosion",
-                "SetMaxAniso",
-                "SetMeshLODLevel",
-                "SetTargetDOF",
-                "ToggleFullScreenMotionBlur",
-                "SetTriLinearThreshold",
-                "SetVel",
-                "DebugCombatBehavior",
-                "ToggleCombatDebug",
-                "TogglePathingInfoFunction",
-                "ShowInventory",
-                "ResetPerformanceTimers",
-                "ToggleDebugDecal",
-                "ToggleDecalRendering",
-                "SetImageSpaceModifiersEnable",
-                "SetUFOCamSpeedMult",
-                "ToggleTestLight",
-                "PlaceLocationMarker",
-                "ClearLocationMarkers",
-                "ToggleMultiboundCheck",
-                "AddOcclusionPlane",
-                "SetGlobalRadialBlur",
-                "OutputTextureUseMap",
-                "ClearScreenBlood",
-                "ResetDialogueFlags",
-                "GetActorValueInfo",
-                "ToggleBoundVisGeom",
-                "SetConsoleOuputFile",
-                "IgnoreRenderPass",
-                "PlayVATSCameras",
-                "SetTargetFalloff",
-                "ToggleActorMover",
-                "CopySaves",
-                "ToggleEOFImageSpace",
-                "ForceFileCache",
-                "DumpNiUpdates",
-                "TestDegrade",
-                "ToggleDepthBias",
-                "ToggleSPURenderBatch",
-                "ToggleSPUTransformUpdate",
-                "ToggleSPUCulling",
-                "ModifyFaceGen",
-                "GetSKSEVersion",
-                "SetEmitterParticleMax",
-                "SetMPSParticleMax",
-                "SetTaskThreadSleep",
-                "SetTaskThreadUpdateSleep",
-                "EvalActorTextures",
-                "CreateSaveData",
-                "CreateGameData",
-                "LoadFlashMovie",
-                "ShowMenu",
-                "HideMenu",
-                "RecvAnimEvent",
-                "RunConsoleBatch",
-                "LTGraph",
-                "RTGraph",
-                "ToggleHeapTracking",
-                "TogglePoolTracking",
-                "RumbleManager",
-                "InstallMemoryTracker",
-                "UninstallMemoryTracker",
-                "CheckMemory",
-                "SetStackDepth",
-                "PathToRef",
-                "StartAIControlledRobotTest",
-                "TestHandleManagerWarnAndKillSDM",
-                "SetFaceTarget",
-                "PrecomputedLOSGeneration",
-                "PrecomputedLOSDebug",
-                "SetPathSprinting",
-                "SetAnimGraphVar",
-                "SetTreeTrunkFlexibility",
-                "SetTreeBranchFlexibility",
-                "SetTreeBranchAnimationRange",
-                "SetTreeLeafFlexibility",
-                "SetTreeLeafAmplitude",
-                "SetTreeLeafFrequency",
-                "SetTreeWindDirection",
-                "SetTreeWindMagnitude",
-                "SetBloodParam",
-                "RegisterPrefix",
-                "ToggleEventLog",
-                "ExportPerfTrackingData",
-                "DisplayGraphVariable",
-                "ToggleMotionDriven",
-                "ToggleControlsDriven",
-                "ToggleGUIOverlay",
-                "ModifyGUIOverlay",
-                "SetActionComplete",
-                "SetConsoleScopeQuest",
-                "GetDistanceFromActorsPath",
-                "ClearConsole",
-                "ToggleMarkers",
-                "KillAllProjectiles",
-                "PlayTerrainEffect",
-                "CellInfo",
-                "Textures",
-                "Timing",
-                "Polygons",
-                "Actors",
-                "Quest",
-                "Particles",
-                "Memory",
-                "ShowNodes",
-                "SaveDebugTextPages",
-                "OutputFixedStringTable",
-                "AttachPapyrusScript",
-                "SaveHavokSnapshot",
-                "SetNPCWeight",
-                "ShowClosestLocationForSphere",
-                "PrintShaderMacros",
-                "ToggleAudioOverlay",
-                "TogglePapyrusLog",
-                "ToggleContextOverlay",
-                "ForceOutOfMemory",
-                "ToggleMovement",
-                "ToggleAnimations",
-                "SetWarning",
-                "TestFadeNodes",
-                "ShowLowMaxHeights",
-                "ShowHighMaxHeights",
-                "EnableStoryManagerLogging",
-                "SetFramebufferRange",
-                "DumpPapyrusStacks",
-                "DumpPapyrusUpdates",
-                "SoundCatMod",
-                "RunCompaction",
-                "ToggleAnimatorCam",
-                "ToggleImmortalMode",
-                "SetSubgraphToDebug",
-                "EnableRumble",
-                "HavokVDBCapture",
-                "ToggleMapCam",
-                "ToggleNavmeshInfo",
-                "PlaySyncAnim",
-                "SetFormKnown",
-                "SetDebugQuest",
-                "SetQuestAliasLogging",
-                "SetRace",
-                "FindForm",
-                "StartPapyrusScriptProfile",
-                "StopPapyrusScriptProfile",
-                "StartPapyrusFormProfile",
-                "StopPapyrusFormProfile",
-                "PrintQuestSceneInfo",
-                "IsInvulnerable",
-                "ExportInventoryItemInfo",
-                "CollisionMesh",
-                "IsolateRendering",
-                "ToggleWaterCurrentGeometry",
-                "PerformAction",
-                "StartTrackPlayerDoors",
-                "StopTrackPlayerDoors",
-                "CheckPlayerDoors",
-                "ToggleSPUMovement",
-                "SetInChargen",
-                "ClearAchievement",
-                "ForceReset",
-                "ReloadScript",
-                "ForceCloseFiles",
-                "HotLoadPlugin",
-                "ToggleVerletDebug",
-                "DumpConditionFunctions",
-                "PlaceFurnitureTester",
-                "DumpLoadedAnimationFiles",
-                "FunctionDisplayRenderTarget",
-                "ToggleParallaxOcclusion",
-                "ToggleProjectedUVDiffuseNormals",
-                "ReloadProjectedUVTextures",
-                "FunctionToggleDownsampleCS",
-                "FunctionToggleVolumetricLighting",
-                "FunctionToggleVolumetricLighting",
-                "FunctionToggleVolumetricLightingTemporalAccumulation",
-                "FunctionSetVolumetricLightingParameters",
-                "FunctionPrintVolumetricLightingParameters",
-                "FunctionSetVolumetricLightingResolution",
-                "ToggleCastShadows",
-                "SetShadowParameter",
-                "SetESRAMSetup",
-                "ToggleESRAM",
-                "ToggleMTR",
-                "ToggleHTile",
-                "ToggleZPrepassOutput",
-                "ToggleFXAA",
-                "SetJobListBatch",
-                "SetJobListThread",
-                "JobListTool",
-                "SetCullingProcessCount",
-                " ConfigureIBL",
-                "ToggleDOF",
-                "ToggleDDOF",
-                "ConfigureDDOF",
-                "SetLightingColourClamp",
-                "ChangeSnowParameters",
-                "ToggleFog",
-                "ToggleHDR",
-                "ToggleStippleFade",
-                "ToggleLandFade",
-                "ResetGrassFade",
-                " ToggleAR",
-                " ToggleAVL",
-                " ToggleBC",
-                " ToggleIBLF",
-                " ToggleBCS",
-                " ToggleCLFVL",
-                " ToggleCSRCS",
-                " ToggleDS",
-                " ToggleIBEPF",
-                " ToggleLC",
-                " TogglePNCS",
-                " ToggleR",
-                " ToggleSAO",
-                " ToggleSAOCS",
-                " ToggleIL",
-                " ToggleSC",
-                " ToggleSSSS",
-                " ToggleTAA",
-                " ToggleUDR",
-                " ToggleWB",
-                " ToggleUM",
-                " ConfigureAR",
-                " ConfigureAVL",
-                " ConfigureBC",
-                " ConfigureIBLF",
-                " ConfigureBCS",
-                " ConfigureCLFVL",
-                " ConfigureCSRCS",
-                " ConfigureDS",
-                " ConfigureIBEPF",
-                " ConfigureLC",
-                " ConfigurePNCS",
-                " ConfigureR",
-                " ConfigureSAO",
-                " ConfigureSAOCS",
-                " ConfigureIL",
-                " ConfigureSC",
-                " ConfigureSSSS",
-                " ConfigureTAA",
-                " ConfigureUDR",
-                " ConfigureWB",
-                " ConfigureUM",
-                "SyncCharacterFromSaveFile",
-                "PreloadLinkedInteriors",
-                "ResizeLargeRefLODGrid",
-                "DisplaySaveCacheStatus",
-                "AuditionSoundDescriptor",
-                "TogglePrecipitationOcclusionMap",
-                "ToggleTrijuice",
-                "ToggleWaterJittering",
-                "ToggleAlphaEffectJittering",
-                "ExtractMod",
-                "InstallMod",
-                "UninstallMod",
-                "DeleteMod",
-                "BuildBNetModArchive",
-                "ToggleEarlyZ",
-                "ToggleDepthShift",
-                "TogglePostponeBlurryEffect",
-                "CharacterLight",
-                "ClearMotionVectors",
-                "ToggleTAAWaterBlending",
-                "ToggleDecompressToCopy",
-                "BNetLogin",
-                "BNetLoginSSO",
-                "BNetLogout",
-                "IsLoggedIn",
-                "BNetCreateAccount",
-                "BNetLinkAccount",
-                "BNetUnlinkAccount",
-                "RequestOTP",
-                "VerifyOTP",
-                "GetLegalDocs",
-                "AcceptLegalDoc",
-                "SubscribeUGC",
-                "UnsubscribeUGC",
-                "GetSubscribedList",
-                "FollowUGC",
-                "UnfollowUGC",
-                "GetFollowedList",
-                "GetUGCDetails",
-                "DownloadUGC",
-                "DynamicResolution",
+                'ToggleGodMode',
+                'RefreshShaders',
+                'ReloadFXP',
+                'ToggleScripts',
+                'ToggleConversations',
+                'ToggleFullHelp',
+                'ShowQuestLog',
+                'ShowFullQuestLog',
+                'DumpTexturePalette',
+                'DumpModelMap',
+                'CenterOnWorld',
+                'ToggleGrass',
+                'CreateGrassAt',
+                'AddFaceAnimNote',
+                'RefreshINI',
+                'ToggleEmotions',
+                'AddDecal',
+                'TestCode',
+                'PlayerSpellBook',
+                'PrintAiList',
+                'ShowQuestTargets',
+                'HairTint',
+                'SaveGame',
+                'LoadGame',
+                'DisplayPlayerIDs',
+                'SetDisplayPlayerID',
+                'TestAllCells',
+                'RenderTestCell',
+                'RenderTestHere',
+                'SaveWorld',
+                'ReloadCurrentClimate',
+                'ReloadCurrentWeather',
+                'TestSeenData',
+                'TestLocalMap',
+                'MoveToQuestTarget',
+                'PrintNPCDialog',
+                'ShowSubtitle',
+                'ShowRenderPasses',
+                'FreezeRenderAccumulation',
+                'ToggleOcclusion',
+                'OutputMemContexts',
+                'OutputMemStats',
+                'SetMemCheckPoint',
+                'GetMemCheckPoint',
+                'IncMemCheckPoint',
+                'OutputAllocations',
+                'AddWatchAddress',
+                'RemoveWatchAddress',
+                'ToggleDetectionStats',
+                'SetTargetRefraction',
+                'SetTargetRefractionFire',
+                'ToggleRefractionDebug',
+                'ToggleCharControllerShape',
+                'ShowHeadTrackTarget',
+                'SetCinematicParam',
+                'SetTintParam',
+                'SetHDRParam',
+                'VisualRefPosition',
+                'ShowPivot',
+                'PrintHDRParam',
+                'ToggleHDRDebug',
+                'ToggleHDRMultipleLuminance',
+                'RevertWorld',
+                'OutputArchiveProfile',
+                'QuitGame',
+                'SaveIniFiles',
+                'SetDebugText',
+                'ToggleLiteBrite',
+                'RunMemoryPass',
+                'ResetMemContexts',
+                'ToggleWaterSystem',
+                'ToggleWaterRadius',
+                'ShowWhoDetectsPlayer',
+                'ToggleCombatAI',
+                'ToggleFlyCam',
+                'ModWaterShader',
+                'WaterColor',
+                'BeginTrace',
+                'RunCellTest',
+                'StartAllQuests',
+                'CompleteAllQuestStages',
+                'ToggleFogOfWar',
+                'OutputLocalMapPictures',
+                'SetGamma',
+                'WasteMemory',
+                'ClearAdaptedLight',
+                'SetHudGlowConstants',
+                'CloseFile',
+                'SetTreeMipmapBias',
+                'SendSherlockDebugText',
+                'PlayExplosion',
+                'SetMaxAniso',
+                'SetMeshLODLevel',
+                'SetTargetDOF',
+                'ToggleFullScreenMotionBlur',
+                'SetTriLinearThreshold',
+                'SetVel',
+                'DebugCombatBehavior',
+                'ToggleCombatDebug',
+                'TogglePathingInfoFunction',
+                'ShowInventory',
+                'ResetPerformanceTimers',
+                'ToggleDebugDecal',
+                'ToggleDecalRendering',
+                'SetImageSpaceModifiersEnable',
+                'SetUFOCamSpeedMult',
+                'ToggleTestLight',
+                'PlaceLocationMarker',
+                'ClearLocationMarkers',
+                'ToggleMultiboundCheck',
+                'AddOcclusionPlane',
+                'SetGlobalRadialBlur',
+                'OutputTextureUseMap',
+                'ClearScreenBlood',
+                'ResetDialogueFlags',
+                'GetActorValueInfo',
+                'ToggleBoundVisGeom',
+                'SetConsoleOuputFile',
+                'IgnoreRenderPass',
+                'PlayVATSCameras',
+                'SetTargetFalloff',
+                'ToggleActorMover',
+                'CopySaves',
+                'ToggleEOFImageSpace',
+                'ForceFileCache',
+                'DumpNiUpdates',
+                'TestDegrade',
+                'ToggleDepthBias',
+                'ToggleSPURenderBatch',
+                'ToggleSPUTransformUpdate',
+                'ToggleSPUCulling',
+                'ModifyFaceGen',
+                'GetSKSEVersion',
+                'SetEmitterParticleMax',
+                'SetMPSParticleMax',
+                'SetTaskThreadSleep',
+                'SetTaskThreadUpdateSleep',
+                'EvalActorTextures',
+                'CreateSaveData',
+                'CreateGameData',
+                'LoadFlashMovie',
+                'ShowMenu',
+                'HideMenu',
+                'RecvAnimEvent',
+                'RunConsoleBatch',
+                'LTGraph',
+                'RTGraph',
+                'ToggleHeapTracking',
+                'TogglePoolTracking',
+                'RumbleManager',
+                'InstallMemoryTracker',
+                'UninstallMemoryTracker',
+                'CheckMemory',
+                'SetStackDepth',
+                'PathToRef',
+                'StartAIControlledRobotTest',
+                'TestHandleManagerWarnAndKillSDM',
+                'SetFaceTarget',
+                'PrecomputedLOSGeneration',
+                'PrecomputedLOSDebug',
+                'SetPathSprinting',
+                'SetAnimGraphVar',
+                'SetTreeTrunkFlexibility',
+                'SetTreeBranchFlexibility',
+                'SetTreeBranchAnimationRange',
+                'SetTreeLeafFlexibility',
+                'SetTreeLeafAmplitude',
+                'SetTreeLeafFrequency',
+                'SetTreeWindDirection',
+                'SetTreeWindMagnitude',
+                'SetBloodParam',
+                'RegisterPrefix',
+                'ToggleEventLog',
+                'ExportPerfTrackingData',
+                'DisplayGraphVariable',
+                'ToggleMotionDriven',
+                'ToggleControlsDriven',
+                'ToggleGUIOverlay',
+                'ModifyGUIOverlay',
+                'SetActionComplete',
+                'SetConsoleScopeQuest',
+                'GetDistanceFromActorsPath',
+                'ClearConsole',
+                'ToggleMarkers',
+                'KillAllProjectiles',
+                'PlayTerrainEffect',
+                'CellInfo',
+                'Textures',
+                'Timing',
+                'Polygons',
+                'Actors',
+                'Quest',
+                'Particles',
+                'Memory',
+                'ShowNodes',
+                'SaveDebugTextPages',
+                'OutputFixedStringTable',
+                'AttachPapyrusScript',
+                'SaveHavokSnapshot',
+                'SetNPCWeight',
+                'ShowClosestLocationForSphere',
+                'PrintShaderMacros',
+                'ToggleAudioOverlay',
+                'TogglePapyrusLog',
+                'ToggleContextOverlay',
+                'ForceOutOfMemory',
+                'ToggleMovement',
+                'ToggleAnimations',
+                'SetWarning',
+                'TestFadeNodes',
+                'ShowLowMaxHeights',
+                'ShowHighMaxHeights',
+                'EnableStoryManagerLogging',
+                'SetFramebufferRange',
+                'DumpPapyrusStacks',
+                'DumpPapyrusUpdates',
+                'SoundCatMod',
+                'RunCompaction',
+                'ToggleAnimatorCam',
+                'ToggleImmortalMode',
+                'SetSubgraphToDebug',
+                'EnableRumble',
+                'HavokVDBCapture',
+                'ToggleMapCam',
+                'ToggleNavmeshInfo',
+                'PlaySyncAnim',
+                'SetFormKnown',
+                'SetDebugQuest',
+                'SetQuestAliasLogging',
+                'SetRace',
+                'FindForm',
+                'StartPapyrusScriptProfile',
+                'StopPapyrusScriptProfile',
+                'StartPapyrusFormProfile',
+                'StopPapyrusFormProfile',
+                'PrintQuestSceneInfo',
+                'IsInvulnerable',
+                'ExportInventoryItemInfo',
+                'CollisionMesh',
+                'IsolateRendering',
+                'ToggleWaterCurrentGeometry',
+                'PerformAction',
+                'StartTrackPlayerDoors',
+                'StopTrackPlayerDoors',
+                'CheckPlayerDoors',
+                'ToggleSPUMovement',
+                'SetInChargen',
+                'ClearAchievement',
+                'ForceReset',
+                'ReloadScript',
+                'ForceCloseFiles',
+                'HotLoadPlugin',
+                'ToggleVerletDebug',
+                'DumpConditionFunctions',
+                'PlaceFurnitureTester',
+                'DumpLoadedAnimationFiles',
+                'FunctionDisplayRenderTarget',
+                'ToggleParallaxOcclusion',
+                'ToggleProjectedUVDiffuseNormals',
+                'ReloadProjectedUVTextures',
+                'FunctionToggleDownsampleCS',
+                'FunctionToggleVolumetricLighting',
+                'FunctionToggleVolumetricLighting',
+                'FunctionToggleVolumetricLightingTemporalAccumulation',
+                'FunctionSetVolumetricLightingParameters',
+                'FunctionPrintVolumetricLightingParameters',
+                'FunctionSetVolumetricLightingResolution',
+                'ToggleCastShadows',
+                'SetShadowParameter',
+                'SetESRAMSetup',
+                'ToggleESRAM',
+                'ToggleMTR',
+                'ToggleHTile',
+                'ToggleZPrepassOutput',
+                'ToggleFXAA',
+                'SetJobListBatch',
+                'SetJobListThread',
+                'JobListTool',
+                'SetCullingProcessCount',
+                ' ConfigureIBL',
+                'ToggleDOF',
+                'ToggleDDOF',
+                'ConfigureDDOF',
+                'SetLightingColourClamp',
+                'ChangeSnowParameters',
+                'ToggleFog',
+                'ToggleHDR',
+                'ToggleStippleFade',
+                'ToggleLandFade',
+                'ResetGrassFade',
+                ' ToggleAR',
+                ' ToggleAVL',
+                ' ToggleBC',
+                ' ToggleIBLF',
+                ' ToggleBCS',
+                ' ToggleCLFVL',
+                ' ToggleCSRCS',
+                ' ToggleDS',
+                ' ToggleIBEPF',
+                ' ToggleLC',
+                ' TogglePNCS',
+                ' ToggleR',
+                ' ToggleSAO',
+                ' ToggleSAOCS',
+                ' ToggleIL',
+                ' ToggleSC',
+                ' ToggleSSSS',
+                ' ToggleTAA',
+                ' ToggleUDR',
+                ' ToggleWB',
+                ' ToggleUM',
+                ' ConfigureAR',
+                ' ConfigureAVL',
+                ' ConfigureBC',
+                ' ConfigureIBLF',
+                ' ConfigureBCS',
+                ' ConfigureCLFVL',
+                ' ConfigureCSRCS',
+                ' ConfigureDS',
+                ' ConfigureIBEPF',
+                ' ConfigureLC',
+                ' ConfigurePNCS',
+                ' ConfigureR',
+                ' ConfigureSAO',
+                ' ConfigureSAOCS',
+                ' ConfigureIL',
+                ' ConfigureSC',
+                ' ConfigureSSSS',
+                ' ConfigureTAA',
+                ' ConfigureUDR',
+                ' ConfigureWB',
+                ' ConfigureUM',
+                'SyncCharacterFromSaveFile',
+                'PreloadLinkedInteriors',
+                'ResizeLargeRefLODGrid',
+                'DisplaySaveCacheStatus',
+                'AuditionSoundDescriptor',
+                'TogglePrecipitationOcclusionMap',
+                'ToggleTrijuice',
+                'ToggleWaterJittering',
+                'ToggleAlphaEffectJittering',
+                'ExtractMod',
+                'InstallMod',
+                'UninstallMod',
+                'DeleteMod',
+                'BuildBNetModArchive',
+                'ToggleEarlyZ',
+                'ToggleDepthShift',
+                'TogglePostponeBlurryEffect',
+                'CharacterLight',
+                'ClearMotionVectors',
+                'ToggleTAAWaterBlending',
+                'ToggleDecompressToCopy',
+                'BNetLogin',
+                'BNetLoginSSO',
+                'BNetLogout',
+                'IsLoggedIn',
+                'BNetCreateAccount',
+                'BNetLinkAccount',
+                'BNetUnlinkAccount',
+                'RequestOTP',
+                'VerifyOTP',
+                'GetLegalDocs',
+                'AcceptLegalDoc',
+                'SubscribeUGC',
+                'UnsubscribeUGC',
+                'GetSubscribedList',
+                'FollowUGC',
+                'UnfollowUGC',
+                'GetFollowedList',
+                'GetUGCDetails',
+                'DownloadUGC',
+                'DynamicResolution',
             ]);
         }
     };
@@ -951,8 +951,7 @@ System.register("src/front/console", ["src/skyrim-platform/skyrimPlatform", "src
                     }
                     skyrimPlatform_2.printConsole('sent');
                     send({ t: messages_1.MsgType.ConsoleCommand, data: { commandName: commandName, args: args } });
-                    if (skyrimPlatform_2.storage['_api_onConsoleCommand'] &&
-                        skyrimPlatform_2.storage['_api_onConsoleCommand']['callback']) {
+                    if (skyrimPlatform_2.storage['_api_onConsoleCommand'] && skyrimPlatform_2.storage['_api_onConsoleCommand']['callback']) {
                         if (commandName === 'mp') {
                             try {
                                 (_a = skyrimPlatform_2.storage['_api_onConsoleCommand'])['callback'].apply(_a, args);
@@ -1169,7 +1168,7 @@ System.register("src/front/hostAttempts", ["src/skyrim-platform/skyrimPlatform"]
 });
 System.register("src/front/components/movementApply", ["src/skyrim-platform/skyrimPlatform"], function (exports_16, context_16) {
     "use strict";
-    var skyrimPlatform_6, applyMovement, keepOffsetFromActor, getOffsetZ, applySprinting, applyBlocking, applySneaking, applyWeapDrawn, applyHealthPercentage, translateTo, teleportIfNeed, cellWidth, isInDifferentExteriorCell, isInDifferentWorldOrCell, getPos, getDistance;
+    var skyrimPlatform_6, getLookAt, cellWidth, getPos, getDistance, isInDifferentExteriorCell, isInDifferentWorldOrCell, teleportIfNeed, translateTo, applyMovement, getOffsetZ, keepOffsetFromActor, applySprinting, applyBlocking, applySneaking, applyWeapDrawn, applyHealthPercentage;
     var __moduleName = context_16 && context_16.id;
     return {
         setters: [
@@ -1178,125 +1177,17 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
             }
         ],
         execute: function () {
-            exports_16("applyMovement", applyMovement = function (refr, m) {
-                if (teleportIfNeed(refr, m))
-                    return;
-                translateTo(refr, m);
-                var ac = skyrimPlatform_6.Actor.from(refr);
-                if (ac) {
-                    var lookAt = undefined;
-                    if (m.lookAt) {
-                        try {
-                            lookAt = skyrimPlatform_6.Game.findClosestActor(m.lookAt[0], m.lookAt[1], m.lookAt[2], 128);
-                        }
-                        catch (e) {
-                            lookAt = null;
-                        }
-                    }
-                    if (lookAt) {
-                        ac.setHeadTracking(true);
-                        ac.setLookAt(lookAt, false);
-                    }
-                    else {
-                        ac.setHeadTracking(false);
-                    }
-                    // ac.stopCombat();
-                    ac.blockActivation(true);
-                    keepOffsetFromActor(ac, m);
-                    applySprinting(ac, m.runMode === "Sprinting");
-                    applyBlocking(ac, m);
-                    applySneaking(ac, m.isSneaking);
-                    applyWeapDrawn(ac, m.isWeapDrawn);
-                    applyHealthPercentage(ac, m.healthPercentage);
+            getLookAt = function (m) {
+                if (!m.lookAt)
+                    return null;
+                try {
+                    return skyrimPlatform_6.Game.findClosestActor(m.lookAt[0], m.lookAt[1], m.lookAt[2], 128);
                 }
-            });
-            keepOffsetFromActor = function (ac, m) {
-                var offsetAngle = m.rot[2] - ac.getAngleZ();
-                if (Math.abs(offsetAngle) < 5)
-                    offsetAngle = 0;
-                if (m.runMode === "Standing") {
-                    return ac.keepOffsetFromActor(ac, 0, 0, 0, 0, 0, offsetAngle, 1, 1);
+                catch (e) {
+                    return null;
                 }
-                var offset = [
-                    3 * Math.sin((m.direction / 180) * Math.PI),
-                    3 * Math.cos((m.direction / 180) * Math.PI),
-                    getOffsetZ(m.runMode),
-                ];
-                ac.keepOffsetFromActor(ac, offset[0], offset[1], offset[2], 0, 0, offsetAngle, m.runMode === "Walking" ? 2048 : 1, 1);
-            };
-            getOffsetZ = function (runMode) {
-                switch (runMode) {
-                    case "Walking":
-                        return -512;
-                    case "Running":
-                        return -1024;
-                }
-                return 0;
-            };
-            applySprinting = function (ac, isSprinting) {
-                if (ac.isSprinting() != isSprinting) {
-                    skyrimPlatform_6.Debug.sendAnimationEvent(ac, isSprinting ? "SprintStart" : "SprintStop");
-                }
-            };
-            applyBlocking = function (ac, m) {
-                if (ac.getAnimationVariableBool("IsBlocking") != m.isBlocking) {
-                    skyrimPlatform_6.Debug.sendAnimationEvent(ac, m.isBlocking ? "BlockStart" : "BlockStop");
-                    skyrimPlatform_6.Debug.sendAnimationEvent(ac, m.isSneaking ? "SneakStart" : "SneakStop");
-                }
-            };
-            applySneaking = function (ac, isSneaking) {
-                var currentIsSneaking = ac.isSneaking() || ac.getAnimationVariableBool("IsSneaking");
-                if (currentIsSneaking != isSneaking) {
-                    skyrimPlatform_6.Debug.sendAnimationEvent(ac, isSneaking ? "SneakStart" : "SneakStop");
-                }
-            };
-            exports_16("applyWeapDrawn", applyWeapDrawn = function (ac, isWeapDrawn) {
-                if (ac.isWeaponDrawn() !== isWeapDrawn) {
-                    skyrimPlatform_6.TESModPlatform.setWeaponDrawnMode(ac, isWeapDrawn ? 1 : 0);
-                }
-            });
-            applyHealthPercentage = function (ac, healthPercentage) {
-                // ...
-            };
-            translateTo = function (refr, m) {
-                var distance = getDistance(getPos(refr), m.pos);
-                var time = 0.1;
-                if (m.isInJumpState)
-                    time = 0.2;
-                if (m.runMode !== "Standing")
-                    time = 0.2;
-                var speed = distance / time;
-                var angleDiff = Math.abs(m.rot[2] - refr.getAngleZ());
-                if (m.runMode != "Standing" ||
-                    m.isInJumpState ||
-                    distance > 64 ||
-                    angleDiff > 80) {
-                    var actor = skyrimPlatform_6.Actor.from(refr);
-                    if (actor && actor.getActorValue("Variable10") < -999)
-                        return;
-                    if (!actor || !actor.isDead()) {
-                        refr.translateTo(m.pos[0], m.pos[1], m.pos[2], m.rot[0], m.rot[1], m.rot[2], speed, 0);
-                    }
-                }
-            };
-            teleportIfNeed = function (refr, m) {
-                if (isInDifferentWorldOrCell(refr, m.worldOrCell) ||
-                    (!refr.is3DLoaded() && isInDifferentExteriorCell(refr, m.pos))) {
-                    throw new Error("needs to be respawned");
-                }
-                return false;
             };
             cellWidth = 4096;
-            isInDifferentExteriorCell = function (refr, pos) {
-                var currentPos = getPos(refr);
-                var playerPos = getPos(skyrimPlatform_6.Game.getPlayer());
-                var targetDistanceToPlayer = getDistance(playerPos, pos);
-                var currentDistanceToPlayer = getDistance(playerPos, currentPos);
-                return (currentDistanceToPlayer > cellWidth && targetDistanceToPlayer <= cellWidth);
-            };
-            isInDifferentWorldOrCell = function (refr, worldOrCell) {
-                return (worldOrCell !== (refr.getWorldSpace() || refr.getParentCell()).getFormID());
-            };
             getPos = function (refr) {
                 return [refr.getPositionX(), refr.getPositionY(), refr.getPositionZ()];
             };
@@ -1304,6 +1195,111 @@ System.register("src/front/components/movementApply", ["src/skyrim-platform/skyr
                 var r = 0;
                 a.forEach(function (v, i) { return (r += Math.pow(a[i] - b[i], 2)); });
                 return Math.sqrt(r);
+            };
+            isInDifferentExteriorCell = function (refr, pos) {
+                var currentPos = getPos(refr);
+                var playerPos = getPos(skyrimPlatform_6.Game.getPlayer());
+                var targetDistanceToPlayer = getDistance(playerPos, pos);
+                var currentDistanceToPlayer = getDistance(playerPos, currentPos);
+                return currentDistanceToPlayer > cellWidth && targetDistanceToPlayer <= cellWidth;
+            };
+            isInDifferentWorldOrCell = function (refr, worldOrCell) {
+                return worldOrCell !== (refr.getWorldSpace() || refr.getParentCell()).getFormID();
+            };
+            teleportIfNeed = function (refr, m) {
+                if (isInDifferentWorldOrCell(refr, m.worldOrCell) || (!refr.is3DLoaded() && isInDifferentExteriorCell(refr, m.pos))) {
+                    // printConsoleServer('isInDifferentWorldOrCell', isInDifferentWorldOrCell(refr, m.worldOrCell));
+                    // printConsoleServer('is3DLoaded', refr.is3DLoaded());
+                    // printConsoleServer('isInDifferentExteriorCell', isInDifferentExteriorCell(refr, m.pos));
+                    throw new Error('needs to be respawned');
+                }
+                return false;
+            };
+            translateTo = function (refr, m) {
+                var distance = getDistance(getPos(refr), m.pos);
+                var time = 0.1;
+                if (m.isInJumpState)
+                    time = 0.2;
+                if (m.runMode !== 'Standing')
+                    time = 0.2;
+                var speed = distance / time;
+                var angleDiff = Math.abs(m.rot[2] - refr.getAngleZ());
+                if (m.runMode != 'Standing' || m.isInJumpState || distance > 64 || angleDiff > 80) {
+                    var actor = skyrimPlatform_6.Actor.from(refr);
+                    if (actor && actor.getActorValue('Variable10') < -999)
+                        return;
+                    if (!actor || !(actor === null || actor === void 0 ? void 0 : actor.isDead())) {
+                        refr.translateTo(m.pos[0], m.pos[1], m.pos[2], m.rot[0], m.rot[1], m.rot[2], speed, 0);
+                    }
+                }
+            };
+            exports_16("applyMovement", applyMovement = function (refr, m) {
+                if (teleportIfNeed(refr, m))
+                    return;
+                translateTo(refr, m);
+                var ac = skyrimPlatform_6.Actor.from(refr);
+                if (!ac)
+                    return;
+                var lookAt = getLookAt(m);
+                if (lookAt)
+                    ac.setLookAt(lookAt, false);
+                ac.setHeadTracking(!!lookAt);
+                // ac.stopCombat();
+                ac.blockActivation(true);
+                keepOffsetFromActor(ac, m);
+                applySprinting(ac, m.runMode === 'Sprinting');
+                applyBlocking(ac, m);
+                applySneaking(ac, m.isSneaking);
+                applyWeapDrawn(ac, m.isWeapDrawn);
+                applyHealthPercentage(ac, m.healthPercentage);
+            });
+            getOffsetZ = function (runMode) {
+                switch (runMode) {
+                    case 'Walking':
+                        return -512;
+                    case 'Running':
+                        return -1024;
+                }
+                return 0;
+            };
+            keepOffsetFromActor = function (ac, m) {
+                var offsetAngle = m.rot[2] - ac.getAngleZ();
+                if (Math.abs(offsetAngle) < 5)
+                    offsetAngle = 0;
+                if (m.runMode === 'Standing') {
+                    return ac.keepOffsetFromActor(ac, 0, 0, 0, 0, 0, offsetAngle, 1, 1);
+                }
+                var offset = [
+                    3 * Math.sin((m.direction / 180) * Math.PI),
+                    3 * Math.cos((m.direction / 180) * Math.PI),
+                    getOffsetZ(m.runMode),
+                ];
+                ac.keepOffsetFromActor(ac, offset[0], offset[1], offset[2], 0, 0, offsetAngle, m.runMode === 'Walking' ? 2048 : 1, 1);
+            };
+            applySprinting = function (ac, isSprinting) {
+                if (ac.isSprinting() === isSprinting)
+                    return;
+                skyrimPlatform_6.Debug.sendAnimationEvent(ac, isSprinting ? 'SprintStart' : 'SprintStop');
+            };
+            applyBlocking = function (ac, m) {
+                if (ac.getAnimationVariableBool('IsBlocking') === m.isBlocking)
+                    return;
+                skyrimPlatform_6.Debug.sendAnimationEvent(ac, m.isBlocking ? 'BlockStart' : 'BlockStop');
+                skyrimPlatform_6.Debug.sendAnimationEvent(ac, m.isSneaking ? 'SneakStart' : 'SneakStop');
+            };
+            applySneaking = function (ac, isSneaking) {
+                var currentIsSneaking = ac.isSneaking() || ac.getAnimationVariableBool('IsSneaking');
+                if (currentIsSneaking === isSneaking)
+                    return;
+                skyrimPlatform_6.Debug.sendAnimationEvent(ac, isSneaking ? 'SneakStart' : 'SneakStop');
+            };
+            exports_16("applyWeapDrawn", applyWeapDrawn = function (ac, isWeapDrawn) {
+                if (ac.isWeaponDrawn() === isWeapDrawn)
+                    return;
+                skyrimPlatform_6.TESModPlatform.setWeaponDrawnMode(ac, isWeapDrawn ? 1 : 0);
+            });
+            applyHealthPercentage = function (ac, healthPercentage) {
+                // ...
             };
         }
     };
@@ -2079,9 +2075,7 @@ System.register("src/front/worldCleaner", ["src/skyrim-platform/skyrimPlatform"]
         ],
         execute: function () {
             protection = new Map();
-            isInDialogue = function (ac) {
-                return ac.isInDialogueWithPlayer() || !!ac.getDialogueTarget();
-            };
+            isInDialogue = function (ac) { return ac.isInDialogueWithPlayer() || !!ac.getDialogueTarget(); };
         }
     };
 });
@@ -3801,82 +3795,86 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                         skyrimPlatform_16.printConsole('sendActi', { caster: caster, target: target });
                     });
                     var furnitureStreak = new Map();
+                    // sync craft items
                     skyrimPlatform_16.on('containerChanged', function (e) {
-                        var oldContainerId = e.oldContainer ? e.oldContainer.getFormID() : 0;
-                        var newContainerId = e.newContainer ? e.newContainer.getFormID() : 0;
-                        var baseObjId = e.baseObj ? e.baseObj.getFormID() : 0;
+                        var _a, _b, _c, _d, _e, _f;
+                        var oldContainerId = (_b = (_a = e.oldContainer) === null || _a === void 0 ? void 0 : _a.getFormID()) !== null && _b !== void 0 ? _b : 0;
+                        var newContainerId = (_d = (_c = e.newContainer) === null || _c === void 0 ? void 0 : _c.getFormID()) !== null && _d !== void 0 ? _d : 0;
+                        var baseObjId = (_f = (_e = e.baseObj) === null || _e === void 0 ? void 0 : _e.getFormID()) !== null && _f !== void 0 ? _f : 0;
                         if (oldContainerId !== 0x14 && newContainerId !== 0x14)
                             return;
-                        var furnitureRef = skyrimPlatform_16.Game.getPlayer().getFurnitureReference();
+                        var player = skyrimPlatform_16.Game.getPlayer();
+                        var furnitureRef = player.getFurnitureReference();
                         if (!furnitureRef)
                             return;
-                        var furrnitureId = furnitureRef.getFormID();
+                        var furnitureId = furnitureRef.getFormID();
                         if (oldContainerId === 0x14 && newContainerId === 0) {
-                            var craftInputObjects = furnitureStreak.get(furrnitureId);
-                            if (!craftInputObjects) {
+                            var craftInputObjects = furnitureStreak.get(furnitureId);
+                            if (!craftInputObjects)
                                 craftInputObjects = { entries: [] };
-                            }
                             craftInputObjects.entries.push({
                                 baseId: baseObjId,
                                 count: e.numItems,
                             });
-                            furnitureStreak.set(furrnitureId, craftInputObjects);
+                            furnitureStreak.set(furnitureId, craftInputObjects);
                             skyrimPlatform_16.printConsole("Adding " + baseObjId.toString(16) + " (" + e.numItems + ") to recipe");
                         }
                         else if (oldContainerId === 0 && newContainerId === 0x14) {
                             skyrimPlatform_16.printConsole('Flushing recipe');
-                            var craftInputObjects = furnitureStreak.get(furrnitureId);
-                            if (craftInputObjects && craftInputObjects.entries.length) {
-                                furnitureStreak.delete(furrnitureId);
-                                var workbench = _this.localIdToRemoteId(furrnitureId);
-                                if (!workbench)
-                                    return skyrimPlatform_16.printConsole('localIdToRemoteId returned 0');
-                                _this.sendTarget.send({
-                                    t: messages_3.MsgType.CraftItem,
-                                    data: { workbench: workbench, craftInputObjects: craftInputObjects, resultObjectId: baseObjId },
-                                }, true);
-                                skyrimPlatform_16.printConsole('sendCraft', {
-                                    workbench: workbench,
-                                    craftInputObjects: craftInputObjects,
-                                    resultObjectId: baseObjId,
-                                });
-                            }
+                            var craftInputObjects = furnitureStreak.get(furnitureId);
+                            if (!(craftInputObjects === null || craftInputObjects === void 0 ? void 0 : craftInputObjects.entries.length))
+                                return;
+                            furnitureStreak.delete(furnitureId);
+                            var workbench = _this.localIdToRemoteId(furnitureId);
+                            if (!workbench)
+                                return skyrimPlatform_16.printConsole('localIdToRemoteId returned 0');
+                            _this.sendTarget.send({
+                                t: messages_3.MsgType.CraftItem,
+                                data: { workbench: workbench, craftInputObjects: craftInputObjects, resultObjectId: baseObjId },
+                            }, true);
+                            skyrimPlatform_16.printConsole('sendCraft', {
+                                workbench: workbench,
+                                craftInputObjects: craftInputObjects,
+                                resultObjectId: baseObjId,
+                            });
                         }
                     });
+                    // ??? sync what
                     skyrimPlatform_16.on('containerChanged', function (e) {
-                        if (e.oldContainer && e.newContainer) {
-                            if (e.oldContainer.getFormID() === 0x14 || e.newContainer.getFormID() === 0x14) {
-                                skyrimPlatform_16.printConsole(1);
-                                if (!lastInv)
-                                    lastInv = remoteServer_1.getPcInventory();
-                                if (lastInv) {
-                                    skyrimPlatform_16.printConsole(2);
-                                    var newInv = inventory_4.getInventory(skyrimPlatform_16.Game.getPlayer());
-                                    // It seems that 'ignoreWorn = false' fixes this:
-                                    // https://github.com/skyrim-multiplayer/issue-tracker/issues/43
-                                    // For some reason excess diff is produced when 'ignoreWorn = true'
-                                    // I thought that it would be vice versa but that's how it works
-                                    var ignoreWorn = false;
-                                    var diff = inventory_4.getDiff(lastInv, newInv, ignoreWorn);
-                                    skyrimPlatform_16.printConsole('diff:');
-                                    for (var i = 0; i < diff.entries.length; ++i) {
-                                        skyrimPlatform_16.printConsole("[" + i + "] " + JSON.stringify(diff.entries[i]));
-                                    }
-                                    var msgs = diff.entries.map(function (entry) {
-                                        if (entry.count !== 0) {
-                                            var msg = JSON.parse(JSON.stringify(entry));
-                                            delete msg['name']; // Extra name works too strange
-                                            msg['t'] = entry.count > 0 ? messages_3.MsgType.PutItem : messages_3.MsgType.TakeItem;
-                                            msg['count'] = Math.abs(msg['count']);
-                                            msg['target'] =
-                                                e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
-                                            return msg;
-                                        }
-                                    });
-                                    msgs.forEach(function (msg) { return _this.sendTarget.send(msg, true); });
-                                }
-                            }
+                        if (!e.oldContainer || !e.newContainer)
+                            return;
+                        if (e.oldContainer.getFormID() !== 0x14 && e.newContainer.getFormID() !== 0x14)
+                            return;
+                        if (!lastInv)
+                            lastInv = remoteServer_1.getPcInventory();
+                        if (!lastInv)
+                            return;
+                        var player = skyrimPlatform_16.Game.getPlayer();
+                        var newInv = inventory_4.getInventory(player);
+                        // It seems that 'ignoreWorn = false' fixes this:
+                        // https://github.com/skyrim-multiplayer/issue-tracker/issues/43
+                        // For some reason excess diff is produced when 'ignoreWorn = true'
+                        // I thought that it would be vice versa but that's how it works
+                        var ignoreWorn = false;
+                        var diff = inventory_4.getDiff(lastInv, newInv, ignoreWorn);
+                        skyrimPlatform_16.printConsole('diff:');
+                        for (var i = 0; i < diff.entries.length; ++i) {
+                            skyrimPlatform_16.printConsole("[" + i + "] " + JSON.stringify(diff.entries[i]));
                         }
+                        // TODO: check this code
+                        // maybe need return msg in map function
+                        // or add array.filter(entry => entry.count === 0)
+                        var msgs = diff.entries.map(function (entry) {
+                            if (entry.count === 0)
+                                return;
+                            var msg = JSON.parse(JSON.stringify(entry));
+                            delete msg['name']; // Extra name works too strange
+                            msg['t'] = entry.count > 0 ? messages_3.MsgType.PutItem : messages_3.MsgType.TakeItem;
+                            msg['count'] = Math.abs(msg['count']);
+                            msg['target'] = e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
+                            return msg;
+                        });
+                        msgs.forEach(function (msg) { return _this.sendTarget.send(msg, true); });
                     });
                     var playerFormId = 0x14;
                     skyrimPlatform_16.on('equip', function (e) {
@@ -3960,7 +3958,6 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     }
                 };
                 SkympClient.prototype.sendLook = function (_refrId) {
-                    var _a;
                     if (_refrId)
                         return;
                     var shown = skyrimPlatform_16.Ui.isMenuOpen('RaceSex Menu');
@@ -3968,8 +3965,9 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                         this.isRaceSexMenuShown = shown;
                         if (!shown) {
                             skyrimPlatform_16.printConsole('Exited from race menu');
-                            if ((_a = skyrimPlatform_16.storage._api_onCloseRaceMenu) === null || _a === void 0 ? void 0 : _a.callback)
-                                skyrimPlatform_16.storage._api_onCloseRaceMenu.callback();
+                            var onCloseRaceMenu = skyrimPlatform_16.storage._api_onCloseRaceMenu;
+                            if (onCloseRaceMenu === null || onCloseRaceMenu === void 0 ? void 0 : onCloseRaceMenu.callback)
+                                onCloseRaceMenu.callback();
                             var look = look_3.getLook(skyrimPlatform_16.Game.getPlayer());
                             this.sendTarget.send({ t: messages_3.MsgType.UpdateLook, data: look, _refrId: _refrId }, true);
                         }
@@ -4033,7 +4031,7 @@ System.register("src/front/skympClient", ["src/skyrim-platform/skyrimPlatform", 
                     var prevView = skyrimPlatform_16.storage.view;
                     var view = new view_3.WorldView();
                     skyrimPlatform_16.once('update', function () {
-                        if (prevView && prevView.destroy) {
+                        if (prevView === null || prevView === void 0 ? void 0 : prevView.destroy) {
                             prevView.destroy();
                             skyrimPlatform_16.printConsole('Previous View destroyed');
                         }
@@ -4092,7 +4090,7 @@ System.register("src/front/version", ["src/skyrim-platform/skyrimPlatform"], fun
 });
 System.register("src/front/index", ["src/front/skympClient", "src/front/console", "src/front/browser", "src/front/loadGameManager", "src/skyrim-platform/skyrimPlatform", "src/front/version", "src/front/worldCleaner"], function (exports_36, context_36) {
     "use strict";
-    var skympClient_1, console_5, browser, loadGameManager, skyrimPlatform_18, version_1, worldCleaner_2, enforceLimitations, lastTimeUpd, riftenUnlocked, n, k, zeroKMoment, lastFps;
+    var skympClient_1, console_5, browser, loadGameManager, skyrimPlatform_18, version_1, worldCleaner_2, enforceLimitations, lastTimeUpd;
     var __moduleName = context_36 && context_36.id;
     return {
         setters: [
@@ -4123,78 +4121,76 @@ System.register("src/front/index", ["src/front/skympClient", "src/front/console"
             enforceLimitations = function () {
                 skyrimPlatform_18.Game.setInChargen(true, true, false);
             };
-            skyrimPlatform_18.once("update", enforceLimitations);
+            skyrimPlatform_18.once('update', enforceLimitations);
             loadGameManager.addLoadGameListener(enforceLimitations);
-            skyrimPlatform_18.once("update", function () {
-                skyrimPlatform_18.Utility.setINIBool("bAlwaysActive:General", true);
+            skyrimPlatform_18.once('update', function () {
+                skyrimPlatform_18.Utility.setINIBool('bAlwaysActive:General', true);
             });
-            skyrimPlatform_18.on("update", function () {
-                skyrimPlatform_18.Utility.setINIInt("iDifficulty:GamePlay", 5);
+            skyrimPlatform_18.on('update', function () {
+                skyrimPlatform_18.Utility.setINIInt('iDifficulty:GamePlay', 5);
                 skyrimPlatform_18.Game.enableFastTravel(false);
             });
             browser.main();
             console_5.blockConsole();
-            skyrimPlatform_18.once("update", version_1.verifyVersion);
-            skyrimPlatform_18.on("update", function () { return worldCleaner_2.updateWc(); });
+            skyrimPlatform_18.once('update', version_1.verifyVersion);
+            skyrimPlatform_18.on('update', function () { return worldCleaner_2.updateWc(); });
             lastTimeUpd = 0;
-            skyrimPlatform_18.on("update", function () {
+            skyrimPlatform_18.on('update', function () {
                 if (Date.now() - lastTimeUpd <= 2000)
                     return;
                 lastTimeUpd = Date.now();
                 // Also update weather to be always clear
                 var w = skyrimPlatform_18.Weather.findWeather(0);
-                if (w) {
+                if (w)
                     w.setActive(false, false);
-                }
                 var gameHourId = 0x38;
-                var gameMonthId = 0x36;
-                var gameDayId = 0x37;
-                var gameYearId = 0x35;
-                var timeScaleId = 0x3a;
-                var d = new Date();
                 var gameHour = skyrimPlatform_18.GlobalVariable.from(skyrimPlatform_18.Game.getFormEx(gameHourId));
-                gameHour.setValue(d.getUTCHours() +
-                    d.getUTCMinutes() / 60 +
-                    d.getUTCSeconds() / 60 / 60 +
-                    d.getUTCMilliseconds() / 60 / 60 / 1000);
+                var gameDayId = 0x37;
                 var gameDay = skyrimPlatform_18.GlobalVariable.from(skyrimPlatform_18.Game.getFormEx(gameDayId));
-                gameDay.setValue(d.getUTCDate());
+                var gameMonthId = 0x36;
                 var gameMonth = skyrimPlatform_18.GlobalVariable.from(skyrimPlatform_18.Game.getFormEx(gameMonthId));
-                gameMonth.setValue(d.getUTCMonth());
+                var gameYearId = 0x35;
                 var gameYear = skyrimPlatform_18.GlobalVariable.from(skyrimPlatform_18.Game.getFormEx(gameYearId));
-                gameYear.setValue(d.getUTCFullYear() - 2020 + 199);
+                var timeScaleId = 0x3a;
                 var timeScale = skyrimPlatform_18.GlobalVariable.from(skyrimPlatform_18.Game.getFormEx(timeScaleId));
+                var d = new Date();
+                var hour = d.getUTCHours();
+                var mm = d.getUTCMinutes() / 60;
+                var ss = d.getUTCSeconds() / 60 / 60;
+                var mss = d.getUTCMilliseconds() / 60 / 60 / 1000;
+                gameHour.setValue(hour + mm + ss + mss);
+                gameDay.setValue(d.getUTCDate());
+                gameMonth.setValue(d.getUTCMonth());
+                gameYear.setValue(d.getUTCFullYear() - 2020 + 199);
                 timeScale.setValue(1);
             });
-            riftenUnlocked = false;
-            skyrimPlatform_18.on("update", function () {
-                if (riftenUnlocked)
-                    return;
-                var refr = skyrimPlatform_18.ObjectReference.from(skyrimPlatform_18.Game.getFormEx(0x42284));
-                if (!refr)
-                    return;
-                refr.lock(false, false);
-                riftenUnlocked = true;
-            });
-            n = 10;
-            k = 0;
-            zeroKMoment = 0;
-            lastFps = 0;
-            skyrimPlatform_18.on("update", function () {
-                ++k;
-                if (k == n) {
-                    k = 0;
-                    if (zeroKMoment) {
-                        var timePassed = (Date.now() - zeroKMoment) * 0.001;
-                        var fps = Math.round(n / timePassed);
-                        if (lastFps != fps) {
-                            lastFps = fps;
-                            //printConsole(`Current FPS is ${fps}`);
-                        }
-                    }
-                    zeroKMoment = Date.now();
-                }
-            });
+            // let riftenUnlocked = false;
+            // on("update", () => {
+            //   if (riftenUnlocked) return;
+            //   const refr = ObjectReference.from(Game.getFormEx(0x42284));
+            //   if (!refr) return;
+            //   refr.lock(false, false);
+            //   riftenUnlocked = true;
+            // });
+            // const n = 10;
+            // let k = 0;
+            // let zeroKMoment = 0;
+            // let lastFps = 0;
+            // on("update", () => {
+            //   ++k;
+            //   if (k == n) {
+            //     k = 0;
+            //     if (zeroKMoment) {
+            //       const timePassed = (Date.now() - zeroKMoment) * 0.001;
+            //       const fps = Math.round(n / timePassed);
+            //       if (lastFps != fps) {
+            //         lastFps = fps;
+            //         //printConsole(`Current FPS is ${fps}`);
+            //       }
+            //     }
+            //     zeroKMoment = Date.now();
+            //   }
+            // });
         }
     };
 });

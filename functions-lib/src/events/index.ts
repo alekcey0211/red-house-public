@@ -67,9 +67,6 @@ export const register = (mp: Mp): void => {
 		const casterRef: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
 		const targetRef: PapyrusObject = { type: 'form', desc: mp.getDescFromId(target) };
 
-		try {
-			if (mp.get(target, 'blockActivationState')) return false;
-		} catch {}
 		const activation = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]) ?? true;
 
 		logExecuteTime(start, 'onActivate');

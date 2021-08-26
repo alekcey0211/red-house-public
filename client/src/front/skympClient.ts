@@ -163,87 +163,98 @@ export class SkympClient {
 		type FurnitureId = number;
 		const furnitureStreak = new Map<FurnitureId, Inventory>();
 
+		// sync craft items
 		on('containerChanged', (e) => {
-			const oldContainerId = e.oldContainer ? e.oldContainer.getFormID() : 0;
-			const newContainerId = e.newContainer ? e.newContainer.getFormID() : 0;
-			const baseObjId = e.baseObj ? e.baseObj.getFormID() : 0;
+			const oldContainerId = e.oldContainer?.getFormID() ?? 0;
+			const newContainerId = e.newContainer?.getFormID() ?? 0;
+			const baseObjId = e.baseObj?.getFormID() ?? 0;
+
 			if (oldContainerId !== 0x14 && newContainerId !== 0x14) return;
 
-			const furnitureRef = (Game.getPlayer() as Actor).getFurnitureReference();
+			const player = Game.getPlayer();
+			const furnitureRef = player.getFurnitureReference();
 			if (!furnitureRef) return;
 
-			const furrnitureId = furnitureRef.getFormID();
+			const furnitureId = furnitureRef.getFormID();
 
 			if (oldContainerId === 0x14 && newContainerId === 0) {
-				let craftInputObjects = furnitureStreak.get(furrnitureId);
-				if (!craftInputObjects) {
-					craftInputObjects = { entries: [] };
-				}
+				let craftInputObjects = furnitureStreak.get(furnitureId);
+
+				if (!craftInputObjects) craftInputObjects = { entries: [] };
+
 				craftInputObjects.entries.push({
 					baseId: baseObjId,
 					count: e.numItems,
 				});
-				furnitureStreak.set(furrnitureId, craftInputObjects);
+
+				furnitureStreak.set(furnitureId, craftInputObjects);
+
 				printConsole(`Adding ${baseObjId.toString(16)} (${e.numItems}) to recipe`);
 			} else if (oldContainerId === 0 && newContainerId === 0x14) {
 				printConsole('Flushing recipe');
-				const craftInputObjects = furnitureStreak.get(furrnitureId);
-				if (craftInputObjects && craftInputObjects.entries.length) {
-					furnitureStreak.delete(furrnitureId);
-					const workbench = this.localIdToRemoteId(furrnitureId);
-					if (!workbench) return printConsole('localIdToRemoteId returned 0');
 
-					this.sendTarget.send(
-						{
-							t: MsgType.CraftItem,
-							data: { workbench, craftInputObjects, resultObjectId: baseObjId },
-						},
-						true
-					);
-					printConsole('sendCraft', {
-						workbench,
-						craftInputObjects,
-						resultObjectId: baseObjId,
-					});
-				}
+				const craftInputObjects = furnitureStreak.get(furnitureId);
+				if (!craftInputObjects?.entries.length) return;
+
+				furnitureStreak.delete(furnitureId);
+
+				const workbench = this.localIdToRemoteId(furnitureId);
+				if (!workbench) return printConsole('localIdToRemoteId returned 0');
+
+				this.sendTarget.send(
+					{
+						t: MsgType.CraftItem,
+						data: { workbench, craftInputObjects, resultObjectId: baseObjId },
+					},
+					true
+				);
+
+				printConsole('sendCraft', {
+					workbench,
+					craftInputObjects,
+					resultObjectId: baseObjId,
+				});
 			}
 		});
 
+		// ??? sync what
 		on('containerChanged', (e) => {
-			if (e.oldContainer && e.newContainer) {
-				if (e.oldContainer.getFormID() === 0x14 || e.newContainer.getFormID() === 0x14) {
-					printConsole(1);
-					if (!lastInv) lastInv = getPcInventory();
-					if (lastInv) {
-						printConsole(2);
-						const newInv = getInventory(Game.getPlayer() as Actor);
+			if (!e.oldContainer || !e.newContainer) return;
+			if (e.oldContainer.getFormID() !== 0x14 && e.newContainer.getFormID() !== 0x14) return;
 
-						// It seems that 'ignoreWorn = false' fixes this:
-						// https://github.com/skyrim-multiplayer/issue-tracker/issues/43
-						// For some reason excess diff is produced when 'ignoreWorn = true'
-						// I thought that it would be vice versa but that's how it works
-						const ignoreWorn = false;
-						const diff = getDiff(lastInv, newInv, ignoreWorn);
+			if (!lastInv) lastInv = getPcInventory();
+			if (!lastInv) return;
 
-						printConsole('diff:');
-						for (let i = 0; i < diff.entries.length; ++i) {
-							printConsole(`[${i}] ${JSON.stringify(diff.entries[i])}`);
-						}
-						const msgs = diff.entries.map((entry) => {
-							if (entry.count !== 0) {
-								const msg = JSON.parse(JSON.stringify(entry));
-								delete msg['name']; // Extra name works too strange
-								msg['t'] = entry.count > 0 ? MsgType.PutItem : MsgType.TakeItem;
-								msg['count'] = Math.abs(msg['count']);
-								msg['target'] =
-									e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
-								return msg;
-							}
-						});
-						msgs.forEach((msg) => this.sendTarget.send(msg, true));
-					}
-				}
+			const player = Game.getPlayer();
+			const newInv = getInventory(player);
+
+			// It seems that 'ignoreWorn = false' fixes this:
+			// https://github.com/skyrim-multiplayer/issue-tracker/issues/43
+			// For some reason excess diff is produced when 'ignoreWorn = true'
+			// I thought that it would be vice versa but that's how it works
+			const ignoreWorn = false;
+			const diff = getDiff(lastInv, newInv, ignoreWorn);
+
+			printConsole('diff:');
+			for (let i = 0; i < diff.entries.length; ++i) {
+				printConsole(`[${i}] ${JSON.stringify(diff.entries[i])}`);
 			}
+
+			// TODO: check this code
+			// maybe need return msg in map function
+			// or add array.filter(entry => entry.count === 0)
+			const msgs = diff.entries.map((entry) => {
+				if (entry.count === 0) return;
+
+				const msg = JSON.parse(JSON.stringify(entry));
+				delete msg['name']; // Extra name works too strange
+				msg['t'] = entry.count > 0 ? MsgType.PutItem : MsgType.TakeItem;
+				msg['count'] = Math.abs(msg['count']);
+				msg['target'] = e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
+				return msg;
+			});
+
+			msgs.forEach((msg) => this.sendTarget.send(msg, true));
 		});
 
 		const playerFormId = 0x14;
@@ -350,7 +361,8 @@ export class SkympClient {
 			if (!shown) {
 				printConsole('Exited from race menu');
 
-				if (storage._api_onCloseRaceMenu?.callback) storage._api_onCloseRaceMenu.callback();
+				const onCloseRaceMenu: { callback?: () => void } = storage._api_onCloseRaceMenu;
+				if (onCloseRaceMenu?.callback) onCloseRaceMenu.callback();
 
 				const look = getLook(Game.getPlayer() as Actor);
 				this.sendTarget.send({ t: MsgType.UpdateLook, data: look, _refrId }, true);
@@ -420,7 +432,7 @@ export class SkympClient {
 		const prevView: WorldView = storage.view as WorldView;
 		const view = new WorldView();
 		once('update', () => {
-			if (prevView && prevView.destroy) {
+			if (prevView?.destroy) {
 				prevView.destroy();
 				printConsole('Previous View destroyed');
 			}

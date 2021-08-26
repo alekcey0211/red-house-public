@@ -1,9 +1,4 @@
-import {
-	settings,
-	printConsole,
-	findConsoleCommand,
-	storage,
-} from 'skyrimPlatform';
+import { settings, printConsole, findConsoleCommand, storage } from 'skyrimPlatform';
 import { consoleCommands, scriptCommands } from './consoleCommands';
 import { MsgType } from './messages';
 
@@ -20,9 +15,7 @@ export const blockConsole = (): void => {
 			)
 				return;
 			command.execute = () => {
-				printConsole(
-					"You do not have permission to use this command ('" + name + "')"
-				);
+				printConsole("You do not have permission to use this command ('" + name + "')");
 				return false;
 			};
 		});
@@ -68,10 +61,7 @@ const getCommandExecutor = (
 		}
 		printConsole('sent');
 		send({ t: MsgType.ConsoleCommand, data: { commandName, args } });
-		if (
-			storage['_api_onConsoleCommand'] &&
-			(storage['_api_onConsoleCommand'] as any)['callback']
-		) {
+		if (storage['_api_onConsoleCommand'] && (storage['_api_onConsoleCommand'] as any)['callback']) {
 			if (commandName === 'mp') {
 				try {
 					(storage['_api_onConsoleCommand'] as any)['callback'](...args);
@@ -88,27 +78,20 @@ export const setUpConsoleCommands = (
 	send: (msg: Record<string, unknown>) => void,
 	localIdToRemoteId: (localId: number) => number
 ): void => {
-	const command =
-		findConsoleCommand(' ConfigureUM') || findConsoleCommand('test');
+	const command = findConsoleCommand(' ConfigureUM') || findConsoleCommand('test');
 	if (command) {
 		command.shortName = 'mp';
-		command.execute = getCommandExecutor('mp', send, localIdToRemoteId) as (
-			...args: unknown[]
-		) => boolean;
+		command.execute = getCommandExecutor('mp', send, localIdToRemoteId) as (...args: unknown[]) => boolean;
 	}
 
 	(Object.keys(schemas) as any[]).forEach((commandName: CmdName) => {
 		const command = findConsoleCommand(commandName);
 		if (!command || nonVanilaCommands.includes(commandName)) return;
-		command.execute = getCommandExecutor(
-			commandName,
-			send,
-			localIdToRemoteId
-		) as (...args: unknown[]) => boolean;
+		command.execute = getCommandExecutor(commandName, send, localIdToRemoteId) as (...args: unknown[]) => boolean;
 	});
 };
 
 export const printConsoleServer = (...argumets: any[]) => {
-	const s = storage._api_onPrintConsole;
+	const s: { callback?: (...a: any[]) => void } = storage._api_onPrintConsole;
 	if (s?.callback) s.callback(...argumets);
 };

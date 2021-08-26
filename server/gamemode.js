@@ -3545,12 +3545,6 @@ const getContainerForms = (mp, self) => {
   }).filter(item => item);
 };
 
-const blockActivation = (mp, self, args) => {
-  const selfId = mp.getIdFromDesc(self.desc);
-  const state = papyrusArgs_1.getBoolean(args, 0);
-  mp.set(selfId, 'blockActivationState', state);
-};
-
 const moveTo = (mp, self, args) => {
   const selfId = mp.getIdFromDesc(self.desc);
   const target = papyrusArgs_1.getObject(args, 0);
@@ -3877,7 +3871,6 @@ const register = mp => {
   mp.registerPapyrusFunction('method', 'ObjectReference', 'DamageObject', (self, args) => damageObject(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'ClearDestruction', self => clearDestruction(mp, self));
   mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetCurrentDestructionStage', (self, args) => setCurrentDestructionStage(mp, self, args));
-  mp.registerPapyrusFunction('method', 'ObjectReference', 'BlockActivation', (self, args) => blockActivation(mp, self, args));
   mp.registerPapyrusFunction('method', 'ObjectReference', 'GetBaseObject', self => getBaseObject(mp, self));
   mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetBaseObjectId', (self, args) => exports.getBaseObjectId(mp, self, args));
   mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetLinkedReferenceId', (self, args) => getLinkedReferenceId(mp, self, args));
@@ -4641,11 +4634,6 @@ const register = mp => {
       type: 'form',
       desc: mp.getDescFromId(target)
     };
-
-    try {
-      if (mp.get(target, 'blockActivationState')) return false;
-    } catch (_b) {}
-
     const activation = (_a = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef])) !== null && _a !== void 0 ? _a : true;
     shared_1.logExecuteTime(start, 'onActivate');
     return activation;
@@ -6581,34 +6569,7 @@ const register = mp => {
 };
 
 exports.register = register;
-},{"../papyrus/multiplayer/functions":"zNfc","../utils/functionInfo":"fC7F"}],"lucm":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.register = void 0;
-
-const functionInfo_1 = require("../utils/functionInfo");
-
-const blockActivation = ctx => {
-  if (!ctx.refr) return;
-  if (ctx.value === undefined || ctx.state.lastBlockActivationState === ctx.value) return;
-  ctx.refr.blockActivation(ctx.value);
-  ctx.state.lastBlockActivationState = ctx.value;
-};
-
-const register = mp => {
-  mp.makeProperty('blockActivationState', {
-    isVisibleByOwner: true,
-    isVisibleByNeighbors: true,
-    updateOwner: new functionInfo_1.FunctionInfo(blockActivation).tryCatch(),
-    updateNeighbor: new functionInfo_1.FunctionInfo(blockActivation).tryCatch()
-  });
-};
-
-exports.register = register;
-},{"../utils/functionInfo":"fC7F"}],"QHL1":[function(require,module,exports) {
+},{"../papyrus/multiplayer/functions":"zNfc","../utils/functionInfo":"fC7F"}],"QHL1":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7349,8 +7310,6 @@ const evalProp = __importStar(require("./src/properties/eval"));
 
 const browserProp = __importStar(require("./src/properties/browser"));
 
-const activatorProp = __importStar(require("./src/properties/activator"));
-
 const actorProp = __importStar(require("./src/properties/actor"));
 
 const inputProp = __importStar(require("./src/properties/input"));
@@ -7386,7 +7345,6 @@ actorProp.register(mp);
 browserProp.register(mp);
 objectReferenceProp.register(mp);
 inputProp.register(mp);
-activatorProp.register(mp);
 spawnProp.register(mp);
 animProp.register(mp);
 events.register(mp);
@@ -7418,4 +7376,4 @@ setTimeout(() => {
     shared_1.overrideNotify(mp, p);
   });
 }, 0);
-},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/activator":"lucm","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9","./src/papyrus/game/server-options":"nnyN","./src/events/shared":"jnne"}]},{},["QCba"], null)
+},{"./src/events":"VJVi","./src/synchronization":"vm0Z","./src/papyrus/multiplayer":"QSKn","./src/papyrus/stringUtil":"ejLG","./src/papyrus/actor":"ZYrz","./src/papyrus/objectReference":"YRYD","./src/papyrus/utility":"GnGy","./src/papyrus/game":"WCBi","./src/papyrus/debug":"tMCa","./src/papyrus/form":"mnzc","./src/papyrus/actorValueInfo":"Ojqs","./src/papyrus/weapon":"TCaz","./src/papyrus/globalVariable":"PmOp","./src/papyrus/constructibleObject":"oZsC","./src/papyrus/activeMagicEffect":"dvBS","./src/papyrus/potion":"SDpR","./src/papyrus/perk":"Fep9","./src/papyrus/keyword":"GeQ2","./src/papyrus/cell":"WIJZ","./src/papyrus/math":"YH8e","./src/papyrus/magicEffect":"pZ4P","./src/papyrus/effectShader":"jRUP","./src/papyrus/visualEffect":"zBNb","./src/properties/perks":"b09m","./src/properties/eval":"mJTA","./src/properties/browser":"sIi4","./src/properties/actor":"TBbX","./src/properties/input":"hqDV","./src/properties/objectReference":"HQ1N","./src/properties/spawn":"bSOF","./src/properties/anim":"vmr5","./src/utils/localizationProvider":"z8sU","./src/utils/stringLocalizationProvider":"lAw9","./src/papyrus/game/server-options":"nnyN","./src/events/shared":"jnne"}]},{},["QCba"], null)

@@ -108,13 +108,6 @@ const getContainerForms = (mp: Mp, self: PapyrusObject): PapyrusObject[] => {
 		.filter((item) => item) as PapyrusObject[];
 };
 
-const blockActivation = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
-	const selfId = mp.getIdFromDesc(self.desc);
-	const state = getBoolean(args, 0);
-
-	mp.set(selfId, 'blockActivationState', state);
-};
-
 const moveTo = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const target = getObject(args, 0);
@@ -410,10 +403,6 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'ClearDestruction', (self) => clearDestruction(mp, self));
 	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetCurrentDestructionStage', (self, args) =>
 		setCurrentDestructionStage(mp, self, args)
-	);
-
-	mp.registerPapyrusFunction('method', 'ObjectReference', 'BlockActivation', (self, args) =>
-		blockActivation(mp, self, args)
 	);
 
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetBaseObject', (self) => getBaseObject(mp, self));

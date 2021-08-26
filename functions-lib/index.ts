@@ -93,7 +93,6 @@ import * as visualEffect from './src/papyrus/visualEffect';
 import * as perkProp from './src/properties/perks';
 import * as evalProp from './src/properties/eval';
 import * as browserProp from './src/properties/browser';
-import * as activatorProp from './src/properties/activator';
 import * as actorProp from './src/properties/actor';
 import * as inputProp from './src/properties/input';
 import * as objectReferenceProp from './src/properties/objectReference';
@@ -136,7 +135,6 @@ actorProp.register(mp);
 browserProp.register(mp);
 objectReferenceProp.register(mp);
 inputProp.register(mp);
-activatorProp.register(mp);
 spawnProp.register(mp);
 animProp.register(mp);
 
