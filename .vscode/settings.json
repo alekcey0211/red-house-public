@@ -1,0 +1,15 @@
+{
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true,
+	"papyrus.skyrim.enabled": false,
+	"papyrus.fallout4.enabled": false,
+	"eslint.alwaysShowStatus": true,
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"eslint.format.enable": true,
+	"eslint.probe": ["javascript", "typescript", "html", "markdown"],
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
+}

@@ -1,7 +1,1 @@
-.vscode/tasks.json
-.vscode/settings.json
 node_modules
-xelib-*
-voice-server
-server-empty
-server-build-chakra
