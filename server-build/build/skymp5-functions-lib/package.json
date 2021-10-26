@@ -1,0 +1,12 @@
+{
+	"name": "skymp5-functions-lib",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "cd ../../skymp5-functions-lib && npm run build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

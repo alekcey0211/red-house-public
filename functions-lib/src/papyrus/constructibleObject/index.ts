@@ -1,3 +1,4 @@
+import { IConstructibleObject } from '../../..';
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { uint32 } from '../../utils/helper';
 import { getNumber } from '../../utils/papyrusArgs';
@@ -5,13 +6,13 @@ import { getForm } from '../game';
 
 let recipes: number[] | null = null;
 let cookingRecipe: number[] | null = null;
-const getRecipes = (mp: Mp, self: null): number[] => {
+const getRecipes = (mp: Mp): number[] => {
 	if (!recipes) {
 		recipes = JSON.parse(mp.readDataFile('xelib/COBJ.json')) as number[];
 	}
 	return recipes;
 };
-const getCookingRecipes = (mp: Mp, self: null) => {
+const getCookingRecipes = (mp: Mp) => {
 	if (!cookingRecipe) {
 		cookingRecipe = JSON.parse(mp.readDataFile('xelib/cooking-COBJ.json')) as number[];
 	}
@@ -28,8 +29,6 @@ const getRecipeItems = (mp: Mp, self: null, args: PapyrusValue[]): number[] | un
 			return uint32(rec.data.buffer, 0);
 		});
 	}
-
-	return;
 };
 
 const getRecipeCraftItem = (mp: Mp, self: null, args: PapyrusValue[]): number | undefined => {
@@ -137,8 +136,14 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('global', 'ConstructibleObjectEx', 'GetRecipeItemCount', (self, args) =>
 		getRecipeItemCount(mp, self, args)
 	);
-	mp.registerPapyrusFunction('global', 'ConstructibleObjectEx', 'GetRecipes', (self) => getRecipes(mp, self));
-	mp.registerPapyrusFunction('global', 'ConstructibleObjectEx', 'GetCookingRecipes', (self) =>
-		getCookingRecipes(mp, self)
-	);
+	mp.registerPapyrusFunction('global', 'ConstructibleObjectEx', 'GetRecipes', () => getRecipes(mp));
+	mp.registerPapyrusFunction('global', 'ConstructibleObjectEx', 'GetCookingRecipes', () => getCookingRecipes(mp));
+
+	IConstructibleObject.GetResult = (self: PapyrusObject) => getResult(mp, self);
+	IConstructibleObject.GetNumIngredients = (self: PapyrusObject) => getNumIngredients(mp, self);
+	IConstructibleObject.GetNthIngredient = (self: PapyrusObject, args: PapyrusValue[]) =>
+		getNthIngredient(mp, self, args);
+	IConstructibleObject.GetNthIngredientQuantity = (self: PapyrusObject, args: PapyrusValue[]) =>
+		getNthIngredientQuantity(mp, self, args);
+	IConstructibleObject.GetWorkbenchKeyword = (self: PapyrusObject) => getWorkbenchKeyword(mp, self);
 };

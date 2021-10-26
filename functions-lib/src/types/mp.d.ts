@@ -1,3 +1,5 @@
+import { IJSModule } from '../modules';
+
 export interface MakePropertyOptions {
 	/**
 	 * If set to false, `updateOwner` would never be invoked
@@ -65,25 +67,30 @@ export type PapyrusGlobalFunction = (
 	args: PapyrusValue[]
 ) => PapyrusValue | Promise<PapyrusValue> | void | Promise<void>;
 
-export interface Inventory {
-	entries: InventoryItem[];
-}
 export interface InventoryItem {
 	baseId: number;
 	count: number;
 }
-export interface InventoryEq {
-	entries: InventoryItemEq[];
+
+export interface Inventory {
+	entries: InventoryItem[];
 }
+
 export interface InventoryItemEq {
 	baseId: number;
 	count: number;
 	worn: boolean;
 }
+
+export interface InventoryEq {
+	entries: InventoryItemEq[];
+}
+
 export interface Equipment {
 	inv: InventoryEq;
 	numChanges: number;
 }
+
 export interface Appearance {
 	hairColor: number;
 	headTextureSetId: number;
@@ -193,11 +200,19 @@ export interface Mp {
 		args: PapyrusValue[]
 	): PapyrusValue;
 
-	onDeath?: (pcFormId: number) => void;
+	onDeath?: (pcFormId: number, killer?: number) => void;
+	onResurrect?: (actor: number) => void;
+
 	onActivate?: (target: number, pcFormId: number) => void;
 	[key: string]: unknown;
 
-	getServerSettings(): Record<string, any>;
+	getServerSettings(): Record<string, PapyrusValue>;
 	readDataDirectory(): string[];
 	readDataFile(path: string): string;
+	writeDataFile(path: string, content: string): void;
+
+	modules: IJSModule[];
+	addJSModule: (module: IJSModule) => void;
+	loadJSModule: (modulePath: string) => boolean;
+	reloot: (formId: number) => void;
 }

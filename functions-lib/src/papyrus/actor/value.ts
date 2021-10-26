@@ -1,9 +1,8 @@
-import { actorValues as av } from '../../properties/actor/actorValues/attributes';
+import { actorValues as av, Attr } from '../../properties/actor/actorValues/attributes';
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { getString, getNumber } from '../../utils/papyrusArgs';
-import { Attr } from '../../properties/actor/actorValues/attributes';
 
-export const setActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const setActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const avName = getString(args, 0) as Attr;
 	const avValue = getNumber(args, 1);
@@ -11,13 +10,19 @@ export const setActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[])
 	av.set(selfId, avName, 'base', avValue);
 };
 
-export const getActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const getActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): number => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const avName = getString(args, 0) as Attr;
 	return av.getCurrent(selfId, avName);
 };
 
-export const damageActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const getActorValuePercentage = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): number => {
+	const selfId = mp.getIdFromDesc(self.desc);
+	const avName = getString(args, 0) as Attr;
+	return av.getCurrent(selfId, avName) / av.getMaximum(selfId, avName);
+};
+
+export const damageActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const avName = getString(args, 0) as Attr;
 	const avValue = getNumber(args, 1);
@@ -25,7 +30,7 @@ export const damageActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue
 	av.set(selfId, avName, 'damage', damage - avValue);
 };
 
-export const restoreActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const restoreActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const avName = getString(args, 0) as Attr;
 	const avValue = getNumber(args, 1);
@@ -34,7 +39,7 @@ export const restoreActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValu
 };
 
 // TODO: what if player has modAV?
-export const modActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const modActorValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const avName = getString(args, 0) as Attr;
 	const avValue = getNumber(args, 1);

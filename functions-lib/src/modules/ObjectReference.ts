@@ -1,0 +1,41 @@
+import { PapyrusObject, PapyrusValue } from '../types/mp';
+
+export interface ObjectReferenceMethods {
+	SetScale: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetScale: (self: PapyrusObject) => number;
+	RemoveAllItems: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetDistance: (self: PapyrusObject, args: PapyrusValue[]) => number;
+	MoveTo: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetContainerForms: (self: PapyrusObject) => PapyrusObject[];
+	GetCurrentDestructionStage: (self: PapyrusObject) => number;
+	DamageObject: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	ClearDestruction: (self: PapyrusObject) => void;
+	SetCurrentDestructionStage: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	BlockActivation: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetBaseObject: (self: PapyrusObject) => PapyrusObject | undefined;
+	PlaceObjectOnStatic: (self: PapyrusObject, args: PapyrusValue[]) => number | undefined;
+	PlaceAtMe: (self: PapyrusObject, args: PapyrusValue[]) => PapyrusObject | null;
+	GetDisplayName: (self: PapyrusObject) => string;
+	SetDisplayName: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetWorldSpace: (self: PapyrusObject) => PapyrusObject | undefined;
+	GetParentCell: (self: PapyrusObject) => PapyrusObject | undefined;
+	IsInInterior: (self: PapyrusObject) => boolean;
+	SetOpen: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetStorageValue: <T = any>(self: PapyrusObject, args: PapyrusValue[]) => T | undefined;
+	SetStorageValue: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	SetPosition: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetPositionX: (self: PapyrusObject) => number;
+	GetPositionY: (self: PapyrusObject) => number;
+	GetPositionZ: (self: PapyrusObject) => number;
+	SetAngle: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetAngleX: (self: PapyrusObject) => number;
+	GetAngleY: (self: PapyrusObject) => number;
+	GetAngleZ: (self: PapyrusObject) => number;
+	AddItem: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	RemoveItem: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetItemCount: (self: PapyrusObject, args: PapyrusValue[]) => number;
+	GetRespawnTime: (args: PapyrusValue[]) => number;
+	Disable: (self: PapyrusObject, args: PapyrusValue[]) => void;
+	GetLinkedDoorId: (self: PapyrusObject) => number;
+	GetLinkedCellId: (self: PapyrusObject) => number;
+}

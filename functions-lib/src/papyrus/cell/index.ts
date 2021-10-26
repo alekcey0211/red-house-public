@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { getObject } from '../../utils/papyrusArgs';
 import { uint16 } from '../../utils/helper';
+import { ICell } from '../../..';
 
 const FLG_Interior = 0x0001;
 const FLG_Has_Water = 0x0002;
@@ -19,23 +23,27 @@ const flagExists = (mp: Mp, self: PapyrusObject, flag: number) => {
 	if (!enit) return false;
 
 	const flags = uint16(enit.buffer, 0);
+	// eslint-disable-next-line no-bitwise
 	return !!(flags & flag);
 };
 
 export const isInterior = (mp: Mp, self: PapyrusObject): boolean => flagExists(mp, self, FLG_Interior);
 
-export const getLocationId = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getLocation = (mp: Mp, self: null, args: PapyrusValue[]): any => {
 	const cell = getObject(args, 0);
 	const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(cell.desc));
 	const xlcn = espmRecord.record?.fields.find((x) => x.type === 'XLCN')?.data;
 	if (xlcn) {
 		const dataView = new DataView(xlcn.buffer);
 
-		return dataView.getUint32(0, true);
+		return { type: 'espm', desc: mp.getDescFromId(dataView.getUint32(0, true)) };
 	}
 };
 
 export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Cell', 'IsInterior', (self) => isInterior(mp, self));
-	mp.registerPapyrusFunction('global', 'CellEx', 'GetLocationId', (self, args) => getLocationId(mp, self, args));
+	mp.registerPapyrusFunction('global', 'CellEx', 'GetLocation', (self, args) => getLocation(mp, self, args));
+
+	ICell.IsInterior = (self: PapyrusObject) => isInterior(mp, self);
+	ICell.GetLocation = (self: PapyrusObject) => getLocation(mp, null, [self]);
 };

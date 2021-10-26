@@ -2,3 +2,5 @@ server-build-win.exe
 server-build-linux
 server-build-macos
 dist
+src-v8
+skymp5-server.js

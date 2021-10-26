@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { IPotion } from '../../..';
 import { EspmField, Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { uint32, float32 } from '../../utils/helper';
 import { getNumber } from '../../utils/papyrusArgs';
@@ -16,6 +20,7 @@ const flagExists = (mp: Mp, self: PapyrusObject, flag: number) => {
 	if (!enit) return false;
 
 	const flags = uint32(enit.buffer, 4);
+	// eslint-disable-next-line no-bitwise
 	return !!(flags & flag);
 };
 
@@ -116,4 +121,17 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Potion', 'GetEffectAreas', (self) => getEffectAreas(mp, self));
 	mp.registerPapyrusFunction('method', 'Potion', 'GetEffectDurations', (self) => getEffectDurations(mp, self));
 	mp.registerPapyrusFunction('method', 'Potion', 'GetMagicEffects', (self) => getMagicEffects(mp, self));
+
+	IPotion.IsFood = (self: PapyrusObject) => isFood(mp, self);
+	IPotion.IsPoison = (self: PapyrusObject) => isPoison(mp, self);
+	IPotion.GetNumEffects = (self: PapyrusObject) => getNumEffects(mp, self);
+	IPotion.GetNthEffectMagnitude = (self: PapyrusObject, args: PapyrusValue[]) => getNthEffectMagnitude(mp, self, args);
+	IPotion.GetNthEffectArea = (self: PapyrusObject, args: PapyrusValue[]) => getNthEffectArea(mp, self, args);
+	IPotion.GetNthEffectDuration = (self: PapyrusObject, args: PapyrusValue[]) => getNthEffectDuration(mp, self, args);
+	IPotion.GetNthEffectMagicEffect = (self: PapyrusObject, args: PapyrusValue[]) =>
+		getNthEffectMagicEffect(mp, self, args);
+	IPotion.GetEffectMagnitudes = (self: PapyrusObject) => getEffectMagnitudes(mp, self);
+	IPotion.GetEffectAreas = (self: PapyrusObject) => getEffectAreas(mp, self);
+	IPotion.GetEffectDurations = (self: PapyrusObject) => getEffectDurations(mp, self);
+	IPotion.GetMagicEffects = (self: PapyrusObject) => getMagicEffects(mp, self);
 };

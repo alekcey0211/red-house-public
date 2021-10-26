@@ -9,23 +9,23 @@ const writeFile = util.promisify(fs.writeFile);
 // const readdir = util.promisify(fs.readdir);
 
 function secondsToTime(secs: number) {
-	var hours = Math.floor(secs / (60 * 60));
-	var divisor_for_minutes = secs % (60 * 60);
-	var minutes = Math.floor(divisor_for_minutes / 60);
-	var divisor_for_seconds = divisor_for_minutes % 60;
-	var seconds = Math.ceil(divisor_for_seconds);
-	return minutes + ':' + seconds;
+	const hours = Math.floor(secs / (60 * 60));
+	const divisor_for_minutes = secs % (60 * 60);
+	const minutes = Math.floor(divisor_for_minutes / 60);
+	const divisor_for_seconds = divisor_for_minutes % 60;
+	const seconds = Math.ceil(divisor_for_seconds);
+	return `${minutes}:${seconds}`;
 }
 
 const serverPath = '../server';
 
 (async () => {
 	let start = Date.now();
-	const file = serverPath + '/server-settings.json';
+	const file = `${serverPath}/server-settings.json`;
 	const settings = JSON.parse(await readFile(file, 'utf8'));
 
 	xelib.Initialize('./XEditLib.dll');
-	xelib.SetGamePath(serverPath + '/');
+	xelib.SetGamePath(`${serverPath}/`);
 	xelib.SetGameMode(xelib.gmSSE);
 	console.log('Load plugins...');
 	xelib.LoadPlugins(settings.loadOrder.join('\n'));
@@ -74,7 +74,7 @@ const serverPath = '../server';
 		try {
 			kywds = {
 				...kywds,
-				[xelib.GetValue(id, 'EDID')]: +('0x' + xelib.GetHexFormID(id)),
+				[xelib.GetValue(id, 'EDID')]: +`0x${xelib.GetHexFormID(id)}`,
 			};
 		} catch (err) {
 			console.log('Ошибка', id.toString(16));

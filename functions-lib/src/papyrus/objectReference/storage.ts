@@ -28,56 +28,56 @@ export const getStorageValue = (mp: Mp, self: null, args: PapyrusValue[]): Papyr
 	const key = getString(args, 1);
 	return _getStorageValue(mp, ref, [key]);
 };
-export const getStorageValueString = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueString = (mp: Mp, self: null, args: PapyrusValue[]): string => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? '' : getString([val], 0);
 };
-export const getStorageValueStringArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueStringArray = (mp: Mp, self: null, args: PapyrusValue[]): string[] => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? [] : getStringArray([val], 0);
 };
-export const getStorageValueNumber = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueNumber = (mp: Mp, self: null, args: PapyrusValue[]): number => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? 0 : getNumber([val], 0);
 };
-export const getStorageValueNumberArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueNumberArray = (mp: Mp, self: null, args: PapyrusValue[]): number[] => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? [] : getNumberArray([val], 0);
 };
-export const getStorageValueBool = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueBool = (mp: Mp, self: null, args: PapyrusValue[]): boolean | null => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? null : getBoolean([val], 0);
 };
-export const getStorageValueBoolArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueBoolArray = (mp: Mp, self: null, args: PapyrusValue[]): boolean[] => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? [] : getBooleanArray([val], 0);
 };
-export const getStorageValueForm = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueForm = (mp: Mp, self: null, args: PapyrusValue[]): any => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? null : getObject([val], 0);
 };
-export const getStorageValueFormArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const getStorageValueFormArray = (mp: Mp, self: null, args: PapyrusValue[]): any[] => {
 	const val = getStorageValue(mp, self, args);
 	return val === null || val === undefined ? [] : getObjectArray([val], 0);
 };
 
-export const setStorageValueString = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueString = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getString(args, 2));
-export const setStorageValueStringArray = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueStringArray = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getStringArray(args, 2));
-export const setStorageValueNumber = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueNumber = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getNumber(args, 2));
-export const setStorageValueNumberArray = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueNumberArray = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getNumberArray(args, 2));
-export const setStorageValueBool = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueBool = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getBoolean(args, 2));
-export const setStorageValueBoolArray = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueBoolArray = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getBooleanArray(args, 2));
-export const setStorageValueForm = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueForm = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getObject(args, 2));
-export const setStorageValueFormArray = (mp: Mp, self: null, args: PapyrusValue[]) =>
+export const setStorageValueFormArray = (mp: Mp, self: null, args: PapyrusValue[]): void =>
 	setStorageValue(mp, args, getObjectArray(args, 2));
-export const _setStorageValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const _setStorageValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const refId = mp.getIdFromDesc(self.desc);
 	const key = getString(args, 0);
 	const value = args[1];
@@ -88,7 +88,7 @@ export const _setStorageValue = (mp: Mp, self: PapyrusObject, args: PapyrusValue
 		console.log(err);
 	}
 };
-export const setStorageValue = (mp: Mp, args: PapyrusValue[], value: PapyrusValue) => {
+export const setStorageValue = (mp: Mp, args: PapyrusValue[], value: PapyrusValue): void => {
 	const ref = getObject(args, 0);
 	const refId = mp.getIdFromDesc(ref.desc);
 	const key = getString(args, 1);
@@ -100,7 +100,7 @@ export const setStorageValue = (mp: Mp, args: PapyrusValue[], value: PapyrusValu
 	}
 };
 
-export const register = (mp: Mp) => {
+export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetStorageValueString', (self, args) =>
 		getStorageValueString(mp, self, args)
 	);

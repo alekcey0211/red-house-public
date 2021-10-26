@@ -4,7 +4,7 @@
 		"skipLibCheck": true,
 		"module": "System",
 		"target": "ES5",
-		"outFile": "../server/dist_front/skymp5-client.js",
+		"outFile": "../server/data/dist_front/skymp5-client.js",
 		"rootDir": "",
 		"paths": {
 			"chai": ["./node_modules/@types/chai"]

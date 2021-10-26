@@ -1,3 +1,4 @@
+import { IWeapon } from '../../..';
 import { EspmLookupResult, Mp, PapyrusObject } from '../../types/mp';
 import { uint16, uint32 } from '../../utils/helper';
 import { WeaponLocation, WeaponType } from './type';
@@ -6,7 +7,7 @@ export const getWeaponTypeById = (
 	mp: Mp,
 	selfId: number,
 	espmRecord?: EspmLookupResult | Partial<EspmLookupResult>
-) => {
+): any => {
 	if (!espmRecord) espmRecord = mp.lookupEspmRecordById(selfId);
 
 	const kwda = espmRecord.record?.fields.find((x) => x.type === 'KWDA')?.data;
@@ -19,26 +20,34 @@ export const getWeaponTypeById = (
 	}
 	if (keywords.includes(0x1e711)) {
 		return WeaponType.Swords;
-	} else if (keywords.includes(0x6d931)) {
+	}
+	if (keywords.includes(0x6d931)) {
 		return WeaponType.Greatswords;
-	} else if (keywords.includes(0x1e713)) {
+	}
+	if (keywords.includes(0x1e713)) {
 		return WeaponType.Daggers;
-	} else if (keywords.includes(0x6d932) || keywords.includes(0x6d930)) {
+	}
+	if (keywords.includes(0x6d932) || keywords.includes(0x6d930)) {
 		return WeaponType.BattleaxesANDWarhammers;
-	} else if (keywords.includes(0x1e714)) {
+	}
+	if (keywords.includes(0x1e714)) {
 		return WeaponType.Maces;
-	} else if (keywords.includes(0x1e712)) {
+	}
+	if (keywords.includes(0x1e712)) {
 		return WeaponType.WarAxes;
-	} else if (keywords.includes(0x1e715)) {
+	}
+	if (keywords.includes(0x1e715)) {
 		return WeaponType.Bows;
-	} else if (keywords.includes(0x1e716)) {
+	}
+	if (keywords.includes(0x1e716)) {
 		return WeaponType.Staff;
-	} else if (keywords.includes(-1)) {
+	}
+	if (keywords.includes(-1)) {
 		// TODO: find crossbow keyword ID
 		return WeaponType.Crossbows;
 	}
 };
-export const getWeaponType = (mp: Mp, self: PapyrusObject) => {
+export const getWeaponType = (mp: Mp, self: PapyrusObject): any => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	return getWeaponTypeById(mp, selfId);
 };
@@ -85,4 +94,7 @@ export const getLocationById = (
 export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Weapon', 'GetWeaponType', (self) => getWeaponType(mp, self));
 	mp.registerPapyrusFunction('method', 'Weapon', 'GetBaseDamage', (self) => getBaseDamage(mp, self));
+
+	IWeapon.GetWeaponType = (self: PapyrusObject) => getWeaponType(mp, self);
+	IWeapon.GetBaseDamage = (self: PapyrusObject) => getBaseDamage(mp, self);
 };

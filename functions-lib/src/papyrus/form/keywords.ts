@@ -36,13 +36,12 @@ export const getNthKeyword = (mp: Mp, self: PapyrusObject, args: PapyrusValue[])
 	const index = getNumber(args, 0) - 1;
 	const kwda = data.record?.fields.find((x) => x.type === 'KWDA')?.data;
 	if (kwda) {
-		let dataView = new DataView(kwda.buffer);
+		const dataView = new DataView(kwda.buffer);
 		return {
 			desc: mp.getDescFromId(dataView.getUint32(index * 4, true)),
 			type: 'espm',
 		};
 	}
-	return;
 };
 
 export const hasKeyword = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): boolean => {

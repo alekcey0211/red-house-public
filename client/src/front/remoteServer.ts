@@ -1,10 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import * as networking from './networking';
-import { FormModel, WorldModel } from './model';
-import { MsgHandler } from './msgHandler';
-import { ModelSource } from './modelSource';
-import { SendTarget } from './sendTarget';
-import * as messages from './messages';
+/* eslint-disable no-constant-condition */
+/* eslint-disable no-await-in-loop */
 import {
 	Game,
 	once,
@@ -13,9 +8,7 @@ import {
 	WorldSpace,
 	printConsole,
 	Utility,
-	writePlugin,
 	storage,
-	getPluginSourceCode,
 	browser,
 	ObjectReference,
 	on,
@@ -24,6 +17,13 @@ import {
 	Armor,
 	Actor,
 } from 'skyrimPlatform';
+import * as sp from 'skyrimPlatform';
+import * as networking from './networking';
+import { FormModel, WorldModel } from './model';
+import { MsgHandler } from './msgHandler';
+import { ModelSource } from './modelSource';
+import { SendTarget } from './sendTarget';
+import * as messages from './messages';
 import * as loadGameManager from './loadGameManager';
 import { applyInventory, Inventory } from './components/inventory';
 import { isBadMenuShown } from './components/equipment';
@@ -31,10 +31,9 @@ import { Movement } from './components/movement';
 import { IdManager } from '../lib/idManager';
 import { applyLookToPlayer } from './components/look';
 import * as spSnippet from './spSnippet';
-import * as sp from 'skyrimPlatform';
 import { localIdToRemoteId, remoteIdToLocalId } from './view';
 import * as updateOwner from './updateOwner';
-import { printConsoleServer } from './console';
+import { setActorValuePercentage } from './components/actorvalues';
 
 //
 // eventSource system
@@ -44,42 +43,25 @@ const setupEventSource = (ctx: any) => {
 	once('update', () => {
 		try {
 			ctx._fn(ctx);
-			// printConsoleServer(`'eventSources.${ctx._eventName}' - Added`);
+			// printConsole(`'eventSources.${ctx._eventName}' - Added`);
 		} catch (e) {
-			// printConsoleServer(`'eventSources.${ctx._eventName}' -`, e);
+			// printConsole(`'eventSources.${ctx._eventName}' -`, e);
 		}
 	});
 };
 
 // Handle hot reload for eventSoucres
-if (Array.isArray(storage['eventSourceContexts'])) {
-	storage['eventSourceContexts'] = storage['eventSourceContexts'].filter(
-		(ctx: Record<string, unknown>) => !ctx._expired
-	);
-	(storage['eventSourceContexts'] as any).forEach((ctx: any) => {
+if (Array.isArray(storage.eventSourceContexts)) {
+	storage.eventSourceContexts = storage.eventSourceContexts.filter((ctx: Record<string, unknown>) => !ctx._expired);
+	(storage.eventSourceContexts as any).forEach((ctx: any) => {
 		setupEventSource(ctx);
 	});
 }
 
-//
-//
-//
-
-const maxVerifyDelayDefault = 1000;
-let verifyStartMoment = 0;
 let loggingStartMoment = 0;
-let maxVerifyDelay = maxVerifyDelayDefault;
+const maxLoggingDelay = 5000;
 
 on('tick', () => {
-	const maxLoggingDelay = 5000;
-	if (verifyStartMoment && Date.now() - verifyStartMoment > maxVerifyDelay) {
-		maxVerifyDelay *= 2;
-		printConsole(
-			'Verify failed. Reconnecting. Calculated delay is ' + maxVerifyDelay
-		);
-		networking.reconnect();
-		verifyStartMoment = 0;
-	}
 	if (loggingStartMoment && Date.now() - loggingStartMoment > maxLoggingDelay) {
 		printConsole('Logging in failed. Reconnecting.');
 		networking.reconnect();
@@ -104,22 +86,6 @@ const sendBrowserToken = () => {
 	);
 };
 
-const verifySourceCode = () => {
-	verifyStartMoment = Date.now();
-	const src = getPluginSourceCode('skymp5-client');
-	printConsole(`Verifying current source code (${src.length} bytes)`);
-	networking.send(
-		{
-			t: messages.MsgType.CustomPacket,
-			content: {
-				customPacketType: 'clientVersion',
-				src,
-			},
-		},
-		true
-	);
-};
-
 const loginWithSkympIoCredentials = () => {
 	loggingStartMoment = Date.now();
 	printConsole('Logging in as skymp.io user');
@@ -128,40 +94,30 @@ const loginWithSkympIoCredentials = () => {
 			t: messages.MsgType.CustomPacket,
 			content: {
 				customPacketType: 'loginWithSkympIo',
-				gameData: settings['skymp5-client']['gameData'],
+				gameData: settings['skymp5-client'].gameData,
 			},
 		},
 		true
 	);
 };
 
-const taskVerifySourceCode = () => {
-	storage['taskVerifySourceCode'] = true;
-};
-
-if (storage['taskVerifySourceCode'] === true) {
-	once('tick', () => {
-		verifySourceCode();
-	});
-	storage['taskVerifySourceCode'] = false;
-}
-
 export const getPcInventory = (): Inventory => {
-	const res = storage['pcInv'];
-	if (typeof res === 'object' && (res as any)['entries']) {
+	const res = storage.pcInv;
+	if (typeof res === 'object' && (res as any).entries) {
 		return res as unknown as Inventory;
 	}
 	return null as unknown as Inventory;
 };
 
 const setPcInventory = (inv: Inventory): void => {
-	storage['pcInv'] = inv;
+	storage.pcInv = inv;
 };
 
 let pcInvLastApply = 0;
 on('update', () => {
 	if (isBadMenuShown()) return;
-	if (Date.now() - pcInvLastApply > 5000) {
+	if (Date.now() - pcInvLastApply > maxLoggingDelay) {
+		const readonlyArray = [1, 2, 3] as const;
 		pcInvLastApply = Date.now();
 		const pcInv = getPcInventory();
 		if (pcInv) applyInventory(Game.getPlayer() as Actor, pcInv, false, true);
@@ -179,9 +135,7 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 	openContainer(msg: messages.OpenContainer): void {
 		once('update', async () => {
 			await Utility.wait(0.1); // Give a chance to update inventory
-			(
-				ObjectReference.from(Game.getFormEx(msg.target)) as ObjectReference
-			).activate(Game.getPlayer(), true);
+			(ObjectReference.from(Game.getFormEx(msg.target)) as ObjectReference).activate(Game.getPlayer(), true);
 			(async () => {
 				while (!Ui.isMenuOpen('ContainerMenu')) await Utility.wait(0.1);
 				while (Ui.isMenuOpen('ContainerMenu')) await Utility.wait(0.1);
@@ -198,16 +152,12 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 
 	teleport(msg: messages.Teleport): void {
 		once('update', () => {
-			printConsole(
-				'Teleporting...',
-				msg.pos,
-				'cell/world is',
-				msg.worldOrCell.toString(16)
-			);
+			printConsole('Teleporting...', msg.pos, 'cell/world is', msg.worldOrCell.toString(16));
+			const worldOrCell = Game.getFormEx(msg.worldOrCell);
 			TESModPlatform.moveRefrToPosition(
 				Game.getPlayer(),
-				Cell.from(Game.getFormEx(msg.worldOrCell)),
-				WorldSpace.from(Game.getFormEx(msg.worldOrCell)),
+				Cell.from(worldOrCell),
+				WorldSpace.from(worldOrCell),
 				msg.pos[0],
 				msg.pos[1],
 				msg.pos[2],
@@ -216,11 +166,7 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 				msg.rot[2]
 			);
 			Utility.wait(0.2).then(() => {
-				(Game.getPlayer() as Actor).setAngle(
-					msg.rot[0],
-					msg.rot[1],
-					msg.rot[2]
-				);
+				(Game.getPlayer() as Actor).setAngle(msg.rot[0], msg.rot[1], msg.rot[2]);
 			});
 		});
 	}
@@ -268,19 +214,13 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 		}
 
 		if (msg.props) {
-			for (const propName in msg.props) {
+			Object.keys(msg.props).forEach((propName) => {
 				const i = this.getIdManager().getId(msg.idx);
-				(this.worldModel.forms[i] as Record<string, unknown>)[propName] =
-					msg.props[propName];
-			}
+				(this.worldModel.forms[i] as Record<string, unknown>)[propName] = msg.props[propName];
+			});
 		}
 
 		if (msg.isMe) this.worldModel.playerCharacterFormIdx = i;
-
-		// TODO: move to a separate module
-
-		if (msg.props && !msg.props.isHostedByOther) {
-		}
 
 		if (msg.props && msg.props.isRaceMenuOpen && msg.isMe) {
 			this.setRaceMenuOpen({ type: 'setRaceMenuOpen', open: true });
@@ -291,18 +231,17 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 				Game.getPlayer() as Actor,
 				msg.equipment
 					? {
-							entries: msg.equipment.inv.entries.filter(
-								(x) => !!Armor.from(Game.getFormEx(x.baseId))
-							),
+							entries: msg.equipment.inv.entries.filter((x) => !!Armor.from(Game.getFormEx(x.baseId))),
 					  }
 					: { entries: [] },
 				false
 			);
-			if (msg.props && msg.props.inventory)
+			if (msg.props && msg.props.inventory) {
 				this.setInventory({
 					type: 'setInventory',
 					inventory: (msg.props as any).inventory as Inventory,
 				});
+			}
 		};
 
 		if (msg.isMe) {
@@ -311,10 +250,11 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 				if (!task.running) {
 					task.running = true;
 					printConsole('Using moveRefrToPosition to spawn player');
+					const worldOrCell = Game.getFormEx(msg.transform.worldOrCell);
 					TESModPlatform.moveRefrToPosition(
 						Game.getPlayer(),
-						Cell.from(Game.getFormEx(msg.transform.worldOrCell)),
-						WorldSpace.from(Game.getFormEx(msg.transform.worldOrCell)),
+						Cell.from(worldOrCell),
+						WorldSpace.from(worldOrCell),
 						msg.transform.pos[0],
 						msg.transform.pos[1],
 						msg.transform.pos[2],
@@ -326,16 +266,47 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 					Utility.wait(1).then(applyPcInv);
 					Utility.wait(1.3).then(applyPcInv);
 				}
+
+				if (msg.props) {
+					const baseActorValues = new Map<string, unknown>([
+						['healRate', msg.props.healRate],
+						['healRateMult', msg.props.healRateMult],
+						['health', msg.props.health],
+						['magickaRate', msg.props.magickaRate],
+						['magickaRateMult', msg.props.magickaRateMult],
+						['magicka', msg.props.magicka],
+						['staminaRate', msg.props.staminaRate],
+						['staminaRateMult', msg.props.staminaRateMult],
+						['stamina', msg.props.stamina],
+						['healthPercentage', msg.props.healthPercentage],
+						['staminaPercentage', msg.props.staminaPercentage],
+						['magickaPercentage', msg.props.magickaPercentage],
+					]);
+
+					const player = Game.getPlayer();
+					if (player) {
+						baseActorValues.forEach((value, key) => {
+							if (typeof value === 'number') {
+								if (key.includes('Percentage')) {
+									const subKey = key.replace('Percentage', '');
+									const subValue = baseActorValues.get(subKey);
+									if (typeof subValue === 'number') {
+										setActorValuePercentage(player, subKey, value);
+									}
+								} else {
+									player.setActorValue(key, value);
+								}
+							}
+						});
+					}
+				}
 			});
 			once('tick', () => {
 				once('tick', () => {
 					if (!task.running) {
 						task.running = true;
 						printConsole('Using loadGame to spawn player');
-						printConsole(
-							'skinColorFromServer:',
-							msg.look ? msg.look.skinColor.toString(16) : undefined
-						);
+						printConsole('skinColorFromServer:', msg.look ? msg.look.skinColor.toString(16) : undefined);
 						loadGameManager.loadGame(
 							msg.transform.pos,
 							msg.transform.rot,
@@ -359,9 +330,10 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 							Utility.wait(0.3).then(applyPcInv);
 							if (msg.look) {
 								applyLookToPlayer(msg.look);
-								if (msg.look.isFemale)
+								if (msg.look.isFemale) {
 									// Fix gender-specific walking anim
 									(Game.getPlayer() as Actor).resurrect();
+								}
 							}
 						});
 					}
@@ -422,33 +394,37 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 
 	UpdateProperty(msg: messages.UpdatePropertyMessage): void {
 		const i = this.getIdManager().getId(msg.idx);
-		(this.worldModel.forms[i] as Record<string, unknown>)[msg.propName] =
-			msg.data;
+		(this.worldModel.forms[i] as Record<string, unknown>)[msg.propName] = msg.data;
 	}
 
 	handleConnectionAccepted(): void {
 		this.worldModel.forms = [];
 		this.worldModel.playerCharacterFormIdx = -1;
 
-		verifySourceCode();
+		loginWithSkympIoCredentials();
 		sendBrowserToken();
 	}
 
 	handleDisconnect(): void {}
 
+	ChangeValues(msg: messages.ChangeValuesMessage): void {
+		const ac = Game.getPlayer();
+		if (!ac) return;
+		setActorValuePercentage(ac, 'health', msg.data.health);
+		setActorValuePercentage(ac, 'stamina', msg.data.stamina);
+		setActorValuePercentage(ac, 'magicka', msg.data.magicka);
+	}
+
 	setRaceMenuOpen(msg: messages.SetRaceMenuOpenMessage): void {
 		if (msg.open) {
-			// wait 0.3s cause we can see visual bugs when teleporting
-			// and showing this menu at the same time in onConnect
-			once('update', async () => {
-				await Utility.wait(0.3);
-				const ac = Game.getPlayer() as Actor;
-				const ironHelment = Armor.from(Game.getFormEx(0x12e4d));
-				ac.unequipItem(ironHelment, false, true);
-				const ironCuirass = Armor.from(Game.getFormEx(0x12e49));
-				ac.unequipItem(ironCuirass, false, true);
-				Game.showRaceMenu();
-			});
+			const visualTeleportingBugDelay = 0.3;
+			once('update', () =>
+				Utility.wait(visualTeleportingBugDelay).then(() => {
+					const ironHelment = Armor.from(Game.getFormEx(0x00012e4d));
+					(Game.getPlayer() as Actor).unequipItem(ironHelment, false, true);
+					Game.showRaceMenu();
+				})
+			);
 		} else {
 			// TODO: Implement closeMenu in SkyrimPlatform
 		}
@@ -457,23 +433,7 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 	customPacket(msg: messages.CustomPacket): void {
 		switch (msg.content.customPacketType) {
 			case 'loginRequired':
-				verifyStartMoment = 0;
-				maxVerifyDelay = maxVerifyDelayDefault;
 				loginWithSkympIoCredentials();
-				break;
-			case 'newClientVersion':
-				if (typeof msg.content.src !== 'string')
-					throw new Error(`'${msg.content.src}' is not a string`);
-				const src: string = msg.content.src as string;
-
-				// Force reconnecting after hot reload (see skympClient.ts)
-				//networking.close();
-				//storage.targetIp = "";
-
-				taskVerifySourceCode();
-
-				printConsole(`writing new version (${src} bytes)`);
-				if (src.length > 0) writePlugin('skymp5-client', src);
 				break;
 		}
 	}
@@ -497,55 +457,45 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 		});
 	}
 
-	private updateGamemodeUpdateFunctions(
-		storageVar: string,
-		functionSources: Record<string, string>
-	): void {
+	private updateGamemodeUpdateFunctions(storageVar: string, functionSources: Record<string, string>): void {
 		storage[storageVar] = JSON.parse(JSON.stringify(functionSources));
-		for (const propName of Object.keys(functionSources)) {
+
+		Object.keys(functionSources).forEach((propName) => {
 			try {
-				(storage[storageVar] as any)[propName] = new Function(
-					'ctx',
-					(storage[storageVar] as any)[propName]
-				);
+				(storage[storageVar] as any)[propName] = new Function('ctx', (storage[storageVar] as any)[propName]);
 				const emptyFunction = functionSources[propName] === '';
 				if (emptyFunction) {
 					delete (storage[storageVar] as any)[propName];
-					// printConsoleServer(`'${storageVar}.${propName}' -`, 'Added empty');
+					// printConsole(`'${storageVar}.${propName}' -`, 'Added empty');
 				} else {
-					// printConsoleServer(`'${storageVar}.${propName}' -`, 'Added');
+					// printConsole(`'${storageVar}.${propName}' -`, 'Added');
 				}
 			} catch (e) {
-				printConsoleServer(`'${storageVar}.${propName}' -`, e);
+				printConsole(`'${storageVar}.${propName}' -`, e);
 			}
-		}
+		});
+
 		storage[`${storageVar}_keys`] = Object.keys(storage[storageVar] as any);
 	}
 
 	updateGamemodeData(msg: messages.UpdateGamemodeDataMessage): void {
-		storage['_api_onAnimationEvent'] = { callback() {} };
+		storage._api_onAnimationEvent = { callback() {} };
 		//
 		// updateOwnerFunctions/updateNeighborFunctions
 		//
-		storage['updateNeighborFunctions'] = undefined;
-		storage['updateOwnerFunctions'] = undefined;
+		storage.updateNeighborFunctions = undefined;
+		storage.updateOwnerFunctions = undefined;
 
-		this.updateGamemodeUpdateFunctions(
-			'updateNeighborFunctions',
-			msg.updateNeighborFunctions || {}
-		);
-		this.updateGamemodeUpdateFunctions(
-			'updateOwnerFunctions',
-			msg.updateOwnerFunctions || {}
-		);
+		this.updateGamemodeUpdateFunctions('updateNeighborFunctions', msg.updateNeighborFunctions || {});
+		this.updateGamemodeUpdateFunctions('updateOwnerFunctions', msg.updateOwnerFunctions || {});
 
 		//
 		// EventSource
 		//
-		if (!Array.isArray(storage['eventSourceContexts'])) {
-			storage['eventSourceContexts'] = [];
+		if (!Array.isArray(storage.eventSourceContexts)) {
+			storage.eventSourceContexts = [];
 		} else {
-			storage['eventSourceContexts'].forEach((ctx: Record<string, unknown>) => {
+			storage.eventSourceContexts.forEach((ctx: Record<string, unknown>) => {
 				ctx.sendEvent = () => {};
 				ctx._expired = true;
 			});
@@ -576,7 +526,7 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 					_eventName: eventName,
 					state: {},
 				};
-				(storage['eventSourceContexts'] as Record<string, any>).push(ctx);
+				(storage.eventSourceContexts as Record<string, any>).push(ctx);
 				setupEventSource(ctx);
 			} catch (e) {
 				printConsole(`'eventSources.${eventName}' -`, e);
@@ -584,7 +534,7 @@ export class RemoteServer implements MsgHandler, ModelSource, SendTarget {
 		});
 	}
 
-	/** Packet handlers end **/
+	/** Packet handlers end * */
 
 	getWorldModel(): WorldModel {
 		return this.worldModel;

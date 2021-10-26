@@ -1,14 +1,14 @@
-import { AttrAll } from '../properties/actor/actorValues/attributes';
+import { AttrAll, Skill } from '../properties/actor/actorValues/attributes';
 import { EspmLookupResult, EspmRecord, Mp } from '../types/mp';
 import { float32, uint16, uint32 } from '../utils/helper';
 
-export const raceDefaultAttr: Partial<Record<AttrAll, number>> = {
+export const raceDefaultAttr: Partial<Record<AttrAll | Skill, number>> = {
 	health: 100,
-	healrate: 1,
+	healrate: 0,
 	magicka: 100,
-	magickarate: 5,
+	magickarate: 100,
 	stamina: 100,
-	staminarate: 5,
+	staminarate: 100,
 };
 
 export const getRaceId = (mp: Mp, pcFormId: number, rec: EspmRecord): number => {
@@ -16,6 +16,7 @@ export const getRaceId = (mp: Mp, pcFormId: number, rec: EspmRecord): number => 
 		try {
 			const appearance = mp.get(pcFormId, 'appearance');
 			return appearance?.raceId ?? 0;
+			// eslint-disable-next-line no-empty
 		} catch (error) {}
 	}
 
@@ -55,7 +56,7 @@ export const getAttr = (mp: Mp, pcFormId: number): Partial<Record<AttrAll, numbe
 	const acbs = rec.fields.find((x) => x.type === 'ACBS')?.data;
 	const magickaOffset = acbs ? uint16(acbs.buffer, 4) : 0;
 	const staminaOffset = acbs ? uint16(acbs.buffer, 6) : 0;
-	const level = acbs ? uint16(acbs.buffer, 8) : 0;
+	// const level = acbs ? uint16(acbs.buffer, 8) : 0;
 	const healthOffset = acbs ? uint16(acbs.buffer, 20) : 0;
 
 	const raceId = getRaceId(mp, selfId, rec);

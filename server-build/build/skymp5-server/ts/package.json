@@ -1,0 +1,12 @@
+{
+	"name": "skymp5-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build-ts": "cd ../../../skymp5-server && npm run build-ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

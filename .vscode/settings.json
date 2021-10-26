@@ -11,5 +11,11 @@
 	"eslint.format.enable": true,
 	"eslint.probe": ["javascript", "typescript", "html", "markdown"],
 	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"markdownlint.config": {
+		"MD028": false,
+		"MD025": {
+			"front_matter_title": ""
+		}
+	}
 }

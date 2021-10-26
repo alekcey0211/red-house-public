@@ -2,16 +2,30 @@ import { ArgumentParser, ArgumentParserOptions } from 'argparse';
 import * as fs from 'fs';
 
 export class Settings {
-	ip!: string;
+	ip: string | null = null;
+
 	port = 7777;
+
 	maxPlayers = 100;
-	master!: string;
+
+	master: string | null = null;
+
+	localAuth = false;
+
 	name = 'Yet Another Server';
+
 	gamemodePath = '...';
+
 	loadOrder = new Array<string>();
+
 	dataDir = './data';
+
 	startPoints = [
-		{ pos: [22659, -8697, -3594], worldOrCell: '0x1a26f', angleZ: 268 },
+		{
+			pos: [22659, -8697, -3594],
+			worldOrCell: '0x1a26f',
+			angleZ: 268,
+		},
 	];
 
 	constructor() {
@@ -22,9 +36,7 @@ export class Settings {
 		}
 
 		if (fs.existsSync('./server-settings.json')) {
-			const parsed = JSON.parse(
-				fs.readFileSync('./server-settings.json', 'utf-8')
-			);
+			const parsed = JSON.parse(fs.readFileSync('./server-settings.json', 'utf-8'));
 			[
 				'ip',
 				'port',
@@ -35,8 +47,9 @@ export class Settings {
 				'loadOrder',
 				'dataDir',
 				'startPoints',
+				'localAuth',
 			].forEach((prop) => {
-				(this as Record<string, unknown>)[prop] = parsed[prop];
+				if (parsed[prop]) (this as Record<string, unknown>)[prop] = parsed[prop];
 			});
 		}
 	}
@@ -45,11 +58,11 @@ export class Settings {
 		const args = Settings.parseArgs();
 		const res = new Settings();
 
-		res.port = +args['port'] || res.port;
-		res.maxPlayers = +args['maxPlayers'] || res.maxPlayers;
-		res.master = args['master'] || res.master;
-		res.name = args['name'] || res.name;
-		res.ip = args['ip'] || res.ip;
+		res.port = +args.port || res.port;
+		res.maxPlayers = +args.maxPlayers || res.maxPlayers;
+		res.master = args.master || res.master;
+		res.name = args.name || res.name;
+		res.ip = args.ip || res.ip;
 
 		return res;
 	}

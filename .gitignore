@@ -1,1 +1,11 @@
+.vscode/tasks.json
 node_modules
+xelib-*
+voice-server
+server-empty
+server-build-chakra
+server-vanila
+start.bat
+
+client-skymp5
+.parcel-cache

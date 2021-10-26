@@ -1,0 +1,12 @@
+{
+	"name": "skymp5-front",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "cd ../../skymp5-front && npm run build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

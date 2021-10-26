@@ -1,3 +1,4 @@
+import { IArmor } from '../../..';
 import { EspmLookupResult, Mp, PapyrusObject } from '../../types/mp';
 import { uint32 } from '../../utils/helper';
 import { equipSlotMap } from './types';
@@ -32,9 +33,12 @@ export const getSlotById = (
 	const slot = uint32(b2.buffer, 0);
 	if (!slot) return [];
 
-	return Object.keys(equipSlotMap)
-		.filter((k) => slot & +k)
-		.map((k) => equipSlotMap[+k]);
+	return (
+		Object.keys(equipSlotMap)
+			// eslint-disable-next-line no-bitwise
+			.filter((k) => slot & +k)
+			.map((k) => equipSlotMap[+k])
+	);
 };
 export const getSlot = (mp: Mp, self: PapyrusObject): number[] => {
 	const selfId = mp.getIdFromDesc(self.desc);
@@ -45,4 +49,7 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'Armor', 'GetArmorRating', (self) => getArmorRating(mp, self));
 	mp.registerPapyrusFunction('method', 'Armor', 'GetAR', (self) => getArmorRating(mp, self));
 	mp.registerPapyrusFunction('method', 'Armor', 'GetSlot', (self) => getSlot(mp, self));
+
+	IArmor.GetArmorRating = (self: PapyrusObject) => getArmorRating(mp, self);
+	IArmor.GetSlot = (self: PapyrusObject) => getSlot(mp, self);
 };

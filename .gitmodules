@@ -1,0 +1,3 @@
+[submodule "red-house-front"]
+	path = red-house-front
+	url = https://github.com/remox112358/red-house-front.git

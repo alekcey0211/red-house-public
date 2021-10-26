@@ -10,12 +10,12 @@ const writeFile = util.promisify(fs.writeFile);
 const readdir = util.promisify(fs.readdir);
 
 function secondsToTime(secs: number) {
-	var hours = Math.floor(secs / (60 * 60));
-	var divisor_for_minutes = secs % (60 * 60);
-	var minutes = Math.floor(divisor_for_minutes / 60);
-	var divisor_for_seconds = divisor_for_minutes % 60;
-	var seconds = Math.ceil(divisor_for_seconds);
-	return minutes + ':' + seconds;
+	const hours = Math.floor(secs / (60 * 60));
+	const divisor_for_minutes = secs % (60 * 60);
+	const minutes = Math.floor(divisor_for_minutes / 60);
+	const divisor_for_seconds = divisor_for_minutes % 60;
+	const seconds = Math.ceil(divisor_for_seconds);
+	return `${minutes}:${seconds}`;
 }
 
 (async () => {
@@ -66,12 +66,7 @@ function secondsToTime(secs: number) {
 	console.log('Find all cooking COBJ record and write to file...');
 	start = Date.now();
 	await writeFile(
-		path.join(
-			'server',
-			settings.dataDir,
-			'xelib',
-			'cooking-COBJ.json'
-		),
+		path.join('server', settings.dataDir, 'xelib', 'cooking-COBJ.json'),
 		JSON.stringify(getCookingCOBJ(), null, 2),
 		'utf8'
 	);
@@ -87,17 +82,13 @@ function secondsToTime(secs: number) {
 		try {
 			kywds = {
 				...kywds,
-				[xelib.GetValue(id, 'EDID')]: +('0x' + xelib.GetHexFormID(id)),
+				[xelib.GetValue(id, 'EDID')]: +`0x${xelib.GetHexFormID(id)}`,
 			};
 		} catch (err) {
 			console.log('Ошибка', id.toString(16));
 		}
 	});
-	await writeFile(
-		path.join('server', settings.dataDir, 'xelib', 'KYWD.json'),
-		JSON.stringify(kywds, null, 2),
-		'utf8'
-	);
+	await writeFile(path.join('server', settings.dataDir, 'xelib', 'KYWD.json'), JSON.stringify(kywds, null, 2), 'utf8');
 	console.log('Time elaplsed', secondsToTime(Date.now() - start));
 	console.log('KYWD record written successfully');
 
@@ -107,9 +98,7 @@ function secondsToTime(secs: number) {
 	start = Date.now();
 	const el = xelib.GetRecord(0, 0x32);
 	// const cocs = xelib.GetReferencedBy(el);
-	const cocsHex = xelib
-		.GetReferencedBy(el)
-		.map((x) => +('0x' + xelib.GetHexFormID(x)));
+	const cocsHex = xelib.GetReferencedBy(el).map((x) => +`0x${xelib.GetHexFormID(x)}`);
 	let cells = {};
 	cocsHex.forEach((id) => {
 		try {
@@ -118,12 +107,7 @@ function secondsToTime(secs: number) {
 			console.log('Ошибка', id.toString(16));
 		}
 	});
-	const cocJsonPath = path.join(
-		'server',
-		settings.dataDir,
-		'xelib',
-		'coc-markers.json'
-	);
+	const cocJsonPath = path.join('server', settings.dataDir, 'xelib', 'coc-markers.json');
 	await writeFile(cocJsonPath, JSON.stringify(cells, null, 2), 'utf8');
 	console.log('Time elaplsed', secondsToTime(Date.now() - start));
 	console.log('COC Markers loaded successfully');

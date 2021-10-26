@@ -22,7 +22,7 @@ export const play = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void =>
 	_play(mp, selfId, refId, duration);
 };
 
-export const register = (mp: Mp) => {
+export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'EffectShader', 'Play', (self, args) => play(mp, self, args));
 	// mp.registerPapyrusFunction('method', 'EffectShader', 'Stop', (self) => getHitShader(mp, self));
 };

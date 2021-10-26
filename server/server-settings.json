@@ -1,27 +1,14 @@
 {
 	"dataDir": "data",
-	"loadOrder": [
-		"Skyrim.esm",
-		"Update.esm",
-		"Dawnguard.esm",
-		"HearthFires.esm",
-		"Dragonborn.esm"
-	],
-	"ip": "26.183.237.231",
-	"port": 9999,
-	"name": "My Server",
-	"maxPlayers": 100,
+	"loadOrder": ["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"],
+	"ip": "127.0.0.1",
+	"port": 10000,
+	"master": "https://skymp.io",
+	"name": "[DEV] Test",
+	"maxPlayers": 10,
 	"gamemodePath": "gamemode.js",
-	"databaseDriver": "file",
 	"locale": "ru-RU",
 	"stringsPath": "strings",
 	"isPapyrusHotReloadEnabled": true,
-	"isServerOptionsHotReloadEnabled": false,
-	"startPoints": [
-		{
-			"pos": [22106.24609375, -44752.68359375, -140.59170532226562],
-			"worldOrCell": "0x3c",
-			"angleZ": 47
-		}
-	]
+	"isServerOptionsHotReloadEnabled": false
 }

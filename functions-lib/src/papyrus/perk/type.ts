@@ -1,5 +1,3 @@
-import { EspmField } from '../../types/mp';
-
 /**
  * EqualTo = 0
  * NotEqualTo = 1
@@ -9,20 +7,20 @@ import { EspmField } from '../../types/mp';
  * LessThanOrEqualTo = 5
  */
 export enum ConditionOperator {
-  EqualTo,
-  NotEqualTo,
-  GreaterThan,
-  GreaterThanOrEqualTo,
-  LessThan,
-  LessThanOrEqualTo,
+	EqualTo,
+	NotEqualTo,
+	GreaterThan,
+	GreaterThanOrEqualTo,
+	LessThan,
+	LessThanOrEqualTo,
 }
 /**
  * AND = 0x01
  * OR = 0x02
  */
 export enum ConditionFlag {
-  AND,
-  OR,
+	AND,
+	OR,
 }
 /**
  * Subjec = 0
@@ -35,51 +33,51 @@ export enum ConditionFlag {
  * Event = 7
  */
 export enum ConditionRunOn {
-  Subjec,
-  Targe,
-  Reference,
-  Combat,
-  Linked,
-  Quest,
-  Package,
-  Event,
+	Subjec,
+	Targe,
+	Reference,
+	Combat,
+	Linked,
+	Quest,
+	Package,
+	Event,
 }
 
 export enum EffectSection {
-  Quest,
-  Ability,
-  Complex,
+	Quest,
+	Ability,
+	Complex,
 }
 
 export enum EffectFunctionType {
-  None,
-  SetValue,
-  AddValue,
-  MultiplyValue,
-  AddRangeToValue,
-  AddActorValueMult,
-  Absolute,
-  NegativeABSValue,
-  AddLevelList,
-  AddActivateChoice,
-  SelectSpell,
-  SelectText,
-  SetAVMult,
-  MultiplyAVMult,
-  Multiply1PlusAVMult,
-  SetText,
+	None,
+	SetValue,
+	AddValue,
+	MultiplyValue,
+	AddRangeToValue,
+	AddActorValueMult,
+	Absolute,
+	NegativeABSValue,
+	AddLevelList,
+	AddActivateChoice,
+	SelectSpell,
+	SelectText,
+	SetAVMult,
+	MultiplyAVMult,
+	Multiply1PlusAVMult,
+	SetText,
 }
 
 export interface ConditionResult {
-  flag: ConditionFlag;
-  result: unknown;
+	flag: ConditionFlag;
+	result: unknown;
 }
 
 export interface PerkEffectData {
-  effectType: number;
-  functionType: EffectFunctionType;
-  conditionResult: boolean;
-  effectValue: number;
-  // conditionFields: EspmField[];
-  conditionFunction?: (subjectId: number) => boolean;
+	effectType: number;
+	functionType: EffectFunctionType;
+	conditionResult: boolean;
+	effectValue: number;
+	// conditionFields: EspmField[];
+	conditionFunction?: (subjectId: number) => boolean;
 }

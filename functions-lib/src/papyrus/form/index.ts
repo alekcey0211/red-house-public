@@ -1,11 +1,13 @@
+import { IForm } from '../../..';
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
-import { uint32 } from '../../utils/helper';
+import { float32, uint32 } from '../../utils/helper';
 import { getNumber, getObject, getString } from '../../utils/papyrusArgs';
 import { StringLocalizationProvider } from '../../utils/stringLocalizationProvider';
 import { getKeywords, getNthKeyword, getNumKeywords, hasKeyword, hasKeywordEx } from './keywords';
 import { formType } from './type';
+import { getLvlListObjects } from './lvl-list';
 
-export const getSelfId = (mp: Mp, desc: string) => {
+export const getSelfId = (mp: Mp, desc: string): number => {
 	const selfId = mp.getIdFromDesc(desc);
 	if (selfId >= 0xff000000) {
 		return mp.getIdFromDesc(mp.get(selfId, 'baseDesc'));
@@ -86,6 +88,11 @@ export const _getEditorId = (mp: Mp, selfId: number): string => {
 	if (!recBase) return '';
 
 	return recBase.editorId;
+
+	// const edid = recBase.fields.find((x) => x.type === 'EDID')?.data;
+	// if (!edid) return '';
+
+	// return uint8arrayToStringMethod(edid);
 };
 export const getEditorId = (mp: Mp, self: null, args: PapyrusValue[]): string =>
 	_getEditorId(mp, getSelfId(mp, getObject(args, 0).desc));
@@ -104,10 +111,18 @@ const getGoldValue = (mp: Mp, self: PapyrusObject) => {
 
 export const getWeightById = (mp: Mp, selfId: number): number => {
 	const recordData = mp.lookupEspmRecordById(selfId);
+
+	if (recordData.record?.type === 'NPC_') {
+		const nam7 = recordData.record?.fields.find((x) => x.type === 'NAM7')?.data;
+		if (!nam7) return 0;
+
+		return float32(nam7.buffer);
+	}
+
 	const data = recordData.record?.fields.find((x) => x.type === 'DATA')?.data;
 	if (!data) return 0;
-	const dataView = new DataView(data.buffer);
-	return dataView.getFloat32(4, true);
+
+	return float32(data.buffer, 4);
 };
 export const getWeight = (mp: Mp, self: PapyrusObject): number => {
 	const selfId = getSelfId(mp, self.desc);
@@ -160,4 +175,19 @@ export const register = (mp: Mp, strings: StringLocalizationProvider): void => {
 	mp.registerPapyrusFunction('global', 'FormEx', 'HasKeyword', (self, args) => hasKeywordEx(mp, self, args));
 	mp.registerPapyrusFunction('global', 'FormEx', 'GetSignature', (self, args) => getSignatureEx(mp, self, args));
 	mp.registerPapyrusFunction('global', 'FormEx', 'EqualSignature', (self, args) => equalSignatureEx(mp, self, args));
+
+	IForm.GetFormID = (self) => getFormID(mp, self);
+	IForm.GetName = (self) => getName(strings, mp, self);
+	IForm.GetType = (self) => getType(mp, self);
+	IForm.GetGoldValue = (self) => getGoldValue(mp, self);
+	IForm.GetWeight = (self) => getWeight(mp, self);
+	IForm.GetKeywords = (self) => getKeywords(mp, self);
+	IForm.GetNumKeywords = (self) => getNumKeywords(mp, self);
+	IForm.GetNthKeyword = (self, args) => getNthKeyword(mp, self, args);
+	IForm.HasKeyword = (self, args) => hasKeyword(mp, self, args);
+	IForm.GetEditorID = (self) => getEditorId(mp, null, [self]);
+	IForm.GetDescription = (self) => getDescription(strings, mp, null, [self]);
+	IForm.GetSignature = (self) => getSignature(mp, self);
+	IForm.EqualSignature = (self, args) => equalSignature(mp, self, args);
+	IForm.GetLvlListObjects = (self) => getLvlListObjects(mp, self);
 };
