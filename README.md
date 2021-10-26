@@ -2,7 +2,7 @@
 
 Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
 
-You can build Skyrim Platform and C++ Server from skymp submodule
+You can build Skyrim Platform and C++ Server from RH brach of skymp submodule
 
 ## Launch server
 
