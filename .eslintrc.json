@@ -1,0 +1,77 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier", "airbnb-base"],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 12
+	},
+	"plugins": ["@typescript-eslint", "prettier"],
+	"rules": {
+		"prettier/prettier": [
+			"warn",
+			{},
+			{
+				"usePrettierrc": true
+			}
+		],
+		"arrow-body-style": "off",
+		"prefer-arrow-callback": "warn",
+		"semi": ["error", "always"],
+		"quotes": ["error", "single"],
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/no-var-requires": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-inferrable-types": [
+			"warn",
+			{
+				"ignoreParameters": true
+			}
+		],
+		"@typescript-eslint/no-unused-vars": "warn",
+		"indent": "off",
+		"no-plusplus": "off",
+		"linebreak-style": ["error", "windows"],
+		"no-tabs": "off",
+		"max-len": "off",
+		"import/extensions": "off",
+		"import/no-unresolved": "off",
+		"import/first": "off",
+		"import/prefer-default-export": "off",
+		"no-console": "off",
+		"prefer-destructuring": "off",
+		"no-unused-vars": "warn",
+		"comma-dangle": "off",
+		"no-underscore-dangle": "off",
+		"implicit-arrow-linebreak": "off",
+		"object-curly-newline": "off",
+		"max-classes-per-file": "off",
+		"function-paren-newline": "off",
+		"no-use-before-define": "off",
+		"class-methods-use-this": "off",
+		"no-undef": "off",
+		"no-shadow": "off",
+		"no-param-reassign": "off",
+		"no-eval": "off",
+		"operator-linebreak": "off",
+		"consistent-return": "off",
+		"default-case": "off",
+		"no-useless-constructor": "off",
+		"no-array-constructor": "off",
+		"no-nested-ternary": "off",
+		"no-new": "off",
+		"no-new-func": "off",
+		"array-callback-return": "off",
+		"no-continue": "off",
+		"no-case-declarations": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"lines-between-class-members": "off",
+		"no-mixed-spaces-and-tabs": "off",
+		"@typescript-eslint/no-empty-function": "off",
+		"no-empty": "off",
+		"no-empty-function": "off",
+		"camelcase": "off"
+	}
+}

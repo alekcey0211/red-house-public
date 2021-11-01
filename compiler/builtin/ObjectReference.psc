@@ -25,3 +25,6 @@ WorldSpace Function GetWorldSpace() Native
 Function SetScale(float afScale) Native
 Function MoveTo(ObjectReference akTarget, float afXOffset = 0.0, float afYOffset = 0.0, float afZOffset = 0.0, bool abMatchRotation = true) Native
 Function SetOpen(bool abOpen = true) Native
+
+; Turns on and off blocking of normal activation - OnActivate events will still be sent
+Function BlockActivation(bool abBlocked = true) native

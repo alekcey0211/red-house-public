@@ -14,31 +14,31 @@ export const getGlobalStorageValue = (mp: Mp, self: null, args: PapyrusValue[]):
 	}
 };
 
-export const setGlobalStorageValueString = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const setGlobalStorageValueString = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 	const key = getString(args, 0);
 	const value = getString(args, 1);
 	setGlobalStorageValue(mp, key, value);
 };
 
-export const setGlobalStorageValueStringArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const setGlobalStorageValueStringArray = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 	const key = getString(args, 0);
 	const value = getStringArray(args, 1);
 	setGlobalStorageValue(mp, key, value);
 };
 
-export const setGlobalStorageValueNumber = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const setGlobalStorageValueNumber = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 	const key = getString(args, 0);
 	const value = getNumber(args, 1);
 	setGlobalStorageValue(mp, key, value);
 };
 
-export const setGlobalStorageValueNumberArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const setGlobalStorageValueNumberArray = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 	const key = getString(args, 0);
 	const value = getNumberArray(args, 1);
 	setGlobalStorageValue(mp, key, value);
 };
 
-export const setGlobalStorageValue = (mp: Mp, key: string, value: PapyrusValue) => {
+export const setGlobalStorageValue = (mp: Mp, key: string, value: PapyrusValue): void => {
 	checkAndCreatePropertyExist(mp, globalId, key);
 	try {
 		mp.set(globalId, key, value);

@@ -1,0 +1,3 @@
+[submodule "skymp"]
+	path = skymp
+	url = https://github.com/russo-2025/skymp.git

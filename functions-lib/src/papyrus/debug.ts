@@ -3,6 +3,8 @@ import { getObject, getString, getNumber } from '../utils/papyrusArgs';
 import { Ctx } from '../types/ctx';
 import { evalClient } from '../properties/eval';
 import { FunctionInfo } from '../utils/functionInfo';
+import { IDebug } from '../..';
+import { isPlayer } from './multiplayer';
 
 export type CellItemProps = 'pos' | 'angle' | 'worldOrCellDesc';
 export interface CellItem {
@@ -34,10 +36,10 @@ const centerOnCell = (mp: Mp, selfNull: null, args: PapyrusValue[]): void => {
 
 	const targetPoint = cocMarkers[targetCellFromFile] ?? cellList[targetCellFromFile];
 
-	for (const key of Object.keys(targetPoint)) {
+	Object.keys(targetPoint).forEach((key) => {
 		const propName = key as CellItemProps;
 		mp.set(selfId, propName, targetPoint[propName]);
-	}
+	});
 };
 
 const notification = (mp: Mp, self: null, args: PapyrusValue[]): void => {
@@ -50,6 +52,35 @@ const notification = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 		});
 	};
 	evalClient(mp, acId, new FunctionInfo(func).getText({ msg }));
+};
+
+const quitGame = (mp: Mp, self: null, args: PapyrusValue[]): void => {
+	const ac = getObject(args, 0);
+
+	const acId = mp.getIdFromDesc(ac.desc);
+	if (!isPlayer(mp, [acId])) return;
+
+	const func = (ctx: Ctx) => {
+		ctx.sp.once('update', () => {
+			ctx.sp.Debug.quitGame();
+		});
+	};
+	evalClient(mp, acId, new FunctionInfo(func).getText());
+	evalClient(mp, acId, '');
+};
+
+const toggleCollisions = (mp: Mp, self: null, args: PapyrusValue[]): void => {
+	const ac = getObject(args, 0);
+
+	const acId = mp.getIdFromDesc(ac.desc);
+	if (!isPlayer(mp, [acId])) return;
+
+	const func = (ctx: Ctx) => {
+		ctx.sp.once('update', () => {
+			ctx.sp.Debug.toggleCollisions();
+		});
+	};
+	evalClient(mp, acId, new FunctionInfo(func).getText());
 };
 
 const showEspList = (mp: Mp): void => {
@@ -91,4 +122,11 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('global', 'DebugEx', 'AboutForm', (self, args) => aboutForm(mp, self, args));
 	mp.registerPapyrusFunction('global', 'DebugEx', 'About', (self, args) => about(mp, self, args));
 	mp.registerPapyrusFunction('global', 'DebugEx', 'PrintConsole', (self, args) => sendClientConsole(mp, self, args));
+
+	IDebug.CenterOnCell = (args: PapyrusValue[]) => centerOnCell(mp, null, args);
+	IDebug.Notification = (args: PapyrusValue[]) => notification(mp, null, args);
+	IDebug.QuitGame = (args: PapyrusValue[]) => quitGame(mp, null, args);
+	IDebug.ToggleCollisions = (args: PapyrusValue[]) => toggleCollisions(mp, null, args);
+	IDebug.SendAnimationEvent = (args: PapyrusValue[]) =>
+		mp.callPapyrusFunction('global', 'Debug', 'SendAnimationEvent', null, args);
 };

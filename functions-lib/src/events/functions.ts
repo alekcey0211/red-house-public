@@ -1,14 +1,16 @@
 import { Ctx } from '../types/ctx';
 import { EquipEvent, HitEvent } from '../types/skyrimPlatform';
 
-export const onLoad = (ctx: Ctx) => {
+export const onLoad = (ctx: Ctx): void => {
 	ctx.sp.once('update', async () => {
+		if (ctx.state.loaded) return;
 		await ctx.sp.Utility.wait(0.4);
 		ctx.sendEvent();
+		ctx.state.loaded = true;
 	});
 };
 
-export const onCellChange = (ctx: Ctx) => {
+export const onCellChange = (ctx: Ctx): void => {
 	ctx.sp.on('update', () => {
 		const ac = ctx.sp.Game.getPlayer();
 		if (ac?.getFormID() !== 0x14) return;
@@ -27,7 +29,7 @@ export const onCellChange = (ctx: Ctx) => {
 	});
 };
 
-export const onHit = (ctx: Ctx, isHitStatic: boolean) => {
+export const onHit = (ctx: Ctx, isHitStatic: boolean): void => {
 	ctx.sp.on('hit', (event: any) => {
 		const e = event as HitEvent;
 		const baseId = e.agressor?.getBaseObject()?.getFormID();
@@ -51,7 +53,7 @@ export const onHit = (ctx: Ctx, isHitStatic: boolean) => {
 	});
 };
 
-export const onEquip = (ctx: Ctx) => {
+export const onEquip = (ctx: Ctx): void => {
 	ctx.sp.on('equip', (event: any) => {
 		const e: EquipEvent = event as EquipEvent;
 		const target = ctx.getFormIdInServerFormat(e.baseObj?.getFormID());
@@ -65,7 +67,7 @@ export const onEquip = (ctx: Ctx) => {
 	});
 };
 
-export const onInput = (ctx: Ctx<{ keys: number }>) => {
+export const onInput = (ctx: Ctx<{ keys: number }>): void => {
 	ctx.sp.on('update', () => {
 		const keys = ctx.sp.Input.getNumKeysPressed();
 		if (ctx.state.keys !== keys) {
@@ -81,11 +83,11 @@ export const onInput = (ctx: Ctx<{ keys: number }>) => {
 	});
 };
 
-export const onAnimationEvent = (ctx: Ctx<{ prevAnimation: string }>) => {
+export const onAnimationEvent = (ctx: Ctx<{ prevAnimation: string }>): void => {
 	const next = ctx.sp.storage._api_onAnimationEvent as { callback: any };
 	ctx.sp.storage._api_onAnimationEvent = {
 		callback(...args: any) {
-			const [serversideFormId, animEventName] = args;
+			const [, animEventName] = args;
 			// ctx.sp.printConsole(serversideFormId);
 			ctx.sendEvent({
 				current: animEventName,
@@ -99,7 +101,7 @@ export const onAnimationEvent = (ctx: Ctx<{ prevAnimation: string }>) => {
 	};
 };
 
-export const onPrintConsole = (ctx: Ctx) => {
+export const onPrintConsole = (ctx: Ctx): void => {
 	const next = ctx.sp.storage._api_onPrintConsole as { callback: any };
 	ctx.sp.storage._api_onPrintConsole = {
 		callback(...args: any) {
@@ -111,7 +113,7 @@ export const onPrintConsole = (ctx: Ctx) => {
 	};
 };
 
-export const onCloseRaceMenu = (ctx: Ctx) => {
+export const onCloseRaceMenu = (ctx: Ctx): void => {
 	const next = ctx.sp.storage._api_onCloseRaceMenu as { callback: any };
 	ctx.sp.storage._api_onCloseRaceMenu = {
 		callback() {
@@ -123,7 +125,7 @@ export const onCloseRaceMenu = (ctx: Ctx) => {
 	};
 };
 
-export const onUiMenuToggle = (ctx: Ctx<{ lastMenuState: boolean }, boolean>) => {
+export const onUiMenuToggle = (ctx: Ctx<{ lastMenuState: boolean }, boolean>): void => {
 	const badMenus = [
 		'BarterMenu',
 		'Book Menu',
@@ -143,6 +145,7 @@ export const onUiMenuToggle = (ctx: Ctx<{ lastMenuState: boolean }, boolean>) =>
 		'Main Menu',
 	];
 
+	// eslint-disable-next-line
 	const allMenu = [
 		'BarterMenu',
 		'Book Menu',
@@ -193,7 +196,7 @@ export const onUiMenuToggle = (ctx: Ctx<{ lastMenuState: boolean }, boolean>) =>
 	});
 };
 
-export const onEffectStart = (ctx: Ctx) => {
+export const onEffectStart = (ctx: Ctx): void => {
 	ctx.sp.on('effectStart', (event: any) => {
 		if (event.caster?.getFormID() !== 0x14) return;
 
@@ -209,14 +212,12 @@ export const onEffectStart = (ctx: Ctx) => {
 	});
 };
 
-export const onCurrentCrosshairChange = (ctx: Ctx<{ lastCrosshairRef?: number }>) => {
+export const onCurrentCrosshairChange = (ctx: Ctx<{ lastCrosshairRef?: number }>): void => {
 	ctx.sp.on('update', () => {
 		const ref = ctx.sp.Game.getCurrentCrosshairRef();
 		const refId = ref?.getFormID();
 		if (ctx.state.lastCrosshairRef !== refId) {
-			const data: { crosshairRefId?: number } = {
-				crosshairRefId: refId && ctx.getFormIdInServerFormat(refId),
-			};
+			const data: { crosshairRefId?: number } = { crosshairRefId: refId && ctx.getFormIdInServerFormat(refId) };
 			ctx.sendEvent(data);
 			ctx.state.lastCrosshairRef = refId;
 		}

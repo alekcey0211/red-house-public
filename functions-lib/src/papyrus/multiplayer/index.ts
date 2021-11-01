@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+import { IM } from '../../..';
 import { Mp, PapyrusValue, PapyrusObject } from '../../types/mp';
 import { getBoolean, getNumber, getObject, getString, getStringArray } from '../../utils/papyrusArgs';
 import {
@@ -20,10 +22,10 @@ const executeUiCommand = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 	mp.sendUiMessage(actorId, {
 		type: 'COMMAND',
 		data: {
-			commandType: commandType,
+			commandType,
 			commandArgs: {
-				argumentNames: argumentNames,
-				tokens: tokens,
+				argumentNames,
+				tokens,
 			},
 			alter: alter.split('\n'),
 		},
@@ -61,7 +63,7 @@ const getOnlinePlayers = (mp: Mp): PapyrusObject[] => {
 	return res;
 };
 
-const isPlayer = (mp: Mp, args: PapyrusValue[]): boolean =>
+export const isPlayer = (mp: Mp, args: PapyrusValue[]): boolean =>
 	mp.get(0, 'onlinePlayers').findIndex((x) => x === getNumber(args, 0)) !== -1;
 
 const asConvert = (mp: Mp, self: null, args: PapyrusValue[]): PapyrusValue => getObject(args, 0);
@@ -211,6 +213,19 @@ export const register = (mp: Mp, localization: Localization = localizationDefaul
 			setGlobalStorageValueNumberArray(mp, self, args)
 		);
 	}
+
+	IM.GetActorsInStreamZone = (args: PapyrusValue[]) => getActorsInStreamZone(mp, null, args);
+	IM.GetOnlinePlayers = () => getOnlinePlayers(mp);
+	IM.IsPlayer = (args: PapyrusValue[]) => isPlayer(mp, args);
+	IM.BrowserSetVisible = (args: PapyrusValue[]) => browserSetVisible(mp, null, args);
+	IM.BrowserSetFocused = (args: PapyrusValue[]) => browserSetFocused(mp, null, args);
+	IM.BrowserSetModal = (args: PapyrusValue[]) => browserSetModal(mp, null, args);
+	IM.BrowserGetVisible = (args: PapyrusValue[]) => browserGetVisible(mp, null, args);
+	IM.BrowserGetFocused = (args: PapyrusValue[]) => browserGetFocused(mp, null, args);
+	IM.BrowserGetModal = (args: PapyrusValue[]) => browserGetModal(mp, null, args);
+	IM.GetGlobalStorageValue = (args: PapyrusValue[]) => getGlobalStorageValue(mp, null, args);
+	IM.SetGlobalStorageValue = (key: string, value: PapyrusValue) => setGlobalStorageValue(mp, key, value);
+	IM.ExecuteUiCommand = (args: PapyrusValue[]) => executeUiCommand(mp, null, args);
 };
 
 export interface Localization {

@@ -8,6 +8,7 @@ function randomInteger(min: number, max: number) {
 
 export class Spawn implements System {
 	systemName = 'Spawn';
+
 	constructor(private log: Log) {}
 
 	async initAsync(ctx: SystemContext): Promise<void> {

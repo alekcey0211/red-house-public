@@ -1,25 +1,26 @@
-import { settings, printConsole, findConsoleCommand, storage } from 'skyrimPlatform';
+import { printConsole, findConsoleCommand, storage } from 'skyrimPlatform';
 import { consoleCommands, scriptCommands } from './consoleCommands';
 import { MsgType } from './messages';
 
 export const blockConsole = (): void => {
-	if (settings['skymp5-client']['enable-console'] !== true) {
-		const legalCommands = ['qqq'];
-		consoleCommands.concat(scriptCommands).forEach((name) => {
-			const command = findConsoleCommand(name);
+	// if (settings['skymp5-client']['enable-console'] !== true) {
+	const legalCommands = ['qqq', 'fov', 'tmm'];
+	consoleCommands.concat(scriptCommands).forEach((name) => {
+		const command = findConsoleCommand(name);
 
-			if (
-				!command ||
-				legalCommands.includes(command.longName.toLowerCase()) ||
-				legalCommands.includes(command.shortName.toLowerCase())
-			)
-				return;
-			command.execute = () => {
-				printConsole("You do not have permission to use this command ('" + name + "')");
-				return false;
-			};
-		});
-	}
+		if (
+			!command ||
+			legalCommands.includes(command.longName.toLowerCase()) ||
+			legalCommands.includes(command.shortName.toLowerCase())
+		) {
+			return;
+		}
+		command.execute = () => {
+			printConsole(`You do not have permission to use this command ('${name}')`);
+			return false;
+		};
+	});
+	// }
 };
 
 enum CmdArgument {
@@ -55,18 +56,18 @@ const getCommandExecutor = (
 		for (let i = 0; i < args.length; ++i) {
 			switch (schema[i]) {
 				case CmdArgument.ObjectReference:
-					args[i] = localIdToRemoteId(parseInt(`${args[i]}`));
+					args[i] = localIdToRemoteId(parseInt(`${args[i]}`, 10));
 					break;
 			}
 		}
 		printConsole('sent');
 		send({ t: MsgType.ConsoleCommand, data: { commandName, args } });
-		if (storage['_api_onConsoleCommand'] && (storage['_api_onConsoleCommand'] as any)['callback']) {
+		if (storage._api_onConsoleCommand && (storage._api_onConsoleCommand as any).callback) {
 			if (commandName === 'mp') {
 				try {
-					(storage['_api_onConsoleCommand'] as any)['callback'](...args);
+					(storage._api_onConsoleCommand as any).callback(...args);
 				} catch (e) {
-					printConsole("'_api_onConsoleCommand' - ", e);
+					printConsole('"_api_onConsoleCommand" - ', e);
 				}
 			}
 		}
@@ -91,7 +92,8 @@ export const setUpConsoleCommands = (
 	});
 };
 
-export const printConsoleServer = (...argumets: any[]) => {
-	const s: { callback?: (...a: any[]) => void } = storage._api_onPrintConsole;
+export const printConsoleServer = (...argumets: unknown[]): void => {
+	const s: { callback?: (...a: unknown[]) => void } = storage._api_onPrintConsole;
 	if (s?.callback) s.callback(...argumets);
+	// printConsole(...argumets);
 };

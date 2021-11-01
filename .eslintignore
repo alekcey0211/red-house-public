@@ -1,0 +1,15 @@
+**/*.psc
+node_modules
+*/node_modules
+server/gamemode.js
+server/skymp5-server.js
+server-build/skymp5-server.js
+server/data/modules/*/*
+server/data/scripts/*
+server/data/ui/*
+server/data/ui-voice/*
+server/data/xelib/*
+server/data/strings/*
+server/data/_libkey.js
+server/dist_front/*
+**/*.test.ts

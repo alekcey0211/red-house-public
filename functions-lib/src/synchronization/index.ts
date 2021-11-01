@@ -19,10 +19,10 @@ const staminaReduce = 10;
 export const register = (mp: Mp): void => {
 	mp.makeEventSource('_onSprintStateChange', factory('isSprinting'));
 
-	mp['_onSprintStateChange'] = (pcFormId: number, isSprinting: boolean) => {
+	mp._onSprintStateChange = (pcFormId: number, isSprinting: boolean) => {
 		const start = Date.now();
 		if (!pcFormId) return console.log('Plz reconnect');
-		console.log('isSprinting', isSprinting);
+		// console.log('isSprinting', isSprinting);
 		mp.set(pcFormId, 'isSprinting', isSprinting);
 		if (isSprinting) {
 			actorValues.set(pcFormId, `mp_${sprintAttr}drain` as AttrAll, 'base', -staminaReduce);
@@ -36,15 +36,15 @@ export const register = (mp: Mp): void => {
 
 	mp.makeEventSource('_onWeaponDrawChange', factory('isWeaponDrawn'));
 
-	mp['_onWeaponDrawChange'] = (pcFormId: number, isWeaponDrawn: boolean) => {
+	mp._onWeaponDrawChange = (pcFormId: number, isWeaponDrawn: boolean) => {
 		if (!pcFormId) return console.log('Plz reconnect');
-		console.log('isWeaponDrawn', isWeaponDrawn);
+		// console.log('isWeaponDrawn', isWeaponDrawn);
 		mp.set(pcFormId, 'isWeaponDrawn', isWeaponDrawn);
 	};
 
 	mp.makeEventSource('_onDead', factory('isDead'));
 
-	mp['_onDead'] = (pcFormId: number, isDead: boolean) => {
+	mp._onDead = (pcFormId: number, isDead: boolean) => {
 		// if (!pcFormId) return console.log('Plz reconnect');
 		if (isDead) {
 			console.log(`${pcFormId.toString(16)} died`);
@@ -54,9 +54,9 @@ export const register = (mp: Mp): void => {
 
 	mp.makeEventSource('_onFly', factory('isFlying'));
 
-	mp['_onFly'] = (pcFormId: number, isFlying: boolean) => {
+	mp._onFly = (pcFormId: number, isFlying: boolean) => {
 		if (!pcFormId) return console.log('Plz reconnect');
-		console.log('isFlying', isFlying);
+		// console.log('isFlying', isFlying);
 		mp.set(pcFormId, 'isFlying', isFlying);
 	};
 };

@@ -17,6 +17,11 @@ export const register = (mp: Mp): void => {
 			mp.timer = setTimeout(() => {
 				mp.get(0, 'onlinePlayers').forEach((id) => {
 					const neighbors = mp.get(id, 'neighbors').filter((n) => mp.get(n, 'type') === 'MpActor');
+
+					// if (serverOptions.showNickname) {
+					// 	showNick(mp, id, neighbors);
+					// }
+
 					neighbors.forEach((n) => {
 						throwOrInit(mp, n, serverOptions);
 					});

@@ -11,10 +11,7 @@ let clientByUserId = new Array<undefined | Record<string, unknown>>();
 
 clientByUserId.length = 2000; // Hard user limit
 
-export const onBrowserTokenChange = (
-	userId: number,
-	newToken: string
-): void => {
+export const onBrowserTokenChange = (userId: number, newToken: string): void => {
 	// This cleanup actually matters when players reconnect:
 	// userIds may change in this case, while tokens remain the same
 	const previousUserId = tokenByUserId.findIndex((x) => x === newToken);
@@ -35,10 +32,7 @@ const distance = (pos1: number[], pos2: number[]): number => {
 	return Math.sqrt(a * a + b * b + c * c);
 };
 
-const getUserActorOrZero = (
-	server: scampNative.ScampServer,
-	userId: number
-) => {
+const getUserActorOrZero = (server: scampNative.ScampServer, userId: number) => {
 	try {
 		return server.getUserActor(userId);
 	} catch (e) {
@@ -46,11 +40,7 @@ const getUserActorOrZero = (
 	}
 };
 
-export const sendMsg = (
-	server: scampNative.ScampServer,
-	formId: number,
-	msg: Record<string, unknown>
-): void => {
+export const sendMsg = (server: scampNative.ScampServer, formId: number, msg: Record<string, unknown>): void => {
 	const userId = server.getUserByActor(formId);
 	const invalidUserId = 65535;
 	if (userId === invalidUserId) return;
@@ -58,11 +48,7 @@ export const sendMsg = (
 	const ws = clientByUserId[userId];
 	if (!ws) return;
 
-	(ws as WebSocket).send(
-		JSON.stringify({
-			message: msg,
-		})
-	);
+	(ws as WebSocket).send(JSON.stringify({ message: msg }));
 };
 
 export const attachMpApi = (_onUiEvent: OnUiEvent): void => {
@@ -70,9 +56,7 @@ export const attachMpApi = (_onUiEvent: OnUiEvent): void => {
 };
 
 export const main = (server: scampNative.ScampServer): void => {
-	const svr = new WebSocket.Server({
-		port: Settings.get().port === 7777 ? 8080 : Settings.get().port + 2,
-	});
+	const svr = new WebSocket.Server({ port: Settings.get().port === 7777 ? 8080 : Settings.get().port + 2 });
 	console.log('websocket server up');
 
 	svr.on('close', (ws: Record<string, unknown>) => {
@@ -86,70 +70,89 @@ export const main = (server: scampNative.ScampServer): void => {
 
 		// runs a callback on message event
 		ws.on('message', (data: string) => {
-			console.log({ data });
-			const dataObj = JSON.parse(data);
-			if (dataObj.type === 'token') {
-				const current = clients.find((v) => v === ws);
-				if (!current) return;
-				current.token = dataObj.token;
-			} else if (dataObj.type === 'uiEvent') {
-				const token = clients.find((v) => v === ws)?.token;
-				if (!token) return;
+			try {
+				const dataObj = JSON.parse(data);
 
-				const authoruserId = tokenByUserId.findIndex((v) => v === token);
-				if (authoruserId === -1) return;
+				console.log(dataObj);
 
-				const actorId = getUserActorOrZero(server, authoruserId);
-				clientByUserId[authoruserId] = ws;
-				onUiEvent(actorId, dataObj.msg);
-			} else if (dataObj.type === 'chatMessage') {
-				const token = clients.find((v) => v === ws)?.token as
-					| string
-					| undefined;
-				if (!token) return;
+				if (dataObj.type === 'token') {
+					const current = clients.find((v) => v === ws);
 
-				const authoruserId = tokenByUserId.findIndex((v) => v === token);
-				if (authoruserId === -1) return;
+					if (!current) return;
 
-				const actorId = getUserActorOrZero(server, authoruserId);
-				if (!actorId) return;
-				dataObj.author = server.getActorName(actorId);
-
-				const auhtorPos = server.getActorPos(actorId);
-				const authorCellOrWorld = server.getActorCellOrWorld(actorId);
-
-				const nonRp = 2;
-				if (dataObj.channelIdx === nonRp && dataObj.text !== '') {
-					dataObj.text = '(( ' + dataObj.text + ' ))';
-				}
-
-				svr.clients.forEach((client) => {
-					if (client.readyState !== WebSocket.OPEN) return;
-
-					const clientToken = clients.find((v) => v === client)?.token as
-						| string
-						| undefined;
-					if (!clientToken) return;
-
-					const userId = tokenByUserId.findIndex((v) => v === clientToken);
-					if (userId === -1) return;
-
-					const id = getUserActorOrZero(server, userId);
-					if (!id) return;
-
-					const actorPos = server.getActorPos(id);
-					const d = distance(actorPos, auhtorPos);
-
-					if (
-						(d >= 70 * 20 ||
-							server.getActorCellOrWorld(id) !== authorCellOrWorld) &&
-						dataObj.channelIdx !== nonRp
-					)
+					current.token = dataObj.token;
+				} else if (dataObj.type === 'uiEvent') {
+					// return ping message to front
+					if (dataObj.msg.data === '/ping') {
+						(ws as WebSocket).send(
+							JSON.stringify({
+								message: {
+									type: 'COMMAND',
+									data: {
+										commandType: 'DETECT_PING',
+										commandArgs: {},
+										alter: [''],
+									},
+								},
+							})
+						);
 						return;
+					}
 
-					client.send(JSON.stringify(dataObj));
-				});
-			}
+					const token = clients.find((v) => v === ws)?.token;
+					if (!token) return;
+
+					const authoruserId = tokenByUserId.findIndex((v) => v === token);
+					if (authoruserId === -1) return;
+
+					const actorId = getUserActorOrZero(server, authoruserId);
+					clientByUserId[authoruserId] = ws;
+					onUiEvent(actorId, dataObj.msg);
+				} else if (dataObj.type === 'chatMessage') {
+					const token = clients.find((v) => v === ws)?.token as string | undefined;
+					if (!token) return;
+
+					const authoruserId = tokenByUserId.findIndex((v) => v === token);
+					if (authoruserId === -1) return;
+
+					const actorId = getUserActorOrZero(server, authoruserId);
+					if (!actorId) return;
+					dataObj.author = server.getActorName(actorId);
+
+					const auhtorPos = server.getActorPos(actorId);
+					const authorCellOrWorld = server.getActorCellOrWorld(actorId);
+
+					const nonRp = 2;
+					if (dataObj.channelIdx === nonRp && dataObj.text !== '') {
+						dataObj.text = `(( ${dataObj.text} ))`;
+					}
+
+					svr.clients.forEach((client) => {
+						if (client.readyState !== WebSocket.OPEN) return;
+
+						const clientToken = clients.find((v) => v === client)?.token as string | undefined;
+						if (!clientToken) return;
+
+						const userId = tokenByUserId.findIndex((v) => v === clientToken);
+						if (userId === -1) return;
+
+						const id = getUserActorOrZero(server, userId);
+						if (!id) return;
+
+						const actorPos = server.getActorPos(id);
+						const d = distance(actorPos, auhtorPos);
+
+						if (
+							(d >= 70 * 20 || server.getActorCellOrWorld(id) !== authorCellOrWorld) &&
+							dataObj.channelIdx !== nonRp
+						) {
+							return;
+						}
+
+						client.send(JSON.stringify(dataObj));
+					});
+				}
+			} catch {}
 		});
 	});
 };

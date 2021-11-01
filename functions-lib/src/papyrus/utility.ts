@@ -1,14 +1,24 @@
 import { Mp, PapyrusValue } from '../types/mp';
 import { randomInRange } from '../utils/helper';
-import { getBoolean, getNumber, getNumberArray, getObject, getObjectArray, getString, getStringArray } from '../utils/papyrusArgs';
+import {
+	getBoolean,
+	getNumber,
+	getNumberArray,
+	getObject,
+	getObjectArray,
+	getString,
+	getStringArray,
+} from '../utils/papyrusArgs';
 
 const getAllIndexes = <T = any>(arr: T[], val: T): number[] => {
-	let indexes: number[] = [], i = -1;
-	while ((i = arr.indexOf(val, i + 1)) != -1) {
+	const indexes: number[] = [];
+	let i = -1;
+	// eslint-disable-next-line no-cond-assign
+	while ((i = arr.indexOf(val, i + 1)) !== -1) {
 		indexes.push(i);
 	}
 	return indexes;
-}
+};
 
 const createStringArray = (mp: Mp, self: null, args: PapyrusValue[]): string[] => {
 	const size = getNumber(args, 0);
@@ -114,7 +124,7 @@ const spliceStringArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
 		return [];
 	}
 	array.splice(index, countDeleteElements);
-	return array
+	return array;
 };
 const spliceNumberArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
 	const array = getNumberArray(args, 0);
@@ -125,7 +135,7 @@ const spliceNumberArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
 		return [];
 	}
 	array.splice(index, countDeleteElements);
-	return array
+	return array;
 };
 const spliceFormArray = (mp: Mp, self: null, args: PapyrusValue[]) => {
 	const array = getObjectArray(args, 0);
@@ -166,9 +176,15 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayIntFind', (self, args) => arrayNumberFind(mp, self, args));
 	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayFloatFind', (self, args) => arrayNumberFind(mp, self, args));
 
-	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayStringFindAll', (self, args) => arrayStringFindAll(mp, self, args));
-	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayIntFindAll', (self, args) => arrayNumberFindAll(mp, self, args));
-	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayFloatFindAll', (self, args) => arrayNumberFindAll(mp, self, args));
+	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayStringFindAll', (self, args) =>
+		arrayStringFindAll(mp, self, args)
+	);
+	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayIntFindAll', (self, args) =>
+		arrayNumberFindAll(mp, self, args)
+	);
+	mp.registerPapyrusFunction('global', 'UtilityEx', 'ArrayFloatFindAll', (self, args) =>
+		arrayNumberFindAll(mp, self, args)
+	);
 
 	mp.registerPapyrusFunction('global', 'UtilityEx', 'StringArrayToIntArray', (self, args) =>
 		stringArrayToNumberArray(mp, self, args)
@@ -201,8 +217,14 @@ export const register = (mp: Mp): void => {
 		unshiftFormArray(mp, self, args)
 	);
 
-	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceStringArray', (self, args) => spliceStringArray(mp, self, args));
-	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceIntArray', (self, args) => spliceNumberArray(mp, self, args));
-	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceFloatArray', (self, args) => spliceNumberArray(mp, self, args));
+	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceStringArray', (self, args) =>
+		spliceStringArray(mp, self, args)
+	);
+	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceIntArray', (self, args) =>
+		spliceNumberArray(mp, self, args)
+	);
+	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceFloatArray', (self, args) =>
+		spliceNumberArray(mp, self, args)
+	);
 	mp.registerPapyrusFunction('global', 'UtilityEx', 'SpliceFormArray', (self, args) => spliceFormArray(mp, self, args));
 };

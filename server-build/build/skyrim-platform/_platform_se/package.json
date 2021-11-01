@@ -1,0 +1,12 @@
+{
+	"name": "_platform_se",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"pack-debug": "cd ../../../skyrim-platform/tools/dev_service && npm run pack-debug"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

@@ -77,7 +77,7 @@ export const getEquipment = (
 	return eq;
 };
 
-export const equipItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const equipItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const item = getObject(args, 0);
 	const itemId = mp.getIdFromDesc(item.desc);
@@ -103,11 +103,11 @@ export const equipItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => 
 	evalClient(mp, selfId, new FunctionInfo(func).getText({ itemId, preventRemoval, silent }));
 
 	if (!silent) {
-		//notification
+		// notification
 	}
 };
 
-export const equipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const equipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const item = getObject(args, 0);
 	const itemId = mp.getIdFromDesc(item.desc);
@@ -123,14 +123,21 @@ export const equipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) =
 			ac?.equipItemEx(form, slot, preventUnequip, equipSound);
 		});
 	};
-	evalClient(mp, selfId, new FunctionInfo(func).getText({ itemId, slot, preventUnequip, equipSound }));
+	evalClient(
+		mp,
+		selfId,
+		new FunctionInfo(func).getText({
+			itemId,
+			slot,
+			preventUnequip,
+			equipSound,
+		})
+	);
 
 	if (!equipSound) {
 		// sound
 	}
 };
-
-export const equipItemById = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {};
 
 export const isEquipped = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): boolean => {
 	const selfId = mp.getIdFromDesc(self.desc);
@@ -143,7 +150,7 @@ export const isEquipped = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): b
 	return eq.inv.entries.findIndex((item) => item.baseId === itemId && item.worn) >= 0;
 };
 
-export const unequipItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const unequipItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const item = getObject(args, 0);
 	const itemId = mp.getIdFromDesc(item.desc);
@@ -161,11 +168,11 @@ export const unequipItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) =
 	evalClient(mp, selfId, new FunctionInfo(func).getText({ itemId, preventRemoval, silent }));
 
 	if (!silent) {
-		//notification
+		// notification
 	}
 };
 
-export const unequipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const unequipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const item = getObject(args, 0);
 	const itemId = mp.getIdFromDesc(item.desc);
@@ -183,7 +190,7 @@ export const unequipItemEx = (mp: Mp, self: PapyrusObject, args: PapyrusValue[])
 	evalClient(mp, selfId, new FunctionInfo(func).getText({ itemId, slot, preventEquip }));
 };
 
-export const unequipAll = (mp: Mp, self: PapyrusObject) => {
+export const unequipAll = (mp: Mp, self: PapyrusObject): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 
 	const func = (ctx: Ctx) => {
@@ -196,7 +203,7 @@ export const unequipAll = (mp: Mp, self: PapyrusObject) => {
 	evalClient(mp, selfId, new FunctionInfo(func).getText());
 };
 
-export const unequipItemSlot = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const unequipItemSlot = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const slotId = getNumber(args, 0);
 
@@ -210,8 +217,10 @@ export const unequipItemSlot = (mp: Mp, self: PapyrusObject, args: PapyrusValue[
 	evalClient(mp, selfId, new FunctionInfo(func).getText({ slotId }));
 };
 
-export const getEquippedItemType = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const getEquippedItemType = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
+	// eslint-disable-next-line
 	const selfId = mp.getIdFromDesc(self.desc);
+	// eslint-disable-next-line
 	const hand = getNumber(args, 0);
 };
 

@@ -1,6 +1,6 @@
 import { statePropFactory } from '../../../papyrus/multiplayer/functions';
 import { Mp } from '../../../types/mp';
-import { updateAttributeCommon, updateAttributeMult } from './attributes-func';
+import { updateAttributeCommon, updateAttributeSimple } from './attributes-func';
 
 export type Mult = 'speedmult' | 'weaponspeedmult';
 
@@ -19,6 +19,26 @@ export type AttrRelated = 'healthNumChanges' | 'magickaNumChanges' | 'staminaNum
 export type AttrAll = Attr | AttrRate | AttrRateMult | AttrDrain;
 
 export type Modifier = 'base' | 'permanent' | 'temporary' | 'damage';
+
+export type Skill =
+	| 'oneHanded'
+	| 'twoHanded'
+	| 'marksman'
+	| 'block'
+	| 'smithing'
+	| 'heavyArmor'
+	| 'lightArmor'
+	| 'pickpocket'
+	| 'lockpicking'
+	| 'sneak'
+	| 'alchemy'
+	| 'speechcraft'
+	| 'alteration'
+	| 'conjuration'
+	| 'destruction'
+	| 'illusion'
+	| 'restoration'
+	| 'enchanting';
 
 export type ModifierValue = {
 	[name in Modifier]?: number;
@@ -76,7 +96,7 @@ export interface ActorValues {
 	 * @param formId actor id
 	 * @param options options
 	 */
-	setDefaults: (formId: number, options?: DefaultOptions, base?: Partial<Record<AttrAll, number>>) => void;
+	setDefaults: (formId: number, options?: DefaultOptions, base?: Partial<Record<AttrAll | Skill, number>>) => void;
 }
 export interface AvOps {
 	parent?: AvOps;
@@ -104,9 +124,10 @@ const relatedPropNames: AttrRelated[] = ['healthNumChanges', 'magickaNumChanges'
 
 const getAvMaximum = (avOps: AvOps, formId: number, avName: AttrAll) => {
 	let sum = 0;
-	for (const modifierName of ['base', 'permanent', 'temporary'] as Modifier[]) {
+	(['base', 'permanent', 'temporary'] as Modifier[]).forEach((modifierName) => {
 		sum += avOps.get(formId, avName, modifierName);
-	}
+	});
+
 	return sum;
 };
 
@@ -117,7 +138,7 @@ const getAvCurrent = (avOps: AvOps, formId: number, avName: AttrAll) => {
 };
 
 // Regen
-let regen = (
+const regen = (
 	avOps: AvOps,
 	avNameTarget: Attr,
 	avNameRate: AttrRate,
@@ -190,40 +211,70 @@ const timeSource = {
 	},
 };
 
+// eslint-disable-next-line import/no-mutable-exports
 export let actorValues: ActorValues;
 
-export const register = (mp: Mp) => {
-	for (const attr of ['health', 'magicka', 'stamina'] as Attr[]) {
-		mp.makeProperty('av_' + attr, {
+export const register = (mp: Mp): void => {
+	(['health', 'magicka', 'stamina'] as Attr[]).forEach((attr) => {
+		mp.makeProperty(`av_${attr}`, {
 			isVisibleByOwner: true,
 			isVisibleByNeighbors: attr === 'health',
 			updateNeighbor: updateAttributeCommon(attr, false),
 			updateOwner: updateAttributeCommon(attr, true),
 		});
-	}
+	});
+	(
+		[
+			'oneHanded',
+			'twoHanded',
+			'marksman',
+			'block',
+			'smithing',
+			'heavyArmor',
+			'lightArmor',
+			'pickpocket',
+			'lockpicking',
+			'sneak',
+			'alchemy',
+			'speechcraft',
+			'alteration',
+			'conjuration',
+			'destruction',
+			'illusion',
+			'restoration',
+			'enchanting',
+		] as Skill[]
+	).forEach((attr) => {
+		mp.makeProperty(`av_${attr}`, {
+			isVisibleByOwner: true,
+			isVisibleByNeighbors: false,
+			updateNeighbor: updateAttributeSimple(attr),
+			updateOwner: updateAttributeSimple(attr),
+		});
+	});
 
-	for (const avName of avs) {
-		statePropFactory(mp, 'av_' + avName, true);
-	}
+	avs.forEach((avName) => {
+		statePropFactory(mp, `av_${avName}`, true);
+	});
 
-	for (const propName of relatedPropNames) {
+	relatedPropNames.forEach((propName) => {
 		statePropFactory(mp, propName, true);
-	}
+	});
 
 	(['speedmult', 'weaponspeedmult'] as Mult[]).forEach((mult) => {
 		mp.makeProperty(`av_${mult}`, {
 			isVisibleByOwner: true,
 			isVisibleByNeighbors: true,
-			updateOwner: updateAttributeMult(mult),
-			updateNeighbor: updateAttributeMult(mult),
+			updateOwner: updateAttributeSimple(mult),
+			updateNeighbor: updateAttributeSimple(mult),
 		});
 	});
 
 	// Basic
 	let avOps: AvOps = {
 		set(formId: number, avName: AttrAll, modifierName: Modifier, newValue: number) {
-			const propName = 'av_' + avName.toLowerCase();
-			let value = mp.get<ModifierValue>(formId, propName);
+			const propName = `av_${avName.toLowerCase()}`;
+			const value = mp.get<ModifierValue>(formId, propName);
 			if (!value) return;
 			value[modifierName] = newValue;
 			mp.set(formId, propName, value);
@@ -234,16 +285,10 @@ export const register = (mp: Mp) => {
 			}
 		},
 		get(formId: number, avName: AttrAll, modifierName: Modifier) {
-			const propName = 'av_' + avName.toLowerCase();
+			const propName = `av_${avName.toLowerCase()}`;
 			const propValue = mp.get<ModifierValue>(formId, propName);
 			if (propValue === undefined) {
 				const s = `[av] '${propName}' was undefined for ${formId.toString(16)}`;
-				// console.log(s);
-				// const s1 = `[av] set defaults value for ${formId.toString(16)}`;
-				// console.log(s1);
-				// actorValues.setDefaults(formId);
-				// const defaultPropValue = mp.get<ModifierValue>(formId, propName);
-				// return defaultPropValue?.[modifierName] || 0;
 				throw new Error(s);
 			}
 			return propValue[modifierName] || 0;
@@ -258,7 +303,7 @@ export const register = (mp: Mp) => {
 				return;
 			}
 
-			if (modifierName == 'damage') {
+			if (modifierName === 'damage') {
 				if (newValue > 0) {
 					newValue = 0;
 				} else if (newValue < -getAvMaximum(this.parent, formId, avName)) {
@@ -287,14 +332,13 @@ export const register = (mp: Mp) => {
 				return;
 			}
 
-			let oldMaximum: number, newMaximum: number;
+			const oldMaximum: number = getAvMaximum(this.parent, formId, avName);
+			const newMaximum: number = getAvMaximum(this.parent, formId, avName);
 
-			oldMaximum = getAvMaximum(this.parent, formId, avName);
 			this.parent.set(formId, avName, modifierName, newValue);
-			newMaximum = getAvMaximum(this.parent, formId, avName);
 
 			const k = newMaximum / oldMaximum;
-			if (isFinite(k) && k != 1 && this.multiplyDamage) {
+			if (Number.isFinite(k) && k !== 1 && this.multiplyDamage) {
 				this.multiplyDamage(formId, avName, k);
 			}
 		},
@@ -324,39 +368,75 @@ export const register = (mp: Mp) => {
 			const damageModAfterRegen = avOps.get(formId, avName, 'damage');
 			avOps.set(formId, avName, 'damage', damageModAfterRegen);
 		},
-		setDefaults: (formId: number, options?: DefaultOptions, base: Partial<Record<AttrAll | Mult, number>> = {}) => {
+		setDefaults: (
+			formId: number,
+			options?: DefaultOptions,
+			base: Partial<Record<AttrAll | Mult | Skill, number>> = {}
+		) => {
 			console.log('[sync] setDefaults', formId.toString(16), base);
 			const force = !!options?.force;
 			if (mp.get(formId, 'type') === 'MpActor') {
 				if (mp.get(formId, 'isDead') === undefined || force) {
 					mp.set(formId, 'isDead', false);
 				}
-				for (const avName of ['health', 'magicka', 'stamina'] as Attr[]) {
-					if (!mp.get(formId, 'av_' + avName) || force) {
-						mp.set(formId, 'av_' + avName, { base: base[avName] ?? 100 });
+
+				(['health', 'magicka', 'stamina'] as Attr[]).forEach((avName) => {
+					if (!mp.get(formId, `av_${avName}`) || force) {
+						mp.set(formId, `av_${avName}`, { base: base[avName] ?? 100 });
 					}
-				}
-				for (const avName of ['healrate', 'magickarate', 'staminarate'] as AttrRate[]) {
-					if (!mp.get(formId, 'av_' + avName) || force) {
-						mp.set(formId, 'av_' + avName, { base: base[avName] ?? 5 });
+				});
+
+				(['healrate', 'magickarate', 'staminarate'] as AttrRate[]).forEach((avName) => {
+					if (!mp.get(formId, `av_${avName}`) || force) {
+						mp.set(formId, `av_${avName}`, { base: base[avName] ?? 5 });
 					}
-				}
-				for (const avName of ['healratemult', 'magickaratemult', 'staminaratemult'] as AttrRateMult[]) {
-					if (!mp.get(formId, 'av_' + avName) || force) {
-						mp.set(formId, 'av_' + avName, { base: base[avName] ?? 100 });
+				});
+
+				(['healratemult', 'magickaratemult', 'staminaratemult'] as AttrRateMult[]).forEach((avName) => {
+					if (!mp.get(formId, `av_${avName}`) || force) {
+						mp.set(formId, `av_${avName}`, { base: base[avName] ?? 100 });
 					}
-				}
-				for (const avName of ['mp_healthdrain', 'mp_magickadrain', 'mp_staminadrain'] as AttrDrain[]) {
-					if (!mp.get(formId, 'av_' + avName) || force) {
-						mp.set(formId, 'av_' + avName, { base: base[avName] ?? 0 });
+				});
+
+				(['mp_healthdrain', 'mp_magickadrain', 'mp_staminadrain'] as AttrDrain[]).forEach((avName) => {
+					if (!mp.get(formId, `av_${avName}`) || force) {
+						mp.set(formId, `av_${avName}`, { base: base[avName] ?? 0 });
 					}
-				}
+				});
+
 				if (!mp.get(formId, 'av_speedmult') || force) {
 					mp.set(formId, 'av_speedmult', { base: base.speedmult ?? 100 });
 				}
 				if (!mp.get(formId, 'av_weaponspeedmult') || force) {
 					mp.set(formId, 'av_weaponspeedmult', { base: base.weaponspeedmult ?? 1 });
 				}
+
+				(
+					[
+						'oneHanded',
+						'twoHanded',
+						'marksman',
+						'block',
+						'smithing',
+						'heavyArmor',
+						'lightArmor',
+						'pickpocket',
+						'lockpicking',
+						'sneak',
+						'alchemy',
+						'speechcraft',
+						'alteration',
+						'conjuration',
+						'destruction',
+						'illusion',
+						'restoration',
+						'enchanting',
+					] as Skill[]
+				).forEach((avName) => {
+					if (!mp.get(formId, `av_${avName}`) || force) {
+						mp.set(formId, `av_${avName}`, { base: base[avName] ?? 100 });
+					}
+				});
 			}
 		},
 	};

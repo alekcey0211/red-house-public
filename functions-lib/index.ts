@@ -1,4 +1,5 @@
 import { Mp, PapyrusGlobalFunction, PapyrusMethod } from './src/types/mp';
+import { getAllPropsFromData, addToQueue, runPropertiesSaver } from './src/propertiesSaver';
 
 declare const mp: Mp;
 
@@ -45,6 +46,14 @@ mp.registerPapyrusFunction = (
 	}
 };
 
+const setProp = mp.set;
+
+mp.set = (formId: number, propertyName: string, newValue: any) => {
+	setProp(formId, propertyName, newValue);
+
+	addToQueue(formId, propertyName, newValue);
+};
+
 // import * as fs from 'fs';
 // import * as path from 'path';
 // mp.getServerSettings = (): Record<string, any> => {
@@ -65,6 +74,7 @@ mp.registerPapyrusFunction = (
 //   return content;
 // };
 
+import * as trigger from './src/events/trigger';
 import * as events from './src/events';
 import * as synchronization from './src/synchronization';
 
@@ -85,6 +95,7 @@ import * as potion from './src/papyrus/potion';
 import * as perk from './src/papyrus/perk';
 import * as keyword from './src/papyrus/keyword';
 import * as cell from './src/papyrus/cell';
+import * as location from './src/papyrus/location';
 import * as math from './src/papyrus/math';
 import * as magicEffect from './src/papyrus/magicEffect';
 import * as effectShader from './src/papyrus/effectShader';
@@ -102,15 +113,14 @@ import * as animProp from './src/properties/anim';
 import { LocalizationProvider } from './src/utils/localizationProvider';
 import { StringLocalizationProvider } from './src/utils/stringLocalizationProvider';
 import { ServerOptionProvider } from './src/papyrus/game/server-options';
-import { overrideNotify } from './src/events/shared';
 
 const config = mp.getServerSettings();
 const locale = config.locale;
-const data = config.dataDir;
+// const data = config.dataDir;
 const isPapyrusHotReloadEnabled = config.isPapyrusHotReloadEnabled;
 const isServerOptionsHotReloadEnabled = config.isServerOptionsHotReloadEnabled;
-const stringsPath = config.stringsPath ?? 'strings';
-const gamemodePath = config.gamemodePath ?? 'gamemode.js';
+// const stringsPath = config.stringsPath ?? 'strings';
+// const gamemodePath = config.gamemodePath ?? 'gamemode.js';
 
 const localizationProvider = new LocalizationProvider(
 	mp,
@@ -121,13 +131,59 @@ const localizationProvider = new LocalizationProvider(
 const stringLocalizationProvider = new StringLocalizationProvider(
 	mp,
 	mp.readDataFile(`localization/${locale}.json`),
-	locale
+	locale as any
 );
 
-export const serverOptionProvider = new ServerOptionProvider(mp, isServerOptionsHotReloadEnabled);
+export const serverOptionProvider = new ServerOptionProvider(mp, isServerOptionsHotReloadEnabled as boolean);
 
 // TODO: clear?
 mp.clear();
+
+// #region PLUGINS objects
+
+import * as modules from './src/modules';
+import { FormMethods } from './src/modules/Form';
+import { ObjectReferenceMethods } from './src/modules/ObjectReference';
+import { WeaponMethods } from './src/modules/Weapon';
+import { ActorMethods } from './src/modules/Actor';
+import { KeywordMethods } from './src/modules/Keyword';
+import { CellMethods } from './src/modules/Cell';
+import { PotionMethods } from './src/modules/Potion';
+import { WorldSpaceMethods } from './src/modules/WorldSpace';
+import { MagicEffectMethods } from './src/modules/MagicEffect';
+import { ArmorMethods } from './src/modules/Armor';
+import { ConstructibleObjectMethods } from './src/modules/ConstructibleObject';
+import { PerkMethods } from './src/modules/Perk';
+import { RaceMethods } from './src/modules/Race';
+import { OutfitMethods } from './src/modules/Outfit';
+import { GameMethods } from './src/modules/Game';
+import { DebugMethods } from './src/modules/Debug';
+import { MMethods } from './src/modules/M';
+import { overrideNotify } from './src/events/shared';
+import { LocationMethods } from './src/modules/Location';
+
+export const IForm: Partial<FormMethods> = {};
+export const IObjectReference: Partial<ObjectReferenceMethods> = {};
+export const IWeapon: Partial<WeaponMethods> = {};
+export const IActor: Partial<ActorMethods> = {};
+export const IKeyword: Partial<KeywordMethods> = {};
+export const ICell: Partial<CellMethods> = {};
+export const ILocation: Partial<LocationMethods> = {};
+export const IPotion: Partial<PotionMethods> = {};
+export const IWorldSpace: Partial<WorldSpaceMethods> = {};
+export const IMagicEffect: Partial<MagicEffectMethods> = {};
+export const IArmor: Partial<ArmorMethods> = {};
+export const IConstructibleObject: Partial<ConstructibleObjectMethods> = {};
+export const IPerk: Partial<PerkMethods> = {};
+export const IRace: Partial<RaceMethods> = {};
+export const IOutfit: Partial<OutfitMethods> = {};
+export const IGame: Partial<GameMethods> = {};
+export const IDebug: Partial<DebugMethods> = {};
+export const IM: Partial<MMethods> = {};
+
+// #endregion
+
+trigger.register(mp);
 
 perkProp.register(mp);
 evalProp.register(mp);
@@ -158,14 +214,21 @@ potion.register(mp);
 perk.register(mp);
 keyword.register(mp);
 cell.register(mp);
+location.register(mp);
 math.register(mp);
 magicEffect.register(mp);
 effectShader.register(mp);
 visualEffect.register(mp);
 
 setTimeout(() => {
+	getAllPropsFromData(mp);
+
+	runPropertiesSaver(mp);
+
 	mp.callPapyrusFunction('global', 'GM_Main', '_OnPapyrusRegister', null, []);
 	mp.get(0, 'onlinePlayers').forEach((p) => {
 		overrideNotify(mp, p);
 	});
+
+	modules.init(mp);
 }, 0);

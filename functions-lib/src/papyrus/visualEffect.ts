@@ -10,7 +10,12 @@ interface ActiveVisualEffect {
 
 const _play = (mp: Mp, selfId: number, refId: number, duration: number, facingRefId: number): void => {
 	const { n = 0 } = mp.get<ActiveVisualEffect>(refId, 'activeVisualEffect') ?? {};
-	mp.set(refId, 'activeVisualEffect', { n: n + 1, id: selfId, duration, facingRefId });
+	mp.set(refId, 'activeVisualEffect', {
+		n: n + 1,
+		id: selfId,
+		duration,
+		facingRefId,
+	});
 	setTimeout(() => {
 		mp.set(refId, 'activeVisualEffect', { n: n + 2 });
 	}, 200);
@@ -35,7 +40,7 @@ export const playEx = (mp: Mp, selfNull: null, args: PapyrusValue[]): void => {
 	_play(mp, selfId, refId, duration, facingRefId);
 };
 
-export const register = (mp: Mp) => {
+export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'VisualEffect', 'Play', (self, args) => play(mp, self, args));
 	mp.registerPapyrusFunction('global', 'VisualEffectEx', 'Play', (self, args) => playEx(mp, self, args));
 	// mp.registerPapyrusFunction('method', 'EffectShader', 'Stop', (self) => getHitShader(mp, self));

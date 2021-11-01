@@ -1,8 +1,8 @@
 import { Ctx } from '../../../types/ctx';
 import { FunctionInfo } from '../../../utils/functionInfo';
-import { Attr, ModifierValue, Mult } from './attributes';
+import { Attr, ModifierValue, Mult, Skill } from './attributes';
 
-export const updateAttributeCommon = (attrParam: Attr, isOwner: boolean = false) => {
+export const updateAttributeCommon = (attrParam: Attr, isOwner: boolean = false): string => {
 	return new FunctionInfo((ctx: Ctx<any, ModifierValue>, attrParam: Attr, isOwner: boolean) => {
 		const rateAV = (attr: Attr) => (attr === 'health' ? 'av_healrate' : `av_${attr}rate`);
 		const multAV = (attr: Attr) => (attr === 'health' ? 'av_healratemult' : `av_${attr}ratemult`);
@@ -29,7 +29,7 @@ export const updateAttributeCommon = (attrParam: Attr, isOwner: boolean = false)
 		const realTargetDmg: number = ctx.value.damage || 0;
 		let targetDmg = realTargetDmg;
 
-		if (av === 'health' || ac.getFormID() == 0x14) {
+		if (av === 'health' || ac.getFormID() === 0x14) {
 			const multName = multAV(av);
 			const rateName = rateAV(av);
 			const drainName = drainAV(av);
@@ -74,10 +74,14 @@ export const updateAttributeCommon = (attrParam: Attr, isOwner: boolean = false)
 
 		const deltaPercentage = targetPercentage - currentPercentage;
 
-		const k = !targetPercentage || av === 'stamina' || av === 'magicka' ? 1 : 0.25;
+		let k = !targetPercentage || av === 'magicka' ? 1 : 0.25;
+
+		if (av === 'stamina') {
+			k = 0.0003;
+		}
 
 		if (deltaPercentage > 0) {
-			ac.restoreActorValue(av, deltaPercentage * currentMax * k);
+			ac.restoreActorValue(av, currentMax * deltaPercentage * k);
 		} else if (deltaPercentage < 0) {
 			ac.damageActorValue(av, deltaPercentage * currentMax * k);
 		}
@@ -90,13 +94,16 @@ export const updateAttributeCommon = (attrParam: Attr, isOwner: boolean = false)
 	}).getText({ attrParam, isOwner });
 };
 
-export const updateAttributeMult = (attrParam: Mult) => {
-	return new FunctionInfo((ctx: Ctx<any, ModifierValue>, attrParam: Mult) => {
+export const updateAttributeSimple = (attrParam: Mult | Skill): string => {
+	return new FunctionInfo((ctx: Ctx<any, ModifierValue>, attrParam: Mult | Skill) => {
 		const av = attrParam;
 		if (!ctx.refr || !ctx.get) return;
 		const ac = ctx.sp.Actor.from(ctx.refr);
 		if (!ac) return;
 		if (!ctx.value) return;
+
+		if (JSON.stringify(ctx.value) === JSON.stringify(ctx.state.lastAttributeSkillValues)) return;
+		ctx.state[`last${av}Value`] = ctx.value;
 
 		const base: number = ctx.value.base || 0;
 		const perm: number = ctx.value.permanent || 0;
@@ -108,7 +115,7 @@ export const updateAttributeMult = (attrParam: Mult) => {
 		const currentPercentage = ac.getActorValuePercentage(av);
 		const currentMax = ac.getBaseActorValue(av);
 
-		let targetPercentage = (targetMax + targetDmg) / targetMax;
+		const targetPercentage = (targetMax + targetDmg) / targetMax;
 
 		const deltaPercentage = targetPercentage - currentPercentage;
 

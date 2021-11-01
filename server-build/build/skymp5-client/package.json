@@ -1,0 +1,12 @@
+{
+	"name": "skymp5-client",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "cd ../../skymp5-client && npm run build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

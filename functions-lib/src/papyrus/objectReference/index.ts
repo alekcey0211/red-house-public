@@ -1,7 +1,22 @@
 import { getBoolean, getNumber, getObject, getString } from '../../utils/papyrusArgs';
 import { Mp, PapyrusValue, PapyrusObject, Inventory } from '../../types/mp';
 import { getForm } from '../game';
-import { getAngle, getDistance, getPosition, getEspPosition } from './position';
+import {
+	getAngle,
+	getDistance,
+	getPosition,
+	getEspPosition,
+	setPosition,
+	getPositionX,
+	getPositionY,
+	getPositionZ,
+	setAngle,
+	getAngleX,
+	getAngleY,
+	getAngleZ,
+	getLinkedDoorId,
+	getLinkedCellId,
+} from './position';
 import { Ctx } from '../../types/ctx';
 import { evalClient } from '../../properties/eval';
 import { FunctionInfo } from '../../utils/functionInfo';
@@ -11,22 +26,25 @@ import * as game from '../game';
 import { isInterior } from '../cell';
 import { uint32 } from '../../utils/helper';
 import { CellItem, CellItemProps } from '../debug';
-import { serverOptionProvider } from '../../..';
+import { IObjectReference, serverOptionProvider } from '../../..';
 import { _getStorageValue, _setStorageValue } from './storage';
 import { throwOrInit } from '../../events/shared';
 
 const setScale = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
-	const scale = getNumber(args, 0);
 	const selfId = mp.getIdFromDesc(self.desc);
-	// ...
+	const scale = getNumber(args, 0);
+	mp.set(selfId, 'scale', scale);
+};
+
+const getScale = (mp: Mp, self: PapyrusObject): number => {
+	const selfId = mp.getIdFromDesc(self.desc);
+	return mp.get<number>(selfId, 'scale') ?? 1;
 };
 
 // TODO: keepOwnership, removeQuestItems
 const removeAllItems = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const transferTo = args[0] ? getObject(args, 0) : null;
-	const keepOwnership = args[1] ? getBoolean(args, 1) : false;
-	const removeQuestItems = args[2] ? getBoolean(args, 2) : false;
 
 	if (transferTo) {
 		const transferToId = mp.getIdFromDesc(transferTo.desc);
@@ -108,6 +126,12 @@ const getContainerForms = (mp: Mp, self: PapyrusObject): PapyrusObject[] => {
 		.filter((item) => item) as PapyrusObject[];
 };
 
+const blockActivation = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+	const state = getBoolean(args, 0);
+
+	mp.callPapyrusFunction('method', 'ObjectReference', 'BlockActivation', self, [state]);
+};
+
 const moveTo = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const target = getObject(args, 0);
@@ -173,10 +197,11 @@ export const placeObjectOnStatic = (mp: Mp, self: null, args: PapyrusValue[]): P
 		angle: [0, 0, 0],
 		worldOrCellDesc: mp.get(placeId, 'worldOrCellDesc'),
 	};
-	for (const key of Object.keys(targetPoint)) {
+
+	Object.keys(targetPoint).forEach((key) => {
 		const propName = key as CellItemProps;
 		mp.set(sRefId, propName, targetPoint[propName]);
-	}
+	});
 
 	throwOrInit(mp, sRefId);
 	return sRef;
@@ -199,10 +224,11 @@ const _placeAtMe = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): PapyrusO
 			angle: [0, 0, 0],
 			worldOrCellDesc: mp.get(selfId, 'worldOrCellDesc'),
 		};
-		for (const key of Object.keys(targetPoint)) {
+
+		Object.keys(targetPoint).forEach((key) => {
 			const propName = key as CellItemProps;
 			mp.set(sRefId, propName, targetPoint[propName]);
-		}
+		});
 
 		throwOrInit(mp, sRefId);
 	}
@@ -244,7 +270,7 @@ const getLinkedReferenceIdByKeywordId = (mp: Mp, self: null, args: PapyrusValue[
 	if (links) {
 		const dataView = new DataView(links.buffer);
 		for (let i = 0; i + 4 <= dataView.byteLength; i += 8) {
-			if (dataView.getUint32(i, true) == keywordId) {
+			if (dataView.getUint32(i, true) === keywordId) {
 				return dataView.getUint32(i + 4, true);
 			}
 		}
@@ -281,18 +307,17 @@ export const getDisplayName = (mp: Mp, self: PapyrusObject): string => {
 const setDisplayName = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const name = getString(args, 0);
-	const force = getBoolean(args, 1);
 
 	mp.set(selfId, 'displayName', name);
 };
 
-export const getWorldSpace = (mp: Mp, self: PapyrusObject) => {
+export const getWorldSpace = (mp: Mp, self: PapyrusObject): PapyrusObject | undefined => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const worldOrCellId = mp.getIdFromDesc(mp.get(selfId, 'worldOrCellDesc'));
 	return game.getForm(mp, null, [worldOrCellId]);
 };
 
-export const getParentCell = (mp: Mp, self: PapyrusObject) => {
+export const getParentCell = (mp: Mp, self: PapyrusObject): PapyrusObject | undefined => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const cellDesc = mp.get<string>(selfId, 'cellDesc');
 	if (!cellDesc) return;
@@ -335,7 +360,7 @@ export const getRespawnTimeById = (mp: Mp, selfNull: null, args: PapyrusValue[])
 				.map((x: PapyrusValue) => {
 					if (!x || typeof x !== 'string') return;
 					const xParse = x.split(':');
-					if (xParse.length != 2) return;
+					if (xParse.length !== 2) return;
 					return {
 						id: +xParse[0],
 						time: +xParse[1],
@@ -361,20 +386,20 @@ export const getRespawnTime = (mp: Mp, selfNull: null, args: PapyrusValue[]): nu
 	return getRespawnTimeById(mp, null, [selfId]);
 };
 
-export const addItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const addItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const item = getObject(args, 0);
 	const count = getNumber(args, 1);
 	const silent = getBoolean(args, 2);
 	mp.callPapyrusFunction('method', 'ObjectReference', 'AddItem', self, [item, count, silent]);
 };
-export const removeItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const removeItem = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const item = getObject(args, 0);
 	const count = getNumber(args, 1);
 	const silent = getBoolean(args, 2);
 	const other = args[3] ? getObject(args, 3) : null;
 	mp.callPapyrusFunction('method', 'ObjectReference', 'RemoveItem', self, [item, count, silent, other]);
 };
-export const disable = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const disable = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const abFadeOut = getBoolean(args, 0);
 	mp.callPapyrusFunction('method', 'ObjectReference', 'Disable', self, [abFadeOut]);
 };
@@ -385,8 +410,28 @@ export const getItemCount = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]):
 	return itemCount as number;
 };
 
+// export const disable = (mp: Mp, self: PapyrusObject) => {
+// 	const selfId = mp.getIdFromDesc(self.desc);
+// 	// mp.set(selfId, 'isDisabled', true);
+
+// 	const func = (ctx: Ctx, selfId: number) => {
+// 		ctx.sp.once('update', () => {
+// 			const form = ctx.sp.Game.getFormEx(selfId);
+// 			if (!form) return;
+// 			const ref = ctx.sp.ObjectReference.from(form);
+// 			if (!ref) return;
+// 			ref.disable(true).then(() => {
+// 				ref.setPosition(0, 0, 0);
+// 			});
+// 		});
+// 	};
+
+// 	evalClient(mp, 0xff000000, new FunctionInfo(func).getText({ selfId }));
+// };
+
 export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetScale', (self, args) => setScale(mp, self, args));
+	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetScale', (self) => getScale(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'RemoveAllItems', (self, args) =>
 		removeAllItems(mp, self, args)
 	);
@@ -404,6 +449,10 @@ export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'SetCurrentDestructionStage', (self, args) =>
 		setCurrentDestructionStage(mp, self, args)
 	);
+
+	// mp.registerPapyrusFunction('method', 'ObjectReference', 'BlockActivation', (self, args) =>
+	// 	blockActivation(mp, self, args)
+	// );
 
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetBaseObject', (self) => getBaseObject(mp, self));
 	mp.registerPapyrusFunction('global', 'ObjectReferenceEx', 'GetBaseObjectId', (self, args) =>
@@ -426,6 +475,7 @@ export const register = (mp: Mp): void => {
 	);
 
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetWorldSpace', (self) => getWorldSpace(mp, self));
+	// mp.registerPapyrusFunction('method', 'ObjectReference', 'Disable', (self) => disable(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetParentCell', (self) => getParentCell(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'IsInInterior', (self) => isInInterior(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetOpen', (self, args) => setOpen(mp, self, args));
@@ -438,4 +488,43 @@ export const register = (mp: Mp): void => {
 
 	storage.register(mp);
 	position.register(mp);
+
+	IObjectReference.SetScale = (self: PapyrusObject, args: PapyrusValue[]) => setScale(mp, self, args);
+	IObjectReference.GetScale = (self: PapyrusObject) => getScale(mp, self);
+	IObjectReference.RemoveAllItems = (self: PapyrusObject, args: PapyrusValue[]) => removeAllItems(mp, self, args);
+	IObjectReference.GetDistance = (self: PapyrusObject, args: PapyrusValue[]) => getDistance(mp, self, args);
+	IObjectReference.MoveTo = (self: PapyrusObject, args: PapyrusValue[]) => moveTo(mp, self, args);
+	IObjectReference.GetContainerForms = (self: PapyrusObject) => getContainerForms(mp, self);
+	IObjectReference.GetCurrentDestructionStage = (self: PapyrusObject) => getCurrentDestructionStage(mp, self);
+	IObjectReference.DamageObject = (self: PapyrusObject, args: PapyrusValue[]) => damageObject(mp, self, args);
+	IObjectReference.ClearDestruction = (self: PapyrusObject) => clearDestruction(mp, self);
+	IObjectReference.SetCurrentDestructionStage = (self: PapyrusObject, args: PapyrusValue[]) =>
+		_setCurrentDestructionStage(mp, self, args);
+	IObjectReference.BlockActivation = (self: PapyrusObject, args: PapyrusValue[]) => blockActivation(mp, self, args);
+	IObjectReference.GetBaseObject = (self: PapyrusObject) => getBaseObject(mp, self);
+	IObjectReference.PlaceAtMe = (self: PapyrusObject, args: PapyrusValue[]) => placeAtMeObj(mp, self, args);
+	IObjectReference.GetDisplayName = (self: PapyrusObject) => getDisplayName(mp, self);
+	IObjectReference.SetDisplayName = (self: PapyrusObject, args: PapyrusValue[]) => setDisplayName(mp, self, args);
+	IObjectReference.GetWorldSpace = (self: PapyrusObject) => getWorldSpace(mp, self);
+	IObjectReference.GetParentCell = (self: PapyrusObject) => getParentCell(mp, self);
+	IObjectReference.IsInInterior = (self: PapyrusObject) => isInInterior(mp, self);
+	IObjectReference.SetOpen = (self: PapyrusObject, args: PapyrusValue[]) => setOpen(mp, self, args);
+	IObjectReference.GetStorageValue = (self: PapyrusObject, args: PapyrusValue[]) =>
+		_getStorageValue(mp, self, args) as any;
+	IObjectReference.SetStorageValue = (self: PapyrusObject, args: PapyrusValue[]) => _setStorageValue(mp, self, args);
+	IObjectReference.SetPosition = (self: PapyrusObject, args: PapyrusValue[]) => setPosition(mp, self, args);
+	IObjectReference.GetPositionX = (self: PapyrusObject) => getPositionX(mp, self);
+	IObjectReference.GetPositionY = (self: PapyrusObject) => getPositionY(mp, self);
+	IObjectReference.GetPositionZ = (self: PapyrusObject) => getPositionZ(mp, self);
+	IObjectReference.SetAngle = (self: PapyrusObject, args: PapyrusValue[]) => setAngle(mp, self, args);
+	IObjectReference.GetAngleX = (self: PapyrusObject) => getAngleX(mp, self);
+	IObjectReference.GetAngleY = (self: PapyrusObject) => getAngleY(mp, self);
+	IObjectReference.GetAngleZ = (self: PapyrusObject) => getAngleZ(mp, self);
+	IObjectReference.AddItem = (self: PapyrusObject, args: PapyrusValue[]) => addItem(mp, self, args);
+	IObjectReference.RemoveItem = (self: PapyrusObject, args: PapyrusValue[]) => removeItem(mp, self, args);
+	IObjectReference.GetItemCount = (self: PapyrusObject, args: PapyrusValue[]) => getItemCount(mp, self, args);
+	IObjectReference.GetRespawnTime = (args: PapyrusValue[]) => getRespawnTime(mp, null, args);
+	IObjectReference.Disable = (self: PapyrusObject, args: PapyrusValue[]) => disable(mp, self, args);
+	IObjectReference.GetLinkedDoorId = (self: PapyrusObject) => getLinkedDoorId(mp, null, [self]);
+	IObjectReference.GetLinkedCellId = (self: PapyrusObject) => getLinkedCellId(mp, null, [self]);
 };

@@ -24,16 +24,15 @@ export const getPerkEffectData = (
 		}
 	});
 	return perkDataIndexies.map((index) => {
-		const i = index.start;
 		const fields = perkRecFields.slice(index.start, index.end + 1);
 		const header = fields[0].data;
 		if (header[0] === EffectSection.Complex) {
 			const effectType = uint8(fields[1].data.buffer, 0);
 			const functionType = uint8(fields[1].data.buffer, 1);
 			const CondTypeCount = fields.filter((x) => x.type === 'CTDA'); // uint8(fields[1].data.buffer, 2);
-			const prks = CondTypeCount.length > 0 ? 1 : 0;
+			// const prks = CondTypeCount.length > 0 ? 1 : 0;
 			let conditionResult = CondTypeCount.length === 0;
-			let conditionFunction = undefined;
+			let conditionFunction;
 			// TODO: могут возникнуть проблемы, может быть два PRKS между CTDA
 			if (CondTypeCount.length > 0) {
 				// Mod Attack Damage 0x23
@@ -61,4 +60,5 @@ export const getPerkEffectData = (
 	});
 };
 
+// eslint-disable-next-line
 export const register = (mp: Mp): void => {};

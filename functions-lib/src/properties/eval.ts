@@ -17,7 +17,7 @@ interface EvalCommand {
 const intervalDelay = 200;
 
 // TODO: Какие-то не понятки, я думаю будет eval у всех, но так не работает
-const execEvalCommand = (mp: Mp, current: EvalCommand, isVisibleByNeighbors: boolean) => {
+const execEvalCommand = (mp: Mp, current: EvalCommand) => {
 	// const prop = isVisibleByNeighbors ? 'evalOther' : 'eval';
 	const prop = 'eval';
 	const prev = mp.get<EvalValue>(current.id, prop);
@@ -32,7 +32,7 @@ const evalCommandList: EvalCommand[] = [];
 const shiftEvalCommand = (mp: Mp, isVisibleByNeighbors: boolean) => {
 	const current = evalCommandList.shift();
 	if (current) {
-		execEvalCommand(mp, current, isVisibleByNeighbors);
+		execEvalCommand(mp, current);
 		setTimeout(() => {
 			shiftEvalCommand(mp, isVisibleByNeighbors);
 		}, intervalDelay);
@@ -47,9 +47,9 @@ export const evalClient = (
 	f: string,
 	isVisibleByNeighbors: boolean = false,
 	immediately: boolean = false
-) => {
+): void => {
 	if (immediately) {
-		execEvalCommand(mp, { id, f }, isVisibleByNeighbors);
+		execEvalCommand(mp, { id, f });
 		return;
 	}
 	evalCommandList.push({ id, f });
@@ -58,7 +58,7 @@ export const evalClient = (
 
 	const current = evalCommandList.shift();
 	if (current) {
-		execEvalCommand(mp, current, isVisibleByNeighbors);
+		execEvalCommand(mp, current);
 		setTimeout(() => {
 			shiftEvalCommand(mp, isVisibleByNeighbors);
 		}, intervalDelay);

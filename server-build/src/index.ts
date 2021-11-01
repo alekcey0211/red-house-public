@@ -1,13 +1,15 @@
+/* eslint-disable no-constant-condition */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable import/order */
+import * as sourceMapSupport from 'source-map-support';
 import * as ui from './ui';
 
-import * as sourceMapSupport from 'source-map-support';
 sourceMapSupport.install();
 
 import * as scampNative from './scampNative';
 import * as chat from './chat';
 import { Settings } from './settings';
 import { System } from './systems/system';
-import { ClientVerify } from './systems/clientVerify';
 import { MasterClient } from './systems/masterClient';
 import { Spawn } from './systems/spawn';
 import { Login } from './systems/login';
@@ -28,13 +30,13 @@ const master = Settings.get().master || 'https://skymp.io';
 const gamemodeCache = new Map<string, string>();
 
 // https://stackoverflow.com/questions/37521893/determine-if-a-path-is-subdirectory-of-another-in-node-js
-const isChildOf = (child: string, parent: string) => {
-	child = path.resolve(child);
-	parent = path.resolve(parent);
-	if (child === parent) return false;
-	const parentTokens = parent.split('/').filter((i) => i.length);
-	return parentTokens.every((t, i) => child.split('/')[i] === t);
-};
+// const isChildOf = (child: string, parent: string) => {
+// 	child = path.resolve(child);
+// 	parent = path.resolve(parent);
+// 	if (child === parent) return false;
+// 	const parentTokens = parent.split('/').filter((i) => i.length);
+// 	return parentTokens.every((t, i) => child.split('/')[i] === t);
+// };
 
 const runGamemodeWithVm = (gamemodeContents: string, server: scampNative.ScampServer) => {
 	server.executeJavaScriptOnChakra(gamemodeContents);
@@ -42,7 +44,7 @@ const runGamemodeWithVm = (gamemodeContents: string, server: scampNative.ScampSe
 
 function requireUncached(module: string, clear: () => void, server: scampNative.ScampServer): void {
 	delete require.cache[require.resolve(module)];
-	let gamemodeContents = fs.readFileSync(require.resolve(module), 'utf8');
+	const gamemodeContents = fs.readFileSync(require.resolve(module), 'utf8');
 
 	// Reload gamemode.js only if there are real changes
 	const gamemodeContentsOld = gamemodeCache.get(module);
@@ -56,6 +58,7 @@ function requireUncached(module: string, clear: () => void, server: scampNative.
 			runGamemodeWithVm(gamemodeContents, server);
 			return;
 		} catch (e) {
+			// eslint-disable-next-line quotes
 			if (`${e}`.indexOf("'JsRun' returned error 0x30002") === -1) {
 				throw e;
 			} else {
@@ -75,12 +78,11 @@ systems.push(
 		master,
 		Settings.get().maxPlayers,
 		Settings.get().name,
-		Settings.get().ip,
+		Settings.get().ip!,
 		5000
 	),
-	new ClientVerify(log, './dist_front/skymp5-client.js', Settings.get().maxPlayers),
 	new Spawn(log),
-	new Login(log, Settings.get().maxPlayers, master, Settings.get().port, Settings.get().ip)
+	new Login(log, Settings.get().maxPlayers, master, Settings.get().port, Settings.get().ip!, Settings.get().localAuth)
 );
 
 const handleLibkeyJs = () => {
@@ -91,6 +93,7 @@ const handleLibkeyJs = () => {
 
 			const data = await new Promise<string>((resolve) =>
 				fs.readFile('data/_libkey.js', { encoding: 'utf-8' }, (err, data) => {
+					// eslint-disable-next-line no-unused-expressions
 					err ? resolve('') : resolve(data);
 				})
 			);
@@ -122,10 +125,14 @@ const main = async () => {
 		}
 	})();
 
-	for (const system of systems) {
-		if (system.initAsync) await system.initAsync(ctx);
+	systems.forEach(async (system) => {
+		if (system.initAsync) {
+			await system.initAsync(ctx);
+		}
+
 		log(`Initialized ${system.systemName}`);
-		if (system.updateAsync)
+
+		if (system.updateAsync) {
 			(async () => {
 				if (!system?.updateAsync) return;
 				while (1) {
@@ -137,45 +144,50 @@ const main = async () => {
 					}
 				}
 			})();
-	}
+		}
+	});
 
 	server.on('connect', (userId: number) => {
 		log('connect', userId);
-		for (const system of systems) {
+
+		systems.forEach((system) => {
 			try {
 				if (system.connect) system.connect(userId, ctx);
 			} catch (e: any) {
 				log(`Error in ${system.systemName}.connect: ${e}\n${e.stack}`);
 			}
-		}
+		});
 	});
 
 	server.on('disconnect', (userId: number) => {
 		log('disconnect', userId);
+
 		const formId = server.getUserActor(userId);
+
 		server.onUiEvent(formId, { type: 'server::msg:send', data: { action: 'disconnect' } });
-		for (const system of systems) {
+
+		systems.forEach((system) => {
 			try {
 				if (system.disconnect) system.disconnect(userId, ctx);
 			} catch (e: any) {
 				log(`Error in ${system.systemName}.disconnect: ${e}\n${e.stack}`);
 			}
-		}
+		});
 	});
 
 	server.on('customPacket', (userId: number, rawContent: string) => {
 		const content = JSON.parse(rawContent);
-
 		const type = `${content.customPacketType}`;
+
 		delete content.customPacketType;
 
-		for (const system of systems) {
+		systems.forEach((system) => {
 			try {
 				if (system.customPacket) system.customPacket(userId, type, content, ctx);
 			} catch (e: any) {
 				log(`Error in ${system.systemName}.customPacket: ${e}\n${e.stack}`);
 			}
-		}
+		});
 	});
 
 	chat.main(server);
@@ -245,7 +257,7 @@ const main = async () => {
 			}
 		};
 
-		const reloadGamemodeTimeout = function () {
+		const reloadGamemodeTimeout = () => {
 			const n = numReloads.n;
 			setTimeout(() => (n === numReloads.n ? reloadGamemode() : undefined), 1000);
 		};
@@ -254,7 +266,31 @@ const main = async () => {
 		watcher.on('addDir', reloadGamemodeTimeout);
 		watcher.on('change', reloadGamemodeTimeout);
 		watcher.on('unlink', reloadGamemodeTimeout);
-		watcher.on('error', function (error) {
+		watcher.on('error', (error) => {
+			console.error('Error happened in chokidar watch', error);
+		});
+
+		const isFirstWatchPlugins: any = {};
+		const moduleWatcher = chokidar.watch(path.join('data', 'modules'), {
+			ignored: /^\./,
+			persistent: true,
+			awaitWriteFinish: true,
+		});
+
+		const moduleWatcherHandle = (path: string) => {
+			if (!isFirstWatchPlugins[path]) {
+				isFirstWatchPlugins[path] = true;
+				return;
+			}
+
+			server.onUiEvent(0, { type: 'server::msg:send', data: { action: 'moduleHotReload', path } });
+		};
+
+		moduleWatcher.on('add', moduleWatcherHandle);
+		moduleWatcher.on('addDir', moduleWatcherHandle);
+		moduleWatcher.on('change', moduleWatcherHandle);
+		moduleWatcher.on('unlink', moduleWatcherHandle);
+		moduleWatcher.on('error', (error) => {
 			console.error('Error happened in chokidar watch', error);
 		});
 	}
@@ -263,7 +299,7 @@ const main = async () => {
 
 main().catch((e) => {
 	log(`Main function threw an error: ${e}`);
-	if (e['stack']) log(e['stack']);
+	if (e.stack) log(e.stack);
 	process.exit(-1);
 });
 

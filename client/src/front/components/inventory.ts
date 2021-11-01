@@ -22,19 +22,10 @@ import {
 } from 'skyrimPlatform';
 
 import * as structures from '../../lib/structures/inventory';
-import { printConsoleServer } from '../console';
+
 export type Inventory = structures.Inventory;
 export type Entry = structures.Entry;
 export type BasicEntry = structures.BasicEntry;
-
-// 'loxsword (Legendary)' => 'loxsword'
-const getRealName = (s?: string): string => {
-	if (!s) return s as string;
-
-	const arr = s.split(' ');
-	if (arr.length && arr[arr.length - 1].match(/^\(.*\)$/)) arr.pop();
-	return arr.join(' ');
-};
 
 // 'aaaaaaaaaaaaaaaa' => 'aaa...'
 const cropName = (s?: string): string => {
@@ -50,33 +41,6 @@ const cropName = (s?: string): string => {
 		: s;
 };
 
-const checkIfNameIsGeneratedByGame = (aStr: string, bStr: string, formName: string) => {
-	if (!aStr.length && bStr.startsWith(formName)) {
-		const bEnding = bStr.substr(formName.length);
-		if (bEnding.match(/^\s\(.*\)$/)) {
-			return true;
-		}
-	}
-	return false;
-};
-
-const namesEqual = (a: Entry, b: Entry): boolean => {
-	const aStr = a.name || '';
-	const bStr = b.name || '';
-	if (cropName(getRealName(aStr)) === cropName(getRealName(bStr))) return true;
-
-	if (a.baseId === b.baseId) {
-		const form = Game.getFormEx(a.baseId);
-		if (form) {
-			const formName = form.getName();
-			if (checkIfNameIsGeneratedByGame(aStr, bStr, formName) || checkIfNameIsGeneratedByGame(bStr, aStr, formName))
-				return true;
-		}
-	}
-
-	return false;
-};
-
 const extrasEqual = (a: Entry, b: Entry, ignoreWorn = false) => {
 	return (
 		a.health === b.health &&
@@ -84,7 +48,7 @@ const extrasEqual = (a: Entry, b: Entry, ignoreWorn = false) => {
 		a.maxCharge === b.maxCharge &&
 		!!a.removeEnchantmentOnUnequip === !!b.removeEnchantmentOnUnequip &&
 		a.chargePercent === b.chargePercent &&
-		//namesEqual(a, b) &&
+		// namesEqual(a, b) &&
 		a.soul === b.soul &&
 		a.poisonId === b.poisonId &&
 		a.poisonCount === b.poisonCount &&
@@ -189,9 +153,7 @@ const getExtraContainerChangesAsInventory = (refr: ObjectReference): Inventory =
 };
 
 const getBaseContainerAsInventory = (refr: ObjectReference): Inventory => {
-	return {
-		entries: getContainer((refr.getBaseObject() as ActorBase).getFormID()),
-	};
+	return { entries: getContainer((refr.getBaseObject() as ActorBase).getFormID()) };
 };
 
 const sumInventories = (lhs: Inventory, rhs: Inventory): Inventory => {
@@ -239,11 +201,11 @@ export const getInventory = (refr: ObjectReference): Inventory => {
 };
 
 const basesReset = (): Set<number> => {
-	if (storage['basesResetExists'] !== true) {
-		storage['basesResetExists'] = true;
-		storage['basesReset'] = new Set<number>();
+	if (storage.basesResetExists !== true) {
+		storage.basesResetExists = true;
+		storage.basesReset = new Set<number>();
 	}
-	return storage['basesReset'] as Set<number>;
+	return storage.basesReset as Set<number>;
 };
 
 const resetBase = (refr: ObjectReference): void => {
@@ -265,7 +227,6 @@ export const applyInventory = (
 ): boolean => {
 	resetBase(refr);
 	const diff = getDiff(newInventory, getInventory(refr), ignoreWorn).entries;
-	// printConsoleServer('diff', JSON.stringify(diff));
 
 	let res = true;
 
@@ -292,9 +253,6 @@ export const applyInventory = (
 			if (worn && e.count < 0) absCount = 0;
 		}
 
-		// if (e.baseId.toString(16).startsWith('2'))
-		// 	e.baseId = +('0x' + e.baseId.toString(16).replace('2', '4'));
-
 		if (e.count > 1 && Ammo.from(Game.getFormEx(e.baseId))) {
 			absCount = 1;
 			oneStepCount = e.count;
@@ -312,9 +270,8 @@ export const applyInventory = (
 
 			const f = Game.getFormEx(e.baseId);
 
-			if (!f) {
-				printConsoleServer(`Bad form ID ${e.baseId.toString(16)}`);
-			} else
+			if (!f) printConsole(`Bad form ID ${e.baseId.toString(16)}`);
+			else {
 				TESModPlatform.addItemEx(
 					refr,
 					f,
@@ -329,6 +286,7 @@ export const applyInventory = (
 					e.poisonId ? Potion.from(Game.getFormEx(e.poisonId)) : null,
 					e.poisonCount ? e.poisonCount : 0
 				);
+			}
 		}
 
 		if (queueNiNodeUpdateNeeded) {

@@ -1,4 +1,6 @@
+/* eslint-disable no-restricted-syntax */
 import { on, once, printConsole, storage, settings, Game, Ui, Utility, Actor } from 'skyrimPlatform';
+import * as sp from 'skyrimPlatform';
 import { WorldView, getViewFromStorage, localIdToRemoteId, remoteIdToLocalId } from './view';
 import { getMovement } from './components/movement';
 import { getLook } from './components/look';
@@ -11,12 +13,12 @@ import { ModelSource } from './modelSource';
 import { RemoteServer, getPcInventory } from './remoteServer';
 import { SendTarget } from './sendTarget';
 import * as networking from './networking';
-import * as sp from 'skyrimPlatform';
 import * as loadGameManager from './loadGameManager';
 import * as deathSystem from './deathSystem';
 import { setUpConsoleCommands } from './console';
 import { nextHostAttempt } from './hostAttempts';
 import * as updateOwner from './updateOwner';
+import { ActorValues, getActorValues } from './components/actorvalues';
 
 interface AnyMessage {
 	type?: string;
@@ -26,25 +28,25 @@ const handleMessage = (msgAny: AnyMessage, handler_: MsgHandler) => {
 	const msgType: string = msgAny.type || (MsgType as any)[msgAny.t as any];
 	const handler = handler_ as unknown as Record<string, (m: AnyMessage) => void>;
 	const f = handler[msgType];
-	/*if (msgType !== "UpdateMovement") {
+	/* if (msgType !== "UpdateMovement") {
     printConsole();
     for (const key in msgAny) {
       const v = (msgAny as Record<string, any>)[key];
       printConsole(`${key}=${JSON.stringify(v)}`);
     }
-  }*/
+  } */
 
 	if (msgType === 'hostStart') {
 		const msg = msgAny as HostStartMessage;
 		const target = msg.target;
 		printConsole('hostStart', target.toString(16));
 
-		let hosted = storage['hosted'];
+		let hosted = storage.hosted;
 		if (typeof hosted !== typeof []) {
 			// if you try to switch to Set checkout .concat usage.
 			// concat compiles but doesn't work as expected
 			hosted = new Array<number>();
-			storage['hosted'] = hosted;
+			storage.hosted = hosted;
 		}
 
 		if (!(hosted as Array<unknown>).includes(target)) {
@@ -57,16 +59,16 @@ const handleMessage = (msgAny: AnyMessage, handler_: MsgHandler) => {
 		const target = msg.target;
 		printConsole('hostStop', target.toString(16));
 
-		const hosted = storage['hosted'] as Array<number>;
+		const hosted = storage.hosted as Array<number>;
 		if (typeof hosted === typeof []) {
-			storage['hosted'] = hosted.filter((x) => x !== target);
+			storage.hosted = hosted.filter((x) => x !== target);
 		}
 	}
 
 	if (f && typeof f === 'function') handler[msgType](msgAny);
 };
 
-for (let i = 0; i < 100; ++i) printConsole();
+// for (let i = 0; i < 100; ++i) printConsole();
 printConsole('Hello Multiplayer');
 printConsole('settings:', settings['skymp5-client']);
 
@@ -142,7 +144,6 @@ export class SkympClient {
 
 			target = this.localIdToRemoteId(target);
 			if (!target) return printConsole('localIdToRemoteId returned 0 (target)');
-
 			caster = this.localIdToRemoteId(caster);
 			if (!caster) return printConsole('localIdToRemoteId returned 0 (caster)');
 
@@ -163,98 +164,86 @@ export class SkympClient {
 		type FurnitureId = number;
 		const furnitureStreak = new Map<FurnitureId, Inventory>();
 
-		// sync craft items
 		on('containerChanged', (e) => {
-			const oldContainerId = e.oldContainer?.getFormID() ?? 0;
-			const newContainerId = e.newContainer?.getFormID() ?? 0;
-			const baseObjId = e.baseObj?.getFormID() ?? 0;
-
+			const oldContainerId = e.oldContainer ? e.oldContainer.getFormID() : 0;
+			const newContainerId = e.newContainer ? e.newContainer.getFormID() : 0;
+			const baseObjId = e.baseObj ? e.baseObj.getFormID() : 0;
 			if (oldContainerId !== 0x14 && newContainerId !== 0x14) return;
 
-			const player = Game.getPlayer();
-			const furnitureRef = player.getFurnitureReference();
+			const furnitureRef = (Game.getPlayer() as Actor).getFurnitureReference();
 			if (!furnitureRef) return;
-
-			const furnitureId = furnitureRef.getFormID();
+			const furrnitureId = furnitureRef.getFormID();
 
 			if (oldContainerId === 0x14 && newContainerId === 0) {
-				let craftInputObjects = furnitureStreak.get(furnitureId);
-
-				if (!craftInputObjects) craftInputObjects = { entries: [] };
-
+				let craftInputObjects = furnitureStreak.get(furrnitureId);
+				if (!craftInputObjects) {
+					craftInputObjects = { entries: [] };
+				}
 				craftInputObjects.entries.push({
 					baseId: baseObjId,
 					count: e.numItems,
 				});
-
-				furnitureStreak.set(furnitureId, craftInputObjects);
-
+				furnitureStreak.set(furrnitureId, craftInputObjects);
 				printConsole(`Adding ${baseObjId.toString(16)} (${e.numItems}) to recipe`);
 			} else if (oldContainerId === 0 && newContainerId === 0x14) {
 				printConsole('Flushing recipe');
+				const craftInputObjects = furnitureStreak.get(furrnitureId);
+				if (craftInputObjects && craftInputObjects.entries.length) {
+					furnitureStreak.delete(furrnitureId);
+					const workbench = this.localIdToRemoteId(furrnitureId);
+					if (!workbench) return printConsole('localIdToRemoteId returned 0');
 
-				const craftInputObjects = furnitureStreak.get(furnitureId);
-				if (!craftInputObjects?.entries.length) return;
-
-				furnitureStreak.delete(furnitureId);
-
-				const workbench = this.localIdToRemoteId(furnitureId);
-				if (!workbench) return printConsole('localIdToRemoteId returned 0');
-
-				this.sendTarget.send(
-					{
-						t: MsgType.CraftItem,
-						data: { workbench, craftInputObjects, resultObjectId: baseObjId },
-					},
-					true
-				);
-
-				printConsole('sendCraft', {
-					workbench,
-					craftInputObjects,
-					resultObjectId: baseObjId,
-				});
+					this.sendTarget.send(
+						{
+							t: MsgType.CraftItem,
+							data: { workbench, craftInputObjects, resultObjectId: baseObjId },
+						},
+						true
+					);
+					printConsole('sendCraft', {
+						workbench,
+						craftInputObjects,
+						resultObjectId: baseObjId,
+					});
+				}
 			}
 		});
 
-		// ??? sync what
 		on('containerChanged', (e) => {
-			if (!e.oldContainer || !e.newContainer) return;
-			if (e.oldContainer.getFormID() !== 0x14 && e.newContainer.getFormID() !== 0x14) return;
+			if (e.oldContainer && e.newContainer) {
+				if (e.oldContainer.getFormID() === 0x14 || e.newContainer.getFormID() === 0x14) {
+					printConsole(1);
+					if (!lastInv) lastInv = getPcInventory();
+					if (lastInv) {
+						printConsole(2);
+						const newInv = getInventory(Game.getPlayer() as Actor);
 
-			if (!lastInv) lastInv = getPcInventory();
-			if (!lastInv) return;
+						// It seems that 'ignoreWorn = false' fixes this:
+						// https://github.com/skyrim-multiplayer/issue-tracker/issues/43
+						// For some reason excess diff is produced when 'ignoreWorn = true'
+						// I thought that it would be vice versa but that's how it works
+						const ignoreWorn = false;
+						const diff = getDiff(lastInv, newInv, ignoreWorn);
 
-			const player = Game.getPlayer();
-			const newInv = getInventory(player);
-
-			// It seems that 'ignoreWorn = false' fixes this:
-			// https://github.com/skyrim-multiplayer/issue-tracker/issues/43
-			// For some reason excess diff is produced when 'ignoreWorn = true'
-			// I thought that it would be vice versa but that's how it works
-			const ignoreWorn = false;
-			const diff = getDiff(lastInv, newInv, ignoreWorn);
-
-			printConsole('diff:');
-			for (let i = 0; i < diff.entries.length; ++i) {
-				printConsole(`[${i}] ${JSON.stringify(diff.entries[i])}`);
+						printConsole('diff:');
+						for (let i = 0; i < diff.entries.length; ++i) {
+							printConsole(`[${i}] ${JSON.stringify(diff.entries[i])}`);
+						}
+						const msgs = diff.entries.map((entry) => {
+							if (entry.count !== 0) {
+								const msg = JSON.parse(JSON.stringify(entry));
+								delete msg.name; // Extra name works too strange
+								msg.t = entry.count > 0 ? MsgType.PutItem : MsgType.TakeItem;
+								msg.count = Math.abs(msg.count);
+								msg.target =
+									e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
+								return msg;
+							}
+						});
+						msgs.forEach((msg) => this.sendTarget.send(msg, true));
+					}
+				}
 			}
-
-			// TODO: check this code
-			// maybe need return msg in map function
-			// or add array.filter(entry => entry.count === 0)
-			const msgs = diff.entries.map((entry) => {
-				if (entry.count === 0) return;
-
-				const msg = JSON.parse(JSON.stringify(entry));
-				delete msg['name']; // Extra name works too strange
-				msg['t'] = entry.count > 0 ? MsgType.PutItem : MsgType.TakeItem;
-				msg['count'] = Math.abs(msg['count']);
-				msg['target'] = e.oldContainer.getFormID() === 0x14 ? e.newContainer.getFormID() : e.oldContainer.getFormID();
-				return msg;
-			});
-
-			msgs.forEach((msg) => this.sendTarget.send(msg, true));
 		});
 
 		const playerFormId = 0x14;
@@ -265,18 +254,18 @@ export class SkympClient {
 				this.sendTarget.send({ t: MsgType.OnEquip, baseId: e.baseObj.getFormID() }, false);
 			}
 		});
-
 		on('unequip', (e) => {
 			if (!e.actor || !e.baseObj) return;
 			if (e.actor.getFormID() === playerFormId) {
 				this.equipmentChanged = true;
 			}
 		});
-
 		on('loadGame', () => {
 			// Currently only armor is equipped after relogging (see remoteServer.ts)
 			// This hack forces sending /equipment without weapons/ back to the server
-			Utility.wait(3).then(() => (this.equipmentChanged = true));
+			Utility.wait(3).then(() => {
+				this.equipmentChanged = true;
+			});
 		});
 
 		loadGameManager.addLoadGameListener((e: loadGameManager.GameLoadEvent) => {
@@ -289,6 +278,12 @@ export class SkympClient {
 		});
 
 		on('update', () => deathSystem.update());
+		once('update', () => {
+			const player = Game.getPlayer();
+			if (player) {
+				deathSystem.makeActorImmortal(player);
+			}
+		});
 	}
 
 	// May return null
@@ -335,18 +330,16 @@ export class SkympClient {
 		if (!lastAnimationSent || anim.numChanges !== lastAnimationSent.numChanges) {
 			if (anim.animEventName !== '') {
 				this.lastAnimationSent.set(refrIdStr, anim);
+				this.updateActorValuesAfterAnimation(anim.animEventName);
 				this.sendTarget.send({ t: MsgType.UpdateAnimation, data: anim, _refrId }, false);
 				if (
 					(storage as Record<string, any>)._api_onAnimationEvent &&
 					(storage as Record<string, any>)._api_onAnimationEvent.callback
 				) {
 					try {
-						(storage as Record<string, any>)._api_onAnimationEvent.callback(
-							_refrId ? _refrId : 0x14,
-							anim.animEventName
-						);
+						(storage as Record<string, any>)._api_onAnimationEvent.callback(_refrId || 0x14, anim.animEventName);
 					} catch (e) {
-						printConsole("'_api_onAnimationEvent' -", e);
+						printConsole('"_api_onAnimationEvent" -', e);
 					}
 				}
 			}
@@ -356,13 +349,10 @@ export class SkympClient {
 	private sendLook(_refrId?: number) {
 		if (_refrId) return;
 		const shown = Ui.isMenuOpen('RaceSex Menu');
-		if (shown != this.isRaceSexMenuShown) {
+		if (shown !== this.isRaceSexMenuShown) {
 			this.isRaceSexMenuShown = shown;
 			if (!shown) {
 				printConsole('Exited from race menu');
-
-				const onCloseRaceMenu: { callback?: () => void } = storage._api_onCloseRaceMenu;
-				if (onCloseRaceMenu?.callback) onCloseRaceMenu.callback();
 
 				const look = getLook(Game.getPlayer() as Actor);
 				this.sendTarget.send({ t: MsgType.UpdateLook, data: look, _refrId }, true);
@@ -383,6 +373,28 @@ export class SkympClient {
 		}
 	}
 
+	private sendActorValuePercentage(_refrId?: number) {
+		const owner = this.getInputOwner(_refrId);
+		if (!owner) return;
+
+		const av = getActorValues(Game.getPlayer() as Actor);
+		const currentTime = Date.now();
+		if (currentTime - this.prevActorValuesUpdateTime < 1000 && this.actorValuesNeedUpdate === false) {
+			return;
+		}
+		if (
+			this.prevValues.health !== av.health ||
+			this.prevValues.stamina !== av.stamina ||
+			this.prevValues.magicka !== av.magicka ||
+			this.actorValuesNeedUpdate === true
+		) {
+			this.sendTarget.send({ t: MsgType.ChangeValues, data: av, _refrId }, true);
+			this.actorValuesNeedUpdate = false;
+			this.prevValues = av;
+			this.prevActorValuesUpdateTime = currentTime;
+		}
+	}
+
 	private sendHostAttempts() {
 		const remoteId = nextHostAttempt();
 		if (!remoteId) return;
@@ -391,14 +403,15 @@ export class SkympClient {
 	}
 
 	private sendInputs() {
-		const hosted = typeof storage['hosted'] === typeof [] ? storage['hosted'] : [];
+		const hosted = typeof storage.hosted === typeof [] ? storage.hosted : [];
 		const targets = [undefined].concat(hosted as any);
-		//printConsole({ targets });
+		// printConsole({ targets });
 		targets.forEach((target) => {
 			this.sendMovement(target);
 			this.sendAnimation(target);
 			this.sendLook(target);
 			this.sendEquipment(target);
+			this.sendActorValuePercentage(target);
 		});
 		this.sendHostAttempts();
 	}
@@ -432,7 +445,7 @@ export class SkympClient {
 		const prevView: WorldView = storage.view as WorldView;
 		const view = new WorldView();
 		once('update', () => {
-			if (prevView?.destroy) {
+			if (prevView && prevView.destroy) {
 				prevView.destroy();
 				printConsole('Previous View destroyed');
 			}
@@ -455,6 +468,12 @@ export class SkympClient {
 		return remoteIdToLocalId(remoteFormId);
 	}
 
+	private updateActorValuesAfterAnimation(animName: string) {
+		if (animName === 'JumpLand' || animName === 'JumpLandDirectional' || animName === 'DeathAnim') {
+			this.actorValuesNeedUpdate = true;
+		}
+	}
+
 	private playerAnimSource = new Map<string, AnimationSource>();
 	private lastSendMovementMoment = new Map<string, number>();
 	private lastAnimationSent = new Map<string, Animation>();
@@ -465,6 +484,9 @@ export class SkympClient {
 	private singlePlayer = false;
 	private equipmentChanged = false;
 	private numEquipmentChanges = 0;
+	private prevValues: ActorValues = { health: 0, stamina: 0, magicka: 0 };
+	private prevActorValuesUpdateTime = 0;
+	private actorValuesNeedUpdate = false;
 }
 
 once('update', () => {

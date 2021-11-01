@@ -1,11 +1,13 @@
+/* eslint-disable no-restricted-properties */
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { getNumber, getObject } from '../../utils/papyrusArgs';
 
-export const setPosition = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const setPosition = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const [x, y, z] = [getNumber(args, 0), getNumber(args, 1), getNumber(args, 2)];
 	mp.set(selfId, 'pos', [x, y, z]);
 };
+
 export const getPosition = (mp: Mp, self: PapyrusObject): [number, number, number] =>
 	mp.get<[number, number, number]>(mp.getIdFromDesc(self.desc), 'pos') ?? [0, 0, 0];
 export const getPositionX = (mp: Mp, self: PapyrusObject): number => getPosition(mp, self)[0];
@@ -16,7 +18,7 @@ export const getPositionZ = (mp: Mp, self: PapyrusObject): number => getPosition
 export const getEspPosition = (mp: Mp, placeId: number): [number, number, number] => {
 	const espmRecord = mp.lookupEspmRecordById(placeId);
 	const data = espmRecord.record?.fields.find((x) => x.type === 'DATA')?.data;
-	if (data!) {
+	if (data) {
 		const dataView = new DataView(data.buffer);
 		const posX: number = dataView.getFloat32(4, true);
 		const posY: number = dataView.getFloat32(8, true);
@@ -26,7 +28,7 @@ export const getEspPosition = (mp: Mp, placeId: number): [number, number, number
 	return [0, 0, 0];
 };
 
-export const setAngle = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const setAngle = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	const [x, y, z] = [getNumber(args, 0), getNumber(args, 1), getNumber(args, 2)];
 	mp.set(selfId, 'angle', [x, y, z]);
@@ -37,7 +39,7 @@ export const getAngleX = (mp: Mp, self: PapyrusObject): number => getAngle(mp, s
 export const getAngleY = (mp: Mp, self: PapyrusObject): number => getAngle(mp, self)[1];
 export const getAngleZ = (mp: Mp, self: PapyrusObject): number => getAngle(mp, self)[2];
 
-export const getDistance = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+export const getDistance = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): number => {
 	const target = getObject(args, 0);
 	const selfPosition = getPosition(mp, self);
 	const targetCoord = getPosition(mp, target);
@@ -51,7 +53,7 @@ export const getDistance = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) =
 
 // Если это сработает, то это реально странно
 // По-любому нужна будет переделка, чтобы было более читаемо
-export const teleportToLinkedDoorMarker = (mp: Mp, self: null, args: PapyrusValue[]) => {
+export const teleportToLinkedDoorMarker = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 	const objectToTeleportId = mp.getIdFromDesc(getObject(args, 1).desc);
 	const door = getObject(args, 0);
 	const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(door.desc));
@@ -81,31 +83,35 @@ export const teleportToLinkedDoorMarker = (mp: Mp, self: null, args: PapyrusValu
 
 //
 export const getLinkedDoorId = (mp: Mp, self: null, args: PapyrusValue[]): number => {
-	const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(getObject(args, 0).desc));
+	const target = getObject(args, 0);
+	const targetId = mp.getIdFromDesc(target.desc);
+	const espmRecord = mp.lookupEspmRecordById(targetId);
 	const xtel = espmRecord.record?.fields.find((x) => x.type === 'XTEL')?.data;
-	if (xtel) {
-		const dataView = new DataView(xtel.buffer);
-		const linkedDoorId = dataView.getUint32(0, true);
 
-		return linkedDoorId;
-	}
-	return 0;
+	if (!xtel) return 0;
+
+	const dataView = new DataView(xtel.buffer);
+	const linkedDoorId = dataView.getUint32(0, true);
+
+	return linkedDoorId;
 };
 
 export const getLinkedCellId = (mp: Mp, self: null, args: PapyrusValue[]): number => {
-	const espmRecord = mp.lookupEspmRecordById(mp.getIdFromDesc(getObject(args, 0).desc));
+	const target = getObject(args, 0);
+	const targetId = mp.getIdFromDesc(target.desc);
+	const espmRecord = mp.lookupEspmRecordById(targetId);
 	const xtel = espmRecord.record?.fields.find((x) => x.type === 'XTEL')?.data;
-	if (xtel) {
-		const dataView = new DataView(xtel.buffer);
-		const linkedDoorId = dataView.getUint32(0, true);
-		const linkedCellId = mp.getIdFromDesc(mp.get(linkedDoorId, 'worldOrCellDesc'));
 
-		return linkedCellId;
-	}
-	return 0;
+	if (!xtel) return 0;
+
+	const dataView = new DataView(xtel.buffer);
+	const linkedDoorId = dataView.getUint32(0, true);
+	const linkedCellId = mp.getIdFromDesc(mp.get(linkedDoorId, 'worldOrCellDesc'));
+
+	return linkedCellId;
 };
 
-export const register = (mp: Mp) => {
+export const register = (mp: Mp): void => {
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'SetPosition', (self, args) => setPosition(mp, self, args));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionX', (self) => getPositionX(mp, self));
 	mp.registerPapyrusFunction('method', 'ObjectReference', 'GetPositionY', (self) => getPositionY(mp, self));

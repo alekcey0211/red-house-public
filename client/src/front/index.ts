@@ -1,8 +1,8 @@
+import { Game, Utility, on, once, GlobalVariable, Weather, Debug, ObjectReference } from 'skyrimPlatform';
 import { SkympClient } from './skympClient';
 import { blockConsole } from './console';
 import * as browser from './browser';
 import * as loadGameManager from './loadGameManager';
-import { Game, Utility, on, once, GlobalVariable, Weather } from 'skyrimPlatform';
 import { verifyVersion } from './version';
 import { updateWc } from './worldCleaner';
 
@@ -64,31 +64,52 @@ on('update', () => {
 	timeScale.setValue(1);
 });
 
-// let riftenUnlocked = false;
-// on("update", () => {
-//   if (riftenUnlocked) return;
-//   const refr = ObjectReference.from(Game.getFormEx(0x42284));
-//   if (!refr) return;
-//   refr.lock(false, false);
-//   riftenUnlocked = true;
-// });
+once('update', () => {
+	const notify = (msg: string) => {
+		const countRegex = /(\d+)/;
+		const countRemoveRegex = /[(].+[)]$/gm;
+		const typeRemoveRegex = /^[+-]\s/gm;
+		const getType = (msg: string) => {
+			if (msg.startsWith('+')) return 'additem';
+			if (msg.startsWith('-')) return 'deleteitem';
+			return 'default';
+		};
+		const type = getType(msg);
+		const match = msg.match(countRegex) ?? [];
+		const count = +match[0];
+		const message = msg.replace(countRemoveRegex, '').replace(typeRemoveRegex, '');
 
-// const n = 10;
-// let k = 0;
-// let zeroKMoment = 0;
-// let lastFps = 0;
-// on("update", () => {
-//   ++k;
-//   if (k == n) {
-//     k = 0;
-//     if (zeroKMoment) {
-//       const timePassed = (Date.now() - zeroKMoment) * 0.001;
-//       const fps = Math.round(n / timePassed);
-//       if (lastFps != fps) {
-//         lastFps = fps;
-//         //printConsole(`Current FPS is ${fps}`);
-//       }
-//     }
-//     zeroKMoment = Date.now();
-//   }
-// });
+		const data = { message, type, count };
+		browser.dispatch('INFOBAR_ADD_MESSAGE', data);
+	};
+	Debug.notification = notify;
+});
+
+let riftenUnlocked = false;
+on('update', () => {
+	if (riftenUnlocked) return;
+	const refr = ObjectReference.from(Game.getFormEx(0x42284));
+	if (refr) return;
+	refr.lock(false, false);
+	riftenUnlocked = true;
+});
+
+const n = 10;
+let k = 0;
+let zeroKMoment = 0;
+let lastFps = 0;
+on('update', () => {
+	++k;
+	if (k === n) {
+		k = 0;
+		if (zeroKMoment) {
+			const timePassed = (Date.now() - zeroKMoment) * 0.001;
+			const fps = Math.round(n / timePassed);
+			if (lastFps !== fps) {
+				lastFps = fps;
+				// printConsole(`Current FPS is ${fps}`);
+			}
+		}
+		zeroKMoment = Date.now();
+	}
+});

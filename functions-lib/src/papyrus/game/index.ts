@@ -1,3 +1,4 @@
+import { IGame } from '../../..';
 import { evalClient } from '../../properties/eval';
 import { Ctx } from '../../types/ctx';
 import { Mp, PapyrusValue, PapyrusObject } from '../../types/mp';
@@ -14,18 +15,17 @@ export const getForm = (mp: Mp, self: null, args: PapyrusValue[]): PapyrusObject
 				desc: mp.getDescFromId(formId),
 				type: 'form',
 			};
-		} else {
-			const espm = mp.lookupEspmRecordById(formId);
-			if (!espm.record?.type) {
-				console.log(`ESPM Record by id ${formId.toString(16)} not found`);
-				return;
-			}
-			const obj: PapyrusObject = {
-				desc: mp.getDescFromId(formId),
-				type: ['REFR', 'ACHR'].includes(espm.record?.type) ? 'form' : 'espm',
-			};
-			return obj;
 		}
+		const espm = mp.lookupEspmRecordById(formId);
+		if (!espm.record?.type) {
+			console.log(`ESPM Record by id ${formId.toString(16)} not found`);
+			return;
+		}
+		const obj: PapyrusObject = {
+			desc: mp.getDescFromId(formId),
+			type: ['REFR', 'ACHR'].includes(espm.record?.type) ? 'form' : 'espm',
+		};
+		return obj;
 	} catch (err) {
 		const regex = /Form with id.+doesn't exist/gm;
 		if (regex.exec(err as string) !== null) {
@@ -175,4 +175,13 @@ export const register = (mp: Mp, serverOptionProvider: ServerOptionProvider): vo
 	mp.registerPapyrusFunction('global', 'GameEx', 'GetServerOptionsBool', (self, args) =>
 		serverOptionProvider.getServerOptionsValue(args)
 	);
+
+	IGame.GetForm = (args: PapyrusValue[]) => getForm(mp, null, args);
+	IGame.GetFormFromFile = (args: PapyrusValue[]) => getFormFromFile(mp, null, args);
+	IGame.ForceThirdPerson = (args: PapyrusValue[]) => forceThirdPerson(mp, null, args);
+	IGame.DisablePlayerControls = (args: PapyrusValue[]) => disablePlayerControls(mp, null, args);
+	IGame.EnablePlayerControls = (args: PapyrusValue[]) => enablePlayerControls(mp, null, args);
+	IGame.GetCurrentCrosshairRef = (args: PapyrusValue[]) => getCurrentCrosshairRef(mp, null, args);
+	IGame.GetServerOptions = () => serverOptionProvider.getServerOptions();
+	IGame.GetServerOptionsValue = (args: PapyrusValue[]) => serverOptionProvider.getServerOptionsValue(args);
 };

@@ -1,6 +1,8 @@
-## Description
+# Description
 
 Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
+
+You can build Skyrim Platform and C++ Server from RH brach of skymp submodule
 
 ## Launch server
 
@@ -17,6 +19,8 @@ to start your server use `npm run server:start` in root folder in repo, or `npm 
 See documentation about server-settings [skymp5-docs](https://github.com/skyrim-multiplayer/skymp/tree/main/docs)
 
 But our server has a couple of its own settings [link](docs/server-configuration.md)
+
+If you need a ready to run server-settings you can use [example](server/server-settings-example.json)
 
 ## Server options
 
@@ -52,6 +56,24 @@ $ npm run server:start
 $ npm run functions:serve
 ```
 
+## Running "hot reload" for modules compilation
+
+```bash
+$ npm run modules:watch
+```
+
+## Running modules installation
+
+```bash
+$ npm run modules:install
+```
+
+## Running modules compilation
+
+```bash
+$ npm run modules:build
+```
+
 ## Running the papyrus script compilation
 
 ```bash
@@ -79,3 +101,5 @@ npm run front:build
 ```
 
 All commands see in package.json
+
+Project based on [skymp](https://github.com/skyrim-multiplayer/skymp)
