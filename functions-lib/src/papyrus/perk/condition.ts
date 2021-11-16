@@ -44,8 +44,7 @@ export const conditionResult = (mp: Mp, cond: ArrayBufferLike, subjectId: number
 			const funcResult = hasKeywordEx(mp, null, [subjectId, param1]);
 			const condResult = !!value === funcResult;
 			return {
-				// eslint-disable-next-line no-bitwise
-				flag: flags & ConditionFlag.OR ? ConditionFlag.OR : ConditionFlag.AND,
+				flag: flags && ConditionFlag.OR ? ConditionFlag.OR : ConditionFlag.AND,
 				result: condResult,
 			};
 		}

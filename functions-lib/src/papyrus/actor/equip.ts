@@ -9,10 +9,10 @@ import { getForm } from '../game';
 import { getBaseDamageById, getLocationById, getWeaponTypeById } from '../weapon';
 import { WeaponType } from '../weapon/type';
 
-interface InventoryEq {
+export interface InventoryEq {
 	entries: InventoryItemEq[];
 }
-interface InventoryItemEq {
+export interface InventoryItemEq {
 	baseId: number;
 	count: number;
 	worn: boolean;
@@ -24,12 +24,12 @@ interface InventoryItemEq {
 	weaponType?: WeaponType;
 	baseArmor?: number;
 }
-interface Equipment {
+export interface Equipment {
 	inv: InventoryEq;
 	numChanges: number;
 }
 
-interface GetEquipmentOption {
+export interface GetEquipmentOption {
 	mapWEAP?: boolean;
 	mapARMO?: boolean;
 }
@@ -217,12 +217,10 @@ export const unequipItemSlot = (mp: Mp, self: PapyrusObject, args: PapyrusValue[
 	evalClient(mp, selfId, new FunctionInfo(func).getText({ slotId }));
 };
 
-export const getEquippedItemType = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
-	// eslint-disable-next-line
-	const selfId = mp.getIdFromDesc(self.desc);
-	// eslint-disable-next-line
-	const hand = getNumber(args, 0);
-};
+// export const getEquippedItemType = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): void => {
+// const selfId = mp.getIdFromDesc(self.desc);
+// const hand = getNumber(args, 0);
+// };
 
 export const _getWornForms = (mp: Mp, self: PapyrusObject): PapyrusObject[] => {
 	const selfId = mp.getIdFromDesc(self.desc);

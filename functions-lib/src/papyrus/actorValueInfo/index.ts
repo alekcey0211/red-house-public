@@ -1,5 +1,5 @@
 import { skillList } from '../../properties/actor/actorValues/skillList';
-import { Mp, PapyrusValue, PapyrusObject } from '../../types/mp';
+import { Mp, PapyrusValue } from '../../types/mp';
 import { getNumber, getObject, getString } from '../../utils/papyrusArgs';
 import { getForm } from '../game';
 
@@ -15,22 +15,21 @@ const getActorValueInfoByID = (mp: Mp, self: null, args: PapyrusValue[]): Papyru
 	return { type: 'espm', desc: mp.getDescFromId(formId) };
 };
 
-// eslint-disable-next-line
-const addSkillExperience = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
-	// const selfId = mp.getIdFromDesc(self.desc);
-	// TODO: don`t use 0xff000000, should be the current actor
-	// const acId = 0xff000000;
-	// const exp = getNumber(args, 0);
-	// TODO: get name from self ActorValueInfo
-	// const avName = 'OneHanded';
-	// const currentExp = mp.get(acId, `av${avName}Exp`);
-	// mp.set(acId, `av${avName}Exp`, currentExp + exp);
-	// if (currentExp + exp >= 100) {
-	//   const currentAvValue = mp.get(acId, `av${avName}`);
-	//   mp.set(acId, `av${avName}`, currentAvValue + 1);
-	//   mp.set(acId, `av${avName}Exp`, 0);
-	// }
-};
+// const addSkillExperience = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]) => {
+// const selfId = mp.getIdFromDesc(self.desc);
+// TODO: don`t use 0xff000000, should be the current actor
+// const acId = 0xff000000;
+// const exp = getNumber(args, 0);
+// TODO: get name from self ActorValueInfo
+// const avName = 'OneHanded';
+// const currentExp = mp.get(acId, `av${avName}Exp`);
+// mp.set(acId, `av${avName}Exp`, currentExp + exp);
+// if (currentExp + exp >= 100) {
+//   const currentAvValue = mp.get(acId, `av${avName}`);
+//   mp.set(acId, `av${avName}`, currentAvValue + 1);
+//   mp.set(acId, `av${avName}Exp`, 0);
+// }
+// };
 
 interface SkillItem {
 	name?: string;
@@ -114,9 +113,9 @@ export const register = (mp: Mp): void => {
 		getActorValueInfoByName(mp, self, args)
 	);
 
-	mp.registerPapyrusFunction('method', 'ActorValueInfo', 'AddSkillExperience', (self, args) =>
-		addSkillExperience(mp, self, args)
-	);
+	// mp.registerPapyrusFunction('method', 'ActorValueInfo', 'AddSkillExperience', (self, args) =>
+	// addSkillExperience(mp, self, args)
+	// );
 
 	mp.registerPapyrusFunction('global', 'ActorValueInfoEx', 'GetPerkTree', (self, args) => getPerkTree(mp, self, args));
 };

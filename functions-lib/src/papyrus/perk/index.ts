@@ -60,5 +60,4 @@ export const getPerkEffectData = (
 	});
 };
 
-// eslint-disable-next-line
-export const register = (mp: Mp): void => {};
+// export const register = (mp: Mp): void => {};

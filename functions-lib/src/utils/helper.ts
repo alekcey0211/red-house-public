@@ -3,8 +3,7 @@
  * @param arr1 first array
  * @param arr2 second array
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const isArrayEqual = (arr1: any, arr2: any): boolean => {
+export const isArrayEqual = (arr1: Record<string, any>, arr2: Record<string, any>): boolean => {
 	const type = Object.prototype.toString.call(arr1);
 
 	if (type !== Object.prototype.toString.call(arr2)) return false;
@@ -32,13 +31,12 @@ export const isArrayEqual = (arr1: any, arr2: any): boolean => {
 			if (compare(arr1[i], arr2[i]) === false) return false;
 		}
 	} else {
-		// eslint-disable-next-line no-restricted-syntax
-		for (const key in arr1) {
+		Object.keys(arr1).forEach((key) => {
 			// eslint-disable-next-line no-prototype-builtins
 			if (arr1.hasOwnProperty(key)) {
 				if (compare(arr1[key], arr2[key]) === false) return false;
 			}
-		}
+		});
 	}
 
 	return true;

@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import { EspmLookupResult, Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import {
 	setActorValue,

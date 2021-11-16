@@ -4,7 +4,7 @@
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { getObject } from '../../utils/papyrusArgs';
 import { uint16 } from '../../utils/helper';
-import { ICell } from '../../..';
+import { ICell, IWorldSpace } from '../../..';
 
 const FLG_Interior = 0x0001;
 const FLG_Has_Water = 0x0002;
@@ -23,8 +23,7 @@ const flagExists = (mp: Mp, self: PapyrusObject, flag: number) => {
 	if (!enit) return false;
 
 	const flags = uint16(enit.buffer, 0);
-	// eslint-disable-next-line no-bitwise
-	return !!(flags & flag);
+	return !!(flags && flag);
 };
 
 export const isInterior = (mp: Mp, self: PapyrusObject): boolean => flagExists(mp, self, FLG_Interior);
@@ -46,4 +45,5 @@ export const register = (mp: Mp): void => {
 
 	ICell.IsInterior = (self: PapyrusObject) => isInterior(mp, self);
 	ICell.GetLocation = (self: PapyrusObject) => getLocation(mp, null, [self]);
+	IWorldSpace.GetLocation = (self: PapyrusObject) => getLocation(mp, null, [self]);
 };

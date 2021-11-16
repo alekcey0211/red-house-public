@@ -33,12 +33,9 @@ export const getSlotById = (
 	const slot = uint32(b2.buffer, 0);
 	if (!slot) return [];
 
-	return (
-		Object.keys(equipSlotMap)
-			// eslint-disable-next-line no-bitwise
-			.filter((k) => slot & +k)
-			.map((k) => equipSlotMap[+k])
-	);
+	return Object.keys(equipSlotMap)
+		.filter((k) => slot && +k)
+		.map((k) => equipSlotMap[+k]);
 };
 export const getSlot = (mp: Mp, self: PapyrusObject): number[] => {
 	const selfId = mp.getIdFromDesc(self.desc);

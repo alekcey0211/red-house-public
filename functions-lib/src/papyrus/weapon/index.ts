@@ -63,9 +63,9 @@ export const getBaseDamageById = (
 	if (!data) return 0;
 
 	const damage = uint16(data.buffer, 8);
-
 	return damage;
 };
+
 export const getBaseDamage = (mp: Mp, self: PapyrusObject): number => {
 	const selfId = mp.getIdFromDesc(self.desc);
 	return getBaseDamageById(mp, selfId);

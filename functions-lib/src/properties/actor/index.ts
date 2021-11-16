@@ -55,12 +55,16 @@ const updateOwnerIsDead = (ctx: Ctx) => {
 
 const updateRace = (ctx: Ctx<{ lastRace: number }, number>) => {
 	if (!ctx.refr || ctx.value === undefined || ctx.state.lastRace === ctx.value) return;
+
 	const ac = ctx.sp.Actor.from(ctx.refr);
 	if (!ac) return;
+
 	const raceForm = ctx.sp.Game.getForm(ctx.value);
 	if (!raceForm) return;
+
 	const race = ctx.sp.Race.from(raceForm);
 	if (!race) return;
+
 	ac.setRace(race);
 	ctx.state.lastRace = ctx.value;
 };
@@ -77,6 +81,11 @@ export const register = (mp: Mp): void => {
 	statePropFactory(mp, 'isFirstLoad');
 
 	statePropFactory(mp, 'startZCoord');
+
+	statePropFactory(mp, 'armorValue');
+	statePropFactory(mp, 'weaponDamage');
+	statePropFactory(mp, 'weaponType');
+	statePropFactory(mp, 'shieldValue');
 
 	mp.makeProperty('isDead', {
 		isVisibleByOwner: true,

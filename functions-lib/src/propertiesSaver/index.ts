@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import { Mp } from '../types/mp';
 import { checkAndCreatePropertyExist } from '../papyrus/multiplayer/functions';
 

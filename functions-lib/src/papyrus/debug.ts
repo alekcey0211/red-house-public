@@ -66,7 +66,6 @@ const quitGame = (mp: Mp, self: null, args: PapyrusValue[]): void => {
 		});
 	};
 	evalClient(mp, acId, new FunctionInfo(func).getText());
-	evalClient(mp, acId, '');
 };
 
 const toggleCollisions = (mp: Mp, self: null, args: PapyrusValue[]): void => {
