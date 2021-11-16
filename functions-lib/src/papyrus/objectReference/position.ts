@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-properties */
 import { Mp, PapyrusObject, PapyrusValue } from '../../types/mp';
 import { getNumber, getObject } from '../../utils/papyrusArgs';
 
@@ -45,9 +44,9 @@ export const getDistance = (mp: Mp, self: PapyrusObject, args: PapyrusValue[]): 
 	const targetCoord = getPosition(mp, target);
 
 	return Math.sqrt(
-		Math.pow(selfPosition[0] - targetCoord[0], 2) +
-			Math.pow(selfPosition[1] - targetCoord[1], 2) +
-			Math.pow(selfPosition[2] - targetCoord[2], 2)
+		(selfPosition[0] - targetCoord[0]) ** 2 +
+			(selfPosition[1] - targetCoord[1]) ** 2 +
+			(selfPosition[2] - targetCoord[2]) ** 2
 	);
 };
 

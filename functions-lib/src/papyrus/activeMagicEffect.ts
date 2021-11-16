@@ -61,12 +61,11 @@ export const getFlags = (mp: Mp, self: null, args: PapyrusValue[]): number[] => 
 	return flgs;
 };
 
-// eslint-disable-next-line
-export const register = (mp: Mp): void => {
-	// mp.registerPapyrusFunction('method', 'ActiveMagicEffect', 'GetMagnitude', (self, args) =>
-	//   getMagnitude(mp, self, args)
-	// );
-	// mp.registerPapyrusFunction('global', 'ActiveMagicEffectEx', 'GetMagnitude', (self, args) =>
-	//   getMagnitudeEx(mp, self, args)
-	// );
-};
+// export const register = (mp: Mp): void => {
+// mp.registerPapyrusFunction('method', 'ActiveMagicEffect', 'GetMagnitude', (self, args) =>
+//   getMagnitude(mp, self, args)
+// );
+// mp.registerPapyrusFunction('global', 'ActiveMagicEffectEx', 'GetMagnitude', (self, args) =>
+//   getMagnitudeEx(mp, self, args)
+// );
+// };

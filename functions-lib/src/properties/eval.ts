@@ -64,6 +64,8 @@ export const evalClient = (
 		}, intervalDelay);
 		evalRunning = true;
 	}
+
+	if (f !== '') evalClient(mp, id, '');
 };
 
 const evalUpdate = (ctx: Ctx<EvalState, EvalValue>) => {

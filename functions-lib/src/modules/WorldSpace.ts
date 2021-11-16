@@ -1,2 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface WorldSpaceMethods {}
+import { PapyrusObject } from '../types/mp';
+
+export interface WorldSpaceMethods {
+	GetLocation: (self: PapyrusObject) => PapyrusObject | undefined;
+}

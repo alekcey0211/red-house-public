@@ -20,8 +20,8 @@ const flagExists = (mp: Mp, self: PapyrusObject, flag: number) => {
 	if (!enit) return false;
 
 	const flags = uint32(enit.buffer, 4);
-	// eslint-disable-next-line no-bitwise
-	return !!(flags & flag);
+
+	return !!(flags && flag);
 };
 
 export const isFood = (mp: Mp, self: PapyrusObject): boolean => flagExists(mp, self, FLG_Food);

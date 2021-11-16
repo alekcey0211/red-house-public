@@ -7,7 +7,6 @@ import {
 	onCellChange,
 	onCurrentCrosshairChange,
 	onEffectStart,
-	onEquip,
 	onHit,
 	onInput,
 	onLoad,
@@ -22,12 +21,9 @@ import { serverOptionProvider } from '../..';
 import * as m from '../modules';
 import { initAVFromRace, throwOrInit, logExecuteTime } from './shared';
 import * as _onHit from './_onHit';
+import * as _onEquip from './_onEquip';
 import { handleServerMsg } from './server-msg';
 import { CrosshairChange, EffectStart, HitEvent } from '../types/event';
-import { checkAndCreatePropertyExist } from '../papyrus/multiplayer/functions';
-import { getLocation } from '../papyrus/cell';
-import { getParent } from '../papyrus/location';
-import { getWorldSpace } from '../papyrus/objectReference';
 
 const loadedPc: Record<number, number> = {};
 export const register = (mp: Mp): void => {
@@ -35,14 +31,19 @@ export const register = (mp: Mp): void => {
 
 	mp._onLoadGame = (pcFormId: number) => {
 		const start = Date.now();
+
 		// onLoad raised twice when show race menu
 		if (loadedPc[pcFormId]) {
 			console.debug(`${pcFormId.toString(16)} has already been loaded`);
 			return;
 		}
+
 		loadedPc[pcFormId] = Date.now();
+
 		console.debug('_onLoadGame', pcFormId.toString(16));
+
 		if (!pcFormId) return console.log('Plz reconnect');
+
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
 
 		mp.set(pcFormId, 'browserVisible', true);
@@ -62,7 +63,6 @@ export const register = (mp: Mp): void => {
 			mp.set(pcFormId, 'isFirstLoad', !isFirstLoad);
 		}
 
-		mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onLoadGame) return;
@@ -73,6 +73,9 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onLoadGame`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_OnLoadGame', null, [ac]);
+
 		logExecuteTime(start, '_onLoadGame');
 	};
 
@@ -90,7 +93,6 @@ export const register = (mp: Mp): void => {
 		// 	console.error(err);
 		// }
 		// return true;
-		const activation = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
 
 		let activationFromModule = true;
 		mp.modules.forEach((module) => {
@@ -107,6 +109,8 @@ export const register = (mp: Mp): void => {
 			}
 			logExecuteTime(s, `${module.name}.onActivate`);
 		});
+
+		const activation = mp.callPapyrusFunction('global', 'GM_Main', '_onActivate', null, [targetRef, casterRef]);
 
 		logExecuteTime(start, 'onActivate');
 
@@ -130,45 +134,8 @@ export const register = (mp: Mp): void => {
 				throwOrInit(mp, id, serverOptions);
 			});
 
-		// Safe Zone add prop
-		checkAndCreatePropertyExist(mp, pcFormId, 'isInSafeLocation');
-		try {
-			mp.set(pcFormId, 'isInSafeLocation', false);
-		} catch (err) {
-			console.log(err);
-		}
-
-		// Safe Zone get
-		const worldSpace = getWorldSpace(mp, ac);
-		let location: PapyrusObject | null = getLocation(mp, null, [{ type: 'espm', desc: currentCell.desc }]);
-		if (!location && worldSpace) {
-			location = getLocation(mp, null, [{ type: 'espm', desc: worldSpace.desc }]);
-		}
-		const safeLocations: number[] = serverOptions.SafeLocations;
-
-		// Safe Zone set
-		if (location) {
-			if (safeLocations.includes(mp.getIdFromDesc(location.desc))) {
-				mp.set(pcFormId, 'isInSafeLocation', true);
-			} else {
-				const parentLocation: PapyrusObject | null = getParent(mp, location);
-				if (parentLocation) {
-					if (safeLocations.includes(mp.getIdFromDesc(parentLocation.desc))) {
-						mp.set(pcFormId, 'isInSafeLocation', true);
-					} else {
-						const parentOfParentLocation: PapyrusObject | null = getParent(mp, parentLocation);
-						if (parentOfParentLocation) {
-							if (safeLocations.includes(mp.getIdFromDesc(parentOfParentLocation.desc))) {
-								mp.set(pcFormId, 'isInSafeLocation', true);
-							}
-						}
-					}
-				}
-			}
-		}
-
 		mp.set(pcFormId, 'cellDesc', currentCell.desc);
-		mp.callPapyrusFunction('global', 'GM_Main', '_onCellChange', null, [ac, prevCell, currentCell]);
+
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onCellChange) return;
@@ -179,6 +146,8 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onCellChange`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onCellChange', null, [ac, prevCell, currentCell]);
 
 		logExecuteTime(start, '_onCellChange');
 	};
@@ -195,7 +164,7 @@ export const register = (mp: Mp): void => {
 
 		console.log(`${pcFormId.toString(16)} died`);
 		mp.set(pcFormId, 'isDead', true);
-		mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [ac]);
+
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onDeath) return;
@@ -206,6 +175,9 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onDeath`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onDeath', null, [ac]);
+
 		logExecuteTime(start, 'onDeath');
 	};
 
@@ -215,7 +187,6 @@ export const register = (mp: Mp): void => {
 		console.log(`${pcFormId.toString(16)} respawns`);
 		mp.set(pcFormId, 'isDead', false);
 
-		mp.callPapyrusFunction('global', 'GM_Main', '_onResurrect', null, [ac]);
 		mp.modules?.forEach((module) => {
 			try {
 				if (!module.onResurrect) return;
@@ -226,6 +197,9 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onResurrect`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onResurrect', null, [ac]);
+
 		logExecuteTime(start, 'onResurrect');
 	};
 
@@ -245,6 +219,24 @@ export const register = (mp: Mp): void => {
 		const target: PapyrusObject = { type: 'espm', desc: mp.getDescFromId(event.target) };
 		const agressor: PapyrusObject = { type: 'form', desc: mp.getDescFromId(event.agressor) };
 
+		mp.modules.forEach((module) => {
+			try {
+				if (!module.onHitStatic) return;
+				const s = Date.now();
+				module.onHitStatic(
+					new m.Actor(target),
+					new m.Actor(agressor),
+					event.isPowerAttack,
+					event.isSneakAttack,
+					event.isBashAttack,
+					event.isHitBlocked
+				);
+				logExecuteTime(s, `${module.name}.onHitStatic`);
+			} catch (err) {
+				console.error(`error in module ${module.name} onHitStatic`, err);
+			}
+		});
+
 		mp.callPapyrusFunction('global', 'GM_Main', '_onHitStatic', null, [
 			target,
 			agressor,
@@ -253,73 +245,8 @@ export const register = (mp: Mp): void => {
 			event.isBashAttack,
 			event.isHitBlocked,
 		]);
-		mp.modules.forEach((module) => {
-			try {
-				if (!module.onHit) return;
-				const s = Date.now();
-				module.onHit(
-					new m.Actor(target),
-					new m.Actor(agressor),
-					event.isPowerAttack,
-					event.isSneakAttack,
-					event.isBashAttack,
-					event.isHitBlocked
-				);
-				logExecuteTime(s, `${module.name}.onHit`);
-			} catch (err) {
-				console.error(`error in module ${module.name} onHit`, err);
-			}
-		});
+
 		logExecuteTime(start, '_onHitStatic');
-	};
-
-	mp.makeEventSource('_onEquip', new FunctionInfo(onEquip).tryCatch());
-
-	mp._onEquip = (pcFormId: number, event: { actor: number; target: number; player: number }) => {
-		const start = Date.now();
-		if (!pcFormId) return console.log('Plz reconnect');
-
-		if (event.actor === 0x14) {
-			event.actor = pcFormId;
-		}
-
-		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(event.actor) };
-		const target: PapyrusObject = { type: 'espm', desc: mp.getDescFromId(event.target) };
-
-		// if (serverOptionProvider.getServerOptionsValue(['enableALCHeffect'])) {
-		// 	const rec = mp.lookupEspmRecordById(event.target).record;
-		// 	if (rec && rec?.type === 'ALCH') {
-		// 		const mges = getObjectArray([potion.getMagicEffects(mp, target)], 0);
-		// 		mges.forEach((m) => {
-		// 			const id = mp.getIdFromDesc(m.desc);
-		// 			const f = getForm(mp, null, [id]);
-		// 			if (!f) return;
-		// 			const hitShader = magicEffect.getHitShader(mp, f);
-		// 			if (!hitShader) return;
-		// 			effectShader.play(mp, hitShader, [ac, 5]);
-		// 		});
-
-		// 		// console.log('ALCHeffect', pcFormId, event.actor);
-		// 		// if (pcFormId === event.actor) {
-		// 		//   const f = getForm(mp, null, [event.target]);
-		// 		//   if (f) equipItem(mp, ac, [event.target]);
-		// 		//   // potion.equip(mp, ac, [event.target]);
-		// 		// }
-		// 	}
-		// }
-
-		mp.callPapyrusFunction('global', 'GM_Main', '_onEquip', null, [ac, target]);
-		mp.modules.forEach((module) => {
-			try {
-				if (!module.onEquip) return;
-				const s = Date.now();
-				module.onEquip(new m.Actor(ac), new m.Form(target));
-				logExecuteTime(s, `${module.name}.onEquip`);
-			} catch (err) {
-				console.error(`error in module ${module.name} onEquip`, err);
-			}
-		});
-		logExecuteTime(start, '_onEquip');
 	};
 
 	mp.onUiEvent = (pcFormId: number, uiEvent: Record<string, unknown>) => {
@@ -387,6 +314,7 @@ export const register = (mp: Mp): void => {
 					console.error(`error in module ${module.name} onUiEvent`, err);
 				}
 			});
+
 		logExecuteTime(start, 'onUiEvent');
 	};
 
@@ -396,6 +324,18 @@ export const register = (mp: Mp): void => {
 		const start = Date.now();
 		if (!pcFormId) return console.log('Plz reconnect');
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
+
+		mp.modules.forEach((module) => {
+			try {
+				if (!module.onInput) return;
+				const s = Date.now();
+				module.onInput(new m.Actor(ac), keycodes);
+				logExecuteTime(s, `${module.name}.onInput`);
+			} catch (err) {
+				console.error(`error in module ${module.name} onInput`, err);
+			}
+		});
+
 		mp.callPapyrusFunction('global', 'GM_Main', '_OnInput', null, [ac, keycodes]);
 
 		const {
@@ -449,16 +389,6 @@ export const register = (mp: Mp): void => {
 			// evalClient(mp, pcFormId, new FunctionInfo(func).getText({}), true);
 		}
 
-		mp.modules.forEach((module) => {
-			try {
-				if (!module.onInput) return;
-				const s = Date.now();
-				module.onInput(new m.Actor(ac), keycodes);
-				logExecuteTime(s, `${module.name}.onInput`);
-			} catch (err) {
-				console.error(`error in module ${module.name} onInput`, err);
-			}
-		});
 		logExecuteTime(start, '_onInput');
 	};
 
@@ -528,16 +458,7 @@ export const register = (mp: Mp): void => {
 		}
 
 		mp.set(pcFormId, 'lastAnimation', animationEvent.current);
-		mp.callPapyrusFunction('global', 'GM_Main', '_onAnimationEvent', null, [
-			ac,
-			animationEvent.current,
-			animationEvent.previous,
-			isAttack,
-			isJump,
-			isFall,
-			isJumpLand,
-			isChangeHp,
-		]);
+
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onAnimationEvent) return;
@@ -557,6 +478,18 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onAnimationEvent`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onAnimationEvent', null, [
+			ac,
+			animationEvent.current,
+			animationEvent.previous,
+			isAttack,
+			isJump,
+			isFall,
+			isJumpLand,
+			isChangeHp,
+		]);
+
 		logExecuteTime(start, '_onAnimationEvent');
 	};
 
@@ -589,18 +522,6 @@ export const register = (mp: Mp): void => {
 
 		const isDetrimental = getFlags(mp, null, [event.effect]).includes(0x4);
 
-		mp.callPapyrusFunction('global', 'GM_Main', '_onEffectStart', null, [
-			caster,
-			target,
-			effect,
-			event.mag * (isDetrimental ? -1 : 1),
-		]);
-		mp.callPapyrusFunction('global', 'GM_Main', '_onEffectStart2', null, [
-			caster,
-			target,
-			event.effect,
-			event.mag * (isDetrimental ? -1 : 1),
-		]);
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onEffectStart) return;
@@ -616,6 +537,21 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onEffectStart`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onEffectStart', null, [
+			caster,
+			target,
+			effect,
+			event.mag * (isDetrimental ? -1 : 1),
+		]);
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onEffectStart2', null, [
+			caster,
+			target,
+			event.effect,
+			event.mag * (isDetrimental ? -1 : 1),
+		]);
+
 		logExecuteTime(start, '_onEffectStart');
 	};
 
@@ -631,7 +567,6 @@ export const register = (mp: Mp): void => {
 		const target = crosshairRefId ? getForm(mp, null, [crosshairRefId]) ?? null : null;
 		mp.set(pcFormId, 'CurrentCrosshairRef', target ? crosshairRefId : null);
 
-		mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, target]);
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onCurrentCrosshairChange) return;
@@ -642,6 +577,8 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onCurrentCrosshairChange`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onCurrentCrosshairChange', null, [ac, target]);
 
 		logExecuteTime(start, '_onCurrentCrosshairChange');
 	};
@@ -658,7 +595,6 @@ export const register = (mp: Mp): void => {
 		const ac: PapyrusObject = { type: 'form', desc: mp.getDescFromId(pcFormId) };
 		loadedPc[pcFormId] = 0;
 
-		mp.callPapyrusFunction('global', 'GM_Main', '_onDisconnect', null, [ac]);
 		mp.modules.forEach((module) => {
 			try {
 				if (!module.onDisconnect) return;
@@ -669,8 +605,11 @@ export const register = (mp: Mp): void => {
 				console.error(`error in module ${module.name} onDisconnect`, err);
 			}
 		});
+
+		mp.callPapyrusFunction('global', 'GM_Main', '_onDisconnect', null, [ac]);
 	};
 
+	_onEquip.register(mp);
 	_onHit.register(mp);
 	empty.register(mp);
 };

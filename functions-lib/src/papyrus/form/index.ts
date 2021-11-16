@@ -135,7 +135,7 @@ const getType = (mp: Mp, self: PapyrusObject) => {
 	return data.record?.type && formType[data.record?.type] ? formType[data.record?.type] : 0;
 };
 
-const _getSignature = (mp: Mp, selfId: number) => {
+export const _getSignature = (mp: Mp, selfId: number) => {
 	const espmRecord = mp.lookupEspmRecordById(selfId);
 	return espmRecord.record?.type ?? '';
 };

@@ -54,8 +54,22 @@ export const onHit = (ctx: Ctx, isHitStatic: boolean): void => {
 };
 
 export const onEquip = (ctx: Ctx): void => {
-	ctx.sp.on('equip', (event: any) => {
-		const e: EquipEvent = event as EquipEvent;
+	ctx.sp.on('equip', (event: EquipEvent) => {
+		const e: EquipEvent = event;
+		const target = ctx.getFormIdInServerFormat(e.baseObj?.getFormID());
+		const actor = ctx.getFormIdInServerFormat(e.actor.getFormID());
+		const data: { actor: number; target: number; player?: number } = {
+			actor,
+			target,
+			player: ctx.sp.Game.getPlayer()?.getFormID(),
+		};
+		ctx.sendEvent(data);
+	});
+};
+
+export const onUnequip = (ctx: Ctx): void => {
+	ctx.sp.on('unequip', (event: EquipEvent) => {
+		const e: EquipEvent = event;
 		const target = ctx.getFormIdInServerFormat(e.baseObj?.getFormID());
 		const actor = ctx.getFormIdInServerFormat(e.actor.getFormID());
 		const data: { actor: number; target: number; player?: number } = {

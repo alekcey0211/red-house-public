@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-use-before-define */
 /* eslint-disable quotes */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types  */
 import { Mp, PapyrusObject, PapyrusValue } from '../types/mp';
 
 declare const mp: Mp;
@@ -155,7 +153,7 @@ export class Form extends BaseClass {
 		throw new Error("the method 'SetWeight' is not implemented");
 	}
 
-	setWorldModelNthTextureSet(nSet: any, n: number): void {
+	setWorldModelNthTextureSet(nSet: unknown, n: number): void {
 		throw new Error("the method 'SetWorldModelNthTextureSet' is not implemented");
 	}
 
@@ -821,7 +819,7 @@ export class ObjectReference extends Form {
 		throw new Error("the method 'SetLockLevel' is not implemented");
 	}
 
-	setMotionType(aeMotionType: any, abAllowActivate: boolean): Promise<void> {
+	setMotionType(aeMotionType: unknown, abAllowActivate: boolean): Promise<void> {
 		throw new Error("the method 'SetMotionType' is not implemented");
 	}
 
@@ -903,7 +901,7 @@ export class ObjectReference extends Form {
 		return IObjectReference.GetStorageValue<T>(this.obj, [key]);
 	}
 
-	setStorageValue(key: string, value: any): void {
+	setStorageValue(key: string, value: PapyrusValue): void {
 		if (!IObjectReference.SetStorageValue) throw new Error("the method 'SetStorageValue' is not implemented");
 		return IObjectReference.SetStorageValue(this.obj, [key, value]);
 	}
@@ -2841,6 +2839,16 @@ export class WorldSpace extends Form {
 		const worldSpace = WorldSpace.from(form);
 		if (!worldSpace) return null;
 		return worldSpace;
+	}
+
+	getLocation(): Location | null {
+		if (!IWorldSpace.GetLocation) throw new Error("the method 'GetLocation' is not implemented");
+
+		const location = IWorldSpace.GetLocation(this.obj);
+
+		if (!location) return null;
+
+		return new Location(location);
 	}
 }
 // #endregion

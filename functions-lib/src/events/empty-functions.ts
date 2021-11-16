@@ -20,7 +20,6 @@ export const sendPlayerPos = (ctx: Ctx): void => {
 
 		try {
 			ctx.sp.browser.executeJavaScript(src.join('\n'));
-			// eslint-disable-next-line no-empty
 		} catch (error) {}
 
 		ctx.state.lastPosX = xF;
@@ -70,7 +69,6 @@ export const showNicknames = (ctx: Ctx): void => {
 
 		try {
 			ctx.sp.browser.executeJavaScript(src.join('\n'));
-			// eslint-disable-next-line no-empty
 		} catch (error) {}
 
 		ctx.state.lastScreenPosX = xF;

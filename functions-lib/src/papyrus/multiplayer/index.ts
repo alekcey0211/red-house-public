@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 import { IM } from '../../..';
 import { Mp, PapyrusValue, PapyrusObject } from '../../types/mp';
 import { getBoolean, getNumber, getObject, getString, getStringArray } from '../../utils/papyrusArgs';
@@ -133,7 +132,7 @@ const browserGetModal = (mp: Mp, self: null, args: PapyrusValue[]): boolean =>
 export const localizationDefault: Localization = { getText: (x) => x };
 
 export const register = (mp: Mp, localization: Localization = localizationDefault): void => {
-	for (const className of ['Multiplayer', 'M']) {
+	['Multiplayer', 'M'].forEach((className) => {
 		mp.registerPapyrusFunction('global', className, 'ExecuteUiCommand', (self, args) =>
 			executeUiCommand(mp, self, args)
 		);
@@ -212,7 +211,7 @@ export const register = (mp: Mp, localization: Localization = localizationDefaul
 		mp.registerPapyrusFunction('global', className, 'SetGlobalStorageValueFloatArray', (self, args) =>
 			setGlobalStorageValueNumberArray(mp, self, args)
 		);
-	}
+	});
 
 	IM.GetActorsInStreamZone = (args: PapyrusValue[]) => getActorsInStreamZone(mp, null, args);
 	IM.GetOnlinePlayers = () => getOnlinePlayers(mp);

@@ -1,6 +1,4 @@
-/* eslint-disable no-restricted-syntax */
 export class FunctionInfo<F extends { toString: () => string }> {
-	// eslint-disable-next-line no-empty-function
 	constructor(private f: F) {}
 
 	get body(): string {
@@ -20,8 +18,15 @@ export class FunctionInfo<F extends { toString: () => string }> {
 	getText(args?: Record<string, unknown>, log: boolean = false): string {
 		let result = this.tryCatch();
 
-		// eslint-disable-next-line guard-for-in
-		for (const name in args) {
+		if (!args) {
+			if (log) {
+				console.log(result);
+			}
+
+			return result;
+		}
+
+		Object.keys(args).forEach((name) => {
 			const arg = args[name];
 			switch (typeof arg) {
 				case 'number':
@@ -47,7 +52,8 @@ export class FunctionInfo<F extends { toString: () => string }> {
 					result = `const ${name} = ${(arg as Function).toString()};\n${result}`;
 					break;
 			}
-		}
+		});
+
 		if (log) {
 			console.log(result);
 		}
